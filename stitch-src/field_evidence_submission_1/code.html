@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Submission Portal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: JetBrains Mono & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001e2c",
+                        "on-secondary": "#00354a",
+                        "surface-bright": "#31394d",
+                        "on-error-container": "#ffdad6",
+                        "border-muted": "#334155",
+                        "outline-variant": "#434655",
+                        "surface-dim": "#0b1326",
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-variant": "#2d3449",
+                        "surface": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "error-container": "#93000a",
+                        "primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "surface-input": "#0F172A",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-container": "#007d55",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary": "#7bd0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#c4e7ff",
+                        "background": "#0b1326",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-surface": "#dae2fd",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#222a3d",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "on-primary": "#002a78",
+                        "on-tertiary": "#003824",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-container": "#00374d",
+                        "surface-tint": "#b4c5ff",
+                        "inverse-primary": "#0053db",
+                        "surface-card": "#1E293B",
+                        "neon-blue": "#2563EB",
+                        "outline": "#8d90a0",
+                        "tertiary": "#4edea3",
+                        "primary-fixed": "#dbe1ff",
+                        "neon-cyan": "#06B6D4",
+                        "secondary-container": "#00a6e0",
+                        "inverse-on-surface": "#283044",
+                        "on-background": "#dae2fd",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary-container": "#bdffdb",
+                        "surface-container-low": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "headline-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for technical feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #434655; 
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563EB; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-sans">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant docked full-width top-0 sticky z-40 flex justify-between items-center w-full px-margin-mobile h-14 transition-colors duration-200 shadow-none">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary tracking-tighter">TV-CARE COMMAND</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full border border-outline-variant overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-contrast, cyberpunk-inspired portrait of a rugged field contractor wearing an industrial hard hat equipped with glowing blue optic sensors. The lighting is dramatic, with harsh neon blue rim lights contrasting against deep shadows, emphasizing grit and technical expertise. The aesthetic is gritty cyber-industrial set against a dark void." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQG94z8OCicFWLTVdAw9FDB0_4Mc9mkP9u3vEzjDxab0mZA6sV2110ZegH49Cb3BxecvBS_Efwf_tQk8qEc02UkCeft5Epbtt6kTpTnbF2QRuq0H4gcRuSguHWtDxaAvE41IvofE-dsnP3Sbq_FUKCdaAWfqJeBgPQoMtgB6w53ZgSS1D8OCeaAK7JDIJS2hsP9MUFBXrWpWIAEjdIHBZqJC2tPt3niMWFlu62rOVkzyn52z1G7qdr0OEKli-CuOtczYKbamaQvFj5"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant cursor-pointer rounded p-1 transition-colors" data-icon="settings_input_component">settings_input_component</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto p-margin-mobile md:p-margin-desktop pb-24 md:pb-margin-desktop">
+<div class="mb-6">
+<h1 class="text-headline-md font-headline-md text-on-surface">Evidence Upload Portal</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Authenticate field data and synchronize with central adjusters.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Upload Controls -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<!-- Project Selector Box -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-4 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-neon-blue"></div>
+<label class="block text-label-sm font-label-sm text-primary mb-2 tracking-widest uppercase">Target Assignment</label>
+<select class="w-full bg-surface-input border border-outline-variant rounded text-label-md font-label-md text-on-surface p-3 focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors appearance-none cursor-pointer">
+<option value="prj-01">PRJ-X992 [SECTOR 4 MAINLINE]</option>
+<option value="prj-02">PRJ-A441 [NODE 7 CALIBRATION]</option>
+<option value="prj-03">PRJ-C882 [EMERGENCY OVERRIDE]</option>
+</select>
+</div>
+<!-- Upload Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Photos -->
+<div class="bg-surface-card border border-dashed border-outline-variant hover:border-primary rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-surface-variant group h-40">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary mb-3 transition-colors" data-icon="photo_camera">photo_camera</span>
+<span class="text-label-md font-label-md text-on-surface">SITE_PHOTOS</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-1 text-center">JPEG/PNG • Max 50MB</span>
+</div>
+<!-- Telemetry -->
+<div class="bg-surface-card border border-dashed border-outline-variant hover:border-primary rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-surface-variant group h-40">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary mb-3 transition-colors" data-icon="data_object">data_object</span>
+<span class="text-label-md font-label-md text-on-surface">TELEMETRY_LOGS</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-1 text-center">CSV/JSON • Sensor Arrays</span>
+</div>
+<!-- Field Notes (Full Width) -->
+<div class="sm:col-span-2 bg-surface-card border border-dashed border-outline-variant hover:border-primary rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-surface-variant group h-32">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 transition-colors" data-icon="edit_document">edit_document</span>
+<span class="text-label-md font-label-md text-on-surface">REPAIR_NOTES</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-1">Manual entry or TXT upload</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Submission Queue -->
+<div class="lg:col-span-4 h-[600px] flex flex-col">
+<div class="bg-surface-container border border-outline-variant rounded-lg flex-1 flex flex-col overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface text-sm" data-icon="sync">sync</span>
+<h2 class="text-label-md font-label-md text-on-surface tracking-wider">SYNC_QUEUE</h2>
+</div>
+<span class="bg-surface-input border border-outline-variant text-primary text-label-sm font-label-sm px-2 py-1 rounded">2 ACTIVE</span>
+</div>
+<!-- Queue List -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+<!-- Uploading Item -->
+<div class="bg-surface-input border border-outline-variant rounded p-3 relative overflow-hidden group">
+<!-- Progress Bar Background -->
+<div class="absolute top-0 left-0 bottom-0 bg-primary-container/20 w-[68%] z-0 transition-all duration-500"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="image">image</span>
+<span class="text-label-md font-label-md text-on-surface truncate">sector4_damage_overview.jpg</span>
+</div>
+<span class="text-label-md font-label-md text-primary ml-2">68%</span>
+</div>
+<div class="flex justify-between items-center mt-3">
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-surface px-2 py-0.5 rounded border border-outline-variant">UPLOADING...</span>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="cancel">cancel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Verified Item -->
+<div class="bg-surface-input border border-outline-variant rounded p-3 relative overflow-hidden opacity-75">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-tertiary-fixed z-0"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-2 pl-2">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]" data-icon="description">description</span>
+<span class="text-label-md font-label-md text-on-surface truncate">telemetry_dump_N7.csv</span>
+</div>
+</div>
+<div class="flex justify-between items-center mt-3 pl-2">
+<span class="text-label-sm font-label-sm text-surface-input bg-tertiary px-2 py-0.5 rounded font-bold">VERIFIED</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">12:44 PM</span>
+</div>
+</div>
+</div>
+<!-- Failed Item -->
+<div class="bg-surface-input border border-error/50 rounded p-3 relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-error z-0"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-2 pl-2">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-error text-[18px]" data-icon="warning">warning</span>
+<span class="text-label-md font-label-md text-error truncate">field_repair_notes.txt</span>
+</div>
+</div>
+<div class="flex justify-between items-center mt-3 pl-2">
+<span class="text-label-sm font-label-sm text-error bg-error-container/30 px-2 py-0.5 rounded border border-error/30">NETWORK TIMEOUT</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="refresh">refresh</span>
+<span class="text-label-sm font-label-sm">RETRY</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-input border-t border-outline-variant">
+<button class="w-full bg-neon-blue hover:bg-primary text-white text-label-md font-label-md py-3 rounded transition-colors flex items-center justify-center gap-2 uppercase tracking-widest shadow-[0_0_10px_rgba(37,99,235,0.2)]">
+<span class="material-symbols-outlined text-[18px]" data-icon="cloud_sync">cloud_sync</span>
+                            Force Sync All
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only based on intent context, but showing strictly as requested per JSON struct) -->
+<nav class="md:hidden bg-surface-container dark:bg-surface-container border-t border-outline-variant dark:border-outline-variant flat no shadows fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 pb-2">
+<!-- Command (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary transition-transform duration-150 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="terminal">terminal</span>
+<span class="text-label-sm font-label-sm mt-1">Command</span>
+</a>
+<!-- Jobs (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary transition-transform duration-150 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="construction">construction</span>
+<span class="text-label-sm font-label-sm mt-1">Jobs</span>
+</a>
+<!-- Evidence (Active - Forced Active per prompt) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary bg-primary-container/10 rounded-xl px-3 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="photo_camera_back" style="font-variation-settings: 'FILL' 1;">photo_camera_back</span>
+<span class="text-label-sm font-label-sm mt-1 font-bold">Evidence</span>
+</a>
+<!-- Schedule (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary transition-transform duration-150 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-sm font-label-sm mt-1">Schedule</span>
+</a>
+<!-- Account (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary dark:hover:text-primary transition-transform duration-150 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="account_circle">account_circle</span>
+<span class="text-label-sm font-label-sm mt-1">Account</span>
+</a>
+</nav>
+</body></html>

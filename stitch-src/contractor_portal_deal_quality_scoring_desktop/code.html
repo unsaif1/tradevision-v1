@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deal Quality Scoring - TradeVision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#0c0e12",
+                      "surface-bright": "#37393e",
+                      "on-primary-fixed": "#002022",
+                      "inverse-on-surface": "#2f3035",
+                      "error": "#ffb4ab",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#303031",
+                      "secondary-fixed-dim": "#ffba20",
+                      "surface-container": "#1e2024",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-background": "#e2e2e8",
+                      "on-error": "#690005",
+                      "inverse-primary": "#006970",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "outline": "#849495",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-primary": "#00363a",
+                      "surface-container-low": "#1a1c20",
+                      "surface": "#111317",
+                      "inverse-surface": "#e2e2e8",
+                      "on-secondary": "#412d00",
+                      "tertiary-container": "#dad9d9",
+                      "on-primary-container": "#006970",
+                      "surface-tint": "#00dbe9",
+                      "on-secondary-fixed": "#271900",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#ffdb9d",
+                      "primary": "#dbfcff",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "surface-container-high": "#282a2e",
+                      "on-tertiary-container": "#5e5f5f",
+                      "surface-variant": "#333539",
+                      "on-surface-variant": "#b9cacb",
+                      "secondary-container": "#feb700",
+                      "primary-fixed": "#7df4ff",
+                      "surface-container-highest": "#333539",
+                      "secondary-fixed": "#ffdea8",
+                      "surface-dim": "#111317",
+                      "outline-variant": "#3b494b",
+                      "on-surface": "#e2e2e8",
+                      "on-secondary-container": "#6b4b00",
+                      "background": "#111317",
+                      "tertiary": "#f7f5f5",
+                      "primary-fixed-dim": "#00dbe9",
+                      "primary-container": "#00f0ff",
+                      "tertiary-fixed-dim": "#c7c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "density-comfortable": "24px",
+                      "gutter": "16px",
+                      "density-compact": "8px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for high-density tables */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b; /* outline-variant */
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #849495; /* outline */
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen overflow-hidden flex font-body-fixed text-body-fixed selection:bg-primary-container selection:text-on-primary-container">
+<!-- NavigationDrawer (Shared Component) -->
+<nav class="bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant fixed left-0 top-0 h-full w-[260px] flex flex-col py-margin z-20">
+<div class="px-gutter mb-density-comfortable">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight font-bold">TRADEVISION</h1>
+</div>
+<ul class="flex flex-col gap-unit mt-4 w-full px-2">
+<li>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform font-label-caps text-label-caps w-full" href="#">
+<span class="material-symbols-outlined filled text-[20px]">dashboard</span>
+<span>DASHBOARD</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps w-full" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>AUDIT LOG</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps w-full" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>SYSTEM SETTINGS</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps w-full" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>USERS</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps w-full" href="#">
+<span class="material-symbols-outlined text-[20px]">assessment</span>
+<span>REPORTS</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant fixed top-0 right-0 left-[260px] h-[64px] flex justify-between items-center px-gutter w-auto z-10">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-primary text-[24px]">admin_panel_settings</span>
+<h2 class="font-headline-sm text-headline-sm text-primary dark:text-primary">ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-4 cursor-pointer hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary rounded p-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-medium">System Administrator Avatar</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar image showing a professional headshot. High-contrast industrial lighting, stark shadows, sharp focus on the face. Cool, cyber-industrial tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3S9c0wK_8vsn4u-aGZ7tHcUfN-5ehm9JOxoMsiqYfFN8qubNF8Pqd4Ei30dIa_AaZAHJ_mQjko98nb47ycfWJON1BaT0O_PvHUAcN1iBmDWXXhJO6fjW1IHjXggHwOUGomeASkTMOTD-1q2FYzzzbQEvFA-tfp0hhxldt4VsndLVj5rTzTlYm-rAj_LqiLHk0N6GTUahnXlgnSw9huBN_8cEAjn79jbqV5LCesl_TS2peaLrYqebukA47ocTpar_KeaT6YkhYfr7J"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[64px] h-[calc(100vh-64px)] w-full overflow-y-auto p-margin-desktop bg-background grid grid-cols-12 gap-density-comfortable items-start">
+<!-- Left Column: Health Metrics (3 cols) -->
+<section class="col-span-3 flex flex-col gap-density-comfortable">
+<!-- Pipeline Health Gauge -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary to-transparent opacity-50"></div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">PIPELINE HEALTH</h3>
+<span class="material-symbols-outlined text-outline text-[18px]">monitor_heart</span>
+</div>
+<div class="flex flex-col items-center justify-center py-4 relative">
+<!-- Custom SVG Gauge representation -->
+<div class="w-32 h-32 rounded-full border-[8px] border-surface-container-highest relative flex items-center justify-center">
+<!-- Progress Arc (simulated with border tricks) -->
+<div class="absolute inset-[-8px] rounded-full border-[8px] border-primary" style="clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%); transform: rotate(45deg);"></div>
+<div class="flex flex-col items-center z-10">
+<span class="font-data-point text-display-lg text-primary">78<span class="text-headline-md">%</span></span>
+</div>
+</div>
+</div>
+<p class="font-label-caps text-label-caps text-center text-on-surface-variant mt-2 border-t border-outline-variant pt-4">NOMINAL RANGE (75-85%)</p>
+</div>
+<!-- Stats Stack -->
+<div class="flex flex-col gap-density-compact">
+<!-- Active Deals -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-4 flex justify-between items-center hover:bg-surface-container transition-colors cursor-pointer border-l-[4px] border-l-secondary-container">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">ACTIVE DEALS</p>
+<p class="font-data-point text-[28px] text-on-surface">142</p>
+</div>
+<span class="material-symbols-outlined text-secondary-container text-[28px]">assignment</span>
+</div>
+<!-- At Risk Deals -->
+<div class="bg-surface-container-low border border-error/30 rounded p-4 flex justify-between items-center hover:bg-surface-container transition-colors cursor-pointer border-l-[4px] border-l-error">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">AT RISK (GRADE C/F)</p>
+<p class="font-data-point text-[28px] text-error">28</p>
+</div>
+<span class="material-symbols-outlined text-error text-[28px]">warning</span>
+</div>
+</div>
+</section>
+<!-- Middle Column: Grading Buckets (4 cols) -->
+<section class="col-span-4 flex flex-col gap-unit h-full">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">QUALITY BUCKETS</h3>
+<span class="material-symbols-outlined text-outline text-[16px]">filter_list</span>
+</div>
+<!-- Bucket A -->
+<div class="bg-surface-container border border-outline-variant rounded hover:border-primary transition-colors cursor-pointer opacity-70">
+<div class="p-4 flex items-center justify-between border-b border-outline-variant/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-variant rounded flex items-center justify-center font-data-point text-on-surface">A</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">OPTIMAL</p>
+<p class="text-[10px] text-on-surface-variant font-label-caps mt-1">SCORE 90-100</p>
+</div>
+</div>
+<span class="font-data-point text-[24px] text-primary">64</span>
+</div>
+</div>
+<!-- Bucket B -->
+<div class="bg-surface-container border border-outline-variant rounded hover:border-primary transition-colors cursor-pointer opacity-70 mt-2">
+<div class="p-4 flex items-center justify-between border-b border-outline-variant/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-variant rounded flex items-center justify-center font-data-point text-on-surface">B</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">ACCEPTABLE</p>
+<p class="text-[10px] text-on-surface-variant font-label-caps mt-1">SCORE 75-89</p>
+</div>
+</div>
+<span class="font-data-point text-[24px] text-on-surface">50</span>
+</div>
+</div>
+<!-- Bucket C (Active) -->
+<div class="bg-surface-container-high border border-error/50 rounded cursor-pointer relative overflow-hidden mt-2 shadow-[4px_0_0_0_#ffb4ab_inset]">
+<div class="absolute right-0 top-0 h-full w-[2px] bg-error"></div>
+<div class="p-4 flex items-center justify-between border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-error/20 rounded flex items-center justify-center font-data-point text-error">C</div>
+<div>
+<p class="font-label-caps text-label-caps text-error">AT RISK</p>
+<p class="text-[10px] text-on-surface-variant font-label-caps mt-1">SCORE 60-74</p>
+</div>
+</div>
+<span class="font-data-point text-[24px] text-error">21</span>
+</div>
+<div class="p-4 bg-surface-container bg-[radial-gradient(#3b494b_1px,transparent_1px)] [background-size:16px_16px] opacity-80">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">PRIMARY ISSUES</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Stale Measurements</span>
+<span class="font-data-point text-[14px] text-on-surface">12</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Missing Photos</span>
+<span class="font-data-point text-[14px] text-on-surface">6</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Low Margin Est.</span>
+<span class="font-data-point text-[14px] text-on-surface">3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bucket F -->
+<div class="bg-surface-container border border-outline-variant rounded hover:border-error transition-colors cursor-pointer opacity-50 mt-2">
+<div class="p-4 flex items-center justify-between border-b border-outline-variant/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-variant rounded flex items-center justify-center font-data-point text-on-surface">F</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">CRITICAL</p>
+<p class="text-[10px] text-on-surface-variant font-label-caps mt-1">SCORE &lt; 60</p>
+</div>
+</div>
+<span class="font-data-point text-[24px] text-on-surface-variant">7</span>
+</div>
+</div>
+</section>
+<!-- Right Column: Detail List (5 cols) -->
+<section class="col-span-5 bg-surface-container-low border border-outline-variant rounded-lg flex flex-col h-full overflow-hidden">
+<!-- Header -->
+<div class="p-4 border-b border-outline-variant flex justify-between items-end bg-surface-container">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">GRADE C DEALS</h3>
+<p class="font-label-caps text-label-caps text-error">ATTENTION REQUIRED</p>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</button>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</button>
+</div>
+</div>
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-2 p-3 border-b border-outline-variant bg-surface-container-highest font-label-caps text-label-caps text-on-surface-variant">
+<div class="col-span-5">PROJECT</div>
+<div class="col-span-2 text-center">SCORE</div>
+<div class="col-span-2 text-center">STALE</div>
+<div class="col-span-3 text-right">TREND</div>
+</div>
+<!-- Table Body (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-2 flex flex-col gap-1">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-2 p-3 bg-surface border border-outline-variant/30 rounded hover:border-outline-variant items-center group cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-fixed text-[14px] font-medium text-on-surface truncate">1402 Oak St.</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant truncate">ID: R-8821</span>
+</div>
+<div class="col-span-2 text-center font-data-point text-[16px] text-error">72</div>
+<div class="col-span-2 text-center font-label-caps text-[12px] text-secondary-container">12d ago</div>
+<div class="col-span-3 flex justify-end items-center opacity-70 group-hover:opacity-100">
+<!-- Mini sparkline SVG representation -->
+<svg class="stroke-error stroke-[1.5] fill-none" height="16" viewbox="0 0 40 16" width="40">
+<path d="M0,4 L10,8 L20,6 L30,14 L40,12"></path>
+<circle class="fill-error stroke-none" cx="40" cy="12" r="2"></circle>
+</svg>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-2 p-3 bg-surface border border-outline-variant/30 rounded hover:border-outline-variant items-center group cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-fixed text-[14px] font-medium text-on-surface truncate">45B Industrial Pkwy</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant truncate">ID: C-9904</span>
+</div>
+<div class="col-span-2 text-center font-data-point text-[16px] text-error">68</div>
+<div class="col-span-2 text-center font-label-caps text-[12px] text-error">24d ago</div>
+<div class="col-span-3 flex justify-end items-center opacity-70 group-hover:opacity-100">
+<svg class="stroke-error stroke-[1.5] fill-none" height="16" viewbox="0 0 40 16" width="40">
+<path d="M0,2 L10,6 L20,10 L30,12 L40,15"></path>
+<circle class="fill-error stroke-none" cx="40" cy="15" r="2"></circle>
+</svg>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-2 p-3 bg-surface border border-outline-variant/30 rounded hover:border-outline-variant items-center group cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-fixed text-[14px] font-medium text-on-surface truncate">8900 Westheimer Rd</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant truncate">ID: R-8845</span>
+</div>
+<div class="col-span-2 text-center font-data-point text-[16px] text-secondary-container">74</div>
+<div class="col-span-2 text-center font-label-caps text-[12px] text-on-surface-variant">2d ago</div>
+<div class="col-span-3 flex justify-end items-center opacity-70 group-hover:opacity-100">
+<svg class="stroke-secondary-container stroke-[1.5] fill-none" height="16" viewbox="0 0 40 16" width="40">
+<path d="M0,14 L10,12 L20,10 L30,6 L40,4"></path>
+<circle class="fill-secondary-container stroke-none" cx="40" cy="4" r="2"></circle>
+</svg>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-2 p-3 bg-surface border border-outline-variant/30 rounded hover:border-outline-variant items-center group cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-fixed text-[14px] font-medium text-on-surface truncate">221B Baker St.</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant truncate">ID: R-8992</span>
+</div>
+<div class="col-span-2 text-center font-data-point text-[16px] text-error">61</div>
+<div class="col-span-2 text-center font-label-caps text-[12px] text-error">18d ago</div>
+<div class="col-span-3 flex justify-end items-center opacity-70 group-hover:opacity-100">
+<svg class="stroke-error stroke-[1.5] fill-none" height="16" viewbox="0 0 40 16" width="40">
+<path d="M0,8 L10,8 L20,12 L30,12 L40,14"></path>
+<circle class="fill-error stroke-none" cx="40" cy="14" r="2"></circle>
+</svg>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-12 gap-2 p-3 bg-surface border border-outline-variant/30 rounded hover:border-outline-variant items-center group cursor-pointer">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-fixed text-[14px] font-medium text-on-surface truncate">770 Valley Forge</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant truncate">ID: C-9112</span>
+</div>
+<div class="col-span-2 text-center font-data-point text-[16px] text-error">70</div>
+<div class="col-span-2 text-center font-label-caps text-[12px] text-secondary-container">9d ago</div>
+<div class="col-span-3 flex justify-end items-center opacity-70 group-hover:opacity-100">
+<svg class="stroke-error stroke-[1.5] fill-none" height="16" viewbox="0 0 40 16" width="40">
+<path d="M0,12 L10,14 L20,8 L30,10 L40,12"></path>
+<circle class="fill-error stroke-none" cx="40" cy="12" r="2"></circle>
+</svg>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="p-3 border-t border-outline-variant bg-surface-container text-center">
+<button class="font-label-caps text-label-caps text-primary hover:text-primary-fixed transition-colors">VIEW ALL 21 RECORDS</button>
+</div>
+</section>
+</main>
+</body></html>

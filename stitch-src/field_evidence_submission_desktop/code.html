@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Evidence Submission</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#dae2fd",
+                        "surface-tint": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "primary": "#b4c5ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-surface-variant": "#c3c6d7",
+                        "surface-card": "#1E293B",
+                        "secondary": "#7bd0ff",
+                        "surface-bright": "#31394d",
+                        "surface-input": "#0F172A",
+                        "secondary-container": "#00a6e0",
+                        "on-primary": "#002a78",
+                        "neon-cyan": "#06B6D4",
+                        "outline": "#8d90a0",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "primary-container": "#2563eb",
+                        "border-muted": "#334155",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#222a3d",
+                        "on-tertiary": "#003824",
+                        "on-background": "#dae2fd",
+                        "inverse-primary": "#0053db",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#00354a",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container-low": "#131b2e",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed": "#c4e7ff",
+                        "tertiary-container": "#007d55",
+                        "surface-dim": "#0b1326",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container": "#171f33",
+                        "surface": "#0b1326",
+                        "surface-variant": "#2d3449",
+                        "background": "#0b1326",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline-variant": "#434655",
+                        "on-secondary-container": "#00374d",
+                        "surface-container-highest": "#2d3449",
+                        "neon-blue": "#2563EB",
+                        "tertiary": "#4edea3",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary-container": "#bdffdb",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-container": "#eeefff",
+                        "inverse-surface": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["10px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Cyber Industrial Specifics */
+        .scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(6, 182, 212, 0.05) 50%, rgba(6, 182, 212, 0.05));
+            background-size: 100% 4px;
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-thumb { background: #434655; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8d90a0; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden flex h-screen scanline">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col z-40">
+<!-- Brand Area -->
+<div class="h-[64px] flex flex-col justify-center px-6 border-b border-outline-variant bg-surface-container-highest">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">TradeVision</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-[-4px]">C.A.R.E. Command</span>
+</div>
+<!-- Nav Links -->
+<div class="flex flex-col h-full overflow-y-auto pt-4 pb-6 gap-1">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">account_tree</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Projects</span>
+</a>
+<!-- Active State: Claims maps conceptually to Evidence Submission intent -->
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">notifications</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Alerts</span>
+</a>
+<div class="mt-auto"></div>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">settings</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-[260px] h-screen relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop w-[calc(100%-260px)]">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-sm group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-input border border-outline-variant rounded-DEFAULT py-2 pl-9 pr-4 text-on-surface font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline" placeholder="Search entity, ID, or command..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-headline-sm text-headline-sm text-on-surface hidden lg:block">TradeVision C.A.R.E.</span>
+<div class="flex items-center gap-2 border-l border-outline-variant pl-6">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer rounded-DEFAULT hover:bg-surface-container-highest" title="Help">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer rounded-DEFAULT hover:bg-surface-container-highest" title="Apps">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="p-1 border border-outline-variant rounded-full overflow-hidden ml-2 hover:border-primary transition-colors" title="User Profile">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas (Scrollable) -->
+<main class="flex-1 overflow-y-auto mt-[64px] p-gutter md:p-margin-desktop">
+<div class="max-w-[1200px] mx-auto w-full flex flex-col gap-8">
+<!-- Page Header & Global Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-outline-variant">
+<div>
+<div class="flex items-center gap-2 text-neon-cyan mb-1">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Portal_Access_Granted</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Evidence Submission Node</h1>
+</div>
+<div class="flex items-center gap-4 bg-surface-input p-2 border border-outline-variant rounded-DEFAULT shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)]">
+<label class="font-label-md text-label-md text-on-surface-variant px-2 uppercase border-r border-outline-variant">Target</label>
+<select class="bg-transparent border-none text-neon-blue font-headline-sm text-headline-sm focus:ring-0 cursor-pointer pr-8 py-1 appearance-none">
+<option selected="" value="PRJ-X992">PRJ-X992</option>
+<option value="PRJ-X993">PRJ-X993</option>
+<option value="PRJ-X994">PRJ-X994</option>
+</select>
+<span class="material-symbols-outlined text-outline absolute right-4 pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- Bento Grid Drop Zones -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Zone: Photos -->
+<div class="group relative bg-surface-card border border-outline-variant rounded-DEFAULT min-h-[240px] flex flex-col items-center justify-center p-6 cursor-pointer overflow-hidden transition-all hover:border-primary hover:shadow-[0_0_15px_rgba(180,197,255,0.1)]">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-outline-variant group-hover:bg-primary transition-colors"></div>
+<div class="w-16 h-16 rounded-full bg-surface-input border border-dashed border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-primary transition-colors">photo_camera</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Site Photos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">Drag &amp; drop high-res imagery<br/><span class="font-label-sm text-label-sm opacity-70 mt-1 block">JPG, PNG, RAW (Max 50MB)</span></p>
+</div>
+<!-- Zone: Telemetry -->
+<div class="group relative bg-surface-card border border-outline-variant rounded-DEFAULT min-h-[240px] flex flex-col items-center justify-center p-6 cursor-pointer overflow-hidden transition-all hover:border-neon-cyan hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-outline-variant group-hover:bg-neon-cyan transition-colors"></div>
+<div class="w-16 h-16 rounded-full bg-surface-input border border-dashed border-outline-variant flex items-center justify-center mb-4 group-hover:border-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-neon-cyan transition-colors">data_object</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Telemetry Logs</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">Upload uncompressed data dumps<br/><span class="font-label-sm text-label-sm opacity-70 mt-1 block">CSV, JSON, LOG (Max 500MB)</span></p>
+</div>
+<!-- Zone: Notes -->
+<div class="group relative bg-surface-card border border-outline-variant rounded-DEFAULT min-h-[240px] flex flex-col items-center justify-center p-6 cursor-pointer overflow-hidden transition-all hover:border-tertiary hover:shadow-[0_0_15px_rgba(78,222,163,0.1)]">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-outline-variant group-hover:bg-tertiary transition-colors"></div>
+<div class="w-16 h-16 rounded-full bg-surface-input border border-dashed border-outline-variant flex items-center justify-center mb-4 group-hover:border-tertiary group-hover:bg-tertiary/10 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant group-hover:text-tertiary transition-colors">description</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Repair Notes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">Submit field technician reports<br/><span class="font-label-sm text-label-sm opacity-70 mt-1 block">PDF, DOCX, TXT (Max 20MB)</span></p>
+</div>
+</div>
+<!-- Sync Queue Section -->
+<div class="flex flex-col gap-4 mt-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">sync</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Sync Queue</h2>
+<span class="bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-sm px-2 py-0.5 rounded-DEFAULT ml-2">3 ITEMS</span>
+</div>
+<button class="bg-neon-blue text-white font-label-md text-label-md uppercase tracking-wider px-6 py-2 rounded-DEFAULT border border-neon-blue hover:bg-neon-blue/80 hover:shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+                            Force Sync All
+                        </button>
+</div>
+<!-- Queue List -->
+<div class="bg-surface-card border border-outline-variant rounded-DEFAULT flex flex-col">
+<!-- Active Upload Row -->
+<div class="flex flex-col p-4 border-b border-outline-variant bg-surface-container/50 hover:bg-surface-container transition-colors relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-primary animate-pulse"></div>
+<div class="flex items-center justify-between mb-2 pl-2">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">image</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">sector4_damage_overview.jpg</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-sm text-label-sm text-primary tracking-widest">UPLOADING...</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">68%</span>
+<button class="text-outline hover:text-error transition-colors" title="Cancel">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<div class="w-full bg-surface-input h-1.5 rounded-full overflow-hidden ml-2 w-[calc(100%-8px)] border border-outline-variant/30">
+<div class="bg-primary h-full rounded-full transition-all duration-300 relative" style="width: 68%;">
+<div class="absolute inset-0 bg-white/20 animate-[pulse_1s_ease-in-out_infinite]"></div>
+</div>
+</div>
+</div>
+<!-- Verified Row -->
+<div class="flex items-center justify-between p-4 border-b border-outline-variant hover:bg-surface-container transition-colors pl-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">dataset</span>
+<span class="font-body-md text-body-md text-on-surface-variant">telemetry_dump_N7.csv</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 bg-tertiary-container/10 border border-tertiary/30 px-2.5 py-1 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[14px] text-tertiary">check_circle</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Verified</span>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" title="Options">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Failed Row -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container transition-colors pl-6 bg-error-container/5">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error">description</span>
+<span class="font-body-md text-body-md text-on-surface-variant line-through opacity-70">power_grid_scan.log</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 bg-error-container/20 border border-error/30 px-2.5 py-1 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[14px] text-error">error</span>
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider">Checksum Failed</span>
+</div>
+<button class="border border-outline-variant text-on-surface hover:border-on-surface transition-colors px-3 py-1 rounded-DEFAULT flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+<span class="font-label-sm text-label-sm">Retry</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

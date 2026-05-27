@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision Command Center</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#271900",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary": "#303031",
+                        "surface-container-lowest": "#0c0e12",
+                        "outline": "#849495",
+                        "error-container": "#93000a",
+                        "primary": "#dbfcff",
+                        "tertiary-fixed": "#e4e2e2",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "surface-container-low": "#1a1c20",
+                        "outline-variant": "#3b494b",
+                        "tertiary-container": "#dad9d9",
+                        "on-surface": "#e2e2e8",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-high": "#282a2e",
+                        "surface-variant": "#333539",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-dim": "#111317",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-fixed-dim": "#ffba20",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-secondary": "#412d00",
+                        "background": "#111317",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#1e2024",
+                        "surface": "#111317",
+                        "tertiary": "#f7f5f5",
+                        "on-tertiary-container": "#5e5f5f",
+                        "error": "#ffb4ab",
+                        "secondary": "#ffdb9d",
+                        "primary-container": "#00f0ff",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary-container": "#006970",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed": "#ffdea8",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed": "#002022",
+                        "secondary-container": "#feb700",
+                        "surface-bright": "#37393e",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary": "#00363a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border-radius: 0px; }
+        ::-webkit-scrollbar-thumb:hover { background: #849495; }
+
+        /* Gauge animation */
+        @keyframes stroke-fill {
+            from { stroke-dasharray: 0 100; }
+            to { stroke-dasharray: 78 100; }
+        }
+        .gauge-path {
+            stroke-dasharray: 78 100;
+            animation: stroke-fill 1.5s ease-out forwards;
+        }
+        
+        /* Blinking dot for live telemetry */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .live-dot { animation: blink 2s infinite; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared Component: SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container flex flex-col h-screen overflow-y-auto border-r border-outline-variant z-40">
+<div class="p-density-comfortable border-b border-outline-variant">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-unit uppercase">C.A.R.E. Command</p>
+</div>
+<div class="flex-1 py-density-comfortable">
+<ul class="flex flex-col space-y-unit">
+<!-- Active Item -->
+<li>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-body-fixed text-body-fixed font-bold hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<!-- Inactive Items -->
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+                        Projects
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+                        Claims
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                        Alerts
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-density-comfortable border-t border-outline-variant">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<div class="mt-density-comfortable flex items-center gap-3 px-6">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" data-icon="person">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">SYS ADMIN</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px] uppercase">Online</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop w-full">
+<div class="flex items-center gap-density-comfortable w-1/2">
+<h2 class="font-headline-md text-headline-md text-on-surface hidden xl:block whitespace-nowrap">TradeVision C.A.R.E.</h2>
+<!-- Industrial Search Bar -->
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-label-caps text-label-caps placeholder:text-on-surface-variant/50 py-2 pl-10 pr-4 rounded-none focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all uppercase" placeholder="ENTER SITE ID OR ZIP CODE" type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<span class="px-1.5 py-0.5 border border-outline-variant text-[10px] text-on-surface-variant font-label-caps rounded-sm">⌘</span>
+<span class="px-1.5 py-0.5 border border-outline-variant text-[10px] text-on-surface-variant font-label-caps rounded-sm">K</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-gutter text-on-surface-variant">
+<button class="hover:text-primary transition-colors focus:ring-1 focus:ring-primary outline-none rounded-sm p-1">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="hover:text-primary transition-colors focus:ring-1 focus:ring-primary outline-none rounded-sm p-1">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-unit"></div>
+<button class="flex items-center gap-2 hover:text-primary transition-colors focus:ring-1 focus:ring-primary outline-none rounded-sm p-1">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-caps text-label-caps hidden lg:block uppercase">HQ Desk</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-[260px] pt-[64px] min-h-screen">
+<div class="p-margin-desktop grid grid-cols-12 gap-density-comfortable">
+<!-- Global Status Strip (Col span 12) -->
+<div class="col-span-12 flex items-center justify-between border-b border-outline-variant pb-density-compact mb-density-compact">
+<div class="flex items-center gap-density-comfortable">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error live-dot"></div>
+<span class="font-label-caps text-label-caps text-error tracking-wider uppercase">Live Telemetry Active</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-data-point text-[14px] text-on-surface">SITE-TX-8821</span>
+</div>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">
+                    LAST UPDATE: <span class="font-data-point text-[14px] text-on-surface ml-2">14:22:05 UTC</span>
+</div>
+</div>
+<!-- Roof Safety Index Gauge (Col span 4) -->
+<div class="col-span-12 lg:col-span-4 relative border border-outline-variant bg-surface-container-lowest p-density-comfortable flex flex-col items-center justify-center min-h-[300px]">
+<!-- Industrial Tab Header -->
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant border-b border-r border-outline-variant px-3 py-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface text-[14px]" data-icon="speed">speed</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Safety Index</span>
+</div>
+<div class="absolute top-density-compact right-density-compact px-2 py-0.5 bg-primary-container/10 border border-primary text-primary font-label-caps text-[10px] uppercase tracking-wider rounded-sm">
+                    Optimal
+                </div>
+<!-- Custom Gauge Component -->
+<div class="relative w-48 h-48 mt-density-comfortable">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background track -->
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="2"></path>
+<!-- Value track -->
+<path class="text-primary gauge-path" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-linecap="butt" stroke-width="2"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-point text-display-lg text-on-surface leading-none">78</span>
+<span class="font-label-caps text-label-caps text-primary mt-1">/100</span>
+</div>
+</div>
+<div class="w-full mt-density-comfortable pt-density-compact border-t border-outline-variant flex justify-between items-center text-center">
+<div>
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase">Clearance</div>
+<div class="font-data-point text-[14px] text-on-surface mt-1">GO</div>
+</div>
+<div>
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase">Risk Level</div>
+<div class="font-data-point text-[14px] text-secondary mt-1">LOW</div>
+</div>
+</div>
+</div>
+<!-- Telemetry Widgets (Col span 8) -->
+<div class="col-span-12 lg:col-span-8 grid grid-cols-3 gap-density-compact">
+<!-- Wind Widget -->
+<div class="col-span-3 sm:col-span-1 border border-outline-variant bg-surface-container-low p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-tint"></div>
+<div class="flex justify-between items-start mb-density-comfortable">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="air">air</span>
+                            Surface Wind
+                        </span>
+<span class="material-symbols-outlined text-surface-tint text-[20px] opacity-50 group-hover:opacity-100 transition-opacity" data-icon="north_east">north_east</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-display-lg text-on-surface leading-none">14</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">KTS</span>
+</div>
+<div class="mt-density-compact font-label-caps text-[10px] text-on-surface-variant uppercase">
+                        GUSTS UP TO <span class="text-on-surface font-data-point text-[12px]">22</span> KTS
+                    </div>
+</div>
+<!-- Moisture Widget -->
+<div class="col-span-3 sm:col-span-1 border border-outline-variant bg-surface-container-low p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="flex justify-between items-start mb-density-comfortable">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="water_drop">water_drop</span>
+                            Deck Moisture
+                        </span>
+<span class="material-symbols-outlined text-secondary text-[20px] opacity-50 group-hover:opacity-100 transition-opacity" data-icon="show_chart">show_chart</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-display-lg text-on-surface leading-none">12</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">%</span>
+</div>
+<div class="mt-density-compact font-label-caps text-[10px] text-on-surface-variant uppercase">
+                        DEW POINT: <span class="text-on-surface font-data-point text-[12px]">54°F</span>
+</div>
+</div>
+<!-- Lightning Widget -->
+<div class="col-span-3 sm:col-span-1 border border-outline-variant bg-surface-container-low p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-start mb-density-comfortable">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="bolt">bolt</span>
+                            Lightning Prox
+                        </span>
+<span class="material-symbols-outlined text-error text-[20px] opacity-50 group-hover:opacity-100 transition-opacity" data-icon="warning">warning</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-display-lg text-on-surface leading-none">&gt;50</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">MI</span>
+</div>
+<div class="mt-density-compact font-label-caps text-[10px] text-error uppercase flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-error live-dot"></div>
+                        ALL CLEAR
+                    </div>
+</div>
+<!-- Quick Alert Strip spanning the 3 columns -->
+<div class="col-span-3 border border-outline-variant bg-surface p-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container/20 border border-secondary text-secondary p-1 rounded-sm">
+<span class="material-symbols-outlined text-[16px] block" data-icon="priority_high">priority_high</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Advisory: Incoming front detected in 48 hours. Monitor wind vectors.</span>
+</div>
+<button class="bg-surface-container-highest border border-outline-variant px-3 py-1 font-label-caps text-[10px] text-on-surface hover:bg-outline-variant transition-colors uppercase">
+                        Acknowledge
+                    </button>
+</div>
+</div>
+<!-- 7-Day Meteorological Projection (Col span 8) -->
+<div class="col-span-12 lg:col-span-8 border border-outline-variant bg-surface-container-lowest relative pt-8">
+<!-- Industrial Tab Header -->
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant border-b border-r border-outline-variant px-3 py-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface text-[14px]" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">7-Day Projection</span>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container">
+<th class="p-3 font-label-caps text-[10px] text-on-surface-variant uppercase font-medium">Date</th>
+<th class="p-3 font-label-caps text-[10px] text-on-surface-variant uppercase font-medium">Condition</th>
+<th class="p-3 font-label-caps text-[10px] text-on-surface-variant uppercase font-medium text-right">Temp (H/L)</th>
+<th class="p-3 font-label-caps text-[10px] text-on-surface-variant uppercase font-medium text-right">Wind (Max)</th>
+<th class="p-3 font-label-caps text-[10px] text-on-surface-variant uppercase font-medium text-right">Precip</th>
+</tr>
+</thead>
+<tbody class="font-data-point text-[14px] text-on-surface">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-3 border-l-2 border-primary bg-primary/5">TODAY</td>
+<td class="p-3 flex items-center gap-2 text-primary"><span class="material-symbols-outlined text-[18px]" data-icon="clear_day">clear_day</span> CLEAR</td>
+<td class="p-3 text-right">82° <span class="text-on-surface-variant text-[12px]">/ 65°</span></td>
+<td class="p-3 text-right">18 KTS</td>
+<td class="p-3 text-right">0%</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-3 border-l-2 border-transparent">TUE 14</td>
+<td class="p-3 flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="partly_cloudy_day">partly_cloudy_day</span> P.CLOUDY</td>
+<td class="p-3 text-right">84° <span class="text-on-surface-variant text-[12px]">/ 66°</span></td>
+<td class="p-3 text-right">15 KTS</td>
+<td class="p-3 text-right">10%</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-3 border-l-2 border-secondary bg-secondary/5">WED 15</td>
+<td class="p-3 flex items-center gap-2 text-secondary"><span class="material-symbols-outlined text-[18px]" data-icon="rainy">rainy</span> SCATTERED</td>
+<td class="p-3 text-right">76° <span class="text-on-surface-variant text-[12px]">/ 62°</span></td>
+<td class="p-3 text-right text-secondary">24 KTS</td>
+<td class="p-3 text-right text-secondary">40%</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-3 border-l-2 border-transparent">THU 16</td>
+<td class="p-3 flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="cloud">cloud</span> OVERCAST</td>
+<td class="p-3 text-right">72° <span class="text-on-surface-variant text-[12px]">/ 58°</span></td>
+<td class="p-3 text-right">12 KTS</td>
+<td class="p-3 text-right">20%</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-3 border-l-2 border-transparent">FRI 17</td>
+<td class="p-3 flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="clear_day">clear_day</span> CLEAR</td>
+<td class="p-3 text-right">75° <span class="text-on-surface-variant text-[12px]">/ 55°</span></td>
+<td class="p-3 text-right">10 KTS</td>
+<td class="p-3 text-right">0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Site Radar / Blueprint Area (Col span 4) -->
+<div class="col-span-12 lg:col-span-4 border border-outline-variant bg-surface-container-low relative min-h-[300px] flex flex-col">
+<!-- Industrial Tab Header -->
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant border-b border-r border-outline-variant px-3 py-1 flex items-center gap-2 z-10">
+<span class="material-symbols-outlined text-on-surface text-[14px]" data-icon="satellite_alt">satellite_alt</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Live Radar Vector</span>
+</div>
+<div class="flex-1 relative bg-surface-dim overflow-hidden group">
+<!-- Grid overlay for technical feel -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-20" style="background-image: linear-gradient(#3b494b 1px, transparent 1px), linear-gradient(90deg, #3b494b 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Radar Image Placeholder -->
+<div class="absolute inset-0 z-0 bg-center bg-cover opacity-60 mix-blend-luminosity filter contrast-125 group-hover:mix-blend-normal transition-all duration-500" data-alt="A highly detailed satellite weather radar map interface displayed on a dark mode screen. The map shows a region with complex weather patterns, rendered in a cyber-industrial aesthetic using deep black and dark gray base tones. Bright cyan and intense warning-yellow false-color overlays indicate storm cell intensity and wind vectors. The overall mood is technical, analytical, and precise, fitting a professional meteorology command center." data-location="Regional Vector" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg');">
+</div>
+<!-- Crosshair / Reticle -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-primary z-10 pointer-events-none flex items-center justify-center">
+<div class="w-1 h-1 bg-primary rounded-full live-dot"></div>
+</div>
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-primary/30 z-0 pointer-events-none"></div>
+<div class="absolute top-0 left-1/2 w-[1px] h-full bg-primary/30 z-0 pointer-events-none"></div>
+<!-- Overlay Data -->
+<div class="absolute bottom-3 left-3 z-10 bg-surface/80 border border-outline-variant backdrop-blur-sm px-2 py-1">
+<div class="font-data-point text-[12px] text-primary">LAT: 32.7767° N</div>
+<div class="font-data-point text-[12px] text-primary">LON: 96.7970° W</div>
+</div>
+</div>
+<div class="p-3 border-t border-outline-variant bg-surface flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Vector Mode: <span class="text-on-surface">Doppler Base Velocity</span></span>
+<button class="text-primary hover:text-surface-tint font-label-caps text-[10px] uppercase border-b border-primary/30 hover:border-primary transition-colors">Expand Map</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Safety Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#91002e",
+                        "secondary": "#4de082",
+                        "surface-bright": "#333a43",
+                        "surface-dim": "#0d141c",
+                        "surface-container-high": "#242b33",
+                        "on-secondary-fixed": "#00210c",
+                        "on-secondary-container": "#003e1c",
+                        "background": "#0d141c",
+                        "inverse-surface": "#dce3ee",
+                        "secondary-fixed-dim": "#4de082",
+                        "outline-variant": "#5c3f42",
+                        "on-primary-container": "#fffcff",
+                        "on-error": "#690005",
+                        "surface-variant": "#2e353e",
+                        "surface-stroke": "#2D3748",
+                        "surface-tint": "#ffb2b9",
+                        "surface-elevated": "#1C2128",
+                        "neon-orange": "#F97316",
+                        "surface-container": "#192028",
+                        "neon-pink": "#E21E51",
+                        "on-surface-variant": "#e4bdbf",
+                        "surface": "#0d141c",
+                        "on-tertiary-container": "#fffcff",
+                        "surface-container-low": "#151c24",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "neon-green": "#4ADE80",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "surface-base": "#111820",
+                        "secondary-container": "#00b55d",
+                        "on-tertiary-fixed": "#001a42",
+                        "text-muted": "#8896A8",
+                        "on-primary-fixed": "#40000f",
+                        "tertiary-container": "#2171e4",
+                        "on-secondary": "#003919",
+                        "on-background": "#dce3ee",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "outline": "#ab888a",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "inverse-on-surface": "#2a313a",
+                        "on-surface": "#dce3ee",
+                        "secondary-fixed": "#6dfe9c",
+                        "on-secondary-fixed-variant": "#005227",
+                        "error-container": "#93000a",
+                        "primary": "#ffb2b9",
+                        "tertiary-fixed": "#d8e2ff",
+                        "tertiary": "#adc6ff",
+                        "on-primary": "#67001e",
+                        "inverse-primary": "#be003e",
+                        "on-tertiary": "#002e6a",
+                        "surface-container-lowest": "#080f16",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-highest": "#2e353e",
+                        "primary-container": "#e21e51",
+                        "neon-blue": "#3B82F6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "stack-gap": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "stat-display": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "label-caps": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "body-md": ["Barlow"]
+                    },
+                    "fontSize": {
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for technical feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d141c; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748; 
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5c3f42; 
+        }
+    </style>
+</head>
+<body class="bg-surface-base text-on-surface h-screen w-full overflow-hidden flex font-body-md selection:bg-neon-pink selection:text-white">
+<!-- Shared Component: SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col z-40">
+<!-- Brand Area -->
+<div class="h-[64px] flex flex-col justify-center px-6 border-b border-surface-stroke">
+<div class="font-display-md text-display-md font-bold text-primary dark:text-primary tracking-tight">TradeVision</div>
+<div class="font-caption text-caption text-text-muted uppercase tracking-wider">C.A.R.E. Command</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span>
+<span class="font-label-caps text-label-caps uppercase">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps uppercase">Claims</span>
+</a>
+<!-- Active State: Alerts -->
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined text-[20px] icon-fill" data-icon="notifications">notifications</span>
+<span class="font-label-caps text-label-caps uppercase text-primary">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps uppercase">Settings</span>
+</a>
+</div>
+<!-- User Avatar Area -->
+<div class="p-4 border-t border-surface-stroke flex items-center gap-3">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-elevated border border-surface-stroke flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-text-muted" data-icon="person">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">SYS_ADMIN</span>
+<span class="font-caption text-caption text-text-muted">Command Lead</span>
+</div>
+</div>
+</nav>
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin-desktop w-[calc(100%-260px)]">
+<!-- Search Bar (on_left) -->
+<div class="flex items-center w-1/3 max-w-md bg-surface-elevated border border-surface-stroke rounded-DEFAULT px-3 py-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-muted mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface font-caption text-caption w-full placeholder:text-text-muted focus:ring-0 p-0" placeholder="Search Incident ID, Location, or Tag..." type="text"/>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas (Multi-pane Layout) -->
+<main class="ml-[260px] pt-[64px] w-[calc(100%-260px)] h-full flex bg-surface-base">
+<!-- Left Pane: Incident List -->
+<section class="w-[320px] h-full border-r border-surface-stroke bg-surface-container-lowest flex flex-col flex-shrink-0">
+<div class="p-4 border-b border-surface-stroke bg-surface-container flex items-center justify-between">
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase">Active Alerts</h2>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-error">LIVE</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- List Item: Critical (Selected) -->
+<div class="p-4 border-b border-surface-stroke border-l-4 border-l-error bg-surface-container-highest cursor-pointer">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-sm bg-error/20 text-error font-label-caps text-[10px] uppercase border border-error/50">Critical</span>
+<span class="font-caption text-caption text-text-muted">INC-8492</span>
+</div>
+<span class="font-caption text-caption text-text-muted">14:02Z</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold leading-tight">Pipeline Pressure Drop Sector 4G</h3>
+<p class="font-caption text-caption text-text-muted mt-1 truncate">Immediate isolation protocol required.</p>
+</div>
+<!-- List Item: High -->
+<div class="p-4 border-b border-surface-stroke border-l-4 border-l-transparent hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-sm bg-neon-orange/20 text-neon-orange font-label-caps text-[10px] uppercase border border-neon-orange/50">High</span>
+<span class="font-caption text-caption text-text-muted">SEC-1102</span>
+</div>
+<span class="font-caption text-caption text-text-muted">13:45Z</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold leading-tight">Unauthorized Access Array Alpha</h3>
+<p class="font-caption text-caption text-text-muted mt-1 truncate">Perimeter breach detected at Gate 3.</p>
+</div>
+<!-- List Item: Medium -->
+<div class="p-4 border-b border-surface-stroke border-l-4 border-l-transparent hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-sm bg-secondary/20 text-secondary font-label-caps text-[10px] uppercase border border-secondary/50">Medium</span>
+<span class="font-caption text-caption text-text-muted">ENV-9921</span>
+</div>
+<span class="font-caption text-caption text-text-muted">11:20Z</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold leading-tight">Coolant Leak Sub-level 2</h3>
+<p class="font-caption text-caption text-text-muted mt-1 truncate">Containment team dispatched to zone.</p>
+</div>
+<!-- List Item: Low -->
+<div class="p-4 border-b border-surface-stroke border-l-4 border-l-transparent hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-sm bg-tertiary/20 text-tertiary font-label-caps text-[10px] uppercase border border-tertiary/50">Low</span>
+<span class="font-caption text-caption text-text-muted">SYS-0045</span>
+</div>
+<span class="font-caption text-caption text-text-muted">09:15Z</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold leading-tight">Sensor Calibration Warning</h3>
+<p class="font-caption text-caption text-text-muted mt-1 truncate">Routine diagnostic flagged variance.</p>
+</div>
+</div>
+</section>
+<!-- Central Pane: Detailed View -->
+<section class="flex-1 h-full overflow-y-auto bg-surface-base p-6 flex flex-col gap-6 relative">
+<!-- Background Grid Pattern for Technical Feel -->
+<div class="absolute inset-0 pointer-events-none opacity-5" style="background-image: linear-gradient(#2D3748 1px, transparent 1px), linear-gradient(90deg, #2D3748 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Detail Header -->
+<div class="relative z-10 border-t-2 border-error pt-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-error text-on-error-container font-label-caps text-label-caps uppercase rounded-sm border border-error">Critical Impact</span>
+<span class="font-caption text-caption text-text-muted">ID: INC-8492</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 border border-surface-stroke text-text-muted hover:text-on-surface hover:bg-surface-container transition-colors rounded-sm font-label-caps text-label-caps uppercase">
+<span class="material-symbols-outlined text-[18px]" data-icon="print">print</span> Print Report
+                    </button>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight">Pipeline Pressure Drop Sector 4G</h1>
+<div class="flex items-center gap-6 mt-4 text-text-muted font-caption text-caption">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span> Logged: 2023-10-27 14:02:45Z</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span> Sec 4G, Node 88</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]" data-icon="engineering">engineering</span> Reporter: Auto-Telemetry Sys</div>
+</div>
+</div>
+<!-- Telemetry Bento Grid -->
+<div class="relative z-10 grid grid-cols-2 gap-4">
+<!-- Metric Card 1 -->
+<div class="bg-surface-elevated border border-surface-stroke p-5 rounded-sm flex flex-col justify-between">
+<h4 class="font-label-caps text-label-caps text-text-muted uppercase mb-2">Live Telemetry Coordinates</h4>
+<div class="font-body-lg text-body-lg text-neon-blue font-mono tracking-widest bg-surface-container-lowest p-3 border border-surface-stroke rounded-sm mt-2">
+                        LAT: 45.9281° N<br/>
+                        LNG: -112.4912° W<br/>
+                        ELEV: 1240M
+                    </div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-elevated border border-error/50 border-t-2 border-t-error p-5 rounded-sm relative overflow-hidden">
+<div class="absolute right-[-20px] top-[-20px] text-error/10">
+<span class="material-symbols-outlined text-[120px]" data-icon="speed">speed</span>
+</div>
+<h4 class="font-label-caps text-label-caps text-error uppercase mb-2 relative z-10">Pressure Delta (PSI)</h4>
+<div class="flex items-end gap-2 relative z-10">
+<span class="font-stat-display text-stat-display text-on-surface">-45.2</span>
+<span class="font-caption text-caption text-error mb-2 animate-pulse font-bold">↓ CRITICAL DROP</span>
+</div>
+</div>
+</div>
+<!-- Evidence Gallery -->
+<div class="relative z-10 flex flex-col gap-3">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase border-b border-surface-stroke pb-2">Evidence Telemetry</h3>
+<div class="grid grid-cols-3 gap-3">
+<div class="aspect-video bg-surface-container border border-surface-stroke rounded-sm relative group overflow-hidden cursor-zoom-in">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A highly detailed thermal imaging camera view of complex industrial pipes and valves in a rugged facility. The image is rendered with a dark, high-contrast neon technical aesthetic. Vibrant glowing red and orange heat signatures stand out starkly against deep, shadowy blue and black backgrounds, emphasizing a critical mechanical failure. The mood is tense, analytical, and highly technical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGPIKkjbKMS5fnDlB4mWOeOv7PEYQ_74zwEf2nOZ77-28DhoJzEEMvLLsgqUEdkuWycwZTXQFNXV7XaOl6-E9K2IaNrstJjC6Pm69295ncCa9OSS_AFJbf0UZvcotPMIoFZSxLs52052E9bqBD1JfDZP0RZHN9FSTdwWYApQGXlme43e8Jkyj65gCtenbDMIqxiKAjYX-6h4DA4kVW9zU1iOoH9ZeyZiF12h6mZrKXZMoQyEDeejSmihEvHJ5KjD3c9TgcmC2WHjwS"/>
+<div class="absolute bottom-2 left-2 bg-surface-base/80 px-2 py-1 font-label-caps text-[10px] text-neon-orange uppercase border border-neon-orange/50">Thermal Array 1</div>
+</div>
+<div class="aspect-video bg-surface-container border border-surface-stroke rounded-sm relative group overflow-hidden cursor-zoom-in">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity grayscale contrast-125" data-alt="A grainy, high-contrast monochromatic security camera still showing a dark, cavernous industrial sector. Heavy metallic infrastructure, massive storage tanks, and catwalks are barely illuminated by harsh, sparse overhead lighting. A distinct, bright glitch artifact cuts across the frame, indicating a system malfunction or data corruption. The overall style is gritty, cyberpunk-adjacent, and highly industrial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJz01ghQYeqotdFERBtNn-J1OA34b7eYP5Q8aCdb0OApRuJzY6bqzhfCD0Ty4tyBvKW1rkbkYvkZ9ekhUIe_sDGSZc47NqlWNdA4tlMBO1JNq7p1c5Yfz37c8ct3JUEQHh7QsVyfLBqle5Qmed1-eyvXHJWN1OsZEQ0OCcxP6jHK2SL5OM7fVQu-8QRbaLci3Gx2OQM6HAZz4AP1ZQI_l2g5sSEMhwjOppjkCF0D7JDY0bJCk_YldCkglIgTFar2bKvKZS5oXgyRvF"/>
+<div class="absolute bottom-2 left-2 bg-surface-base/80 px-2 py-1 font-label-caps text-[10px] text-text-muted uppercase border border-surface-stroke">CCTV Feed 4G-A</div>
+</div>
+<div class="aspect-video bg-surface-container border border-surface-stroke rounded-sm relative flex items-center justify-center flex-col hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[32px] text-primary mb-2" data-icon="graphic_eq">graphic_eq</span>
+<span class="font-label-caps text-[12px] text-primary uppercase">Play Audio Log</span>
+<span class="font-caption text-[10px] text-text-muted mt-1">Duration: 00:14s</span>
+</div>
+</div>
+</div>
+<!-- Incident Log -->
+<div class="relative z-10 flex flex-col gap-3">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase border-b border-surface-stroke pb-2">System Log</h3>
+<div class="bg-surface-elevated border border-surface-stroke p-4 rounded-sm font-mono text-caption text-text-muted leading-relaxed max-h-[150px] overflow-y-auto">
+                    &gt; [14:01:22] SYS_CHECK: Sector 4G mainline integrity scan initiated.<br/>
+                    &gt; [14:01:45] WARN: Pressure variance detected at Node 88 (Delta -5.0 PSI).<br/>
+                    &gt; [14:02:10] ALARM: Rapid depressurization confirmed. Flow rate unstable.<br/>
+<span class="text-error">&gt; [14:02:45] CRITICAL: Threshold exceeded. Auto-isolation protocol triggered. Sector 4G sealed.</span><br/>
+                    &gt; [14:03:00] MSG: Maintenance crew Alpha dispatched to coordinates.
+                </div>
+</div>
+</section>
+<!-- Right Pane: Quick Report Form -->
+<section class="w-[300px] h-full border-l border-surface-stroke bg-surface-container-high p-5 flex flex-col flex-shrink-0 z-20 shadow-[-4px_0_24px_rgba(0,0,0,0.5)]">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase mb-6 flex items-center gap-2 border-b border-surface-stroke pb-3">
+<span class="material-symbols-outlined text-primary" data-icon="add_box">add_box</span>
+                Quick Report
+            </h2>
+<form class="flex flex-col gap-5">
+<!-- Input Group -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-text-muted uppercase">Incident Type</label>
+<div class="relative">
+<select class="w-full bg-surface-elevated border border-surface-stroke rounded-sm py-2 pl-3 pr-8 text-on-surface font-body-md focus:border-primary focus:ring-1 focus:ring-primary appearance-none outline-none">
+<option>Mechanical Failure</option>
+<option>Security Breach</option>
+<option>Environmental Hazard</option>
+<option>System Outage</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-text-muted pointer-events-none" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+</div>
+<!-- Input Group -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-text-muted uppercase">Location / Sector</label>
+<input class="w-full bg-surface-elevated border border-surface-stroke rounded-sm px-3 py-2 text-on-surface font-body-md placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g. Sector 7G" type="text"/>
+</div>
+<!-- Severity Selector -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-text-muted uppercase">Est. Severity</label>
+<div class="flex border border-surface-stroke rounded-sm overflow-hidden bg-surface-elevated">
+<button class="flex-1 py-2 font-label-caps text-[12px] uppercase text-text-muted hover:bg-surface-container border-r border-surface-stroke transition-colors" type="button">Low</button>
+<button class="flex-1 py-2 font-label-caps text-[12px] uppercase text-text-muted hover:bg-surface-container border-r border-surface-stroke transition-colors" type="button">Med</button>
+<button class="flex-1 py-2 font-label-caps text-[12px] uppercase text-text-muted hover:bg-surface-container border-r border-surface-stroke transition-colors" type="button">High</button>
+<button class="flex-1 py-2 font-label-caps text-[12px] uppercase bg-error/20 text-error border-error border-b-2 font-bold" type="button">Crit</button>
+</div>
+</div>
+<!-- Textarea -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-text-muted uppercase">Initial Assessment</label>
+<textarea class="w-full bg-surface-elevated border border-surface-stroke rounded-sm px-3 py-2 text-on-surface font-body-md placeholder:text-text-muted/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none" placeholder="Brief description of event..." rows="4"></textarea>
+</div>
+<!-- Action Button -->
+<button class="mt-4 w-full bg-neon-pink text-white font-label-caps text-label-caps uppercase py-3 rounded-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity border border-neon-pink shadow-[0_0_10px_rgba(226,30,81,0.3)]" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+                    Dispatch Report
+                </button>
+</form>
+</section>
+</main>
+</body></html>

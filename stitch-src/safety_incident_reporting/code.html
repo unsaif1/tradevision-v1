@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Safety Incident Reporting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Custom scrollbar for dark industrial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111820;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E21E51;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#6dfe9c",
+                        "on-surface-variant": "#e4bdbf",
+                        "primary": "#ffb2b9",
+                        "neon-pink": "#E21E51",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "neon-green": "#4ADE80",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "on-tertiary-fixed": "#001a42",
+                        "surface-elevated": "#1C2128",
+                        "surface-container-lowest": "#080f16",
+                        "surface-base": "#111820",
+                        "on-tertiary-container": "#fffcff",
+                        "on-secondary-fixed-variant": "#005227",
+                        "tertiary-container": "#2171e4",
+                        "primary-container": "#e21e51",
+                        "tertiary": "#adc6ff",
+                        "error-container": "#93000a",
+                        "surface-stroke": "#2D3748",
+                        "inverse-on-surface": "#2a313a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#242b33",
+                        "on-primary": "#67001e",
+                        "surface": "#0d141c",
+                        "secondary": "#4de082",
+                        "on-primary-fixed-variant": "#91002e",
+                        "inverse-surface": "#dce3ee",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed": "#00210c",
+                        "neon-blue": "#3B82F6",
+                        "on-primary-container": "#fffcff",
+                        "outline": "#ab888a",
+                        "surface-bright": "#333a43",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-dim": "#0d141c",
+                        "outline-variant": "#5c3f42",
+                        "primary-fixed": "#ffdadb",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container": "#192028",
+                        "on-primary-fixed": "#40000f",
+                        "error": "#ffb4ab",
+                        "background": "#0d141c",
+                        "surface-container-low": "#151c24",
+                        "text-muted": "#8896A8",
+                        "secondary-fixed-dim": "#4de082",
+                        "surface-variant": "#2e353e",
+                        "inverse-primary": "#be003e",
+                        "neon-orange": "#F97316",
+                        "on-secondary-container": "#003e1c",
+                        "on-tertiary": "#002e6a",
+                        "on-error": "#690005",
+                        "on-secondary": "#003919",
+                        "secondary-container": "#00b55d",
+                        "surface-container-highest": "#2e353e",
+                        "on-background": "#dce3ee",
+                        "on-surface": "#dce3ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-gap": "12px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Barlow Condensed"],
+                        "stat-display": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "body-md": ["Barlow"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-base text-on-surface min-h-screen flex flex-col font-body-md selection:bg-neon-pink selection:text-white">
+<!-- TopAppBar JSON Component -->
+<header class="bg-surface dark:bg-surface border-b border-surface-stroke flex justify-between items-center w-full px-margin-mobile h-16 sticky top-0 z-50">
+<div aria-label="Menu" class="text-neon-pink dark:text-neon-pink cursor-pointer active:scale-95 duration-75 hover:bg-surface-container-high p-2 rounded transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-neon-pink dark:text-neon-pink tracking-tighter uppercase">
+            COMMAND CENTER
+        </div>
+<div aria-label="Status" class="text-neon-pink dark:text-neon-pink cursor-pointer active:scale-95 duration-75 hover:bg-surface-container-high p-2 rounded transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin-mobile py-6 flex flex-col gap-stack-gap max-w-2xl mx-auto w-full">
+<!-- Header Section -->
+<section class="border-b-2 border-surface-stroke pb-4 mb-2 flex justify-between items-end">
+<div>
+<span class="font-label-caps text-label-caps text-neon-pink uppercase mb-1 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-neon-pink animate-pulse"></span> INTAKE MODULE
+                </span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface m-0">INCIDENT REPORT</h1>
+</div>
+<button class="bg-surface-container border border-surface-stroke text-neon-pink font-label-caps text-label-caps px-3 py-2 rounded flex items-center gap-1 hover:bg-surface-container-high active:scale-95 transition-all focus:outline-none focus:ring-1 focus:ring-neon-pink">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                QUICK REPORT
+            </button>
+</section>
+<!-- Form Form -->
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault();">
+<!-- Incident Type Dropdown -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider" for="incident_type">Classification</label>
+<div class="relative group">
+<select class="w-full bg-surface-elevated border border-surface-stroke text-on-surface font-body-lg py-4 px-4 rounded appearance-none focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all cursor-pointer" id="incident_type">
+<option class="text-text-muted" disabled="" selected="" value="">Select Incident Protocol...</option>
+<option value="accident">Accident (Protocol A)</option>
+<option value="near-miss">Near-Miss (Protocol N)</option>
+<option value="hazard">Hazard Identified (Protocol H)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none group-hover:text-neon-pink transition-colors">arrow_drop_down</span>
+</div>
+</div>
+<!-- GPS Location Tag -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider flex justify-between items-center" for="location_tag">
+                    Telemetry Coordinates
+                    <span class="text-neon-green font-caption text-caption lowercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">satellite_alt</span> auto-sync enabled
+                    </span>
+</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-neon-green">my_location</span>
+<input class="w-full bg-surface-elevated border border-surface-stroke text-on-surface font-body-lg py-4 pl-12 pr-4 rounded focus:outline-none focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all" id="location_tag" placeholder="Awaiting GPS Lock..." readonly="" type="text" value="SEC-7, Grid 45.92, -112.4"/>
+</div>
+<button class="bg-surface-elevated border border-surface-stroke hover:border-neon-green text-text-muted hover:text-neon-green px-4 rounded flex flex-col items-center justify-center active:scale-95 transition-all focus:outline-none" type="button">
+<span class="material-symbols-outlined">edit_location</span>
+<span class="font-caption text-caption text-[10px] mt-1">MANUAL</span>
+</button>
+</div>
+</div>
+<!-- Severity Level Segmented Control -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider">Impact Severity</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="bg-surface-elevated border-t-4 border-t-neon-green border border-surface-stroke py-3 flex flex-col items-center justify-center rounded active:bg-surface-container transition-colors focus:outline-none focus:ring-1 focus:ring-neon-green" type="button">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-neon-green leading-none mb-1">1</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase text-[12px]">Low</span>
+</button>
+<button class="bg-surface-elevated border-t-4 border-t-neon-orange border border-surface-stroke py-3 flex flex-col items-center justify-center rounded active:bg-surface-container transition-colors opacity-50 hover:opacity-100 focus:outline-none focus:ring-1 focus:ring-neon-orange focus:opacity-100" type="button">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-neon-orange leading-none mb-1">2</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase text-[12px]">Med</span>
+</button>
+<button class="bg-surface-elevated border-t-4 border-t-neon-pink border border-surface-stroke py-3 flex flex-col items-center justify-center rounded active:bg-surface-container transition-colors opacity-50 hover:opacity-100 focus:outline-none focus:ring-1 focus:ring-neon-pink focus:opacity-100" type="button">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-neon-pink leading-none mb-1">3</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase text-[12px]">High</span>
+</button>
+<button class="bg-surface-elevated border-t-4 border-t-error border border-surface-stroke py-3 flex flex-col items-center justify-center rounded active:bg-surface-container transition-colors opacity-50 hover:opacity-100 focus:outline-none focus:ring-1 focus:ring-error focus:opacity-100" type="button">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-error leading-none mb-1">4</span>
+<span class="font-label-caps text-label-caps text-error uppercase text-[12px]">Crit</span>
+</button>
+</div>
+</div>
+<!-- Evidence Attachment Area -->
+<div class="flex flex-col gap-2 mt-2">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider">Evidence Telemetry</label>
+<span class="bg-surface-container px-2 py-1 rounded text-neon-blue font-label-caps text-label-caps text-[12px]">0/3 SECURE SLOTS</span>
+</div>
+<button class="w-full border-2 border-dashed border-surface-stroke bg-surface-elevated rounded flex flex-col items-center justify-center py-8 gap-4 hover:border-neon-blue hover:bg-surface-container-high active:bg-surface-container transition-all focus:outline-none focus:ring-2 focus:ring-neon-blue group" type="button">
+<div class="flex gap-4">
+<div class="bg-surface-base border border-surface-stroke p-4 rounded-full text-text-muted group-hover:text-neon-blue group-hover:border-neon-blue transition-colors flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-[28px]">photo_camera</span>
+</div>
+<div class="bg-surface-base border border-surface-stroke p-4 rounded-full text-text-muted group-hover:text-neon-blue group-hover:border-neon-blue transition-colors flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-[28px]">mic</span>
+</div>
+</div>
+<div class="text-center">
+<span class="font-body-lg text-body-lg text-on-surface block mb-1">Acquire Visual / Audio Data</span>
+<span class="font-caption text-caption text-text-muted">Encrypted localized storage</span>
+</div>
+</button>
+</div>
+<!-- Spacer to push button down if needed, though form gap handles it mostly -->
+<div class="h-4"></div>
+<!-- Submit Button -->
+<div class="sticky bottom-4 z-40 mt-auto">
+<button class="w-full bg-neon-pink text-white font-label-caps text-label-caps text-lg py-5 rounded uppercase tracking-[0.1em] flex items-center justify-center gap-3 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(226,30,81,0.25)] hover:shadow-[0_0_25px_rgba(226,30,81,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-base focus:ring-neon-pink" type="submit">
+<span class="material-symbols-outlined">upload_file</span>
+                    Submit to Secure Ledger
+                </button>
+</div>
+</form>
+</main>
+<script>
+        // Micro-interactions for toggle buttons
+        document.querySelectorAll('.grid-cols-4 button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Reset all
+                document.querySelectorAll('.grid-cols-4 button').forEach(btn => {
+                    btn.classList.add('opacity-50');
+                    btn.classList.remove('opacity-100');
+                });
+                // Activate clicked
+                this.classList.remove('opacity-50');
+                this.classList.add('opacity-100');
+            });
+        });
+    </script>
+</body></html>

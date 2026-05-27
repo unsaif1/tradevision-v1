@@ -1,0 +1,44 @@
+name: Deploy UnSnag to Cloudflare Workers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "unsnag-site/**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: unsnag-site
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: unsnag-site/package-lock.json
+
+      - run: npm ci
+
+      - run: npx @opennextjs/cloudflare build
+        env:
+          NEXT_PUBLIC_STRIPE_PRICE_PRO: ${{ secrets.STRIPE_PRICE_PRO_UNSNAG }}
+          NEXT_PUBLIC_STRIPE_PRICE_ULTRA: ${{ secrets.STRIPE_PRICE_ULTRA_UNSNAG }}
+
+      - run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_UNSNAG }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_UNSNAG }}
+
+      - name: Push runtime secrets to Cloudflare
+        run: |
+          echo "${{ secrets.RESEND_API_KEY_UNSNAG }}"         | npx wrangler secret put RESEND_API_KEY
+          echo "${{ secrets.STRIPE_SECRET_KEY_UNSNAG }}"      | npx wrangler secret put STRIPE_SECRET_KEY
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_UNSNAG }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_UNSNAG }}

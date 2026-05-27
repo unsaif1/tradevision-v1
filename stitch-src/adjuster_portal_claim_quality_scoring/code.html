@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adjuster Portal - Claim Quality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffba20",
+                      "surface": "#111317",
+                      "surface-container": "#1e2024",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "surface-dim": "#111317",
+                      "secondary-container": "#feb700",
+                      "on-surface": "#e2e2e8",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary": "#412d00",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "background": "#111317",
+                      "on-secondary-container": "#6b4b00",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "on-primary-container": "#006970",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e2e2e8",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-primary": "#00363a",
+                      "inverse-on-surface": "#2f3035",
+                      "primary": "#dbfcff",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "primary-container": "#00f0ff",
+                      "outline-variant": "#3b494b",
+                      "inverse-primary": "#006970",
+                      "surface-container-low": "#1a1c20",
+                      "surface-bright": "#37393e",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#dad9d9",
+                      "surface-container-high": "#282a2e",
+                      "on-primary-fixed": "#002022",
+                      "on-tertiary-container": "#5e5f5f",
+                      "inverse-surface": "#e2e2e8",
+                      "surface-tint": "#00dbe9",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary": "#303031",
+                      "tertiary": "#f7f5f5",
+                      "surface-variant": "#333539",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#333539",
+                      "primary-fixed": "#7df4ff",
+                      "secondary": "#ffdb9d",
+                      "outline": "#849495",
+                      "on-secondary-fixed": "#271900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "density-comfortable": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "density-compact": "8px",
+                      "gutter": "16px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .industrial-border { border: 1px solid #2D2D2D; }
+        .industrial-glow { box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1); }
+        .tab-cutout { clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-fixed antialiased pb-20">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile py-density-compact">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary-container uppercase tracking-tighter">TradeVision C.A.R.E.</h1>
+</div>
+<button class="hover:bg-surface-variant transition-colors active:scale-95 duration-100 p-2 rounded text-on-surface-variant">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+</header>
+<main class="p-margin-mobile space-y-margin-mobile">
+<!-- Portfolio Quality Index Gauge -->
+<section class="industrial-border bg-surface-container rounded-lg p-density-comfortable relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary-fixed-dim text-on-primary px-3 py-1 font-data-point text-sm rounded-bl-lg">SYS_OK</div>
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4 tracking-widest">Portfolio Quality Index</h2>
+<div class="flex justify-center items-center py-6">
+<div class="relative w-48 h-48">
+<!-- Placeholder for dynamic gauge -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#2D2D2D" stroke-width="10"></circle>
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="#00dbe9" stroke-dasharray="283" stroke-dashoffset="60" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary-fixed-dim">78</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">/ 100</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit text-center border-t border-outline-variant pt-4">
+<div>
+<div class="font-data-point text-data-point text-on-surface">142</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">Total Claims</div>
+</div>
+<div>
+<div class="font-data-point text-data-point text-secondary-container">12</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">Pending Review</div>
+</div>
+</div>
+</section>
+<!-- Grade A Section -->
+<section class="industrial-border bg-surface-container rounded-lg overflow-hidden border-l-4 border-l-primary-fixed-dim">
+<button class="w-full flex justify-between items-center p-density-compact bg-surface-container-high hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-3">
+<div class="bg-primary-container text-on-primary-container font-data-point w-8 h-8 flex items-center justify-center rounded">A</div>
+<div class="text-left">
+<h3 class="font-headline-md text-sm font-bold text-on-surface">Verified Claims</h3>
+<p class="font-label-caps text-[10px] text-on-surface-variant">High documentation score</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-data-point text-lg text-primary-fixed-dim">45</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors">expand_more</span>
+</div>
+</button>
+<div class="p-density-compact space-y-unit hidden">
+<!-- List items would go here -->
+</div>
+</section>
+<!-- Grade B Section -->
+<section class="industrial-border bg-surface-container rounded-lg overflow-hidden border-l-4 border-l-secondary-fixed-dim">
+<button class="w-full flex justify-between items-center p-density-compact bg-surface-container-high hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-fixed-dim text-on-secondary font-data-point w-8 h-8 flex items-center justify-center rounded">B</div>
+<div class="text-left">
+<h3 class="font-headline-md text-sm font-bold text-on-surface">Standard Processing</h3>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Minor missing data</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-data-point text-lg text-secondary-fixed-dim">68</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary-fixed-dim transition-colors">expand_more</span>
+</div>
+</button>
+</section>
+<!-- Grade C Section (Expanded) -->
+<section class="industrial-border bg-surface-container rounded-lg overflow-hidden border-l-4 border-l-secondary-container industrial-glow">
+<button class="w-full flex justify-between items-center p-density-compact bg-surface-container-highest hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container text-on-secondary-container font-data-point w-8 h-8 flex items-center justify-center rounded">C</div>
+<div class="text-left">
+<h3 class="font-headline-md text-sm font-bold text-on-surface">Inconsistent/Flagged</h3>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Significant anomalies detected</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-data-point text-lg text-secondary-container">21</span>
+<span class="material-symbols-outlined text-secondary-container transition-transform rotate-180">expand_more</span>
+</div>
+</button>
+<div class="p-unit space-y-unit bg-surface-dim">
+<!-- Claim Item 1 -->
+<div class="industrial-border bg-surface-container rounded p-3 flex justify-between items-center">
+<div>
+<div class="font-data-point text-sm text-on-surface mb-1">CLM-2023-8901</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-[10px] bg-surface-variant px-1.5 py-0.5 rounded text-on-surface-variant">TPO</span>
+<span class="font-label-caps text-[10px] text-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span> 14 Days Stale
+                            </span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-70">
+<!-- Sparkline placeholder -->
+<svg class="w-full h-full" viewbox="0 0 100 30">
+<polyline fill="none" points="0,15 20,25 40,10 60,20 80,5 100,28" stroke="#feb700" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<!-- Claim Item 2 -->
+<div class="industrial-border bg-surface-container rounded p-3 flex justify-between items-center">
+<div>
+<div class="font-data-point text-sm text-on-surface mb-1">CLM-2023-9022</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-[10px] bg-surface-variant px-1.5 py-0.5 rounded text-on-surface-variant">METAL</span>
+<span class="font-label-caps text-[10px] text-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span> 11 Days Stale
+                            </span>
+</div>
+</div>
+<div class="w-16 h-8 opacity-70">
+<svg class="w-full h-full" viewbox="0 0 100 30">
+<polyline fill="none" points="0,5 20,15 40,8 60,25 80,18 100,22" stroke="#feb700" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Grade F Section -->
+<section class="industrial-border bg-surface-container rounded-lg overflow-hidden border-l-4 border-l-error">
+<button class="w-full flex justify-between items-center p-density-compact bg-surface-container-high hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-3">
+<div class="bg-error text-on-error font-data-point w-8 h-8 flex items-center justify-center rounded">F</div>
+<div class="text-left">
+<h3 class="font-headline-md text-sm font-bold text-error">Suspicious/Critical</h3>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Integrity failure</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-data-point text-lg text-error">8</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-error transition-colors">expand_more</span>
+</div>
+</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-t border-outline-variant flex justify-around items-center h-16 md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact hover:text-primary transition-all active:bg-surface-bright duration-75 flex-1">
+<span class="material-symbols-outlined mb-1">terminal</span>
+<span class="font-label-caps text-label-caps">Command</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary-fixed-dim p-density-compact active:bg-surface-bright duration-75 flex-1 h-full">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact hover:text-primary transition-all active:bg-surface-bright duration-75 flex-1">
+<span class="material-symbols-outlined mb-1">report_problem</span>
+<span class="font-label-caps text-label-caps">Safety</span>
+</button>
+</nav>
+</body></html>

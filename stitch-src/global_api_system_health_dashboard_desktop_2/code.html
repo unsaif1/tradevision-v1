@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION C.A.R.E. | Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&amp;family=Manrope:wght@400;500;600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0f141a;
+            color: #dee2ec;
+            font-family: 'Manrope', sans-serif;
+            overflow: hidden;
+        }
+        .font-headline-md { font-family: 'Barlow Condensed', sans-serif; }
+        .font-headline-xl { font-family: 'Barlow Condensed', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #171c23; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #30353d; border-radius: 2px; }
+        
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(226, 30, 81, 0.1);
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        .status-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#353941",
+                        "inverse-surface": "#dee2ec",
+                        "secondary-fixed-dim": "#bac8db",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#40000f",
+                        "surface-deep": "#1C2128",
+                        "surface-container-low": "#171c23",
+                        "surface-variant": "#30353d",
+                        "surface-container": "#1b2027",
+                        "on-secondary-container": "#a8b6c9",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary": "#243240",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "surface-dim": "#0f141a",
+                        "surface": "#0f141a",
+                        "on-primary-fixed-variant": "#91002e",
+                        "outline-variant": "#5c3f42",
+                        "text-primary": "#FFFFFF",
+                        "surface-container-high": "#252a32",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "surface-muted": "#2D3748",
+                        "primary-fixed": "#ffdadb",
+                        "inverse-on-surface": "#2c3138",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#30353d",
+                        "on-primary-container": "#fffcff",
+                        "primary": "#ffb2b9",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "on-tertiary-container": "#fefcff",
+                        "tertiary": "#bdc7dc",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "text-secondary": "#8896A8",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-tint": "#ffb2b9",
+                        "on-error": "#690005",
+                        "tertiary-container": "#6b7588",
+                        "primary-container": "#e21e51",
+                        "surface-container-lowest": "#090f15",
+                        "on-tertiary": "#273141",
+                        "background": "#0f141a",
+                        "secondary": "#bac8db",
+                        "accent-active": "#E21E51",
+                        "inverse-primary": "#be003e",
+                        "outline": "#ab888a",
+                        "on-surface": "#dee2ec",
+                        "on-background": "#dee2ec",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "secondary-fixed": "#d5e4f7",
+                        "on-primary": "#67001e",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "secondary-container": "#3a4858",
+                        "tertiary-fixed": "#d9e3f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-lg": ["Manrope"],
+                        "body-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="dark bg-background text-on-background h-screen flex flex-col">
+<div class="scanline"></div>
+<!-- Top Navigation -->
+<header class="docked full-width top-0 z-50 border-b border-border-subtle bg-surface flex justify-between items-center w-full px-md h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">TRADEVISION C.A.R.E.</h1>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-6">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-widest">Global Pulse</span>
+<span class="font-mono text-xs text-primary">STABLE // SYNCED</span>
+</div>
+<div class="h-8 w-[1px] bg-border-subtle"></div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-widest">Network Latency</span>
+<span class="font-mono text-xs text-secondary">43ms <span class="text-[8px] opacity-50">AVG</span></span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer p-2 rounded-lg" data-icon="settings_input_component">settings_input_component</span>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="h-full w-80 rounded-r-xl border-r border-border-subtle bg-surface-container-low flex flex-col h-full py-lg px-md shadow-lg shadow-black/50">
+<div class="flex items-center gap-3 mb-10 px-2">
+<img alt="ADMIN_01" class="w-10 h-10 rounded border border-primary-container/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp-sOKqdfUnE_Q-5hczurta-EZNmzMAjeDRxLM5CwLkMG8qOBABca41SQVc1D9SHUPRhzJOiknkpGK45d2HtDNj4IkDhLb8N2gYggboNpGydkP4xvWBcgtHmq3uFSRcfx-HTy6rRzzIkdEEuA5xroEoQt3IinARPx9beN92XRQZS64_JlK44MV1aOx4ZNhdC0FmJQBFeSmvj5L9zkw6z6q5TmwvZOZiXA-8NBpxPDwuY1Dv7vxBrb5fWEnn8TXQXku0UqaEQs-j0LA"/>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary leading-tight">ADMIN_01</span>
+<span class="font-body-sm text-label-sm text-text-secondary opacity-70">Root Access Active</span>
+</div>
+</div>
+<nav class="space-y-2">
+<div class="text-primary font-bold bg-surface-container-high flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-body-md text-body-md">Security Audit</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-highest flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+<span class="font-body-md text-body-md">API Documentation</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-highest flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-body-md text-body-md">Network Topology</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-highest flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+<span class="font-body-md text-body-md">Encryption Keys</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-highest flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-body-md text-body-md">Support Terminal</span>
+</div>
+</nav>
+<div class="mt-auto pt-4 border-t border-border-subtle/30 px-2">
+<div class="flex justify-between items-center text-label-sm font-label-sm text-text-secondary">
+<span>BUILD V2.4.1</span>
+<span class="text-primary">STABLE</span>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col overflow-hidden bg-background">
+<!-- Header Stats -->
+<section class="p-gutter border-b border-border-subtle bg-surface-deep flex gap-gutter items-center overflow-x-auto custom-scrollbar">
+<div class="flex-shrink-0 flex flex-col border-r border-border-subtle pr-gutter">
+<span class="text-label-md font-label-md text-text-secondary uppercase">GLOBAL_SYSTEM_PULSE</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00f2ff] status-pulse"></span>
+<span class="font-mono text-lg text-primary">43ms</span>
+<span class="text-[10px] text-text-secondary opacity-50">LATENCY</span>
+</div>
+</div>
+<div class="flex-shrink-0 flex flex-col border-r border-border-subtle pr-gutter">
+<span class="text-label-md font-label-md text-text-secondary uppercase">Jitter</span>
+<div class="flex items-center gap-2">
+<span class="font-mono text-lg text-secondary">1.2ms</span>
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="show_chart">show_chart</span>
+</div>
+</div>
+<div class="flex-shrink-0 flex flex-col">
+<span class="text-label-md font-label-md text-text-secondary uppercase">System Uptime</span>
+<div class="flex items-center gap-2">
+<span class="font-mono text-lg text-primary">99.98%</span>
+<span class="text-[10px] text-text-secondary opacity-50">365D ROLLING</span>
+</div>
+</div>
+</section>
+<!-- Grid Layout -->
+<div class="flex-1 overflow-y-auto p-gutter grid grid-cols-12 gap-gutter custom-scrollbar content-start">
+<!-- Regional Node Matrix -->
+<div class="col-span-12 lg:col-span-8 bg-surface-muted border border-border-subtle rounded-lg p-md overflow-hidden">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-primary tracking-wide">REGIONAL NODE MATRIX</h3>
+<span class="text-[10px] font-mono text-text-secondary">SYSTEM_TIME: 14:02:44 UTC</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- TX-01 -->
+<div class="bg-surface-deep border border-border-subtle p-3 rounded hover:border-primary-container/50 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono text-xs text-text-secondary">TX-01</span>
+<span class="bg-primary-container/10 text-primary-container text-[8px] px-1 rounded uppercase font-bold">Active</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-text-secondary">Load</span>
+<span class="font-mono text-xs text-[#00f2ff]">12.4%</span>
+</div>
+<div class="w-full bg-surface h-1 rounded overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 12.4%"></div>
+</div>
+<span class="text-[9px] text-text-secondary mt-1">Temp: 32°C</span>
+</div>
+</div>
+<!-- FL-04 -->
+<div class="bg-surface-deep border border-error/30 p-3 rounded hover:border-error transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono text-xs text-text-secondary">FL-04</span>
+<span class="bg-error-container/20 text-error text-[8px] px-1 rounded uppercase font-bold">Degraded</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-text-secondary">Load</span>
+<span class="font-mono text-xs text-error">89.1%</span>
+</div>
+<div class="w-full bg-surface h-1 rounded overflow-hidden">
+<div class="bg-error h-full" style="width: 89.1%"></div>
+</div>
+<span class="text-[9px] text-error mt-1 animate-pulse">Critical: 82°C</span>
+</div>
+</div>
+<!-- NY-02 -->
+<div class="bg-surface-deep border border-border-subtle p-3 rounded hover:border-primary-container/50 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono text-xs text-text-secondary">NY-02</span>
+<span class="bg-secondary/10 text-secondary text-[8px] px-1 rounded uppercase font-bold">Stable</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-text-secondary">Load</span>
+<span class="font-mono text-xs text-primary">45.2%</span>
+</div>
+<div class="w-full bg-surface h-1 rounded overflow-hidden">
+<div class="bg-secondary h-full" style="width: 45.2%"></div>
+</div>
+<span class="text-[9px] text-text-secondary mt-1">Temp: 44°C</span>
+</div>
+</div>
+<!-- CA-08 -->
+<div class="bg-surface-deep border border-border-subtle p-3 rounded hover:border-primary-container/50 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-2">
+<span class="font-mono text-xs text-text-secondary">CA-08</span>
+<span class="bg-secondary/10 text-secondary text-[8px] px-1 rounded uppercase font-bold">Stable</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-text-secondary">Load</span>
+<span class="font-mono text-xs text-primary">31.8%</span>
+</div>
+<div class="w-full bg-surface h-1 rounded overflow-hidden">
+<div class="bg-secondary h-full" style="width: 31.8%"></div>
+</div>
+<span class="text-[9px] text-text-secondary mt-1">Temp: 39°C</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Traffic Map -->
+<div class="col-span-12 lg:col-span-4 bg-surface-muted border border-border-subtle rounded-lg p-md relative overflow-hidden h-[240px]">
+<div class="absolute inset-0 opacity-40 mix-blend-screen grayscale">
+<img class="w-full h-full object-cover" data-alt="A dark-themed global data visualization map showing illuminated continents with glowing network nodes and light-trails of data transfer. The visual style is deep-tech analytical with a palette of charcoal greys, electric cyans, and deep reds, creating a professional command center aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp5UUDPi63IoOm8tc_o_QEYFKfKGeYUXYe5uU9a30zYDWbWa-9l-S3ZRJgMiIedikgut84gPMzj-wrQnKwOPNtYRefJNneuNDXfwuRieLxw8hNojcI59LAB2z07ZJOUxWtdctzOgE2sM9XbojHCRaLXRzT5UsxmHrSCJebfAxrgMZSwL6TyTB3FTMJU-mr6odytV2TQhvA7nBjiVplyPMNjJwPxzZ7OYujVV8GNFDfRU0lYuZHyI_heEtINQ4c58iirazRd9w9YHRZ"/>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary tracking-wide mb-2 uppercase">Traffic Map</h3>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-mono text-[10px] text-text-secondary">INBOUND_REQUESTS: 2.4k/sec</span>
+</div>
+</div>
+<!-- Pings over map -->
+<div class="absolute top-1/4 left-1/4 w-3 h-3 bg-primary-container/50 rounded-full animate-ping"></div>
+<div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-[#00f2ff]/50 rounded-full animate-ping"></div>
+<div class="absolute top-1/2 right-1/4 w-3 h-3 bg-primary-container/50 rounded-full animate-ping" style="animation-delay: 1s"></div>
+</div>
+<!-- Service Health Ledger -->
+<div class="col-span-12 bg-surface-muted border border-border-subtle rounded-lg overflow-hidden">
+<div class="px-md py-3 border-b border-border-subtle bg-surface-container flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary tracking-wide">SERVICE HEALTH LEDGER</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="text-[10px] font-mono text-text-secondary">AUTHENTICATED</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00f2ff]"></span>
+<span class="text-[10px] font-mono text-text-secondary">ENCRYPTED</span>
+</div>
+</div>
+</div>
+<table class="w-full text-left font-mono">
+<thead class="bg-surface-container-high border-b border-border-subtle">
+<tr>
+<th class="px-md py-2 text-label-md font-headline-md text-text-secondary uppercase">Service Name</th>
+<th class="px-md py-2 text-label-md font-headline-md text-text-secondary uppercase">Status</th>
+<th class="px-md py-2 text-label-md font-headline-md text-text-secondary uppercase">Version</th>
+<th class="px-md py-2 text-label-md font-headline-md text-text-secondary uppercase">Data Throughput</th>
+<th class="px-md py-2 text-label-md font-headline-md text-text-secondary uppercase">Response</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle/30">
+<tr class="hover:bg-surface-container-highest/20 transition-colors group">
+<td class="px-md py-3 text-xs text-primary group-hover:text-primary-container">Blockchain_Auth</td>
+<td class="px-md py-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00f2ff]"></span>
+<span class="text-[10px] text-on-surface uppercase">Operational</span>
+</div>
+</td>
+<td class="px-md py-3 text-xs text-text-secondary">v4.2.1-stable</td>
+<td class="px-md py-3 text-xs text-secondary">1.2 TB / HR</td>
+<td class="px-md py-3 text-xs text-primary">12ms</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/20 transition-colors group">
+<td class="px-md py-3 text-xs text-primary">Weather_Sync</td>
+<td class="px-md py-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00f2ff]"></span>
+<span class="text-[10px] text-on-surface uppercase">Operational</span>
+</div>
+</td>
+<td class="px-md py-3 text-xs text-text-secondary">v4.2.1-stable</td>
+<td class="px-md py-3 text-xs text-secondary">482 GB / HR</td>
+<td class="px-md py-3 text-xs text-primary">84ms</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/20 transition-colors group">
+<td class="px-md py-3 text-xs text-primary">Evidence_Store</td>
+<td class="px-md py-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="text-[10px] text-error uppercase">IO_Throttle</span>
+</div>
+</td>
+<td class="px-md py-3 text-xs text-text-secondary">v4.1.9-patch</td>
+<td class="px-md py-3 text-xs text-secondary">12.4 TB / HR</td>
+<td class="px-md py-3 text-xs text-error">430ms</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/20 transition-colors group">
+<td class="px-md py-3 text-xs text-primary">Notification_Engine</td>
+<td class="px-md py-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00f2ff]"></span>
+<span class="text-[10px] text-on-surface uppercase">Operational</span>
+</div>
+</td>
+<td class="px-md py-3 text-xs text-text-secondary">v4.2.1-stable</td>
+<td class="px-md py-3 text-xs text-secondary">8.1 GB / HR</td>
+<td class="px-md py-3 text-xs text-primary">5ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Terminal-style Log -->
+<div class="col-span-12 bg-surface-container-lowest border border-border-subtle rounded-lg p-md overflow-hidden flex flex-col h-[200px]">
+<div class="flex justify-between items-center mb-2 border-b border-border-subtle/30 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="database">database</span>
+<h3 class="font-headline-md text-[14px] text-primary tracking-widest uppercase">Live Event Stream [RAW]</h3>
+</div>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+<div class="flex-1 font-mono text-[10px] text-text-secondary overflow-y-auto custom-scrollbar space-y-1" id="terminal-log">
+<div class="flex gap-4">
+<span class="text-secondary opacity-50">14:02:44.001</span>
+<span class="text-[#00f2ff]">[SYSTEM]</span>
+<span>HANDSHAKE_SUCCESS :: NODE_TX_01 -&gt; GATEWAY_GLOBAL</span>
+</div>
+<div class="flex gap-4">
+<span class="text-secondary opacity-50">14:02:44.082</span>
+<span class="text-primary-container">[SECURE]</span>
+<span>AUTH_SIG_VALIDATED :: USER_ID_ADMIN01</span>
+</div>
+<div class="flex gap-4">
+<span class="text-secondary opacity-50">14:02:44.155</span>
+<span class="text-error">[WARN]</span>
+<span>RETRY_LIMIT_EXCEEDED :: NODE_FL_04_DB_POOL</span>
+</div>
+<div class="flex gap-4">
+<span class="text-secondary opacity-50">14:02:44.201</span>
+<span class="text-[#00f2ff]">[SYSTEM]</span>
+<span>PACKET_RELOAD :: BUFFER_SYNC_COMPLETE</span>
+</div>
+<div class="flex gap-4">
+<span class="text-secondary opacity-50">14:02:44.290</span>
+<span class="text-on-secondary-container">[INFO]</span>
+<span>WEATHER_SYNC :: FETCHING_REQD_METADATA</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Micro-interaction: Fake live log simulation
+        const logContainer = document.getElementById('terminal-log');
+        const eventCodes = [
+            { code: 'AUTH_SIG_VALIDATED', tag: '[SECURE]', color: 'text-primary-container' },
+            { code: 'HANDSHAKE_SUCCESS', tag: '[SYSTEM]', color: 'text-[#00f2ff]' },
+            { code: 'RETRY_LIMIT_EXCEEDED', tag: '[WARN]', color: 'text-error' },
+            { code: 'PACKET_RELOAD', tag: '[SYSTEM]', color: 'text-[#00f2ff]' },
+            { code: 'IO_THROTTLE_DETECTION', tag: '[ALERT]', color: 'text-error' }
+        ];
+
+        function addLogLine() {
+            const now = new Date();
+            const timestamp = now.toISOString().split('T')[1].replace('Z', '');
+            const event = eventCodes[Math.floor(Math.random() * eventCodes.length)];
+            
+            const line = document.createElement('div');
+            line.className = 'flex gap-4 opacity-0 transition-opacity duration-500';
+            line.innerHTML = `
+                <span class="text-secondary opacity-50">${timestamp}</span>
+                <span class="${event.color}">${event.tag}</span>
+                <span>${event.code} :: ${Math.random().toString(36).substring(7).toUpperCase()}</span>
+            `;
+            
+            logContainer.appendChild(line);
+            setTimeout(() => line.classList.remove('opacity-0'), 10);
+            
+            if (logContainer.children.length > 50) {
+                logContainer.removeChild(logContainer.children[0]);
+            }
+            
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        setInterval(addLogLine, 2500);
+
+        // Tactile interactions for navigation
+        document.querySelectorAll('nav div').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('nav div').forEach(i => {
+                    i.classList.remove('text-primary', 'font-bold', 'bg-surface-container-high');
+                    i.classList.add('text-on-surface-variant');
+                });
+                item.classList.remove('text-on-surface-variant');
+                item.classList.add('text-primary', 'font-bold', 'bg-surface-container-high');
+            });
+        });
+    </script>
+</body></html>

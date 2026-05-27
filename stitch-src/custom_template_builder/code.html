@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. Stack - Custom Template Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "neon-orange": "#F97316",
+                        "on-surface": "#dce3ee",
+                        "on-surface-variant": "#e4bdbf",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#002e6a",
+                        "surface-container-lowest": "#080f16",
+                        "surface": "#0d141c",
+                        "primary-fixed": "#ffdadb",
+                        "inverse-surface": "#dce3ee",
+                        "surface-tint": "#ffb2b9",
+                        "surface-stroke": "#2D3748",
+                        "tertiary-container": "#2171e4",
+                        "surface-container-low": "#151c24",
+                        "surface-container-high": "#242b33",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-highest": "#2e353e",
+                        "surface-elevated": "#1C2128",
+                        "on-tertiary-fixed": "#001a42",
+                        "secondary-fixed": "#6dfe9c",
+                        "inverse-primary": "#be003e",
+                        "surface-bright": "#333a43",
+                        "surface-container": "#192028",
+                        "neon-green": "#4ADE80",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "outline": "#ab888a",
+                        "tertiary": "#adc6ff",
+                        "on-primary-fixed": "#40000f",
+                        "primary": "#ffb2b9",
+                        "on-primary-container": "#fffcff",
+                        "outline-variant": "#5c3f42",
+                        "primary-container": "#e21e51",
+                        "neon-pink": "#E21E51",
+                        "inverse-on-surface": "#2a313a",
+                        "secondary": "#4de082",
+                        "on-primary-fixed-variant": "#91002e",
+                        "secondary-fixed-dim": "#4de082",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-primary": "#67001e",
+                        "neon-blue": "#3B82F6",
+                        "on-secondary-fixed": "#00210c",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-dim": "#0d141c",
+                        "secondary-container": "#00b55d",
+                        "on-secondary-container": "#003e1c",
+                        "on-secondary": "#003919",
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#2e353e",
+                        "surface-base": "#111820",
+                        "on-background": "#dce3ee",
+                        "on-secondary-fixed-variant": "#005227",
+                        "on-tertiary-container": "#fffcff",
+                        "background": "#0d141c",
+                        "text-muted": "#8896A8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "stack-gap": "12px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Barlow"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-md": ["Barlow"],
+                        "stat-display": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "label-caps": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111820; /* surface-base */
+            color: #dce3ee; /* on-surface */
+        }
+        /* Custom scrollbar for cyber-industrial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d141c; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E21E51; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden min-h-screen flex">
+<!-- NavigationDrawer (Web) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest h-screen w-64 fixed left-0 top-0 border-r border-surface-stroke dark:border-surface-stroke flex flex-col py-stack-gap hidden md:flex z-40 shadow-none">
+<div class="px-gutter mb-8 mt-4">
+<h2 class="font-headline-xl text-headline-xl text-neon-blue dark:text-neon-blue">TERMINAL_NAV</h2>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center px-gutter py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-neon-blue">library_books</span>
+<span class="font-label-caps text-label-caps dark:font-label-caps dark:text-label-caps uppercase">System Templates</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-3 bg-tertiary-container/20 text-tertiary border-l-4 border-neon-blue font-bold transition-transform duration-150" href="#">
+<span class="material-symbols-outlined mr-3">dynamic_form</span>
+<span class="font-label-caps text-label-caps dark:font-label-caps dark:text-label-caps uppercase">Custom Builder</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-neon-blue">terminal</span>
+<span class="font-label-caps text-label-caps dark:font-label-caps dark:text-label-caps uppercase">Logic Rules</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-gutter py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-neon-blue">history_edu</span>
+<span class="font-label-caps text-label-caps dark:font-label-caps dark:text-label-caps uppercase">Audit Logs</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface w-full top-0 sticky border-b border-surface-stroke dark:border-surface-stroke shadow-none z-30">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center space-x-4 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined text-neon-pink dark:text-neon-pink hover:text-neon-pink transition-colors duration-200">settings_input_component</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile dark:font-headline-lg-mobile dark:text-headline-lg-mobile tracking-tighter text-neon-pink dark:text-neon-pink">TEMPLATE_ENGINE_V1.0</h1>
+</div>
+<div class="flex items-center space-x-4">
+<span class="font-label-caps text-label-caps text-on-surface hidden md:block">User Profile</span>
+<div class="w-10 h-10 rounded-full bg-surface-elevated border border-surface-stroke flex items-center justify-center cursor-pointer hover:border-neon-pink transition-colors duration-200 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNiMfeIixHOrE8lsDF133DeQKjQuRs7h-k-2cJB4d6CxJdG3DUYrml0905Pm4jzl1dzcC4I7MX-BnlQNidQsxzPe0I6rzbzaqAyFC-MwT7UEF1YAi_kst3l4VyfB9GUCyRzUi5hPrMzwR47Y1rKKwvBBsVWl-_e1CkAeM9p_I8VDyuXvXTKC1ALLVGYZDXA2RbENzxy85vSdlvXCeYoZJQcrkEvcqRllCMbDPTXijq8ttznvD8paH8TfGa_XF4wMFi98PvKHUrkUSi"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Body -->
+<div class="p-margin-mobile md:p-margin-desktop flex-1 grid grid-cols-1 lg:grid-cols-12 gap-gutter pb-24 md:pb-margin-desktop">
+<!-- Left Column: Builder Controls (8 cols) -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Metadata Card -->
+<section class="bg-surface-elevated rounded border-t-4 border-neon-blue p-gutter">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Template Configuration</h3>
+<span class="px-2 py-1 bg-neon-blue/20 text-neon-blue font-caption text-caption rounded uppercase border border-neon-blue/30">Draft Status</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-caption text-caption text-text-muted mb-1">Template ID (Auto-generated)</label>
+<input class="w-full bg-surface border border-surface-stroke text-on-surface-variant px-3 py-2 rounded font-mono text-sm opacity-70 cursor-not-allowed" disabled="" type="text" value="TMPL-8492-XJ"/>
+</div>
+<div>
+<label class="block font-caption text-caption text-text-muted mb-1">Internal Name</label>
+<input class="w-full bg-surface border border-surface-stroke text-on-surface px-3 py-2 rounded focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-colors" placeholder="e.g., Claim Status Update - Delayed" type="text"/>
+</div>
+</div>
+</section>
+<!-- Trigger Logic Card -->
+<section class="bg-surface-elevated rounded border border-surface-stroke p-gutter">
+<div class="flex items-center mb-4 space-x-2">
+<span class="material-symbols-outlined text-neon-orange">bolt</span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Trigger Logic</h3>
+</div>
+<div class="flex flex-wrap gap-3 items-center bg-surface p-3 rounded border border-surface-stroke">
+<span class="font-caption text-caption text-text-muted">WHEN</span>
+<select class="bg-surface-elevated border border-surface-stroke text-on-surface px-2 py-1 rounded font-caption focus:border-neon-orange focus:ring-1 focus:ring-neon-orange outline-none">
+<option>Claim Status</option>
+<option>Payment Status</option>
+<option>Inspection Date</option>
+</select>
+<span class="font-caption text-caption text-text-muted">CHANGES TO</span>
+<select class="bg-surface-elevated border border-surface-stroke text-neon-orange px-2 py-1 rounded font-caption focus:border-neon-orange focus:ring-1 focus:ring-neon-orange outline-none font-bold">
+<option>Pending</option>
+<option>Approved</option>
+<option>Rejected</option>
+</select>
+</div>
+</section>
+<!-- Channel Toggles -->
+<section class="bg-surface-elevated rounded border border-surface-stroke p-gutter flex items-center justify-between flex-wrap gap-4">
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest mr-4">Target Channels</h3>
+<div class="flex space-x-2">
+<button class="flex items-center space-x-2 px-4 py-2 bg-neon-blue/20 text-neon-blue border border-neon-blue rounded cursor-pointer transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span class="font-caption text-caption font-bold uppercase">Email</span>
+</button>
+<button class="flex items-center space-x-2 px-4 py-2 bg-surface border border-surface-stroke text-text-muted rounded cursor-pointer hover:border-neon-blue transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">sms</span>
+<span class="font-caption text-caption uppercase">SMS</span>
+</button>
+<button class="flex items-center space-x-2 px-4 py-2 bg-surface border border-surface-stroke text-text-muted rounded cursor-pointer hover:border-neon-blue transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">notifications</span>
+<span class="font-caption text-caption uppercase">Push</span>
+</button>
+</div>
+</section>
+<!-- Payload Editor -->
+<section class="bg-surface-elevated rounded border border-surface-stroke flex flex-col overflow-hidden">
+<div class="bg-surface-container-high px-gutter py-3 border-b border-surface-stroke flex justify-between items-center">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-muted">code</span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Payload Editor</h3>
+</div>
+</div>
+<!-- Variable Toolbar -->
+<div class="bg-surface border-b border-surface-stroke px-gutter py-2 flex flex-wrap gap-2 items-center">
+<span class="font-caption text-caption text-text-muted mr-2">Variables:</span>
+<button class="px-2 py-1 bg-surface-container-highest border border-surface-stroke rounded font-mono text-xs text-neon-green hover:bg-neon-green/10 transition-colors cursor-pointer">{{claim_id}}</button>
+<button class="px-2 py-1 bg-surface-container-highest border border-surface-stroke rounded font-mono text-xs text-neon-green hover:bg-neon-green/10 transition-colors cursor-pointer">{{policy_holder}}</button>
+<button class="px-2 py-1 bg-surface-container-highest border border-surface-stroke rounded font-mono text-xs text-neon-green hover:bg-neon-green/10 transition-colors cursor-pointer">{{status}}</button>
+<button class="px-2 py-1 bg-surface-container-highest border border-surface-stroke rounded font-mono text-xs text-neon-green hover:bg-neon-green/10 transition-colors cursor-pointer">{{date}}</button>
+</div>
+<!-- Editor Area -->
+<div class="relative p-gutter bg-surface">
+<div class="absolute left-0 top-0 bottom-0 w-8 bg-surface-container-low border-r border-surface-stroke flex flex-col items-center py-gutter text-text-muted font-mono text-xs opacity-50 select-none">
+<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+</div>
+<textarea class="w-full h-48 bg-transparent border-none focus:ring-0 text-on-surface font-mono text-sm pl-8 resize-none outline-none leading-relaxed" placeholder="Enter message payload here...">Subject: Important update regarding {{claim_id}}
+
+Dear {{policy_holder}},
+
+Your claim status has been updated to {{status}} as of {{date}}. 
+
+Please review the attached documents for further details.</textarea>
+</div>
+</section>
+<!-- Action Bar -->
+<div class="flex justify-end space-x-4 pt-4 border-t border-surface-stroke">
+<button class="flex items-center space-x-2 px-6 py-3 bg-surface border border-surface-stroke text-on-surface rounded font-label-caps text-label-caps uppercase hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined">delete</span>
+<span>Discard</span>
+</button>
+<button class="flex items-center space-x-2 px-6 py-3 bg-neon-pink text-white rounded font-label-caps text-label-caps uppercase hover:bg-primary-container transition-colors active:scale-95 shadow-[0_0_15px_rgba(226,30,81,0.4)]">
+<span class="material-symbols-outlined">save</span>
+<span>Save Template</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Live Preview (4 cols) -->
+<div class="lg:col-span-4 h-full">
+<section class="bg-surface-elevated rounded border-t-4 border-neon-green p-gutter h-full flex flex-col sticky top-24">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-neon-green">visibility</span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Live Preview</h3>
+</div>
+<div class="flex space-x-1">
+<div class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></div>
+</div>
+</div>
+<!-- Phone Mockup Container -->
+<div class="flex-1 bg-surface border border-surface-stroke rounded-xl mx-auto w-full max-w-[320px] p-4 flex flex-col relative overflow-hidden shadow-lg">
+<!-- Phone Header -->
+<div class="flex justify-between items-center mb-6 border-b border-surface-stroke pb-2">
+<span class="font-caption text-xs text-text-muted">9:41</span>
+<div class="flex space-x-1">
+<span class="material-symbols-outlined text-[16px] text-text-muted">wifi</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">battery_full</span>
+</div>
+</div>
+<!-- Simulated Email Client -->
+<div class="flex-1 flex flex-col space-y-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-neon-blue font-bold">TV</div>
+<div>
+<div class="font-caption text-sm text-on-surface font-bold">TradeVision System</div>
+<div class="font-caption text-xs text-text-muted">To: john.doe@example.com</div>
+</div>
+</div>
+<div class="border-b border-surface-stroke pb-2">
+<div class="font-caption text-sm text-on-surface font-bold mb-1">Subject: Important update regarding CLM-9921</div>
+</div>
+<div class="font-body-md text-sm text-on-surface-variant leading-relaxed space-y-2">
+<p>Dear John Doe,</p>
+<p>Your claim status has been updated to <span class="text-neon-orange font-mono bg-neon-orange/10 px-1 rounded">Pending</span> as of <span class="text-neon-green font-mono bg-neon-green/10 px-1 rounded">Oct 24, 2023</span>.</p>
+<p>Please review the attached documents for further details.</p>
+</div>
+</div>
+<!-- Shine overlay effect -->
+<div class="absolute top-0 left-0 w-full h-full pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
+</div>
+<div class="mt-6 flex justify-center">
+<button class="flex items-center space-x-2 px-4 py-2 bg-surface-container-high border border-surface-stroke text-neon-green rounded font-label-caps text-label-caps uppercase hover:border-neon-green transition-colors active:scale-95 w-full justify-center">
+<span class="material-symbols-outlined text-sm">send</span>
+<span>Send Test to Device</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface-container-high dark:bg-surface-container-high fixed bottom-0 w-full z-50 border-t border-surface-stroke dark:border-surface-stroke shadow-none md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2">
+<a class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-neon-green active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-caption text-caption dark:font-caption dark:text-caption">Templates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-neon-green active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">sms</span>
+<span class="font-caption text-caption dark:font-caption dark:text-caption">SMS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-neon-green active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">mail</span>
+<span class="font-caption text-caption dark:font-caption dark:text-caption">Email</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-neon-green active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-caption text-caption dark:font-caption dark:text-caption">History</span>
+</a>
+</nav>
+</body></html>

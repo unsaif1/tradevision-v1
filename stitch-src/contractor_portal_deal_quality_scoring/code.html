@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Portal - Deal Quality Scoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffba20",
+                      "surface": "#111317",
+                      "surface-container": "#1e2024",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "surface-dim": "#111317",
+                      "secondary-container": "#feb700",
+                      "on-surface": "#e2e2e8",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary": "#412d00",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "background": "#111317",
+                      "on-secondary-container": "#6b4b00",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "on-primary-container": "#006970",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e2e2e8",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-primary": "#00363a",
+                      "inverse-on-surface": "#2f3035",
+                      "primary": "#dbfcff",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "primary-container": "#00f0ff",
+                      "outline-variant": "#3b494b",
+                      "inverse-primary": "#006970",
+                      "surface-container-low": "#1a1c20",
+                      "surface-bright": "#37393e",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#dad9d9",
+                      "surface-container-high": "#282a2e",
+                      "on-primary-fixed": "#002022",
+                      "on-tertiary-container": "#5e5f5f",
+                      "inverse-surface": "#e2e2e8",
+                      "surface-tint": "#00dbe9",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary": "#303031",
+                      "tertiary": "#f7f5f5",
+                      "surface-variant": "#333539",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#333539",
+                      "primary-fixed": "#7df4ff",
+                      "secondary": "#ffdb9d",
+                      "outline": "#849495",
+                      "on-secondary-fixed": "#271900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "density-comfortable": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "density-compact": "8px",
+                      "gutter": "16px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111317; /* surface */
+            color: #e2e2e8; /* on-surface */
+        }
+        
+        .gauge-ring {
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 1s ease-out;
+        }
+        
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e2024; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-fixed antialiased pb-24 h-screen flex flex-col md:hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile py-density-compact">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">precision_manufacturing</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary-container uppercase tracking-tighter">TradeVision C.A.R.E.</h1>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors active:scale-95 duration-100 p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile py-density-comfortable space-y-gutter">
+<!-- Section Header -->
+<div class="mb-gutter">
+<h2 class="font-headline-md text-headline-md text-on-surface">Deal Quality Scoring</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mt-1">Pipeline Health Telemetry</p>
+</div>
+<!-- Scorecard / Gauge Section -->
+<section class="bg-surface-container border border-outline-variant rounded-DEFAULT p-gutter relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-center">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">OVERALL HEALTH</div>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary-fixed-dim">78<span class="text-2xl text-on-surface-variant ml-1">%</span></div>
+<div class="mt-4 flex gap-4">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">ACTIVE DEALS</div>
+<div class="font-data-point text-data-point text-on-surface mt-1">142</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">AT RISK</div>
+<div class="font-data-point text-data-point text-error mt-1">28</div>
+</div>
+</div>
+</div>
+<!-- SVG Gauge -->
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 160 160">
+<circle cx="80" cy="80" fill="none" r="70" stroke="#333539" stroke-width="12"></circle>
+<circle class="gauge-ring" cx="80" cy="80" fill="none" r="70" stroke="#00dbe9" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">trending_up</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Grading Buckets -->
+<div class="space-y-unit">
+<!-- Grade A -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT overflow-hidden group">
+<button class="w-full text-left p-density-compact flex items-center justify-between hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-DEFAULT bg-[#00f0ff] bg-opacity-20 flex items-center justify-center border border-[#00f0ff]">
+<span class="font-data-point text-data-point text-[#00f0ff]">A</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-[#00f0ff]">PRIME OPPORTUNITIES</div>
+<div class="text-xs text-on-surface-variant font-body-fixed mt-0.5">High health, low staleness</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="font-data-point text-data-point text-on-surface">45</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:text-on-surface">expand_more</span>
+</div>
+</button>
+</div>
+<!-- Grade B -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT overflow-hidden group">
+<button class="w-full text-left p-density-compact flex items-center justify-between hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-DEFAULT bg-[#7df4ff] bg-opacity-20 flex items-center justify-center border border-[#7df4ff]">
+<span class="font-data-point text-data-point text-[#7df4ff]">B</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-[#7df4ff]">SOLID LEADS</div>
+<div class="text-xs text-on-surface-variant font-body-fixed mt-0.5">Moderate health, minimal staleness</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="font-data-point text-data-point text-on-surface">62</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:text-on-surface">expand_more</span>
+</div>
+</button>
+</div>
+<!-- Grade C (Expanded for demonstration) -->
+<div class="bg-surface-container border border-secondary-container rounded-DEFAULT overflow-hidden">
+<button class="w-full text-left p-density-compact flex items-center justify-between bg-surface-variant">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-DEFAULT bg-[#feb700] bg-opacity-20 flex items-center justify-center border border-[#feb700]">
+<span class="font-data-point text-data-point text-[#feb700]">C</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-[#feb700]">AT RISK</div>
+<div class="text-xs text-on-surface-variant font-body-fixed mt-0.5">Declining health, moderate staleness</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="font-data-point text-data-point text-on-surface">22</div>
+<span class="material-symbols-outlined text-on-surface-variant transform rotate-180">expand_more</span>
+</div>
+</button>
+<!-- Expanded Content List -->
+<div class="p-0 border-t border-outline-variant bg-surface-dim divide-y divide-outline-variant">
+<!-- Lead Item 1 -->
+<div class="p-density-compact flex justify-between items-center hover:bg-surface-variant transition-colors cursor-pointer">
+<div>
+<div class="font-body-fixed text-body-fixed text-on-surface">1402 Oak St. Project</div>
+<div class="flex items-center gap-1 mt-1 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span>Last Contact: 12d ago</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-point text-data-point text-[#feb700]">68</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">SCORE</div>
+</div>
+</div>
+<!-- Lead Item 2 -->
+<div class="p-density-compact flex justify-between items-center hover:bg-surface-variant transition-colors cursor-pointer">
+<div>
+<div class="font-body-fixed text-body-fixed text-on-surface">Commercial Roofing - 9th Ave</div>
+<div class="flex items-center gap-1 mt-1 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span>Last Contact: 15d ago</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-point text-data-point text-[#feb700]">61</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">SCORE</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Grade F -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT overflow-hidden group">
+<button class="w-full text-left p-density-compact flex items-center justify-between hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-DEFAULT bg-[#ffb4ab] bg-opacity-20 flex items-center justify-center border border-[#ffb4ab]">
+<span class="font-data-point text-data-point text-[#ffb4ab]">F</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-[#ffb4ab]">STALE / LOST</div>
+<div class="text-xs text-on-surface-variant font-body-fixed mt-0.5">Poor health, high staleness</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="font-data-point text-data-point text-on-surface">13</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:text-on-surface">expand_more</span>
+</div>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-highest flex justify-around items-center h-16 pb-[env(safe-area-inset-bottom)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact w-full h-full hover:text-primary transition-all active:bg-surface-bright duration-75">
+<span class="material-symbols-outlined mb-1">terminal</span>
+<span class="font-label-caps text-label-caps">Command</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary-fixed-dim p-density-compact w-full h-full active:bg-surface-bright duration-75">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact w-full h-full hover:text-primary transition-all active:bg-surface-bright duration-75">
+<span class="material-symbols-outlined mb-1">report_problem</span>
+<span class="font-label-caps text-label-caps">Safety</span>
+</button>
+</nav>
+<script>
+        // Simple animation for the gauge on load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const gauge = document.querySelector('.gauge-ring');
+                if(gauge) {
+                    // 78% of 440 circumference approx 97 offset
+                    gauge.style.strokeDashoffset = '96.8'; 
+                }
+            }, 300);
+        });
+    </script>
+</body></html>

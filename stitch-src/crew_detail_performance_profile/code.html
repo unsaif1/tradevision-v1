@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crew Profile - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#e2e2e8",
+                    "on-primary": "#00363a",
+                    "secondary-container": "#feb700",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "surface-tint": "#00dbe9",
+                    "on-tertiary": "#303031",
+                    "inverse-primary": "#006970",
+                    "on-primary-fixed-variant": "#004f54",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-secondary-fixed": "#271900",
+                    "on-tertiary-container": "#5e5f5f",
+                    "surface-container-low": "#1a1c20",
+                    "on-primary-container": "#006970",
+                    "tertiary-fixed": "#e4e2e2",
+                    "on-secondary": "#412d00",
+                    "on-primary-fixed": "#002022",
+                    "background": "#111317",
+                    "primary-fixed": "#7df4ff",
+                    "on-surface-variant": "#b9cacb",
+                    "secondary-fixed": "#ffdea8",
+                    "inverse-surface": "#e2e2e8",
+                    "inverse-on-surface": "#2f3035",
+                    "surface-variant": "#333539",
+                    "on-background": "#e2e2e8",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "surface-container": "#1e2024",
+                    "primary-container": "#00f0ff",
+                    "secondary-fixed-dim": "#ffba20",
+                    "tertiary": "#f7f5f5",
+                    "surface-bright": "#37393e",
+                    "surface-container-lowest": "#0c0e12",
+                    "primary": "#dbfcff",
+                    "outline": "#849495",
+                    "on-secondary-container": "#6b4b00",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#dad9d9",
+                    "surface-container-highest": "#333539",
+                    "surface": "#111317",
+                    "outline-variant": "#3b494b",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-error": "#690005",
+                    "surface-container-high": "#282a2e",
+                    "secondary": "#ffdb9d",
+                    "on-error-container": "#ffdad6",
+                    "surface-dim": "#111317"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "density-compact": "8px",
+                    "density-comfortable": "24px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for high-density industrial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333539; 
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #849495; 
+        }
+        
+        .technical-border {
+            border: 1px solid #2D2D2D;
+        }
+        
+        .active-technical-border {
+            border: 1px solid #00dbe9;
+            box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1);
+        }
+
+        .chamfered-btn {
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+            border-bottom: 3px solid #006970;
+        }
+        
+        .tab-cutout {
+             clip-path: polygon(0 0, 120px 0, 140px 100%, 0 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased pb-24 md:pb-0 pt-[80px]">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-[#2D2D2D] docked full-width fixed top-0 z-50 w-full">
+<div class="flex justify-between items-center w-full px-gutter md:px-margin-desktop py-density-compact max-w-[1440px] mx-auto h-[80px]">
+<div class="flex items-center gap-density-compact cursor-pointer group">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim text-[32px] group-hover:bg-surface-bright/10 transition-colors rounded-full p-1" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight hidden sm:block">TradeVision C.A.R.E.</span>
+<span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight sm:hidden">C.A.R.E.</span>
+</div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex items-center gap-density-comfortable">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps uppercase hover:text-primary-container transition-colors py-2 px-3 border border-transparent hover:border-[#2D2D2D] rounded-sm" href="#">Command</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps uppercase hover:text-primary-container transition-colors py-2 px-3 border border-transparent hover:border-[#2D2D2D] rounded-sm" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps uppercase hover:text-primary-container transition-colors py-2 px-3 border border-transparent hover:border-[#2D2D2D] rounded-sm" href="#">Claims</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-caps text-label-caps uppercase hover:text-primary-container transition-colors py-2 px-3 border border-transparent hover:border-[#2D2D2D] rounded-sm" href="#">Alerts</a>
+<a class="text-primary-container dark:text-primary-fixed font-bold font-label-caps text-label-caps uppercase hover:bg-surface-bright/10 transition-colors py-2 px-3 border border-primary-container rounded-sm active-technical-border flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">person</span>
+                    Account
+                </a>
+</nav>
+<div class="flex items-center gap-density-compact md:hidden">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-primary-container flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary-container">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-density-comfortable">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-density-comfortable gap-density-comfortable">
+<div>
+<div class="flex items-center gap-density-compact mb-unit">
+<span class="px-2 py-1 bg-surface-container-high border border-[#2D2D2D] font-data-point text-label-caps text-on-surface-variant uppercase tracking-widest">ID: CRW-ALPH-01</span>
+<span class="px-2 py-1 bg-[#1a2e20] border border-[#2e5e3c] font-data-point text-label-caps text-[#4ade80] uppercase tracking-widest flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#4ade80]"></span>
+                        Deployed
+                    </span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-container tracking-tight">Crew Alpha</h1>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mt-unit">Specialized Commercial EPDM &amp; TPO Installation Unit</p>
+</div>
+<button class="chamfered-btn bg-primary-container text-on-primary font-label-caps text-label-caps uppercase px-6 py-3 font-bold hover:bg-primary transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
+<span class="material-symbols-outlined text-[18px]">engineering</span>
+                Dispatch Orders
+            </button>
+</div>
+<!-- Bento Grid Architecture -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-density-compact auto-rows-[minmax(180px,auto)]">
+<!-- Performance Metrics (Span 8) -->
+<div class="md:col-span-8 bg-surface-container-low technical-border p-0 relative flex flex-col">
+<div class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps uppercase px-density-compact py-unit border-b border-[#2D2D2D] w-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">monitoring</span>
+                    Operational Metrics (7-Day Avg)
+                </div>
+<div class="p-density-comfortable flex flex-col md:flex-row gap-density-comfortable h-full items-center justify-around">
+<!-- Metric 1 -->
+<div class="flex flex-col items-center">
+<div class="relative w-32 h-32 flex items-center justify-center mb-unit">
+<!-- SVG Gauge Placeholder -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#2D2D2D" stroke-width="10"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="#00dbe9" stroke-dasharray="283" stroke-dashoffset="42" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-data-point text-[28px] text-primary-container">850</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">SQ FT/HR</span>
+</div>
+</div>
+<span class="font-body-fixed text-label-caps text-on-surface-variant">Installation Velocity</span>
+</div>
+<div class="hidden md:block w-[1px] h-32 bg-[#2D2D2D]"></div>
+<!-- Metric 2 -->
+<div class="flex flex-col items-center">
+<div class="relative w-32 h-32 flex items-center justify-center mb-unit">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#2D2D2D" stroke-width="10"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="#4ade80" stroke-dasharray="283" stroke-dashoffset="0" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-data-point text-[28px] text-[#4ade80]">0.0</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">INCIDENTS</span>
+</div>
+</div>
+<span class="font-body-fixed text-label-caps text-on-surface-variant">Safety Incident Rate</span>
+</div>
+</div>
+</div>
+<!-- Certifications (Span 4) -->
+<div class="md:col-span-4 bg-surface-container-low technical-border p-0 relative flex flex-col">
+<div class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps uppercase px-density-compact py-unit border-b border-[#2D2D2D] w-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                    C.A.R.E. Protocol Status
+                </div>
+<div class="p-density-compact flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-unit">
+<li class="bg-surface border border-[#2D2D2D] p-density-compact flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+<span class="font-body-fixed text-[14px] text-on-surface">Fall Protection L3</span>
+</div>
+<span class="font-data-point text-[12px] text-on-surface-variant">VALID</span>
+</li>
+<li class="bg-surface border border-[#2D2D2D] p-density-compact flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+<span class="font-body-fixed text-[14px] text-on-surface">Hazmat Handling</span>
+</div>
+<span class="font-data-point text-[12px] text-on-surface-variant">VALID</span>
+</li>
+<li class="bg-surface border border-secondary-container p-density-compact flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-body-fixed text-[14px] text-secondary-container">Crane Rigging</span>
+</div>
+<span class="font-data-point text-[12px] text-secondary-container">EXP 30D</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Roster (Span 8) -->
+<div class="md:col-span-8 bg-surface-container-low technical-border p-0 relative">
+<div class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps uppercase px-density-compact py-unit border-b border-[#2D2D2D] w-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                    Active Roster
+                </div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-[#2D2D2D] font-label-caps text-[10px] text-on-surface-variant uppercase tracking-wider">
+<th class="p-density-compact font-normal">Personnel</th>
+<th class="p-density-compact font-normal">Role</th>
+<th class="p-density-compact font-normal">Hours (Wk)</th>
+<th class="p-density-compact font-normal text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-fixed text-[14px] divide-y divide-[#2D2D2D]">
+<tr class="hover:bg-surface-bright/5 transition-colors group">
+<td class="p-density-compact flex items-center gap-density-compact">
+<div class="w-8 h-8 bg-surface-variant rounded-sm border border-[#2D2D2D] overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A medium close-up portrait of a male construction worker with a short beard, wearing a high-visibility yellow vest over a dark shirt. He is outdoors with soft natural lighting suggesting a cloudy day. The background is slightly out of focus showing structural elements. The overall aesthetic is gritty, industrial, and hyper-realistic, fitting a dark-mode technical dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCveKebZVP1gd9ArFXxaOlkLqqOJu-_ozSZzlcg1jQxtDXbG2uGUtYgt-o0y76c1jTzRcgXTUXlVoFH2OXrxqvtjcaJ14ImvOWSFRravUmvZj7GwR3mDIisCPdVWFx6MUi31TfpRj7Wxletsu7Ej19X1BiX5kCEqtoTlNm4qCco5gZEEC0Durw8Y7oRd3HO3rSwtwmNBsluVbSSlSZD4KbD4N7MAHywpunIwri07GW5T2R-LtW4JEGFUaD-JJOmb2jLDzuHhc4_k1-D"/>
+</div>
+<span class="text-on-surface font-medium">Marcus Vance</span>
+</td>
+<td class="p-density-compact">
+<span class="px-2 py-1 bg-[#1a202c] border border-primary-container text-primary-container font-label-caps text-[10px] uppercase">Foreman</span>
+</td>
+<td class="p-density-compact font-data-point text-on-surface-variant">42.5</td>
+<td class="p-density-compact text-right">
+<span class="w-2 h-2 inline-block rounded-full bg-[#4ade80] mr-1"></span>
+<span class="text-on-surface-variant text-[12px]">On-Site</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/5 transition-colors group">
+<td class="p-density-compact flex items-center gap-density-compact">
+<div class="w-8 h-8 bg-surface-variant rounded-sm border border-[#2D2D2D] overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A close-up portrait of a male roofer looking directly at the camera. He wears a dark grey hard hat and protective safety glasses resting on the brim. The lighting is harsh midday sun casting sharp shadows. The background is a stark, dark grey industrial wall. The image has a high-contrast, desaturated look aligning with a cyber-industrial UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_n8ssZD8EbAI7JCujLO8O7LxzaGFVTZuYBU4lDt_3QKCUPP6I-LWNiP4fZkPcwvdL05ZjvIgNg_5s_klBG-hCyce-XzVGh0rADwKXj2ZDzo4A_e8sEZJKFI3EDlrU7DF8fEBmiXTF_Z99R2r4vp79rG3D9JW4qQFV1ZIXMJ7Zuwgs8ggnbKsL0CG08yjIwSmz4cXuFYx5Qx_ZAtN3z9TobWwu6MU_G-tixWBryBW2-i1ha1uDIvYJQdJTXBPKcPEFnA_QTm5XTozz"/>
+</div>
+<span class="text-on-surface font-medium">Elias Thorne</span>
+</td>
+<td class="p-density-compact">
+<span class="px-2 py-1 bg-surface border border-[#2D2D2D] text-on-surface-variant font-label-caps text-[10px] uppercase">Lead Installer</span>
+</td>
+<td class="p-density-compact font-data-point text-on-surface-variant">38.0</td>
+<td class="p-density-compact text-right">
+<span class="w-2 h-2 inline-block rounded-full bg-[#4ade80] mr-1"></span>
+<span class="text-on-surface-variant text-[12px]">On-Site</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/5 transition-colors group">
+<td class="p-density-compact flex items-center gap-density-compact">
+<div class="w-8 h-8 bg-surface-variant rounded-sm border border-[#2D2D2D] flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">person</span>
+</div>
+<span class="text-on-surface font-medium">Sarah Jenkins</span>
+</td>
+<td class="p-density-compact">
+<span class="px-2 py-1 bg-surface border border-[#2D2D2D] text-on-surface-variant font-label-caps text-[10px] uppercase">Ground Safety</span>
+</td>
+<td class="p-density-compact font-data-point text-on-surface-variant">40.0</td>
+<td class="p-density-compact text-right">
+<span class="w-2 h-2 inline-block rounded-full bg-[#4ade80] mr-1"></span>
+<span class="text-on-surface-variant text-[12px]">On-Site</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Equipment Assignment (Span 4) -->
+<div class="md:col-span-4 bg-surface-container-low technical-border p-0 relative flex flex-col">
+<div class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps uppercase px-density-compact py-unit border-b border-[#2D2D2D] w-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">precision_manufacturing</span>
+                    Assigned Assets
+                </div>
+<div class="p-density-compact flex-1 overflow-y-auto">
+<div class="flex flex-col gap-density-compact">
+<!-- Asset Card -->
+<div class="bg-surface border border-[#2D2D2D] p-density-compact relative overflow-hidden group hover:border-[#849495] transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1">
+<span class="font-body-fixed text-[14px] text-on-surface font-medium">Ford F-350 Super Duty</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">local_shipping</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-data-point text-[10px] text-on-surface-variant bg-surface-variant px-1 border border-[#2D2D2D]">VEH-882</span>
+<span class="font-data-point text-[10px] text-[#4ade80]">GPS: ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- Asset Card -->
+<div class="bg-surface border border-[#2D2D2D] p-density-compact relative overflow-hidden group hover:border-[#849495] transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#849495]"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1">
+<span class="font-body-fixed text-[14px] text-on-surface font-medium">40ft Articulating Lift</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">construction</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-data-point text-[10px] text-on-surface-variant bg-surface-variant px-1 border border-[#2D2D2D]">LFT-014</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">MAINT: OK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-[#2D2D2D] bg-surface-container-high dark:bg-surface-container-high shadow-lg flex md:hidden justify-around items-center px-gutter py-sm pb-safe h-[72px]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary-container transition-all group w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-label-caps text-[10px] uppercase tracking-wider">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary-container transition-all group w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform">location_city</span>
+<span class="font-label-caps text-[10px] uppercase tracking-wider">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary-container transition-all group w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform">assignment_late</span>
+<span class="font-label-caps text-[10px] uppercase tracking-wider">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary-container transition-all group w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform">notifications_active</span>
+<span class="font-label-caps text-[10px] uppercase tracking-wider">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all translate-y-[-2px] duration-200 group w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:scale-110 transition-transform" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-[10px] uppercase tracking-wider">Account</span>
+</a>
+</nav>
+</body></html>

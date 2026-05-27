@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>C.A.R.E. HUB | PROTOCOL_V4.2.1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to bottom, transparent, #ffb2b9, transparent);
+            opacity: 0.1;
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+        }
+        .grid-bg {
+            background-image: radial-gradient(circle, #524344 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .cyber-corner {
+            clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#524344",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "surface": "#0f141a",
+                        "on-tertiary-container": "#495365",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "on-primary-fixed": "#370c13",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "status-success": "#4ade80",
+                        "secondary-fixed": "#d5e4f7",
+                        "on-tertiary-fixed": "#121c2c",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#ffb2b9",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-surface-variant": "#d7c2c2",
+                        "on-primary-container": "#7b4148",
+                        "outline": "#9f8c8d",
+                        "on-error": "#690005",
+                        "on-tertiary": "#273141",
+                        "surface-container": "#1b2026",
+                        "status-error": "#f43f5e",
+                        "surface-container-high": "#252a31",
+                        "secondary-container": "#3a4858",
+                        "primary": "#ffd9dc",
+                        "surface-variant": "#30353c",
+                        "primary-fixed": "#ffdadc",
+                        "surface-dim": "#0f141a",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-primary": "#894d54",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-bright": "#353a40",
+                        "background": "#0f141a",
+                        "inverse-surface": "#dee3eb",
+                        "error": "#ffb4ab",
+                        "on-background": "#dee3eb",
+                        "accent-cyan": "#00f2ff",
+                        "tertiary-container": "#bdc7dc",
+                        "surface-container-highest": "#30353c",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-primary-fixed-variant": "#6d363d",
+                        "on-surface": "#dee3eb",
+                        "tertiary": "#d9e3f9",
+                        "on-secondary": "#243240",
+                        "surface-container-lowest": "#0a0f14",
+                        "error-container": "#93000a",
+                        "secondary": "#bac8db",
+                        "on-secondary-container": "#a8b6c9",
+                        "on-primary": "#522027",
+                        "surface-deep": "#090f15",
+                        "surface-container-low": "#171c22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin": "24px",
+                        "telemetry-sidebar-width": "340px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "sidebar-width": "260px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["JetBrains Mono"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface text-primary font-headline-md text-headline-md border-b border-outline-variant flex justify-between items-center px-md h-16">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-primary/30">
+<img alt="Support Agent Profile" data-alt="A sharp, digital close-up of a high-tech biometric user avatar icon, rendered in a minimalist industrial style with glowing cyan and crimson highlights. The aesthetic is clean and forensic, suggesting a secure blockchain-backed evidence portal. The background is a dark, textured graphite with a faint digital grid overlay." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKM2nnp58haW2I2cQdKzM9Ewgs5u_I-OVVp9hv31PSXtso_6Brc0R1FPEepLgS3IupcvCYRUD_c-N8XUnh9OW8CcEImAsZUSWDXTRb5KAhEXkJ3WEHMvAK_th7-MKyxHhuPiJP9ZcQRVRkG21mm-MHZfAi5HOH2o-jC-alzCmR3DqKBBJKqdj3j1IKhU-zVzdId0aJUs5G_CYZAzGabglH05nLPrrWCrqU7pgOEVFcztd9vL8cusuNlSZ_LZACd7pWa_gm-UTJRDNJ"/>
+</div>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">C.A.R.E. HUB</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-variant transition-colors duration-200 active:opacity-80 p-xs rounded">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+</div>
+</header>
+<!-- SideNav (NavigationDrawer) -->
+<aside class="h-full w-[260px] fixed left-0 top-0 z-40 bg-surface-container text-primary border-r border-outline-variant flex flex-col gap-sm p-md pt-20 hidden md:flex">
+<div class="font-headline-lg text-headline-lg font-black text-primary mb-md">CORE TERMINAL</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-label-md text-label-md">Tickets</span>
+</a>
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-md text-label-md">Documentation</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md text-label-md">Network</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all active:scale-95 duration-150 rounded" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] md:mr-[340px] pt-20 pb-24 px-lg min-h-screen grid-bg">
+<!-- Article Header -->
+<header class="mb-lg border-l-4 border-primary pl-md py-xs">
+<h1 class="font-headline-xl text-headline-xl tracking-tight text-on-surface mb-xs">[PROTOCOL_V4.2.1: FIELD_EVIDENCE_CAPTURE]</h1>
+<div class="flex flex-wrap gap-sm">
+<span class="font-mono-data text-mono-data px-xs py-1 border border-status-success text-status-success bg-status-success/10">[STATUS: STABLE]</span>
+<span class="font-mono-data text-mono-data px-xs py-1 border border-outline-variant text-on-surface-variant bg-surface-container">[LAST_COMMIT: 2023-11-24]</span>
+<span class="font-mono-data text-mono-data px-xs py-1 border border-outline-variant text-on-surface-variant bg-surface-container">[AUTH: TV_CORE]</span>
+</div>
+</header>
+<!-- Technical Content Section -->
+<div class="space-y-lg">
+<!-- Bento Grid Section: Meta & Parameters -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<div class="lg:col-span-2 bg-surface-container border border-outline-variant p-md scanline-effect">
+<h2 class="font-label-caps text-label-caps text-primary mb-md">SYSTEM_PARAMETERS_OVERRIDE</h2>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-deep p-sm border border-outline-muted">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">LATENCY_MAX</span>
+<span class="font-mono-data text-mono-data text-primary">150ms</span>
+</div>
+<div class="bg-surface-deep p-sm border border-outline-muted">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">BUFFER_SIZE</span>
+<span class="font-mono-data text-mono-data text-primary">4096 KB</span>
+</div>
+<div class="bg-surface-deep p-sm border border-outline-muted">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">ENC_ALGO</span>
+<span class="font-mono-data text-mono-data text-primary">AES-256-GCM</span>
+</div>
+<div class="bg-surface-deep p-sm border border-outline-muted">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">THREAD_PRIORITY</span>
+<span class="font-mono-data text-mono-data text-primary">REALTIME_0</span>
+</div>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary-container p-md cyber-corner flex flex-col justify-between">
+<div>
+<h2 class="font-label-caps text-label-caps mb-sm">ACTIVE_SENSORS</h2>
+<ul class="space-y-xs font-mono-data text-mono-data">
+<li class="flex items-center gap-xs"><span class="w-2 h-2 bg-on-primary-container rounded-full animate-pulse"></span> LIDAR_ARRAY_01</li>
+<li class="flex items-center gap-xs"><span class="w-2 h-2 bg-on-primary-container rounded-full animate-pulse"></span> THERMAL_CAM_04</li>
+<li class="flex items-center gap-xs"><span class="w-2 h-2 bg-on-primary-container rounded-full"></span> AUDIO_MIC_ARRAY</li>
+</ul>
+</div>
+<div class="text-right">
+<span class="text-[32px] font-black opacity-30">V4.2.1</span>
+</div>
+</div>
+</section>
+<!-- Code Snippet & Description -->
+<section class="bg-surface-container border border-outline-variant overflow-hidden">
+<div class="bg-surface-variant px-md py-xs border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">INITIALIZATION_SCRIPT</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">content_copy</span>
+</div>
+<div class="p-md font-mono-data text-mono-data text-primary overflow-x-auto">
+<pre><code>// NODE_BOOT_SEQUENCE: FIELD_EVIDENCE
+async function initCaptureNode(nodeId) {
+    const config = await System.fetchProtocol('V4.2.1');
+    const secureChannel = await node.open(nodeId, {
+        encryption: config.ENC_ALGO,
+        timeout: config.LATENCY_MAX
+    });
+    
+    if (secureChannel.status === 'VERIFIED') {
+        return await secureChannel.startStream();
+    }
+    throw new Error('EVIDENCE_NODE_HANDSHAKE_FAILED');
+}</code></pre>
+</div>
+</section>
+<!-- Interaction Diagram Mockup -->
+<section class="bg-surface-container border border-outline-variant p-md">
+<h2 class="font-label-caps text-label-caps text-primary mb-md">SENSOR_CALIBRATION_TOPOLOGY</h2>
+<div class="h-64 bg-surface-deep border border-outline-muted relative flex items-center justify-center group cursor-crosshair">
+<div class="absolute inset-0 opacity-10 grid-bg"></div>
+<!-- Mock Diagram Shapes -->
+<div class="relative w-full h-full flex items-center justify-center">
+<div class="w-32 h-32 border-2 border-primary/20 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
+<div class="w-full h-px bg-primary/40 absolute"></div>
+<div class="h-full w-px bg-primary/40 absolute"></div>
+</div>
+<div class="absolute top-1/4 left-1/4 w-4 h-4 bg-primary border-4 border-surface group-hover:scale-150 transition-transform"></div>
+<div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-accent-cyan border-4 border-surface group-hover:scale-150 transition-transform delay-75"></div>
+<div class="absolute top-1/2 right-1/3 w-4 h-4 bg-error border-4 border-surface group-hover:scale-150 transition-transform delay-150"></div>
+<div class="absolute inset-0 flex items-end p-sm">
+<div class="font-mono-data text-mono-data text-[10px] text-on-surface-variant bg-surface/80 p-xs backdrop-blur-sm border border-outline-variant">
+                                X: <span id="mouse-x">0.00</span> | Y: <span id="mouse-y">0.00</span> | SENSOR_ID: NODE_77
+                            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Table for Evidence Hash Logs -->
+<section class="bg-surface-container border border-outline-variant">
+<div class="p-md border-b border-outline-variant">
+<h2 class="font-label-caps text-label-caps text-primary">RECENT_EVIDENCE_HASH_LOGS</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high font-label-caps text-label-caps text-on-surface-variant">
+<th class="p-md">TIMESTAMP</th>
+<th class="p-md">ORIGIN_NODE</th>
+<th class="p-md">SHA_256_HASH</th>
+<th class="p-md">STATUS</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data">
+<tr class="border-b border-outline-muted hover:bg-surface-container-highest transition-colors">
+<td class="p-md">11:24:02:11</td>
+<td class="p-md">ZONE_B_CAM_1</td>
+<td class="p-md opacity-60">8f2e...4d1a</td>
+<td class="p-md"><span class="px-sm py-xs border border-status-success/30 text-status-success bg-status-success/5 text-[10px]">VERIFIED</span></td>
+</tr>
+<tr class="border-b border-outline-muted hover:bg-surface-container-highest transition-colors">
+<td class="p-md">11:24:03:45</td>
+<td class="p-md">ZONE_C_LIDAR</td>
+<td class="p-md opacity-60">12c4...e92b</td>
+<td class="p-md"><span class="px-sm py-xs border border-status-success/30 text-status-success bg-status-success/5 text-[10px]">VERIFIED</span></td>
+</tr>
+<tr class="border-b border-outline-muted hover:bg-surface-container-highest transition-colors">
+<td class="p-md">11:24:05:12</td>
+<td class="p-md">ZONE_A_AUDIO</td>
+<td class="p-md opacity-60">99f1...cc34</td>
+<td class="p-md"><span class="px-sm py-xs border border-status-error/30 text-status-error bg-status-error/5 text-[10px]">DROPPED</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<footer class="mt-xl flex flex-col sm:flex-row gap-md border-t border-outline-variant pt-lg">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-lg py-md rounded-lg flex items-center justify-center gap-sm hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">security</span>
+                Verify Local Node
+            </button>
+<button class="border border-outline-variant text-on-surface font-label-md text-label-md px-lg py-md rounded-lg flex items-center justify-center gap-sm hover:bg-surface-container-highest active:scale-95 transition-all">
+<span class="material-symbols-outlined">contact_support</span>
+                Contact System Admin
+            </button>
+</footer>
+</main>
+<!-- Telemetry Sidebar (Right) -->
+<aside class="hidden lg:flex flex-col fixed right-0 top-0 h-full w-[340px] bg-surface-container border-l border-outline-variant pt-20 p-md z-40 overflow-y-auto">
+<h2 class="font-label-caps text-label-caps text-primary mb-md flex items-center gap-xs">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+            LIVE_NODE_TELEMETRY
+        </h2>
+<div class="space-y-md">
+<!-- CPU Load Segmented Bar -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>CPU_UTILIZATION</span>
+<span class="text-primary font-mono-data">64.2%</span>
+</div>
+<div class="flex gap-[2px] h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+</div>
+</div>
+<!-- Memory Bar -->
+<div class="space-y-xs">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>MEM_ALLOCATION</span>
+<span class="text-primary font-mono-data">12.8 GB</span>
+</div>
+<div class="flex gap-[2px] h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+<div class="flex-1 bg-surface-deep"></div>
+</div>
+</div>
+<!-- Network Stability -->
+<div class="bg-surface-deep border border-outline-muted p-sm rounded">
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-sm">NETWORK_TOPOLOGY_STATUS</span>
+<div class="h-32 flex items-end gap-1 px-1">
+<div class="flex-1 bg-primary/20 h-[40%]"></div>
+<div class="flex-1 bg-primary/40 h-[60%]"></div>
+<div class="flex-1 bg-primary/30 h-[45%]"></div>
+<div class="flex-1 bg-primary h-[85%]"></div>
+<div class="flex-1 bg-primary/60 h-[70%]"></div>
+<div class="flex-1 bg-primary/20 h-[30%]"></div>
+<div class="flex-1 bg-primary/80 h-[75%]"></div>
+<div class="flex-1 bg-primary h-[90%]"></div>
+<div class="flex-1 bg-primary/10 h-[10%]"></div>
+<div class="flex-1 bg-primary/40 h-[55%]"></div>
+</div>
+</div>
+<!-- Logs Micro-feed -->
+<div class="space-y-xs">
+<span class="font-label-caps text-[10px] text-on-surface-variant block">TERMINAL_OUTPUT</span>
+<div class="font-mono-data text-[10px] bg-surface-deep p-sm border border-outline-muted max-h-48 overflow-y-auto space-y-1">
+<p class="text-on-surface-variant"><span class="text-primary">[0.001]</span> NODE_WAKE_CONFIRMED</p>
+<p class="text-on-surface-variant"><span class="text-primary">[0.042]</span> SYNCING_V4.2.1_HEADERS</p>
+<p class="text-status-success"><span class="text-primary">[1.102]</span> AUTH_CHAIN_VERIFIED_LOCAL</p>
+<p class="text-on-surface-variant"><span class="text-primary">[1.250]</span> STARTING_EVIDENCE_FLUSH</p>
+<p class="text-status-error"><span class="text-primary">[2.004]</span> BUFFER_OVERFLOW_WARNING_ZONE_A</p>
+<p class="text-on-surface-variant"><span class="text-primary">[2.100]</span> AUTO_CORRECT_ENGAGED</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Status</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-label-sm">Ledger</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-variant/20 active:scale-90 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quick_reference_all</span>
+<span class="font-label-sm text-label-sm">Docs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="font-label-sm text-label-sm">Post</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for the calibration topology
+        const diag = document.querySelector('.cursor-crosshair');
+        const mouseX = document.getElementById('mouse-x');
+        const mouseY = document.getElementById('mouse-y');
+
+        if(diag) {
+            diag.addEventListener('mousemove', (e) => {
+                const rect = diag.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width).toFixed(2);
+                const y = ((e.clientY - rect.top) / rect.height).toFixed(2);
+                mouseX.textContent = x;
+                mouseY.textContent = y;
+            });
+        }
+
+        // Pulse effect for random logs
+        setInterval(() => {
+            const bars = document.querySelectorAll('.flex-1.bg-primary');
+            const randomBar = bars[Math.floor(Math.random() * bars.length)];
+            randomBar.style.opacity = '0.5';
+            setTimeout(() => {
+                randomBar.style.opacity = '1';
+            }, 100);
+        }, 1500);
+    </script>
+</body></html>

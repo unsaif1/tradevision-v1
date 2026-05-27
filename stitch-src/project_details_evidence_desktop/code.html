@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Claim Portal | Project Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@300..700&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chamfer-btn {
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+        .tech-card-header {
+            clip-path: polygon(0 0, 80% 0, 85% 100%, 0 100%);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-secondary": "#412d00",
+                        "outline": "#849495",
+                        "on-error": "#690005",
+                        "on-surface": "#e2e2e8",
+                        "tertiary": "#f7f5f5",
+                        "on-primary-container": "#006970",
+                        "surface-dim": "#111317",
+                        "surface-variant": "#333539",
+                        "surface-container-low": "#1a1c20",
+                        "primary-fixed": "#7df4ff",
+                        "primary": "#dbfcff",
+                        "secondary-container": "#feb700",
+                        "on-primary": "#00363a",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-container-high": "#282a2e",
+                        "surface-container": "#1e2024",
+                        "secondary": "#ffdb9d",
+                        "surface-bright": "#37393e",
+                        "on-tertiary": "#303031",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary-fixed": "#002022",
+                        "inverse-surface": "#e2e2e8",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#5e5f5f",
+                        "background": "#111317",
+                        "surface": "#111317",
+                        "inverse-primary": "#006970",
+                        "inverse-on-surface": "#2f3035",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-highest": "#333539",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#00f0ff",
+                        "on-secondary-fixed": "#271900",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "tertiary-container": "#dad9d9",
+                        "secondary-fixed": "#ffdea8",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-background": "#e2e2e8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-fixed selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary">APEX CLAIM PORTAL</h1>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">DASHBOARD</a>
+<a class="font-label-caps text-primary border-b-2 border-primary" href="#">PROJECT DETAILS</a>
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">VAULT</a>
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">MESSAGES</a>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden md:flex flex-col items-end">
+<span class="text-[10px] font-label-caps text-on-surface-variant">POLICY OWNER</span>
+<span class="text-xs font-bold text-on-surface">JONATHAN D.</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQdGKsbV-NUAzzo07HZ4Ql4NzMDgr-rv0ZBVDsRXEYRmKx1DVboGU7iws03mk-mCG9pNeO8Rhsaqa6bN-KrYhpJiWEanwf61v35MPK8MxbOaKXH9qFaUR4jxVnzh0X7ENgrVTpaNdpxHjwXvRctGrNfpq8eH2mqCyt2hd1iT42vHA6C3WqcH_kOs6rAPk6UuoIyFqn-bYAYQRcT8ce7k5Ijxyc7VzIoKtxv-Ng4iD4CcBQ68388HQnuFbD6AeHMcLJFPCLWl406jq2"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)] overflow-hidden">
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop space-y-gutter">
+<!-- Project High-Fidelity Header -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-gutter pb-density-comfortable border-b border-outline-variant">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-label-caps rounded">ACTIVE CLAIM</span>
+<span class="font-data-point text-[12px] text-outline">ID: #APX-RVC-2024</span>
+</div>
+<h2 class="font-display-lg text-display-lg uppercase leading-none tracking-tighter">Riverside Commons</h2>
+<p class="text-on-surface-variant font-body-fixed mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                        1400 North Industrial Way, Phoenix, AZ 85001
+                    </p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-3">
+<div class="text-right">
+<div class="text-[10px] font-label-caps text-outline">CURRENT STAGE</div>
+<div class="font-bold text-primary">FIELD INSPECTION: IN-PROGRESS</div>
+</div>
+<div class="w-12 h-12 flex items-center justify-center border-2 border-primary-container rounded-sm rotate-45">
+<span class="material-symbols-outlined text-primary-container -rotate-45" data-icon="engineering">engineering</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="bg-surface-container border border-outline-variant p-density-compact">
+<span class="text-[10px] font-label-caps text-on-surface-variant block uppercase">Total Area</span>
+<span class="font-data-point text-data-point text-on-surface">42,500 <span class="text-sm font-normal">SQ FT</span></span>
+</div>
+<div class="bg-surface-container border border-outline-variant p-density-compact">
+<span class="text-[10px] font-label-caps text-on-surface-variant block uppercase">Pitch/Slope</span>
+<span class="font-data-point text-data-point text-on-surface">4:12 <span class="text-sm font-normal">LOW SLOPE</span></span>
+</div>
+<div class="bg-surface-container border border-outline-variant p-density-compact">
+<span class="text-[10px] font-label-caps text-on-surface-variant block uppercase">Evidence Nodes</span>
+<span class="font-data-point text-data-point text-on-surface">128 <span class="text-sm font-normal">VERIFIED</span></span>
+</div>
+<div class="bg-surface-container border border-outline-variant p-density-compact">
+<span class="text-[10px] font-label-caps text-on-surface-variant block uppercase">Trust Score</span>
+<span class="font-data-point text-data-point text-secondary">98.4<span class="text-sm font-normal">%</span></span>
+</div>
+</div>
+<!-- Evidence Gallery Section -->
+<section class="space-y-gutter pt-gutter">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="hub">hub</span>
+                        Blockchain Evidence Gallery
+                    </h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-high border border-outline-variant font-label-caps text-on-surface hover:bg-surface-variant">FILTER</button>
+<button class="px-3 py-1 bg-surface-container-high border border-outline-variant font-label-caps text-on-surface hover:bg-surface-variant">EXPORT</button>
+</div>
+</div>
+<!-- Evidence Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Photo Card 1 -->
+<div class="group relative bg-surface-container border border-outline-variant overflow-hidden hover:border-primary transition-all duration-300">
+<div class="h-64 overflow-hidden bg-black">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-alt="A high-contrast technical photograph of a commercial flat roof during sunset, showing detailed textures of TPO membrane seams. The lighting is low-key and dramatic, emphasizing industrial precision. Overlay graphics include monospaced GPS coordinates and a digital blockchain timestamp in a cyan accent color, maintaining a cyber-industrial professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjptxiL-a1YOzCIQd9lCnLvG-jhIqQFJD8-HLyGMUdXS5wrGFqISEmAtxhqunEBH-6T9e41SoS7t8VjJhVBJJPFN462SsaK0d-1utDUs06o-IASrPh3CClPA1aQVj1-sbgu-zfHRjQfAhCGeleff3w6M_AZh2IoGs7f7NvJci6qyIBVuIByimqNr8ZyCQtqWaPRczV5yqNK-S1LNCyICw8RjP_yCZw2qpwSiOiUkc99d24o_os_L45zLEYdsbzGibzDwrA83eI2i2B"/>
+</div>
+<div class="p-density-compact space-y-2">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-label-caps bg-primary/10 text-primary-fixed-dim px-2 py-0.5">PRE-INSPECTION</span>
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="font-data-point text-sm text-on-surface truncate">HASH: 0x71C...A4B2</div>
+<div class="flex justify-between text-[10px] font-label-caps text-on-surface-variant">
+<span>2024-10-12 09:44 AM</span>
+<span>NORTH_PARAPET_01</span>
+</div>
+</div>
+<div class="absolute top-2 right-2 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-surface-container-highest/80 flex items-center justify-center hover:bg-primary hover:text-on-primary">
+<span class="material-symbols-outlined text-base" data-icon="zoom_in">zoom_in</span>
+</button>
+</div>
+</div>
+<!-- Photo Card 2 -->
+<div class="group relative bg-surface-container border border-outline-variant overflow-hidden hover:border-primary transition-all duration-300">
+<div class="h-64 overflow-hidden bg-black">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" data-alt="A macro industrial photograph showing a professional roofing contractor using a digital thermal scanner on a warehouse roof surface. The image is shot in a dark, moody style with high-contrast shadows. Digital readouts of temperature and slope are visible on the scanner's screen, reflecting the precision-focused industrial design system with deep obsidian and zinc tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYftBgQZDbu0tgFyBD0kcTpu2G2J1vA8LO6erV6wswsKsBzYF5k4g2n4Up0SYqwUcOl_lWysbAXzbZqOaN7tCeirhadn7mHlusTbWnCu8yd_SzXYfA7mgPSepn8ESNU6B-NcgEqK3wbTqb_U1jDyUCGQmSzriu42HVq4dFwgGGztY1Ce3QnkSZm6ZUKTD3IfxS_8lWEHnzmW1XlxMbs3CKgzGPCsp8qag52MFWw2EUoDMvvkVncX2amR4vq6vEQQNAjctICcwOfBtH"/>
+</div>
+<div class="p-density-compact space-y-2">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-label-caps bg-secondary/10 text-secondary px-2 py-0.5">IN-PROGRESS</span>
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="font-data-point text-sm text-on-surface truncate">HASH: 0x89E...D4F1</div>
+<div class="flex justify-between text-[10px] font-label-caps text-on-surface-variant">
+<span>2024-10-14 02:15 PM</span>
+<span>DRAIN_SEAL_TEST</span>
+</div>
+</div>
+</div>
+<!-- Photo Card 3 (Technical Metadata Focus) -->
+<div class="bg-surface-container border border-outline-variant p-density-comfortable flex flex-col justify-center space-y-4">
+<div class="space-y-1">
+<h4 class="font-label-caps text-on-surface-variant text-[10px]">VERIFICATION STATUS</h4>
+<div class="flex items-center gap-3">
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+<span class="font-data-point text-sm text-primary">88%</span>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-4 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-[11px] font-label-caps text-outline">LATENCY</span>
+<span class="font-data-point text-xs text-on-surface">1.2ms</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[11px] font-label-caps text-outline">NETWORK</span>
+<span class="font-data-point text-xs text-on-surface uppercase">Polygon Mainnet</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[11px] font-label-caps text-outline">STAMP_TYPE</span>
+<span class="font-data-point text-xs text-on-surface uppercase">ZK-PROOF</span>
+</div>
+</div>
+<button class="w-full py-2 border border-primary text-primary font-label-caps text-[11px] hover:bg-primary/10 transition-colors uppercase tracking-widest">
+                            View Transaction Log
+                        </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Sidebar (Contract & Summary) -->
+<aside class="hidden lg:flex flex-col w-[380px] border-l border-outline-variant bg-surface-container-low overflow-y-auto">
+<!-- Quick Actions -->
+<div class="p-density-comfortable space-y-3 border-b border-outline-variant">
+<button class="w-full py-4 bg-primary text-on-primary font-bold font-label-caps chamfer-btn flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+                    MESSAGE CONTRACTOR
+                </button>
+<button class="w-full py-3 bg-surface-container-high border border-outline-variant text-on-surface font-label-caps flex items-center justify-center gap-2 hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                    DOWNLOAD VERIFIED REPORT
+                </button>
+</div>
+<!-- Contract Summary Technical Card -->
+<div class="p-density-comfortable space-y-gutter">
+<div class="relative">
+<div class="tech-card-header absolute -top-4 -left-0 h-6 bg-outline-variant px-4 flex items-center">
+<span class="text-[9px] font-label-caps text-on-surface font-bold uppercase tracking-wider">Project Summary</span>
+</div>
+<div class="border border-outline-variant p-density-comfortable pt-6 space-y-4">
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="text-[11px] font-label-caps text-outline uppercase">Total Contract Value</span>
+<span class="font-data-point text-lg text-primary">$284,500.00</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="text-[11px] font-label-caps text-outline uppercase">Deductible</span>
+<span class="font-data-point text-lg text-on-surface">$5,000.00</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="text-[11px] font-label-caps text-outline uppercase">Approved Payout</span>
+<span class="font-data-point text-lg text-secondary">$142,250.00</span>
+</div>
+</div>
+<div class="bg-surface-container-highest p-3 border-l-4 border-primary">
+<span class="text-[10px] font-label-caps text-primary uppercase block mb-1">Upcoming Milestone</span>
+<div class="text-sm font-bold text-on-surface">Material Delivery: Metal Panels</div>
+<div class="text-[11px] text-on-surface-variant">Scheduled: Oct 18, 2024</div>
+</div>
+</div>
+</div>
+<!-- Timeline -->
+<div class="space-y-4">
+<h4 class="font-label-caps text-[12px] text-outline border-b border-outline-variant pb-1">ACTIVITY LOG</h4>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div class="w-[1px] h-full bg-outline-variant"></div>
+</div>
+<div class="pb-4">
+<div class="text-[11px] font-label-caps text-on-surface-variant">OCT 14, 02:45 PM</div>
+<div class="text-xs font-bold text-on-surface">Thermal inspection batch uploaded</div>
+<div class="text-[10px] font-data-point text-outline">TX: 0x4f...8821</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div class="w-[1px] h-full bg-outline-variant"></div>
+</div>
+<div class="pb-4">
+<div class="text-[11px] font-label-caps text-on-surface-variant">OCT 12, 10:15 AM</div>
+<div class="text-xs font-bold text-on-surface">Site mobilization complete</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full border border-outline-variant mt-2"></div>
+</div>
+<div class="pb-4">
+<div class="text-[11px] font-label-caps text-outline">OCT 10, 09:00 AM</div>
+<div class="text-xs font-bold text-outline">Contract digitally signed</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Mobile Navigation Shell (Suppressed on Desktop as per rules) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 h-20 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-2 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-100 active:scale-90">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-lg px-3 py-1 scale-95 duration-100 active:scale-90">
+<span class="material-symbols-outlined" data-icon="photo_library" style="font-variation-settings: 'FILL' 1;">photo_library</span>
+<span class="font-label-caps text-label-caps uppercase">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-100 active:scale-90">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-caps text-label-caps uppercase">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-100 active:scale-90">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps uppercase">Docs</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for photo cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const img = card.querySelector('img');
+                if(img) img.style.filter = 'contrast(1.2) brightness(1.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const img = card.querySelector('img');
+                if(img) img.style.filter = 'contrast(1) brightness(0.8)';
+            });
+        });
+
+        // Atmospheric shimmer effect on primary action button
+        const mainBtn = document.querySelector('.chamfer-btn');
+        if(mainBtn) {
+            mainBtn.addEventListener('mousemove', (e) => {
+                const rect = mainBtn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                mainBtn.style.setProperty('--x', `${x}px`);
+                mainBtn.style.setProperty('--y', `${y}px`);
+                mainBtn.style.backgroundImage = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2) 0%, transparent 50%)`;
+            });
+            mainBtn.addEventListener('mouseleave', () => {
+                mainBtn.style.backgroundImage = 'none';
+            });
+        }
+    </script>
+</body></html>

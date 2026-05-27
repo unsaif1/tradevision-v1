@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Material Detail: TPO-060-WHT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#37393e",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary": "#412d00",
+                        "on-background": "#e2e2e8",
+                        "on-primary-fixed": "#002022",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary": "#ffdb9d",
+                        "tertiary-container": "#dad9d9",
+                        "secondary-container": "#feb700",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "inverse-on-surface": "#2f3035",
+                        "background": "#111317",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-container-high": "#282a2e",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-secondary-fixed": "#271900",
+                        "outline": "#849495",
+                        "surface-dim": "#111317",
+                        "primary": "#dbfcff",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container": "#1e2024",
+                        "surface-variant": "#333539",
+                        "surface-tint": "#00dbe9",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#ffdea8",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error": "#690005",
+                        "on-primary-container": "#006970",
+                        "primary-container": "#00f0ff",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary-fixed": "#7df4ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "on-tertiary": "#303031",
+                        "inverse-primary": "#006970",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "surface": "#111317",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#1a1c20",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for data tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #849495; 
+        }
+        
+        .technical-grid {
+            background-image: 
+                linear-gradient(to right, #3b494b 1px, transparent 1px),
+                linear-gradient(to bottom, #3b494b 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: top left;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container flex">
+<!-- NavigationDrawer (Shared Component) -->
+<nav class="bg-surface dark:bg-surface text-primary dark:text-primary font-label-caps text-label-caps fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin z-50">
+<div class="px-gutter mb-density-comfortable">
+<span class="font-display-md text-display-md text-primary dark:text-primary tracking-tight" style="font-family: 'Space Grotesk'; font-size: 24px; font-weight: 700; line-height: 1.2;">TRADEVISION</span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                REPORTS
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-headline-sm text-headline-sm fixed top-0 right-0 left-[260px] h-[64px] border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-40">
+<div class="flex items-center gap-3 cursor-pointer hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-caps text-label-caps font-bold text-primary dark:text-primary">ADMINISTRATIVE SUITE</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-8 w-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 20px;">person</span>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="pt-[64px] p-margin-desktop grid grid-cols-12 gap-margin-desktop flex-1 technical-grid bg-background/95">
+<!-- Left Column: Specs & Actions (4 cols) -->
+<div class="col-span-4 flex flex-col gap-margin-desktop">
+<!-- Material Header Card -->
+<div class="bg-surface-container border border-outline-variant relative">
+<!-- Technical Tab -->
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant px-3 py-1 font-label-caps text-label-caps text-on-surface">
+                        SKU IDENTIFIER
+                    </div>
+<div class="p-density-comfortable pt-10 flex flex-col gap-unit">
+<div class="flex justify-between items-start">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">TPO-060</h1>
+<div class="font-data-point text-data-point text-on-surface-variant mt-1">WHT-ROLL-10X100</div>
+</div>
+<div class="bg-surface-container-highest px-3 py-1 border border-outline-variant text-secondary-fixed-dim font-label-caps text-label-caps flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 14px;">verified</span>
+                                ACTIVE
+                            </div>
+</div>
+<p class="text-on-surface-variant font-body-fixed mt-4 text-sm">
+                            Thermoplastic Polyolefin single-ply roofing membrane. 60-mil thickness, white reflective finish. High resistance to UV, ozone, and chemical exposure.
+                        </p>
+</div>
+</div>
+<!-- Procurement Action -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps text-label-caps py-4 px-6 border-b-4 border-on-primary-container/30 hover:bg-primary-fixed transition-colors flex items-center justify-center gap-3 active:translate-y-[2px] active:border-b-2">
+<span class="material-symbols-outlined fill-icon">shopping_cart</span>
+                    INITIATE PROCUREMENT
+                </button>
+<!-- Technical Specs Grid -->
+<div class="bg-surface-container border border-outline-variant relative">
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant px-3 py-1 font-label-caps text-label-caps text-on-surface">
+                        TECHNICAL SPECIFICATIONS
+                    </div>
+<div class="p-density-comfortable pt-10">
+<div class="grid grid-cols-2 gap-px bg-outline-variant border border-outline-variant">
+<!-- Spec Item -->
+<div class="bg-surface-container p-3 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">THICKNESS</span>
+<span class="font-data-point text-data-point text-on-surface">0.060<span class="text-sm text-outline ml-1">in</span></span>
+</div>
+<!-- Spec Item -->
+<div class="bg-surface-container p-3 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">DIMENSIONS</span>
+<span class="font-data-point text-data-point text-on-surface">10x100<span class="text-sm text-outline ml-1">ft</span></span>
+</div>
+<!-- Spec Item -->
+<div class="bg-surface-container p-3 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">WEIGHT</span>
+<span class="font-data-point text-data-point text-on-surface">320<span class="text-sm text-outline ml-1">lbs</span></span>
+</div>
+<!-- Spec Item -->
+<div class="bg-surface-container p-3 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">COVERAGE</span>
+<span class="font-data-point text-data-point text-on-surface">1000<span class="text-sm text-outline ml-1">sqft</span></span>
+</div>
+<!-- Spec Item -->
+<div class="bg-surface-container p-3 flex flex-col col-span-2 border-t border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">MANUFACTURER</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Elevate (formerly Firestone)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Visualization & Ledger (8 cols) -->
+<div class="col-span-8 flex flex-col gap-margin-desktop">
+<!-- Top Row: Gauge & Quick Stats -->
+<div class="grid grid-cols-2 gap-margin-desktop">
+<!-- Stock Level Gauge -->
+<div class="bg-surface-container border border-outline-variant relative p-density-comfortable pt-10 flex flex-col items-center justify-center min-h-[300px]">
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant px-3 py-1 font-label-caps text-label-caps text-on-surface">
+                            CURRENT INVENTORY
+                        </div>
+<!-- Circular Gauge SVG -->
+<div class="relative w-48 h-48">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Track -->
+<circle cx="50" cy="50" fill="none" r="40" stroke="#333539" stroke-dasharray="251.2" stroke-dashoffset="0" stroke-width="8"></circle>
+<!-- Progress Track -->
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="40" stroke="#00dbe9" stroke-dasharray="251.2" stroke-dashoffset="100.48" stroke-width="8"></circle>
+</svg>
+<!-- Inner Content -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-point text-display-lg-mobile text-primary tracking-tight">42</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">ROLLS</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-4 w-full px-8">
+<div class="flex-1 bg-surface-container-highest h-2 border border-outline-variant">
+<div class="h-full bg-secondary-fixed-dim w-[20%]"></div>
+</div>
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">REORDER: 10</span>
+</div>
+</div>
+<!-- Warehouse Location Image Placeholder -->
+<div class="bg-surface-container border border-outline-variant relative overflow-hidden group">
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant px-3 py-1 font-label-caps text-label-caps text-on-surface z-10">
+                            STORAGE SECTOR
+                        </div>
+<div class="absolute inset-0 bg-surface-variant/50 z-0">
+<!-- Placeholder pattern instead of image to save space, but keeping structure -->
+<div class="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjMTExMzE3Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMzMzNTM5IiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] opacity-20"></div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-surface to-transparent z-10 flex justify-between items-end">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">LOCATION</div>
+<div class="font-data-point text-data-point text-primary">SEC-A, RACK-04</div>
+</div>
+<button class="h-10 w-10 border border-outline-variant bg-surface-container-highest text-on-surface flex items-center justify-center hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Detailed Stock History Ledger -->
+<div class="bg-surface-container border border-outline-variant relative flex-1 flex flex-col min-h-[400px]">
+<div class="absolute -top-[1px] -left-[1px] bg-outline-variant px-3 py-1 font-label-caps text-label-caps text-on-surface z-10">
+                        TRANSACTION LEDGER
+                    </div>
+<!-- Table Header -->
+<div class="pt-12 px-4 pb-2 border-b border-outline-variant grid grid-cols-12 gap-4 font-label-caps text-label-caps text-on-surface-variant">
+<div class="col-span-2">DATE</div>
+<div class="col-span-3">REF ID</div>
+<div class="col-span-2">TYPE</div>
+<div class="col-span-3">JOB / VENDOR</div>
+<div class="col-span-2 text-right">QTY</div>
+</div>
+<!-- Table Body (Scrollable) -->
+<div class="overflow-y-auto flex-1 p-2 flex flex-col gap-1">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface-container-highest border border-outline-variant/50 hover:border-primary-fixed-dim/50 transition-colors">
+<div class="col-span-2 font-data-point text-sm text-on-surface">10.24.23</div>
+<div class="col-span-3 font-data-point text-sm text-secondary-fixed-dim">REQ-8892</div>
+<div class="col-span-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-error" style="font-size: 16px;">arrow_outward</span>
+<span class="font-label-caps text-xs text-on-surface">ALLOCATION</span>
+</div>
+<div class="col-span-3 font-body-fixed text-sm text-on-surface truncate">PRJ-Alpha Centauri Roof</div>
+<div class="col-span-2 text-right font-data-point text-error">-12</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface-container border border-transparent">
+<div class="col-span-2 font-data-point text-sm text-on-surface">10.18.23</div>
+<div class="col-span-3 font-data-point text-sm text-on-surface-variant">PO-4410</div>
+<div class="col-span-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-size: 16px;">south_east</span>
+<span class="font-label-caps text-xs text-on-surface">RECEIPT</span>
+</div>
+<div class="col-span-3 font-body-fixed text-sm text-on-surface truncate">Beacon Building Supply</div>
+<div class="col-span-2 text-right font-data-point text-primary-fixed-dim">+40</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface-container border border-transparent">
+<div class="col-span-2 font-data-point text-sm text-on-surface">09.05.23</div>
+<div class="col-span-3 font-data-point text-sm text-on-surface-variant">REQ-8750</div>
+<div class="col-span-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-error" style="font-size: 16px;">arrow_outward</span>
+<span class="font-label-caps text-xs text-on-surface">ALLOCATION</span>
+</div>
+<div class="col-span-3 font-body-fixed text-sm text-on-surface truncate">PRJ-Omega Logistics</div>
+<div class="col-span-2 text-right font-data-point text-error">-28</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

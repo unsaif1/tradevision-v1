@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Review - ContractorOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "surface-tint": "#00dbe9",
+                    "surface-container-low": "#1a1c20",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#271900",
+                    "on-primary-fixed": "#002022",
+                    "secondary-fixed-dim": "#ffba20",
+                    "tertiary": "#f7f5f5",
+                    "inverse-surface": "#e2e2e8",
+                    "surface-bright": "#37393e",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-tertiary": "#303031",
+                    "background": "#111317",
+                    "surface-container": "#1e2024",
+                    "on-secondary-container": "#6b4b00",
+                    "on-surface-variant": "#b9cacb",
+                    "on-secondary": "#412d00",
+                    "surface-variant": "#333539",
+                    "on-error": "#690005",
+                    "primary-container": "#00f0ff",
+                    "tertiary-container": "#dad9d9",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "secondary-fixed": "#ffdea8",
+                    "on-primary": "#00363a",
+                    "on-primary-fixed-variant": "#004f54",
+                    "outline-variant": "#3b494b",
+                    "inverse-primary": "#006970",
+                    "on-background": "#e2e2e8",
+                    "outline": "#849495",
+                    "on-surface": "#e2e2e8",
+                    "surface-dim": "#111317",
+                    "secondary": "#ffdb9d",
+                    "primary-fixed-dim": "#00dbe9",
+                    "surface": "#111317",
+                    "tertiary-fixed": "#e4e2e2",
+                    "on-tertiary-container": "#5e5f5f",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-primary-container": "#006970",
+                    "surface-container-highest": "#333539",
+                    "primary": "#dbfcff",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "surface-container-high": "#282a2e",
+                    "inverse-on-surface": "#2f3035",
+                    "error": "#ffb4ab",
+                    "secondary-container": "#feb700",
+                    "primary-fixed": "#7df4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "density-compact": "8px",
+                    "density-comfortable": "24px",
+                    "margin-mobile": "16px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Space Grotesk"],
+                    "data-point": ["JetBrains Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "body-fixed": ["Inter"],
+                    "headline-md": ["Space Grotesk"],
+                    "display-lg-mobile": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Fallback for injected style from JSON if not in config */
+        .text-neon-blue { color: #00dbe9; }
+        .border-neon-blue { border-color: #00dbe9; }
+        
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border: 1px solid #111317; }
+        ::-webkit-scrollbar-thumb:hover { background: #849495; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed text-body-fixed antialiased h-screen w-full overflow-hidden flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Global Layout: SideNav + Main Content Area -->
+<!-- SideNavBar (Shared Component JSON) -->
+<aside class="docked left-0 h-full w-64 bg-surface-container-low dark:bg-surface-container-low border-r border-border-muted flex flex-col h-screen py-6 z-20 shrink-0 border-outline-variant">
+<!-- Header -->
+<div class="px-gutter mb-density-comfortable">
+<div class="flex items-center gap-density-compact mb-2">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed" data-icon="domain">domain</span>
+</div>
+<div class="truncate">
+<h2 class="text-headline-sm font-headline-sm text-on-surface truncate">Industrial Field Ops</h2>
+<p class="text-label-caps font-label-caps text-on-surface-variant truncate">Active Session: 8h 12m</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full mt-density-compact bg-surface-container-highest border border-outline-variant hover:bg-surface-variant/80 text-on-surface font-label-caps text-label-caps py-2 px-4 rounded-DEFAULT transition-all duration-150 flex items-center justify-center gap-2 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                New Job Order
+            </button>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 overflow-y-auto mt-density-compact">
+<ul class="flex flex-col gap-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-caps">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="work">work</span>
+<span class="text-label-md font-label-caps">Jobs</span>
+</a>
+</li>
+<!-- ACTIVE TAB -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-neon-blue font-bold border-l-4 border-neon-blue bg-surface-variant/50 Active: translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="photo_library" data-weight="fill" style="font-variation-settings: 'FILL' 1;">photo_library</span>
+<span class="text-label-md font-label-caps">Evidence</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-caps">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+<span class="text-label-md font-label-caps">Team</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-caps">Analytics</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Footer Tab -->
+<div class="px-2 mt-auto pt-density-comfortable">
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 border-t border-outline-variant pt-density-comfortable" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span class="text-label-md font-label-caps">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col min-w-0 bg-background relative">
+<!-- TopNavBar (Shared Component JSON) -->
+<header class="docked full-width top-0 bg-surface-container dark:bg-surface-container border-b border-border-muted flat no shadows flex justify-between items-center w-full px-margin-desktop h-16 shrink-0 z-10 border-outline-variant">
+<div class="flex items-center gap-density-comfortable">
+<h1 class="text-headline-md font-headline-md font-bold text-neon-blue uppercase tracking-widest">ContractorOS</h1>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<!-- Trailing Secondary Action -->
+<div class="hidden md:flex items-center gap-2 border border-outline-variant px-3 py-1 rounded bg-surface-container-highest">
+<span class="w-2 h-2 rounded-full bg-primary-fixed shadow-[0_0_8px_rgba(125,244,255,0.6)] animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">System Status: Optimal</span>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-density-compact">
+<button aria-label="notifications" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 Active: scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="settings" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 Active: scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button aria-label="help" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 Active: scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+<!-- Profile -->
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden shrink-0 ml-density-compact">
+<img alt="Contractor Profile" class="w-full h-full object-cover" data-alt="A close-up, high-contrast portrait of a rugged construction manager wearing a hard hat, set against a dark industrial background with cool, subtle cyan lighting highlighting facial features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSL-0FPMwPmgj3QzLHcLA7Vh7cnuJtZ1j71RmZ-RrDTOvwYWvzMig51vhdUsbrvPN6o78DikFDDyWC0PiSR50hWQyEywKWZfJoonfjnoXG2E7tC5au3NLMa9qw1YMHP1igp1UQt7HpVS421LP0YP79jqy8Cj5GGJHf7I-YT0oG8MEax0j5pYBeDA9j3CucbWmsvRy56GV6TBEamxMwp7u2yJ-ld1sbs04oc_kqyOswEuqGwriuckSpTyVPzvkyEpS9ch621v4KeFt2"/>
+</div>
+</div>
+</header>
+<!-- Evidence Review Split Pane Workspace -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Pane: Evidence Categories Sidebar -->
+<div class="w-72 border-r border-outline-variant bg-surface-container-lowest flex flex-col shrink-0">
+<div class="p-gutter border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Inspection Nodes</h3>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="filter_list">filter_list</span>
+</div>
+<div class="flex-1 overflow-y-auto p-density-compact flex flex-col gap-1">
+<!-- Category Item: Active -->
+<button class="w-full text-left p-3 rounded-DEFAULT border border-primary-fixed bg-surface-container-highest relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-fixed/5 opacity-100 transition-opacity"></div>
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-primary-fixed"></div>
+<div class="flex justify-between items-start relative z-10">
+<div>
+<h4 class="font-headline-md text-[16px] font-semibold text-primary-fixed mb-1 leading-none">Shingle Granule Loss</h4>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase">12 Media Items • Critical</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary-fixed" data-icon="warning">warning</span>
+</div>
+</button>
+<!-- Category Item: Inactive -->
+<button class="w-full text-left p-3 rounded-DEFAULT border border-transparent hover:border-outline-variant bg-transparent hover:bg-surface-container transition-all group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-[16px] font-medium text-on-surface mb-1 leading-none group-hover:text-primary-fixed transition-colors">Hail Impact</h4>
+<p class="font-label-caps text-[10px] text-outline uppercase">8 Media Items • Pending</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary-fixed transition-colors" data-icon="lens_blur">lens_blur</span>
+</div>
+</button>
+<!-- Category Item: Inactive -->
+<button class="w-full text-left p-3 rounded-DEFAULT border border-transparent hover:border-outline-variant bg-transparent hover:bg-surface-container transition-all group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-[16px] font-medium text-on-surface mb-1 leading-none group-hover:text-primary-fixed transition-colors">Flashing Integrity</h4>
+<p class="font-label-caps text-[10px] text-outline uppercase">4 Media Items • Reviewed</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary-fixed transition-colors" data-icon="architecture">architecture</span>
+</div>
+</button>
+<!-- Category Item: Inactive -->
+<button class="w-full text-left p-3 rounded-DEFAULT border border-transparent hover:border-outline-variant bg-transparent hover:bg-surface-container transition-all group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-[16px] font-medium text-on-surface mb-1 leading-none group-hover:text-primary-fixed transition-colors">Gutter Blockage</h4>
+<p class="font-label-caps text-[10px] text-outline uppercase">2 Media Items • Minor</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary-fixed transition-colors" data-icon="water_drop">water_drop</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Right Pane: Main Canvas -->
+<div class="flex-1 flex flex-col bg-surface overflow-hidden relative">
+<!-- Background ambient glow -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-fixed/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Technical Metadata Header (Heads-up display feel) -->
+<div class="px-margin-desktop py-gutter border-b border-outline-variant bg-surface/80 backdrop-blur-sm flex justify-between items-end shrink-0 z-10">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container font-label-caps text-[10px] uppercase border border-error/30 rounded-sm">Critical Flag</span>
+<h2 class="text-headline-md font-headline-md text-on-surface uppercase tracking-wide">Shingle Granule Loss</h2>
+</div>
+<p class="font-body-fixed text-sm text-on-surface-variant max-w-2xl">Extensive deterioration observed on the southern exposure. Granule depletion exceeds 40% in concentrated areas, exposing the asphalt substrate to UV degradation.</p>
+</div>
+<!-- Telemetry Data Grid -->
+<div class="flex gap-unit">
+<div class="border border-outline-variant bg-surface-container-low p-2 min-w-[120px] flex flex-col justify-between">
+<span class="font-label-caps text-[10px] text-outline uppercase mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="my_location">my_location</span> Coord
+                            </span>
+<span class="font-data-point text-data-point text-primary-fixed tracking-tight">34.05°N<br/>-118.24°W</span>
+</div>
+<div class="border border-outline-variant bg-surface-container-low p-2 min-w-[100px] flex flex-col justify-between">
+<span class="font-label-caps text-[10px] text-outline uppercase mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="altitude">altitude</span> Elev
+                            </span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-data-point text-on-surface">342</span>
+<span class="font-label-caps text-outline">ft</span>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-low p-2 min-w-[100px] flex flex-col justify-between">
+<span class="font-label-caps text-[10px] text-outline uppercase mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="air">air</span> Wind
+                            </span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-data-point text-on-surface">12.4</span>
+<span class="font-label-caps text-outline">mph</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Media Grid Canvas -->
+<div class="flex-1 overflow-y-auto p-margin-desktop">
+<!-- High-Res Bento Grid Layout for Evidence -->
+<div class="grid grid-cols-3 grid-rows-2 gap-gutter h-full min-h-[600px]">
+<!-- Primary Focus Media (Large) -->
+<div class="col-span-2 row-span-2 border border-outline-variant bg-surface-container-lowest relative group overflow-hidden flex flex-col">
+<div class="absolute top-0 left-0 bg-surface-container-low border-b border-r border-outline-variant px-3 py-1 z-10 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-data-point text-[12px] text-on-surface uppercase">IMG_CORE_01</span>
+</div>
+<!-- AI Overlay Toggle Indicator -->
+<div class="absolute top-3 right-3 z-10 bg-surface-container-low/80 backdrop-blur border border-outline-variant rounded p-1 flex items-center gap-2">
+<span class="font-label-caps text-[10px] text-primary-fixed uppercase">AI Analysis</span>
+<span class="material-symbols-outlined text-[16px] text-primary-fixed" data-icon="memory">memory</span>
+</div>
+<img alt="Roof Shingles" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="High-resolution, extreme close-up photograph of heavily weathered asphalt roof shingles. The texture is gritty and rough, showing significant loss of protective granules with exposed black asphalt underneath. The lighting is harsh, overcast daylight typical of an industrial site inspection. The mood is clinical and diagnostic, set in a dark-mode framing context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJtKXxtPOsnjkI37hfOdsrdgd7Kfc-Uj5MiYx3oDF9V0oxlZuD2pmCjQUIPrr6sRaMHP7IiZOOlSwB3JrjnDgqZqT80Lm8wVXVF0J_JuiT5ltg-BuykflP1n2tZNTw_rn9s9UgvAqgQDVybV6XUXMddr3FF2AFmLZ9co6Eo_Rr0uszVa5OPUECjHS3ATJqfprtHAJENrg0Yo_yGapu5KRXWWaDiDHZPzhglok7Ay1Z9D72bQo6II7Nju2D8QnvIkAZAz85xxTj_4Sq"/>
+<!-- Technical Overlay / Bounding Box (Simulated) -->
+<div class="absolute inset-0 border-[1px] border-error/50 pointer-events-none m-12 flex items-center justify-center bg-error/5">
+<div class="absolute bottom-2 right-2 bg-error-container text-on-error-container font-data-point text-[10px] px-1 border border-error">SEV-HIGH: 45% LOSS</div>
+</div>
+</div>
+<!-- Secondary Media 1 -->
+<div class="border border-outline-variant bg-surface-container-lowest relative overflow-hidden group">
+<div class="absolute top-0 left-0 bg-surface-container-low border-b border-r border-outline-variant px-2 py-0.5 z-10">
+<span class="font-data-point text-[10px] text-on-surface uppercase">VID_DRONE_N</span>
+</div>
+<img alt="Roof Drone View" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0" data-alt="Aerial drone photography looking straight down at an expansive residential roof structure. The geometric layout of the roof planes is clearly visible against a stark, high-contrast industrial background. The image has a slightly desaturated, gritty feel suitable for technical analysis in a dark-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVA2xG0bK5JHvBGwQ7Ntw9zXaX2tRaWrmMxTddCAJejpkU-1UV9fxaG-2ckoc_quo7PXilKJDIJPqvlwCkzQPPr8DCXC3sn9b0txg4vi0MvzohBXFP3rCioQqV8LHdCFcbYmXGd0yoRICqqZoJqo989tdNMfgx5FoVCpnUIHoK_gjbfiyGmYoLNuqUAbhuCvFQUxI0L9OEksoaLctcmJizG8T_MAYtbZA5A8xBAh71n6hNw1elQ-MHZY237NGzbpISW1bwFH7Sf_rB"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-10 h-10 rounded-full bg-surface-container/80 border border-outline-variant flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary-fixed text-[24px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Secondary Media 2 -->
+<div class="border border-outline-variant bg-surface-container-lowest relative overflow-hidden group">
+<div class="absolute top-0 left-0 bg-surface-container-low border-b border-r border-outline-variant px-2 py-0.5 z-10">
+<span class="font-data-point text-[10px] text-on-surface uppercase">IMG_MACRO_04</span>
+</div>
+<img alt="Macro Granule Texture" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-alt="Macro photography detailing the rough, granular surface of a single roofing shingle. The depth of field is shallow, bringing sharp focus to the individual mineral granules against a dark, pitch-black background. High contrast lighting accentuates the rugged texture, creating a highly technical, industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnqpTCsGi46ZDTzI_6UJDN5N46jJwP1H_qARfgutrLv03CZgBY6hjT60PHhVOkK1uBCNQCcZV98WRgfLnDKMH4ODTAeakO1cSZ-uPynr2jv15P-wh-Id9OL6og0UYXn8gabgz14jpGCBEpIEN1xB9SWTj0w5Br-L3U6Hf9DYuuMWshdezri7OBzfcGThb24CvbvvtKqkfxEIbtPez06lodXA1WcfZF8WJ9GEzm5f1454JbOcDQ6Jpf9zRWboyfGsh8KRsm7rlbnwlV"/>
+<!-- Measurement Tool Overlay -->
+<div class="absolute bottom-2 left-2 right-2 border-t border-dashed border-primary-fixed flex justify-between pt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="w-[1px] h-2 bg-primary-fixed"></span>
+<span class="font-data-point text-[10px] text-primary-fixed">2.5 cm</span>
+<span class="w-[1px] h-2 bg-primary-fixed"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Action Workflow -->
+<div class="p-gutter border-t border-outline-variant bg-surface-container-high flex justify-between items-center shrink-0">
+<!-- Progress / Status -->
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border border-outline bg-surface flex items-center justify-center text-primary-fixed"><span class="material-symbols-outlined text-[16px]" data-icon="check">check</span></div>
+<div class="w-8 h-8 rounded-full border border-outline bg-surface flex items-center justify-center text-primary-fixed"><span class="material-symbols-outlined text-[16px]" data-icon="check">check</span></div>
+<div class="w-8 h-8 rounded-full border border-primary-fixed bg-surface-variant flex items-center justify-center text-on-surface font-data-point text-[12px]">3</div>
+<div class="w-8 h-8 rounded-full border border-outline border-dashed bg-surface-container flex items-center justify-center text-outline font-data-point text-[12px]">4</div>
+</div>
+<span class="font-label-caps text-on-surface-variant uppercase tracking-wider">Node 3 of 4 Remaining</span>
+</div>
+<!-- Workflow Actions -->
+<div class="flex items-center gap-density-comfortable">
+<button class="font-label-caps text-label-caps text-on-surface uppercase hover:text-primary-fixed transition-colors px-4 py-2 border border-transparent hover:border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="flag">flag</span>
+                            Escalate to Engineering
+                        </button>
+<button class="bg-primary text-on-primary font-headline-md text-[16px] font-bold uppercase tracking-wider py-3 px-8 rounded-sm border-b-4 border-inverse-primary hover:translate-y-[2px] hover:border-b-2 active:translate-y-[4px] active:border-b-0 transition-all duration-100 flex items-center gap-2 shadow-[0_0_15px_rgba(219,252,255,0.15)]">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified">verified</span>
+                            Verify &amp; Proceed
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Lightweight JS for interaction feel
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.style.transform = 'scale(0.98)');
+            btn.addEventListener('mouseup', () => btn.style.transform = 'scale(1)');
+            btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+        });
+    </script>
+</body></html>

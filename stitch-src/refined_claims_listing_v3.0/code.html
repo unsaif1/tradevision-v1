@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Claims &amp; Documentation - TradeVision C.A.R.E.</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#d5e4f7",
+                        "on-surface-variant": "#e4bdbf",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-secondary-container": "#a8b6c9",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-primary-container": "#fffcff",
+                        "on-error": "#690005",
+                        "on-background": "#dee2ec",
+                        "secondary": "#bac8db",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dee2ec",
+                        "primary-container": "#e21e51",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-tertiary-container": "#fefcff",
+                        "surface-container-highest": "#30353d",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-container-low": "#171c23",
+                        "text-primary": "#FFFFFF",
+                        "surface-deep": "#1C2128",
+                        "on-surface": "#dee2ec",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-secondary": "#243240",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#ab888a",
+                        "inverse-primary": "#be003e",
+                        "surface-dim": "#0f141a",
+                        "error": "#ffb4ab",
+                        "tertiary": "#bdc7dc",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-container-lowest": "#090f15",
+                        "inverse-on-surface": "#2c3138",
+                        "accent-active": "#E21E51",
+                        "on-tertiary": "#273141",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "background": "#0f141a",
+                        "surface-container": "#1b2027",
+                        "surface": "#0f141a",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "tertiary-container": "#6b7588",
+                        "on-primary-fixed": "#40000f",
+                        "primary-fixed": "#ffdadb",
+                        "text-secondary": "#8896A8",
+                        "surface-bright": "#353941",
+                        "outline-variant": "#5c3f42",
+                        "on-primary": "#67001e",
+                        "surface-container-high": "#252a32",
+                        "surface-muted": "#2D3748",
+                        "surface-tint": "#ffb2b9",
+                        "secondary-container": "#3a4858",
+                        "primary": "#ffb2b9",
+                        "surface-variant": "#30353d"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "md": "16px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "margin": "24px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-md": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"]
+                    },
+                    fontSize: {
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-[64px] shadow-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-2xl hover:bg-surface-container-highest transition-colors rounded p-1 cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary truncate">TRADEVISION C.A.R.E.</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-muted border border-border-subtle flex items-center justify-center overflow-hidden hover:bg-surface-container-highest transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[64px] pb-[80px] md:pb-lg w-full max-w-[1440px] mx-auto flex flex-col">
+<!-- Search & Filter Sticky Bar -->
+<section class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-[12px] px-margin py-base border-b border-subtle flex gap-base">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary text-lg">search</span>
+<input class="w-full bg-surface-deep border border-border-subtle rounded-lg text-body-sm font-body-sm text-text-primary pl-10 pr-4 py-2 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-shadow placeholder:text-text-secondary" placeholder="Search claims, IDs, or projects..." type="text"/>
+</div>
+<button class="bg-surface-muted border border-border-subtle rounded-lg px-3 py-2 flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-text-primary text-lg">tune</span>
+</button>
+</section>
+<!-- Documentation Folders (Horizontal Scroll) -->
+<section class="flex flex-col mt-4">
+<div class="px-margin flex justify-between items-end mb-base">
+<h2 class="font-headline-md text-headline-md text-text-primary">Documentation</h2>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider cursor-pointer hover:opacity-80">View All</span>
+</div>
+<div class="flex overflow-x-auto no-scrollbar px-margin gap-base pb-md snap-x">
+<!-- Folder Card 1 -->
+<div class="min-w-[160px] bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-sm snap-start cursor-pointer hover:bg-surface-container-highest transition-colors active:scale-95">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded bg-tertiary-fixed/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-deep px-2 py-1 rounded">12</span>
+</div>
+<div class="mt-2">
+<h3 class="font-body-sm text-body-sm text-text-primary font-medium">Site Audits</h3>
+<p class="font-label-sm text-label-sm text-text-secondary mt-1">Updated 2h ago</p>
+</div>
+</div>
+<!-- Folder Card 2 -->
+<div class="min-w-[160px] bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-sm snap-start cursor-pointer hover:bg-surface-container-highest transition-colors active:scale-95">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">policy</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-deep px-2 py-1 rounded">4</span>
+</div>
+<div class="mt-2">
+<h3 class="font-body-sm text-body-sm text-text-primary font-medium">Compliance</h3>
+<p class="font-label-sm text-label-sm text-text-secondary mt-1">Action Req.</p>
+</div>
+</div>
+<!-- Folder Card 3 -->
+<div class="min-w-[160px] bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-sm snap-start cursor-pointer hover:bg-surface-container-highest transition-colors active:scale-95">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded bg-secondary-fixed/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-deep px-2 py-1 rounded">28</span>
+</div>
+<div class="mt-2">
+<h3 class="font-body-sm text-body-sm text-text-primary font-medium">Invoices</h3>
+<p class="font-label-sm text-label-sm text-text-secondary mt-1">Updated 1d ago</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Claims List -->
+<section class="flex flex-col mt-2">
+<div class="px-margin flex justify-between items-end mb-md">
+<h2 class="font-headline-md text-headline-md text-text-primary">Recent Claims</h2>
+<div class="flex items-center gap-1 text-text-secondary cursor-pointer hover:text-text-primary transition-colors">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Sort: Newest</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs px-margin">
+<!-- Claim Card 1 (FLAG_REQ) -->
+<div class="bg-surface-deep border border-border-subtle rounded-lg p-md flex flex-col gap-md relative overflow-hidden group hover:border-outline-variant transition-colors cursor-pointer">
+<!-- Left Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container opacity-80"></div>
+<div class="flex justify-between items-start pl-2">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-secondary font-mono tracking-wider">CLM-2024-089</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-highest px-2 py-1 rounded border border-border-subtle">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container"></div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase tracking-widest">FLAG_REQ</span>
+</div>
+</div>
+<div class="pl-2">
+<h3 class="font-body-lg text-body-lg text-text-primary font-medium leading-tight mb-1">Structural Integrity Failure - Sector 4</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">construction</span>
+<span class="font-body-sm text-body-sm text-text-secondary">PRJ-Alpha</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">calendar_today</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Oct 24, 2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Claim Card 2 (PENDING) -->
+<div class="bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-md relative overflow-hidden group hover:border-outline-variant transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-secondary font-mono tracking-wider">CLM-2024-088</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-highest px-2 py-1 rounded border border-border-subtle">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">PENDING</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-text-primary font-medium leading-tight mb-1">Material Defect Report - Bulk Delivery</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">construction</span>
+<span class="font-body-sm text-body-sm text-text-secondary">PRJ-Beta</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">calendar_today</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Oct 22, 2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Claim Card 3 (VERIFIED) -->
+<div class="bg-surface-deep border border-border-subtle rounded-lg p-md flex flex-col gap-md relative overflow-hidden group hover:border-outline-variant transition-colors cursor-pointer opacity-70 hover:opacity-100">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-secondary font-mono tracking-wider">CLM-2024-081</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-highest px-2 py-1 rounded border border-border-subtle">
+<div class="w-1.5 h-1.5 rounded-full bg-[#4ADE80]"></div>
+<span class="font-label-sm text-label-sm text-[#4ADE80] uppercase tracking-widest">VERIFIED</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-text-secondary font-medium leading-tight mb-1 line-through decoration-text-secondary/50">Logistical Delay Compensation</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">construction</span>
+<span class="font-body-sm text-body-sm text-text-secondary">PRJ-Gamma</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-text-secondary text-sm">calendar_today</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Oct 15, 2024</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (New Claim) -->
+<button class="fixed bottom-[80px] right-margin z-50 bg-primary-container text-on-primary-container rounded-full w-14 h-14 flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.5)] active:scale-95 transition-transform md:bottom-margin">
+<span class="material-symbols-outlined text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="bg-surface-container-low border-t border-outline-variant fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-16 pb-safe md:hidden">
+<!-- Command -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 cursor-pointer w-16">
+<span class="material-symbols-outlined text-xl mb-1">terminal</span>
+<span class="font-label-sm text-label-sm text-center">Command</span>
+</div>
+<!-- Projects -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 cursor-pointer w-16">
+<span class="material-symbols-outlined text-xl mb-1">construction</span>
+<span class="font-label-sm text-label-sm text-center">Projects</span>
+</div>
+<!-- Claims (ACTIVE) -->
+<div class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 cursor-pointer w-16 -mt-[2px]">
+<span class="material-symbols-outlined text-xl mb-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assignment_late</span>
+<span class="font-label-sm text-label-sm text-center font-bold">Claims</span>
+</div>
+<!-- Alerts -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 cursor-pointer w-16">
+<span class="material-symbols-outlined text-xl mb-1">notifications_active</span>
+<span class="font-label-sm text-label-sm text-center">Alerts</span>
+</div>
+<!-- Account -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 cursor-pointer w-16">
+<span class="material-symbols-outlined text-xl mb-1">manage_accounts</span>
+<span class="font-label-sm text-label-sm text-center">Account</span>
+</div>
+</nav>
+</body></html>

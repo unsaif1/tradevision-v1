@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #111317;
+            font-family: 'Inter', sans-serif;
+            color: #e2e2e8;
+            margin: 0;
+            overflow: hidden;
+        }
+        .industrial-clip {
+            clip-path: polygon(0% 0%, 95% 0%, 100% 25%, 100% 100%, 5% 100%, 0% 75%);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 219, 233, 0.1);
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            from { top: 0%; }
+            to { top: 100%; }
+        }
+        .pitch-gauge-svg {
+            transform: rotate(-90deg);
+        }
+        .font-display-md { font-family: 'Space Grotesk', sans-serif; }
+        .font-headline-sm { font-family: 'Space Grotesk', sans-serif; }
+        .font-label-caps { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        .font-mono-data { font-family: 'JetBrains Mono', monospace; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#dad9d9",
+                      "primary-container": "#00f0ff",
+                      "surface-variant": "#333539",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary": "#412d00",
+                      "surface-container": "#1e2024",
+                      "on-secondary-container": "#6b4b00",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-tertiary": "#303031",
+                      "background": "#111317",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#37393e",
+                      "tertiary": "#f7f5f5",
+                      "inverse-surface": "#e2e2e8",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-primary-fixed": "#002022",
+                      "on-secondary-fixed": "#271900",
+                      "error-container": "#93000a",
+                      "surface-tint": "#00dbe9",
+                      "surface-container-low": "#1a1c20",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "secondary-container": "#feb700",
+                      "primary-fixed": "#7df4ff",
+                      "inverse-on-surface": "#2f3035",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#282a2e",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "primary": "#dbfcff",
+                      "surface-container-highest": "#333539",
+                      "on-primary-container": "#006970",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-tertiary-container": "#5e5f5f",
+                      "tertiary-fixed": "#e4e2e2",
+                      "surface": "#111317",
+                      "primary-fixed-dim": "#00dbe9",
+                      "surface-dim": "#111317",
+                      "secondary": "#ffdb9d",
+                      "outline": "#849495",
+                      "on-surface": "#e2e2e8",
+                      "on-background": "#e2e2e8",
+                      "inverse-primary": "#006970",
+                      "outline-variant": "#3b494b",
+                      "on-primary-fixed-variant": "#004f54",
+                      "secondary-fixed": "#ffdea8",
+                      "on-primary": "#00363a",
+                      "tertiary-fixed-dim": "#c7c6c6"
+              },
+              "spacing": {
+                      "density-comfortable": "24px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "density-compact": "8px"
+              }
+            },
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface-container dark:bg-surface-container border-r border-outline-variant flex flex-col h-screen overflow-y-auto z-40">
+<div class="p-density-comfortable">
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-[10px] text-outline tracking-[0.2em] mt-1">C.A.R.E. Command</p>
+</div>
+<nav class="flex-1 mt-8">
+<div class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 cursor-not-allowed opacity-50">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</div>
+<div class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 cursor-not-allowed opacity-50">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</div>
+<!-- ACTIVE: Claims (Logic: This is an invitation to accept a claim) -->
+<div class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/10 text-primary font-bold opacity-90 transition-opacity duration-100">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</div>
+<div class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 cursor-not-allowed opacity-50">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</div>
+<div class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 cursor-not-allowed opacity-50">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</div>
+</nav>
+<div class="p-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full border border-primary-fixed-dim" src="https://lh3.googleusercontent.com/aida-public/AB6AXuActycz4QkrTQ03jFffJ5b-vWX_OhCM4ePztI_bUZ_PGnSiQeauA6AL7iRHzDO0lH9zuUhJ-_4l-iOWtCx__m5Y3XoS0N3g3ZwX6-MsvmYeZCB4pumeaukFWuy3Os9LEGjLPCKN574MG7bR2os3YGeAqMpjXWseMWSMg4K_Oarqv6OqfpX0Yl2w_9WIRAcBVMz3RsaGo6g1gDwMWEeI_LBZkCSHfCUCmD6aEuidtXoTgzXMlHRs3Nvnm47AObdKP4o839g_Z69vF1Is"/>
+<div>
+<p class="font-label-caps text-[11px] font-bold text-on-surface">Admin User</p>
+<p class="font-label-caps text-[9px] text-outline">System Auth</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface dark:bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop w-full">
+<div class="flex items-center gap-8">
+<span class="font-display-md text-headline-sm font-semibold text-on-surface">TradeVision C.A.R.E.</span>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-high border border-outline-variant rounded px-10 py-1 text-sm focus:ring-1 focus:ring-primary-fixed-dim outline-none w-64 transition-all" placeholder="Search Assets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="help">help</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="apps">apps</span>
+<div class="flex items-center gap-2 border-l border-outline-variant pl-6">
+<span class="font-mono-data text-xs text-secondary-container">TX-9982</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[64px] h-[calc(100vh-64px)] p-margin-desktop overflow-hidden relative">
+<!-- Background Grid Overlay -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#00f0ff 1px, transparent 0); background-size: 40px 40px;"></div>
+<div class="relative z-10 grid grid-cols-12 gap-gutter h-full">
+<!-- Header Section -->
+<div class="col-span-12 mb-8">
+<div class="flex items-baseline gap-4">
+<h2 class="font-display-lg text-4xl font-bold tracking-tight text-on-surface uppercase">Onboarding Acceptance</h2>
+<div class="h-px flex-1 bg-gradient-to-r from-primary-fixed-dim to-transparent opacity-30"></div>
+<span class="font-mono-data text-primary text-sm tracking-widest">STEP 04 // VALIDATION</span>
+</div>
+</div>
+<!-- Left Pane: Claim Manifest -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-gutter">
+<div class="relative bg-surface-container border border-outline-variant group p-density-comfortable">
+<!-- Tab Header Overlay -->
+<div class="absolute -top-[1px] left-0 bg-secondary-container text-on-secondary-container px-4 py-1 font-label-caps text-[10px] font-bold uppercase industrial-clip">
+                        Manifest Entry
+                    </div>
+<div class="mt-4 flex flex-col gap-6">
+<div>
+<p class="font-label-caps text-outline text-[11px] mb-2">Primary Incident Type</p>
+<h3 class="font-display-md text-3xl font-extrabold text-error tracking-tighter uppercase">Severe Wind Damage</h3>
+</div>
+<div class="grid grid-cols-3 gap-4 border-t border-outline-variant pt-6">
+<div class="p-4 bg-surface-container-low border border-outline-variant/30">
+<p class="font-label-caps text-outline text-[10px]">Reference ID</p>
+<p class="font-mono-data text-secondary-container text-lg font-bold">CLM-2023-884A</p>
+</div>
+<div class="p-4 bg-surface-container-low border border-outline-variant/30">
+<p class="font-label-caps text-outline text-[10px]">Asset Class</p>
+<p class="font-mono-data text-on-surface text-lg font-bold">Industrial TPO</p>
+</div>
+<div class="p-4 bg-surface-container-low border border-outline-variant/30">
+<p class="font-label-caps text-outline text-[10px]">Location Code</p>
+<p class="font-mono-data text-on-surface text-lg font-bold">TX-S4-A2</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 relative overflow-hidden h-[300px]">
+<div class="scanline"></div>
+<img alt="Roof Damage Visualization" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale" data-alt="A high-angle professional drone inspection shot of an industrial roof with visible severe wind damage, including torn TPO membranes and exposed insulation. The lighting is harsh and high-contrast, emphasizing the technical texture of the damaged materials. The overall aesthetic is industrial and clinical, dominated by deep obsidian tones and cold cyan highlights to match a technical CRM dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC73S_Fbi6FFP37zVxoG5Sm4-SWuITTE2fEGdIQoxHggC65gQkrkGjepvsEQnua0pZj0B8TiK8zpMUbTKhhsksEV4ZG4xn1tskqVkl8TGBZS7SVUCSuuSKeY7sD1z283YkFsXV5BAUDAGfY3v_H2IweuJfvFkdsLBNM3_xSDM3zKQXUlOkFLhUg_6sDGCEX750TqIT1KzEdnzOQEADhlODzCI-fvMga3IjfOr42n5XX2nBk9PiEYJZcCIvb397VDVkub-8JZx3WiNXI"/>
+<!-- Tactical HUD Overlay -->
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<div class="bg-black/80 border-l-2 border-primary-fixed-dim px-2 py-1">
+<p class="font-mono-data text-[10px] text-primary-fixed-dim">PITCH: 3/12</p>
+</div>
+<div class="bg-black/80 border-l-2 border-primary-fixed-dim px-2 py-1">
+<p class="font-mono-data text-[10px] text-primary-fixed-dim">SQ_FT: 42,500</p>
+</div>
+</div>
+<div class="absolute bottom-4 right-4">
+<div class="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-outline-variant px-3 py-1">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span>
+<span class="font-label-caps text-[10px] text-white">Live Data Feed Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: Blockchain Validation -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-gutter">
+<!-- Blockchain Panel -->
+<div class="bg-surface-container border border-outline-variant p-density-comfortable relative flex-1 flex flex-col">
+<div class="absolute -top-[1px] left-0 bg-primary-container text-on-primary-container px-4 py-1 font-label-caps text-[10px] font-bold uppercase industrial-clip">
+                        Auth Node 08
+                    </div>
+<div class="mt-4 flex-1 flex flex-col">
+<div class="mb-6">
+<h4 class="font-display-md text-xl font-bold text-on-surface">Blockchain Validation</h4>
+<p class="font-body-fixed text-sm text-on-surface-variant mt-2 leading-relaxed">
+                                Secure ledger verification initiated. Accepting this invitation binds your credential to the property hash for the duration of the audit.
+                            </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline p-4 mb-8">
+<p class="font-label-caps text-[10px] text-outline mb-3">Persistent Ledger Hash</p>
+<div class="flex items-center justify-between gap-4">
+<code class="font-mono-data text-primary-fixed-dim text-lg break-all select-all">0x82f12D9e8C54bA21F6e9A00E201</code>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-4">
+<div class="flex items-center justify-between p-3 border-b border-outline-variant/30">
+<span class="font-label-caps text-[11px] text-outline">Network Status</span>
+<span class="font-mono-data text-xs text-primary">Mainnet-V4 Operational</span>
+</div>
+<div class="flex items-center justify-between p-3 border-b border-outline-variant/30">
+<span class="font-label-caps text-[11px] text-outline">Latency</span>
+<span class="font-mono-data text-xs text-on-surface">14ms</span>
+</div>
+<div class="flex items-center justify-between p-3 border-b border-outline-variant/30">
+<span class="font-label-caps text-[11px] text-outline">Validation Cycle</span>
+<span class="font-mono-data text-xs text-on-surface">99.8% Confirmed</span>
+</div>
+</div>
+<div class="mt-auto pt-8">
+<button class="w-full bg-primary-container text-on-primary-container font-display-md text-lg font-bold py-5 industrial-clip hover:bg-primary-fixed-dim transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98] flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">verified_user</span>
+                                VERIFY &amp; JOIN PORTAL
+                            </button>
+<p class="text-center font-label-caps text-[10px] text-outline mt-4">By proceeding, you agree to the Smart Contract terms and Conditions.</p>
+</div>
+</div>
+</div>
+<!-- Status List (Mini) -->
+<div class="bg-surface-container border border-outline-variant p-4">
+<div class="flex gap-4">
+<div class="flex-1 flex items-center gap-3 bg-surface-container-low p-3 border-l-4 border-primary">
+<div class="font-mono-data text-primary font-bold">01</div>
+<div class="font-label-caps text-[10px]">Invite Valid</div>
+</div>
+<div class="flex-1 flex items-center gap-3 bg-surface-container-low p-3 border-l-4 border-primary">
+<div class="font-mono-data text-primary font-bold">02</div>
+<div class="font-label-caps text-[10px]">Auth Success</div>
+</div>
+<div class="flex-1 flex items-center gap-3 bg-surface-container-low p-3 border-l-4 border-outline">
+<div class="font-mono-data text-outline font-bold">03</div>
+<div class="font-label-caps text-[10px]">Final Sync</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pitch Gauge Component (Visual Polish) -->
+<div class="absolute bottom-10 left-10 flex items-center gap-6 opacity-40 hover:opacity-100 transition-opacity">
+<div class="relative w-24 h-24">
+<svg class="pitch-gauge-svg w-full h-full" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#2D2D2D" stroke-width="4"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="#00dbe9" stroke-dasharray="141 282" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-mono-data text-xl text-primary leading-none">3/12</span>
+<span class="font-label-caps text-[8px] text-outline mt-1">Pitch</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1 bg-primary"></div>
+<span class="font-label-caps text-[9px] text-primary">Slope Vector</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-12 h-1 bg-outline"></div>
+<span class="font-label-caps text-[9px] text-outline">Base Level</span>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for industrial feel
+        document.querySelector('button').addEventListener('mousedown', function() {
+            this.style.filter = 'brightness(1.2)';
+        });
+        document.querySelector('button').addEventListener('mouseup', function() {
+            this.style.filter = 'brightness(1)';
+        });
+
+        // Background hash randomization effect simulation
+        const hashEl = document.querySelector('.break-all');
+        const originalHash = hashEl.innerText;
+        
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                hashEl.classList.add('text-secondary-container');
+                setTimeout(() => {
+                    hashEl.classList.remove('text-secondary-container');
+                }, 100);
+            }
+        }, 500);
+    </script>
+</body></html>

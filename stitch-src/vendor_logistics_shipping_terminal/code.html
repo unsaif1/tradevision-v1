@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Core Vend Terminal - Dispatch</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#00f0ff",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#333539",
+                        "outline": "#849495",
+                        "on-background": "#e2e2e8",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "surface": "#111317",
+                        "on-primary-container": "#006970",
+                        "tertiary": "#f7f5f5",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-highest": "#333539",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-dim": "#111317",
+                        "on-tertiary-container": "#5e5f5f",
+                        "inverse-primary": "#006970",
+                        "outline-variant": "#3b494b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "inverse-surface": "#e2e2e8",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "surface-bright": "#37393e",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary": "#00363a",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-container-low": "#1a1c20",
+                        "secondary": "#ffdb9d",
+                        "inverse-on-surface": "#2f3035",
+                        "on-error": "#690005",
+                        "surface-container": "#1e2024",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "secondary-fixed": "#ffdea8",
+                        "on-error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "display-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", fontWeight: "500" }],
+                        "data-point": ["20px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-fixed": ["16px", { lineHeight: "1.6", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .cyber-grid {
+            background-size: 16px 16px;
+            background-image: linear-gradient(to right, rgba(59, 73, 75, 0.2) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(59, 73, 75, 0.2) 1px, transparent 1px);
+        }
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: theme('colors.primary-container');
+            opacity: 0.1;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="cyber-grid relative min-h-screen pb-safe">
+<div class="scanline pointer-events-none z-0"></div>
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 border-b border-outline-variant bg-surface-container-lowest">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-primary-container">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold uppercase tracking-tighter text-primary-container">CORE_VEND_TERMINAL</h1>
+</div>
+<div class="font-label-caps text-label-caps text-primary-container border border-primary-container px-2 py-1">Vendor Profile</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="p-margin-mobile flex flex-col gap-margin-mobile pb-24 md:hidden">
+<!-- Fleet Dispatch Status -->
+<section class="border border-outline-variant bg-surface-container-low p-density-comfortable relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container"></div>
+<div class="flex justify-between items-start mb-density-compact">
+<h2 class="font-label-caps text-label-caps text-secondary-container">FLEET_DISPATCH</h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant px-1">IN_TRANSIT</span>
+</div>
+<div class="flex flex-col gap-unit">
+<div class="flex justify-between border-b border-outline-variant pb-unit border-opacity-50">
+<span class="font-body-fixed text-body-fixed text-on-surface-variant">TRK_ID</span>
+<span class="font-data-point text-data-point text-on-background">VX-9902</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-unit border-opacity-50">
+<span class="font-body-fixed text-body-fixed text-on-surface-variant">ETA</span>
+<span class="font-data-point text-data-point text-primary-container">14:30 EST</span>
+</div>
+</div>
+</section>
+<!-- Route Map Placeholder -->
+<section class="border border-outline-variant bg-surface-container h-48 relative">
+<div class="absolute top-0 left-0 bg-background border-b border-r border-outline-variant px-2 py-1 z-10">
+<span class="font-label-caps text-label-caps text-outline">ROUTE_MAP [GPS_SYNCED]</span>
+</div>
+<img alt="Route Map" class="w-full h-full object-cover opacity-40 mix-blend-luminosity grayscale" data-alt="A highly detailed, stylized digital map interface displayed on a rugged industrial terminal screen. The map shows complex routing lines in glowing cyan against a stark, deep black background. Technical overlays, grids, and minimalist location markers create a cyber-industrial, data-dense aesthetic. The overall mood is precise, utilitarian, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR0DCXBF9Y8PZCdbT_vLYL-jqP_iIpftO9SEEmBZDZku2-jTEkmB6mhExD03PMzGIpwiuXq0ed00IQpg2s46BPm2hU-ME9a5P3-CnnJ7baUUtUipINMraQerRh7Dv11mqNibRfmAGFoTEMGVEl5lS5GGMonzWsCrFRuzqJc1tO9tAM48EmIoS2cIHIpNnj12XfHZDabwnQcOM8cjzgPr0_qIB0LLlaW8iKA0dAurBpQy53jAT6XAW8gfhHfyzK2NvCcUWn9pc2fe_H"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-4 h-4 bg-primary-container rounded-full animate-pulse shadow-[0_0_15px_rgba(0,240,255,0.5)]"></div>
+</div>
+</section>
+<!-- Shipment Telemetry Grid -->
+<section class="grid grid-cols-2 gap-density-compact">
+<div class="border border-outline-variant bg-surface-container-low p-density-compact">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">device_thermostat</span> TEMP_CORE
+                </div>
+<div class="font-data-point text-data-point text-on-background flex items-end justify-between">
+                    68.4<span class="text-label-caps text-outline ml-1">°F</span>
+</div>
+<div class="w-full bg-surface mt-2 h-1 relative">
+<div class="absolute left-0 top-0 h-full bg-primary-container w-[60%]"></div>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-low p-density-compact">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">water_drop</span> MOISTURE_LVL
+                </div>
+<div class="font-data-point text-data-point text-secondary-container flex items-end justify-between">
+                    12<span class="text-label-caps text-outline ml-1">%</span>
+</div>
+<div class="w-full bg-surface mt-2 h-1 relative">
+<div class="absolute left-0 top-0 h-full bg-secondary-container w-[12%]"></div>
+</div>
+</div>
+</section>
+<!-- Bill of Lading & Actions -->
+<section class="flex flex-col gap-density-compact mt-density-comfortable">
+<div class="border border-outline-variant bg-surface-container p-density-comfortable">
+<h3 class="font-label-caps text-label-caps text-outline mb-density-compact border-b border-outline-variant pb-1">BILL_OF_LADING :: SIG_REQ</h3>
+<div class="h-24 bg-surface border border-dashed border-outline-variant flex items-center justify-center text-outline font-label-caps text-label-caps mb-density-compact hover:bg-surface-variant transition-colors cursor-pointer">
+                    [ TAP_TO_SIGN ]
+                </div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-density-compact border-b-4 border-primary-fixed-dim hover:bg-primary transition-colors flex items-center justify-center gap-2 active:translate-y-1 active:border-b-0">
+<span class="material-symbols-outlined">sync</span>
+                SYNC_TO_LEDGER
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 border-t border-outline-variant bg-surface-container-lowest pb-safe">
+<div class="flex justify-around items-center px-unit w-full">
+<div class="flex flex-col items-center justify-center text-outline p-2 hover:text-primary-fixed-dim active:bg-surface-variant transition-all cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline p-2 hover:text-primary-fixed-dim active:bg-surface-variant transition-all cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps text-label-caps mt-1">CATALOG</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline p-2 hover:text-primary-fixed-dim active:bg-surface-variant transition-all cursor-pointer">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-caps mt-1">ORDERS</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary-container p-2 active:bg-surface-variant transition-all cursor-pointer">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-caps text-label-caps mt-1">LOGISTICS</span>
+</div>
+</div>
+</nav>
+</body></html>

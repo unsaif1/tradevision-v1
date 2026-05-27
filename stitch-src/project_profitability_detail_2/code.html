@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Profitability Detail</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Design System -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#bcc7de",
+                    "surface-container": "#102034",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "tertiary-container": "#c6d1e9",
+                    "secondary-fixed": "#dae2fd",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "on-surface": "#d3e4fe",
+                    "inverse-surface": "#d3e4fe",
+                    "on-secondary": "#283044",
+                    "on-primary": "#00363d",
+                    "primary-fixed": "#9cf0ff",
+                    "surface-bright": "#2a3a4f",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#3c475a",
+                    "inverse-on-surface": "#213145",
+                    "surface-container-low": "#0b1c30",
+                    "secondary": "#bec6e0",
+                    "on-surface-variant": "#bac9cc",
+                    "surface-container-highest": "#26364a",
+                    "surface-tint": "#00daf3",
+                    "secondary-container": "#3f465c",
+                    "on-primary-container": "#00626e",
+                    "tertiary": "#e6edff",
+                    "on-secondary-container": "#adb4ce",
+                    "tertiary-fixed": "#d8e3fb",
+                    "on-tertiary-container": "#4f5a6e",
+                    "surface-dim": "#031427",
+                    "outline-variant": "#3b494c",
+                    "on-primary-fixed-variant": "#004f58",
+                    "inverse-primary": "#006875",
+                    "on-tertiary": "#263143",
+                    "background": "#031427",
+                    "primary-container": "#00e5ff",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#00daf3",
+                    "on-secondary-fixed": "#131b2e",
+                    "on-primary-fixed": "#001f24",
+                    "surface-container-lowest": "#000f21",
+                    "outline": "#849396",
+                    "surface-variant": "#26364a",
+                    "on-background": "#d3e4fe",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#111c2d",
+                    "surface": "#031427",
+                    "primary": "#c3f5ff",
+                    "surface-container-high": "#1b2b3f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "grid-columns": "12",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-base": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-sm": [
+                            "JetBrains Mono"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "data-mono-lg": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-base": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "data-mono-lg": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom scrollbar for deep tech feel */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #031427; }
+        ::-webkit-scrollbar-thumb { background: #3b494c; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00daf3; }
+        
+        /* Industrial notch effect */
+        .industrial-notch {
+            clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopAppBar Component (from JSON) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flat no shadows">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors active:scale-95 transition-transform p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+</button>
+<div class="font-headline-md text-headline-md font-bold text-primary-fixed-dim dark:text-primary-fixed-dim">
+            Q3 2024
+        </div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors active:scale-95 transition-transform p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<!-- Suppressed BottomNavBar as this is a task-focused deep dive sub-page -->
+<main class="pt-[80px] pb-8 px-margin-mobile flex flex-col gap-4">
+<!-- Project Context Header Card -->
+<section class="bg-surface-container border border-outline-variant rounded-xl p-4 relative overflow-hidden flex flex-col gap-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+<!-- Atmospheric Cyan Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary-fixed-dim opacity-10 blur-[40px] rounded-full pointer-events-none"></div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface relative z-10">Riverside Commons - Phase 2</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Project ID: #RC-24-092</p>
+</div>
+<div class="flex flex-col gap-1 border-t border-outline-variant pt-4 relative z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Contract Value</span>
+<div class="flex items-center gap-2">
+<span class="font-data-mono-lg text-data-mono-lg text-primary-fixed-dim">$1,250,000.00</span>
+</div>
+</div>
+<div class="flex justify-between items-end bg-surface-container-highest p-3 rounded-lg border border-outline-variant relative z-10">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Net Margin (Est. vs Act.)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface">24.8%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant line-through">22.0%</span>
+</div>
+</div>
+<!-- Trend Chip -->
+<div class="bg-primary-container bg-opacity-10 border border-primary-container/30 px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[14px]">trending_up</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">+2.8%</span>
+</div>
+</div>
+</section>
+<!-- Cost vs Budget Breakdown (Gauges) -->
+<section class="flex flex-col gap-2 mt-2">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider pl-1">Cost vs Budget Variance</h2>
+<div class="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col gap-5">
+<!-- Labor -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface">Labor Costs</span>
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface-variant text-[16px] leading-[20px]">$320k <span class="text-on-surface-variant/50">/ $400k</span></span>
+</div>
+<!-- High-fidelity notched gauge -->
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex shadow-inner">
+<div class="bg-primary-fixed-dim w-[80%] border-r-[2px] border-background relative">
+<!-- Notch pattern overlay for industrial feel -->
+<div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, #000 2px, #000 4px);"></div>
+</div>
+</div>
+</div>
+<!-- Materials -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface">Material Costs</span>
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface-variant text-[16px] leading-[20px]">$485k <span class="text-on-surface-variant/50">/ $500k</span></span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex shadow-inner">
+<div class="bg-secondary-fixed w-[97%] border-r-[2px] border-background relative">
+<div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, #000 2px, #000 4px);"></div>
+</div>
+</div>
+</div>
+<!-- Equipment -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface">Equipment Rental</span>
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface-variant text-[16px] leading-[20px]">$85k <span class="text-on-surface-variant/50">/ $100k</span></span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex shadow-inner">
+<div class="bg-primary-fixed-dim w-[85%] border-r-[2px] border-background relative">
+<div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, #000 2px, #000 4px);"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Material Itemization Grid -->
+<section class="flex flex-col gap-2 mt-2">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider pl-1">Itemized Materials</h2>
+<div class="grid grid-cols-1 gap-2">
+<!-- Item 1 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-3 flex justify-between items-center industrial-notch">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface">TPO Membrane (60-mil)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">PO-2024-88A</span>
+</div>
+<div class="text-right flex flex-col gap-1">
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface text-[16px] leading-[20px]">$214,500.00</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">95% of Budget</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-3 flex justify-between items-center industrial-notch">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface">Polyiso Insulation (3.0")</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">PO-2024-88B</span>
+</div>
+<div class="text-right flex flex-col gap-1">
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface text-[16px] leading-[20px]">$142,300.00</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">88% of Budget</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

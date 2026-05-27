@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Alerts Hub</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#171c22",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "error-container": "#93000a",
+                        "secondary-container": "#3f4753",
+                        "on-tertiary-fixed": "#002114",
+                        "on-secondary-container": "#aeb6c3",
+                        "secondary": "#bfc7d5",
+                        "on-primary": "#67001e",
+                        "on-error": "#690005",
+                        "on-background": "#dee3eb",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container-highest": "#30353c",
+                        "inverse-primary": "#be003e",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-primary-fixed": "#40000f",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "primary": "#ffb2b9",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#72daad",
+                        "outline": "#ab888a",
+                        "surface-variant": "#30353c",
+                        "surface-container-high": "#252a31",
+                        "surface": "#0f141a",
+                        "tertiary-fixed-dim": "#72daad",
+                        "on-tertiary-container": "#f5fff7",
+                        "on-primary-container": "#fffcff",
+                        "secondary-fixed": "#dbe3f1",
+                        "primary-fixed": "#ffdadb",
+                        "tertiary-fixed": "#8ff7c7",
+                        "on-surface-variant": "#e4bdbf",
+                        "inverse-surface": "#dee3eb",
+                        "inverse-on-surface": "#2c3137",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#e21e51",
+                        "tertiary-container": "#00855e",
+                        "outline-variant": "#5c3f42",
+                        "surface-dim": "#0f141a",
+                        "background": "#0f141a",
+                        "surface-container-lowest": "#0a0f14",
+                        "on-surface": "#dee3eb",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#003826",
+                        "surface-container": "#1b2026",
+                        "on-secondary": "#29313c",
+                        "surface-bright": "#353a40",
+                        "on-secondary-fixed": "#141c26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "header_height": "64px",
+                        "sidebar_width": "260px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Barlow Condensed", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "mono-data": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["Barlow Condensed", "sans-serif"],
+                        "display-lg": ["Barlow Condensed", "sans-serif"],
+                        "display-md": ["Barlow Condensed", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen pt-header_height pb-16 md:pb-0 flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-header_height bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span aria-hidden="true" class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+<span class="font-display-md text-display-md font-bold tracking-tighter text-primary uppercase">TRADEVISION C.A.R.E.</span>
+</div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:bg-surface-container-highest transition-colors px-3 py-2 rounded font-label-caps text-label-caps uppercase flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span> Command
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest transition-colors px-3 py-2 rounded font-label-caps text-label-caps uppercase flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">construction</span> Projects
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest transition-colors px-3 py-2 rounded font-label-caps text-label-caps uppercase flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">assignment_late</span> Claims
+            </a>
+<a class="text-primary hover:bg-surface-container-highest transition-colors px-3 py-2 rounded font-label-caps text-label-caps uppercase flex items-center gap-2 border-b-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span> Alerts
+            </a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface text-[20px]">person</span>
+</div>
+<span class="font-label-caps text-label-caps hidden sm:block">Admin User Profile</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center w-full px-4 md:px-margin py-8 max-w-[1440px] mx-auto">
+<!-- Page Header & Filters -->
+<div class="w-full mb-8">
+<h1 class="font-display-md text-display-md mb-6 uppercase tracking-wider text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+                Alerts &amp; Notifications Hub
+            </h1>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 rounded bg-surface-container-high border border-outline-variant font-label-caps text-label-caps hover:border-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">mark_email_unread</span> UNREAD (12)
+                </button>
+<button class="px-4 py-2 rounded bg-surface-container-high border border-outline-variant font-label-caps text-label-caps hover:border-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">flag</span> FLAGGED
+                </button>
+<button class="px-4 py-2 rounded bg-surface-container-high border border-outline-variant font-label-caps text-label-caps hover:border-primary transition-colors flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span> ARCHIVED
+                </button>
+<div class="ml-auto relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded py-2 pl-10 pr-3 font-mono-data text-mono-data focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-on-surface-variant" placeholder="Search by ID or keyword..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Layout Grid -->
+<div class="w-full grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Priority Triage (Spans 12 col on mobile, 4 on desktop) -->
+<section class="md:col-span-4 flex flex-col gap-4">
+<h2 class="font-headline-sm text-headline-sm uppercase text-error flex items-center gap-2 border-b border-error-container pb-2">
+<span class="material-symbols-outlined text-error">priority_high</span>
+                    Priority Triage
+                </h2>
+<!-- Critical Alert Card -->
+<div class="bg-surface-container-high border-l-4 border-l-error border border-outline-variant rounded p-4 relative overflow-hidden group hover:border-error transition-colors cursor-pointer">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-error">broken_image</span>
+</div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="font-label-caps text-label-caps bg-error-container text-on-error px-2 py-0.5 rounded uppercase tracking-wider">Structural Critical</span>
+<span class="font-mono-data text-mono-data text-error">T-00:04:12</span>
+</div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-1 relative z-10">Foundation Shift Detected</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3 relative z-10 line-clamp-2">Sensors on Sector 4G indicate a 3mm lateral shift exceeding tolerance thresholds. Immediate inspection required.</p>
+<div class="flex justify-between items-center relative z-10">
+<span class="font-mono-data text-mono-data text-on-surface-variant">ID: ALR-8992</span>
+<button class="font-label-caps text-label-caps text-error hover:text-on-error hover:bg-error-container px-2 py-1 rounded transition-colors uppercase">Acknowledge</button>
+</div>
+</div>
+<!-- Critical Alert Card 2 -->
+<div class="bg-surface-container-high border-l-4 border-l-error border border-outline-variant rounded p-4 relative overflow-hidden group hover:border-error transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="font-label-caps text-label-caps bg-error-container text-on-error px-2 py-0.5 rounded uppercase tracking-wider">Compliance Violation</span>
+<span class="font-mono-data text-mono-data text-error">T-01:22:00</span>
+</div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-1 relative z-10">Unauthorized Permit Override</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3 relative z-10 line-clamp-2">System logged an unauthorized attempt to bypass environmental permit checks on Project Delta.</p>
+<div class="flex justify-between items-center relative z-10">
+<span class="font-mono-data text-mono-data text-on-surface-variant">ID: CMP-4410</span>
+<button class="font-label-caps text-label-caps text-error hover:text-on-error hover:bg-error-container px-2 py-1 rounded transition-colors uppercase">Review Log</button>
+</div>
+</div>
+</section>
+<!-- Right Column: Chronological Feed (Spans 12 col on mobile, 8 on desktop) -->
+<section class="md:col-span-8 flex flex-col gap-0 bg-surface border border-outline-variant rounded">
+<div class="p-4 border-b border-outline-variant bg-surface-container-highest rounded-t">
+<h2 class="font-headline-sm text-headline-sm uppercase text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">history</span>
+                        Chronological Feed
+                    </h2>
+</div>
+<div class="flex flex-col">
+<!-- Feed Item 1: System -->
+<div class="flex items-start gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<div class="w-10 h-10 rounded bg-secondary-container flex items-center justify-center flex-shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]">terminal</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">System Update</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[11px]">10:45 AM, Today</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Data Pipeline Latency Restored</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">The telemetry ingestion pipeline for the Northern Grid has stabilized. Latency is back within nominal ranges (&lt; 50ms).</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Feed Item 2: Project -->
+<div class="flex items-start gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors group bg-surface-container-lowest">
+<div class="w-10 h-10 rounded bg-tertiary-container flex items-center justify-center flex-shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary text-[20px]">construction</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-widest">Project Milestone</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[11px]">09:12 AM, Today</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Phase 2 Excavation Completed</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Contractor 'Apex Build' has logged completion of Sector B excavation. Pending inspector sign-off.</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Feed Item 3: Dispute -->
+<div class="flex items-start gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<div class="w-10 h-10 rounded bg-surface-variant border border-outline flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">gavel</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim uppercase tracking-widest">Active Dispute</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[11px]">Yesterday</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Material Variance Claim Filed</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Vendor V-882 submitted a dispute regarding structural steel grade specifications vs delivered materials.</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Feed Item 4: Compliance -->
+<div class="flex items-start gap-4 p-4 hover:bg-surface-container-low transition-colors group">
+<div class="w-10 h-10 rounded bg-secondary-container flex items-center justify-center flex-shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]">policy</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Compliance Check</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[11px]">Yesterday</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Weekly Safety Audit: Passed</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Site Alpha passed the routine OHS audit with a score of 98/100. Minor documentation findings attached.</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<div class="p-4 text-center border-t border-outline-variant">
+<button class="font-label-caps text-label-caps text-primary hover:text-primary-fixed transition-colors uppercase tracking-wider">Load More History</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-16 pb-safe bg-surface-container-low border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+<span class="font-label-caps text-label-caps uppercase mt-1">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">construction</span>
+<span class="font-label-caps text-label-caps uppercase mt-1">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">assignment_late</span>
+<span class="font-label-caps text-label-caps uppercase mt-1">Claims</span>
+</a>
+<!-- Active State Applied -->
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="font-label-caps text-label-caps uppercase mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]">manage_accounts</span>
+<span class="font-label-caps text-label-caps uppercase mt-1">Account</span>
+</a>
+</nav>
+</body></html>

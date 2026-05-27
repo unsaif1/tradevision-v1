@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Command Center (Empty State)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "on-tertiary": "#273141",
+                      "on-secondary-fixed": "#0f1d2b",
+                      "surface-deep": "#1C2128",
+                      "on-surface": "#dee2ec",
+                      "on-primary-fixed": "#40000f",
+                      "primary-container": "#e21e51",
+                      "on-secondary": "#243240",
+                      "secondary-fixed": "#d5e4f7",
+                      "border-subtle": "rgba(136, 150, 168, 0.15)",
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "secondary-fixed-dim": "#bac8db",
+                      "secondary": "#bac8db",
+                      "surface-variant": "#30353d",
+                      "surface-bright": "#353941",
+                      "background": "#0f141a",
+                      "on-secondary-container": "#a8b6c9",
+                      "tertiary": "#bdc7dc",
+                      "on-secondary-fixed-variant": "#3a4858",
+                      "outline": "#ab888a",
+                      "accent-active": "#E21E51",
+                      "surface-container-lowest": "#090f15",
+                      "surface-container-highest": "#30353d",
+                      "surface-container": "#1b2027",
+                      "inverse-surface": "#dee2ec",
+                      "primary": "#ffb2b9",
+                      "error-container": "#93000a",
+                      "surface-muted": "#2D3748",
+                      "text-secondary": "#8896A8",
+                      "surface-container-high": "#252a32",
+                      "inverse-on-surface": "#2c3138",
+                      "tertiary-container": "#6b7588",
+                      "inverse-primary": "#be003e",
+                      "primary-fixed": "#ffdadb",
+                      "text-primary": "#FFFFFF",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-primary-fixed-variant": "#91002e",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed": "#d9e3f9",
+                      "on-surface-variant": "#e4bdbf",
+                      "surface-dim": "#0f141a",
+                      "secondary-container": "#3a4858",
+                      "on-tertiary-fixed": "#121c2c",
+                      "on-error": "#690005",
+                      "on-primary-container": "#fffcff",
+                      "surface": "#0f141a",
+                      "on-background": "#dee2ec",
+                      "surface-tint": "#ffb2b9",
+                      "outline-variant": "#5c3f42",
+                      "surface-container-low": "#171c23",
+                      "on-primary": "#67001e",
+                      "on-tertiary-container": "#fefcff",
+                      "error": "#ffb4ab"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "base": "8px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "margin": "24px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Barlow Condensed"
+                      ],
+                      "label-md": [
+                              "Manrope"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "headline-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Barlow Condensed"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        body {
+            background-color: #1C2128;
+            color: #dee2ec;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-deep text-on-surface font-body-md antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<nav class="flex gap-md">
+<a class="text-primary-container dark:text-primary-fixed font-bold hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span> Command
+                    </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]">location_city</span> Projects
+                    </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span> Claims
+                    </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span> Alerts
+                    </a>
+</nav>
+</div>
+<div class="flex items-center">
+<div class="w-[32px] h-[32px] rounded-full bg-surface-muted flex items-center justify-center border border-border-subtle overflow-hidden">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-[1440px] mx-auto w-full px-gutter md:px-lg py-lg md:py-xl mb-[80px] md:mb-0">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Command Center</h2>
+<p class="font-body-md text-body-md text-text-secondary mt-xs">Overview and system status.</p>
+</div>
+<!-- Bento Grid Layout for Empty States -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-lg">
+<!-- Active Projects Empty State -->
+<div class="col-span-1 md:col-span-8 bg-surface-muted border border-border-subtle rounded-lg flex flex-col items-center justify-center p-xl min-h-[400px]">
+<div class="w-[80px] h-[80px] rounded-full bg-surface-deep flex items-center justify-center mb-md border border-border-subtle">
+<span class="material-symbols-outlined text-text-secondary text-[40px] opacity-50">location_city</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm text-center">No Active Projects</h3>
+<p class="font-body-md text-body-md text-text-secondary text-center max-w-[400px] mb-lg">
+                    You currently have no active projects monitored in the system. Start by creating a new project to track assets, manage claims, and monitor performance.
+                </p>
+<button class="bg-primary-container text-text-primary font-label-md text-label-md px-lg py-md rounded-lg hover:bg-inverse-primary transition-colors flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Project
+                </button>
+</div>
+<!-- Side Column -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-md md:gap-lg">
+<!-- Open Claims Empty State -->
+<div class="bg-surface-muted border border-border-subtle rounded-lg flex flex-col items-center justify-center p-lg flex-grow min-h-[250px]">
+<span class="material-symbols-outlined text-text-secondary text-[32px] opacity-50 mb-sm">assignment_late</span>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold mb-xs text-center">No Open Claims</h3>
+<p class="font-body-sm text-body-sm text-text-secondary text-center mb-md">
+                        Your claims queue is currently empty.
+                    </p>
+<button class="border border-border-subtle text-on-surface font-label-sm text-label-sm px-md py-sm rounded-lg hover:bg-surface-bright/10 transition-colors">
+                        File a Claim
+                    </button>
+</div>
+<!-- System Status (Placeholder for balance) -->
+<div class="bg-surface-muted border border-border-subtle rounded-lg p-md">
+<h4 class="font-label-md text-label-md text-text-secondary mb-sm uppercase tracking-wider">System Status</h4>
+<div class="flex items-center gap-sm">
+<div class="w-[8px] h-[8px] rounded-full bg-secondary-fixed"></div>
+<span class="font-body-sm text-body-sm text-on-surface">All systems operational</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-high dark:bg-surface-container-high border-t border-border-subtle shadow-lg">
+<div class="flex justify-around items-center px-gutter py-sm">
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all" href="#" style="transform: translateY(-2px); transition-duration: 200ms;">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md mt-xs">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">location_city</span>
+<span class="font-label-md text-label-md mt-xs">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-label-md text-label-md mt-xs">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-label-md text-label-md mt-xs">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-xs">Account</span>
+</a>
+</div>
+</nav>
+</body></html>

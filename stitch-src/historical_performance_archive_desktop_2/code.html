@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roof Terminal - Historical Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#0c0e12",
+                      "primary-fixed": "#7df4ff",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#333539",
+                      "primary-container": "#00f0ff",
+                      "tertiary": "#f7f5f5",
+                      "surface": "#111317",
+                      "on-primary": "#00363a",
+                      "surface-container-low": "#1a1c20",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "on-tertiary-container": "#5e5f5f",
+                      "on-tertiary": "#303031",
+                      "inverse-primary": "#006970",
+                      "error": "#ffb4ab",
+                      "surface-container": "#1e2024",
+                      "primary": "#dbfcff",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-surface-variant": "#b9cacb",
+                      "secondary-fixed": "#ffdea8",
+                      "outline-variant": "#3b494b",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-error": "#690005",
+                      "on-primary-container": "#006970",
+                      "surface-variant": "#333539",
+                      "surface-tint": "#00dbe9",
+                      "error-container": "#93000a",
+                      "inverse-on-surface": "#2f3035",
+                      "background": "#111317",
+                      "on-secondary-container": "#6b4b00",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-surface": "#e2e2e8",
+                      "inverse-surface": "#e2e2e8",
+                      "outline": "#849495",
+                      "surface-dim": "#111317",
+                      "surface-container-high": "#282a2e",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "on-secondary-fixed": "#271900",
+                      "on-secondary": "#412d00",
+                      "on-background": "#e2e2e8",
+                      "surface-bright": "#37393e",
+                      "primary-fixed-dim": "#00dbe9",
+                      "secondary-container": "#feb700",
+                      "on-primary-fixed": "#002022",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "on-primary-fixed-variant": "#004f54",
+                      "secondary": "#ffdb9d",
+                      "tertiary-container": "#dad9d9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "density-comfortable": "24px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        /* Custom Scrollbar for dense data areas */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-lowest'); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant'); 
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline'); 
+        }
+
+        .data-grid-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            align-items: center;
+        }
+        
+        .glow-accent {
+            box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-background font-body-fixed text-body-fixed overflow-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant flex justify-between items-center px-margin-desktop h-14 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-headline-md text-headline-md text-primary">ROOF_TERMINAL_V1.0</h1>
+<span class="font-label-caps text-label-caps tracking-widest text-primary-fixed-dim ml-4">ARCHIVE_SYSTEM</span>
+</div>
+<div class="flex-grow max-w-2xl mx-8">
+<div class="relative w-full flex items-center border border-outline-variant bg-surface-container-lowest rounded-DEFAULT overflow-hidden focus-within:border-primary-fixed-dim focus-within:glow-accent transition-all duration-150">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none text-on-surface font-label-caps text-label-caps py-2 pl-10 pr-4 focus:ring-0 placeholder-on-surface-variant" placeholder="QUERY ARCHIVE: [SITE_ID] | [MATERIAL] | [DATE]" type="text"/>
+</div>
+</div>
+<div class="flex items-center">
+<button class="text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- NavigationDrawer (Side Nav) -->
+<nav class="h-full w-80 flex-shrink-0 bg-surface-container-low border-r border-outline-variant flex flex-col p-gutter overflow-y-auto">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">[FACET_FILTERS]</h2>
+<div class="h-px w-full bg-outline-variant mb-4"></div>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Using Semantic mapping for Archive -> "Status" might be active if filtering past projects, but here we just render the component as requested -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest duration-150 ease-in-out rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">barcode_scanner</span>
+<span class="font-label-caps text-label-caps">Site ID</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest duration-150 ease-in-out rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-label-caps text-label-caps">Material Type</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest duration-150 ease-in-out rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-caps text-label-caps">Compliance</span>
+</a>
+<!-- Active State for Archive context could logically be Status -> Completed, so let's mark Status as active -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim duration-150 ease-in-out rounded-r-DEFAULT" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-caps text-label-caps">Status</span>
+</a>
+</div>
+<div class="mt-auto pt-8">
+<div class="border border-outline-variant bg-surface-container p-4 rounded-DEFAULT relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-fixed-dim"></div>
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim block mb-1">SYSTEM_STATUS</span>
+<span class="font-data-point text-data-point text-on-surface">ARCHIVE_SYNCED</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col p-margin-desktop gap-gutter overflow-y-auto bg-surface-container-lowest">
+<!-- Aggregate Metrics Header -->
+<section class="grid grid-cols-3 gap-gutter mb-6">
+<div class="border border-outline-variant bg-surface-container-low p-6 rounded-DEFAULT relative overflow-hidden group hover:border-primary-fixed-dim transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary-fixed-dim transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">[AVG_VELOCITY]</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-fixed-dim transition-colors">speed</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">4.2</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">DAYS/PROJ</span>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-low p-6 rounded-DEFAULT relative overflow-hidden group hover:border-primary-fixed-dim transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary-fixed-dim transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">[TOTAL_SQ_FT]</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-fixed-dim transition-colors">square_foot</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">1.4M</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SQ FT</span>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-low p-6 rounded-DEFAULT relative overflow-hidden group hover:border-primary-fixed-dim transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary-fixed-dim transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">[COMPLIANCE_RATE]</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary-fixed-dim transition-colors">verified</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">98.5</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">%</span>
+</div>
+</div>
+</section>
+<!-- Data Grid -->
+<section class="flex-1 flex flex-col border border-outline-variant bg-surface rounded-DEFAULT overflow-hidden">
+<div class="bg-surface-container-high border-b border-outline-variant p-4 flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary">&lt;FINALIZED_PROJECTS_DB&gt;</span>
+<button class="bg-primary-fixed-dim text-on-primary-fixed border border-primary-fixed-dim px-4 py-2 font-label-caps text-label-caps hover:bg-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                         EXPORT_CSV
+                     </button>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container z-10">
+<tr>
+<th class="p-density-compact border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant w-1/5">SITE_ID</th>
+<th class="p-density-compact border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant w-1/5">MATERIAL</th>
+<th class="p-density-compact border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant w-1/5 text-right">TOTAL_AREA</th>
+<th class="p-density-compact border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant w-1/5 text-right">MARGIN</th>
+<th class="p-density-compact border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant w-1/5 text-right">COMPLIANCE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-data-point text-sm">
+<tr class="hover:bg-surface-variant transition-colors group relative">
+<td class="p-density-compact border-l-4 border-l-transparent group-hover:border-l-primary-fixed-dim">
+<span class="text-primary-fixed-dim">TX-8842-A</span>
+</td>
+<td class="p-density-compact">
+<span class="inline-block px-2 py-1 bg-surface-container-high border border-outline-variant rounded-sm font-label-caps text-xs text-on-surface">TPO</span>
+</td>
+<td class="p-density-compact text-right text-on-surface">14,250 <span class="text-on-surface-variant text-xs">sq ft</span></td>
+<td class="p-density-compact text-right text-secondary-fixed-dim">+24.5%</td>
+<td class="p-density-compact text-right text-primary-fixed-dim flex items-center justify-end gap-1">
+                                    99.2 <span class="material-symbols-outlined text-[16px]">verified</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors group relative">
+<td class="p-density-compact border-l-4 border-l-transparent group-hover:border-l-primary-fixed-dim">
+<span class="text-primary-fixed-dim">AZ-1193-B</span>
+</td>
+<td class="p-density-compact">
+<span class="inline-block px-2 py-1 bg-surface-container-high border border-outline-variant rounded-sm font-label-caps text-xs text-on-surface">SHINGLE</span>
+</td>
+<td class="p-density-compact text-right text-on-surface">8,100 <span class="text-on-surface-variant text-xs">sq ft</span></td>
+<td class="p-density-compact text-right text-secondary-fixed-dim">+18.2%</td>
+<td class="p-density-compact text-right text-primary-fixed-dim flex items-center justify-end gap-1">
+                                    95.0 <span class="material-symbols-outlined text-[16px]">verified</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors group relative">
+<td class="p-density-compact border-l-4 border-l-transparent group-hover:border-l-primary-fixed-dim">
+<span class="text-primary-fixed-dim">FL-4401-C</span>
+</td>
+<td class="p-density-compact">
+<span class="inline-block px-2 py-1 bg-surface-container-high border border-outline-variant rounded-sm font-label-caps text-xs text-on-surface">METAL</span>
+</td>
+<td class="p-density-compact text-right text-on-surface">22,500 <span class="text-on-surface-variant text-xs">sq ft</span></td>
+<td class="p-density-compact text-right text-secondary-fixed-dim">+31.0%</td>
+<td class="p-density-compact text-right text-primary-fixed-dim flex items-center justify-end gap-1">
+                                    100.0 <span class="material-symbols-outlined text-[16px]">verified</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors group relative">
+<td class="p-density-compact border-l-4 border-l-transparent group-hover:border-l-primary-fixed-dim">
+<span class="text-primary-fixed-dim">NY-7721-D</span>
+</td>
+<td class="p-density-compact">
+<span class="inline-block px-2 py-1 bg-surface-container-high border border-outline-variant rounded-sm font-label-caps text-xs text-on-surface">EPDM</span>
+</td>
+<td class="p-density-compact text-right text-on-surface">35,000 <span class="text-on-surface-variant text-xs">sq ft</span></td>
+<td class="p-density-compact text-right text-secondary-fixed-dim">+15.8%</td>
+<td class="p-density-compact text-right text-primary-fixed-dim flex items-center justify-end gap-1">
+                                    97.5 <span class="material-symbols-outlined text-[16px]">verified</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+</body></html>

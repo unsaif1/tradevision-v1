@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Historical Correlation Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c3c6d7",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#2563eb",
+                        "on-secondary-fixed": "#001e2c",
+                        "secondary-fixed": "#c4e7ff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#bdffdb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface": "#0b1326",
+                        "outline-variant": "#434655",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "surface-variant": "#2d3449",
+                        "primary-fixed": "#dbe1ff",
+                        "neon-blue": "#2563EB",
+                        "surface-dim": "#0b1326",
+                        "secondary-container": "#00a6e0",
+                        "primary": "#b4c5ff",
+                        "border-muted": "#334155",
+                        "surface-container": "#171f33",
+                        "surface-container-high": "#222a3d",
+                        "surface-input": "#0F172A",
+                        "on-tertiary": "#003824",
+                        "neon-cyan": "#06B6D4",
+                        "outline": "#8d90a0",
+                        "on-error": "#690005",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-container": "#007d55",
+                        "on-background": "#dae2fd",
+                        "inverse-surface": "#dae2fd",
+                        "error": "#ffb4ab",
+                        "surface-card": "#1E293B",
+                        "background": "#0b1326",
+                        "inverse-primary": "#0053db",
+                        "inverse-on-surface": "#283044",
+                        "surface-tint": "#b4c5ff",
+                        "surface-container-low": "#131b2e",
+                        "on-primary": "#002a78",
+                        "secondary": "#7bd0ff",
+                        "on-secondary-container": "#00374d",
+                        "surface-bright": "#31394d",
+                        "surface-container-lowest": "#060e20",
+                        "error-container": "#93000a",
+                        "on-secondary": "#00354a",
+                        "on-surface": "#dae2fd",
+                        "tertiary": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["10px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; }
+        .grid-bg {
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, rgba(67, 70, 85, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(67, 70, 85, 0.1) 1px, transparent 1px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-20 font-body-md grid-bg selection:bg-neon-blue selection:text-white">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-gutter w-full sticky top-0 z-50 bg-surface border-b border-outline-variant flat no shadows md:hidden">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tighter text-neon-blue">RISK_CORE_v1.0</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+</div>
+</header>
+<main class="p-4 space-y-6 md:max-w-container-max md:mx-auto md:p-margin-desktop">
+<!-- Header Section -->
+<section class="space-y-2">
+<div class="flex items-center gap-2 text-neon-blue">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Site Alpha-7</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Historical Correlation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Analyzing current sensor telemetry against past incident logs to identify potential failure vectors.</p>
+</section>
+<!-- Correlation Matrix Card -->
+<section class="bg-surface-card rounded border border-outline-variant p-4 space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-cyan text-sm">grid_view</span>
+                    Correlation Matrix
+                </h3>
+<span class="font-label-sm text-label-sm px-2 py-1 bg-surface-container rounded border border-outline-variant text-on-surface-variant">Live Sync</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block">Vibration Anomaly</span>
+<div class="h-2 w-full bg-surface-container rounded overflow-hidden">
+<div class="h-full bg-error w-3/4"></div>
+</div>
+<div class="flex justify-between text-[10px] font-label-sm">
+<span>Current: 4.2g</span>
+<span class="text-error">High</span>
+</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block">Thermal Gradient</span>
+<div class="h-2 w-full bg-surface-container rounded overflow-hidden">
+<div class="h-full bg-tertiary w-1/3"></div>
+</div>
+<div class="flex justify-between text-[10px] font-label-sm">
+<span>Current: 42°C</span>
+<span class="text-tertiary">Normal</span>
+</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block">Pressure Drop</span>
+<div class="h-2 w-full bg-surface-container rounded overflow-hidden">
+<div class="h-full bg-neon-cyan w-1/2"></div>
+</div>
+<div class="flex justify-between text-[10px] font-label-sm">
+<span>Current: -12Pa</span>
+<span class="text-neon-cyan">Elevated</span>
+</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block">Acoustic Signature</span>
+<div class="h-2 w-full bg-surface-container rounded overflow-hidden">
+<div class="h-full bg-error w-4/5"></div>
+</div>
+<div class="flex justify-between text-[10px] font-label-sm">
+<span>Current: 88dB</span>
+<span class="text-error">Critical</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Overall Failure Probability</span>
+<span class="font-headline-md text-headline-md text-error">78%</span>
+</div>
+</div>
+</section>
+<!-- Past Incidents List -->
+<section class="space-y-4">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">history</span>
+                Correlated Incidents
+            </h3>
+<!-- Incident Item 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<div class="font-label-md text-label-md text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+                            Structural Stress Fracture
+                        </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Site Beta-2 | 2023-10-14</div>
+</div>
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm text-on-surface">92%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Match</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-2 border-l border-outline-variant ml-2 mt-2 py-1 text-sm">
+                    High vibration coupled with acoustic anomaly preceded major structural failure by 4 hours.
+                </p>
+<div class="mt-3 pl-2 flex gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-variant text-on-surface rounded border border-outline-variant">Vibration</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-variant text-on-surface rounded border border-outline-variant">Acoustic</span>
+</div>
+</div>
+<!-- Incident Item 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-neon-cyan"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<div class="font-label-md text-label-md text-neon-cyan flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">info</span>
+                            Minor Pipeline Leak
+                        </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Site Alpha-7 | 2024-01-05</div>
+</div>
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm text-on-surface">64%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Match</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-2 border-l border-outline-variant ml-2 mt-2 py-1 text-sm">
+                    Pressure drop observed prior to seal degradation. Thermal metrics remained normal.
+                </p>
+</div>
+</section>
+<!-- Action Button -->
+<button class="w-full bg-neon-blue text-white font-label-md text-label-md py-3 rounded uppercase tracking-wider hover:bg-inverse-primary transition-colors flex justify-center items-center gap-2 border border-primary-container shadow-[0_0_10px_rgba(37,99,235,0.3)]">
+<span class="material-symbols-outlined text-sm">security</span>
+            Initiate Mitigation Protocol
+        </button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container-high border-t border-outline-variant md:hidden">
+<button class="flex flex-col items-center justify-center text-neon-blue border-t-2 border-neon-blue pt-1 mt-[-1px] w-full h-full">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-neon-blue">MATRIX</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors w-full h-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-1">query_stats</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">FORECAST</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors w-full h-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-1">security</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">MITIGATE</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors w-full h-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-1">factory</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">SITES</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Project Manager Command Center</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#282a2e",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-variant": "#333539",
+                        "on-primary-container": "#006970",
+                        "tertiary-container": "#dad9d9",
+                        "surface-tint": "#00dbe9",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#271900",
+                        "secondary": "#ffdb9d",
+                        "primary": "#dbfcff",
+                        "surface-dim": "#111317",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "secondary-fixed": "#ffdea8",
+                        "tertiary": "#f7f5f5",
+                        "primary-fixed-dim": "#00dbe9",
+                        "background": "#111317",
+                        "primary-container": "#00f0ff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container-highest": "#333539",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary": "#303031",
+                        "surface-container": "#1e2024",
+                        "surface-bright": "#37393e",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-primary": "#00363a",
+                        "outline": "#849495",
+                        "surface-container-low": "#1a1c20",
+                        "surface": "#111317",
+                        "on-secondary": "#412d00",
+                        "inverse-surface": "#e2e2e8",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "inverse-primary": "#006970"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk", "sans-serif"],
+                        "data-point": ["JetBrains Mono", "monospace"],
+                        "body-fixed": ["Inter", "sans-serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "display-lg": ["Space Grotesk", "sans-serif"],
+                        "display-lg-mobile": ["Space Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #111317; color: #e2e2e8; }
+        .cyber-grid {
+            background-image: linear-gradient(to right, #3b494b 1px, transparent 1px),
+                              linear-gradient(to bottom, #3b494b 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: center;
+        }
+        .cyber-panel-border {
+            border: 1px solid #2D2D2D;
+        }
+        .data-glitch:hover {
+            animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+            color: #00f0ff;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        .scroll-hidden::-webkit-scrollbar { display: none; }
+        .scroll-hidden { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .tab-cutout {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen flex flex-col font-body-fixed antialiased overflow-hidden">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface-container-low border-b border-outline-variant flex justify-between items-center w-full px-margin-desktop py-density-comfortable docked full-width top-0 z-50">
+<div class="flex items-center gap-gutter">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="text-headline-md font-headline-md text-primary tracking-tighter uppercase m-0 leading-none">PM_COMMAND_CENTER</h1>
+</div>
+<div class="flex items-center gap-gutter">
+<span class="text-label-caps font-label-caps text-on-surface-variant bg-surface-container-high px-density-compact py-unit rounded-sm cyber-panel-border">v4.0.2_SYS</span>
+<button class="bg-primary-container text-on-primary-container hover:bg-primary-fixed transition-colors duration-150 p-density-compact rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">menu</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col p-margin-desktop gap-margin-desktop overflow-y-auto scroll-hidden cyber-grid relative">
+<div class="absolute inset-0 bg-background/90 pointer-events-none"></div>
+<!-- Global Project Health Dashboard -->
+<section class="relative z-10 w-full flex gap-gutter">
+<!-- Primary Health Metric -->
+<div class="bg-surface-container-low cyber-panel-border flex-1 p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-unit bg-outline-variant/30 text-outline-variant text-[10px] font-label-caps">SYS_PERF</div>
+<h2 class="text-label-caps font-label-caps text-on-surface-variant mb-gutter uppercase">[ GLOBAL_PROJECT_HEALTH ]</h2>
+<div class="flex items-end gap-gutter">
+<span class="text-display-lg font-display-lg text-primary leading-none">94<span class="text-headline-md">%</span></span>
+<div class="h-12 w-32 border-l border-b border-outline-variant relative ml-auto">
+<!-- Synthetic Sparkline -->
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 35 L20 30 L40 32 L60 20 L80 15 L100 5" fill="none" stroke="#00f0ff" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<circle cx="100" cy="5" fill="#00f0ff" r="3"></circle>
+</svg>
+</div>
+</div>
+<div class="mt-density-comfortable flex gap-gutter border-t border-outline-variant pt-density-compact">
+<div class="flex items-center gap-unit text-label-caps font-label-caps text-primary">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +2.4% THIS WK
+                         </div>
+</div>
+</div>
+<!-- Secondary Metrics -->
+<div class="flex flex-col gap-gutter w-64">
+<div class="bg-surface-container-low cyber-panel-border p-gutter flex-1 relative flex flex-col justify-between hover:border-primary-container transition-colors">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant">[ BUDGET_VEL ]</h3>
+<div class="flex items-baseline gap-unit">
+<span class="text-data-point font-data-point text-secondary-container">1.2x</span>
+<span class="text-label-caps font-label-caps text-outline">NOMINAL</span>
+</div>
+</div>
+<div class="bg-error-container/20 cyber-panel-border border-error-container/50 p-gutter flex-1 relative flex flex-col justify-between hover:border-error transition-colors">
+<h3 class="text-label-caps font-label-caps text-on-error-container">[ CRIT_MILES ]</h3>
+<div class="flex items-baseline gap-unit">
+<span class="text-data-point font-data-point text-error">12</span>
+<span class="text-label-caps font-label-caps text-error/70">PENDING</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Project Matrix -->
+<section class="relative z-10 w-full flex-1 flex flex-col min-h-[400px]">
+<div class="flex justify-between items-end mb-gutter">
+<h2 class="text-headline-md font-headline-md text-primary tracking-tighter uppercase">[ ACTIVE_PROJECT_MATRIX ]</h2>
+<div class="flex gap-unit">
+<button class="bg-surface-container-highest cyber-panel-border px-density-compact py-unit text-label-caps font-label-caps text-on-surface hover:text-primary hover:border-primary transition-colors data-glitch">FLTR_ACT</button>
+<button class="bg-surface-container-highest cyber-panel-border px-density-compact py-unit text-label-caps font-label-caps text-on-surface hover:text-primary hover:border-primary transition-colors data-glitch">FLTR_CRT</button>
+</div>
+</div>
+<!-- Dense Data Grid -->
+<div class="bg-surface-container-low cyber-panel-border flex-1 flex flex-col overflow-hidden">
+<!-- Header Row -->
+<div class="grid grid-cols-12 gap-unit border-b border-outline-variant bg-surface-container-high p-gutter text-label-caps font-label-caps text-on-surface-variant sticky top-0 z-20">
+<div class="col-span-2">SITE_ID</div>
+<div class="col-span-4">LOCATION_VECTOR</div>
+<div class="col-span-2">STATUS</div>
+<div class="col-span-2">FOREMAN</div>
+<div class="col-span-2">COMPLETION</div>
+</div>
+<!-- Grid Body -->
+<div class="flex-1 overflow-y-auto scroll-hidden">
+<!-- Row 1 Active -->
+<div class="grid grid-cols-12 gap-unit border-b border-outline-variant p-gutter items-center hover:bg-surface-bright transition-colors group cursor-pointer border-l-4 border-l-primary-container">
+<div class="col-span-2 text-data-point font-data-point text-primary-container data-glitch">#R-8992</div>
+<div class="col-span-4 flex flex-col">
+<span class="text-body-fixed font-body-fixed text-on-surface">142 Industrial Pkwy</span>
+<span class="text-label-caps font-label-caps text-outline">SEC-7 // C-COMM</span>
+</div>
+<div class="col-span-2">
+<span class="bg-primary-container/10 text-primary-container border border-primary-container/30 px-unit py-1 text-[10px] font-label-caps uppercase tab-cutout">ACTIVE_OPS</span>
+</div>
+<div class="col-span-2 text-label-caps font-label-caps text-on-surface">J. VANCE</div>
+<div class="col-span-2 flex flex-col gap-unit">
+<div class="flex justify-between text-label-caps font-label-caps">
+<span class="text-primary">68%</span>
+<span class="text-outline">T-48H</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-primary-container w-[68%] shadow-[0_0_8px_rgba(0,240,255,0.5)]"></div></div>
+</div>
+</div>
+<!-- Row 2 Delayed -->
+<div class="grid grid-cols-12 gap-unit border-b border-outline-variant p-gutter items-center hover:bg-surface-bright transition-colors group cursor-pointer border-l-4 border-l-error">
+<div class="col-span-2 text-data-point font-data-point text-on-surface group-hover:text-primary transition-colors">#R-9014</div>
+<div class="col-span-4 flex flex-col">
+<span class="text-body-fixed font-body-fixed text-on-surface">884 Foundry Blvd</span>
+<span class="text-label-caps font-label-caps text-outline">SEC-2 // W-IND</span>
+</div>
+<div class="col-span-2">
+<span class="bg-error/10 text-error border border-error/30 px-unit py-1 text-[10px] font-label-caps uppercase tab-cutout">DELAY_MAT</span>
+</div>
+<div class="col-span-2 text-label-caps font-label-caps text-on-surface">M. CHEN</div>
+<div class="col-span-2 flex flex-col gap-unit">
+<div class="flex justify-between text-label-caps font-label-caps">
+<span class="text-error">22%</span>
+<span class="text-error font-bold">HALT</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-error w-[22%]"></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Side Panel: System Notifications -->
+<aside class="w-80 bg-surface-container-low border-l border-outline-variant flex flex-col overflow-hidden relative z-20">
+<div class="p-gutter border-b border-outline-variant flex items-center gap-unit bg-surface-container-high">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="text-label-caps font-label-caps text-on-surface tracking-widest">[ FIELD_ALERTS ]</h3>
+</div>
+<div class="flex-1 overflow-y-auto scroll-hidden p-gutter flex flex-col gap-gutter">
+<!-- Alert Card 1 -->
+<div class="border border-error-container/40 bg-error-container/5 p-density-compact hover:border-error transition-colors relative">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-start mb-unit ml-2">
+<span class="text-label-caps font-label-caps text-error bg-error/10 px-1">SYS_WARN_992</span>
+<span class="text-label-caps font-label-caps text-outline">14:02Z</span>
+</div>
+<h4 class="text-body-fixed font-body-fixed text-on-surface font-semibold ml-2">MATERIAL SHORTAGE</h4>
+<p class="text-label-caps font-label-caps text-on-surface-variant ml-2 mt-unit break-words">SITE #R-9014 requires 400sq ft TPO membrane. Current inventory insufficient.</p>
+<div class="mt-density-compact ml-2 flex gap-unit">
+<button class="bg-error-container text-on-error-container text-label-caps font-label-caps px-2 py-1 tab-cutout hover:bg-error hover:text-on-error transition-colors">REQ_RESTOCK</button>
+</div>
+</div>
+<!-- Alert Card 2 -->
+<div class="border border-secondary-container/40 bg-secondary-container/5 p-density-compact hover:border-secondary transition-colors relative">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container"></div>
+<div class="flex justify-between items-start mb-unit ml-2">
+<span class="text-label-caps font-label-caps text-secondary-container bg-secondary-container/10 px-1">ALLOC_REQ</span>
+<span class="text-label-caps font-label-caps text-outline">09:15Z</span>
+</div>
+<h4 class="text-body-fixed font-body-fixed text-on-surface font-semibold ml-2">CREW DEFICIT</h4>
+<p class="text-label-caps font-label-caps text-on-surface-variant ml-2 mt-unit break-words">SITE #R-8992 projected to miss T-48H window without +2 roofer assets.</p>
+<div class="mt-density-compact ml-2 flex gap-unit">
+<button class="bg-secondary-container text-on-secondary-container text-label-caps font-label-caps px-2 py-1 tab-cutout hover:bg-secondary hover:text-on-secondary transition-colors">DISPATCH</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ContractorOS - Schedule &amp; Route Optimization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#003824",
+                        "background": "#0b1326",
+                        "surface-input": "#0F172A",
+                        "on-error": "#690005",
+                        "primary-container": "#2563eb",
+                        "tertiary-container": "#007d55",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-tint": "#b4c5ff",
+                        "surface-card": "#1E293B",
+                        "on-secondary-fixed": "#001e2c",
+                        "tertiary": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-container": "#00a6e0",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "secondary-fixed": "#c4e7ff",
+                        "on-primary": "#002a78",
+                        "inverse-primary": "#0053db",
+                        "on-background": "#dae2fd",
+                        "outline": "#8d90a0",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#7bd0ff",
+                        "neon-blue": "#2563EB",
+                        "surface-container": "#171f33",
+                        "on-secondary-container": "#00374d",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-secondary": "#00354a",
+                        "surface-variant": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "neon-cyan": "#06B6D4",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "inverse-surface": "#dae2fd",
+                        "surface-bright": "#31394d",
+                        "on-tertiary-container": "#bdffdb",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#2d3449",
+                        "primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-high": "#222a3d",
+                        "inverse-on-surface": "#283044",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline-variant": "#434655",
+                        "border-muted": "#334155",
+                        "surface-dim": "#0b1326",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-sm": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .cyber-scroll::-webkit-scrollbar { width: 6px; }
+        .cyber-scroll::-webkit-scrollbar-track { background: #0b1326; }
+        .cyber-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+        .cyber-scroll::-webkit-scrollbar-thumb:hover { background: #2563EB; }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen overflow-hidden flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface-container dark:bg-surface-container flex justify-between items-center w-full px-margin-desktop h-16 border-b border-border-muted flex-shrink-0">
+<div class="flex items-center gap-4">
+<h1 class="text-headline-md font-headline-md font-bold text-neon-blue">ContractorOS</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-label-md font-label-md text-tertiary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                System Status: Optimal
+            </div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-neon-blue hover:bg-surface-variant transition-colors duration-200 p-2 rounded w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-neon-blue hover:bg-surface-variant transition-colors duration-200 p-2 rounded w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-neon-blue hover:bg-surface-variant transition-colors duration-200 p-2 rounded w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-border-muted overflow-hidden cursor-pointer hover:border-neon-blue transition-colors">
+<img alt="Contractor Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a contractor in a subtle cyber-industrial setting. The lighting is slightly cool with a faint neon blue rim light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU-k-WVFm_cetspX1RZb77qxme3NUKsaTkT59BsOYPTIpFlUFvkEeuTqmmUnrLtkp__O_bIMohpCQKXIjIThCCTUKLAHj8VGmajGaMzvK7wb_FN_M7CAz-DL24N8-MqCrb_GlXoo0rcvkOIRhbn5J2LOUNmyBXwtGDUsDhS5xL5twq2jMQjR4NenuNL0-jpS-1GC2eWY0R3x04l-yIMAFKehZcHv0D6VuibMPSgiWn6QyoIbNwVWlNp8aI6acTw-nCb1OSoYVm8mLW"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low flex flex-col h-full py-6 w-64 border-r border-border-muted flex-shrink-0">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center border border-border-muted">
+<span class="material-symbols-outlined text-neon-blue" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Industrial Field Ops</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Active Session: 8h 12m</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-neon-blue text-on-primary-container text-label-md font-label-md py-2.5 rounded hover:bg-inverse-primary transition-colors flex items-center justify-center gap-2 font-bold">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Job Order
+                </button>
+</div>
+<div class="flex-1 overflow-y-auto cyber-scroll flex flex-col gap-1 px-3">
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+<a class="text-neon-blue font-bold border-l-4 border-neon-blue bg-surface-variant/50 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="work">work</span>
+                    Jobs
+                </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="photo_library">photo_library</span>
+                    Evidence
+                </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+                    Inventory
+                </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+                    Team
+                </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+                    Analytics
+                </a>
+</div>
+<div class="mt-auto px-3 pt-4 border-t border-border-muted mx-3">
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+                    Log Out
+                </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-background flex flex-col overflow-hidden relative">
+<!-- Horizontal Date Picker -->
+<div class="h-16 border-b border-border-muted flex items-center px-6 bg-surface-container-lowest gap-4 flex-shrink-0 z-10">
+<button class="w-8 h-8 rounded border border-border-muted flex items-center justify-center hover:bg-surface-variant hover:border-neon-blue transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex-1 flex justify-center gap-2 overflow-hidden">
+<!-- Dates -->
+<div class="flex flex-col items-center justify-center w-16 h-12 rounded border border-transparent hover:border-border-muted cursor-pointer transition-colors text-on-surface-variant">
+<span class="text-label-sm font-label-sm uppercase">Mon</span>
+<span class="text-body-md font-body-md">12</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-12 rounded border border-transparent hover:border-border-muted cursor-pointer transition-colors text-on-surface-variant">
+<span class="text-label-sm font-label-sm uppercase">Tue</span>
+<span class="text-body-md font-body-md">13</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-12 rounded bg-surface-variant border border-neon-blue text-neon-blue">
+<span class="text-label-sm font-label-sm uppercase font-bold">Wed</span>
+<span class="text-body-md font-body-md font-bold">14</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-12 rounded border border-transparent hover:border-border-muted cursor-pointer transition-colors text-on-surface-variant">
+<span class="text-label-sm font-label-sm uppercase">Thu</span>
+<span class="text-body-md font-body-md">15</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-12 rounded border border-transparent hover:border-border-muted cursor-pointer transition-colors text-on-surface-variant">
+<span class="text-label-sm font-label-sm uppercase">Fri</span>
+<span class="text-body-md font-body-md">16</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded border border-border-muted flex items-center justify-center hover:bg-surface-variant hover:border-neon-blue transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<!-- Bento Layout Content -->
+<div class="flex-1 flex overflow-hidden p-4 gap-4">
+<!-- Tactical Map Area (Left) -->
+<div class="flex-[3] bg-surface-card rounded-lg border border-border-muted flex flex-col overflow-hidden relative shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-0 z-0">
+<img alt="Tactical Route Map" class="w-full h-full object-cover opacity-40 grayscale-[50%] contrast-125 mix-blend-screen" data-alt="A high-tech digital map interface displaying city streets. The map is rendered in a dark cyber-industrial style with deep navy backgrounds and glowing neon cyan and blue lines tracing optimal routes. Small geometric nodes mark key destinations." data-location="Seattle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtod9x0WbZXvl8bwGgR2ELp-R_xMr0R97YKQlL9XiOYlnq_jyhSaOr_Fj2HYAeSlbpnNRytXny2LJM8tKsoOWj-066GKjypmtlo0R36Kszdr2c4Q_0mBpX2hFe8dQE7yTVla722hHURjJPu84qQ1ebe47yr6c2Nzhg9TVopA-MHMF3ovFPd1VD4K6ufhKsUamOSww8NeCzruRrloCvEOQYyOBUs-m85FkHijaxttG3PFowpG9r1_rSd44ZlSG4ToksH6y3FY46cFzK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+<!-- Simulated Map Route -->
+<svg class="absolute inset-0 w-full h-full" style="pointer-events: none;">
+<path class="animate-[dash_20s_linear_infinite]" d="M 200 150 L 350 220 L 300 400 L 550 500 L 600 300" fill="none" stroke="#2563EB" stroke-dasharray="8 4" stroke-width="4"></path>
+<circle cx="200" cy="150" fill="#4edea3" r="8"></circle>
+<circle cx="350" cy="220" fill="#1E293B" r="6" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="300" cy="400" fill="#1E293B" r="6" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="550" cy="500" fill="#1E293B" r="6" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="600" cy="300" fill="#ffb4ab" r="8"></circle>
+<!-- Current Location Ping -->
+<circle class="animate-ping opacity-75" cx="320" cy="290" fill="#06B6D4" r="12"></circle>
+<circle cx="320" cy="290" fill="#06B6D4" r="6"></circle>
+</svg>
+</div>
+<!-- Map Overlay Controls -->
+<div class="absolute top-4 left-4 z-10 flex flex-col gap-2">
+<div class="bg-surface-container-highest border border-border-muted p-2 rounded flex items-center gap-2 backdrop-blur-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]">gps_fixed</span>
+<span class="text-label-md font-label-md text-on-surface">GPS: Active Tracking</span>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 z-10 flex gap-2">
+<button class="bg-surface-container-highest border border-border-muted text-on-surface px-4 py-2 rounded text-label-md font-label-md hover:border-neon-blue transition-colors flex items-center gap-2 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+                            Layers
+                        </button>
+<button class="bg-neon-blue text-on-primary-container px-4 py-2 rounded text-label-md font-label-md hover:bg-inverse-primary transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+<span class="material-symbols-outlined text-[18px]">route</span>
+                            Optimize Route
+                        </button>
+</div>
+</div>
+<!-- Daily Agenda List (Right) -->
+<div class="flex-[2] bg-surface-container-lowest border border-border-muted rounded-lg flex flex-col overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<div class="p-4 border-b border-border-muted flex justify-between items-center bg-surface-card">
+<h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue">view_agenda</span>
+                            Daily Agenda
+                        </h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-surface-variant px-2 py-1 rounded">4 Jobs</span>
+</div>
+<div class="flex-1 overflow-y-auto cyber-scroll p-4 flex flex-col gap-3">
+<!-- Job Card: Arrived (Completed/Active) -->
+<div class="bg-surface-card border border-tertiary/30 rounded p-4 relative group hover:border-tertiary transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary rounded-l"></div>
+<div class="flex justify-between items-start mb-2">
+<div class="text-label-sm font-label-sm text-tertiary bg-tertiary-container/20 px-2 py-0.5 rounded uppercase font-bold border border-tertiary/20">Arrived</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">08:00 AM</span>
+</div>
+<h4 class="text-body-md font-body-md font-bold text-on-surface mb-1">HVAC Maintenance - Sector 7G</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                1420 Industrial Blvd, Unit 4
+                            </p>
+<div class="flex justify-end gap-2 mt-2">
+<button class="text-label-md font-label-md border border-border-muted text-on-surface px-3 py-1.5 rounded hover:border-on-surface transition-colors">Details</button>
+<button class="text-label-md font-label-md bg-tertiary text-on-tertiary px-3 py-1.5 rounded hover:bg-tertiary-fixed transition-colors">Submit Evidence</button>
+</div>
+</div>
+<!-- Job Card: Urgent (Active/Next) -->
+<div class="bg-surface-card border border-error/50 rounded p-4 relative group hover:border-error transition-colors shadow-[0_0_8px_rgba(255,180,171,0.1)]">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error rounded-l"></div>
+<div class="flex justify-between items-start mb-2">
+<div class="text-label-sm font-label-sm text-error bg-error-container/20 px-2 py-0.5 rounded uppercase font-bold border border-error/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+                                    Urgent Dispatch
+                                </div>
+<span class="text-label-sm font-label-sm text-error font-bold">11:30 AM (OVERDUE)</span>
+</div>
+<h4 class="text-body-md font-body-md font-bold text-on-surface mb-1">Emergency Pipe Repair</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                8900 Commerce Way
+                            </p>
+<div class="flex justify-end gap-2 mt-2">
+<button class="text-label-md font-label-md border border-border-muted text-on-surface px-3 py-1.5 rounded hover:border-on-surface transition-colors">Details</button>
+<button class="text-label-md font-label-md bg-neon-blue text-on-primary-container px-3 py-1.5 rounded hover:bg-inverse-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">directions_car</span>
+                                    Begin Transit
+                                </button>
+</div>
+</div>
+<!-- Job Card: Pending -->
+<div class="bg-surface-card border border-border-muted rounded p-4 relative group hover:border-neon-blue/50 transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-border-muted group-hover:bg-neon-blue/50 rounded-l transition-colors"></div>
+<div class="flex justify-between items-start mb-2">
+<div class="text-label-sm font-label-sm text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded uppercase font-bold border border-border-muted">Pending</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">02:00 PM</span>
+</div>
+<h4 class="text-body-md font-body-md font-bold text-on-surface mb-1">Electrical Inspection</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                45 Downtown Plaza, Fl 12
+                            </p>
+<div class="flex justify-end gap-2 mt-2">
+<button class="text-label-md font-label-md border border-border-muted text-on-surface px-3 py-1.5 rounded w-full hover:border-on-surface transition-colors">View Details</button>
+</div>
+</div>
+<!-- Job Card: Pending -->
+<div class="bg-surface-card border border-border-muted rounded p-4 relative group hover:border-neon-blue/50 transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-border-muted group-hover:bg-neon-blue/50 rounded-l transition-colors"></div>
+<div class="flex justify-between items-start mb-2">
+<div class="text-label-sm font-label-sm text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded uppercase font-bold border border-border-muted">Pending</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">04:30 PM</span>
+</div>
+<h4 class="text-body-md font-body-md font-bold text-on-surface mb-1">Server Rack Installation</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                110 Data Center Pkwy
+                            </p>
+<div class="flex justify-end gap-2 mt-2">
+<button class="text-label-md font-label-md border border-border-muted text-on-surface px-3 py-1.5 rounded w-full hover:border-on-surface transition-colors">View Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Simple script to demonstrate interactivity could go here
+        // e.g., toggling map layers, handling date selection
+        document.addEventListener('DOMContentLoaded', () => {
+            // CSS animations handle the map dash lines and pings
+        });
+    </script>
+</body></html>

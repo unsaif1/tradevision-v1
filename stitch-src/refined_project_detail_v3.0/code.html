@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Riverside Commons Project Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#e21e51",
+                        "on-secondary-container": "#a8b6c9",
+                        "surface-dim": "#0f141a",
+                        "secondary-fixed": "#d5e4f7",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "tertiary": "#bdc7dc",
+                        "background": "#0f141a",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-highest": "#30353d",
+                        "secondary-container": "#3a4858",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-tertiary-container": "#fefcff",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "secondary": "#bac8db",
+                        "on-primary-container": "#fffcff",
+                        "on-secondary": "#243240",
+                        "surface-deep": "#1C2128",
+                        "text-secondary": "#8896A8",
+                        "accent-active": "#E21E51",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "inverse-primary": "#be003e",
+                        "on-error": "#690005",
+                        "text-primary": "#FFFFFF",
+                        "on-background": "#dee2ec",
+                        "surface-container": "#1b2027",
+                        "error-container": "#93000a",
+                        "surface-muted": "#2D3748",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#353941",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary-fixed": "#40000f",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee2ec",
+                        "surface-container-high": "#252a32",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-variant": "#30353d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "tertiary-container": "#6b7588",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-surface": "#dee2ec",
+                        "on-primary": "#67001e",
+                        "tertiary-fixed": "#d9e3f9",
+                        "outline": "#ab888a",
+                        "surface": "#0f141a",
+                        "surface-container-low": "#171c23",
+                        "on-primary-fixed-variant": "#91002e",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-tertiary": "#273141",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        base: "8px",
+                        xl: "40px",
+                        sm: "8px",
+                        md: "16px",
+                        xs: "4px",
+                        lg: "24px",
+                        gutter: "16px",
+                        margin: "24px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    fontSize: {
+                        "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "0.02em", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-sm": ["11px", { lineHeight: "14px", fontWeight: "500" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined[data-weight="fill"] { font-variation-settings: 'FILL' 1; }
+        body { background-color: theme('colors.surface-deep'); color: theme('colors.on-surface'); }
+        .glass-panel { background: rgba(45, 55, 72, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid theme('colors.border-subtle'); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md pb-24 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto docked full-width top-0 z-50"><div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="analytics">analytics</span>
+<span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight uppercase">TradeVision C.A.R.E.</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-sm mr-md">
+<button class="flex items-center gap-xs px-md py-1.5 border border-primary-container/40 text-primary-container rounded-full hover:bg-primary-container/10 transition-all font-label-md">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+            Add Evidence
+        </button>
+<button class="flex items-center gap-xs px-md py-1.5 border border-error/40 text-error rounded-full hover:bg-error/10 transition-all font-label-md">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+            Flag Issue
+        </button>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-muted border border-border-subtle flex items-center justify-center hover:bg-surface-bright/10 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface" data-icon="person">person</span>
+</button>
+</div></header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-gutter py-lg md:px-margin space-y-lg">
+<!-- Hero Banner Section -->
+<section class="relative w-full h-[320px] md:h-[400px] rounded-lg overflow-hidden border border-border-subtle shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-0 bg-cover bg-center bg-black/40" style="background-image: url('https://lh3.googleusercontent.com/aida/ADBb0uhn6V5ach9kieos4dmUSuwd9HVGRibOgrxxmp6qsvjbKdB1dlB-HDQPqxI_GmxCCUvTVngAMWe280BZmXsaaIYycEAfTfEMHbwKaSBa9ZKMesoO53MRMkXx57LKXG8XLj4AuhTkfw7OaOnzme6-fnhdqYvU0zdlIhQAAZiVdzHa2vmKg-IuG3l4etaQ2drJ5rm0IDTluGbINYCpvThMSDnHTdE2UVa_GgqhUvuIfHGYpTtbuIXBRwRWjyWo');">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-deep via-surface-deep/80 to-transparent"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-deep via-surface-deep/40 to-transparent"></div><div class="absolute bottom-0 left-0 w-full p-lg flex flex-col md:flex-row justify-between items-start md:items-end gap-md"><div class="flex flex-col gap-xs z-10 w-full">
+<div class="flex items-center gap-sm mb-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#e21e51]"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Active Operations</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-text-primary m-0 uppercase tracking-tighter">Riverside Commons</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mt-md py-md border-y border-white/10">
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] uppercase text-text-secondary">Location</span>
+<p class="font-body-sm text-on-surface flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-[14px] text-primary-container">location_on</span>
+                1402 River Walk Dr, Tampa, FL
+            </p>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] uppercase text-text-secondary">Client</span>
+<p class="font-body-sm text-on-surface flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-[14px] text-primary-container">corporate_fare</span>
+                Riverside HOA
+            </p>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] uppercase text-text-secondary">Project Duration</span>
+<p class="font-body-sm text-on-surface flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-[14px] text-primary-container">event</span>
+                45 Days Remaining
+            </p>
+</div>
+</div>
+</div>
+<div class="flex flex-row gap-sm z-10 w-full md:w-auto mt-lg">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-lg py-sm bg-surface-container-highest border border-primary-container/20 rounded-lg hover:border-primary-container transition-all font-label-md text-primary-container active:scale-95">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+        Push Data
+    </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-lg py-sm bg-primary-container rounded-lg hover:bg-accent-active transition-all font-label-md text-text-primary active:scale-95 shadow-[0_0_15px_rgba(226,30,81,0.3)]">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+        Access Shell
+    </button>
+</div></div>
+</section>
+<!-- Bento Grid Layout for Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content Column -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Status Timeline -->
+<section class="bg-surface-muted border border-border-subtle rounded-lg p-lg"><div class="flex justify-between items-center mb-lg border-l-4 border-primary-container pl-md">
+<h2 class="font-headline-md text-headline-md text-text-primary uppercase tracking-widest">Technical System Log</h2>
+<span class="font-label-sm text-primary-container animate-pulse">LIVE FEED</span>
+</div>
+<div class="space-y-gutter">
+<div class="flex gap-md p-md bg-surface-container-lowest border-l-2 border-primary-container">
+<span class="font-mono text-[11px] text-primary-container/60 mt-1">[12-10-23:0945]</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<h3 class="font-label-md text-primary-container uppercase">INIT_STACK_LOGGED</h3>
+</div>
+<p class="font-body-sm text-text-secondary mt-1">Project root directory initialized in C.A.R.E. encrypted stack.</p>
+</div>
+</div>
+<div class="flex gap-md p-md bg-surface-container-lowest border-l-2 border-primary-container">
+<span class="font-mono text-[11px] text-primary-container/60 mt-1">[18-10-23:1422]</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<h3 class="font-label-md text-primary-container uppercase">DOC_SYMLINK_COMPLETE</h3>
+</div>
+<p class="font-body-sm text-text-secondary mt-1">Field assets and spatial data blobs verified and mapped.</p>
+</div>
+</div>
+<div class="flex gap-md p-md bg-surface-container-high border-l-2 border-yellow-500">
+<span class="font-mono text-[11px] text-yellow-500/60 mt-1">[PENDING]</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-ping"></span>
+<h3 class="font-label-md text-yellow-500 uppercase">ESTIMATE_RECONCILING</h3>
+</div>
+<p class="font-body-sm text-text-secondary mt-1">Awaiting public adjuster finalization of delta scope.</p>
+</div>
+</div>
+</div></section>
+<!-- Quick Access / Claims Folder -->
+<section class="bg-surface-container border border-border-subtle rounded-lg p-lg flex flex-col md:flex-row items-center justify-between gap-md transition-all hover:border-primary-container/30 bg-surface-container-lowest border-primary-container/10">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-surface-muted border border-border-subtle flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="folder_open">folder_open</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Claims Folder</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Manage documents and communication records.</p>
+</div>
+</div>
+<button class="w-full md:w-auto px-lg py-sm bg-surface-muted hover:bg-surface-bright border border-border-subtle rounded-lg transition-all active:scale-95 font-label-md text-label-md text-on-surface flex items-center justify-center gap-xs">
+        Open Folder
+        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+</div>
+<!-- Side Column -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Stakeholders -->
+<section class="bg-surface-muted border border-border-subtle rounded-lg p-lg flex flex-col gap-md"><div class="flex justify-between items-center mb-lg border-l-4 border-primary-container pl-md">
+<h2 class="font-headline-md text-headline-md text-text-primary uppercase tracking-widest">Technical System Log</h2>
+<span class="font-label-sm text-primary-container animate-pulse">LIVE FEED</span>
+</div>
+<div class="space-y-gutter">
+<div class="flex gap-md p-md bg-surface-container-lowest border-l-2 border-primary-container">
+<span class="font-mono text-[11px] text-primary-container/60 mt-1">[12-10-23:0945]</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<h3 class="font-label-md text-primary-container uppercase">INIT_STACK_LOGGED</h3>
+</div>
+<p class="font-body-sm text-text-secondary mt-1">Project root directory initialized in C.A.R.E. encrypted stack.</p>
+</div>
+</div>
+<div class="flex gap-md p-md bg-surface-container-lowest border-l-2 border-primary-container">
+<span class="font-mono text-[11px] text-primary-container/60 mt-1">[18-10-23:1422]</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<h3 class="font-label-md text-primary-container uppercase">DOC_SYMLINK_COMPLETE</h3>
+</div>
+<p class="font-body-sm text-text-secondary mt-1">Field assets and spatial data blobs verified and mapped.</p>
+</div>
+</div>
+<div class="flex gap-md p-md bg-surface-container-high border-l-2 border-yellow-500">
+<span class="font-mono text-[11px] text-yellow-500/60 mt-1">[PENDING]</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-ping"></span>
+<h3 class="font-label-md text-yellow-500 uppercase">ESTIMATE_RECONCILING</h3>
+</div>
+<p class="font-body-sm text-text-secondary mt-1">Awaiting public adjuster finalization of delta scope.</p>
+</div>
+</div>
+</div></section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high dark:bg-surface-container-high shadow-lg md:hidden z-50">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md mt-xs">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="location_city" data-weight="fill">location_city</span>
+<span class="font-label-md text-label-md mt-xs">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_late">assignment_late</span>
+<span class="font-label-md text-label-md mt-xs">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="font-label-md text-label-md mt-xs">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-xs">Account</span>
+</a>
+</nav>
+</body></html>

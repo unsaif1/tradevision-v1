@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#006970",
+                        "inverse-on-surface": "#2f3035",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-tint": "#00dbe9",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary-fixed": "#002022",
+                        "inverse-surface": "#e2e2e8",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#5e5f5f",
+                        "background": "#111317",
+                        "surface": "#111317",
+                        "tertiary-container": "#dad9d9",
+                        "secondary-fixed": "#ffdea8",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-background": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface-variant": "#b9cacb",
+                        "primary-container": "#00f0ff",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-secondary": "#412d00",
+                        "outline": "#849495",
+                        "on-error": "#690005",
+                        "tertiary": "#f7f5f5",
+                        "on-surface": "#e2e2e8",
+                        "on-primary-container": "#006970",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-high": "#282a2e",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-container": "#1e2024",
+                        "secondary": "#ffdb9d",
+                        "on-tertiary": "#303031",
+                        "surface-bright": "#37393e",
+                        "surface-dim": "#111317",
+                        "surface-container-low": "#1a1c20",
+                        "primary-fixed": "#7df4ff",
+                        "surface-variant": "#333539",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "secondary-container": "#feb700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .cyber-grid {
+            background-image: linear-gradient(to right, rgba(132, 148, 149, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(132, 148, 149, 0.05) 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased cyber-grid min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface dark:bg-surface border-b border-surface-stroke dark:border-surface-stroke">
+<button class="text-neon-pink dark:text-neon-pink hover:bg-surface-container-highest transition-colors p-2 rounded-full opacity-80 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<span class="font-label-caps text-label-caps tracking-widest text-neon-pink dark:text-neon-pink">TRADEVISION</span>
+<button class="text-neon-pink dark:text-neon-pink hover:bg-surface-container-highest transition-colors p-2 rounded-full opacity-80 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] pb-[96px] px-margin-mobile flex flex-col gap-6 max-w-md mx-auto">
+<!-- Verification Header -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary">ASSET ID</span>
+<span class="font-label-caps text-label-caps text-outline bg-surface-container px-2 py-1 rounded">V.1.0</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">IMG-4092-A</h1>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-primary">VERIFIED ON CHAIN</span>
+</div>
+</section>
+<!-- Certificate Card -->
+<section class="bg-surface-container border border-outline-variant p-4 flex flex-col gap-4 relative overflow-hidden">
+<!-- Decorative corner marker -->
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary m-2"></div>
+<div class="flex items-center gap-3 border-b border-outline-variant pb-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Verification Certificate</h2>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SHA-256 HASH</span>
+<div class="bg-surface-container-lowest p-2 border border-outline-variant rounded font-data-point text-data-point text-secondary break-all text-xs">
+                        e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                    </div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">BLOCK DEPTH</span>
+<span class="font-data-point text-data-point text-on-surface">14,293</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP (UTC)</span>
+<span class="font-data-point text-data-point text-on-surface">2023-10-27T14:32</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Chain of Custody Timeline -->
+<section class="flex flex-col gap-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant pb-2">CHAIN OF CUSTODY</h3>
+<div class="flex flex-col gap-0 relative pl-4 border-l-2 border-surface-container-highest ml-2">
+<!-- Event 1 -->
+<div class="relative pb-6 pl-4">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[23px] top-1 border-2 border-surface"></div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-primary">BLOCKCHAIN COMMIT</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">System Auto-Commit</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">14:32:01 · Node Alpha-7</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative pb-6 pl-4">
+<div class="absolute w-3 h-3 bg-surface-container-highest rounded-full -left-[23px] top-1 border-2 border-outline-variant"></div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">DATA INGESTION</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Drone Upload: Sector 4</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">14:28:45 · Operator J.Doe</span>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative pb-2 pl-4">
+<div class="absolute w-3 h-3 bg-surface-container-highest rounded-full -left-[23px] top-1 border-2 border-outline-variant"></div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ASSET CREATION</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Capture</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">14:15:22 · Device ID-992</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Button -->
+<button class="w-full bg-surface-container border border-outline-variant hover:border-primary text-on-surface font-label-caps text-label-caps py-4 flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">data_object</span>
+            VIEW SOURCE DATA
+        </button>
+</main>
+<!-- BottomNavBar (Suppressed due to task-focused/transactional nature of verification detail screen) -->
+<!-- The user is in a focused journey examining specific evidence, so the global nav is hidden to prioritize the canvas. -->
+</body></html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Desktop Maintenance Dispatch Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#d8e2ff",
+                      "neon-blue": "#3B82F6",
+                      "secondary-container": "#00b55d",
+                      "on-surface-variant": "#e4bdbf",
+                      "outline-variant": "#5c3f42",
+                      "on-primary-fixed-variant": "#91002e",
+                      "inverse-primary": "#be003e",
+                      "on-tertiary-container": "#fffcff",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-secondary-fixed": "#00210c",
+                      "error-container": "#93000a",
+                      "surface-stroke": "#2D3748",
+                      "background": "#0d141c",
+                      "primary-container": "#e21e51",
+                      "surface-base": "#111820",
+                      "surface": "#0d141c",
+                      "surface-container-high": "#242b33",
+                      "outline": "#ab888a",
+                      "on-background": "#dce3ee",
+                      "on-tertiary-fixed": "#001a42",
+                      "neon-orange": "#F97316",
+                      "surface-elevated": "#1C2128",
+                      "neon-pink": "#E21E51",
+                      "surface-container": "#192028",
+                      "secondary-fixed": "#6dfe9c",
+                      "on-error-container": "#ffdad6",
+                      "text-muted": "#8896A8",
+                      "on-secondary": "#003919",
+                      "on-surface": "#dce3ee",
+                      "on-error": "#690005",
+                      "secondary": "#4de082",
+                      "inverse-on-surface": "#2a313a",
+                      "on-secondary-container": "#003e1c",
+                      "surface-tint": "#ffb2b9",
+                      "surface-container-highest": "#2e353e",
+                      "on-primary-container": "#fffcff",
+                      "tertiary": "#adc6ff",
+                      "surface-dim": "#0d141c",
+                      "on-primary-fixed": "#40000f",
+                      "surface-container-lowest": "#080f16",
+                      "on-tertiary": "#002e6a",
+                      "primary": "#ffb2b9",
+                      "surface-variant": "#2e353e",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "on-secondary-fixed-variant": "#005227",
+                      "tertiary-container": "#2171e4",
+                      "neon-green": "#4ADE80",
+                      "secondary-fixed-dim": "#4de082",
+                      "inverse-surface": "#dce3ee",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "surface-container-low": "#151c24",
+                      "primary-fixed": "#ffdadb",
+                      "on-primary": "#67001e",
+                      "surface-bright": "#333a43"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "stack-gap": "12px",
+                      "unit": "4px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Barlow"
+                      ],
+                      "headline-lg-mobile": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "stat-display": [
+                              "Barlow Condensed"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ],
+                      "caption": [
+                              "Barlow"
+                      ],
+                      "body-md": [
+                              "Barlow"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "stat-display": [
+                              "40px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface-base text-on-surface font-body-lg min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex bg-surface-base border-r border-surface-stroke h-screen w-64 fixed left-0 top-0 flex-col z-50">
+<div class="p-6 border-b border-surface-stroke">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Facility Command Logo" class="w-10 h-10 rounded-full border border-surface-stroke" data-alt="A stylized logo icon representing an industrial facility or command center. The image is circular, featuring sharp geometric lines resembling a factory or control tower, rendered in a high-contrast palette of deep greys and bright neon accents, suitable for a dark-mode industrial UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBABm9t6yJWBZDgkoN_d-lLPTbVE95GrYAYTdB35E6VRtJys2tiI4zY0NPZwLBC-FX_XAnnTE6d1oR7rqtmvGCzP_YHvnOXgLGVI1mvr37JFqIyRvByLqn1QUnrxb9kNhKFfHhExBSAVrg9yHEimi5iqNZCWgfbl0NvsUMbqOnxngT6JUBZyGXpBOkQaDjY8GHe8vbONndbXY4S5fZozVU_m-ZDVUYjp32yF5GNd7kU5VbkYPZHBy9mWfVD7zsZQE6wdX_y_oO30gWc"/>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">MAIN_HUB</h2>
+<p class="font-label-caps text-label-caps text-text-muted">SECTOR_07</p>
+</div>
+</div>
+<button class="w-full bg-neon-pink text-on-primary-container font-label-caps text-label-caps uppercase py-3 rounded DEFAULT hover:opacity-80 transition-opacity">NEW DISPATCH</button>
+</div>
+<ul class="flex-1 py-4">
+<li class="mb-1">
+<a class="bg-primary-container text-on-primary-container border-r-4 border-neon-pink px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span>
+                    Dispatch Queue
+                </a>
+</li>
+<li class="mb-1">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
+                    Active Repairs
+                </a>
+</li>
+<li class="mb-1">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+                    Verification Logs
+                </a>
+</li>
+<li class="mb-1">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                    Inventory
+                </a>
+</li>
+</ul>
+<div class="p-4 border-t border-surface-stroke">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 w-full min-h-screen relative overflow-y-auto">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-surface-stroke flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Toggle (Visible only on small screens) -->
+<button class="md:hidden text-on-surface p-2 focus:outline-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-lg text-headline-lg font-bold text-neon-pink tracking-tight hidden md:block">TECH-COMMAND V2</div>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md mx-4 hidden sm:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full bg-surface-elevated border border-surface-stroke text-on-surface rounded py-2 pl-10 pr-4 font-body-md text-body-md focus:outline-none focus:border-neon-pink transition-colors placeholder-text-muted" placeholder="Search task ID, sector, or keyword..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-2 rounded-full hover:bg-surface-container-high active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-2 rounded-full hover:bg-surface-container-high active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors p-2 rounded-full hover:bg-surface-container-high active:opacity-80 hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full border border-surface-stroke overflow-hidden ml-2">
+<img alt="Manager Avatar" class="w-full h-full object-cover" data-alt="A portrait of a male manager in a technical environment. The lighting is moody and dramatic with cool blue and neon pink accents, fitting a cyberpunk or high-tech industrial setting. He is wearing dark, functional clothing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL1ocuOUeY-fDTcfYtVjsoKd-KZ715VSPKodq9uaohUdnzzKsWEg6Q4nxqp7ih0QX5SlR_DHU-agsY9UR7yOnoPrTLhS9D5GJJ3LOjbz-xzpH14IUPFkoM7mzAqOYPbr0Bp0rNeQANKL_Y4pZzdVTZ6F7SgO_yBWsI9zh4vdGYFlhXNedRFQ5M5gl6XH0R6GexITWm3mP4ynCLby94FCinW0GnRiPSK1YPFwjTL5JFhKTVbPtR0k7m8eoXfHishHExBhyW6Kxmqy77"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-margin-desktop space-y-gutter">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2">DISPATCH QUEUE</h1>
+<p class="font-body-md text-body-md text-text-muted">Overview of current operational anomalies and maintenance requests.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-elevated border border-surface-stroke px-4 py-2 rounded">
+<div class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-on-surface tracking-widest">SYNC STATUS: SECURE</span>
+</div>
+</div>
+<!-- Summary Cards (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-8">
+<!-- Critical Card -->
+<div class="bg-surface-elevated border-t-[4px] border-neon-pink p-6 rounded shadow-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-neon-pink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-center mb-4 relative z-10">
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase">Critical priority</h3>
+<span class="material-symbols-outlined text-neon-pink" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="font-stat-display text-stat-display text-on-surface mb-2 relative z-10">14</div>
+<div class="flex items-center gap-2 relative z-10">
+<span class="w-2 h-2 rounded-full bg-neon-pink"></span>
+<p class="font-caption text-caption text-text-muted">Immediate action required</p>
+</div>
+</div>
+<!-- Moderate Card -->
+<div class="bg-surface-elevated border-t-[4px] border-neon-orange p-6 rounded shadow-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-neon-orange/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-center mb-4 relative z-10">
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase">Moderate issues</h3>
+<span class="material-symbols-outlined text-neon-orange" style="font-variation-settings: 'FILL' 1;">build</span>
+</div>
+<div class="font-stat-display text-stat-display text-on-surface mb-2 relative z-10">32</div>
+<div class="flex items-center gap-2 relative z-10">
+<span class="w-2 h-2 rounded-full bg-neon-orange"></span>
+<p class="font-caption text-caption text-text-muted">Scheduled within 24h</p>
+</div>
+</div>
+<!-- Active Card -->
+<div class="bg-surface-elevated border-t-[4px] border-neon-blue p-6 rounded shadow-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-center mb-4 relative z-10">
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase">Active tasks</h3>
+<span class="material-symbols-outlined text-neon-blue" style="font-variation-settings: 'FILL' 1;">sync</span>
+</div>
+<div class="font-stat-display text-stat-display text-on-surface mb-2 relative z-10">8</div>
+<div class="flex items-center gap-2 relative z-10">
+<span class="w-2 h-2 rounded-full bg-neon-blue"></span>
+<p class="font-caption text-caption text-text-muted">Crews deployed</p>
+</div>
+</div>
+</div>
+<!-- Detailed Data Grid -->
+<div class="bg-surface-elevated border border-surface-stroke rounded-lg overflow-hidden">
+<div class="p-4 border-b border-surface-stroke bg-surface-container flex justify-between items-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase">Pending Assignments</h2>
+<button class="text-text-muted hover:text-on-surface transition-colors p-1">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-stroke bg-surface-base text-text-muted font-label-caps text-label-caps uppercase tracking-wider">
+<th class="p-4 w-24">Task ID</th>
+<th class="p-4 w-32">Sector</th>
+<th class="p-4">Problem Description</th>
+<th class="p-4 w-32">Status</th>
+<th class="p-4 w-48 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-surface-stroke">
+<!-- Row 1: Critical -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-4 font-mono text-on-surface">TSK-8942</td>
+<td class="p-4 text-text-muted">SEC-04-A</td>
+<td class="p-4">
+<div class="font-semibold text-on-surface">Cooling System Failure</div>
+<div class="font-caption text-caption text-text-muted mt-1">Main reactor loop reporting temp spike.</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-neon-pink/10 text-neon-pink font-label-caps text-label-caps border border-neon-pink/20">
+<span class="w-1.5 h-1.5 rounded-full bg-neon-pink mr-2"></span> CRITICAL
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="bg-neon-pink text-on-primary-container font-label-caps text-label-caps uppercase px-4 py-2 rounded hover:opacity-90 transition-opacity whitespace-nowrap">
+                                        Accept &amp; Initiate
+                                    </button>
+</td>
+</tr>
+<!-- Row 2: Moderate -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-4 font-mono text-on-surface">TSK-8945</td>
+<td class="p-4 text-text-muted">SEC-12-B</td>
+<td class="p-4">
+<div class="font-semibold text-on-surface">Conveyor Belt Misalignment</div>
+<div class="font-caption text-caption text-text-muted mt-1">Assembly line 3 experiencing minor delays.</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-neon-orange/10 text-neon-orange font-label-caps text-label-caps border border-neon-orange/20">
+<span class="w-1.5 h-1.5 rounded-full bg-neon-orange mr-2"></span> MODERATE
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="border border-surface-stroke text-on-surface font-label-caps text-label-caps uppercase px-4 py-2 rounded hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+                                        Assign Crew
+                                    </button>
+</td>
+</tr>
+<!-- Row 3: Routine -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-4 font-mono text-on-surface">TSK-8951</td>
+<td class="p-4 text-text-muted">SEC-01-D</td>
+<td class="p-4">
+<div class="font-semibold text-on-surface">Hydraulic Fluid Leak</div>
+<div class="font-caption text-caption text-text-muted mt-1">Minor weeping from valve housing assembly.</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-bright/50 text-text-muted font-label-caps text-label-caps border border-surface-stroke">
+<span class="w-1.5 h-1.5 rounded-full bg-text-muted mr-2"></span> ROUTINE
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<button class="border border-surface-stroke text-on-surface font-label-caps text-label-caps uppercase px-4 py-2 rounded hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+                                        Assign Crew
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</body></html>

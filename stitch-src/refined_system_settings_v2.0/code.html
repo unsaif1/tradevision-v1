@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Settings - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#40000f",
+                    "secondary-container": "#3f4753",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "primary-container": "#e21e51",
+                    "outline": "#ab888a",
+                    "inverse-on-surface": "#2c3137",
+                    "surface-variant": "#30353c",
+                    "on-surface-variant": "#e4bdbf",
+                    "surface": "#0f141a",
+                    "on-primary-container": "#fffcff",
+                    "primary-fixed": "#ffdadb",
+                    "outline-variant": "#5c3f42",
+                    "inverse-primary": "#be003e",
+                    "on-primary": "#67001e",
+                    "background": "#0f141a",
+                    "tertiary-fixed": "#8ff7c7",
+                    "on-primary-fixed-variant": "#91002e",
+                    "on-background": "#dee3eb",
+                    "inverse-surface": "#dee3eb",
+                    "surface-tint": "#ffb2b9",
+                    "on-tertiary-container": "#f5fff7",
+                    "surface-dim": "#0f141a",
+                    "on-tertiary-fixed-variant": "#005138",
+                    "on-tertiary-fixed": "#002114",
+                    "surface-container-high": "#252a31",
+                    "on-secondary-fixed-variant": "#3f4753",
+                    "error-container": "#93000a",
+                    "surface-bright": "#353a40",
+                    "surface-container": "#1b2026",
+                    "on-surface": "#dee3eb",
+                    "tertiary-container": "#00855e",
+                    "surface-container-lowest": "#0a0f14",
+                    "surface-container-highest": "#30353c",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#003826",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "secondary": "#bfc7d5",
+                    "secondary-fixed-dim": "#bfc7d5",
+                    "on-secondary-container": "#aeb6c3",
+                    "primary": "#ffb2b9",
+                    "tertiary": "#72daad",
+                    "on-secondary": "#29313c",
+                    "tertiary-fixed-dim": "#72daad",
+                    "secondary-fixed": "#dbe3f1",
+                    "surface-container-low": "#171c22",
+                    "on-secondary-fixed": "#141c26"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "sidebar_width": "260px",
+                    "margin": "32px",
+                    "grid_columns": "12",
+                    "header_height": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Barlow Condensed"],
+                    "mono-data": ["JetBrains Mono"],
+                    "headline-sm": ["Barlow Condensed"],
+                    "display-md": ["Barlow Condensed"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Barlow Condensed"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                    "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                    "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                    "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                    "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: rgba(226, 30, 81, 0.2);
+            border-color: #e21e51;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(20px);
+            background-color: #e21e51;
+        }
+        .toggle-label {
+            width: 44px;
+            height: 24px;
+            background-color: rgba(63, 71, 83, 0.2);
+            border: 1px solid #3f4753;
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+            background-color: #aeb6c3;
+            border-radius: 2px;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen pt-header_height pb-[80px] md:pb-0 md:pl-sidebar_width antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-margin h-header_height bg-surface border-b border-surface-container-highest transition-colors">
+<div class="flex items-center gap-4">
+<button aria-label="Menu" class="md:hidden text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+</button>
+<div class="hidden md:flex items-center justify-center w-8 h-8 rounded bg-surface-container-highest">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+</div>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary">TRADEVISION</h1>
+</div>
+<div class="flex items-center">
+<button aria-label="Profile" class="text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-lg opacity-80 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed inset-y-0 left-0 z-[60] w-sidebar_width bg-surface-container border-r border-surface-container-highest shadow-lg pt-header_height">
+<div class="p-6 border-b border-surface-container-highest flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<div>
+<h2 class="font-label-caps text-label-caps text-tertiary">COMMANDER ALPHA</h2>
+<p class="font-mono-data text-[10px] text-on-surface-variant mt-1">ID: CMDR-7G-001</p>
+</div>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto px-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">conveyor_belt</span>
+<span class="font-label-caps tracking-wider text-xs">FLEET_STATUS</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps tracking-wider text-xs">INVENTORY_CTRL</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="font-label-caps tracking-wider text-xs">PERSONNEL_DB</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-label-caps tracking-wider text-xs">SAFETY_LOGS</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm bg-surface-container-highest text-primary font-bold border-l-2 border-primary hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-caps tracking-wider text-xs">SYSTEM_CONFIG</span>
+</a>
+</nav>
+</aside>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container border-t border-surface-container-highest">
+<a class="flex flex-col items-center justify-center text-secondary-container hover:text-on-surface p-2 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-caps text-[10px] leading-tight tracking-widest font-bold">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary-container hover:text-on-surface p-2 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">construction</span>
+<span class="font-label-caps text-[10px] leading-tight tracking-widest font-bold">PROJECTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary-container hover:text-on-surface p-2 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">gavel</span>
+<span class="font-label-caps text-[10px] leading-tight tracking-widest font-bold">CLAIMS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary-container hover:text-on-surface p-2 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">notifications</span>
+<span class="font-label-caps text-[10px] leading-tight tracking-widest font-bold">ALERTS</span>
+</a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="p-4 md:p-margin max-w-5xl mx-auto space-y-6">
+<header class="mb-8 border-b border-surface-container-highest pb-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-label-caps text-display-md text-on-surface tracking-widest">[ SYSTEM_CONFIG ]</h1>
+<p class="font-mono-data text-xs text-on-surface-variant mt-2">Configure structural and operational parameters for TradeVision C.A.R.E.</p>
+</div>
+<div class="font-mono-data text-[10px] text-tertiary flex gap-4">
+<span>AUTH_LEVEL: 4</span>
+<span>STATUS: <span class="text-[#00f0ff]">ONLINE</span></span>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Organization Profile -->
+<section class="md:col-span-12 bg-surface border border-outline-variant rounded-sm overflow-hidden">
+<div class="p-3 border-b border-outline-variant bg-surface-container flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">domain</span>
+<h2 class="font-label-caps text-label-caps text-on-surface tracking-widest">[ ORGANIZATION_PROFILE ]</h2>
+</div>
+<div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<div>
+<label class="block font-label-caps text-[10px] text-on-surface-variant mb-1 tracking-widest">ENTITY_NAME</label>
+<div class="w-full bg-surface-container-lowest border border-surface-container-highest py-2 px-3 font-mono-data text-mono-data text-on-surface">Aegis Construction Group</div>
+</div>
+<div>
+<label class="block font-label-caps text-[10px] text-on-surface-variant mb-1 tracking-widest">REGISTRATION_ID</label>
+<div class="w-full bg-surface-container-lowest border border-surface-container-highest py-2 px-3 font-mono-data text-mono-data text-primary">ACG-8849-XYZ</div>
+</div>
+</div>
+<div class="space-y-4 flex flex-col justify-between">
+<div>
+<label class="block font-label-caps text-[10px] text-on-surface-variant mb-1 tracking-widest">PRIMARY_REGION</label>
+<div class="w-full bg-surface-container-lowest border border-surface-container-highest py-2 px-3 font-mono-data text-mono-data text-on-surface flex justify-between">
+<span>North America - Sector 4</span>
+<span class="text-on-surface-variant">REG_CODE: NA-S4</span>
+</div>
+</div>
+<button class="mt-4 px-4 py-2 bg-transparent border border-primary text-primary font-label-caps text-label-caps rounded-sm hover:bg-primary-container/20 transition-colors flex items-center justify-center gap-2 w-fit">
+<span class="material-symbols-outlined text-sm">edit</span> [ EDIT_PROFILE ]
+                        </button>
+</div>
+</div>
+</section>
+<!-- API & Integrations -->
+<section class="md:col-span-7 bg-surface border border-outline-variant rounded-sm overflow-hidden">
+<div class="p-3 border-b border-outline-variant bg-surface-container flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">api</span>
+<h2 class="font-label-caps text-label-caps text-on-surface tracking-widest">[ API_GATEWAY ]</h2>
+</div>
+<div class="p-0 font-mono-data text-xs">
+<!-- JAMS -->
+<div class="flex items-center justify-between p-4 border-b border-surface-container-highest hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-lowest border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface text-lg">hub</span>
+</div>
+<div>
+<h3 class="text-on-surface font-semibold tracking-wide">JAMS_ARBITRATION_PORTAL</h3>
+<p class="text-on-surface-variant text-[10px] mt-0.5">Sync dispute resolution data</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[#00f0ff] flex items-center gap-1.5 text-[10px] tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff] block shadow-[0_0_8px_#00f0ff]"></span> ACTIVE
+                            </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</div>
+<!-- Legal Mediate -->
+<div class="flex items-center justify-between p-4 border-b border-surface-container-highest hover:bg-surface-container-low transition-colors opacity-75">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-lowest border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface text-lg">balance</span>
+</div>
+<div>
+<h3 class="text-on-surface font-semibold tracking-wide">LEGAL_MEDIATE_CONNECT</h3>
+<p class="text-on-surface-variant text-[10px] mt-0.5">Automated claim routing</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant flex items-center gap-1.5 text-[10px] tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant block"></span> OFFLINE
+                            </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">power_settings_new</span>
+</button>
+</div>
+</div>
+<!-- External Storage -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-lowest border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface text-lg">cloud_queue</span>
+</div>
+<div>
+<h3 class="text-on-surface font-semibold tracking-wide">SECURE_CLOUD_VAULT</h3>
+<p class="text-on-surface-variant text-[10px] mt-0.5">Encrypted document backup</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[#00f0ff] flex items-center gap-1.5 text-[10px] tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff] block shadow-[0_0_8px_#00f0ff]"></span> ACTIVE
+                            </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Notification Protocols -->
+<section class="md:col-span-5 bg-surface border border-outline-variant rounded-sm overflow-hidden">
+<div class="p-3 border-b border-outline-variant bg-surface-container flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">notifications_active</span>
+<h2 class="font-label-caps text-label-caps text-on-surface tracking-widest">[ NOTIFICATION_PROTOCOLS ]</h2>
+</div>
+<div class="p-5 space-y-6">
+<div class="flex items-start justify-between gap-4">
+<div>
+<h4 class="font-mono-data text-xs text-on-surface font-semibold tracking-wide">CRITICAL_INCIDENT_ALERTS</h4>
+<p class="font-mono-data text-[10px] text-on-surface-variant mt-1.5 leading-relaxed max-w-[200px]">Immediate push notifications for safety breaches or structural failures.</p>
+</div>
+<div class="relative inline-block w-11 mt-1 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-sm bg-white border-4 border-surface-container-highest appearance-none cursor-pointer z-10 opacity-0" id="toggle1" name="toggle1" type="checkbox"/>
+<label class="toggle-label block overflow-hidden" for="toggle1"></label>
+</div>
+</div>
+<div class="flex items-start justify-between gap-4">
+<div>
+<h4 class="font-mono-data text-xs text-on-surface font-semibold tracking-wide">CLAIM_STATUS_UPDATES</h4>
+<p class="font-mono-data text-[10px] text-on-surface-variant mt-1.5 leading-relaxed max-w-[200px]">Daily digest of mediation and arbitration progression.</p>
+</div>
+<div class="relative inline-block w-11 mt-1 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-sm bg-white border-4 border-surface-container-highest appearance-none cursor-pointer z-10 opacity-0" id="toggle2" name="toggle2" type="checkbox"/>
+<label class="toggle-label block overflow-hidden" for="toggle2"></label>
+</div>
+</div>
+<div class="flex items-start justify-between gap-4">
+<div>
+<h4 class="font-mono-data text-xs text-on-surface font-semibold tracking-wide">SYSTEM_MAINTENANCE</h4>
+<p class="font-mono-data text-[10px] text-on-surface-variant mt-1.5 leading-relaxed max-w-[200px]">Scheduled downtime and platform update warnings.</p>
+</div>
+<div class="relative inline-block w-11 mt-1 align-middle select-none">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-sm bg-white border-4 border-surface-container-highest appearance-none cursor-pointer z-10 opacity-0" id="toggle3" name="toggle3" type="checkbox"/>
+<label class="toggle-label block overflow-hidden" for="toggle3"></label>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

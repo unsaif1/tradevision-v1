@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Review - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#aeb6c3",
+                      "surface-bright": "#353a40",
+                      "background": "#0f141a",
+                      "tertiary-fixed": "#8ff7c7",
+                      "tertiary": "#72daad",
+                      "on-surface-variant": "#e4bdbf",
+                      "on-secondary-fixed-variant": "#3f4753",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#bfc7d5",
+                      "surface-variant": "#30353c",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-primary-fixed-variant": "#91002e",
+                      "surface-tint": "#ffb2b9",
+                      "surface-container": "#1b2026",
+                      "on-background": "#dee3eb",
+                      "surface-container-highest": "#30353c",
+                      "on-tertiary-container": "#f5fff7",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#171c22",
+                      "on-primary": "#67001e",
+                      "outline-variant": "#5c3f42",
+                      "on-tertiary-fixed": "#002114",
+                      "on-error": "#690005",
+                      "surface-dim": "#0f141a",
+                      "secondary-container": "#3f4753",
+                      "surface-container-lowest": "#0a0f14",
+                      "surface": "#0f141a",
+                      "on-primary-container": "#fffcff",
+                      "outline": "#ab888a",
+                      "primary-container": "#e21e51",
+                      "on-secondary": "#29313c",
+                      "on-primary-fixed": "#40000f",
+                      "inverse-on-surface": "#2c3137",
+                      "surface-container-high": "#252a31",
+                      "secondary-fixed": "#dbe3f1",
+                      "on-tertiary": "#003826",
+                      "primary": "#ffb2b9",
+                      "error-container": "#93000a",
+                      "tertiary-fixed-dim": "#72daad",
+                      "inverse-surface": "#dee3eb",
+                      "on-surface": "#dee3eb",
+                      "on-secondary-fixed": "#141c26",
+                      "secondary-fixed-dim": "#bfc7d5",
+                      "primary-fixed": "#ffdadb",
+                      "tertiary-container": "#00855e",
+                      "inverse-primary": "#be003e",
+                      "on-tertiary-fixed-variant": "#005138"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid_columns": "12",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "sidebar_width": "260px",
+                      "unit": "4px",
+                      "header_height": "64px"
+              },
+              "fontFamily": {
+                      "display-md": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "mono-data": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-sm": [
+                              "Barlow Condensed"
+                      ],
+                      "display-lg": [
+                              "Barlow Condensed"
+                      ]
+              },
+              "fontSize": {
+                      "display-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.03em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "52px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        body {
+            background-color: #0f141a;
+            color: #dee3eb;
+        }
+        /* Custom scrollbar for data tables if needed */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f4753; 
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-[80px]">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-surface-variant docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-gutter py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-4">
+<button aria-label="Back" class="text-primary-container dark:text-primary-fixed-dim hover:bg-surface-bright/10 transition-colors p-2 rounded-full active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Evidence Review</span>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="More options" class="text-on-surface-variant hover:text-primary-container hover:bg-surface-bright/10 transition-colors p-2 rounded-full active:scale-95">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<main class="w-full max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+<!-- Status Banner -->
+<div class="bg-surface-container border border-surface-variant rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-tertiary/20 p-2 rounded text-tertiary">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface">AI Pre-check Passed</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">No critical structural anomalies detected in visual scan.</p>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary bg-tertiary/10 px-2 py-1 rounded uppercase">Auto-Cleared</span>
+</div>
+<!-- Media Preview -->
+<section class="bg-surface-container rounded-lg border border-surface-variant overflow-hidden">
+<div class="relative w-full aspect-[16/9] bg-black flex items-center justify-center">
+<img alt="Structural scan evidence" class="object-cover w-full h-full opacity-90" src="https://lh3.googleusercontent.com/aida/ADBb0ugPqPQVwgL_O4co5lCU-B7piSDD9H_zuNdQYkIb602Dvskh9SKPQg823iqDbjcLxXrw6Y5nCAQ272c3515HnW4Q62fc7lDC9yu3AqT5hYV83Bf9uih1vcFlyrR2TrZLhjwZgFoKHVMlqOMIxKg0TGXuMM0_xfGzYiK94l7Mp0nhTbh5uSDeZkcV-5cv2eTBP1Fn_T7mBzeY8awbr363l1Z03EfM4iaGUSrgHDzIHhicoG8c54bxcVfBAgqA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none"></div>
+<!-- Overlay Actions -->
+<div class="absolute top-4 right-4 flex gap-2">
+<button class="bg-surface/80 hover:bg-surface text-on-surface p-2 rounded shadow-lg backdrop-blur-sm transition-colors border border-surface-variant">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+</button>
+<button class="bg-surface/80 hover:bg-surface text-on-surface p-2 rounded shadow-lg backdrop-blur-sm transition-colors border border-surface-variant">
+<span class="material-symbols-outlined" data-icon="fullscreen">fullscreen</span>
+</button>
+</div>
+<!-- Overlaid Meta -->
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/20 px-2 py-1 rounded uppercase border border-primary/30 backdrop-blur-md">Structural Scan</span>
+<p class="font-mono-data text-mono-data text-on-surface mt-2 drop-shadow-md">IMG_8842_RAW.dng</p>
+</div>
+</div>
+</div>
+<!-- Metadata Grid -->
+<div class="p-4 grid grid-cols-2 gap-4 border-t border-surface-variant bg-surface-container">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Timestamp</p>
+<p class="font-mono-data text-mono-data text-on-surface">2023-10-24 14:32:01 UTC</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">GPS Location</p>
+<p class="font-mono-data text-mono-data text-on-surface text-tertiary">34.0522° N, 118.2437° W</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Device / EXIF</p>
+<p class="font-mono-data text-mono-data text-on-surface">Leica BLK360 / f2.8 / 1/60s</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Submitted By</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="person">person</span>
+<p class="font-body-md text-body-md text-on-surface">J. Miller (Contractor ID: 9942)</p>
+</div>
+</div>
+</div>
+<!-- Contractor Description -->
+<div class="p-4 border-t border-surface-variant bg-surface-container-low">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Contractor Notes</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                     Completed initial structural scan of Section B support column. Minor surface spalling observed on NE face, but rebar appears unexposed. Scanning complete pending review.
+                 </p>
+</div>
+</section>
+<!-- Review Workspace -->
+<section class="bg-surface-container rounded-lg border border-surface-variant p-4 space-y-6">
+<h3 class="font-display-md text-display-md text-on-surface border-b border-surface-variant pb-2">Review Workspace</h3>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-2" for="internal-notes">Internal Notes (Not visible to contractor)</label>
+<textarea class="w-full bg-surface-dim border border-surface-variant rounded p-3 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none placeholder:text-on-surface-variant/50" id="internal-notes" placeholder="Add engineering notes, compliance codes, or observations..." rows="3"></textarea>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+<button class="w-full flex items-center justify-center gap-2 bg-transparent border border-surface-variant text-on-surface hover:bg-surface-bright/20 font-label-caps text-label-caps uppercase py-3 px-4 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+                    Request Clarification
+                </button>
+<button class="w-full flex items-center justify-center gap-2 bg-primary-container text-white hover:bg-primary-container/90 font-label-caps text-label-caps uppercase py-3 px-4 rounded transition-colors shadow-[0_0_15px_rgba(226,30,81,0.3)]">
+<span class="material-symbols-outlined" data-icon="enhanced_encryption">enhanced_encryption</span>
+                    Verify &amp; Sign
+                </button>
+</div>
+</section>
+<!-- History Timeline -->
+<section class="bg-surface-container rounded-lg border border-surface-variant p-4">
+<h3 class="font-display-md text-display-md text-on-surface border-b border-surface-variant pb-2 mb-4">Audit Trail</h3>
+<div class="relative pl-6 space-y-6 before:absolute before:inset-y-0 before:left-2 before:w-px before:bg-surface-variant">
+<!-- Event 1 -->
+<div class="relative">
+<span class="absolute -left-6 top-1 w-3 h-3 bg-surface-container rounded-full border-2 border-tertiary"></span>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Today, 14:35 UTC</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">AI Pre-check Completed</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant text-xs mt-1">Model: Vision-Struct-v4.1 | Result: Passed (Confidence: 98.4%)</p>
+</div>
+<!-- Event 2 -->
+<div class="relative">
+<span class="absolute -left-6 top-1 w-3 h-3 bg-surface-container rounded-full border-2 border-primary"></span>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Today, 14:32 UTC</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Evidence Uploaded</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant text-xs mt-1">Hash: 8f4e...9a2b | By: J. Miller</p>
+</div>
+</div>
+</section>
+</main>
+</body></html>

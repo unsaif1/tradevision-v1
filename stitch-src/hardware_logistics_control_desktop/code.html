@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hardware Logistics &amp; Firmware Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-elevated": "#1C2128",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#dce3ee",
+                    "tertiary": "#adc6ff",
+                    "inverse-on-surface": "#2a313a",
+                    "tertiary-fixed": "#d8e2ff",
+                    "outline": "#ab888a",
+                    "primary-container": "#e21e51",
+                    "on-error": "#690005",
+                    "on-secondary-fixed-variant": "#005227",
+                    "surface-tint": "#ffb2b9",
+                    "surface-dim": "#0d141c",
+                    "on-surface-variant": "#e4bdbf",
+                    "on-secondary": "#003919",
+                    "secondary-container": "#00b55d",
+                    "surface-container-high": "#242b33",
+                    "inverse-surface": "#dce3ee",
+                    "surface-bright": "#333a43",
+                    "on-tertiary-fixed": "#001a42",
+                    "neon-blue": "#3B82F6",
+                    "tertiary-container": "#2171e4",
+                    "on-primary-fixed": "#40000f",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "secondary": "#4de082",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "secondary-fixed-dim": "#4de082",
+                    "primary": "#ffb2b9",
+                    "outline-variant": "#5c3f42",
+                    "on-background": "#dce3ee",
+                    "error-container": "#93000a",
+                    "surface-container": "#192028",
+                    "surface-base": "#111820",
+                    "background": "#0d141c",
+                    "surface-container-highest": "#2e353e",
+                    "on-secondary-container": "#003e1c",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#ffdadb",
+                    "neon-green": "#4ADE80",
+                    "on-primary": "#67001e",
+                    "surface-stroke": "#2D3748",
+                    "inverse-primary": "#be003e",
+                    "text-muted": "#8896A8",
+                    "on-primary-fixed-variant": "#91002e",
+                    "neon-pink": "#E21E51",
+                    "surface": "#0d141c",
+                    "on-primary-container": "#fffcff",
+                    "neon-orange": "#F97316",
+                    "surface-container-lowest": "#080f16",
+                    "on-tertiary": "#002e6a",
+                    "on-secondary-fixed": "#00210c",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "surface-variant": "#2e353e",
+                    "on-tertiary-container": "#fffcff",
+                    "secondary-fixed": "#6dfe9c",
+                    "surface-container-low": "#151c24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-gap": "12px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Barlow Condensed"],
+                    "body-md": ["Barlow"],
+                    "caption": ["Barlow"],
+                    "body-lg": ["Barlow"],
+                    "headline-xl": ["Barlow Condensed"],
+                    "headline-lg": ["Barlow Condensed"],
+                    "stat-display": ["Barlow Condensed"],
+                    "label-caps": ["Barlow Condensed"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "stat-display": ["40px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-caps": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.surface-base');
+            color: theme('colors.on-surface');
+        }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.surface-base'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-stroke'); border-radius: theme('borderRadius.DEFAULT'); }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.text-muted'); }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row h-screen overflow-hidden">
+<!-- TopNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 bg-surface border-b border-surface-stroke z-50">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-neon-pink tracking-tight">
+            TECH-COMMAND V2
+        </div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-neon-pink" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="material-symbols-outlined text-neon-pink" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="material-symbols-outlined text-neon-pink" style="font-variation-settings: 'FILL' 0;">help</span>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full flex-col z-50 docked w-64 border-r border-surface-stroke bg-surface-base">
+<div class="p-6 border-b border-surface-stroke">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">MAIN_HUB</h1>
+<p class="font-label-caps text-label-caps text-text-muted">SECTOR_07</p>
+</div>
+<div class="flex-1 py-6 flex flex-col gap-2">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">assignment_late</span> Dispatch Queue
+            </a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span> Active Repairs
+            </a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">fact_check</span> Verification Logs
+            </a>
+<a class="bg-primary-container text-on-primary-container border-r-4 border-neon-pink px-4 py-3 flex items-center gap-3 transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+            </a>
+</div>
+<div class="p-6 border-t border-surface-stroke flex flex-col gap-4">
+<button class="w-full bg-neon-pink text-on-primary-container font-label-caps text-label-caps py-3 uppercase rounded hover:opacity-90 transition-opacity">
+                NEW DISPATCH
+            </button>
+<a class="text-text-muted flex items-center gap-3 hover:text-on-surface transition-colors font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col md:ml-64 h-[calc(100vh-64px)] md:h-screen overflow-y-auto p-margin-mobile md:p-margin-desktop gap-gutter">
+<!-- Header Actions -->
+<header class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-4">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-wider">Logistics &amp; Firmware</h2>
+<p class="font-body-md text-body-md text-text-muted">Global Sensor Array Status</p>
+</div>
+<div class="flex gap-4 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 border border-surface-stroke text-text-muted px-4 py-2 rounded font-label-caps text-label-caps hover:bg-surface-container-high transition-colors uppercase">
+<span class="material-symbols-outlined text-[18px]">download</span> Export Telemetry
+                </button>
+<button class="flex-1 sm:flex-none bg-neon-pink text-on-primary-container px-6 py-2 rounded font-label-caps text-label-caps hover:opacity-90 transition-opacity uppercase">
+                    Update All
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Map Sector Density -->
+<section class="lg:col-span-2 bg-surface-elevated border-t-4 border-neon-blue rounded p-6 flex flex-col">
+<h3 class="font-label-caps text-label-caps text-text-muted mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">map</span> Sector Density Distribution
+                </h3>
+<div class="flex-1 min-h-[300px] relative border border-surface-stroke rounded bg-surface overflow-hidden group">
+<img alt="Satellite map view" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity filter grayscale" data-alt="A highly detailed, dark-mode digital map interface depicting an industrial sector. The map uses a deep navy and black color palette, typical of a cyber-industrial command center. Glowing neon blue and green nodes are scattered across the topographical layout, indicating sensor density and activity levels. The aesthetic is gritty yet highly technical, with overlaid gridlines and data points in a futuristic, utilitarian style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv09iZVWFxuC-wTv-HxA2wtPoeFPRufGTYcEyAoKbzozWToEqINV5j5zMYfW2ZsytxnofDHNYGtDjFTMjgCqeQZmceX-b9oBSWK3qZSevbgaBOJHdzdqImIyVzjElu6CPFivbpLkPIyUHpZZChAjDH-7kZdOVh9ad5ZUC9zS2NO25Y-cSfRpIj6KZSpCANwHQpu4h4g-dA8zFIO_406a7CAhbGMLCT7etDra7c7SLL2fzMSstYMvSdGEOH-UlmlXu-xmQq5f6lBLDa"/>
+<!-- Overlay Grid -->
+<div class="absolute inset-0 bg-[linear-gradient(rgba(45,55,72,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(45,55,72,0.2)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+<!-- Nodes -->
+<div class="absolute top-1/4 left-1/3 w-3 h-3 bg-neon-blue rounded-full shadow-[0_0_10px_theme('colors.neon-blue')] animate-pulse"></div>
+<div class="absolute top-1/2 left-2/3 w-4 h-4 bg-neon-green rounded-full shadow-[0_0_15px_theme('colors.neon-green')]"></div>
+<div class="absolute bottom-1/3 left-1/4 w-2 h-2 bg-neon-orange rounded-full shadow-[0_0_8px_theme('colors.neon-orange')]"></div>
+<!-- HUD Elements -->
+<div class="absolute bottom-4 left-4 bg-surface-elevated/80 backdrop-blur border border-surface-stroke p-2 rounded">
+<div class="font-caption text-caption text-text-muted">Active Nodes</div>
+<div class="font-stat-display text-stat-display text-neon-blue">1,402</div>
+</div>
+</div>
+</section>
+<!-- Firmware Breakdown -->
+<section class="bg-surface-elevated border-t-4 border-neon-green rounded p-6 flex flex-col">
+<h3 class="font-label-caps text-label-caps text-text-muted mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">system_update</span> Firmware Versions
+                </h3>
+<div class="flex-1 flex flex-col justify-center gap-6">
+<!-- Bar 1 -->
+<div>
+<div class="flex justify-between font-caption text-caption mb-1">
+<span>v4.2.1 (Current)</span>
+<span class="text-neon-green">68%</span>
+</div>
+<div class="h-2 w-full bg-surface border border-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-neon-green w-[68%] shadow-[0_0_8px_theme('colors.neon-green')]"></div>
+</div>
+</div>
+<!-- Bar 2 -->
+<div>
+<div class="flex justify-between font-caption text-caption mb-1">
+<span>v4.1.8 (Legacy)</span>
+<span class="text-neon-orange">24%</span>
+</div>
+<div class="h-2 w-full bg-surface border border-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-neon-orange w-[24%]"></div>
+</div>
+</div>
+<!-- Bar 3 -->
+<div>
+<div class="flex justify-between font-caption text-caption mb-1">
+<span>v3.9.0 (Critical Alert)</span>
+<span class="text-neon-pink">8%</span>
+</div>
+<div class="h-2 w-full bg-surface border border-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-neon-pink w-[8%] shadow-[0_0_8px_theme('colors.neon-pink')]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Maintenance Queue -->
+<section class="lg:col-span-3 bg-surface-elevated border-t-4 border-neon-orange rounded p-6">
+<h3 class="font-label-caps text-label-caps text-text-muted mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">build</span> Physical Intervention Queue
+                </h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="border-b border-surface-stroke font-label-caps text-label-caps text-text-muted">
+<th class="py-3 px-2 font-normal">UNIT ID</th>
+<th class="py-3 px-2 font-normal">SECTOR</th>
+<th class="py-3 px-2 font-normal">STATUS</th>
+<th class="py-3 px-2 font-normal">DIAGNOSTIC</th>
+<th class="py-3 px-2 font-normal text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-surface-stroke hover:bg-surface-container-high transition-colors">
+<td class="py-4 px-2 text-on-surface font-mono">SN-8821</td>
+<td class="py-4 px-2">Alpha-N</td>
+<td class="py-4 px-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neon-pink/10 text-neon-pink font-label-caps text-[12px] border border-neon-pink/20 uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-neon-pink"></span> Offline
+                                    </span>
+</td>
+<td class="py-4 px-2 text-text-muted">Power failure detected</td>
+<td class="py-4 px-2 text-right">
+<button class="text-neon-blue hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-surface-stroke hover:bg-surface-container-high transition-colors">
+<td class="py-4 px-2 text-on-surface font-mono">SN-9014</td>
+<td class="py-4 px-2">Delta-S</td>
+<td class="py-4 px-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neon-orange/10 text-neon-orange font-label-caps text-[12px] border border-neon-orange/20 uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-neon-orange"></span> Degraded
+                                    </span>
+</td>
+<td class="py-4 px-2 text-text-muted">Signal latency &gt; 500ms</td>
+<td class="py-4 px-2 text-right">
+<button class="text-neon-blue hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

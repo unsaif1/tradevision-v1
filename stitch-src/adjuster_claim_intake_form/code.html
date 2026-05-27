@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Claim Initialization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#111317",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary": "#303031",
+                        "surface-container-high": "#282a2e",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-dim": "#111317",
+                        "on-primary-container": "#006970",
+                        "surface-variant": "#333539",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary-container": "#dad9d9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary": "#ffdb9d",
+                        "primary": "#dbfcff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed": "#002022",
+                        "primary-container": "#00f0ff",
+                        "inverse-primary": "#006970",
+                        "tertiary": "#f7f5f5",
+                        "outline-variant": "#3b494b",
+                        "on-secondary": "#412d00",
+                        "surface-bright": "#37393e",
+                        "secondary-fixed": "#ffdea8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-error": "#690005",
+                        "surface": "#111317",
+                        "on-background": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "surface-container": "#1e2024",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-low": "#1a1c20",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e2e8",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "on-primary": "#00363a",
+                        "primary-fixed": "#7df4ff",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "outline": "#849495",
+                        "inverse-on-surface": "#2f3035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .cyber-border { border: 1px solid #2D2D2D; }
+        .cyber-focus-within:focus-within { border-color: theme('colors.primary-container'); box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.1); }
+        .cyber-input { background: transparent; border: none; outline: none; width: 100%; color: theme('colors.on-surface'); font-family: theme('fontFamily.body-fixed'); font-size: theme('fontSize.body-fixed[0]'); }
+        .cyber-input::placeholder { color: theme('colors.on-surface-variant'); opacity: 0.5; }
+        .status-strip { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+        
+        /* Custom Checkbox/Radio */
+        input[type="radio"]:checked + div { border-color: theme('colors.primary-container'); background-color: rgba(0, 240, 255, 0.05); }
+        input[type="radio"]:checked + div .radio-indicator { background-color: theme('colors.primary-container'); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-fixed antialiased min-h-screen flex flex-col pb-20">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface border-b border-outline-variant flat no shadows flex justify-between items-center px-margin-mobile py-density-compact z-40">
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined hover:bg-surface-variant transition-colors active:scale-95 duration-100 cursor-pointer rounded p-1">precision_manufacturing</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary-container uppercase tracking-tighter">TradeVision C.A.R.E.</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary-container hover:bg-surface-variant transition-colors active:scale-95 duration-100 cursor-pointer rounded p-1">settings_input_component</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-4xl mx-auto px-margin-mobile py-density-comfortable flex flex-col gap-density-comfortable">
+<!-- Section Header -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-unit">
+<h2 class="font-headline-md text-[20px] font-bold text-on-surface tracking-wide uppercase">Claim Initialization</h2>
+<div class="flex items-center gap-1 text-on-surface-variant bg-surface-container px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="font-label-caps text-[10px]">SYNCED</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-density-compact">
+<!-- GPS Tagging Container (Col Span 12 or 8) -->
+<div class="md:col-span-12 cyber-border bg-surface-container-low rounded relative overflow-hidden flex flex-col">
+<div class="status-strip bg-primary-container"></div>
+<div class="p-density-compact border-b border-outline-variant bg-surface-container flex items-center justify-between pl-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Location Data</span>
+<button class="text-primary-container hover:text-primary transition-colors flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">my_location</span>
+<span class="font-label-caps text-[10px]">RE-PING</span>
+</button>
+</div>
+<div class="p-density-compact pl-4 flex items-center gap-density-comfortable">
+<div class="flex-1">
+<div class="font-data-point text-data-point text-primary-fixed mb-1">28.5383° N, 81.3792° W</div>
+<div class="text-on-surface-variant text-sm">Accuracy: ±4m (GPS+GLONASS)</div>
+</div>
+<div class="w-16 h-16 bg-surface-variant rounded flex items-center justify-center cyber-border">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">satellite_alt</span>
+</div>
+</div>
+</div>
+<!-- Client Info & Source (Col Span 12 or 6) -->
+<div class="md:col-span-6 flex flex-col gap-density-compact">
+<!-- Client Name Input -->
+<div class="cyber-border bg-surface-container-low rounded p-density-compact cyber-focus-within transition-all">
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Policyholder / Client Name</label>
+<div class="flex items-center gap-2 border-b border-outline-variant pb-1">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">person</span>
+<input class="cyber-input" placeholder="e.g. John Doe" type="text"/>
+</div>
+</div>
+<!-- Source Selector -->
+<div class="cyber-border bg-surface-container-low rounded p-density-compact">
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Lead Source</label>
+<div class="grid grid-cols-3 gap-unit">
+<label class="relative cursor-pointer">
+<input checked="" class="peer sr-only" name="source" type="radio"/>
+<div class="cyber-border bg-surface flex flex-col items-center justify-center p-2 rounded transition-all hover:bg-surface-variant text-center h-full">
+<span class="material-symbols-outlined mb-1 text-on-surface-variant peer-checked:text-primary-container">account_tree</span>
+<span class="font-label-caps text-[10px] text-on-surface">Referral</span>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input class="peer sr-only" name="source" type="radio"/>
+<div class="cyber-border bg-surface flex flex-col items-center justify-center p-2 rounded transition-all hover:bg-surface-variant text-center h-full">
+<span class="material-symbols-outlined mb-1 text-on-surface-variant peer-checked:text-primary-container">arrow_forward</span>
+<span class="font-label-caps text-[10px] text-on-surface">Direct</span>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input class="peer sr-only" name="source" type="radio"/>
+<div class="cyber-border bg-surface flex flex-col items-center justify-center p-2 rounded transition-all hover:bg-surface-variant text-center h-full">
+<span class="material-symbols-outlined mb-1 text-on-surface-variant peer-checked:text-primary-container">corporate_fare</span>
+<span class="font-label-caps text-[10px] text-on-surface">Agency</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Priority Levels (Col Span 12 or 6) -->
+<div class="md:col-span-6 cyber-border bg-surface-container-low rounded flex flex-col">
+<div class="p-density-compact border-b border-outline-variant bg-surface-container">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Priority Level</span>
+</div>
+<div class="p-density-compact flex flex-col gap-unit flex-1 justify-center">
+<label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface-variant rounded transition-colors">
+<input checked="" class="sr-only" name="priority" type="radio"/>
+<div class="w-4 h-4 rounded-full border border-outline flex items-center justify-center">
+<div class="w-2 h-2 rounded-full radio-indicator bg-transparent transition-colors"></div>
+</div>
+<span class="material-symbols-outlined text-outline">check_circle</span>
+<span class="font-body-fixed text-on-surface">Standard</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface-variant rounded transition-colors">
+<input class="sr-only" name="priority" type="radio"/>
+<div class="w-4 h-4 rounded-full border border-secondary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full radio-indicator bg-transparent transition-colors"></div>
+</div>
+<span class="material-symbols-outlined text-secondary">warning</span>
+<span class="font-body-fixed text-secondary">High</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface-variant rounded transition-colors bg-error-container/10 border border-error/20">
+<input class="sr-only" name="priority" type="radio"/>
+<div class="w-4 h-4 rounded-full border border-error flex items-center justify-center">
+<div class="w-2 h-2 rounded-full radio-indicator bg-transparent transition-colors"></div>
+</div>
+<span class="material-symbols-outlined text-error">emergency</span>
+<span class="font-body-fixed text-error font-bold">Critical</span>
+</label>
+</div>
+</div>
+<!-- Initial Damage Photo Trigger -->
+<div class="md:col-span-12 mt-unit">
+<button class="w-full cyber-border bg-surface-container hover:bg-surface-container-highest active:bg-surface-bright transition-all flex flex-col items-center justify-center p-density-comfortable rounded-lg border-dashed border-2 border-outline-variant group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-16 h-16 bg-surface rounded-full flex items-center justify-center mb-3 cyber-border group-hover:border-primary-container transition-colors shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<span class="material-symbols-outlined text-[32px] text-primary-container">photo_camera</span>
+</div>
+<span class="font-headline-md text-[18px] text-on-surface tracking-wide uppercase mb-1">Capture Initial Damage</span>
+<span class="font-label-caps text-on-surface-variant">REQUIRED FOR INTAKE</span>
+</button>
+</div>
+<!-- Technical Notes -->
+<div class="md:col-span-12 cyber-border bg-surface-container-low rounded p-density-compact cyber-focus-within transition-all mt-unit flex flex-col">
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant uppercase mb-2 border-b border-outline-variant pb-1">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+                    Technical Notes
+                </label>
+<textarea class="cyber-input resize-y min-h-[100px] font-data-point text-[14px]" placeholder="Enter initial assessment details, access issues, or visible material types..."></textarea>
+</div>
+<!-- Submit Action -->
+<div class="md:col-span-12 mt-density-comfortable">
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-[18px] py-4 rounded font-bold uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all border-b-4 border-[#00a8b5] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">upload</span>
+                    Initialize Claim
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-t border-outline-variant flat no shadows flex justify-around items-center h-16">
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary-fixed-dim p-density-compact w-1/3 h-full cursor-pointer">
+<span class="material-symbols-outlined text-[24px] mb-1">terminal</span>
+<span class="font-label-caps text-label-caps">Command</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact hover:text-primary transition-all active:bg-surface-bright duration-75 w-1/3 h-full cursor-pointer">
+<span class="material-symbols-outlined text-[24px] mb-1">layers</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact hover:text-primary transition-all active:bg-surface-bright duration-75 w-1/3 h-full cursor-pointer">
+<span class="material-symbols-outlined text-[24px] mb-1">report_problem</span>
+<span class="font-label-caps text-label-caps">Safety</span>
+</div>
+</nav>
+<script>
+        // Simple JS for radio button visual state sync (though CSS handles most of it)
+        const priorities = document.querySelectorAll('input[name="priority"]');
+        priorities.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Reset all indicators
+                document.querySelectorAll('.radio-indicator').forEach(ind => {
+                    ind.style.backgroundColor = 'transparent';
+                });
+                // Set active indicator
+                if(e.target.checked) {
+                    const indicator = e.target.nextElementSibling.querySelector('.radio-indicator');
+                    if(e.target.nextElementSibling.classList.contains('border-error')) {
+                        indicator.style.backgroundColor = 'theme("colors.error")'; // fallback logic
+                    } else if (e.target.nextElementSibling.classList.contains('border-secondary')) {
+                        indicator.style.backgroundColor = 'theme("colors.secondary")';
+                    } else {
+                        indicator.style.backgroundColor = 'theme("colors.outline")';
+                    }
+                }
+            });
+        });
+        
+        // Trigger initial state visually
+        document.querySelector('input[name="priority"]:checked').dispatchEvent(new Event('change'));
+    </script>
+</body></html>

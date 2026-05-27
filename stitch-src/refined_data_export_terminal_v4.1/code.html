@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real-Time Data Export Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-highest": "#333539",
+                        "on-primary": "#00363a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#dad9d9",
+                        "surface-dim": "#111317",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary": "#f7f5f5",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-secondary-container": "#6b4b00",
+                        "primary": "#dbfcff",
+                        "surface-container-high": "#282a2e",
+                        "error-container": "#93000a",
+                        "surface-variant": "#333539",
+                        "on-error": "#690005",
+                        "surface-bright": "#37393e",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-container-low": "#1a1c20",
+                        "on-background": "#e2e2e8",
+                        "error": "#ffb4ab",
+                        "background": "#111317",
+                        "on-primary-container": "#006970",
+                        "secondary": "#ffdb9d",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "outline-variant": "#3b494b",
+                        "primary-fixed": "#7df4ff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface": "#111317",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-container": "#feb700",
+                        "on-primary-fixed": "#002022",
+                        "outline": "#849495",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary": "#412d00",
+                        "on-surface-variant": "#b9cacb",
+                        "inverse-surface": "#e2e2e8",
+                        "on-surface": "#e2e2e8",
+                        "surface-tint": "#00dbe9",
+                        "primary-container": "#00f0ff",
+                        "on-tertiary": "#303031"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-surface border-b border-outline-variant flat no shadows flex justify-between items-center px-margin-mobile h-14">
+<button class="text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile font-label-caps text-label-caps tracking-widest text-primary-fixed-dim text-primary dark:text-primary-fixed-dim">ROOF_TERMINAL_V1.0</h1>
+<button class="text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="px-margin-mobile py-6 space-y-8 pb-32">
+<!-- Status Feed -->
+<section class="bg-surface-container border border-outline-variant p-4 rounded-DEFAULT font-label-caps text-label-caps space-y-2 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-center text-on-surface-variant border-b border-outline-variant pb-2 mb-2">
+<span>[SYS_STATUS]</span>
+<span class="text-primary-fixed-dim animate-pulse">● LIVE</span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-on-surface-variant mb-2">
+<div>&gt; EST_FILE_SIZE: <span class="text-primary-fixed-dim">1.42 GB</span></div>
+<div>&gt; ENCRYPTION_LAYER: <span class="text-primary-fixed-dim">AES-256_ACTIVE</span></div>
+</div>
+<div class="space-y-1 text-on-surface">
+<p class="opacity-70">&gt; INTIALIZING EXPORT PROTOCOL...</p>
+<p class="text-primary-fixed-dim">&gt; NODE_READY</p>
+<p class="opacity-70">&gt; READY_FOR_SEQUENCING...</p>
+</div>
+<div class="absolute bottom-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="memory">memory</span>
+</div>
+</section>
+<!-- Header -->
+<div class="border-b border-outline-variant pb-2">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-background tracking-tighter">
+<span class="text-outline-variant mr-2">[</span>SYS_EXPORT_v4.0<span class="text-outline-variant ml-2">]</span>
+</h2>
+</div>
+<!-- Data Modules Selection -->
+<section class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">[ SELECT_DATA_MODULES ]</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Card 1 (Active) -->
+<div class="bg-surface-container-high border border-primary-fixed-dim p-4 rounded-DEFAULT relative cursor-pointer hover:bg-surface-variant transition-colors group">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-label-caps text-label-caps text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded-DEFAULT border border-primary-fixed-dim/30">
+                            [ MOD_01 ]
+                        </div>
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="check_box" style="font-variation-settings: 'FILL' 1;">check_box</span>
+</div>
+<h4 class="font-data-point text-data-point text-on-background mb-1">PROJECT_METRICS</h4>
+<p class="text-sm text-on-surface-variant font-body-fixed">Sq footage, slope, material reqs.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container border border-outline-variant p-4 rounded-DEFAULT relative cursor-pointer hover:border-primary-fixed-dim/50 transition-colors group">
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary-fixed-dim/50 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded-DEFAULT border border-outline-variant">
+                            [ MOD_02 ]
+                        </div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="check_box_outline_blank">check_box_outline_blank</span>
+</div>
+<h4 class="font-data-point text-data-point text-on-background mb-1">FINANCIAL_LEDGER</h4>
+<p class="text-sm text-on-surface-variant font-body-fixed">Cost analysis, margin tracking.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container border border-outline-variant p-4 rounded-DEFAULT relative cursor-pointer hover:border-primary-fixed-dim/50 transition-colors group">
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary-fixed-dim/50 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded-DEFAULT border border-outline-variant">
+                            [ MOD_03 ]
+                        </div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="check_box_outline_blank">check_box_outline_blank</span>
+</div>
+<h4 class="font-data-point text-data-point text-on-background mb-1">COMPLIANCE_LOGS</h4>
+<p class="text-sm text-on-surface-variant font-body-fixed">Safety checks, permit status.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container border border-outline-variant p-4 rounded-DEFAULT relative cursor-pointer hover:border-primary-fixed-dim/50 transition-colors group">
+<div class="absolute top-0 left-0 w-full h-1 bg-outline-variant group-hover:bg-primary-fixed-dim/50 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded-DEFAULT border border-outline-variant">
+                            [ MOD_04 ]
+                        </div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="check_box_outline_blank">check_box_outline_blank</span>
+</div>
+<h4 class="font-data-point text-data-point text-on-background mb-1">MATERIAL_USAGE</h4>
+<p class="text-sm text-on-surface-variant font-body-fixed">Inventory depletion rates.</p>
+</div>
+</div>
+</section>
+<!-- Format Selector -->
+<section class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">[ FORMAT_CONFIG ]</h3>
+<div class="space-y-3">
+<!-- CSV -->
+<div class="bg-surface-container border border-primary-fixed-dim/30 p-3 rounded-DEFAULT flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="radio_button_checked" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+<span class="font-data-point text-data-point text-on-background text-base">.CSV</span>
+</div>
+<div class="flex bg-surface-container-highest rounded-DEFAULT p-1 border border-outline-variant">
+<button class="px-3 py-1 bg-primary-fixed-dim/20 text-primary-fixed-dim font-label-caps text-label-caps rounded-sm border border-primary-fixed-dim/50">COMMA</button>
+<button class="px-3 py-1 text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-variant rounded-sm transition-colors">PIPE</button>
+</div>
+</div>
+<!-- JSON -->
+<div class="bg-surface-container border border-outline-variant p-3 rounded-DEFAULT flex items-center justify-between opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+<span class="font-data-point text-data-point text-on-background text-base">.JSON</span>
+</div>
+<div class="flex bg-surface-container-highest rounded-DEFAULT p-1 border border-outline-variant">
+<button class="px-3 py-1 bg-surface-variant text-on-surface-variant font-label-caps text-label-caps rounded-sm border border-outline-variant">MINIFIED</button>
+<button class="px-3 py-1 text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-variant rounded-sm transition-colors">PRETTY</button>
+</div>
+</div>
+<!-- PDF -->
+<div class="bg-surface-container border border-outline-variant p-3 rounded-DEFAULT flex items-center justify-between opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+<span class="font-data-point text-data-point text-on-background text-base">.PDF</span>
+</div>
+<div class="flex bg-surface-container-highest rounded-DEFAULT p-1 border border-outline-variant">
+<button class="px-3 py-1 bg-surface-variant text-on-surface-variant font-label-caps text-label-caps rounded-sm border border-outline-variant">STANDARD</button>
+<button class="px-3 py-1 text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-variant rounded-sm transition-colors">ENCRYPTED</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Compression Engine -->
+<section class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">[ COMPRESSION_ENGINE ]</h3>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary-fixed-dim/10 text-primary-fixed-dim font-label-caps text-label-caps px-4 py-3 border border-primary-fixed-dim/50 rounded-DEFAULT flex justify-center items-center space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="folder_zip">folder_zip</span>
+<span>GZIP</span>
+</button>
+<button class="flex-1 bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps px-4 py-3 border border-outline-variant rounded-DEFAULT hover:border-outline transition-colors flex justify-center items-center space-x-2">
+<span class="material-symbols-outlined text-sm" data-icon="folder_zip">folder_zip</span>
+<span>ZIP</span>
+</button>
+</div>
+</section>
+<!-- Date Range Picker -->
+<section class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">[ TIMEFRAME ]</h3>
+<div class="flex items-center space-x-2">
+<div class="flex-1 bg-surface-container border border-outline-variant p-3 flex items-center justify-between rounded-DEFAULT">
+<span class="font-data-point text-data-point text-on-background text-base">2023-10-01</span>
+<span class="material-symbols-outlined text-outline-variant" data-icon="calendar_today">calendar_today</span>
+</div>
+<span class="text-outline-variant font-label-caps text-label-caps">TO</span>
+<div class="flex-1 bg-surface-container border border-outline-variant p-3 flex items-center justify-between rounded-DEFAULT">
+<span class="font-data-point text-data-point text-on-background text-base">2023-10-31</span>
+<span class="material-symbols-outlined text-outline-variant" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+</section>
+<!-- Execution Action -->
+<div class="pt-8 pb-4">
+<button class="w-full bg-primary-fixed-dim text-surface-dim font-headline-md text-headline-md-mobile py-4 rounded-DEFAULT border-b-4 border-[#00a9b4] active:border-b-0 active:translate-y-1 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-primary-fixed-dim/20 hover:bg-primary-fixed">
+<span class="material-symbols-outlined" data-icon="output" style="font-variation-settings: 'FILL' 1;">output</span>
+<span>EXECUTE_EXPORT</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant flat no shadows flex justify-around items-center h-16 px-4 pb-safe md:hidden">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1 hover:text-primary-fixed active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-caps text-label-caps">Terminal</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="folder_open">folder_open</span>
+<span class="font-label-caps text-label-caps">Archive</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="pending_actions">pending_actions</span>
+<span class="font-label-caps text-label-caps">Queue</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="map">map</span>
+<span class="font-label-caps text-label-caps">Map</span>
+</button>
+</nav>
+<style>
+        /* Safe area support for mobile devices */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .pb-safe {
+                padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);
+            }
+        }
+    </style>
+</body></html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Audit Verification &amp; Summary</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#333539",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary": "#ffdb9d",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary": "#f7f5f5",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-bright": "#37393e",
+                        "background": "#111317",
+                        "on-secondary-container": "#6b4b00",
+                        "outline": "#849495",
+                        "on-primary-container": "#006970",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface": "#111317",
+                        "surface-dim": "#111317",
+                        "secondary-container": "#feb700",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-error": "#690005",
+                        "outline-variant": "#3b494b",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary": "#00363a",
+                        "on-tertiary-container": "#5e5f5f",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#333539",
+                        "surface-container": "#1e2024",
+                        "on-background": "#e2e2e8",
+                        "surface-tint": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "on-surface": "#e2e2e8",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "inverse-surface": "#e2e2e8",
+                        "primary": "#dbfcff",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#303031",
+                        "surface-container-high": "#282a2e",
+                        "secondary-fixed": "#ffdea8",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary-fixed": "#002022",
+                        "primary-container": "#00f0ff",
+                        "on-secondary": "#412d00",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "inverse-primary": "#006970",
+                        "tertiary-container": "#dad9d9",
+                        "secondary-fixed-dim": "#ffba20",
+                        "primary-fixed": "#7df4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "unit": "4px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk", "sans-serif"],
+                        "display-lg": ["Space Grotesk", "sans-serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "body-fixed": ["Inter", "sans-serif"],
+                        "display-lg-mobile": ["Space Grotesk", "sans-serif"],
+                        "data-point": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for high-density industrial look */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #111317; border-left: 1px solid #3b494b; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #849495; }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-fixed h-screen w-full overflow-hidden flex selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-72 left-0 sticky z-40 bg-surface-container-low dark:bg-surface-container-low text-primary-fixed-dim dark:text-primary-fixed-dim font-body-fixed text-body-fixed border-r border-outline-variant py-density-comfortable">
+<!-- Header Profile -->
+<div class="px-gutter mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="Inspector Profile" class="w-full h-full object-cover grayscale opacity-80" data-alt="A gritty, high-contrast, cyberpunk-style portrait of a technician or inspector wearing industrial gear. The lighting is harsh, with deep shadows and cool blue rim lights. The mood is serious and professional, fitting a high-tech industrial environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqM66M5JF7dW-rs6uhF8_VKYrMVUijWeNp6DuQCMSpIGRDAXrOWBz9SSNyDFmaDN0e1rylYa0ftcBemAsoVTX_115qb0PGjv7dypa1uCVBwiyjr9Nv8qsYmiT4fUK6zWtCv_NHo1BoiNTD1EapabnQtCnN1zjAwWeIU7j1X7AorXb-t3yU--EbWwDg9_sRSwX9KYE4qy8QC6fz_6Bf4tcP_3H9dmANAh6cbjwtXyhTV_sAPgZLUDkPoutKFAaiaLfv4ywRQGnAdyVe"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">OP_SEC_01</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-unit">Verified Inspector</span>
+<span class="font-label-caps text-label-caps text-outline mt-unit">Node: 77-A</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-unit">
+<!-- SITES (Inactive) -->
+<a class="flex items-center gap-4 px-gutter py-3 text-on-surface hover:bg-surface-container-high hover:bg-surface-container-highest transition-colors active:bg-surface-container duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="font-label-caps text-label-caps tracking-widest">SITES</span>
+</a>
+<!-- INVENTORY (Inactive) -->
+<a class="flex items-center gap-4 px-gutter py-3 text-on-surface hover:bg-surface-container-high hover:bg-surface-container-highest transition-colors active:bg-surface-container duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="font-label-caps text-label-caps tracking-widest">INVENTORY</span>
+</a>
+<!-- BLOCKCHAIN_LEDGER (Active - Intent logic for Audit/Verification) -->
+<a class="flex items-center gap-4 px-gutter py-3 bg-surface-variant text-primary-fixed-dim border-l-4 border-primary-fixed-dim hover:bg-surface-container-highest transition-colors active:bg-surface-container duration-150" href="#">
+<span class="material-symbols-outlined text-[20px] fill">security</span>
+<span class="font-label-caps text-label-caps tracking-widest font-bold">BLOCKCHAIN_LEDGER</span>
+</a>
+<!-- SENSORS (Inactive) -->
+<a class="flex items-center gap-4 px-gutter py-3 text-on-surface hover:bg-surface-container-high hover:bg-surface-container-highest transition-colors active:bg-surface-container duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+<span class="font-label-caps text-label-caps tracking-widest">SENSORS</span>
+</a>
+<!-- SETTINGS (Inactive) -->
+<a class="flex items-center gap-4 px-gutter py-3 text-on-surface hover:bg-surface-container-high hover:bg-surface-container-highest transition-colors active:bg-surface-container duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label-caps text-label-caps tracking-widest">SETTINGS</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full relative">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-30 bg-background dark:bg-background text-primary-fixed-dim dark:text-primary-fixed-dim border-b border-outline-variant flex justify-between items-center px-margin-mobile py-density-compact">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined fill text-primary-fixed-dim">precision_manufacturing</span>
+<h1 class="font-headline-md text-headline-md uppercase tracking-tight m-0 leading-none">ROOF_CORE_OS</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="font-label-caps text-label-caps text-primary-fixed-dim border border-primary-fixed-dim px-2 py-1 bg-surface-container-lowest hidden md:block">
+                    VER: 4.2.19
+                </div>
+<!-- Trailing Avatar -->
+<div class="w-8 h-8 rounded border border-outline-variant overflow-hidden flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 overflow-y-auto overflow-x-hidden p-margin-mobile md:p-margin-desktop pb-24 md:pb-margin-desktop">
+<!-- Page Header -->
+<div class="mb-8 border-b border-outline-variant pb-4">
+<h2 class="font-display-lg-mobile md:font-display-lg text-on-surface uppercase mb-2">Audit Verification</h2>
+<div class="flex gap-4 items-center">
+<span class="font-label-caps text-label-caps text-outline px-2 py-1 bg-surface-container-low border border-outline-variant">SEQ-ID: 994-Alpha</span>
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim px-2 py-1 bg-surface-container-low border border-secondary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sync</span> PENDING FINALIZATION
+                    </span>
+</div>
+</div>
+<!-- Dashboard Grid (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-8">
+<!-- Scorecard Component -->
+<div class="lg:col-span-4 bg-surface-container-low border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-fixed-dim"></div>
+<div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">fact_check</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase flex justify-between">
+<span>Technical Assessment</span>
+<span class="material-symbols-outlined text-[16px]">info</span>
+</div>
+<div class="flex flex-col gap-2 mb-6">
+<span class="font-body-fixed text-body-fixed text-outline">Compliance Score</span>
+<div class="flex items-baseline gap-2">
+<span class="font-data-point text-display-lg-mobile text-primary-fixed-dim">98.4</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">%</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface">Structural Integrity</span>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">PASS</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface">Material Verification</span>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">PASS</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">Safety Tolerances</span>
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">WARN</span>
+</div>
+</div>
+</div>
+<!-- Site Metadata -->
+<div class="lg:col-span-8 bg-surface-container-low border border-outline-variant p-density-comfortable flex flex-col">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase flex justify-between items-center border-b border-outline-variant pb-2">
+<span>Site Telemetry</span>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span>
+<span>LIVE SYNC</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter flex-1">
+<div class="flex flex-col justify-center border-r border-outline-variant pr-4">
+<span class="font-label-caps text-label-caps text-outline mb-1">LAT/LNG</span>
+<span class="font-data-point text-label-caps text-on-surface">34.0522° N<br/>118.2437° W</span>
+</div>
+<div class="flex flex-col justify-center border-r md:border-outline-variant pr-4 border-transparent">
+<span class="font-label-caps text-label-caps text-outline mb-1">ELEVATION</span>
+<span class="font-data-point text-body-fixed text-on-surface">420<span class="text-[12px] text-outline ml-1">FT</span></span>
+</div>
+<div class="flex flex-col justify-center border-r border-outline-variant pr-4 mt-4 md:mt-0 pt-4 md:pt-0 border-t md:border-t-0">
+<span class="font-label-caps text-label-caps text-outline mb-1">PITCH</span>
+<span class="font-data-point text-body-fixed text-on-surface">6/12</span>
+</div>
+<div class="flex flex-col justify-center mt-4 md:mt-0 pt-4 md:pt-0 border-t md:border-t-0 border-outline-variant">
+<span class="font-label-caps text-label-caps text-outline mb-1">TOTAL AREA</span>
+<span class="font-data-point text-body-fixed text-on-surface">2,450<span class="text-[12px] text-outline ml-1">SQFT</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Evidence Log (High Density) -->
+<div class="mb-8 border border-outline-variant bg-surface-container-lowest">
+<div class="bg-surface-container-low px-density-comfortable py-3 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase">Cryptographic Evidence Log</h3>
+<span class="font-label-caps text-label-caps text-outline">4 ITEMS</span>
+</div>
+<div class="flex flex-col divide-y divide-outline-variant">
+<!-- Evidence Item 1 -->
+<div class="flex flex-col sm:flex-row gap-4 p-density-compact hover:bg-surface-container transition-colors items-start sm:items-center">
+<div class="w-16 h-16 shrink-0 border border-outline-variant bg-surface">
+<img alt="Drone capture of roof structure" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" data-alt="A highly detailed, high-contrast drone photograph of an industrial roof structure under repair. Dark monochromatic base tones with stark white highlights on metal seams. The image feels technical, precise, and objective, suitable for an engineering report." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHXcPbGWE3oZfn2e_6c06vR7aFzwssUOfhqTPr5kR8_Uozm5HOc_7mg4pAbD679yFvpHjZ2sMT6iBaM2nAhtoYtnzfLQ7YsTHShSGidKl3ZwH3K4JLxoTScQqKdTkL7NxcHJ7crPe2lTAnNRQ3CknBgV-FdIvHFb9760KwsdMaKHKshxwLsT5ROluCwoTinmbS7A3IfX63Aapikkbl_wTP6hEkuDiKboaTBow9FlCu19dU2LKQixBOhlS35Km9JX45PAuzitOmgi9X"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed-dim">image</span>
+<span class="font-label-caps text-label-caps text-on-surface truncate">DRONE_CAP_N_ELEV_01.RAW</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline">SHA-256 HASH</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant truncate w-full block">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+</div>
+</div>
+<div class="shrink-0 font-label-caps text-label-caps text-primary-fixed-dim px-2 py-1 border border-primary-fixed-dim/30 bg-primary-fixed-dim/10 mt-2 sm:mt-0">
+                            VERIFIED
+                        </div>
+</div>
+<!-- Evidence Item 2 -->
+<div class="flex flex-col sm:flex-row gap-4 p-density-compact hover:bg-surface-container transition-colors items-start sm:items-center">
+<div class="w-16 h-16 shrink-0 border border-outline-variant bg-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed-dim">thermometer</span>
+<span class="font-label-caps text-label-caps text-on-surface truncate">THERMAL_SCAN_LOG.JSON</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline">SHA-256 HASH</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant truncate w-full block">8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span>
+</div>
+</div>
+<div class="shrink-0 font-label-caps text-label-caps text-primary-fixed-dim px-2 py-1 border border-primary-fixed-dim/30 bg-primary-fixed-dim/10 mt-2 sm:mt-0">
+                            VERIFIED
+                        </div>
+</div>
+</div>
+</div>
+<!-- Signature & Final Action -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Signature Block -->
+<div class="border border-outline-variant bg-surface-container-low flex flex-col h-40">
+<div class="bg-surface-variant px-3 py-1 border-b border-outline-variant font-label-caps text-[10px] text-on-surface-variant flex justify-between">
+<span>DIGITAL AUTHORIZATION</span>
+<span>REQ_SIG</span>
+</div>
+<div class="flex-1 border-2 border-dashed border-outline-variant m-2 bg-background flex flex-col items-center justify-center cursor-crosshair group hover:border-primary-fixed-dim/50 transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-fixed-dim/50 mb-2">draw</span>
+<span class="font-label-caps text-label-caps text-outline group-hover:text-primary-fixed-dim/50">AWAITING INPUT</span>
+</div>
+</div>
+<!-- Action Block -->
+<div class="flex flex-col justify-end">
+<div class="mb-4 flex items-start gap-2">
+<input class="mt-1 bg-surface-container border-outline-variant text-primary-fixed-dim focus:ring-primary-fixed-dim rounded-none cursor-pointer" id="consent" type="checkbox"/>
+<label class="font-label-caps text-[11px] text-on-surface-variant leading-tight cursor-pointer" for="consent">
+                            I ATTEST UNDER PENALTY OF PERJURY THAT THE FOREGOING DATA IS TRUE AND CORRECT. BLOCKCHAIN COMMITTAL IS IMMUTABLE.
+                        </label>
+</div>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed-variant font-headline-md text-headline-md py-4 px-6 uppercase flex justify-between items-center border-b-4 border-on-primary-fixed-variant active:border-b-0 active:translate-y-1 transition-all hover:bg-primary duration-100">
+<span>Finalize Report</span>
+<span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-fixed-dim dark:text-primary-fixed-dim font-label-caps text-label-caps border-t border-outline-variant flex justify-around items-center h-16 px-gutter pb-safe">
+<!-- DASHBOARD (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 w-full hover:text-primary transition-all active:bg-surface-variant duration-75" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span>DASHBOARD</span>
+</a>
+<!-- AUDIT (Active - Intent match based on JSON labels) -->
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim border-t-2 border-primary-fixed-dim pt-2 w-full hover:text-primary transition-all active:bg-surface-variant duration-75 bg-surface-variant/30" href="#">
+<span class="material-symbols-outlined mb-1 fill">fact_check</span>
+<span>AUDIT</span>
+</a>
+<!-- LOGS (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 w-full hover:text-primary transition-all active:bg-surface-variant duration-75" href="#">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span>LOGS</span>
+</a>
+<!-- NETWORK (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 w-full hover:text-primary transition-all active:bg-surface-variant duration-75" href="#">
+<span class="material-symbols-outlined mb-1">hub</span>
+<span>NETWORK</span>
+</a>
+</nav>
+</main>
+</body></html>

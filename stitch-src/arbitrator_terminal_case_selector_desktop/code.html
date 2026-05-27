@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arbitrator Case Selector</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#b9cacb",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-fixed": "#271900",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "primary-container": "#00f0ff",
+                        "on-primary": "#00363a",
+                        "tertiary-container": "#dad9d9",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "outline": "#849495",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container-low": "#1a1c20",
+                        "surface-bright": "#37393e",
+                        "secondary": "#ffdb9d",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-tint": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "surface-dim": "#111317",
+                        "on-background": "#e2e2e8",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "outline-variant": "#3b494b",
+                        "surface": "#111317",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container": "#1e2024",
+                        "on-secondary-container": "#6b4b00",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#006970",
+                        "on-tertiary-container": "#5e5f5f",
+                        "primary-fixed-dim": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "secondary-fixed": "#ffdea8",
+                        "on-secondary": "#412d00",
+                        "inverse-primary": "#006970",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-error-container": "#ffdad6",
+                        "background": "#111317",
+                        "surface-container-highest": "#333539",
+                        "on-error": "#690005",
+                        "surface-variant": "#333539",
+                        "inverse-surface": "#e2e2e8",
+                        "on-tertiary": "#303031",
+                        "tertiary-fixed-dim": "#c7c6c6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "density-compact": "8px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-fixed": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "data-point": ["20px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-fixed text-body-fixed h-screen overflow-hidden flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 bg-surface border-b border-outline-variant z-20 shrink-0">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-high transition-colors p-2 rounded">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter">LEGAL_CORE // ARBITRATOR</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A striking portrait of a male professional in a dimly lit, industrial-style office. The lighting is high-contrast, casting deep shadows that emphasize his features, creating a serious and authoritative mood. The visual style is gritty and cinematic, perfectly aligning with a cyber-industrial aesthetic, utilizing deep blacks, stark whites, and subtle cyan accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFTvc4pZ6sC2IZmDxnluyXyP65uuly12qnOm3FYUECl2r8IqlES1AB_9G0PI2aoPqO-Nh576_K9t8JILS5073fVc3yV4Tz2IvbVn0UINjN3dHYQo-jOWnCxAO8FfwA8-jUgNTj_135WUvhCN9hbhcpioAp8CtZGXfbXRbUbqrpoMBm1OHz5Sk1MifvucqoxYm-onEu_9gPSVzKzW-DtY3_POqjhZqMrNMXvQS8J-kuAnsdJasmmIJImGmnDQVzjzwWZlpRiTyvLuBl"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col h-full w-72 rounded-r-none border-r border-outline-variant bg-surface-container shrink-0 z-10">
+<div class="p-density-comfortable border-b border-outline-variant">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Arbitrator Profile" class="w-full h-full object-cover" data-alt="A striking portrait of a male professional in a dimly lit, industrial-style office. The lighting is high-contrast, casting deep shadows that emphasize his features, creating a serious and authoritative mood. The visual style is gritty and cinematic, perfectly aligning with a cyber-industrial aesthetic, utilizing deep blacks, stark whites, and subtle cyan accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmCJLVJ4ZXpo_rVMrM5dyymr1QmuXs7FxdefzjK_1mLRP9DcUJhIrDNJLau5vO-yJ_lHkKLnj-STGDXDIap1t9W4UnIRoBcqdjSb17B0_p6vOMRuwBqJivfizO5TcDWgpSBc2EpJZWJP-B9KllYncDRBOUm7Gud-DdlQ1DkG1ZCo0jclXUvi4JKAOtg0xbdQz_vHVoJvpAP3_NQkywNsW5P8EQ0_rN0LLfV7mMiVRCIdm2WQwSBaKFMsWcKjEWLnqqW26mTIeaJ_ch"/>
+</div>
+<div>
+<div class="font-data-point text-data-point text-primary">ID: 8821-XJ</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Verified Arbitrator</div>
+</div>
+</div>
+<div class="font-label-caps text-label-caps text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Blockchain Active
+                </div>
+</div>
+<ul class="flex flex-col py-density-comfortable gap-unit">
+<li>
+<a class="flex items-center gap-3 px-margin-desktop py-3 bg-secondary-container text-on-secondary-container border-l-4 border-primary font-bold transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span class="font-label-caps text-label-caps">Project Selector</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-margin-desktop py-3 text-on-surface-variant hover:bg-surface-variant transition-all hover:border-l hover:border-outline-variant" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-margin-desktop py-3 text-on-surface-variant hover:bg-surface-variant transition-all hover:border-l hover:border-outline-variant" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps">Mediation History</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-margin-desktop py-3 text-on-surface-variant hover:bg-surface-variant transition-all hover:border-l hover:border-outline-variant" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps text-label-caps">Final Award</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden bg-background">
+<!-- Central Case Listing -->
+<section class="flex-1 flex flex-col min-w-[400px] border-r border-outline-variant overflow-y-auto">
+<div class="p-margin-desktop sticky top-0 bg-background/90 backdrop-blur z-10 border-b border-outline-variant flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">ACTIVE DOCKETS</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant">42 CASES PENDING REVIEW</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-colors">FILTER</button>
+<button class="px-3 py-1 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-colors">SORT</button>
+</div>
+</div>
+<div class="p-margin-desktop flex flex-col gap-density-compact">
+<!-- Case Item 1 (Active) -->
+<div class="bg-surface-container p-density-comfortable border border-primary relative cursor-pointer group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<span class="font-label-caps text-label-caps text-primary mb-1 block">CASE #992-ALPHA</span>
+<h3 class="font-data-point text-data-point text-on-surface">TechCorp vs. DataSys</h3>
+</div>
+<span class="px-2 py-1 bg-surface-bright text-secondary font-label-caps text-label-caps border border-outline-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> IN_REVIEW
+                            </span>
+</div>
+<div class="grid grid-cols-3 gap-4 border-t border-outline-variant pt-4 mt-2 relative z-10">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">FILED</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">2023-10-12</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">VALUE</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">$4.2M</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">DEADLINE</span>
+<span class="font-body-fixed text-body-fixed text-error">14 DAYS</span>
+</div>
+</div>
+</div>
+<!-- Case Item 2 -->
+<div class="bg-surface-container p-density-comfortable border border-outline-variant relative cursor-pointer group hover:border-outline transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 block">CASE #881-BETA</span>
+<h3 class="font-data-point text-data-point text-on-surface">Nexus Ltd. Dissolution</h3>
+</div>
+<span class="px-2 py-1 bg-surface-bright text-tertiary-fixed font-label-caps text-label-caps border border-outline-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span> EVIDENCE_PENDING
+                            </span>
+</div>
+<div class="grid grid-cols-3 gap-4 border-t border-outline-variant pt-4 mt-2">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">FILED</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">2023-11-05</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">VALUE</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Undisclosed</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">DEADLINE</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">45 DAYS</span>
+</div>
+</div>
+</div>
+<!-- Case Item 3 -->
+<div class="bg-surface-container p-density-comfortable border border-outline-variant relative cursor-pointer group hover:border-outline transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 block">CASE #774-GAMMA</span>
+<h3 class="font-data-point text-data-point text-on-surface">Global Freight Dispute</h3>
+</div>
+<span class="px-2 py-1 bg-surface-bright text-primary-fixed-dim font-label-caps text-label-caps border border-outline-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span> DRAFTING_AWARD
+                            </span>
+</div>
+<div class="grid grid-cols-3 gap-4 border-t border-outline-variant pt-4 mt-2">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">FILED</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">2023-08-22</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">VALUE</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">$12.8M</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">DEADLINE</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">3 DAYS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Detail Pane -->
+<aside class="w-[450px] bg-surface-container-low flex flex-col shrink-0 overflow-y-auto">
+<div class="p-margin-desktop sticky top-0 bg-surface-container-low/90 backdrop-blur z-10 border-b border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-label-caps text-primary px-2 py-1 border border-primary bg-primary/10">CASE #992-ALPHA DETAILS</span>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">TechCorp vs. DataSys</h2>
+</div>
+<div class="p-margin-desktop flex flex-col gap-margin-desktop">
+<!-- Docket Summary -->
+<div class="border border-outline-variant bg-surface relative">
+<div class="absolute -top-3 left-4 bg-surface px-2 font-label-caps text-label-caps text-on-surface-variant">DOCKET SUMMARY</div>
+<div class="p-density-comfortable pt-6">
+<p class="font-body-fixed text-body-fixed text-on-surface mb-4">Breach of contract dispute regarding data migration services. Claimant alleges failure to meet technical specifications and timeline, resulting in significant operational downtime.</p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">JURISDICTION</span>
+<span class="font-data-point text-data-point text-on-surface text-sm">NY, USA</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">GOVERNING LAW</span>
+<span class="font-data-point text-data-point text-on-surface text-sm">Delaware</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stakeholders -->
+<div class="border border-outline-variant bg-surface relative">
+<div class="absolute -top-3 left-4 bg-surface px-2 font-label-caps text-label-caps text-on-surface-variant">STAKEHOLDERS</div>
+<div class="p-density-comfortable pt-6 flex flex-col gap-4">
+<!-- Claimant -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">CLAIMANT</span>
+<span class="font-body-fixed text-body-fixed text-on-surface font-bold block">TechCorp Solutions Inc.</span>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Rep: Baker &amp; McKenzie</span>
+</div>
+<span class="material-symbols-outlined text-outline">business</span>
+</div>
+<!-- Respondent -->
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">RESPONDENT</span>
+<span class="font-body-fixed text-body-fixed text-on-surface font-bold block">DataSys Global Ltd.</span>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Rep: Skadden, Arps</span>
+</div>
+<span class="material-symbols-outlined text-outline">corporate_fare</span>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="mt-auto pt-margin-desktop">
+<button class="w-full bg-primary text-on-primary font-label-caps text-label-caps py-4 flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors border-b-4 border-on-primary-fixed-variant">
+                            ENTER ARBITRATION WORKSPACE <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</aside>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-density-compact bg-surface-container-lowest border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary py-2 w-1/4 h-full" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">PROJECTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-1/4 h-full hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-1/4 h-full hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">TIMELINE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-1/4 h-full hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">draw</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">AWARD</span>
+</a>
+</nav>
+</body></html>

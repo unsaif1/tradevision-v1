@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Final Settlement Overview | TradeVision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#333539",
+                        "outline": "#849495",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "surface": "#111317",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "primary-container": "#00f0ff",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-dim": "#111317",
+                        "outline-variant": "#3b494b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "inverse-primary": "#006970",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-highest": "#333539",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#006970",
+                        "tertiary": "#f7f5f5",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary-fixed": "#e4e2e2",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary": "#00363a",
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-container-low": "#1a1c20",
+                        "secondary": "#ffdb9d",
+                        "inverse-on-surface": "#2f3035",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "tertiary-container": "#dad9d9",
+                        "secondary-fixed": "#ffdea8",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111317; /* surface */
+            color: #e2e2e8; /* on-surface */
+        }
+        
+        /* Custom scrollbar for data tables */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e2024;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00dbe9;
+        }
+        
+        .technical-grid {
+            background-image: 
+                linear-gradient(to right, #1e2024 1px, transparent 1px),
+                linear-gradient(to bottom, #1e2024 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 240, 255, 0.1);
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        @keyframes scanline {
+            0% { top: -2px; }
+            100% { top: 100vh; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-fixed text-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col technical-grid pb-20 md:pb-0">
+<div class="scanline"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant bg-surface flex justify-between items-center px-margin-mobile h-16 transition-all duration-300">
+<div class="flex items-center gap-density-comfortable">
+<button class="text-primary-container hover:bg-surface-variant/50 transition-colors p-density-compact rounded active:scale-95 duration-75">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</button>
+<h1 class="text-headline-md-mobile font-headline-md text-primary-container tracking-tighter uppercase font-bold">TradeVision</h1>
+</div>
+<!-- Desktop Nav items -->
+<nav class="hidden md:flex items-center gap-density-comfortable">
+<a class="text-on-surface-variant font-medium font-label-caps text-label-caps hover:bg-surface-variant/50 transition-colors px-4 py-2 rounded" href="#">Claims</a>
+<a class="text-on-surface-variant font-medium font-label-caps text-label-caps hover:bg-surface-variant/50 transition-colors px-4 py-2 rounded" href="#">Inspections</a>
+<a class="text-on-surface-variant font-medium font-label-caps text-label-caps hover:bg-surface-variant/50 transition-colors px-4 py-2 rounded" href="#">Materials</a>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden ml-4">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a rugged professional in a dark industrial setting. The lighting is dramatic and cinematic, with cool cyan highlights casting sharp geometric shadows. The mood is serious and focused, emphasizing a high-tech, precise aesthetic. High contrast, dark mode palette with obsidian background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZTXj2cM46BbxvS_GRQkj0KbLv0tFh_8y27aEEY9tw6yINH5wBnDII6iSlvA40Vm2v-qFvH_1tWYYsUKFklDvTr1_IcQLVtUBr77Pn3Fjg3KaYbu3RgXtlxDYJhoqi2h1xM3Ob3d8Xx1BEifun19EoGO24IFXqhMgyDOAioUvjKqyaZKKsrwGds43mVGpiym48XuwBM_wX6xVe_eYCfOuSQTA2PMtTfeW05LRq8lGAVPVD_C7g1E8vv4flbbv97OXDk9emKnCVKz_j"/>
+</div>
+</nav>
+<!-- Mobile Avatar -->
+<div class="md:hidden w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a rugged professional in a dark industrial setting. The lighting is dramatic and cinematic, with cool cyan highlights casting sharp geometric shadows. The mood is serious and focused, emphasizing a high-tech, precise aesthetic. High contrast, dark mode palette with obsidian background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs21OCFe4F99WsPNY4V7w4Xn4JrTDxy-8jXN55DwFG2TJFKYMhF7aKXSnF5SH0_Kpjs5UD8JLivS5FCl1BHL936N5_ChzY7wNP94x5MKjdalUwkcehfxkcBRTMH_6XPWgnXJtHrev7ggzVFrkp7JDkD1iSdnWtYNGTjeUyOzGis1ipotP0WmVK4SyzpPOUoLmbELFHYjMkQVRwh8Qcs4t9e7oDfVyGhTmf30GMQuvc63F7L9N3FODjIlEx_5ZGsCJ_UoAxw-XsLJnd"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full mb-10">
+<!-- Back action -->
+<a class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary-container font-label-caps text-label-caps mb-density-comfortable transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+            RETURN_TO_CLAIM_LOG
+        </a>
+<!-- Claim Status Header -->
+<div class="mb-margin-desktop flex flex-col md:flex-row md:items-end justify-between gap-density-comfortable border-b border-outline-variant pb-density-comfortable">
+<div>
+<div class="flex items-center gap-density-compact mb-2">
+<div class="w-2 h-2 bg-primary-container rounded-full animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-primary-container tracking-wider">STATUS_CRITICAL</span>
+</div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase">SETTLEMENT_FINAL_REVIEW</h2>
+</div>
+<div class="bg-surface-container border border-[#2D2D2D] px-4 py-2 flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Claim ID:</span>
+<span class="font-data-point text-data-point text-primary-container">CLM-4082</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-margin-mobile md:gap-margin-desktop">
+<!-- Left Column: Primary Data Canvas -->
+<div class="lg:col-span-8 flex flex-col gap-margin-mobile md:gap-margin-desktop">
+<!-- Financial Summary Bento -->
+<section class="bg-surface border border-[#2D2D2D] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-container to-transparent"></div>
+<div class="border-b border-[#2D2D2D] p-density-comfortable bg-surface-container-lowest flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Financial_Ledger_Output</h3>
+</div>
+</div>
+<div class="p-density-comfortable grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2D2D2D]">
+<!-- Payout Block -->
+<div class="bg-surface p-density-comfortable hover:bg-surface-container transition-colors relative group">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant group-hover:bg-primary-container transition-colors"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-2">APPROVED_PAYOUT</span>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-data-point text-on-surface text-3xl">$14,250</span>
+<span class="font-label-caps text-label-caps text-outline mb-1">.00</span>
+</div>
+</div>
+<!-- Deductible Block -->
+<div class="bg-surface p-density-comfortable hover:bg-surface-container transition-colors relative group">
+<div class="absolute top-0 left-0 w-1 h-full bg-error-container group-hover:bg-error transition-colors"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-2">DEDUCTIBLE_HOLD</span>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-data-point text-error text-3xl">-$1,000</span>
+<span class="font-label-caps text-label-caps text-error/50 mb-1">.00</span>
+</div>
+</div>
+<!-- Net Settlement Block (Full width) -->
+<div class="bg-surface-container-low p-density-comfortable md:col-span-2 relative mt-px">
+<div class="absolute inset-0 border border-primary-container/30 pointer-events-none"></div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-primary-container block mb-2">NET_SETTLEMENT_AMOUNT</span>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-data-point text-primary-container text-4xl md:text-5xl">$13,250</span>
+<span class="font-label-caps text-label-caps text-primary-container/70 mb-1.5">.00</span>
+</div>
+</div>
+<div class="bg-surface-container-high px-3 py-1 border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-sm">verified_user</span>
+<span class="font-label-caps text-label-caps text-on-surface">Funds_Available</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs Breakdown (Placeholder for layout depth) -->
+<section class="bg-surface border border-[#2D2D2D] p-density-comfortable">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-density-comfortable border-b border-[#2D2D2D] pb-2">Material_Cost_Index</h3>
+<div class="space-y-2 font-label-caps text-label-caps">
+<div class="flex justify-between py-2 border-b border-[#2D2D2D]">
+<span class="text-on-surface">SHG_AR_ARCH</span>
+<span class="text-on-surface-variant">$4,850.00</span>
+</div>
+<div class="flex justify-between py-2 border-b border-[#2D2D2D]">
+<span class="text-on-surface">LABOR_R&amp;R</span>
+<span class="text-on-surface-variant">$6,100.00</span>
+</div>
+<div class="flex justify-between py-2 border-b border-[#2D2D2D]">
+<span class="text-on-surface">DRIP_EDGE_MET</span>
+<span class="text-on-surface-variant">$850.00</span>
+</div>
+<div class="flex justify-between py-2">
+<span class="text-on-surface">PERMIT_FEES</span>
+<span class="text-on-surface-variant">$450.00</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Action Side-Panel -->
+<div class="lg:col-span-4 flex flex-col gap-margin-mobile md:gap-margin-desktop">
+<!-- Closing Checklist -->
+<section class="bg-surface-container-lowest border border-[#2D2D2D] relative">
+<div class="absolute -top-3 -left-3 bg-surface border border-[#2D2D2D] px-2 py-1 z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant">REQ_MATRIX</span>
+</div>
+<div class="p-density-comfortable pt-8 space-y-4">
+<!-- Checklist Item 1 -->
+<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface block mb-1">Physical Inspection Verified</span>
+<span class="font-label-caps text-[10px] text-outline">SYS_AUTH: Insp_JD_908</span>
+</div>
+</div>
+<!-- Checklist Item 2 -->
+<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface block mb-1">Materials Invoice Reconciled</span>
+<span class="font-label-caps text-[10px] text-outline">SYS_AUTH: Auto_Match_OK</span>
+</div>
+</div>
+<!-- Checklist Item 3 -->
+<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface block mb-1">Dispute Resolution Cleared</span>
+<span class="font-label-caps text-[10px] text-outline">SYS_AUTH: No_Flags_Found</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Primary Action Button -->
+<div class="mt-auto pt-4 border-t border-[#2D2D2D]">
+<button class="w-full bg-surface hover:bg-surface-container text-primary-container border-2 border-primary-container py-4 px-6 flex items-center justify-between group transition-all relative overflow-hidden" onclick="this.classList.toggle('bg-primary-container/20')">
+<div class="absolute inset-0 bg-primary-container/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+<span class="font-data-point text-data-point relative z-10 tracking-widest">INITIATE_CLOSING</span>
+<span class="material-symbols-outlined relative z-10 group-hover:translate-x-2 transition-transform">terminal</span>
+</button>
+<p class="font-label-caps text-[10px] text-on-surface-variant text-center mt-2 opacity-60">ACTION_IRREVERSIBLE // LOG_STAMP_REQD</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) - Suppressed for this transactional screen per instructions -->
+<!-- Navigation shell is hidden because this is a focused, task-based screen (Final Settlement) with a "Back" action implying temporary departure from main flow. -->
+<script>
+        // Simple ambient glitch effect for the ledger headers
+        setInterval(() => {
+            const ledgers = document.querySelectorAll('.tracking-widest');
+            const target = ledgers[Math.floor(Math.random() * ledgers.length)];
+            if(target) {
+                target.style.opacity = '0.5';
+                setTimeout(() => target.style.opacity = '1', 50);
+                setTimeout(() => target.style.opacity = '0.8', 100);
+                setTimeout(() => target.style.opacity = '1', 150);
+            }
+        }, 3000);
+    </script>
+</body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION - Blockchain Evidence #EV-9942</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for deep tech feel */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #849495; }
+        
+        /* Monospace alignment utility */
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-container": "#5e5f5f", "secondary": "#ffdb9d", "surface-container-highest": "#333539",
+                        "primary-fixed": "#7df4ff", "on-secondary-fixed-variant": "#5e4200", "on-secondary": "#412d00",
+                        "on-primary": "#00363a", "on-tertiary-fixed": "#1b1c1c", "on-error": "#690005",
+                        "inverse-surface": "#e2e2e8", "background": "#111317", "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e", "tertiary-fixed-dim": "#c7c6c6", "error-container": "#93000a",
+                        "on-surface": "#e2e2e8", "on-tertiary": "#303031", "tertiary-container": "#dad9d9",
+                        "surface-container-lowest": "#0c0e12", "on-primary-fixed-variant": "#004f54", "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022", "inverse-on-surface": "#2f3035", "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8", "on-primary-container": "#006970", "primary-fixed-dim": "#00dbe9",
+                        "secondary-fixed-dim": "#ffba20", "tertiary": "#f7f5f5", "surface-variant": "#333539",
+                        "primary": "#dbfcff", "on-error-container": "#ffdad6", "secondary-fixed": "#ffdea8",
+                        "outline": "#849495", "inverse-primary": "#006970", "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024", "surface": "#111317", "on-secondary-fixed": "#271900",
+                        "secondary-container": "#feb700", "surface-container-low": "#1a1c20", "surface-container-high": "#282a2e",
+                        "primary-container": "#00f0ff", "surface-dim": "#111317", "on-surface-variant": "#b9cacb",
+                        "surface-tint": "#00dbe9", "outline-variant": "#3b494b"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    spacing: { "density-compact": "8px", "margin-desktop": "32px", "unit": "4px", "gutter": "16px", "margin-mobile": "16px", "density-comfortable": "24px" },
+                    fontFamily: {
+                        "body-fixed": ["Inter"], "label-caps": ["JetBrains Mono"], "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"], "display-lg": ["Space Grotesk"], "data-point": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container h-screen flex overflow-hidden">
+<!-- NavigationDrawer (JSON Blueprint mapped) -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface dark:bg-surface flex flex-col py-margin border-r border-outline-variant dark:border-outline-variant z-40 hidden md:flex">
+<div class="px-gutter mb-margin-desktop">
+<span class="font-display-md text-display-md text-primary dark:text-primary tracking-tight font-bold">TRADEVISION</span>
+</div>
+<div class="flex-1 flex flex-col gap-unit px-unit">
+<!-- Active State determined: 'AUDIT LOG' relates best to Blockchain Evidence -->
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 rounded font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined fill" data-icon="history" data-weight="fill">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 rounded font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 rounded font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 rounded font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                REPORTS
+            </a>
+</div>
+<div class="mt-auto px-gutter py-density-comfortable border-t border-outline-variant">
+<div class="text-on-surface-variant font-label-caps text-label-caps flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                SYSTEM ONLINE
+            </div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-[260px] h-screen overflow-hidden relative">
+<!-- TopAppBar (JSON Blueprint mapped) -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant h-[64px] flex justify-between items-center px-gutter w-full sticky top-0 z-30 shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h1 class="font-headline-sm text-headline-sm text-primary dark:text-primary font-bold">ADMINISTRATIVE SUITE</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center cursor-pointer hover:border-primary transition-colors" title="System Administrator Avatar">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop bg-background flex flex-col gap-margin-desktop">
+<!-- Context Action Bar -->
+<div class="flex justify-between items-end border-b border-outline-variant pb-density-comfortable">
+<div>
+<a class="text-on-surface-variant font-label-caps text-label-caps flex items-center gap-2 hover:text-primary transition-colors mb-2" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                        BACK TO AUDIT LOG
+                    </a>
+<div class="flex items-center gap-4 mt-unit">
+<h2 class="font-display-lg text-display-lg text-on-surface">EVIDENCE <span class="text-primary-container">#EV-9942</span></h2>
+<div class="px-3 py-1 bg-primary-container/10 border border-primary-container text-primary-container font-label-caps text-label-caps rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+                            BLOCKCHAIN VERIFIED
+                        </div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-outline-variant hover:border-primary text-on-surface font-label-caps text-label-caps rounded transition-colors flex items-center gap-2 bg-surface-container">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        EXPORT BUNDLE
+                    </button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded hover:bg-primary-fixed transition-colors flex items-center gap-2 font-bold shadow-[0_4px_0_0_#006970]">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        SHARE TRACE
+                    </button>
+</div>
+</div>
+<!-- SHA Hash & Meta Banner -->
+<div class="bg-surface-container p-density-comfortable border border-outline-variant rounded flex flex-col md:flex-row gap-gutter items-start md:items-center justify-between relative overflow-hidden group">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(45deg, #00dbe9 0, #00dbe9 1px, transparent 1px, transparent 10px);"></div>
+<div class="flex-1 w-full relative z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">SHA-256 HASH SIGNATURE</span>
+<div class="font-data-point text-data-point text-primary-fixed-dim tabular-nums break-all selection:bg-primary-container selection:text-on-primary-container">
+                        e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                    </div>
+</div>
+<div class="flex gap-margin-desktop relative z-10 border-l border-outline-variant pl-margin-desktop">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">NETWORK</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Polygon Mainnet</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">BLOCK HEIGHT</span>
+<span class="font-data-point text-[16px] text-on-surface tabular-nums">48,291,004</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-margin-desktop items-start">
+<!-- Left Column: Evidence Assets & Material Analysis (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-margin-desktop">
+<!-- Captured Assets Gallery -->
+<section class="border border-outline-variant rounded bg-surface-container-low overflow-hidden">
+<div class="bg-surface-container border-b border-outline-variant px-density-comfortable py-3 flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+                                CAPTURED ASSETS
+                            </h3>
+<span class="font-data-point text-[14px] text-on-surface-variant">4 ITEMS</span>
+</div>
+<div class="p-density-comfortable grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Asset Card 1: RAW Photo -->
+<div class="border border-outline-variant bg-surface hover:border-primary-container transition-colors group relative cursor-pointer flex flex-col">
+<div class="h-[140px] bg-surface-container-high relative overflow-hidden border-b border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline opacity-20">image</span>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<div class="p-3 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps text-primary-container break-all">IMG_7742_A.RAW</span>
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant text-[10px] font-label-caps text-on-surface-variant rounded">32MB</span>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-2 border-t border-outline-variant pt-2">
+<div class="text-[10px] font-label-caps text-on-surface-variant">GPS: <span class="text-on-surface tabular-nums">34.05,-118.24</span></div>
+<div class="text-[10px] font-label-caps text-on-surface-variant text-right">EXIF: <span class="text-on-surface">VALID</span></div>
+</div>
+</div>
+</div>
+<!-- Asset Card 2: RAW Photo -->
+<div class="border border-outline-variant bg-surface hover:border-primary-container transition-colors group relative cursor-pointer flex flex-col">
+<div class="h-[140px] bg-surface-container-high relative overflow-hidden border-b border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline opacity-20">image</span>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<div class="p-3 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps text-primary-container break-all">IMG_7742_B.RAW</span>
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant text-[10px] font-label-caps text-on-surface-variant rounded">31MB</span>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-2 border-t border-outline-variant pt-2">
+<div class="text-[10px] font-label-caps text-on-surface-variant">GPS: <span class="text-on-surface tabular-nums">34.05,-118.24</span></div>
+<div class="text-[10px] font-label-caps text-on-surface-variant text-right">EXIF: <span class="text-on-surface">VALID</span></div>
+</div>
+</div>
+</div>
+<!-- Asset Card 3: 3D MESH -->
+<div class="border border-outline-variant bg-surface hover:border-primary-container transition-colors group relative cursor-pointer flex flex-col md:col-span-2">
+<div class="p-3 flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-highest border border-outline-variant rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[28px]">view_in_ar</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-secondary font-bold">LIDAR_MESH_01.OBJ</span>
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant text-[10px] font-label-caps text-on-surface-variant rounded">142MB</span>
+</div>
+<div class="mt-2 flex gap-4 text-[10px] font-label-caps text-on-surface-variant">
+<span>VERTICES: <span class="text-on-surface tabular-nums">1.2M</span></span>
+<span>FACES: <span class="text-on-surface tabular-nums">2.4M</span></span>
+<span>SCAN TIME: <span class="text-on-surface tabular-nums">14s</span></span>
+</div>
+</div>
+<button class="w-8 h-8 rounded bg-surface-container border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Material Analysis (Tech Cards) -->
+<section class="flex flex-col gap-unit">
+<div class="font-label-caps text-label-caps text-on-surface-variant px-1 mb-2">MATERIAL IDENTIFICATION</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Material Chip 1 -->
+<div class="border border-outline-variant bg-surface-container-low p-3 relative pt-6 group">
+<div class="absolute top-0 left-0 bg-outline-variant px-2 py-0.5 text-[10px] font-label-caps text-on-surface">CONFIDENCE 98%</div>
+<div class="flex justify-between items-end mt-2">
+<div class="font-data-point text-[24px] text-on-surface">TPO</div>
+<div class="w-4 h-4 rounded-sm bg-primary-container"></div>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant mt-1 border-t border-outline-variant pt-2">Thermoplastic Polyolefin detected in core scan region.</div>
+</div>
+<!-- Material Chip 2 -->
+<div class="border border-outline-variant bg-surface-container-low p-3 relative pt-6 group">
+<div class="absolute top-0 left-0 bg-outline-variant px-2 py-0.5 text-[10px] font-label-caps text-on-surface">CONFIDENCE 92%</div>
+<div class="flex justify-between items-end mt-2">
+<div class="font-data-point text-[24px] text-on-surface">METL</div>
+<div class="w-4 h-4 rounded-sm bg-secondary"></div>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant mt-1 border-t border-outline-variant pt-2">Corrugated metal flashing identified near perimeter.</div>
+</div>
+<!-- Surface Area Metric -->
+<div class="border border-primary-container/30 bg-primary-container/5 p-3 flex flex-col justify-center items-center text-center">
+<span class="font-label-caps text-[10px] text-primary-container mb-1">CALCULATED SURFACE</span>
+<div class="font-data-point text-[32px] text-primary-fixed tabular-nums flex items-baseline gap-1">
+                                    4,250 <span class="text-[14px] text-primary-fixed-dim">sq ft</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[85%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Chain Trace Timeline (4 cols, Sticky-ish behavior simulated with structure) -->
+<div class="lg:col-span-4 h-full">
+<section class="border border-outline-variant rounded bg-surface-container-lowest h-full flex flex-col">
+<div class="bg-surface-container border-b border-outline-variant px-density-comfortable py-3 sticky top-0 z-10 flex items-center justify-between">
+<h3 class="font-label-caps text-label-caps text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+                                CHAIN TRACE
+                            </h3>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+<span class="text-[10px] font-label-caps text-primary-container">LIVE</span>
+</div>
+</div>
+<div class="p-density-comfortable flex-1 overflow-y-auto relative">
+<!-- Timeline Line -->
+<div class="absolute left-[31px] top-density-comfortable bottom-density-comfortable w-px bg-outline-variant"></div>
+<div class="flex flex-col gap-6 relative z-10">
+<!-- Node 1: Block Commitment (Most Recent) -->
+<div class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-primary-container flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(0,240,255,0.2)] z-10">
+<span class="material-symbols-outlined text-[14px] text-primary-container">done_all</span>
+</div>
+<div class="flex-1 bg-surface-container border border-primary-container/30 rounded p-3 relative">
+<div class="absolute -left-[5px] top-3 w-2 h-2 bg-surface-container border-l border-b border-primary-container/30 rotate-45"></div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[12px] text-primary-container font-bold">BLOCK COMMITMENT</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">14:02:45.992</span>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant mb-2">Hash committed to Polygon mainnet ledger.</div>
+<div class="bg-surface-container-lowest p-2 rounded border border-outline-variant text-[10px] font-label-caps tabular-nums break-all text-on-surface">
+                                            TxID: 0x8f2a...c91b
+                                        </div>
+</div>
+</div>
+<!-- Node 2: Cryptographic Hashing -->
+<div class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">tag</span>
+</div>
+<div class="flex-1 p-2">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[12px] text-on-surface">CRYPTOGRAPHIC HASHING</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">14:02:44.120</span>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant">SHA-256 bundle generation complete.</div>
+</div>
+</div>
+<!-- Node 3: Data Validation -->
+<div class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">fact_check</span>
+</div>
+<div class="flex-1 p-2">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[12px] text-on-surface">METADATA VALIDATION</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">14:02:42.050</span>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant">GPS and Timestamp spoofing checks passed. Node ID: #NODE-88X</div>
+</div>
+</div>
+<!-- Node 4: Asset Upload -->
+<div class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">cloud_upload</span>
+</div>
+<div class="flex-1 p-2">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[12px] text-on-surface">ASSET BUNDLE UPLOAD</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">14:02:30.000</span>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant">4 items securely transferred to redundant cold storage.</div>
+</div>
+</div>
+<!-- Node 5: Initialization -->
+<div class="flex gap-4 items-start opacity-70">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[14px] text-outline">adjust</span>
+</div>
+<div class="flex-1 p-2">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[12px] text-on-surface">ASSET CAPTURE INITIATED</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">13:45:11.902</span>
+</div>
+<div class="text-[12px] font-body-fixed text-on-surface-variant">Session started by Field Tech ID: USR-442.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Bottom Spacer -->
+<div class="h-margin-desktop"></div>
+</main>
+</div>
+</body></html>

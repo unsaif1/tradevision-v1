@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technical Audit Review - C.A.R.E. Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#3b494b",
+                    "on-surface": "#e2e2e8",
+                    "surface-bright": "#37393e",
+                    "surface-container-high": "#282a2e",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-primary": "#00363a",
+                    "primary": "#dbfcff",
+                    "surface-tint": "#00dbe9",
+                    "secondary-container": "#feb700",
+                    "on-secondary": "#412d00",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#333539",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "tertiary-container": "#dad9d9",
+                    "surface-container-highest": "#333539",
+                    "surface": "#111317",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-tertiary-container": "#5e5f5f",
+                    "primary-fixed": "#7df4ff",
+                    "on-primary-fixed": "#002022",
+                    "on-primary-fixed-variant": "#004f54",
+                    "surface-container-low": "#1a1c20",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "inverse-surface": "#e2e2e8",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#2f3035",
+                    "surface-container-lowest": "#0c0e12",
+                    "background": "#111317",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-tertiary": "#303031",
+                    "on-secondary-fixed": "#271900",
+                    "surface-container": "#1e2024",
+                    "primary-container": "#00f0ff",
+                    "tertiary-fixed": "#e4e2e2",
+                    "secondary-fixed": "#ffdea8",
+                    "outline": "#849495",
+                    "on-surface-variant": "#b9cacb",
+                    "secondary-fixed-dim": "#ffba20",
+                    "on-primary-container": "#006970",
+                    "on-error": "#690005",
+                    "on-background": "#e2e2e8",
+                    "inverse-primary": "#006970",
+                    "on-secondary-container": "#6b4b00",
+                    "secondary": "#ffdb9d",
+                    "tertiary": "#f7f5f5",
+                    "surface-dim": "#111317",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "density-comfortable": "24px",
+                    "unit": "4px",
+                    "margin-desktop": "32px",
+                    "density-compact": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .cyber-border {
+            border: 1px solid #3b494b;
+        }
+        .cyber-border-active {
+            border: 1px solid #dbfcff;
+            box-shadow: inset 0 0 10px rgba(219, 252, 255, 0.1);
+        }
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 219, 233, 0.3);
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 border-b border-outline-variant bg-surface flex items-center justify-between px-margin-desktop w-[calc(100%-260px)]">
+<div class="flex items-center gap-4">
+<span class="font-display-md text-display-md font-semibold text-on-surface">TradeVision C.A.R.E.</span>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<span class="font-headline-md text-headline-md text-on-surface-variant">Technical Audit Review</span>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="relative w-64 focus-within:ring-1 focus-within:ring-primary focus-within:outline-none transition-all rounded">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded pl-10 pr-3 py-1.5 text-body-fixed font-body-fixed text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary" placeholder="Search records..." type="text"/>
+</div>
+<div class="flex items-center gap-density-compact">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer rounded hover:bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer rounded hover:bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer rounded hover:bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col z-40">
+<div class="p-margin-desktop border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline-md text-headline-md">TV</div>
+<div>
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">C.A.R.E. Command</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-density-comfortable flex flex-col gap-unit">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="font-label-caps text-label-caps uppercase">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+<div class="p-margin-desktop border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-3">
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full cyber-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj_VjkLyLHXVfLPRorpsL33587qDzx1hOTfaPbkXWo28Y3WtufuIKQoVLhIMhcRKEohBWxXiRWgatNCpcUwPHZo1XvNL3BxR71uhJD7M3bTG_JwQbWFEjRqfUz9rs2cshIy-OXSRIVsW521emWHx4C9D44wR8KutQYY2G0hQXqs3ENmVwPZiBvcpOf9-v6Gt7OHy1pTRrd4gLUysuSlzP6Wn-WQLDZ9Bad5O0J_ciUCgk8N5LIrNEqu6fpIDGAvkDt2kZ4bOu74G1M"/>
+<div>
+<p class="font-body-fixed text-body-fixed text-on-surface">J. Doe</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">SysAdmin</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[260px] mt-[64px] p-margin-desktop min-h-[calc(100vh-64px)] grid grid-cols-12 gap-gutter bg-background">
+<!-- Header Section -->
+<div class="col-span-12 flex justify-between items-end border-b border-outline-variant pb-density-comfortable mb-density-compact">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-surface-container-high cyber-border rounded font-label-caps text-label-caps text-on-surface-variant">AUDIT ID:</span>
+<span class="font-data-point text-data-point text-primary">TRX-8924-A</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Roof Deck Verification</h2>
+</div>
+<div class="flex gap-density-compact">
+<button class="px-6 py-3 cyber-border rounded bg-surface-container text-on-surface font-label-caps text-label-caps hover:bg-surface-container-high transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    EXPORT LOG
+                </button>
+<button class="px-6 py-3 border border-primary bg-primary/10 text-primary font-label-caps text-label-caps rounded hover:bg-primary/20 transition-colors flex items-center gap-2" style="border-bottom-width: 4px;">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                    FINAL VERIFICATION
+                </button>
+</div>
+</div>
+<!-- Left Column: Field Capture -->
+<div class="col-span-6 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest cyber-border rounded flex flex-col h-full relative overflow-hidden">
+<div class="bg-surface-container-high py-2 px-4 border-b border-outline-variant flex items-center justify-between z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">view_in_ar</span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase">Field Capture (AR)</h3>
+</div>
+<span class="font-data-point text-data-point text-on-surface-variant text-[14px]">14:22:05 Z</span>
+</div>
+<div class="relative flex-1 bg-black p-1">
+<img alt="Industrial roofing site being inspected" class="w-full h-full object-cover opacity-80 filter contrast-125 saturate-50 mix-blend-luminosity" data-alt="A highly detailed point-of-view shot from an augmented reality visor looking at a commercial flat roof. The image is overlaid with glowing cyan wireframes, targeting reticles, and technical pitch measurements outlining the roof's structure. The lighting is overcast, giving a gritty, industrial feel to the gravel surface below. The overall aesthetic is high-tech cyber-industrial, emphasizing precision and data collection in a rugged environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpll899-kNfwMoeatyU7JOWVLtKq1PPxR_o9nAop7i-JQxryMM5m9fdpzpITI3WOnZwZp6FjbPB_b4zV9ijLjhksSkls8rTI1DC6BB7S9I4Ddll1gjxC82Tw6DCVvXn1KN22IIvEsnCJvwl4X1Di7TjmCyKa8BnuyOVcKhCGsJTN5sqw4KqEV2rFw3EX-oN9qP-I2NQQEAOtvMqu6caIfs_4izvUWHimxSwqfOKd-Cdoipz6cPybOlcEDkD8Kl86zyCmMeTKe8cvSM"/>
+<!-- AR Overlays -->
+<div class="scanline"></div>
+<div class="absolute inset-0 border-[2px] border-primary/30 m-4 rounded pointer-events-none">
+<!-- Reticle corners -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary"></div>
+</div>
+<!-- Floating Data Points -->
+<div class="absolute top-1/4 left-1/4 bg-surface/80 cyber-border p-2 backdrop-blur-sm">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">PITCH DETECTED</div>
+<div class="font-data-point text-data-point text-primary">4/12</div>
+</div>
+<div class="absolute bottom-1/4 right-1/4 bg-surface/80 cyber-border p-2 backdrop-blur-sm">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">MATERIAL</div>
+<div class="font-data-point text-data-point text-secondary-fixed-dim">TPO</div>
+</div>
+</div>
+<!-- Metadata strip -->
+<div class="bg-surface-container py-3 px-4 border-t border-outline-variant grid grid-cols-3 gap-4">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">SENSOR</div>
+<div class="font-data-point text-[14px] text-on-surface">LIDAR-V4</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">GPS COORD</div>
+<div class="font-data-point text-[14px] text-on-surface">34.0522°N, 118.2437°W</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">ELEVATION</div>
+<div class="font-data-point text-[14px] text-on-surface">245.2 FT</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Technical Assessment -->
+<div class="col-span-6 flex flex-col gap-gutter">
+<!-- Compliance Score Card -->
+<div class="bg-surface-container-low cyber-border rounded p-density-comfortable relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Technical Assessment</h3>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Automated analysis vs. structural baseline.</p>
+</div>
+<div class="text-right">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">COMPLIANCE SCORE</div>
+<div class="font-data-point text-[36px] text-primary">98.4%</div>
+</div>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-2 gap-unit">
+<div class="bg-surface cyber-border p-3 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Structural Integrity</span>
+<span class="font-data-point text-data-point text-primary-container text-[16px]">PASS</span>
+</div>
+<div class="bg-surface cyber-border p-3 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Moisture Variance</span>
+<span class="font-data-point text-data-point text-on-surface text-[16px]">&lt; 2.1%</span>
+</div>
+<div class="bg-surface cyber-border p-3 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Fastener Density</span>
+<span class="font-data-point text-data-point text-secondary-fixed-dim text-[16px]">MARGINAL</span>
+</div>
+<div class="bg-surface cyber-border p-3 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Deck Substrate</span>
+<span class="font-data-point text-data-point text-primary-container text-[16px]">VERIFIED</span>
+</div>
+</div>
+</div>
+<!-- Detailed Specifications -->
+<div class="bg-surface-container-lowest cyber-border rounded flex-1 flex flex-col">
+<div class="bg-surface-container py-2 px-4 border-b border-outline-variant">
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase">Captured Specifications</h3>
+</div>
+<div class="p-4 flex-1">
+<table class="w-full text-left border-collapse">
+<tbody>
+<tr class="border-b border-outline-variant/50">
+<td class="py-3 font-label-caps text-label-caps text-on-surface-variant">TOTAL AREA</td>
+<td class="py-3 font-data-point text-data-point text-on-surface text-right">14,250 SQ FT</td>
+</tr>
+<tr class="border-b border-outline-variant/50">
+<td class="py-3 font-label-caps text-label-caps text-on-surface-variant">PITCH VARIANCE</td>
+<td class="py-3 font-data-point text-data-point text-on-surface text-right">± 0.2°</td>
+</tr>
+<tr class="border-b border-outline-variant/50">
+<td class="py-3 font-label-caps text-label-caps text-on-surface-variant">MATERIAL EST.</td>
+<td class="py-3 text-right">
+<span class="inline-block bg-secondary-container text-on-secondary-container font-data-point text-[14px] px-2 py-1 rounded">TPO</span>
+<span class="inline-block bg-tertiary-container text-on-tertiary-container font-data-point text-[14px] px-2 py-1 rounded ml-2">60 MIL</span>
+</td>
+</tr>
+<tr>
+<td class="py-3 font-label-caps text-label-caps text-on-surface-variant">ESTIMATED LIFESPAN</td>
+<td class="py-3 font-data-point text-data-point text-on-surface text-right">18-22 YRS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Full Width Bottom: Cryptographic Log -->
+<div class="col-span-12 mt-density-comfortable">
+<div class="bg-surface-container cyber-border rounded">
+<div class="bg-surface-container-high py-2 px-4 border-b border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">shield</span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase">Cryptographic Evidence Log</h3>
+</div>
+<div class="p-4 font-data-point text-[12px] text-on-surface-variant leading-relaxed max-h-[150px] overflow-y-auto custom-scrollbar">
+<div class="flex gap-4 mb-2">
+<span class="text-tertiary-fixed-dim">[14:22:01.045]</span>
+<span class="text-on-surface">SYS_INIT: Session handshake established.</span>
+</div>
+<div class="flex gap-4 mb-2">
+<span class="text-tertiary-fixed-dim">[14:22:01.890]</span>
+<span class="text-on-surface">IMG_CAP: AR Viewfinder spatial mapping complete.</span>
+</div>
+<div class="flex gap-4 mb-2">
+<span class="text-tertiary-fixed-dim">[14:22:02.112]</span>
+<span class="text-primary-fixed-dim">HASH_GEN: 0x8F9A3B2C...4D5E (SHA-256) -&gt; Verified against baseline.</span>
+</div>
+<div class="flex gap-4 mb-2">
+<span class="text-tertiary-fixed-dim">[14:22:03.450]</span>
+<span class="text-on-surface">LIDAR_SYNC: Point cloud density threshold met (98.4%).</span>
+</div>
+<div class="flex gap-4 mb-2">
+<span class="text-tertiary-fixed-dim">[14:22:04.901]</span>
+<span class="text-secondary-fixed-dim">WARN: Marginal fastener density detected in Sector 4.</span>
+</div>
+<div class="flex gap-4">
+<span class="text-tertiary-fixed-dim">[14:22:05.000]</span>
+<span class="text-primary">AUDIT_LOCK: Awaiting final verification signature.</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

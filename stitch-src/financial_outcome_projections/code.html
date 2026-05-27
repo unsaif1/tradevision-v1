@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial Outcome Projections - FORECAST_CORE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+            opacity: 0.3;
+            animation: scanline 4s linear infinite;
+        }
+        .cyber-corner {
+            clip-path: polygon(0 0, 90% 0, 100% 15%, 100% 100%, 10% 100%, 0 85%);
+        }
+        .glass-overlay {
+            backdrop-filter: blur(20px);
+            background: rgba(27, 32, 38, 0.9);
+        }
+        .segmented-bar {
+            height: 8px;
+            background: #30353d;
+            border-radius: 2px;
+            overflow: hidden;
+            display: flex;
+            gap: 2px;
+        }
+        .segment {
+            height: 100%;
+            background: #00f2ff;
+        }
+        .segment-warning {
+            background: #f43f5e;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#0f141a",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-secondary": "#243240",
+                        "secondary-container": "#3a4858",
+                        "surface-tint": "#ffb2b9",
+                        "on-tertiary": "#273141",
+                        "status-error": "#f43f5e",
+                        "surface-deep": "#090f15",
+                        "inverse-primary": "#894d54",
+                        "on-primary-fixed-variant": "#6d363d",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#bdc7dc",
+                        "surface-container-highest": "#30353c",
+                        "surface": "#0f141a",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "surface-container-high": "#252a31",
+                        "secondary": "#bac8db",
+                        "surface-dim": "#0f141a",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-tertiary-container": "#495365",
+                        "surface-container-low": "#171c22",
+                        "on-primary-container": "#7b4148",
+                        "on-primary-fixed": "#370c13",
+                        "primary-fixed": "#ffdadc",
+                        "on-surface-variant": "#d7c2c2",
+                        "status-success": "#4ade80",
+                        "secondary-fixed": "#d5e4f7",
+                        "inverse-surface": "#dee3eb",
+                        "inverse-on-surface": "#2c3137",
+                        "on-surface": "#dee3eb",
+                        "on-primary": "#522027",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "surface-bright": "#353a40",
+                        "accent-cyan": "#00f2ff",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-secondary-container": "#a8b6c9",
+                        "outline-variant": "#524344",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#30353c",
+                        "on-background": "#dee3eb",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "surface-container": "#1b2026",
+                        "primary-container": "#ffb2b9",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "tertiary": "#d9e3f9",
+                        "secondary-fixed-dim": "#bac8db",
+                        "surface-container-lowest": "#0a0f14",
+                        "primary": "#ffd9dc",
+                        "outline": "#9f8c8d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "sidebar-width": "260px",
+                        "telemetry-sidebar-width": "340px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Barlow Condensed"],
+                        "label-md": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "label-sm": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-dim border-b border-outline-variant flex justify-between items-center px-lg py-md h-16">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-highest transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-accent-cyan">FINANCIAL_PROJECTION</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+</div>
+</header>
+<main class="mt-20 px-md flex flex-col gap-lg">
+<!-- Revenue Forecast Waterfall -->
+<section class="bg-surface-container p-lg border border-outline-variant scanline-effect">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">REVENUE_FLOW_ANALYSIS</span>
+<h2 class="text-headline-md font-headline-md text-on-surface mt-xs">ESTIMATED TOTAL: $4.2M</h2>
+</div>
+<div class="text-right">
+<span class="text-mono-data font-mono-data text-accent-cyan bg-accent-cyan/10 px-sm py-xs">CONFIDENCE: 89%</span>
+</div>
+</div>
+<div class="space-y-md">
+<!-- Waterfall Visualization -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<span class="text-label-md font-label-md text-on-surface-variant">CURRENT_REVENUE</span>
+<span class="text-mono-data font-mono-data">$2.1M</span>
+</div>
+<div class="w-full bg-surface-container-highest h-4">
+<div class="h-full bg-primary" style="width: 50%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<span class="text-label-md font-label-md text-on-surface-variant">PIPELINE_delta</span>
+<span class="text-mono-data font-mono-data text-status-success">+$1.8M</span>
+</div>
+<div class="w-full bg-surface-container-highest h-4 relative">
+<div class="absolute h-full bg-accent-cyan" style="left: 50%; width: 35%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<span class="text-label-md font-label-md text-on-surface-variant">CHANGE_ORDERS (EST)</span>
+<span class="text-mono-data font-mono-data text-status-success">+$0.3M</span>
+</div>
+<div class="w-full bg-surface-container-highest h-4 relative">
+<div class="absolute h-full bg-secondary" style="left: 85%; width: 7%"></div>
+</div>
+</div>
+<div class="pt-md border-t border-outline-muted flex justify-between items-center">
+<span class="text-label-caps font-label-caps text-accent-cyan">PROJECTED_CEILING</span>
+<span class="text-headline-md font-headline-md text-on-surface">$4,200,000.00</span>
+</div>
+</div>
+</section>
+<!-- Margin Analytics -->
+<section class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container p-md border border-outline-variant flex flex-col items-center justify-center text-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-md">TARGET_MARGIN</span>
+<div class="relative w-24 h-24 flex items-center justify-center mb-sm">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-mono-data font-mono-data text-headline-md">75%</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Benchmark: 70%</span>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant flex flex-col items-center justify-center text-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-md">PREDICTED_MARGIN</span>
+<div class="relative w-24 h-24 flex items-center justify-center mb-sm">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-accent-cyan" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="85.4" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-mono-data font-mono-data text-headline-md">66%</span>
+</div>
+<span class="text-body-sm font-body-sm text-status-error">-4% VS TARGET</span>
+</div>
+</section>
+<!-- Cost Volatility Alert -->
+<section class="bg-surface-container-low border-l-4 border-status-error p-lg">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-status-error" data-icon="warning">warning</span>
+<span class="text-label-caps font-label-caps text-status-error">COST_VOLATILITY_ALERT</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface mb-lg">
+                Predictive telemetry detects a <span class="text-status-error font-bold">14.2% spike</span> in raw material procurement costs for Q3 based on sensor-reported fabrication waste and global ledger trends.
+            </p>
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-on-surface-variant">Historical Variance</span>
+<div class="segmented-bar w-32">
+<div class="segment" style="width: 20%"></div>
+<div class="segment" style="width: 20%"></div>
+<div class="segment-warning" style="width: 20%"></div>
+<div class="segment-warning" style="width: 20%"></div>
+<div class="segment-warning" style="width: 20%"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-on-surface-variant">Resource Wastage</span>
+<div class="segmented-bar w-32">
+<div class="segment" style="width: 20%"></div>
+<div class="segment" style="width: 20%"></div>
+<div class="segment" style="width: 20%"></div>
+<div class="segment" style="width: 20%"></div>
+<div class="segment-warning" style="width: 20%"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg bg-status-error/10 border border-status-error text-status-error py-md font-label-caps text-label-caps hover:bg-status-error hover:text-white transition-all">
+                INITIATE_MITIGATION_PROTOCOL
+            </button>
+</section>
+<!-- Live Telemetry Card -->
+<section class="relative h-48 cyber-corner overflow-hidden bg-surface-container-highest">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale" data-alt="A complex network of data nodes and glowing blue connections representing a global financial ledger. The scene is set in a dark, high-tech control room environment with a cold, analytical mood. Glowing cyan accents and subtle orange warning lights create a futuristic cyber-industrial aesthetic. The lighting is low-key, emphasizing the luminance of the digital data display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5LyAkJ9f3F_8eOGR7VcPmjEd8h28isvv6wQCBKoAB5olCO6-s0mUJLGidPIIzrPl5DXUhBG632SK7xgW3B6_6KmqK0RehBPORvXXfjzShMZYRDwgOx3pbmIyu0USEoHBEcdcnMlnbFmAXxuBJOt9mXhEKUifs5Ex_yKlmij973ta_rDDeYDbV-KyjtPt_-pJaeUFBA8yUIPXfDK8ih4LX6rTZWwA-YjH6LzbB_h_1awn0jaYHbp2xXRmWlCWyVm1CzzjP7_380fRH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<span class="text-label-caps font-label-caps text-accent-cyan">NETWORK_STATUS</span>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-2 h-2 rounded-full bg-status-success animate-pulse"></div>
+<span class="text-mono-data font-mono-data">NODE_741_STABLE</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant flex justify-around items-center px-md pb-safe h-20">
+<!-- Overview -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="grid_view">grid_view</span>
+<span class="text-label-md font-label-md mt-1">Overview</span>
+</button>
+<!-- Timeline -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="timeline">timeline</span>
+<span class="text-label-md font-label-md mt-1">Timeline</span>
+</button>
+<!-- Finance (Active) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-accent-cyan rounded-xl px-6 py-2 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-label-md font-label-md font-bold mt-1">Finance</span>
+</button>
+<!-- Resources -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[24px]" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md mt-1">Resources</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for numbers
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("FORECAST_CORE v1.0 Financial Projection Module Initialized");
+        });
+    </script>
+</body></html>

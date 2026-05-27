@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Protocol - Terminal</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "neon-blue": "#3B82F6",
+                        "secondary-fixed": "#6dfe9c",
+                        "outline-variant": "#5c3f42",
+                        "on-tertiary-container": "#fffcff",
+                        "on-secondary-fixed": "#00210c",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-primary": "#67001e",
+                        "surface-tint": "#ffb2b9",
+                        "on-primary-fixed": "#40000f",
+                        "text-muted": "#8896A8",
+                        "surface-container-high": "#242b33",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "neon-pink": "#E21E51",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-dim": "#0d141c",
+                        "on-background": "#dce3ee",
+                        "background": "#0d141c",
+                        "inverse-on-surface": "#2a313a",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-surface": "#dce3ee",
+                        "inverse-surface": "#dce3ee",
+                        "neon-green": "#4ADE80",
+                        "outline": "#ab888a",
+                        "surface-container-low": "#151c24",
+                        "secondary": "#4de082",
+                        "secondary-fixed-dim": "#4de082",
+                        "on-secondary": "#003919",
+                        "tertiary-container": "#2171e4",
+                        "on-secondary-container": "#003e1c",
+                        "tertiary-fixed": "#d8e2ff",
+                        "error-container": "#93000a",
+                        "secondary-container": "#00b55d",
+                        "primary-container": "#e21e51",
+                        "neon-orange": "#F97316",
+                        "surface-base": "#111820",
+                        "surface-bright": "#333a43",
+                        "surface-container-highest": "#2e353e",
+                        "surface-variant": "#2e353e",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#ffdadb",
+                        "surface-stroke": "#2D3748",
+                        "tertiary": "#adc6ff",
+                        "primary": "#ffb2b9",
+                        "on-tertiary": "#002e6a",
+                        "surface": "#0d141c",
+                        "surface-container": "#192028",
+                        "on-secondary-fixed-variant": "#005227",
+                        "inverse-primary": "#be003e",
+                        "surface-elevated": "#1C2128",
+                        "surface-container-lowest": "#080f16",
+                        "on-primary-container": "#fffcff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "stack-gap": "12px",
+                        "unit": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    fontFamily: {
+                        "caption": ["Barlow"],
+                        "label-caps": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "body-md": ["Barlow"],
+                        "body-lg": ["Barlow"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "stat-display": ["Barlow Condensed"]
+                    },
+                    fontSize: {
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Technical Background Grid Pattern via CSS Gradients using token colors */
+        .tech-grid {
+            background-image: 
+                linear-gradient(to right, rgba(45, 55, 72, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(45, 55, 72, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-base text-on-surface font-body-md tech-grid min-h-screen pb-24 md:pb-0 pt-16 selection:bg-neon-pink selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-surface-stroke flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center text-neon-pink dark:text-neon-pink">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div class="font-label-caps text-label-caps tracking-widest text-neon-pink">FIELD AUDIT TERMINAL</div>
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors active:scale-95 duration-100 flex items-center justify-center w-10 h-10 rounded-full">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-5xl mx-auto px-margin-mobile md:px-margin-desktop py-6 md:py-10 space-y-8">
+<!-- Header -->
+<div class="flex items-center border-l-4 border-neon-green pl-4 py-1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-inverse-surface uppercase tracking-wider">VERIFICATION PROTOCOL</h1>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Evidence & Tech Details -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Evidence Preview Card -->
+<div class="bg-surface-elevated rounded-lg border-t-4 border-neon-pink overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.5)] flex flex-col relative group">
+<div class="h-48 md:h-64 w-full bg-surface-bright relative">
+<img alt="Defect structural image" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A highly detailed close-up shot of a massive, cracked industrial concrete pillar inside a dimly lit structural facility. The scene is illuminated by harsh, angular utility lights casting deep shadows, creating a high-contrast, moody atmosphere. A glowing neon pink digital overlay frames the primary fracture, blending gritty physical reality with advanced technological scanning aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEzV0fWuwjaHaJcTW_rQ7YIqu9koHsj7_EwjMwgBnjyLSGEZAS7gH-m7lv4b5jwDFyWu6EpatS9CBLNAOh0caL1Q75JX61QjG-hh6jTqOmCtXUyQE7TeZRKsQLjB_LvBt7UbeAbEv9n2p3XQBJ2D7e2ZuB-YOK9ZjDqej4rOEQyFlpjPSWKrXhCkFykv9QtuYX4jVWpTPMRkPZhiqBvL9tcKWrZ6wx8QXGwZ99n5OueLfKw2fSDHvc_YNJtno6aRR60IfBMBWB7peq"/>
+<!-- Overlay Reticle -->
+<div class="absolute inset-0 pointer-events-none border-[1px] border-surface-stroke m-4 opacity-50"></div>
+<!-- Encrypted Badge -->
+<div class="absolute top-4 left-4 bg-surface-container-high/90 border border-surface-stroke px-3 py-1 rounded backdrop-blur-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-neon-green" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-caps text-label-caps text-neon-green uppercase">ENCRYPTED</span>
+</div>
+</div>
+<div class="p-3 border-t border-surface-stroke bg-surface-container flex justify-between items-center">
+<span class="font-caption text-caption text-text-muted">RAW_DATA_STREAM_A1</span>
+<button class="font-label-caps text-label-caps text-neon-blue hover:text-white transition-colors">EXPAND VIEW</button>
+</div>
+</div>
+<!-- Technical Details Card -->
+<div class="bg-surface-elevated border border-surface-stroke rounded-lg overflow-hidden">
+<div class="bg-surface-container px-4 py-2 border-b border-surface-stroke flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-text-muted">data_object</span>
+<span class="font-label-caps text-label-caps text-text-muted">SYSTEM METADATA</span>
+</div>
+<ul class="flex flex-col">
+<li class="px-4 py-3 border-b border-surface-stroke flex justify-between items-center hover:bg-surface-bright transition-colors">
+<span class="font-caption text-caption text-text-muted uppercase">ID</span>
+<span class="font-body-md text-body-md text-inverse-surface tracking-wider">DEF-7749</span>
+</li>
+<li class="px-4 py-3 border-b border-surface-stroke flex justify-between items-center hover:bg-surface-bright transition-colors">
+<span class="font-caption text-caption text-text-muted uppercase">TIMESTAMP</span>
+<span class="font-caption text-caption text-inverse-surface opacity-90">2023-11-04 10:42:01</span>
+</li>
+<li class="px-4 py-3 border-b border-surface-stroke flex justify-between items-center hover:bg-surface-bright transition-colors">
+<span class="font-caption text-caption text-text-muted uppercase">SECTOR</span>
+<span class="font-body-md text-body-md text-neon-orange font-bold">7G</span>
+</li>
+<li class="px-4 py-3 flex justify-between items-center hover:bg-surface-bright transition-colors">
+<span class="font-caption text-caption text-text-muted uppercase">EQUIPMENT</span>
+<span class="font-body-md text-body-md text-inverse-surface">LT-DRONE-04</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Verification & Actions -->
+<div class="lg:col-span-7 space-y-6 flex flex-col justify-between">
+<div class="space-y-6">
+<!-- Compliance Checklist -->
+<div class="bg-surface-elevated border-t-4 border-neon-blue rounded-lg p-5">
+<h3 class="font-label-caps text-label-caps text-neon-blue mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+                            MANDATORY CLEARANCES
+                        </h3>
+<div class="space-y-3">
+<!-- Toggle 1 -->
+<label class="flex items-center justify-between p-3 border border-surface-stroke rounded bg-surface-container cursor-pointer hover:bg-surface-bright transition-colors group">
+<span class="font-body-md text-body-md text-inverse-surface group-hover:text-white transition-colors">Safety Clearance</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-stroke peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-inverse-surface after:border-surface-stroke after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-green"></div>
+</div>
+</label>
+<!-- Toggle 2 -->
+<label class="flex items-center justify-between p-3 border border-surface-stroke rounded bg-surface-container cursor-pointer hover:bg-surface-bright transition-colors group">
+<span class="font-body-md text-body-md text-inverse-surface group-hover:text-white transition-colors">Telepresence Verified</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-stroke peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-inverse-surface after:border-surface-stroke after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-green"></div>
+</div>
+</label>
+<!-- Toggle 3 -->
+<label class="flex items-center justify-between p-3 border border-surface-stroke rounded bg-surface-container cursor-pointer hover:bg-surface-bright transition-colors group">
+<span class="font-body-md text-body-md text-inverse-surface group-hover:text-white transition-colors">Data Integrity Check</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-stroke peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-inverse-surface after:border-surface-stroke after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-green"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Inspector Notes -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-text-muted flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">edit_document</span>
+                            INSPECTOR NOTES
+                        </label>
+<textarea class="w-full bg-surface-container-low border border-surface-stroke text-inverse-surface placeholder:text-surface-stroke focus:border-neon-pink focus:ring-1 focus:ring-neon-pink rounded-lg p-4 font-caption text-caption resize-none transition-all" placeholder="&gt; Enter structural assessment notes..._" rows="4"></textarea>
+</div>
+</div>
+<!-- Actions Area -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+<button class="order-2 md:order-1 border border-surface-stroke text-text-muted hover:text-white hover:bg-surface-bright hover:border-text-muted transition-all font-label-caps text-label-caps h-14 rounded-lg flex items-center justify-center gap-2 active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+                        ADD EVIDENCE
+                    </button>
+<button class="order-1 md:order-2 bg-neon-green text-surface-container-lowest hover:bg-secondary-fixed transition-colors font-label-caps text-label-caps h-14 rounded-lg flex items-center justify-center gap-3 shadow-[0_0_15px_rgba(74,222,128,0.3)] active:scale-95 duration-100 group relative overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%] animate-[shimmer_2s_infinite]"></div>
+<span class="material-symbols-outlined text-[20px] animate-pulse">lock_person</span>
+<span class="relative z-10">COMMIT TO STACK</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile & Tablet Pivot) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container dark:bg-surface-container border-t border-surface-stroke flex justify-around items-center h-20 px-gutter">
+<button class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1">biotech</span>
+<span class="font-label-caps text-label-caps text-[10px]">IDENTIFY</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1">visibility</span>
+<span class="font-label-caps text-label-caps text-[10px]">EVIDENCE</span>
+</button>
+<!-- Active Navigation mapped based on page intent -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-2 w-20 active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+<span class="font-label-caps text-label-caps text-[10px]">VERIFY</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1">layers</span>
+<span class="font-label-caps text-label-caps text-[10px]">STACK</span>
+</button>
+</nav>
+<!-- Desktop SideNav Pivot (Hidden on mobile) - Simplified representation for web completeness if space allowed, but prompt implies a terminal focus. Utilizing TopAppBar full width per style guides, no side nav requested in immediate structure, maintaining pure canvas focus -->
+<style>
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</body></html>

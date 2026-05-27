@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Finances - TV-CARE COMMAND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#303031",
+                        "primary": "#dbfcff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "inverse-surface": "#e2e2e8",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-fixed": "#271900",
+                        "primary-container": "#00f0ff",
+                        "on-secondary": "#412d00",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container-high": "#282a2e",
+                        "secondary-fixed": "#ffdea8",
+                        "tertiary-container": "#dad9d9",
+                        "inverse-primary": "#006970",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary-fixed-dim": "#ffba20",
+                        "primary-fixed": "#7df4ff",
+                        "secondary": "#ffdb9d",
+                        "surface-variant": "#333539",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e",
+                        "background": "#111317",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary": "#f7f5f5",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-error": "#690005",
+                        "surface-dim": "#111317",
+                        "secondary-container": "#feb700",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface": "#111317",
+                        "on-primary-container": "#006970",
+                        "outline": "#849495",
+                        "surface-tint": "#00dbe9",
+                        "surface-container": "#1e2024",
+                        "on-background": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "on-tertiary-container": "#5e5f5f",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary": "#00363a",
+                        "outline-variant": "#3b494b",
+                        "neon-blue": "#00f0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Scrollbar for dense lists */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #849495;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="hidden md:flex justify-between items-center w-full px-margin-mobile h-14 bg-surface border-b border-outline-variant docked full-width top-0 z-50">
+<div class="flex items-center gap-density-comfortable">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary text-[24px]">square</span>
+<span class="text-headline-sm font-headline-md font-bold text-primary tracking-tighter">TV-CARE COMMAND</span>
+</div>
+<nav class="flex items-center gap-density-compact ml-8">
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-label-caps font-label-caps">Command</span>
+</a>
+<a class="text-primary bg-surface-variant px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="text-label-caps font-label-caps">Jobs</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[20px]">photo_camera_back</span>
+<span class="text-label-caps font-label-caps">Evidence</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="text-label-caps font-label-caps">Schedule</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[24px]">settings_input_component</span>
+</button>
+<div class="flex items-center gap-2 border-l border-outline-variant pl-4">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">person</span>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Contractor Profile</span>
+</div>
+</div>
+</header>
+<!-- Mobile TopAppBar Sub-header -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile h-14 bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary text-[24px]">construction</span>
+<span class="text-headline-sm font-headline-md font-bold text-primary tracking-tighter">JOB FINANCES</span>
+</div>
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pb-24 md:pb-8 p-margin-mobile md:p-margin-desktop container mx-auto max-w-7xl">
+<!-- Job Header Banner -->
+<div class="mb-gutter md:mb-density-comfortable flex flex-col md:flex-row md:items-end justify-between gap-gutter">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 bg-surface-container-highest border border-outline-variant rounded-DEFAULT text-label-caps font-label-caps text-on-surface-variant">JOB-2023-894</span>
+<span class="px-2 py-1 bg-primary/10 border border-primary/30 text-primary rounded-DEFAULT text-label-caps font-label-caps flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+                        IN PROGRESS
+                    </span>
+</div>
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface">Riverside Commons</h1>
+<p class="text-body-fixed font-body-fixed text-on-surface-variant mt-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                    1450 Riverside Dr, Suite 300, Metropolis
+                </p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 md:flex-none px-4 py-2 border border-outline-variant bg-surface hover:bg-surface-variant rounded-DEFAULT text-label-caps font-label-caps transition-colors duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    EXPORT LEDGER
+                </button>
+<button class="flex-1 md:flex-none px-4 py-2 border-b-2 border-primary-fixed-dim bg-primary text-on-primary rounded-DEFAULT text-label-caps font-label-caps font-bold hover:bg-primary-fixed transition-colors duration-200 flex items-center justify-center gap-2 shadow-[0_4px_0_#00aeb8] active:translate-y-[4px] active:shadow-none">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    ADD EXPENSE
+                </button>
+</div>
+</div>
+<!-- 12-Column Grid Layout -->
+<div class="grid grid-cols-4 md:grid-cols-12 gap-unit md:gap-gutter">
+<!-- Primary Metrics & Gauge (Left 8 Cols) -->
+<div class="col-span-4 md:col-span-8 flex flex-col gap-unit md:gap-gutter">
+<!-- Financial Overview Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-unit">
+<!-- Total Budget -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-2">APPROVED BUDGET</h3>
+<div class="text-data-point font-data-point text-on-surface">$145,500<span class="text-label-caps text-on-surface-variant ml-1">.00</span></div>
+</div>
+<!-- Current Spend -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-2">ACTUAL SPEND TO DATE</h3>
+<div class="text-data-point font-data-point text-on-surface">$82,430<span class="text-label-caps text-on-surface-variant ml-1">.50</span></div>
+<div class="mt-2 text-label-caps font-label-caps text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                            +5.2% over target
+                        </div>
+</div>
+<!-- Projected Margin -->
+<div class="bg-surface-container border border-primary border-opacity-50 rounded-DEFAULT p-4 relative overflow-hidden shadow-[inset_0_0_20px_rgba(0,240,255,0.05)]">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<h3 class="text-label-caps font-label-caps text-primary mb-2 flex items-center justify-between">
+                            PROJECTED MARGIN
+                            <span class="material-symbols-outlined text-[16px]">trending_up</span>
+</h3>
+<div class="text-data-point font-data-point text-primary">32.4<span class="text-label-caps ml-1">%</span></div>
+<div class="mt-2 text-label-caps font-label-caps text-on-surface-variant">
+                            Target: 35.0%
+                        </div>
+</div>
+</div>
+<!-- Margin Breakdown Chart Placeholder -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT flex flex-col h-64 relative">
+<div class="absolute top-0 left-0 px-3 py-1 bg-surface-container-highest border-b border-r border-outline-variant rounded-br-DEFAULT text-label-caps font-label-caps text-on-surface-variant flex items-center gap-2 z-10">
+<span class="material-symbols-outlined text-[14px]">bar_chart</span>
+                        COST DISTRIBUTION
+                    </div>
+<div class="flex-1 p-density-comfortable flex items-end gap-2 pt-12 relative overflow-hidden">
+<!-- Simulated Chart Bars -->
+<div class="flex-1 flex flex-col justify-end group">
+<div class="text-center mb-2 text-label-caps font-label-caps text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">$45K</div>
+<div class="w-full bg-surface-variant border border-outline-variant h-[60%] rounded-t-sm relative overflow-hidden">
+<div class="absolute bottom-0 w-full h-[40%] bg-secondary opacity-50"></div>
+</div>
+<div class="text-center mt-2 text-label-caps font-label-caps text-on-surface-variant truncate">Materials</div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="text-center mb-2 text-label-caps font-label-caps text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">$32K</div>
+<div class="w-full bg-surface-variant border border-outline-variant h-[45%] rounded-t-sm relative overflow-hidden">
+<div class="absolute bottom-0 w-full h-[70%] bg-error opacity-50"></div>
+</div>
+<div class="text-center mt-2 text-label-caps font-label-caps text-on-surface-variant truncate">Labor</div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="text-center mb-2 text-label-caps font-label-caps text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">$8K</div>
+<div class="w-full bg-surface-variant border border-outline-variant h-[15%] rounded-t-sm relative overflow-hidden">
+<div class="absolute bottom-0 w-full h-[90%] bg-primary opacity-50"></div>
+</div>
+<div class="text-center mt-2 text-label-caps font-label-caps text-on-surface-variant truncate">Permits</div>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<div class="text-center mb-2 text-label-caps font-label-caps text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">$5K</div>
+<div class="w-full bg-surface-variant border border-outline-variant h-[10%] rounded-t-sm relative overflow-hidden">
+<div class="absolute bottom-0 w-full h-[30%] bg-surface-container-highest opacity-50"></div>
+</div>
+<div class="text-center mt-2 text-label-caps font-label-caps text-on-surface-variant truncate">Misc</div>
+</div>
+<!-- Grid lines -->
+<div class="absolute top-12 left-0 w-full h-[1px] border-t border-dashed border-outline-variant/30 pointer-events-none"></div>
+<div class="absolute top-1/2 left-0 w-full h-[1px] border-t border-dashed border-outline-variant/30 pointer-events-none"></div>
+</div>
+</div>
+</div>
+<!-- Side Panel Details (Right 4 Cols) -->
+<div class="col-span-4 flex flex-col gap-unit md:gap-gutter">
+<!-- Profitability Health Gauge -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-density-comfortable relative">
+<div class="absolute top-0 left-0 px-3 py-1 bg-surface-variant border-b border-r border-outline-variant rounded-br-DEFAULT text-label-caps font-label-caps text-on-surface-variant z-10">
+                        HEALTH INDEX
+                    </div>
+<div class="mt-8 flex flex-col items-center justify-center">
+<!-- Custom CSS Gauge -->
+<div class="relative w-40 h-20 overflow-hidden mb-2">
+<div class="absolute top-0 left-0 w-40 h-40 border-[16px] border-surface-variant rounded-full"></div>
+<div class="absolute top-0 left-0 w-40 h-40 border-[16px] border-primary rounded-full border-b-transparent border-l-transparent rotate-45 transform origin-center transition-transform duration-1000" style="transform: rotate(20deg);"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-on-surface rounded-full"></div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-16 bg-on-surface origin-bottom rotate-[60deg] transition-transform duration-1000"></div>
+</div>
+<div class="text-headline-md font-headline-md text-on-surface">HEALTHY</div>
+<p class="text-label-caps font-label-caps text-on-surface-variant text-center mt-2">
+                            Variance is within acceptable 5% tolerance threshold.
+                        </p>
+</div>
+</div>
+<!-- Material Density List -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT flex-1 min-h-[300px] flex flex-col relative">
+<div class="absolute top-0 left-0 px-3 py-1 bg-surface-container-highest border-b border-r border-outline-variant rounded-br-DEFAULT text-label-caps font-label-caps text-on-surface-variant z-10">
+                        EXPENSE LEDGER
+                    </div>
+<div class="flex-1 overflow-y-auto mt-8 p-2 flex flex-col gap-[1px] bg-outline-variant">
+<!-- Ledger Item -->
+<div class="bg-surface p-2 flex items-center justify-between group hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-secondary rounded-full"></div>
+<div>
+<div class="text-label-caps font-label-caps text-on-surface">TPO Membrane Rolls</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant flex gap-2">
+<span>MAT-882</span>
+<span class="text-secondary">MATERIAL</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-data-point font-data-point text-on-surface text-sm">$12,400</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant">10/12/23</div>
+</div>
+</div>
+<!-- Ledger Item -->
+<div class="bg-surface p-2 flex items-center justify-between group hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-error rounded-full"></div>
+<div>
+<div class="text-label-caps font-label-caps text-on-surface">Subcontractor Crew B</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant flex gap-2">
+<span>LAB-102</span>
+<span class="text-error">LABOR</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-data-point font-data-point text-on-surface text-sm">$8,150</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant">10/14/23</div>
+</div>
+</div>
+<!-- Ledger Item -->
+<div class="bg-surface p-2 flex items-center justify-between group hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-primary rounded-full"></div>
+<div>
+<div class="text-label-caps font-label-caps text-on-surface">City Building Permit</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant flex gap-2">
+<span>PER-09</span>
+<span class="text-primary">PERMIT</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-data-point font-data-point text-on-surface text-sm">$2,500</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant">10/01/23</div>
+</div>
+</div>
+<!-- Ledger Item -->
+<div class="bg-surface p-2 flex items-center justify-between group hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-secondary rounded-full"></div>
+<div>
+<div class="text-label-caps font-label-caps text-on-surface">Fasteners &amp; Adhesives</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant flex gap-2">
+<span>MAT-884</span>
+<span class="text-secondary">MATERIAL</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-data-point font-data-point text-on-surface text-sm">$3,100</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant">10/12/23</div>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container hover:bg-surface-variant text-label-caps font-label-caps text-primary border-t border-outline-variant transition-colors">
+                        VIEW FULL LEDGER
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container border-t border-outline-variant fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+<span class="text-[10px] font-label-caps mt-1">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="text-[10px] font-label-caps mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined text-[24px]">photo_camera_back</span>
+<span class="text-[10px] font-label-caps mt-1">Evidence</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+<span class="text-[10px] font-label-caps mt-1">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+<span class="text-[10px] font-label-caps mt-1">Account</span>
+</a>
+</nav>
+<!-- Safe area spacing for mobile notch -->
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    </style>
+</body></html>

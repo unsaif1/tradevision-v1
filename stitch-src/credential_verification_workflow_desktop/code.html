@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Credential Verification - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#005138",
+                      "on-tertiary-fixed": "#002114",
+                      "surface-container-high": "#252a31",
+                      "on-secondary-fixed-variant": "#3f4753",
+                      "error-container": "#93000a",
+                      "surface-bright": "#353a40",
+                      "surface-container": "#1b2026",
+                      "on-surface": "#dee3eb",
+                      "surface-container-lowest": "#0a0f14",
+                      "surface-container-highest": "#30353c",
+                      "tertiary-container": "#00855e",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-tertiary": "#003826",
+                      "secondary-fixed-dim": "#bfc7d5",
+                      "on-secondary-container": "#aeb6c3",
+                      "secondary": "#bfc7d5",
+                      "tertiary": "#72daad",
+                      "on-secondary": "#29313c",
+                      "primary": "#ffb2b9",
+                      "tertiary-fixed-dim": "#72daad",
+                      "surface-container-low": "#171c22",
+                      "on-secondary-fixed": "#141c26",
+                      "secondary-fixed": "#dbe3f1",
+                      "on-primary-fixed": "#40000f",
+                      "on-error": "#690005",
+                      "secondary-container": "#3f4753",
+                      "on-error-container": "#ffdad6",
+                      "primary-container": "#e21e51",
+                      "outline": "#ab888a",
+                      "inverse-on-surface": "#2c3137",
+                      "surface-variant": "#30353c",
+                      "on-surface-variant": "#e4bdbf",
+                      "surface": "#0f141a",
+                      "on-primary-container": "#fffcff",
+                      "on-primary": "#67001e",
+                      "background": "#0f141a",
+                      "primary-fixed": "#ffdadb",
+                      "outline-variant": "#5c3f42",
+                      "inverse-primary": "#be003e",
+                      "tertiary-fixed": "#8ff7c7",
+                      "on-primary-fixed-variant": "#91002e",
+                      "inverse-surface": "#dee3eb",
+                      "on-background": "#dee3eb",
+                      "on-tertiary-container": "#f5fff7",
+                      "surface-tint": "#ffb2b9",
+                      "surface-dim": "#0f141a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header_height": "64px",
+                      "gutter": "24px",
+                      "margin": "32px",
+                      "grid_columns": "12",
+                      "unit": "4px",
+                      "sidebar_width": "260px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Barlow Condensed"],
+                      "mono-data": ["JetBrains Mono"],
+                      "headline-sm": ["Barlow Condensed"],
+                      "display-md": ["Barlow Condensed"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-caps": ["Barlow Condensed"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                      "display-md": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for high-density areas */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5c3f42; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Shared Component: SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] flex flex-col h-screen overflow-y-auto bg-surface-container border-r border-outline-variant z-40">
+<div class="px-6 py-6 border-b border-outline-variant/30 mb-4">
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">C.A.R.E. Command</p>
+</div>
+<ul class="flex flex-col w-full">
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-label-caps text-label-caps tracking-widest">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">account_tree</span>
+<span class="font-label-caps text-label-caps tracking-widest">Projects</span>
+</a>
+</li>
+<li>
+<!-- Active State: Claims represents the verification workflow -->
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined text-xl" data-weight="fill">report_problem</span>
+<span class="font-label-caps text-label-caps tracking-widest">Claims</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="font-label-caps text-label-caps tracking-widest">Alerts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-label-caps text-label-caps tracking-widest">Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto p-6 border-t border-outline-variant/30 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center overflow-hidden">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a professional system administrator in a dark, high-tech command center environment. The lighting is cool and technical, reflecting off glass surfaces, emphasizing a serious, focused mood. The color palette is composed of deep greys, blacks, and subtle cyan highlights. The overall aesthetic is modern, analytical, and highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHgyn5T_tiq9nbg37gVw6dd1u367m6EU6mgCXtyQeVB1geuvjIq9Hbu4kMyGOahBSggTQLbEvsxb_SLWtuwME8cnnrT8cAWQXrVr3bjk8SZrBWMb59avLoMp-D4iL1vOjRvKGKYcRtmwXNMAYucxKsxxP1R3hXah0SxsPHfh4nHwd9eSfaPjodE3WYrV60PG7oNthPkd6koWyLYHNcJUUku-4sM_y3Nz4fB8VCkk-PWGI16AMwhhYgPK2J3bFmVLwzK8DPqrIIVnUg"/>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">SYS.ADMIN</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant text-[10px]">ID: 884-A</p>
+</div>
+</div>
+</nav>
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 flex items-center justify-between px-margin w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center w-1/3">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-surface-container-highest text-on-surface font-body-md text-body-md py-2 pl-10 pr-4 rounded focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="Search credentials, contractors, IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-center">
+<h2 class="font-display-md text-display-md font-semibold text-on-surface">TradeVision C.A.R.E.</h2>
+</div>
+<div class="flex items-center justify-end gap-6 w-1/3 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary transition-colors cursor-pointer text-2xl">help</span>
+<span class="material-symbols-outlined hover:text-primary transition-colors cursor-pointer text-2xl">apps</span>
+<span class="material-symbols-outlined hover:text-primary transition-colors cursor-pointer text-2xl">account_circle</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] pt-[64px] min-h-screen bg-background p-margin flex flex-col h-screen">
+<!-- Header Section -->
+<div class="flex items-end justify-between mb-6 shrink-0">
+<div>
+<div class="flex items-center gap-2 text-on-surface-variant mb-1">
+<span class="font-mono-data text-mono-data">PRJ-992</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-mono-data text-mono-data">Apex Dynamics</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-mono-data text-mono-data text-primary">Pending Verification</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+                    Credential Verification Protocol
+                </h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container border border-outline-variant text-on-surface rounded font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                    Audit Log
+                </button>
+</div>
+</div>
+<!-- 12-Column Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter flex-1 min-h-0">
+<!-- LEFT PANEL: Document Viewer & Secure Drop Zone (Span 7) -->
+<div class="col-span-7 flex flex-col bg-surface-container rounded border border-surface-container-highest overflow-hidden relative group">
+<!-- Viewer Toolbar -->
+<div class="h-12 bg-surface-container-highest border-b border-surface-variant flex items-center justify-between px-4 shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">description</span>
+<span class="font-mono-data text-mono-data text-on-surface">ISO_45001_Cert_Apex.pdf</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-mono-data text-[10px] border border-tertiary/30">HI-RES SCANNED</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<button class="p-1 hover:text-on-surface hover:bg-surface-container transition-colors rounded"><span class="material-symbols-outlined text-[18px]">zoom_out</span></button>
+<span class="font-mono-data text-mono-data text-[11px] w-10 text-center">125%</span>
+<button class="p-1 hover:text-on-surface hover:bg-surface-container transition-colors rounded"><span class="material-symbols-outlined text-[18px]">zoom_in</span></button>
+<div class="w-px h-4 bg-outline-variant mx-1"></div>
+<button class="p-1 hover:text-on-surface hover:bg-surface-container transition-colors rounded"><span class="material-symbols-outlined text-[18px]">rotate_right</span></button>
+<button class="p-1 hover:text-on-surface hover:bg-surface-container transition-colors rounded"><span class="material-symbols-outlined text-[18px]">open_in_new</span></button>
+</div>
+</div>
+<!-- Document Display Area -->
+<div class="flex-1 bg-surface-container-lowest relative overflow-hidden flex items-center justify-center p-8">
+<!-- Drop Zone Overlay (Hidden by default, shown on drag/hover for interaction hint) -->
+<div class="absolute inset-4 border-2 border-dashed border-outline-variant rounded-lg bg-surface-container-lowest/80 backdrop-blur-sm z-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 border border-outline">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant">upload_file</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface mb-1">Drag &amp; Drop Replacement File</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-center max-w-sm">Secure upload zone for high-resolution PDF, TIFF, or JPEG scans. Maximum file size 50MB.</p>
+</div>
+<!-- Simulated Document Image -->
+<div class="bg-white w-full max-w-xl aspect-[1/1.4] shadow-2xl relative">
+<div class="absolute inset-0 bg-black/10 mix-blend-multiply pointer-events-none"></div>
+<img alt="Scanned Document Placeholder" class="w-full h-full object-cover opacity-90 grayscale contrast-125" data-alt="A highly detailed, close-up macro shot of a complex bureaucratic document with intricate security patterns and official seals. The document is starkly illuminated by bright white scanning light, creating harsh contrasts against a pure black background. The paper texture is visible, emphasizing its physical nature. The color palette is strictly monochromatic, dominated by harsh whites and deep shadows, fitting a high-tech analytical interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_t5tGbULxSJOiJa47YVFKPC86FUYovL4lC8nGpUxDBfIxGTCQSyXkVMGrT-uyH537tI-_r5qkdyFYApD3gfXfikNEnhI33vaXWBVO_v4l_DOf0m5muGJ-jGIPy-p04Q4q8xgd-7-7o9m4oqXDvzp-W4QzrfRmj5xmuX2KqfU5bd2woMDSTAmgBk1tyaf9MhlU77xJxpiSc2WIQ3TZJvPV3bHCvNDNB6-H8JcoZfZaQyS1wmHWRI3lgvv2sWbuVvhbQL2x8fYw5jNm"/>
+<!-- OCR Highlight Overlays -->
+<div class="absolute top-[20%] left-[10%] w-[40%] h-[5%] border border-primary bg-primary/10 flex items-start justify-end p-1">
+<span class="font-mono-data text-[8px] text-primary bg-surface px-1 border border-primary absolute -top-3 -right-1">ID FIELD DETECTED</span>
+</div>
+<div class="absolute top-[45%] left-[50%] w-[30%] h-[4%] border border-tertiary bg-tertiary/10"></div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Metadata & Verification Form (Span 5) -->
+<div class="col-span-5 flex flex-col bg-surface-container rounded border border-surface-container-highest overflow-hidden">
+<!-- Verification Header -->
+<div class="p-6 border-b border-surface-variant bg-surface-container-high relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+<div class="flex items-center justify-between mb-2 relative z-10">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Data Extraction &amp; Review</h3>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono-data text-[11px] text-on-surface-variant">AI ENGINE ACTIVE</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant relative z-10">Compare extracted metadata against system requirements.</p>
+</div>
+<!-- Form Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Requirement Match Section -->
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">rule</span>
+                            System Requirement Match
+                        </h4>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-4 flex gap-4">
+<div class="flex-1">
+<p class="font-mono-data text-[10px] text-on-surface-variant mb-1 uppercase tracking-wider">Required Document</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Occupational Health &amp; Safety (ISO 45001)</p>
+</div>
+<div class="w-px bg-outline-variant"></div>
+<div class="flex-1">
+<p class="font-mono-data text-[10px] text-on-surface-variant mb-1 uppercase tracking-wider">Detected Classification</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">check_circle</span>
+<p class="font-body-md text-body-md text-tertiary font-medium">ISO 45001:2018</p>
+</div>
+</div>
+</div>
+</div>
+<!-- OCR Extracted Fields -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">document_scanner</span>
+                                Extracted Metadata
+                            </h4>
+<span class="font-mono-data text-[10px] text-primary">Confidence: 98.4%</span>
+</div>
+<div class="space-y-5">
+<!-- Field: License Number -->
+<div class="group">
+<label class="flex justify-between font-mono-data text-[11px] text-on-surface-variant mb-1.5">
+<span>LICENSE / CERTIFICATE NUMBER</span>
+<span class="text-tertiary flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-[12px]">center_focus_strong</span> View Source</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-b-2 border-surface-variant focus:border-primary text-on-surface font-mono-data text-[14px] py-2 px-3 rounded-t focus:outline-none transition-colors" readonly="" type="text" value="CERT-884-992-XYZ"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+</div>
+</div>
+<!-- Field: Issuing Authority -->
+<div class="group">
+<label class="flex justify-between font-mono-data text-[11px] text-on-surface-variant mb-1.5">
+<span>ISSUING AUTHORITY</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-b-2 border-surface-variant focus:border-primary text-on-surface font-body-md text-body-md py-2 px-3 rounded-t focus:outline-none transition-colors" readonly="" type="text" value="Global Standards Verification Board"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+</div>
+</div>
+<!-- Field: Expiry Date -->
+<div class="group">
+<label class="flex justify-between font-mono-data text-[11px] text-on-surface-variant mb-1.5">
+<span>EXPIRY DATE</span>
+<span class="text-error flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">warning</span> Expiring Soon</span>
+</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<input class="w-full bg-surface-container-lowest border-b-2 border-error/50 focus:border-error text-error font-mono-data text-[14px] py-2 px-3 rounded-t focus:outline-none transition-colors" readonly="" type="text" value="2024-11-30"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[18px]">calendar_today</span></button>
+</div>
+<div class="flex items-center justify-center px-3 bg-surface-container-lowest border border-outline-variant rounded font-mono-data text-[12px] text-on-surface-variant">
+                                        45 DAYS
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Manual Override Note -->
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2 block">Reviewer Notes (Optional)</label>
+<textarea class="w-full bg-surface-container-lowest border border-surface-variant rounded text-on-surface font-body-md text-body-md p-3 focus:border-primary focus:outline-none resize-none placeholder:text-on-surface-variant/40" placeholder="Add verification notes or reason for rejection..." rows="2"></textarea>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-6 border-t border-surface-variant bg-surface-container-high flex items-center gap-4 shrink-0">
+<button class="flex-1 py-3 px-4 border border-outline-variant text-on-surface rounded font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">block</span>
+                        Reject
+                    </button>
+<button class="flex-[2] py-3 px-4 bg-primary-container text-on-primary-container rounded font-label-caps text-label-caps hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(226,30,81,0.2)]">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                        Verify &amp; Approve
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

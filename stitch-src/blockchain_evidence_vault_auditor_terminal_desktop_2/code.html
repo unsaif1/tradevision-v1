@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blockchain Evidence Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#5e5f5f",
+                        "secondary": "#ffdb9d",
+                        "surface-container-highest": "#333539",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary": "#412d00",
+                        "on-primary": "#00363a",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e2e2e8",
+                        "background": "#111317",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e2e8",
+                        "on-tertiary": "#303031",
+                        "tertiary-container": "#dad9d9",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "on-primary-container": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "secondary-fixed-dim": "#ffba20",
+                        "tertiary": "#f7f5f5",
+                        "surface-variant": "#333539",
+                        "primary": "#dbfcff",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "inverse-primary": "#006970",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024",
+                        "surface": "#111317",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-container": "#feb700",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container-high": "#282a2e",
+                        "primary-container": "#00f0ff",
+                        "surface-dim": "#111317",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-tint": "#00dbe9",
+                        "outline-variant": "#3b494b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .grid-bg { background-image: linear-gradient(to right, theme('colors.surface-container') 1px, transparent 1px), linear-gradient(to bottom, theme('colors.surface-container') 1px, transparent 1px); background-size: 24px 24px; }
+    </style>
+</head>
+<body class="grid-bg min-h-screen font-body-fixed flex">
+<!-- NavigationDrawer -->
+<nav class="bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant fixed left-0 top-0 h-full w-[260px] flex flex-col py-margin-desktop z-40">
+<div class="px-gutter mb-density-comfortable">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight">TRADEVISION</h1>
+</div>
+<div class="flex-1 overflow-y-auto mt-density-comfortable">
+<ul class="space-y-unit">
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                        DASHBOARD
+                    </a>
+</li>
+<li>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">history</span>
+                        AUDIT LOG
+                    </a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        SYSTEM SETTINGS
+                    </a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+                        USERS
+                    </a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                        REPORTS
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant fixed top-0 right-0 left-[260px] h-[64px] flex justify-between items-center px-gutter w-[calc(100%-260px)] z-30">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-primary dark:text-primary">admin_panel_settings</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">ADMINISTRATIVE SUITE</span>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center cursor-pointer hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary text-on-surface-variant" title="System Administrator Avatar">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] mt-[64px] p-margin-desktop w-full h-[calc(100vh-64px)] overflow-y-auto">
+<div class="mb-density-comfortable">
+<h2 class="font-headline-md text-headline-md text-on-surface">BLOCKCHAIN EVIDENCE VAULT</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mt-unit">Immutable Ledger &amp; Node Diagnostics</p>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Global Vault Stats (Bento Grid Style) -->
+<div class="col-span-12 md:col-span-8 grid grid-cols-2 gap-gutter h-fit">
+<div class="bg-surface border border-outline-variant p-gutter relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-density-compact">TOTAL BLOCKS VERIFIED</span>
+<div class="font-data-point text-data-point text-on-surface">1,492,847</div>
+<div class="mt-unit flex items-center gap-1 text-primary-container font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +144/hr
+                     </div>
+</div>
+<div class="bg-surface border border-outline-variant p-gutter relative overflow-hidden">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-density-compact">HASH INTEGRITY RATE</span>
+<div class="font-data-point text-data-point text-primary-container">99.999%</div>
+<div class="mt-unit h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[99%]"></div>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-gutter relative">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-density-compact">NODE LATENCY (AVG)</span>
+<div class="font-data-point text-data-point text-on-surface flex items-end gap-2">
+                         12<span class="text-[12px] text-on-surface-variant font-body-fixed pb-[2px]">ms</span>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-gutter relative">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-density-compact">NETWORK HASHRATE</span>
+<div class="font-data-point text-data-point text-on-surface flex items-end gap-2">
+                         4.2<span class="text-[12px] text-on-surface-variant font-body-fixed pb-[2px]">TH/s</span>
+</div>
+</div>
+<!-- Immutable Ledger Table -->
+<div class="col-span-2 mt-gutter">
+<div class="bg-surface border border-outline-variant rounded-DEFAULT flex flex-col h-[500px]">
+<div class="p-density-compact border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface font-bold pl-2">LATEST COMMITMENTS</span>
+<button class="text-primary hover:text-primary-container font-label-caps text-label-caps flex items-center gap-1 px-2 py-1 rounded bg-surface-container-highest border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> FILTER
+                             </button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface border-b border-outline-variant">
+<tr>
+<th class="p-density-compact pl-4 font-label-caps text-label-caps text-on-surface-variant font-normal">RECORD TYPE</th>
+<th class="p-density-compact font-label-caps text-label-caps text-on-surface-variant font-normal">TIMESTAMP (UTC)</th>
+<th class="p-density-compact font-label-caps text-label-caps text-on-surface-variant font-normal">SHA-256 HASH</th>
+<th class="p-density-compact font-label-caps text-label-caps text-on-surface-variant font-normal">STATUS</th>
+<th class="p-density-compact font-label-caps text-label-caps text-on-surface-variant font-normal">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-body-fixed text-body-fixed text-on-surface text-sm">
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors">
+<td class="p-density-compact pl-4 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+                                             Roof Deck Insp.
+                                         </td>
+<td class="p-density-compact text-on-surface-variant font-data-point text-[12px]">2023-10-27T08:14:22Z</td>
+<td class="p-density-compact font-data-point text-[12px] text-outline truncate max-w-[150px]">0x7F8B...9C2A</td>
+<td class="p-density-compact">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#004f54] text-primary-fixed">Verified</span>
+</td>
+<td class="p-density-compact">
+<button class="text-primary hover:underline font-label-caps text-[10px]">DETAILS</button>
+</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors">
+<td class="p-density-compact pl-4 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+                                             TPO Seam Verif.
+                                         </td>
+<td class="p-density-compact text-on-surface-variant font-data-point text-[12px]">2023-10-27T08:11:05Z</td>
+<td class="p-density-compact font-data-point text-[12px] text-outline truncate max-w-[150px]">0x3A1C...F4E1</td>
+<td class="p-density-compact">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-container-highest text-secondary">Pending</span>
+</td>
+<td class="p-density-compact">
+<button class="text-primary hover:underline font-label-caps text-[10px]">DETAILS</button>
+</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors">
+<td class="p-density-compact pl-4 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+                                             Flashing Specs
+                                         </td>
+<td class="p-density-compact text-on-surface-variant font-data-point text-[12px]">2023-10-27T07:55:10Z</td>
+<td class="p-density-compact font-data-point text-[12px] text-outline truncate max-w-[150px]">0x9D22...B871</td>
+<td class="p-density-compact">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#004f54] text-primary-fixed">Verified</span>
+</td>
+<td class="p-density-compact">
+<button class="text-primary hover:underline font-label-caps text-[10px]">DETAILS</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Chain Trace / Node Status Sidebar -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-gutter h-full">
+<!-- Node Health -->
+<div class="bg-surface border border-outline-variant p-gutter relative h-1/2 flex flex-col">
+<div class="flex justify-between items-center mb-density-comfortable border-b border-outline-variant pb-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface">VALIDATOR NODES</span>
+<div class="flex items-center gap-1 text-[10px] text-primary-container font-label-caps">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span> SYNCED
+                        </div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-density-compact pr-2">
+<!-- Node Item -->
+<div class="flex justify-between items-center bg-surface-container-low p-2 border border-surface-container-highest rounded-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">dns</span>
+<span class="font-data-point text-[12px] text-on-surface">VN-77A.ORCL</span>
+</div>
+<span class="font-data-point text-[10px] text-primary-container">99.8% UPTIME</span>
+</div>
+<!-- Node Item -->
+<div class="flex justify-between items-center bg-surface-container-low p-2 border border-surface-container-highest rounded-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">dns</span>
+<span class="font-data-point text-[12px] text-on-surface">VN-82B.AWS</span>
+</div>
+<span class="font-data-point text-[10px] text-primary-container">99.9% UPTIME</span>
+</div>
+<!-- Node Item -->
+<div class="flex justify-between items-center bg-surface-container-low p-2 border border-error-container rounded-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error">dns</span>
+<span class="font-data-point text-[12px] text-on-error-container">VN-14C.AZR</span>
+</div>
+<span class="font-data-point text-[10px] text-error">RE-SYNCING</span>
+</div>
+</div>
+</div>
+<!-- Real-time Audit Log -->
+<div class="bg-surface border border-outline-variant p-gutter relative h-1/2 flex flex-col">
+<div class="flex justify-between items-center mb-density-comfortable border-b border-outline-variant pb-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface">LIVE CHAIN TRACE</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">terminal</span>
+</div>
+<div class="flex-1 overflow-y-auto bg-[#0c0e12] p-density-compact font-data-point text-[10px] leading-tight text-outline border border-surface-container-highest">
+<div class="mb-1"><span class="text-primary-container">&gt;</span> BLK_IDX: 1492847 | NONCE: 847291</div>
+<div class="mb-1 pl-2 text-on-surface-variant">HASH: 0x7F8B...9C2A committed.</div>
+<div class="mb-1"><span class="text-primary-container">&gt;</span> Val_Sig: VN-77A (OK)</div>
+<div class="mb-1 text-secondary pl-2">WARN: Latency spike detected on VN-14C.</div>
+<div class="mb-1"><span class="text-primary-container">&gt;</span> BLK_IDX: 1492848 | PENDING</div>
+<div class="mb-1 pl-2 text-on-surface-variant">Awaiting consensus...</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

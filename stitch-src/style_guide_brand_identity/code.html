@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION C.A.R.E. | STYLE_GUIDE_V2.0</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        .cyber-corner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #ffd9dc;
+            border-left: 2px solid #ffd9dc;
+        }
+        .cyber-corner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #ffd9dc;
+            border-right: 2px solid #ffd9dc;
+        }
+        body {
+            background-color: #0f141a;
+            color: #dee3eb;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#353941",
+                      "on-secondary-fixed": "#0f1d2b",
+                      "on-tertiary": "#273141",
+                      "background": "#0f141a",
+                      "on-surface": "#dee3eb",
+                      "surface-container-lowest": "#0a0f14",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "primary-container": "#ffb2b9",
+                      "inverse-surface": "#dee3eb",
+                      "accent-cyan": "#00f2ff",
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "surface-container-high": "#252a31",
+                      "surface": "#0f141a",
+                      "on-secondary-fixed-variant": "#3a4858",
+                      "secondary-fixed-dim": "#bac8db",
+                      "tertiary": "#d9e3f9",
+                      "outline": "#9f8c8d",
+                      "surface-container-highest": "#30353c",
+                      "on-primary": "#522027",
+                      "on-secondary-container": "#a8b6c9",
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "error-container": "#93000a",
+                      "status-error": "#f43f5e",
+                      "surface-container": "#1b2026",
+                      "on-secondary": "#243240",
+                      "surface-dim": "#0f141a",
+                      "status-success": "#4ade80",
+                      "outline-variant": "#524344",
+                      "tertiary-container": "#bdc7dc",
+                      "on-surface-variant": "#d7c2c2",
+                      "inverse-on-surface": "#2c3137",
+                      "surface-deep": "#090f15",
+                      "on-primary-container": "#7b4148",
+                      "on-tertiary-container": "#495365",
+                      "primary-fixed": "#ffdadc",
+                      "secondary-fixed": "#d5e4f7",
+                      "tertiary-fixed": "#d9e3f9",
+                      "surface-variant": "#30353c",
+                      "primary": "#ffd9dc",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#370c13",
+                      "on-primary-fixed-variant": "#6d363d",
+                      "on-background": "#dee3eb",
+                      "surface-tint": "#ffb2b9",
+                      "inverse-primary": "#894d54",
+                      "outline-muted": "rgba(136, 150, 168, 0.15)",
+                      "on-error": "#690005",
+                      "secondary-container": "#3a4858",
+                      "on-tertiary-fixed": "#121c2c",
+                      "secondary": "#bac8db",
+                      "surface-container-low": "#171c22"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "telemetry-sidebar-width": "340px",
+                      "xl": "40px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "sidebar-width": "260px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "label-md": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "headline-xl": ["Barlow Condensed"],
+                      "label-caps": ["Manrope"],
+                      "headline-lg": ["Barlow Condensed"],
+                      "body-sm": ["Manrope"],
+                      "headline-md": ["Barlow Condensed"],
+                      "label-sm": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "mono-data": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex overflow-hidden">
+<div class="scanline"></div>
+<!-- Sidebar Left: NavigationDrawer -->
+<aside class="w-sidebar-width h-screen border-r border-outline-variant bg-surface-container flex flex-col h-full py-lg shrink-0">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter">TRADEVISION C.A.R.E.</h1>
+<p class="font-mono-data text-[10px] text-outline opacity-60">DESIGN_CORE_MANIFEST_V2.0</p>
+</div>
+<nav class="flex-1 space-y-xs px-md">
+<!-- Labels from JSON: Dashboard, Evidence Ledger, Validator Node, System Health, Settings -->
+<a class="flex items-center gap-md px-md py-sm transition-colors duration-200 ease-in-out text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-colors duration-200 ease-in-out text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-colors duration-200 ease-in-out text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Validator Node</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-colors duration-200 ease-in-out text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-primary font-bold border-r-2 border-primary bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="px-lg mt-auto pt-lg border-t border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-status-success animate-pulse"></div>
+<span class="font-mono-data text-[10px] text-status-success uppercase">Core_Link_Active</span>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-lg w-full sticky top-0 z-50 bg-surface-deep border-b border-outline-variant h-16 shrink-0">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-cyan cursor-pointer transition-all active:scale-95">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-widest">SYSTEM_CORE_V2.0</h2>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm bg-surface-container px-md py-xs rounded-sm border border-outline-variant">
+<span class="font-mono-data text-accent-cyan">ENC_SHA256: 7F...3B9</span>
+</div>
+<span class="material-symbols-outlined text-on-surface hover:text-accent-cyan cursor-pointer transition-all active:scale-95">account_circle</span>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto p-lg bg-background">
+<div class="max-w-6xl mx-auto space-y-xl">
+<!-- Hero Style Section -->
+<section>
+<div class="mb-lg flex justify-between items-end border-b border-outline-variant pb-sm">
+<div>
+<span class="font-mono-data text-accent-cyan text-label-sm uppercase">Section_01</span>
+<h3 class="font-headline-lg text-headline-lg uppercase">Visual_Language_Foundation</h3>
+</div>
+<span class="font-mono-data text-outline text-[10px]">AUTH_MODE: FORENSIC_ADMIN</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Color Palette Block -->
+<div class="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="flex flex-col gap-sm">
+<div class="h-32 bg-surface border border-outline-variant relative cyber-corner">
+<div class="absolute bottom-2 left-2 font-mono-data text-label-sm">#0F141A</div>
+</div>
+<span class="font-label-caps text-label-caps">Surface-Dark</span>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="h-32 bg-surface-bright border border-outline-variant relative">
+<div class="absolute bottom-2 left-2 font-mono-data text-label-sm">#353941</div>
+</div>
+<span class="font-label-caps text-label-caps">Surface-Bright</span>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="h-32 bg-accent-cyan border border-outline-variant relative">
+<div class="absolute bottom-2 left-2 font-mono-data text-label-sm text-background">#00F2FF</div>
+</div>
+<span class="font-label-caps text-label-caps">Cyan-Data</span>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="h-32 bg-status-error border border-outline-variant relative">
+<div class="absolute bottom-2 left-2 font-mono-data text-label-sm text-white">#F43F5E</div>
+</div>
+<span class="font-label-caps text-label-caps">Rose-Alert</span>
+</div>
+</div>
+<!-- Brand Imagery -->
+<div class="bg-surface-container p-md border border-outline-variant cyber-corner relative overflow-hidden h-full">
+<img class="w-full h-32 object-cover opacity-50 grayscale contrast-125 mb-md rounded-sm" data-alt="A sophisticated digital interface background showing complex blockchain node connections and data streams. The visual style is industrial and technical with deep charcoal surfaces, glowing cyan data points, and sharp rectilinear grid lines. High contrast lighting creates a forensic and authoritative atmosphere, with subtle geometric overlays suggesting encrypted verification protocols." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3nKeuaEm_KLXInL4HMM3tOf8ybkSl3_OFRMvLfmNlSaxzLtmbaT_q48gkJD3UWLUMW7GyZJIwz6OBp4_Vu75yjo19gYjevjd5BlZa6Lu_rahDpffgWSSYJPKpq9V66SOTeU5R0PV2cROqABK2QRSPkO9NIMBgy2kO3HCYi79NfFGLmKYeYN8k8xr7WfjXGPFEAUcaiKiMX1s-DrY6AiyAM8IUr4hdb4Ye9q5cTboCIsG1dscMsqRBuwvOcAMSvNZybWW5cV_JdcLV"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Identity assets must reflect structural integrity. Use high-contrast industrial photography with technical overlays only.</p>
+</div>
+</div>
+</section>
+<!-- Typography Scale Section -->
+<section>
+<div class="mb-lg flex justify-between items-end border-b border-outline-variant pb-sm">
+<div>
+<span class="font-mono-data text-accent-cyan text-label-sm uppercase">Section_02</span>
+<h3 class="font-headline-lg text-headline-lg uppercase">Typographic_Hierarchy</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<!-- Sans Serif / Headings -->
+<div class="space-y-lg bg-surface-container p-lg border border-outline-variant">
+<div class="flex items-center gap-sm mb-md opacity-40">
+<span class="font-label-caps text-label-caps">Sans-Serif (Barlow/Manrope)</span>
+</div>
+<div>
+<h1 class="font-headline-xl text-headline-xl uppercase border-b border-outline-muted pb-xs mb-xs">Display_Headline_XL</h1>
+<p class="font-mono-data text-label-sm text-outline">Weight: 700 / Size: 40px / Barlow Condensed</p>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg uppercase border-b border-outline-muted pb-xs mb-xs">Structural_Medium_LG</h2>
+<p class="font-mono-data text-label-sm text-outline">Weight: 600 / Size: 32px / Barlow Condensed</p>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface mb-xs">Global body text utilizing Manrope for maximum legibility in complex data environments.</p>
+<p class="font-mono-data text-label-sm text-outline">Weight: 400 / Size: 18px / Manrope</p>
+</div>
+</div>
+<!-- Monospaced / Data -->
+<div class="space-y-lg bg-surface-deep p-lg border border-outline-variant border-l-4 border-l-accent-cyan">
+<div class="flex items-center gap-sm mb-md opacity-40">
+<span class="font-label-caps text-label-caps text-accent-cyan">Monospaced (JetBrains Mono)</span>
+</div>
+<div class="p-md bg-background border border-outline-variant">
+<pre class="font-mono-data text-mono-data text-accent-cyan">[TRACE_ID: 9812-AFX-00]
+STATUS: VERIFIED
+TIMESTAMP: 2023-10-24T14:30:00Z
+PAYLOAD: { "hash": "0x4e2...9a1" }
+                                </pre>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">Monospaced fonts are reserved for raw data, terminal outputs, and forensic metadata labels. Never use for narrative copy.</p>
+</div>
+</div>
+</section>
+<!-- Iconography Section -->
+<section>
+<div class="mb-lg flex justify-between items-end border-b border-outline-variant pb-sm">
+<div>
+<span class="font-mono-data text-accent-cyan text-label-sm uppercase">Section_03</span>
+<h3 class="font-headline-lg text-headline-lg uppercase">System_Iconography</h3>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-md">
+<!-- Icon Grid -->
+<div class="flex flex-col items-center justify-center p-lg bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-help group">
+<span class="material-symbols-outlined text-headline-md mb-sm group-hover:scale-110 transition-transform">security</span>
+<span class="font-mono-data text-[10px] text-outline">security</span>
+</div>
+<div class="flex flex-col items-center justify-center p-lg bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-help group">
+<span class="material-symbols-outlined text-headline-md mb-sm group-hover:scale-110 transition-transform">account_tree</span>
+<span class="font-mono-data text-[10px] text-outline">account_tree</span>
+</div>
+<div class="flex flex-col items-center justify-center p-lg bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-help group">
+<span class="material-symbols-outlined text-headline-md mb-sm group-hover:scale-110 transition-transform">terminal</span>
+<span class="font-mono-data text-[10px] text-outline">terminal</span>
+</div>
+<div class="flex flex-col items-center justify-center p-lg bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-help group">
+<span class="material-symbols-outlined text-headline-md mb-sm group-hover:scale-110 transition-transform">analytics</span>
+<span class="font-mono-data text-[10px] text-outline">analytics</span>
+</div>
+<div class="flex flex-col items-center justify-center p-lg bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-help group">
+<span class="material-symbols-outlined text-headline-md mb-sm group-hover:scale-110 transition-transform">shield_with_heart</span>
+<span class="font-mono-data text-[10px] text-outline">shield_heart</span>
+</div>
+<div class="flex flex-col items-center justify-center p-lg bg-surface-container border border-outline-variant hover:border-primary transition-colors cursor-help group">
+<span class="material-symbols-outlined text-headline-md mb-sm group-hover:scale-110 transition-transform">verified_user</span>
+<span class="font-mono-data text-[10px] text-outline">verified_user</span>
+</div>
+</div>
+</section>
+<!-- Footer Space -->
+<footer class="pt-xl pb-lg border-t border-outline-variant flex justify-between items-center opacity-40">
+<span class="font-mono-data text-label-sm">END_OF_DOCUMENT // REV_002</span>
+<span class="font-mono-data text-label-sm">COPYRIGHT © 2024 TRADEVISION CORE</span>
+</footer>
+</div>
+</div>
+</main>
+<!-- Sidebar Right: Telemetry Panel -->
+<aside class="w-telemetry-sidebar-width h-screen border-l border-outline-variant bg-surface-container-low flex flex-col fixed right-0 top-0 h-full p-md shrink-0 hidden lg:flex">
+<div class="mb-lg">
+<h4 class="font-label-caps text-label-caps text-outline mb-sm">TELEMETRY_LOG</h4>
+<div class="h-[1px] w-full bg-outline-variant"></div>
+</div>
+<div class="space-y-lg overflow-y-auto pr-sm">
+<!-- Feed Item -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-tertiary-container opacity-70">CPU Load</span>
+<span class="font-mono-data text-status-success animate-pulse-subtle">42%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-sm overflow-hidden">
+<div class="h-full bg-status-success" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Feed Item -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-tertiary-container opacity-70">Network Latency</span>
+<span class="font-mono-data text-status-success">12ms</span>
+</div>
+<div class="flex gap-1 h-3 items-end">
+<div class="w-1 bg-status-success h-full"></div>
+<div class="w-1 bg-status-success h-2"></div>
+<div class="w-1 bg-status-success h-3"></div>
+<div class="w-1 bg-status-success h-1"></div>
+<div class="w-1 bg-status-success h-2"></div>
+</div>
+</div>
+<!-- Memory Map Mockup -->
+<div class="p-md bg-surface-container-high rounded-sm">
+<span class="font-label-sm text-label-sm text-status-success block mb-sm">Memory Map</span>
+<div class="grid grid-cols-8 gap-1">
+<script>
+                        for(let i=0; i<32; i++) {
+                            const opacity = Math.random() > 0.5 ? 'opacity-100' : 'opacity-20';
+                            document.write(`<div class="w-full aspect-square bg-status-success ${opacity}"></div>`);
+                        }
+                    </script>
+</div>
+</div>
+<!-- Live Events -->
+<div class="space-y-sm">
+<span class="font-label-caps text-[10px] text-outline">Real-time Feed</span>
+<div class="text-[10px] font-mono-data space-y-1">
+<div class="text-status-success">&gt; VALIDATOR_NODE_01 CONNECTED</div>
+<div class="text-on-surface-variant opacity-50">&gt; SYNCING_LEDGER_DATA...</div>
+<div class="text-on-surface-variant opacity-50">&gt; PKI_HANDSHAKE_COMPLETE</div>
+<div class="text-status-error animate-pulse">&gt; WARNING: LATENCY_SPIKE_DETECTOR</div>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-md">
+<button class="w-full py-sm bg-primary-container text-on-primary-fixed-variant font-label-md rounded-sm hover:brightness-110 transition-all active:scale-95 uppercase tracking-wider">
+                System_Reboot
+            </button>
+</div>
+</aside>
+<script>
+        // Simple micro-interaction for hover states
+        document.querySelectorAll('.cyber-corner').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.backgroundColor = '#1e252d';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.backgroundColor = '';
+            });
+        });
+    </script>
+</body></html>

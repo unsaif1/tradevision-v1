@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mediation Case File - TradeVision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#e21e51",
+                        "on-tertiary": "#003826",
+                        "background": "#0f141a",
+                        "on-primary-fixed": "#40000f",
+                        "surface-container-lowest": "#0a0f14",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-secondary-fixed": "#141c26",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002114",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#30353c",
+                        "outline": "#ab888a",
+                        "on-background": "#dee3eb",
+                        "surface-container-high": "#252a31",
+                        "primary": "#ffb2b9",
+                        "surface": "#0f141a",
+                        "on-primary-container": "#fffcff",
+                        "tertiary": "#72daad",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container-highest": "#30353c",
+                        "secondary-container": "#3f4753",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary-container": "#aeb6c3",
+                        "tertiary-fixed": "#8ff7c7",
+                        "surface-dim": "#0f141a",
+                        "on-tertiary-container": "#f5fff7",
+                        "inverse-primary": "#be003e",
+                        "outline-variant": "#5c3f42",
+                        "on-primary-fixed-variant": "#91002e",
+                        "inverse-surface": "#dee3eb",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-surface": "#dee3eb",
+                        "on-secondary": "#29313c",
+                        "surface-bright": "#353a40",
+                        "primary-fixed": "#ffdadb",
+                        "on-primary": "#67001e",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "surface-container-low": "#171c22",
+                        "secondary": "#bfc7d5",
+                        "inverse-on-surface": "#2c3137",
+                        "on-error": "#690005",
+                        "surface-container": "#1b2026",
+                        "tertiary-fixed-dim": "#72daad",
+                        "tertiary-container": "#00855e",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "secondary-fixed": "#dbe3f1",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "header_height": "64px",
+                        "gutter": "24px",
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "margin": "32px",
+                        "sidebar_width": "260px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Barlow Condensed"],
+                        "label-caps": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "display-md": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0f141a; color: #dee3eb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0f141a; }
+        ::-webkit-scrollbar-thumb { background: #30353c; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #5c3f42; }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-hidden selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-header_height z-30 bg-surface dark:bg-surface text-primary dark:text-primary border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin w-[calc(100%-260px)]">
+<div class="flex items-center gap-4">
+<h1 class="font-display-md text-display-md font-semibold text-on-surface dark:text-on-surface">TradeVision C.A.R.E.</h1>
+<div class="h-6 w-px bg-surface-variant mx-2"></div>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">Mediation Case File</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span>
+<input class="bg-surface-container-high border-none rounded-DEFAULT py-1.5 pl-9 pr-4 text-mono-data font-mono-data text-on-surface placeholder:text-on-surface-variant/50 focus:ring-1 focus:ring-primary outline-none transition-all w-64" placeholder="Search case file..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"><span class="material-symbols-outlined">help</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"><span class="material-symbols-outlined">apps</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-sidebar_width bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col h-screen overflow-y-auto z-40">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-DEFAULT bg-primary-container flex items-center justify-center text-on-primary-container font-display-md text-[20px] font-bold">TV</div>
+<div>
+<h2 class="font-display-md text-[24px] leading-none font-bold text-primary dark:text-primary tracking-tight">TradeVision</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">C.A.R.E. Command</p>
+</div>
+</div>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined icon-fill">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[260px] pt-[64px] h-screen overflow-y-auto bg-background">
+<div class="p-margin max-w-[1600px] mx-auto">
+<!-- Case Header Bento Grid -->
+<div class="grid grid-cols-12 gap-gutter mb-gutter">
+<!-- Primary Case Info (Spans 8 columns) -->
+<div class="col-span-12 lg:col-span-8 bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-6 flex flex-col justify-between relative overflow-hidden">
+<!-- Subtle background texture -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="bg-error-container text-error px-2 py-1 rounded-sm font-label-caps text-label-caps flex items-center gap-1 w-max border border-error/20">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                Notice of Mediation
+                            </span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">CASE ID: TV-2023-8849-MED</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Alpha-Nexus vs. Horizon Tech</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Dispute regarding intellectual property infringement claims and delayed milestone deliverables on Project Titan.</p>
+</div>
+<div class="mt-8 flex items-center gap-4 border-t border-[#2a323d] pt-6">
+<button class="bg-primary-container hover:bg-inverse-primary text-white font-label-caps text-label-caps px-6 py-3 rounded-DEFAULT transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">videocam</span>
+                            Join Virtual Mediation
+                        </button>
+<button class="bg-transparent border border-outline-variant hover:border-outline text-on-surface font-label-caps text-label-caps px-6 py-3 rounded-DEFAULT transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Download Brief
+                        </button>
+</div>
+</div>
+<!-- Quick Stats / Status (Spans 4 columns) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-5 flex-1 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Mediation Date</span>
+<div class="font-display-md text-display-md text-on-surface">Nov 14, 2023</div>
+<div class="font-mono-data text-mono-data text-primary mt-1">10:00 AM EST (In 2 days)</div>
+</div>
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-5 flex-1 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Disputed Amount</span>
+<div class="font-display-md text-display-md text-on-surface">$4.2M</div>
+<div class="font-mono-data text-mono-data text-tertiary mt-1">High Priority Resolution</div>
+</div>
+</div>
+</div>
+<!-- Split Pane Layout for Details -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Pane: Arbitrator & Timeline (Spans 5 columns) -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-gutter">
+<!-- Assigned Arbitrator -->
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-5">
+<div class="flex items-center gap-2 mb-5 border-b border-[#2a323d] pb-3">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Assigned Arbitrator</h3>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-DEFAULT bg-surface-container-high border border-outline-variant overflow-hidden flex-shrink-0">
+<div class="w-full h-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant">person</span>
+</div>
+</div>
+<div>
+<h4 class="font-display-md text-[20px] font-bold text-on-surface leading-tight">Hon. Sarah Jenkins (Ret.)</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant mb-2">JAMS International</p>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="bg-surface-container-high px-2 py-1 rounded-sm font-label-caps text-[10px] text-on-surface-variant border border-surface-variant">IP DISPUTES</span>
+<span class="bg-surface-container-high px-2 py-1 rounded-sm font-label-caps text-[10px] text-on-surface-variant border border-surface-variant">TECH CONTRACTS</span>
+</div>
+</div>
+</div>
+<div class="mt-5 grid grid-cols-2 gap-4">
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1">CONTACT</span>
+<span class="font-mono-data text-[12px] text-on-surface">s.jenkins@jams.org</span>
+</div>
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1">RULING HISTORY</span>
+<span class="font-mono-data text-[12px] text-on-surface">42 Cases (78% Settlement)</span>
+</div>
+</div>
+</div>
+<!-- Key Deadlines (Timeline) -->
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-5 flex-1">
+<div class="flex items-center justify-between mb-5 border-b border-[#2a323d] pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Key Deadlines</h3>
+</div>
+<span class="font-label-caps text-[10px] bg-surface-container-high text-on-surface-variant px-2 py-1 rounded-sm">UTC-5</span>
+</div>
+<div class="relative pl-6 border-l border-[#2a323d] space-y-6 mt-2 ml-2">
+<!-- Past Item -->
+<div class="relative">
+<div class="absolute w-3 h-3 bg-surface-variant border border-[#2a323d] rounded-full -left-[31px] top-1"></div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mb-1">Oct 28, 2023</div>
+<div class="font-body-md text-[13px] text-on-surface-variant line-through">Mediation Statements Exchanged</div>
+</div>
+<!-- Current/Next Item -->
+<div class="relative">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[31px] top-1 ring-4 ring-primary/20"></div>
+<div class="font-mono-data text-[11px] text-primary mb-1">Nov 12, 2023</div>
+<div class="font-body-md text-[13px] text-on-surface font-semibold">Pre-Mediation Technical Call</div>
+</div>
+<!-- Future Item -->
+<div class="relative">
+<div class="absolute w-3 h-3 bg-surface border border-outline-variant rounded-full -left-[31px] top-1"></div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mb-1">Nov 14, 2023</div>
+<div class="font-body-md text-[13px] text-on-surface">Virtual Mediation Session</div>
+</div>
+<!-- Future Item -->
+<div class="relative">
+<div class="absolute w-3 h-3 bg-surface border border-outline-variant rounded-full -left-[31px] top-1"></div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mb-1">Nov 21, 2023</div>
+<div class="font-body-md text-[13px] text-on-surface">Draft Settlement Agreement (if reached)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: Checklist & Documents (Spans 7 columns) -->
+<div class="col-span-12 xl:col-span-7 flex flex-col gap-gutter">
+<!-- Mediation Readiness Checklist -->
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-5">
+<div class="flex items-center justify-between mb-4 border-b border-[#2a323d] pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">fact_check</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Mediation Readiness</h3>
+</div>
+<span class="font-mono-data text-[12px] text-tertiary">75% Complete</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container h-1.5 rounded-full mb-6 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 75%"></div>
+</div>
+<div class="space-y-3">
+<label class="flex items-start gap-3 p-3 bg-surface-container-high/50 border border-surface-variant rounded-DEFAULT hover:border-outline-variant transition-colors cursor-pointer group">
+<input checked="" class="mt-0.5 bg-surface border-outline-variant text-tertiary focus:ring-tertiary rounded-sm" type="checkbox"/>
+<div>
+<div class="font-body-md text-[13px] text-on-surface group-hover:text-primary transition-colors">Submit Confidential Mediation Brief</div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mt-1">Confirmed received by Arbitrator on Nov 1.</div>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 bg-surface-container-high/50 border border-surface-variant rounded-DEFAULT hover:border-outline-variant transition-colors cursor-pointer group">
+<input checked="" class="mt-0.5 bg-surface border-outline-variant text-tertiary focus:ring-tertiary rounded-sm" type="checkbox"/>
+<div>
+<div class="font-body-md text-[13px] text-on-surface group-hover:text-primary transition-colors">Ensure Corporate Authority to Settle</div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mt-1">CFO signed authorization form on file.</div>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 bg-surface-container-high/50 border border-primary/30 rounded-DEFAULT hover:border-primary transition-colors cursor-pointer group">
+<input class="mt-0.5 bg-surface border-outline-variant text-primary focus:ring-primary rounded-sm" type="checkbox"/>
+<div>
+<div class="font-body-md text-[13px] text-on-surface group-hover:text-primary transition-colors">Test Virtual Room Connectivity</div>
+<div class="font-mono-data text-[11px] text-primary mt-1">Required before Nov 13, 17:00 EST.</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Recent Case Documents -->
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-DEFAULT p-5 flex-1">
+<div class="flex items-center justify-between mb-4 border-b border-[#2a323d] pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">folder_open</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Case Documents</h3>
+</div>
+<button class="font-label-caps text-[12px] text-primary hover:text-white transition-colors">VIEW ALL</button>
+</div>
+<!-- Data Table high-density style -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#2a323d]">
+<th class="font-label-caps text-[11px] text-on-surface-variant py-2 px-3">DOCUMENT NAME</th>
+<th class="font-label-caps text-[11px] text-on-surface-variant py-2 px-3">TYPE</th>
+<th class="font-label-caps text-[11px] text-on-surface-variant py-2 px-3 text-right">DATE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-[#2a323d] hover:bg-[#2a323d]/50 transition-colors cursor-pointer group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error">picture_as_pdf</span>
+<span class="font-mono-data text-[12px] text-on-surface group-hover:text-primary transition-colors">Alpha_Nexus_Mediation_Brief_FINAL.pdf</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono-data text-[11px] text-on-surface-variant">Brief</td>
+<td class="py-3 px-3 font-mono-data text-[11px] text-on-surface-variant text-right">Oct 28</td>
+</tr>
+<tr class="border-b border-[#2a323d] hover:bg-[#2a323d]/50 transition-colors cursor-pointer group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error">picture_as_pdf</span>
+<span class="font-mono-data text-[12px] text-on-surface group-hover:text-primary transition-colors">Horizon_Tech_Counter_Statement.pdf</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono-data text-[11px] text-on-surface-variant">Statement</td>
+<td class="py-3 px-3 font-mono-data text-[11px] text-on-surface-variant text-right">Oct 28</td>
+</tr>
+<tr class="hover:bg-[#2a323d]/50 transition-colors cursor-pointer group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">description</span>
+<span class="font-mono-data text-[12px] text-on-surface group-hover:text-primary transition-colors">Exhibit_A_Project_Titan_Milestones.xlsx</span>
+</div>
+</td>
+<td class="py-3 px-3 font-mono-data text-[11px] text-on-surface-variant">Evidence</td>
+<td class="py-3 px-3 font-mono-data text-[11px] text-on-surface-variant text-right">Oct 25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

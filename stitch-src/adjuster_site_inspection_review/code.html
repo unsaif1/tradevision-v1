@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adjuster Site Inspection Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#1e2024",
+                        "primary": "#dbfcff",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary-fixed": "#ffdea8",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error": "#690005",
+                        "on-primary-container": "#006970",
+                        "surface-variant": "#333539",
+                        "surface-tint": "#00dbe9",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary-fixed": "#7df4ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "primary-container": "#00f0ff",
+                        "tertiary": "#f7f5f5",
+                        "surface": "#111317",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#1a1c20",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-tertiary": "#303031",
+                        "inverse-primary": "#006970",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#412d00",
+                        "on-background": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "primary-fixed-dim": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "on-primary-fixed": "#002022",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary": "#ffdb9d",
+                        "tertiary-container": "#dad9d9",
+                        "inverse-on-surface": "#2f3035",
+                        "background": "#111317",
+                        "on-secondary-container": "#6b4b00",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "outline": "#849495",
+                        "surface-dim": "#111317",
+                        "surface-container-high": "#282a2e",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-secondary-fixed": "#271900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col md:hidden">
+<!-- TopAppBar (Transactional Intent: Suppress Shell context, adapt to review view) -->
+<header class="bg-surface dark:bg-surface fixed top-0 w-full z-50 border-b border-outline-variant bg-surface-container-low flex justify-between items-center h-16 px-gutter">
+<div class="flex items-center gap-unit">
+<button class="text-primary dark:text-primary-fixed active:scale-95 transition-transform hover:bg-surface-variant p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary tracking-widest uppercase truncate">INSPECTION_REVIEW // CLM-4082</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary">more_vert</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 pb-24 px-margin-mobile pt-margin-mobile flex flex-col gap-density-comfortable overflow-y-auto">
+<!-- Section 1: FIELD_SUMMARY -->
+<section class="flex flex-col gap-density-compact">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">FIELD_SUMMARY</h2>
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-gutter flex flex-col gap-density-compact relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant">INSPECTOR_ID</span>
+<span class="font-data-point text-data-point text-primary">OP-7742</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP</span>
+<span class="font-data-point text-data-point text-primary text-sm">2023.10.24-14:32Z</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">GEOLOCATION</span>
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">location_on</span>
+<span class="font-data-point text-data-point text-primary text-sm">34.0522°N, 118.2437°W</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: TECHNICAL_EVIDENCE -->
+<section class="flex flex-col gap-density-compact">
+<div class="flex justify-between items-end">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">TECHNICAL_EVIDENCE</h2>
+<span class="font-label-caps text-label-caps text-primary bg-primary-container/10 px-2 py-1 rounded-DEFAULT border border-primary/30">2 ITEMS</span>
+</div>
+<!-- Evidence Item 1 -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-density-compact flex gap-gutter">
+<div class="w-24 h-24 bg-surface-container-high border border-outline-variant rounded-DEFAULT overflow-hidden flex-shrink-0 relative">
+<img alt="Roof Perimeter Scan" class="w-full h-full object-cover" data-alt="A high-contrast, dark-mode technical drone photograph of a modern residential roof perimeter. The image is overlayed with a glowing cyan grid and measurement reticles, embodying a cyber-industrial aesthetic. Harsh shadows highlight architectural details, emphasizing a precise, professional-grade technical audit environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN0EUQaTJFJa2glVGPcHXO1y4jusbr7S6NSNztAhCYPdukwzsU74JUDmAz_JgesoK0OPZ8VLl5q3wWxwh5n8Rb-quTjks934PztClw_5s6rKcQ5HNtPoDHGpInZZQw1PmSVm3CbEjuyLbdi0wZhTnYi7_RncsvaJT7p8w6cylcuT4xP1XrSV2aKdqq1d2sHAqnp86Z9Pmm3FJM6Dj8p2HoXUtYerBxi_A7RD9-_Ub8RS_l00LIm51WDaBvYX29zS68QPwo-eA-XMcV"/>
+<div class="absolute bottom-1 right-1 bg-surface/80 px-1 border border-outline-variant rounded-sm backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-xs">aspect_ratio</span>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div class="flex flex-col gap-1">
+<h3 class="font-label-caps text-label-caps text-primary">EVD_01: Perimeter Scan</h3>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-label-caps text-label-caps">98% Confirmed</span>
+</div>
+</div>
+<div class="bg-surface-variant border-l-2 border-primary px-2 py-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">analytics</span>
+<span class="font-body-fixed text-body-fixed text-xs text-on-surface">Structural Integrity: Nominal</span>
+</div>
+</div>
+</div>
+<!-- Evidence Item 2 -->
+<div class="bg-surface-container border border-error rounded-DEFAULT p-density-compact flex gap-gutter relative">
+<div class="absolute top-0 right-0 w-2 h-full bg-error"></div>
+<div class="w-24 h-24 bg-surface-container-high border border-outline-variant rounded-DEFAULT overflow-hidden flex-shrink-0 relative">
+<img alt="Pitch Analysis" class="w-full h-full object-cover grayscale opacity-80" data-alt="A stark, monochrome close-up of textured roofing shingles under analytical lighting. A bright red digital heatmap overlay highlights specific areas of anomalous wear and tear. The scene represents a high-density, technical data capture in a cyber-industrial dark mode style, complete with angular bounding boxes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtgBb0gqYnfuVkaXYcXPMQ96ZgBRvNv8nAqrFl9fvkZZ96L_i1LvV4_O4C9_Npp3mI4jsqcnILNNzThewmFpvyhLNL9_EcVj26n9cBoa7l_TdOSmd91PvybHFXXvduJVk4_8xC8cq-UnJAmqTjcegN_G9EfJ9tkxhUth87mqJaerU4Ca7qpQyfMNFXuN-EpDIHI0GzJTJKz3qPJEohP8W2b67Jn1W39vz55eTCZI-zNOW6TksCebMrskefyh1RgfOVE626LVQlygRn"/>
+<div class="absolute top-1 left-1 bg-error/20 px-1 border border-error rounded-sm backdrop-blur-sm">
+<span class="material-symbols-outlined text-error text-xs">warning</span>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1 pr-3">
+<div class="flex flex-col gap-1">
+<h3 class="font-label-caps text-label-caps text-error">EVD_02: Pitch Analysis</h3>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">troubleshoot</span>
+<span class="font-label-caps text-label-caps">85% Confidence</span>
+</div>
+</div>
+<div class="bg-error-container/20 border-l-2 border-error px-2 py-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm">crisis_alert</span>
+<span class="font-body-fixed text-body-fixed text-xs text-error font-bold">Anomalous Wear Detected</span>
+</div>
+</div>
+</div>
+<!-- Material Specs (Compact Data Density) -->
+<div class="mt-2 grid grid-cols-2 gap-unit">
+<div class="bg-surface-container-high border border-outline-variant p-2 rounded-DEFAULT flex items-center gap-2">
+<div class="w-6 h-6 bg-surface border border-outline-variant rounded-sm flex items-center justify-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">ASPH</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">MATERIAL</span>
+<span class="font-label-caps text-label-caps text-on-surface">Shingle</span>
+</div>
+</div>
+<div class="bg-surface-container-high border border-outline-variant p-2 rounded-DEFAULT flex items-center gap-2">
+<div class="w-6 h-6 bg-surface border border-outline-variant rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">architecture</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">PITCH</span>
+<span class="font-label-caps text-label-caps text-primary">6/12</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Transactional Intent: AUDIT_ACTION) -->
+<div class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant p-gutter flex flex-col gap-unit pb-8">
+<h2 class="sr-only">AUDIT_ACTION</h2>
+<button class="w-full bg-primary-container text-on-primary-container font-data-point text-data-point py-3 rounded-DEFAULT flex justify-center items-center gap-2 active:scale-95 transition-transform border-b-4 border-on-primary-container/30 hover:bg-primary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+            APPROVE_FINDINGS
+        </button>
+<button class="w-full bg-transparent border border-outline-variant text-on-surface-variant font-label-caps text-label-caps py-3 rounded-DEFAULT flex justify-center items-center gap-2 active:bg-surface-variant transition-colors hover:text-primary">
+<span class="material-symbols-outlined">restart_alt</span>
+            REQUEST_RESCAN
+        </button>
+</div>
+</body></html>

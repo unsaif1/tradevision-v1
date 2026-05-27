@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Earnings Forecasting Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#333539",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "background": "#111317",
+                      "secondary-container": "#feb700",
+                      "on-primary": "#00363a",
+                      "outline-variant": "#3b494b",
+                      "on-secondary-container": "#6b4b00",
+                      "surface-bright": "#37393e",
+                      "secondary": "#ffdb9d",
+                      "tertiary-fixed": "#e4e2e2",
+                      "surface-container": "#1e2024",
+                      "surface": "#111317",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "primary": "#dbfcff",
+                      "tertiary-container": "#dad9d9",
+                      "surface-dim": "#111317",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-surface-variant": "#b9cacb",
+                      "on-error": "#690005",
+                      "on-surface": "#e2e2e8",
+                      "on-secondary": "#412d00",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0c0e12",
+                      "surface-container-low": "#1a1c20",
+                      "surface-tint": "#00dbe9",
+                      "inverse-on-surface": "#2f3035",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary": "#303031",
+                      "on-primary-fixed": "#002022",
+                      "on-background": "#e2e2e8",
+                      "secondary-fixed-dim": "#ffba20",
+                      "primary-fixed": "#7df4ff",
+                      "on-primary-container": "#006970",
+                      "inverse-surface": "#e2e2e8",
+                      "inverse-primary": "#006970",
+                      "on-primary-fixed-variant": "#004f54",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#282a2e",
+                      "tertiary": "#f7f5f5",
+                      "on-secondary-fixed": "#271900",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "primary-container": "#00f0ff",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "on-tertiary-container": "#5e5f5f",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#333539",
+                      "outline": "#849495"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "density-comfortable": "24px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": ["Space Grotesk"],
+                      "headline-md": ["Space Grotesk"],
+                      "body-fixed": ["Inter"],
+                      "label-caps": ["JetBrains Mono"],
+                      "display-lg": ["Space Grotesk"],
+                      "data-point": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                      "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111317; /* bg-background */
+            color: #e2e2e8; /* text-on-background */
+            padding-top: 64px; /* Space for TopAppBar */
+            padding-bottom: 80px; /* Space for BottomNavBar */
+        }
+        .technical-border {
+            border: 1px solid #2D2D2D;
+        }
+        .active-border {
+            border: 1px solid #00dbe9; /* primary-fixed-dim */
+            box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1);
+        }
+        
+        /* Chart Grid Lines */
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, #2D2D2D 1px, transparent 1px),
+                linear-gradient(to bottom, #2D2D2D 1px, transparent 1px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-fixed antialiased selection:bg-primary-fixed-dim selection:text-on-primary">
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16 bg-surface">
+<div class="flex items-center gap-density-compact text-primary-fixed-dim font-headline-md text-headline-md-mobile">
+<!-- Leading Avatar Placeholder (using icon for simplicity as exact image isn't provided, though JSON says avatar) -->
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">person</span>
+</div>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">FINANCIAL TERMINAL</span>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-colors active:opacity-80 text-primary-fixed-dim">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-density-comfortable grid grid-cols-4 md:grid-cols-12 gap-gutter">
+<!-- Header / Controls -->
+<div class="col-span-4 md:col-span-12 flex flex-col md:flex-row justify-between items-start md:items-end mb-gutter">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-unit">FORECAST</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Projection Window: Q3/Q4</p>
+</div>
+<!-- 30/60/90 Toggle -->
+<div class="flex mt-density-compact md:mt-0 technical-border rounded bg-surface-container">
+<button class="px-gutter py-density-compact font-label-caps text-label-caps text-primary-fixed-dim active-border bg-surface-variant/30">30D</button>
+<button class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant/50 border-l border-[#2D2D2D]">60D</button>
+<button class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant/50 border-l border-[#2D2D2D]">90D</button>
+</div>
+</div>
+<!-- Main KPI Row -->
+<div class="col-span-4 md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-gutter mb-gutter">
+<!-- Projected Revenue -->
+<div class="col-span-2 technical-border bg-surface-container p-density-comfortable rounded relative overflow-hidden group hover:active-border transition-all">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-unit uppercase">Projected Rev (30D)</span>
+<div class="font-data-point text-data-point md:text-[32px] text-on-surface flex items-baseline">
+<span class="text-primary-fixed-dim mr-1">$</span>482,500
+                        </div>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim">trending_up</span>
+</div>
+<div class="mt-density-compact flex items-center font-label-caps text-label-caps">
+<span class="text-secondary-fixed-dim mr-2">+12.4%</span>
+<span class="text-outline">vs prev 30d</span>
+</div>
+</div>
+<!-- Pipeline Health -->
+<div class="col-span-1 technical-border bg-surface-container p-density-comfortable rounded relative overflow-hidden group hover:active-border transition-all">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-fixed-dim"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-unit uppercase">Health Score</span>
+<div class="font-data-point text-[32px] text-secondary-fixed-dim leading-none mb-unit">92<span class="text-outline text-label-caps">/100</span></div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full w-[92%]"></div>
+</div>
+</div>
+<!-- Pending Value -->
+<div class="col-span-1 technical-border bg-surface-container p-density-comfortable rounded relative overflow-hidden group hover:active-border transition-all">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-unit uppercase">Pending Value</span>
+<div class="font-data-point text-[24px] text-on-surface leading-none mb-unit">$145k</div>
+<div class="font-label-caps text-label-caps text-outline">12 Contracts</div>
+</div>
+</div>
+<!-- Chart Section & Breakdown -->
+<div class="col-span-4 md:col-span-8 technical-border bg-surface-container rounded flex flex-col h-[400px]">
+<div class="p-gutter border-b border-[#2D2D2D] flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Anticipated Cash Flow</span>
+<span class="material-symbols-outlined text-outline text-[16px]">info</span>
+</div>
+<!-- Pseudo Chart Area -->
+<div class="flex-1 grid-bg relative p-gutter overflow-hidden">
+<!-- Y-Axis Labels -->
+<div class="absolute left-2 top-2 bottom-8 flex flex-col justify-between font-label-caps text-[10px] text-outline">
+<span>$500k</span>
+<span>$250k</span>
+<span>$0</span>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-2 left-12 right-4 flex justify-between font-label-caps text-[10px] text-outline">
+<span>Oct 01</span>
+<span>Oct 15</span>
+<span>Oct 31</span>
+</div>
+<!-- Mock Trend Line (SVG) -->
+<svg class="absolute inset-0 w-full h-full pl-12 pr-4 pt-4 pb-8" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,80 Q20,70 40,50 T80,20 T100,10" fill="none" stroke="#00dbe9" stroke-width="2"></path>
+<!-- Area under curve -->
+<path d="M0,80 Q20,70 40,50 T80,20 T100,10 L100,100 L0,100 Z" fill="url(#chartGrad)" opacity="0.2"></path>
+<defs>
+<lineargradient id="chartGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00dbe9"></stop>
+<stop offset="100%" stop-color="#111317" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Data Points -->
+<circle cx="40" cy="50" fill="#111317" r="1.5" stroke="#00dbe9" stroke-width="1"></circle>
+<circle cx="80" cy="20" fill="#111317" r="1.5" stroke="#00dbe9" stroke-width="1"></circle>
+</svg>
+<!-- Tooltip Mock -->
+<div class="absolute top-[10%] left-[75%] bg-surface border border-primary-fixed-dim px-2 py-1 font-label-caps text-[10px] text-primary-fixed-dim rounded shadow-md pointer-events-none">
+                    Oct 24: $320k
+                </div>
+</div>
+</div>
+<!-- Breakdown List -->
+<div class="col-span-4 md:col-span-4 technical-border bg-surface-container rounded flex flex-col h-[400px]">
+<div class="p-gutter border-b border-[#2D2D2D]">
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Signed vs Pending</span>
+</div>
+<div class="flex-1 overflow-y-auto p-gutter flex flex-col gap-unit">
+<!-- Status Row -->
+<div class="flex items-center justify-between p-density-compact bg-surface-variant/50 rounded border border-[#2D2D2D] relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-fixed-dim"></div>
+<div class="pl-2">
+<span class="font-label-caps text-[10px] text-outline block uppercase mb-1">Signed / Material Ordered</span>
+<span class="font-body-fixed text-on-surface text-[14px]">Smith Residence</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-[16px] text-primary-fixed-dim block">$42,000</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">Est. Oct 12</span>
+</div>
+</div>
+<!-- Status Row -->
+<div class="flex items-center justify-between p-density-compact bg-surface-variant/50 rounded border border-[#2D2D2D] relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-fixed-dim"></div>
+<div class="pl-2">
+<span class="font-label-caps text-[10px] text-outline block uppercase mb-1">Signed / Scheduled</span>
+<span class="font-body-fixed text-on-surface text-[14px]">Oakwood Estates</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-[16px] text-primary-fixed-dim block">$128,500</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">Est. Oct 18</span>
+</div>
+</div>
+<!-- Status Row Pending -->
+<div class="flex items-center justify-between p-density-compact bg-surface-variant/30 rounded border border-[#2D2D2D] relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-fixed-dim"></div>
+<div class="pl-2">
+<span class="font-label-caps text-[10px] text-secondary-fixed-dim block uppercase mb-1">Pending / Verbal</span>
+<span class="font-body-fixed text-on-surface text-[14px]">Johnson Commercial</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-[16px] text-on-surface block opacity-70">$85,000</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">Prob: 80%</span>
+</div>
+</div>
+<!-- Status Row Pending -->
+<div class="flex items-center justify-between p-density-compact bg-surface-variant/30 rounded border border-[#2D2D2D] relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline"></div>
+<div class="pl-2">
+<span class="font-label-caps text-[10px] text-outline block uppercase mb-1">Pending / Review</span>
+<span class="font-body-fixed text-on-surface text-[14px]">Pine St Duplex</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-[16px] text-on-surface block opacity-50">$18,200</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">Prob: 40%</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (from JSON) -->
+<nav class="fixed bottom-0 w-full z-50 h-20 border-t border-outline-variant bg-surface-container md:hidden">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-gutter bg-surface-container h-20">
+<!-- DASHBOARD (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 flex-1" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<!-- JOBS (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 flex-1" href="#">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="font-label-caps text-label-caps">JOBS</span>
+</a>
+<!-- EXPENSES (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 flex-1" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span class="font-label-caps text-label-caps">EXPENSES</span>
+</a>
+<!-- TERMINAL (Active - based on 'earnings forecasting terminal' intent) -->
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim border-t-2 border-primary-fixed-dim pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-caps text-label-caps">TERMINAL</span>
+</a>
+</div>
+</nav>
+<!-- Desktop Side Nav Overlay (Implied by md:hidden on BottomNav, adding a quick skeleton for desktop) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-[80px] bg-surface border-r border-[#2D2D2D] flex-col items-center py-gutter gap-density-comfortable z-40">
+<a class="p-2 text-on-surface-variant hover:text-primary-fixed-dim transition-colors group relative" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<div class="absolute left-full ml-2 px-2 py-1 bg-surface-variant text-[10px] font-label-caps rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap">DASHBOARD</div>
+</a>
+<a class="p-2 text-on-surface-variant hover:text-primary-fixed-dim transition-colors group relative" href="#">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+<div class="absolute left-full ml-2 px-2 py-1 bg-surface-variant text-[10px] font-label-caps rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap">JOBS</div>
+</a>
+<a class="p-2 text-on-surface-variant hover:text-primary-fixed-dim transition-colors group relative" href="#">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<div class="absolute left-full ml-2 px-2 py-1 bg-surface-variant text-[10px] font-label-caps rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap">EXPENSES</div>
+</a>
+<a class="p-2 text-primary-fixed-dim border-l-2 border-primary-fixed-dim -ml-[2px] transition-colors group relative" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<div class="absolute left-full ml-2 px-2 py-1 bg-surface-variant text-[10px] font-label-caps rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap text-on-surface">TERMINAL</div>
+</a>
+</div>
+</body></html>

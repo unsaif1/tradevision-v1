@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sensor Detail &amp; Calibration Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-elevated": "#1C2128",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dce3ee",
+                        "tertiary": "#adc6ff",
+                        "inverse-on-surface": "#2a313a",
+                        "tertiary-fixed": "#d8e2ff",
+                        "outline": "#ab888a",
+                        "primary-container": "#e21e51",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#005227",
+                        "surface-tint": "#ffb2b9",
+                        "surface-dim": "#0d141c",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary": "#003919",
+                        "secondary-container": "#00b55d",
+                        "surface-container-high": "#242b33",
+                        "inverse-surface": "#dce3ee",
+                        "surface-bright": "#333a43",
+                        "on-tertiary-fixed": "#001a42",
+                        "neon-blue": "#3B82F6",
+                        "tertiary-container": "#2171e4",
+                        "on-primary-fixed": "#40000f",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "secondary": "#4de082",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "secondary-fixed-dim": "#4de082",
+                        "primary": "#ffb2b9",
+                        "outline-variant": "#5c3f42",
+                        "on-background": "#dce3ee",
+                        "error-container": "#93000a",
+                        "surface-container": "#192028",
+                        "surface-base": "#111820",
+                        "background": "#0d141c",
+                        "surface-container-highest": "#2e353e",
+                        "on-secondary-container": "#003e1c",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffdadb",
+                        "neon-green": "#4ADE80",
+                        "on-primary": "#67001e",
+                        "surface-stroke": "#2D3748",
+                        "inverse-primary": "#be003e",
+                        "text-muted": "#8896A8",
+                        "on-primary-fixed-variant": "#91002e",
+                        "neon-pink": "#E21E51",
+                        "surface": "#0d141c",
+                        "on-primary-container": "#fffcff",
+                        "neon-orange": "#F97316",
+                        "surface-container-lowest": "#080f16",
+                        "on-tertiary": "#002e6a",
+                        "on-secondary-fixed": "#00210c",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-variant": "#2e353e",
+                        "on-tertiary-container": "#fffcff",
+                        "secondary-fixed": "#6dfe9c",
+                        "surface-container-low": "#151c24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-gap": "12px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "body-md": ["Barlow"],
+                        "caption": ["Barlow"],
+                        "body-lg": ["Barlow"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "stat-display": ["Barlow Condensed"],
+                        "label-caps": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface-base'); color: theme('colors.on-surface'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .grid-bg {
+            background-image: 
+                linear-gradient(to right, theme('colors.surface-stroke') 1px, transparent 1px),
+                linear-gradient(to bottom, theme('colors.surface-stroke') 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center;
+        }
+        .neon-glow-pink { box-shadow: 0 0 10px theme('colors.neon-pink'); }
+        .neon-glow-blue { box-shadow: 0 0 10px theme('colors.neon-blue'); }
+    </style>
+</head>
+<body class="font-body-md antialiased h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full flex flex-col z-50 docked w-64 border-r border-surface-stroke flat no shadows bg-surface-base dark:bg-surface-base text-neon-pink dark:text-primary font-label-caps text-label-caps transition-all duration-150 ease-in-out">
+<div class="p-6 border-b border-surface-stroke">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-surface-stroke overflow-hidden">
+<img alt="Facility Command Logo" class="w-full h-full object-cover" data-alt="A macro shot of a sleek, dark metallic industrial component. The lighting is low-key with a sharp, neon blue rim light highlighting the precise, machined edges. The aesthetic is highly technical, reflecting a high-end, rugged command center environment. The mood is authoritative and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA95_T8A9nPzPG2H6DhYYZ5PPevBjwpEU9i02aliYAOicuFQ1QInDgqupaN3jaN-Wnre75WISEgFZvDq4M9U4-3me-_IdDCJrT1OJcyGa15wQ75aiExILwiC4h8Rn5K9RSIiWQ-rg7khYrwY62MLtSF8WeikgFBWFcOW4iiAeTQp5aoJOc-glOAg-2nuFgA1KgqZUFX2iXY2OY7-Bq0RnFCZVdhy_cSVlv6d5PMdLAaUb5odvH_YcrQ2kphNTpvCE_9A4xNu035lKCY"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">MAIN_HUB</h1>
+<span class="text-text-muted text-xs tracking-widest">SECTOR_07</span>
+</div>
+</div>
+<button class="w-full mt-4 bg-neon-pink text-white font-label-caps text-label-caps py-2 px-4 rounded hover:opacity-90 transition-opacity">NEW DISPATCH</button>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span>Dispatch Queue</span>
+</a>
+<a class="bg-primary-container text-on-primary-container border-r-4 border-neon-pink px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span>Active Repairs</span>
+</a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span>Verification Logs</span>
+</a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+</div>
+<div class="p-4 border-t border-surface-stroke">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col h-full bg-background relative overflow-hidden">
+<!-- TopAppBar (Simulated for Context, though instructions focused on detail screen) -->
+<header class="h-16 border-b border-surface-stroke bg-surface flex items-center justify-between px-6 shrink-0 z-10 relative">
+<div class="flex items-center gap-4">
+<button class="text-text-muted hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SENSOR_UX-90A</h2>
+<span class="font-caption text-caption text-neon-blue tracking-wide">CALIBRATION PROTOCOL ACTIVE</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-text-muted">
+<span class="material-symbols-outlined hover:text-on-surface cursor-pointer transition-colors">settings</span>
+<span class="material-symbols-outlined hover:text-on-surface cursor-pointer transition-colors">help</span>
+</div>
+</header>
+<!-- Main Layout Split -->
+<div class="flex-1 flex overflow-hidden p-6 gap-6">
+<!-- Left Column: Telemetry & Specs -->
+<div class="flex-1 flex flex-col gap-6 min-w-0">
+<!-- Telemetry Graph Section -->
+<div class="flex-1 bg-surface-elevated border-t-2 border-neon-blue rounded-DEFAULT flex flex-col overflow-hidden relative group">
+<div class="p-4 border-b border-surface-stroke flex justify-between items-center bg-surface-container z-10">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-neon-blue animate-pulse"></span>
+<h3 class="font-label-caps text-label-caps text-on-surface tracking-widest">REAL-TIME STRAIN / LOAD TELEMETRY</h3>
+</div>
+<div class="flex gap-2">
+<span class="bg-surface-variant text-text-muted px-2 py-1 rounded text-xs border border-surface-stroke font-mono">100ms</span>
+<span class="bg-surface-variant text-neon-blue px-2 py-1 rounded text-xs border border-neon-blue font-mono">LIVE</span>
+</div>
+</div>
+<!-- Simulated Graph Area -->
+<div class="flex-1 relative bg-surface-base grid-bg p-4 flex flex-col justify-end overflow-hidden">
+<!-- Y-Axis Labels -->
+<div class="absolute left-4 top-4 bottom-4 flex flex-col justify-between text-text-muted text-xs font-mono z-10">
+<span>+500</span>
+<span>+250</span>
+<span>0</span>
+<span>-250</span>
+<span>-500</span>
+</div>
+<!-- Simulated SVG Line Graph -->
+<div class="absolute inset-0 pl-12 pr-4 py-8 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 1000 400" width="100%">
+<path class="opacity-80" d="M0,200 Q50,150 100,220 T200,180 T300,250 T400,100 T500,280 T600,150 T700,210 T800,90 T900,260 T1000,180" fill="none" stroke="theme('colors.neon-blue')" stroke-width="2"></path>
+<path class="opacity-20" d="M0,200 Q50,150 100,220 T200,180 T300,250 T400,100 T500,280 T600,150 T700,210 T800,90 T900,260 T1000,180 L1000,400 L0,400 Z" fill="url(#blue-grad)"></path>
+<defs>
+<lineargradient id="blue-grad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="theme('colors.neon-blue')" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="theme('colors.neon-blue')" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Current Value Marker -->
+<circle class="animate-ping opacity-75" cx="900" cy="260" fill="theme('colors.neon-blue')" r="4"></circle>
+<circle cx="900" cy="260" fill="theme('colors.on-surface')" r="3"></circle>
+<line opacity="0.5" stroke="theme('colors.neon-blue')" stroke-dasharray="4" x1="900" x2="900" y1="260" y2="400"></line>
+</svg>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-2 left-12 right-4 flex justify-between text-text-muted text-xs font-mono z-10">
+<span>T-10s</span>
+<span>T-5s</span>
+<span>NOW</span>
+</div>
+<!-- Overlay Value -->
+<div class="absolute top-6 right-6 text-right z-10">
+<div class="font-stat-display text-stat-display text-on-surface">342.8</div>
+<div class="text-neon-blue font-mono text-sm tracking-wider">kNm STRAIN</div>
+</div>
+</div>
+</div>
+<!-- Technical Specs Panel -->
+<div class="bg-surface-elevated border-t-4 border-surface-stroke rounded-DEFAULT p-5 grid grid-cols-3 gap-6">
+<div class="flex flex-col gap-1">
+<span class="text-text-muted font-label-caps text-label-caps">FIRMWARE VERSION</span>
+<div class="flex items-center gap-2">
+<span class="font-mono text-on-surface">v4.2.11-beta</span>
+<span class="material-symbols-outlined text-neon-green text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 border-l border-surface-stroke pl-6">
+<span class="text-text-muted font-label-caps text-label-caps">MAC ADDRESS</span>
+<span class="font-mono text-on-surface">00:1B:44:11:3A:B7</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-surface-stroke pl-6 relative overflow-hidden group">
+<span class="text-text-muted font-label-caps text-label-caps">LOCATION COORDS</span>
+<span class="font-mono text-on-surface">34°03'08.1"N 118°14'37.3"W</span>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-surface-stroke group-hover:text-neon-blue transition-colors cursor-pointer text-4xl opacity-20">my_location</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Calibration Wizard -->
+<div class="w-96 bg-surface-elevated border border-surface-stroke rounded-DEFAULT flex flex-col overflow-hidden shrink-0">
+<!-- Wizard Header -->
+<div class="p-5 border-b border-surface-stroke bg-surface-container">
+<div class="flex items-center gap-2 text-neon-pink mb-1">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span class="font-label-caps text-label-caps tracking-widest">CALIBRATION WIZARD</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">STEP 1: ISOLATION</h3>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-base h-1.5 rounded-full mt-4 overflow-hidden flex">
+<div class="w-1/3 bg-neon-pink h-full"></div>
+<div class="w-1px bg-surface-stroke h-full"></div>
+<div class="w-1/3 bg-surface-variant h-full"></div>
+<div class="w-1px bg-surface-stroke h-full"></div>
+<div class="w-1/3 bg-surface-variant h-full"></div>
+</div>
+</div>
+<!-- Wizard Content -->
+<div class="flex-1 p-6 flex flex-col gap-6 overflow-y-auto">
+<p class="text-text-muted text-sm leading-relaxed">
+                        Isolate the sensor feed from the primary network before establishing a new baseline. Ensure zero physical load on the component.
+                    </p>
+<!-- Toggle Control -->
+<div class="bg-surface-base p-4 rounded border border-surface-stroke flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">SENSOR ISOLATION</span>
+<span class="text-xs text-text-muted font-mono">Status: Offline</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-pink"></div>
+</label>
+</div>
+<!-- Input Controls -->
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted">BASELINE REFERENCE (mV/V)</label>
+<div class="relative">
+<input class="w-full bg-surface-base border border-surface-stroke text-on-surface font-mono p-3 rounded focus:border-neon-pink focus:ring-1 focus:ring-neon-pink outline-none transition-all text-lg" type="text" value="0.000"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-neon-blue hover:text-white text-xs font-label-caps px-2 py-1 bg-surface-variant rounded border border-surface-stroke">AUTO-ZERO</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted">TOLERANCE RANGE (±%)</label>
+<select class="w-full bg-surface-base border border-surface-stroke text-on-surface font-mono p-3 rounded focus:border-neon-pink focus:ring-1 focus:ring-neon-pink outline-none transition-all appearance-none">
+<option value="0.1">0.1% - High Precision</option>
+<option selected="" value="0.5">0.5% - Standard Industrial</option>
+<option value="1.0">1.0% - Rough Estimate</option>
+</select>
+<!-- Custom dropdown arrow -->
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-muted mt-6">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Wizard Actions -->
+<div class="p-5 border-t border-surface-stroke bg-surface-container flex justify-between items-center">
+<button class="text-text-muted font-label-caps text-label-caps hover:text-on-surface px-4 py-2 transition-colors">CANCEL</button>
+<button class="bg-neon-pink text-white font-label-caps text-label-caps px-6 py-2 rounded hover:opacity-90 transition-opacity flex items-center gap-2 group">
+<span>NEXT STAGE</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

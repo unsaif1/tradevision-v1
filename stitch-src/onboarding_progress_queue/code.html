@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Onboarding Queue - TRADEVISION C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#005138",
+                    "on-tertiary-fixed": "#002114",
+                    "surface-container-high": "#252a31",
+                    "background": "#0f141a",
+                    "surface-container-low": "#171c22",
+                    "on-primary-fixed": "#40000f",
+                    "surface-container-lowest": "#0a0f14",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#003826",
+                    "surface-container": "#1b2026",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "inverse-primary": "#be003e",
+                    "tertiary-container": "#00855e",
+                    "surface-dim": "#0f141a",
+                    "on-primary-container": "#fffcff",
+                    "on-background": "#dee3eb",
+                    "inverse-surface": "#dee3eb",
+                    "primary-fixed": "#ffdadb",
+                    "tertiary": "#72daad",
+                    "on-tertiary-container": "#f5fff7",
+                    "on-primary-fixed-variant": "#91002e",
+                    "on-secondary": "#29313c",
+                    "surface-container-highest": "#30353c",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "on-secondary-fixed": "#141c26",
+                    "surface-tint": "#ffb2b9",
+                    "primary-container": "#e21e51",
+                    "surface-variant": "#30353c",
+                    "secondary": "#bfc7d5",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#ab888a",
+                    "primary": "#ffb2b9",
+                    "outline-variant": "#5c3f42",
+                    "on-secondary-container": "#aeb6c3",
+                    "on-secondary-fixed-variant": "#3f4753",
+                    "tertiary-fixed": "#8ff7c7",
+                    "secondary-fixed-dim": "#bfc7d5",
+                    "on-surface-variant": "#e4bdbf",
+                    "on-surface": "#dee3eb",
+                    "surface": "#0f141a",
+                    "secondary-fixed": "#dbe3f1",
+                    "surface-bright": "#353a40",
+                    "tertiary-fixed-dim": "#72daad",
+                    "on-primary": "#67001e",
+                    "secondary-container": "#3f4753",
+                    "inverse-on-surface": "#2c3137"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "grid_columns": "12",
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "sidebar_width": "260px",
+                    "header_height": "64px"
+            },
+            "fontFamily": {
+                    "display-md": [
+                            "Barlow Condensed"
+                    ],
+                    "display-lg": [
+                            "Barlow Condensed"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Barlow Condensed"
+                    ],
+                    "mono-data": [
+                            "JetBrains Mono"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Barlow Condensed"
+                    ]
+            },
+            "fontSize": {
+                    "display-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "36px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "52px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "24px",
+                                    "letterSpacing": "0.03em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "mono-data": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.08em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(42, 50, 61, 0.2); 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #30353c; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #5c3f42; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-header_height bg-surface border-b border-outline-variant flat no shadows transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl hover:bg-surface-container-highest transition-colors active:opacity-80 rounded p-1 cursor-pointer" data-icon="grid_view">grid_view</span>
+<h1 class="font-display-md text-display-md font-bold tracking-tighter text-primary">TRADEVISION C.A.R.E.</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden flex items-center justify-center">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A close up, high-resolution portrait of a male professional with short hair and a subtle stubble. He wears a dark, modern technical jacket over a plain t-shirt. The lighting is cinematic and moody, with a strong rim light that separates him from the dark background. The image has a cool, slightly desaturated color grade that perfectly matches a high-tech, mission-critical dashboard environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUkJVPGwkbjWj3xSARNCvdBLG6VMJYpPVGv8e5gEhp9Fjlykt_KpdwTJpBNLliTgVLurLaZgB-N9kqkbhER73NzwhGideOODacVBkVBb2QTAxaXyMMDmJmfOeZVvIC6rxH7gWhPHSts_-f3UjGfF0DejdITq8FmKM3H8BCiN5cI9TMXPPr61qlPkR0K1vPqWwbaVHK3-LmDK8H1EB1umONRs9p-Hp7-nAySACi5-xhcdES_O8MuRWasvhCx1XZmGNX70CvQ_X2JNea"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-header_height h-full pb-[64px] md:pb-0">
+<!-- Left SideNav (Desktop Only - Implicit from context) -->
+<aside class="hidden md:flex flex-col w-[260px] bg-surface border-r border-outline-variant h-full overflow-y-auto custom-scrollbar">
+<nav class="flex flex-col py-4 gap-1 px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg group-hover:text-primary-fixed-dim transition-colors" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest mt-1">Command</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-primary bg-surface-container-highest border-l-4 border-primary transition-colors group relative left-[-3px]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="construction">construction</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest mt-1">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg group-hover:text-primary-fixed-dim transition-colors" data-icon="assignment_late">assignment_late</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest mt-1">Claims</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-lg group-hover:text-primary-fixed-dim transition-colors" data-icon="notifications_active">notifications_active</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest mt-1">Alerts</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 bg-background overflow-y-auto custom-scrollbar p-gutter md:p-margin relative">
+<div class="max-w-7xl mx-auto space-y-gutter">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-surface-container-highest pb-4">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Contractor Queue</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Monitoring active onboarding processes for critical structural projects.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container border border-outline-variant text-on-surface font-label-caps text-label-caps px-4 py-2 hover:bg-surface-container-highest transition-colors uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+                            Filter
+                        </button>
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-4 py-2 hover:opacity-90 transition-opacity uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                            Invite Contractor
+                        </button>
+</div>
+</div>
+<!-- Metrics Row (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-low border border-surface-container-highest p-4 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Active Onboardings</span>
+<div class="mt-4 flex items-end justify-between">
+<span class="font-display-lg text-display-lg text-on-surface leading-none">24</span>
+<span class="text-tertiary-fixed-dim font-mono-data text-mono-data bg-tertiary-container/10 px-2 py-1 rounded">+3 this week</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-surface-container-highest p-4 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-error-container/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest relative z-10">Stalled (&gt;5 Days)</span>
+<div class="mt-4 flex items-end justify-between relative z-10">
+<span class="font-display-lg text-display-lg text-error leading-none">03</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-surface-container-highest p-4 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Avg. Completion Time</span>
+<div class="mt-4 flex items-end justify-between">
+<span class="font-display-lg text-display-lg text-on-surface leading-none">4.2<span class="font-headline-sm text-headline-sm text-on-surface-variant ml-1">Days</span></span>
+<div class="h-8 w-16 bg-surface-container-highest rounded relative overflow-hidden">
+<div class="absolute bottom-0 left-0 w-1/4 h-1/3 bg-tertiary-fixed-dim"></div>
+<div class="absolute bottom-0 left-1/4 w-1/4 h-2/3 bg-tertiary-fixed-dim"></div>
+<div class="absolute bottom-0 left-2/4 w-1/4 h-1/2 bg-tertiary-fixed-dim"></div>
+<div class="absolute bottom-0 left-3/4 w-1/4 h-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Queue Table -->
+<div class="bg-surface-container-low border border-surface-container-highest overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="border-b border-surface-container-highest bg-surface-container-lowest/50">
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest w-1/4">Contractor</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest w-1/5">Role</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest w-1/6">Date Sent</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest w-2/5">Onboarding Progress</th>
+<th class="p-4 w-12 text-center"></th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-surface-container-highest">
+<!-- Row 1 (In Progress) -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container border border-outline-variant flex items-center justify-center font-display-md text-headline-sm text-secondary">
+                                                AF
+                                            </div>
+<div>
+<div class="font-medium text-on-surface">Apex Foundations Ltd.</div>
+<div class="text-on-surface-variant text-xs mt-0.5">ID: CT-4921</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest text-secondary text-xs rounded uppercase tracking-wider font-mono-data">Structural Eng</span>
+</td>
+<td class="p-4">
+<div class="font-mono-data text-mono-data text-on-surface">2023.10.24</div>
+<div class="text-on-surface-variant text-xs mt-0.5">14:30 ZULU</div>
+</td>
+<td class="p-4">
+<div class="w-full">
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Profile Setup</span>
+<span class="font-mono-data text-mono-data text-primary">66%</span>
+</div>
+<div class="flex gap-1 h-2 w-full">
+<div class="flex-1 bg-tertiary-fixed-dim rounded-l"></div>
+<div class="flex-1 bg-primary-container"></div>
+<div class="flex-1 bg-surface-container-highest rounded-r"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs font-mono-data text-on-surface-variant opacity-60">
+<span>Invite</span>
+<span>Profile</span>
+<span>Protocols</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 (Stalled) -->
+<tr class="hover:bg-surface-container-highest transition-colors group bg-error-container/5">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container border border-error/30 flex items-center justify-center font-display-md text-headline-sm text-error">
+                                                RS
+                                            </div>
+<div>
+<div class="font-medium text-error">Rigid Steel Works</div>
+<div class="text-error/70 text-xs mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="error">error</span>
+                                                    Stalled (6d)
+                                                </div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest text-secondary text-xs rounded uppercase tracking-wider font-mono-data">Fabrication</span>
+</td>
+<td class="p-4">
+<div class="font-mono-data text-mono-data text-on-surface">2023.10.18</div>
+<div class="text-on-surface-variant text-xs mt-0.5">09:15 ZULU</div>
+</td>
+<td class="p-4">
+<div class="w-full">
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-label-caps text-error uppercase">Awaiting Action</span>
+<span class="font-mono-data text-mono-data text-error">33%</span>
+</div>
+<div class="flex gap-1 h-2 w-full">
+<div class="flex-1 bg-tertiary-fixed-dim rounded-l"></div>
+<div class="flex-1 bg-surface-container-highest"></div>
+<div class="flex-1 bg-surface-container-highest rounded-r"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs font-mono-data text-on-surface-variant opacity-60">
+<span>Invite</span>
+<span>Profile</span>
+<span>Protocols</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="text-error hover:text-primary-container transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 (Just Started) -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container border border-outline-variant flex items-center justify-center font-display-md text-headline-sm text-secondary">
+                                                VM
+                                            </div>
+<div>
+<div class="font-medium text-on-surface">Vector Masonry</div>
+<div class="text-on-surface-variant text-xs mt-0.5">ID: CT-4988</div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container border border-surface-container-highest text-secondary text-xs rounded uppercase tracking-wider font-mono-data">Masonry</span>
+</td>
+<td class="p-4">
+<div class="font-mono-data text-mono-data text-on-surface">2023.10.26</div>
+<div class="text-on-surface-variant text-xs mt-0.5">08:00 ZULU</div>
+</td>
+<td class="p-4">
+<div class="w-full">
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Invited</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">0%</span>
+</div>
+<div class="flex gap-1 h-2 w-full">
+<div class="flex-1 bg-primary-container/30 rounded-l relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-container animate-pulse opacity-50 w-1/4"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest"></div>
+<div class="flex-1 bg-surface-container-highest rounded-r"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs font-mono-data text-on-surface-variant opacity-60">
+<span>Invite</span>
+<span>Profile</span>
+<span>Protocols</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar from JSON (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-16 pb-safe bg-surface-container-low border-t border-outline-variant flat no shadows md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps mt-1 tracking-widest uppercase">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="construction">construction</span>
+<span class="font-label-caps text-label-caps mt-1 tracking-widest uppercase text-primary font-bold">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="assignment_late">assignment_late</span>
+<span class="font-label-caps text-label-caps mt-1 tracking-widest uppercase">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications_active">notifications_active</span>
+<span class="font-label-caps text-label-caps mt-1 tracking-widest uppercase">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary-fixed-dim transition-colors active:scale-95 duration-150 w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="manage_accounts">manage_accounts</span>
+<span class="font-label-caps text-label-caps mt-1 tracking-widest uppercase">Account</span>
+</a>
+</nav>
+</body></html>

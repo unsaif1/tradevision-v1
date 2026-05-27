@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Settings - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#ffb2b9",
+                        "surface-dim": "#0f141a",
+                        "surface-container-highest": "#30353d",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "tertiary": "#bdc7dc",
+                        "surface-muted": "#2D3748",
+                        "secondary-fixed-dim": "#bac8db",
+                        "surface-variant": "#30353d",
+                        "on-primary": "#67001e",
+                        "inverse-surface": "#dee2ec",
+                        "surface-deep": "#1C2128",
+                        "on-tertiary": "#273141",
+                        "surface-container-lowest": "#090f15",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#91002e",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "outline": "#ab888a",
+                        "surface-bright": "#353941",
+                        "secondary-fixed": "#d5e4f7",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-container": "#1b2027",
+                        "secondary": "#bac8db",
+                        "on-secondary": "#243240",
+                        "primary-container": "#e21e51",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "text-primary": "#FFFFFF",
+                        "tertiary-container": "#6b7588",
+                        "surface": "#0f141a",
+                        "on-tertiary-container": "#fefcff",
+                        "primary-fixed": "#ffdadb",
+                        "surface-tint": "#ffb2b9",
+                        "secondary-container": "#3a4858",
+                        "inverse-on-surface": "#2c3138",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-primary-container": "#fffcff",
+                        "background": "#0f141a",
+                        "surface-container-low": "#171c23",
+                        "on-background": "#dee2ec",
+                        "inverse-primary": "#be003e",
+                        "on-error-container": "#ffdad6",
+                        "text-secondary": "#8896A8",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "surface-container-high": "#252a32",
+                        "on-secondary-container": "#a8b6c9",
+                        "accent-active": "#E21E51",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#40000f",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-surface": "#dee2ec",
+                        "outline-variant": "#5c3f42"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "margin": "24px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "label-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #1C2128; color: #dee2ec; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(45, 55, 72, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(136, 150, 168, 0.15); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle docked full-width top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<nav class="flex gap-md">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-md py-sm rounded" href="#">Command</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-md py-sm rounded" href="#">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-md py-sm rounded" href="#">Claims</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-md py-sm rounded" href="#">Alerts</a>
+<a class="font-label-md text-label-md text-primary-container dark:text-primary-fixed font-bold hover:bg-surface-bright/10 transition-colors px-md py-sm rounded scale-95" href="#" style="transform: scale(0.98);">Account</a>
+</nav>
+</div>
+<div class="flex items-center">
+<img alt="User Profile" class="w-10 h-10 rounded-full border border-border-subtle object-cover" data-alt="A highly detailed, professional headshot of a mature businessman wearing a dark tailored suit. He has a serious but approachable expression, shot against a neutral, slightly moody slate-grey background. The lighting is dramatic yet soft, highlighting the textures of his clothing and skin, perfectly suited for a high-end financial or technical analysis dashboard avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa3_XDpHicOZGSJ9ekNt1n-djhlCdLJNe5wm1x9va3objsVEML2sagOv-44Lu7nQOIllJOKBKGkdY6kKI2ECvnWXiEWuncb0h0YvDCedzWhmuMOI6Hxq2bnp9byiUVVep8Y5iSe3F6GVNmsa0Zd4X5KQqJ6TpSX4A6JMGMAogTO5yIrJ4qijjrvpkaFcw7QDlu6udpPaiFNun-YuQQm3JLfkURv8Izqlb7oMyfmibCLIWswD3brdnboCP57FG6qT9EZgJQdyVj_AIE"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-gutter py-xl md:py-24 grid grid-cols-1 md:grid-cols-12 gap-lg items-start pb-32 md:pb-xl">
+<!-- Profile Overview Card (Bento Style) -->
+<section class="md:col-span-4 flex flex-col gap-lg">
+<div class="glass-panel rounded-xl p-lg flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-muted to-surface-deep opacity-50 z-0"></div>
+<div class="relative z-10 w-full flex justify-end mb-sm">
+<button aria-label="Edit Profile" class="text-text-secondary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+</div>
+<div class="relative z-10 mb-md">
+<img alt="Marcus Vance" class="w-32 h-32 rounded-full border-2 border-primary-container shadow-[0_0_15px_rgba(226,30,81,0.2)] object-cover" data-alt="A highly detailed, professional headshot of a mature businessman wearing a dark tailored suit. He has a serious but approachable expression, shot against a neutral, slightly moody slate-grey background. The lighting is dramatic yet soft, highlighting the textures of his clothing and skin, perfectly suited for a high-end financial or technical analysis dashboard avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYW3ULHeaUW-qt_0UEGX69aPZyI4b6JpR9Uw_Tpx39Ks1aaVAm-olsxfnCo4YJy-oXAT35SDMnrq3h1iKEbuT2KFfb8B9wlby3K5JKKJhsfqV6DNSDfgYldKHTL_C29xXn38DxqiK-x7Dx-U66Ua4y-x0pgIqF1WaAGpyxNNtJMF_4P2hD4VIznElzQlnlai31_okUz_rb__coMWR2fb4DoIEhuvhmUA-9f0gxoBqLx-PRQnbw0iOvSDgKw3Seu1qksXdtQdo5ov0g"/>
+<div class="absolute bottom-0 right-2 w-5 h-5 bg-green-500 rounded-full border-2 border-surface-deep shadow-sm"></div>
+</div>
+<h2 class="font-headline-md text-headline-md text-text-primary z-10 relative mb-xs">Marcus Vance</h2>
+<p class="font-label-md text-label-md text-text-secondary z-10 relative uppercase tracking-wider mb-lg">Public Adjuster</p>
+<div class="w-full flex justify-between px-md py-sm border-t border-border-subtle z-10 relative">
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-text-primary">142</span>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Active Claims</span>
+</div>
+<div class="w-px h-full bg-border-subtle"></div>
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-text-primary">98%</span>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Success Rate</span>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-lg relative overflow-hidden">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary-container">shield_person</span>
+<h3 class="font-headline-md text-[20px] leading-6 font-semibold text-text-primary">Account Status</h3>
+</div>
+<div class="flex justify-between items-center bg-surface-deep p-sm rounded-lg border border-border-subtle">
+<span class="font-body-sm text-body-sm text-text-secondary">Verification Level</span>
+<span class="font-label-md text-label-md text-text-primary bg-primary-container/20 px-sm py-xs rounded text-primary-container">Tier 3 (Verified)</span>
+</div>
+</div>
+</section>
+<!-- Settings Categories -->
+<section class="md:col-span-8 flex flex-col gap-md">
+<div class="glass-panel rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<!-- Profile Information -->
+<a class="flex items-center justify-between p-lg hover:bg-surface-bright/10 transition-colors border-b border-border-subtle group" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-deep border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary-container group-hover:border-primary-container/50 transition-all">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-text-primary mb-xs">Profile Information</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Update your personal details, contact info, and avatar.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+<!-- Notification Preferences -->
+<a class="flex items-center justify-between p-lg hover:bg-surface-bright/10 transition-colors border-b border-border-subtle group" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-deep border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary-container group-hover:border-primary-container/50 transition-all">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-text-primary mb-xs">Notification Preferences</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Manage alerts for claims, project updates, and system events.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+<!-- Security & Password -->
+<a class="flex items-center justify-between p-lg hover:bg-surface-bright/10 transition-colors border-b border-border-subtle group" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-deep border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary-container group-hover:border-primary-container/50 transition-all">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-text-primary mb-xs">Security &amp; Password</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Update password, manage 2FA, and review active sessions.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+<!-- Company Details -->
+<a class="flex items-center justify-between p-lg hover:bg-surface-bright/10 transition-colors border-b border-border-subtle group" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-deep border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary-container group-hover:border-primary-container/50 transition-all">
+<span class="material-symbols-outlined">location_city</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-text-primary mb-xs">Company Details</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">View organization info, licensing, and compliance status.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+<!-- Support -->
+<a class="flex items-center justify-between p-lg hover:bg-surface-bright/10 transition-colors group" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-deep border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary-container group-hover:border-primary-container/50 transition-all">
+<span class="material-symbols-outlined">help</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-text-primary mb-xs">Support</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Access documentation, submit tickets, and view FAQs.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+</div>
+<!-- Logout Section -->
+<div class="mt-lg flex justify-end">
+<button class="flex items-center gap-sm px-lg py-md rounded-lg border border-border-subtle text-text-secondary hover:text-error hover:border-error/50 hover:bg-error/10 transition-all font-label-md text-label-md uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                    Sign Out
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-high dark:bg-surface-container-high border-t border-border-subtle shadow-lg fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm z-50 w-full">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all gap-xs w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all gap-xs w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="location_city">location_city</span>
+<span class="font-label-sm text-label-sm">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all gap-xs w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="assignment_late">assignment_late</span>
+<span class="font-label-sm text-label-sm">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all gap-xs w-16" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications_active">notifications_active</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all gap-xs w-16 translate-y-[-2px] duration-200" href="#" style="transform: translateY(-2px);">
+<span class="material-symbols-outlined text-2xl" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+</body></html>

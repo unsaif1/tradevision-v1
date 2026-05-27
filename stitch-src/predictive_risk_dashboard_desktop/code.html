@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RoofCore AI Terminal - Predictive Risk Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "inverse-surface": "#e2e2e8",
+                        "error-container": "#93000a",
+                        "surface-container": "#1e2024",
+                        "on-secondary-fixed": "#271900",
+                        "primary-container": "#00f0ff",
+                        "background": "#111317",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-container": "#006970",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary": "#f7f5f5",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "surface-container-high": "#282a2e",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333539",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "primary": "#dbfcff",
+                        "on-secondary": "#412d00",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "surface": "#111317",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary-fixed-variant": "#004f54"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, theme('colors.outline-variant') 1px, transparent 1px),
+                              linear-gradient(to bottom, theme('colors.outline-variant') 1px, transparent 1px);
+            opacity: 0.1;
+        }
+        .tech-border { border: 1px solid theme('colors.outline-variant'); }
+        .matrix-cell { transition: all 0.2s ease; cursor: pointer; }
+        .matrix-cell:hover { opacity: 0.8; transform: scale(1.05); z-index: 10; border-color: theme('colors.primary'); box-shadow: 0 0 10px theme('colors.primary-fixed-dim'); }
+    </style>
+</head>
+<body class="font-body-fixed antialiased overflow-hidden flex h-screen w-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Cyber Grid Overlay -->
+<div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-surface-container-low text-primary dark:text-primary-fixed-dim font-label-caps text-label-caps fixed left-0 top-0 h-full w-64 border-r border-outline-variant flex flex-col pt-16 z-20 shadow-none">
+<!-- Header -->
+<div class="px-margin-desktop mb-density-comfortable">
+<h2 class="font-display-lg text-display-lg text-primary tracking-tighter truncate" title="System Node 01">System Node 01</h2>
+<p class="text-on-surface-variant mt-unit">Precision Roofing CRM</p>
+</div>
+<!-- Navigation Links -->
+<ul class="flex-1 overflow-y-auto px-margin-mobile md:px-density-compact space-y-unit">
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact group-hover:text-primary transition-colors" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact group-hover:text-primary transition-colors" data-icon="hub">hub</span>
+                    Provider Matrix
+                </a>
+</li>
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact bg-primary-container text-on-primary-container border-l-4 border-primary hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact" data-icon="analytics">analytics</span>
+                    Telemetry
+                </a>
+</li>
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact group-hover:text-primary transition-colors" data-icon="terminal">terminal</span>
+                    Diagnostics
+                </a>
+</li>
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact group-hover:text-primary transition-colors" data-icon="layers">layers</span>
+                    Inventory
+                </a>
+</li>
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact group-hover:text-primary transition-colors" data-icon="map">map</span>
+                    Site Maps
+                </a>
+</li>
+<li>
+<a class="flex items-center px-density-comfortable py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-density-compact group-hover:text-primary transition-colors" data-icon="developer_board">developer_board</span>
+                    System Logs
+                </a>
+</li>
+</ul>
+<!-- CTA & Footer -->
+<div class="p-margin-desktop mt-auto border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-density-compact font-label-caps text-label-caps hover:bg-primary-fixed-dim transition-colors mb-density-comfortable">Deploy Model</button>
+<ul class="space-y-unit">
+<li>
+<a class="flex items-center px-density-compact py-unit text-on-surface-variant hover:text-on-surface transition-colors group" href="#">
+<span class="material-symbols-outlined mr-density-compact text-[16px] group-hover:text-primary" data-icon="security">security</span>
+                        Security
+                    </a>
+</li>
+<li>
+<a class="flex items-center px-density-compact py-unit text-on-surface-variant hover:text-on-surface transition-colors group" href="#">
+<span class="material-symbols-outlined mr-density-compact text-[16px] group-hover:text-primary" data-icon="support_agent">support_agent</span>
+                        Support
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 flex flex-col h-full relative z-10">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface-dim text-primary font-headline-md text-headline-md docked full-width top-0 border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full h-16 shadow-none flex-shrink-0">
+<div class="flex items-center gap-gutter">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter">RoofCore AI Terminal</h1>
+</div>
+<div class="flex items-center gap-gutter">
+<!-- Search Bar Placeholder -->
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-density-compact top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="bg-surface-container-high border border-outline-variant rounded-none py-unit pl-10 pr-density-compact text-body-fixed font-body-fixed text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-64 outline-none placeholder-on-surface-variant" placeholder="Search parameters..." type="text"/>
+</div>
+<div class="flex gap-unit">
+<button class="p-density-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+<button class="p-density-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+<button class="p-density-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high tech-border overflow-hidden ml-gutter flex-shrink-0">
+<img alt="Technician Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCRXq8dKY5novTHFvnD_EOyHPe3r906JxONAmFI_Ymh1qa6w2vIGp_s8nStmNeqFo2iDXm56vQqBckgX8lY-lJTkhOf7iWQj0bezP6BK4F8Pl6ZJbBan3KqXzjZBE3qK5lCOgfDB8tqmrIrVUklY3eUBCvNJcASutFtYJWR0VGVYIp_TuIyoUA2gP--0V26DkK9Qz3K8acM6XAaddN2GVwOgcoQgMhPm7DR0T5ELES9sk_BTwqOF_fUfu7mH3YteKzR-H2eCtvhDYB"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="flex-1 overflow-y-auto p-gutter md:p-margin-desktop flex flex-col gap-gutter">
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter flex-1 min-h-[600px]">
+<!-- Risk Matrix (Center Stage) -->
+<section class="md:col-span-8 lg:col-span-9 bg-surface-container tech-border flex flex-col relative overflow-hidden group">
+<!-- Tab Header -->
+<div class="absolute top-0 left-0 bg-surface-container-highest border-b border-r border-outline-variant px-density-comfortable py-density-compact flex items-center gap-density-compact z-20">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="grid_view">grid_view</span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider">PREDICTIVE RISK MATRIX</span>
+</div>
+<div class="flex-1 p-margin-desktop pt-16 flex items-center justify-center relative">
+<!-- Y-Axis Label -->
+<div class="absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 font-label-caps text-label-caps text-on-surface-variant tracking-widest origin-center">PROBABILITY</div>
+<!-- X-Axis Label -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 font-label-caps text-label-caps text-on-surface-variant tracking-widest">IMPACT (FINANCIAL &amp; STRUCTURAL)</div>
+<!-- 5x5 Matrix -->
+<div class="grid grid-cols-5 grid-rows-5 gap-unit w-full max-w-2xl aspect-square p-density-comfortable tech-border bg-surface-container-lowest">
+<!-- Matrix cells would be dynamically generated, placeholder static representation -->
+<!-- Row 1 (High Probability) -->
+<div class="bg-secondary-fixed/20 border border-secondary-container matrix-cell" title="Mod-Low"></div>
+<div class="bg-secondary-fixed/40 border border-secondary-container matrix-cell" title="Moderate"></div>
+<div class="bg-error-container/40 border border-error matrix-cell relative flex items-center justify-center" title="High">
+<span class="absolute inline-flex h-3 w-3 rounded-full bg-error opacity-75 animate-ping"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</div>
+<div class="bg-error-container/60 border border-error matrix-cell" title="Critical"></div>
+<div class="bg-error-container/80 border border-error matrix-cell flex items-center justify-center" title="Extreme"><span class="font-data-point text-error text-[12px]">X-9</span></div>
+<!-- Row 2 -->
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-secondary-fixed/20 border border-secondary-container matrix-cell" title="Mod-Low"></div>
+<div class="bg-secondary-fixed/40 border border-secondary-container matrix-cell" title="Moderate"></div>
+<div class="bg-error-container/40 border border-error matrix-cell" title="High"></div>
+<div class="bg-error-container/60 border border-error matrix-cell" title="Critical"></div>
+<!-- Row 3 -->
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-secondary-fixed/20 border border-secondary-container matrix-cell flex items-center justify-center" title="Mod-Low"><span class="font-data-point text-secondary text-[12px]">W-4</span></div>
+<div class="bg-secondary-fixed/40 border border-secondary-container matrix-cell" title="Moderate"></div>
+<div class="bg-error-container/40 border border-error matrix-cell" title="High"></div>
+<!-- Row 4 -->
+<div class="bg-surface-container-highest border border-outline-variant matrix-cell" title="Negligible"></div>
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-secondary-fixed/20 border border-secondary-container matrix-cell" title="Mod-Low"></div>
+<div class="bg-secondary-fixed/40 border border-secondary-container matrix-cell" title="Moderate"></div>
+<!-- Row 5 (Low Probability) -->
+<div class="bg-surface-container-highest border border-outline-variant matrix-cell" title="Negligible"></div>
+<div class="bg-surface-container-highest border border-outline-variant matrix-cell" title="Negligible"></div>
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-surface-variant border border-outline-variant matrix-cell" title="Low"></div>
+<div class="bg-secondary-fixed/20 border border-secondary-container matrix-cell flex items-center justify-center" title="Mod-Low"><span class="font-data-point text-secondary text-[12px]">A-1</span></div>
+</div>
+</div>
+</section>
+<!-- Right Sidebar Column -->
+<div class="md:col-span-4 lg:col-span-3 flex flex-col gap-gutter h-full">
+<!-- Telemetry Gauge -->
+<section class="bg-surface-container tech-border flex-1 relative p-density-comfortable flex flex-col justify-between">
+<div class="absolute top-0 right-0 bg-surface-container-highest border-b border-l border-outline-variant px-density-comfortable py-density-compact flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="speed">speed</span>
+<span class="font-label-caps text-label-caps text-on-surface">SYS. SCORE</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center pt-8">
+<!-- Pseudo-Gauge -->
+<div class="relative w-40 h-40 rounded-full border-4 border-surface-container-highest flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-4 border-primary border-t-transparent border-r-transparent rotate-45"></div>
+<div class="text-center">
+<div class="font-data-point text-[48px] text-primary leading-none">84</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-2">STABLE</div>
+</div>
+</div>
+<div class="w-full mt-margin-desktop space-y-unit">
+<div class="flex justify-between font-label-caps text-label-caps">
+<span class="text-on-surface-variant">STRUCTURAL</span>
+<span class="text-secondary">92%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1">
+<div class="bg-secondary h-1 w-[92%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Critical Anomalies -->
+<section class="bg-surface-container tech-border h-1/2 relative overflow-hidden flex flex-col">
+<div class="bg-error-container border-b border-error px-density-comfortable py-density-compact flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-[18px] text-on-error" data-icon="warning">warning</span>
+<span class="font-label-caps text-label-caps text-on-error font-bold tracking-wider">CRITICAL ANOMALIES</span>
+</div>
+<div class="flex-1 overflow-y-auto p-density-compact space-y-unit">
+<!-- Anomaly Item -->
+<div class="border border-outline-variant bg-surface-container-low p-density-compact flex items-start gap-density-compact hover:border-error transition-colors cursor-pointer">
+<div class="w-1 h-full bg-error min-h-[40px] self-stretch flex-shrink-0"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-error">NODE-ALPHA</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">14:02:44</span>
+</div>
+<p class="font-body-fixed text-[12px] text-on-surface truncate">Thermal variance &gt; 4°C in Sector 7.</p>
+</div>
+</div>
+<!-- Anomaly Item -->
+<div class="border border-outline-variant bg-surface-container-low p-density-compact flex items-start gap-density-compact hover:border-secondary transition-colors cursor-pointer">
+<div class="w-1 h-full bg-secondary min-h-[40px] self-stretch flex-shrink-0"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-secondary">MET-DATA</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">13:45:11</span>
+</div>
+<p class="font-body-fixed text-[12px] text-on-surface truncate">Wind shear warning active.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Final Settlement Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#333539",
+                      "surface-tint": "#00dbe9",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#ffdea8",
+                      "outline-variant": "#3b494b",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-error": "#690005",
+                      "on-primary-container": "#006970",
+                      "primary": "#dbfcff",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-surface-variant": "#b9cacb",
+                      "surface-container": "#1e2024",
+                      "on-tertiary": "#303031",
+                      "inverse-primary": "#006970",
+                      "error": "#ffb4ab",
+                      "tertiary": "#f7f5f5",
+                      "surface": "#111317",
+                      "on-primary": "#00363a",
+                      "surface-container-low": "#1a1c20",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "on-tertiary-container": "#5e5f5f",
+                      "primary-container": "#00f0ff",
+                      "surface-container-lowest": "#0c0e12",
+                      "primary-fixed": "#7df4ff",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#333539",
+                      "on-primary-fixed": "#002022",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "on-primary-fixed-variant": "#004f54",
+                      "secondary": "#ffdb9d",
+                      "tertiary-container": "#dad9d9",
+                      "secondary-container": "#feb700",
+                      "surface-bright": "#37393e",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-secondary": "#412d00",
+                      "on-background": "#e2e2e8",
+                      "surface-container-high": "#282a2e",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "on-secondary-fixed": "#271900",
+                      "outline": "#849495",
+                      "surface-dim": "#111317",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-surface": "#e2e2e8",
+                      "inverse-surface": "#e2e2e8",
+                      "inverse-on-surface": "#2f3035",
+                      "background": "#111317",
+                      "on-secondary-container": "#6b4b00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "density-compact": "8px",
+                      "margin-mobile": "16px",
+                      "density-comfortable": "24px",
+                      "gutter": "16px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .cyber-grid {
+            background-size: 24px 24px;
+            background-image: 
+                linear-gradient(to right, rgba(59, 73, 75, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 73, 75, 0.2) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed antialiased cyber-grid min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface w-full h-16 border-b border-outline-variant flex items-center justify-between px-margin-desktop sticky top-0 z-50 ml-64 pl-64">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary-container">ROOF_OS</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary-container transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary-container transition-colors cursor-pointer" data-icon="settings_suggest">settings_suggest</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary-container transition-colors cursor-pointer" data-icon="account_circle">account_circle</span>
+<img alt="Insurance Adjuster Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a male insurance adjuster in his 40s. He has a serious, competent expression and is wearing a dark, technical field jacket. The background is a slightly blurred, high-contrast industrial setting. The lighting is crisp and cool, enhancing the cyber-industrial, dark-mode aesthetic with deep shadows and sharp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6jsZwfdqV51BGYfh1EJKxa9qmkgMRAuhEMzY3VV1Ex9tYKHNgDZ8_D473A7wknFcMi16UaMq9WGPFv41Q0yE2tgE35VkgJrE6CkA5s2ZVreKwR1bo17ITjqztOcbUXJfGAs34GFFAy-rI1ttmqnhv8RjDLHizHfyiqUBp_vlFfNm66Xk5pAXJ7Eu6Tyqd79FByDcsFlGtS6zrvfskn-PsteNJuxzqyzUJTV3fHEmAhYDBQ26YBCjztVjdxf4HvUEfj4DEMQtX8qvW"/>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container fixed left-0 top-0 h-screen w-64 border-r border-outline-variant flex flex-col py-density-comfortable z-40">
+<div class="px-4 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container text-[18px]">domain</span>
+</div>
+<div>
+<h1 class="font-label-caps text-label-caps font-bold text-primary-container tracking-widest">ADM_SUITE</h1>
+<p class="font-label-caps text-[10px] text-on-surface-variant">V2.04_STABLE</p>
+</div>
+</div>
+<button class="w-full mt-4 bg-surface-variant border border-outline-variant text-on-surface py-2 font-label-caps text-label-caps hover:bg-surface-bright transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span> NEW INSPECTION
+            </button>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-caps hover:bg-surface-bright hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-caps hover:bg-surface-bright hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span> Projects
+            </a>
+<a class="flex items-center gap-3 bg-surface-container-highest text-primary-container border-l-4 border-primary-container px-4 py-3 active" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span> Claims
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-caps hover:bg-surface-bright hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span> Reports
+            </a>
+</div>
+<div class="mt-auto flex flex-col gap-1 pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-caps hover:bg-surface-bright hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 font-label-caps hover:bg-surface-bright hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span> Support
+            </a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="ml-64 flex-1 p-margin-desktop relative">
+<div class="mb-8 border-b border-outline-variant pb-4 flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">CLAIM ID: CLM-8492-AX</p>
+<h2 class="font-headline-md text-headline-md text-on-surface">Final Settlement Overview</h2>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-variant border border-outline-variant font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 10.24.23
+                </span>
+<span class="px-2 py-1 bg-surface-variant border border-outline-variant font-label-caps text-label-caps text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> STATUS: PENDING FINAL
+                </span>
+</div>
+</div>
+<!-- 3 Column Grid -->
+<div class="grid grid-cols-12 gap-gutter mb-24">
+<!-- Left Panel: Financial Ledger -->
+<div class="col-span-12 lg:col-span-3 flex flex-col gap-gutter">
+<div class="bg-surface-container border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-tint"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">FINANCIAL_LEDGER_OUTPUT</p>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">APPROVED_PAYOUT</span>
+<span class="font-data-point text-data-point text-on-surface">$14,250.00</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-error">DEDUCTIBLE_HOLD</span>
+<span class="font-data-point text-data-point text-error">-$1,000.00</span>
+</div>
+<div class="flex justify-between items-end pt-2">
+<span class="font-label-caps text-label-caps text-primary-container">NET_SETTLEMENT</span>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary-container font-bold">$13,250.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Panel: Material Cost Index -->
+<div class="col-span-12 lg:col-span-6 bg-surface-container border border-outline-variant p-density-comfortable relative">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex justify-between">
+<span>MATERIAL_COST_INDEX</span>
+<span>VER: 2.1</span>
+</p>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="font-label-caps text-label-caps text-on-surface-variant py-2 font-normal">ITEM_CODE</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-2 font-normal">DESCRIPTION</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-2 font-normal text-right">AMOUNT</th>
+</tr>
+</thead>
+<tbody class="font-data-point text-[14px]">
+<tr class="border-b border-outline-variant hover:bg-surface-variant transition-colors">
+<td class="py-3 text-on-surface">SHG_AR_ARCH</td>
+<td class="py-3 text-on-surface-variant">Arch. Shingles (30 YR)</td>
+<td class="py-3 text-on-surface text-right">$6,450.00</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-variant transition-colors">
+<td class="py-3 text-on-surface">LABOR_R&amp;R</td>
+<td class="py-3 text-on-surface-variant">Labor: Remove &amp; Replace</td>
+<td class="py-3 text-on-surface text-right">$5,200.00</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-variant transition-colors">
+<td class="py-3 text-on-surface">DRIP_EDGE_MET</td>
+<td class="py-3 text-on-surface-variant">Drip Edge Perimeter</td>
+<td class="py-3 text-on-surface text-right">$850.00</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors">
+<td class="py-3 text-on-surface">PERMIT_FEES</td>
+<td class="py-3 text-on-surface-variant">Municipal Surcharges</td>
+<td class="py-3 text-on-surface text-right">$750.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Right Panel: Requirements Matrix -->
+<div class="col-span-12 lg:col-span-3 bg-surface-container border border-outline-variant p-density-comfortable relative">
+<div class="absolute top-0 right-0 p-2 bg-surface-variant border-l border-b border-outline-variant">
+<span class="font-label-caps text-[10px] text-primary-container">SYS_CHK</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">REQ_MATRIX</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 p-2 border border-outline-variant bg-surface-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-caps text-label-caps text-on-surface">Physical Inspection Verified</span>
+</div>
+<div class="flex items-start gap-3 p-2 border border-outline-variant bg-surface-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-caps text-label-caps text-on-surface">Materials Invoice Reconciled</span>
+</div>
+<div class="flex items-start gap-3 p-2 border border-outline-variant bg-surface-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-caps text-label-caps text-on-surface">Dispute Resolution Cleared</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="fixed bottom-0 right-0 w-[calc(100%-16rem)] p-margin-desktop bg-surface border-t border-outline-variant flex justify-end items-center z-30 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps font-bold px-8 py-4 border-b-4 border-on-primary-container hover:bg-primary-fixed transition-colors flex items-center gap-2">
+                INITIATE_FINAL_CLOSING <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+</body></html>

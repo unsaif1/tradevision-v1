@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(0); }
+        }
+        .cyber-corner {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #171c22;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #524344;
+        }
+        .pulsing-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#9f8c8d",
+                      "on-secondary-fixed-variant": "#3a4858",
+                      "outline-variant": "#524344",
+                      "on-secondary-container": "#a8b6c9",
+                      "surface-variant": "#30353c",
+                      "primary-container": "#ffb2b9",
+                      "surface": "#0f141a",
+                      "secondary-fixed-dim": "#bac8db",
+                      "on-surface-variant": "#d7c2c2",
+                      "status-error": "#f43f5e",
+                      "surface-bright": "#353a40",
+                      "secondary-fixed": "#d5e4f7",
+                      "tertiary-container": "#bdc7dc",
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "outline-muted": "rgba(136, 150, 168, 0.15)",
+                      "background": "#0f141a",
+                      "accent-cyan": "#00f2ff",
+                      "surface-container": "#1b2026",
+                      "on-primary-fixed": "#370c13",
+                      "surface-container-lowest": "#0a0f14",
+                      "on-secondary-fixed": "#0f1d2b",
+                      "primary-fixed": "#ffdadc",
+                      "on-primary-container": "#7b4148",
+                      "on-tertiary-fixed-variant": "#6d363d",
+                      "tertiary": "#d9e3f9",
+                      "on-error-container": "#ffdad6",
+                      "status-success": "#4ade80",
+                      "primary": "#ffd9dc",
+                      "secondary": "#bac8db",
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "on-primary": "#522027",
+                      "secondary-container": "#3a4858",
+                      "inverse-on-surface": "#2c3137",
+                      "tertiary-fixed": "#d9e3f9",
+                      "on-surface": "#dee3eb",
+                      "error": "#ffb4ab",
+                      "on-error": "#690005",
+                      "inverse-primary": "#894d54",
+                      "surface-dim": "#0f141a",
+                      "on-tertiary-fixed": "#121c2c",
+                      "surface-container-high": "#252a31",
+                      "on-tertiary": "#273141",
+                      "surface-container-low": "#171c22",
+                      "error-container": "#93000a",
+                      "surface-deep": "#090f15",
+                      "on-secondary": "#243240",
+                      "surface-container-highest": "#30353c",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "surface-tint": "#ffb2b9",
+                      "on-background": "#dee3eb",
+                      "inverse-surface": "#dee3eb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "lg": "24px",
+                      "sidebar-width": "260px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "telemetry-sidebar-width": "340px",
+                      "margin": "24px",
+                      "xl": "40px"
+              },
+              "fontFamily": {
+                      "mono-data": ["JetBrains Mono"],
+                      "body-lg": ["Manrope"],
+                      "headline-md": ["Barlow Condensed"],
+                      "label-caps": ["Manrope"],
+                      "headline-lg": ["Barlow Condensed"],
+                      "headline-xl": ["Barlow Condensed"],
+                      "body-md": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "label-md": ["Manrope"],
+                      "body-sm": ["Manrope"]
+              },
+              "fontSize": {
+                      "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-accent-cyan selection:text-surface overflow-hidden">
+<!-- Top Navigation -->
+<header class="bg-surface-dim text-primary border-b border-outline-variant flex justify-between items-center px-md h-16 w-full fixed top-0 z-50">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="security">security</span>
+<h1 class="font-headline-md text-headline-md text-accent-cyan tracking-tighter">SECURITY_CENTRAL_V4</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-high rounded-lg border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-status-success pulsing-dot"></span>
+<span class="font-mono-data text-mono-data uppercase">Live Diagnostic Mode</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer active:opacity-80 p-xs rounded-lg" data-icon="settings_input_component">settings_input_component</button>
+</div>
+</header>
+<!-- Navigation Drawer -->
+<aside class="w-sidebar-width h-full fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant hidden lg:flex flex-col gap-sm p-md pt-20 z-40">
+<div class="mb-lg">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant opacity-60 px-sm">CORE_ACCESS_PROTOCOLS</h2>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out rounded" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps">Terminal</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md text-accent-cyan bg-surface-variant border-r-2 border-accent-cyan transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+<span class="font-label-caps text-label-caps">Key_Vault</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out rounded" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-label-caps text-label-caps">Audit_Logs</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out rounded" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-label-caps text-label-caps">System_Health</span>
+</a>
+</nav>
+<div class="mt-auto p-sm bg-surface-container border border-outline-variant cyber-corner relative overflow-hidden">
+<div class="scanline"></div>
+<span class="font-label-caps text-[10px] text-accent-cyan block mb-xs">UPLINK_STATUS</span>
+<div class="flex flex-col gap-xs">
+<div class="h-1 bg-surface-variant w-full">
+<div class="h-full bg-accent-cyan w-3/4"></div>
+</div>
+<span class="font-mono-data text-[10px] text-on-surface-variant">74.2% Bandwidth Optimized</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-sidebar-width pt-16 h-screen flex flex-col">
+<!-- Toolbar / Filters -->
+<div class="bg-surface-container-low px-lg py-md border-b border-outline-variant flex flex-wrap items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">SUPPORT_CASE_LEDGER</h3>
+<div class="flex bg-surface-container rounded border border-outline-variant p-0.5">
+<button class="px-md py-xs font-label-caps text-label-caps bg-surface-variant text-accent-cyan">OPEN</button>
+<button class="px-md py-xs font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors">PENDING</button>
+<button class="px-md py-xs font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors">RESOLVED</button>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative">
+<input class="bg-surface-container-low border border-outline-variant text-on-surface font-mono-data text-mono-data px-md py-xs pl-10 focus:border-accent-cyan outline-none rounded-lg w-64" placeholder="Search Hex_ID..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-md py-xs rounded font-label-md text-label-md flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    NEW_ENTRY
+                </button>
+</div>
+</div>
+<div class="flex-1 flex overflow-hidden">
+<!-- Table Pane -->
+<section class="flex-1 overflow-auto custom-scrollbar p-lg">
+<div class="bg-surface-container-lowest border border-outline-variant relative">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant">
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">TICKET_ID</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">INCIDENT_TYPE</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">ORIGIN_NODE</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-mono-data text-mono-data">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-md py-md text-accent-cyan">#TX-9022-AD</td>
+<td class="px-md py-md text-on-surface">Sensor Calibration Drift</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded border border-status-error/30 bg-status-error/10 text-status-error text-[10px] font-bold">ANALYSIS</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">US-EAST-04-A</td>
+<td class="px-md py-md text-on-surface-variant opacity-60">2023.10.24 14:22:01</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-accent-cyan" data-icon="visibility">visibility</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-md py-md text-accent-cyan">#TX-8831-CX</td>
+<td class="px-md py-md text-on-surface">Network Packet Loss (L3)</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold">PENDING_PM</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">EU-WEST-12-G</td>
+<td class="px-md py-md text-on-surface-variant opacity-60">2023.10.24 14:15:58</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-accent-cyan" data-icon="visibility">visibility</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-md py-md text-accent-cyan">#TX-7210-BF</td>
+<td class="px-md py-md text-on-surface">Memory Leak Detected</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded border border-status-error/30 bg-status-error/10 text-status-error text-[10px] font-bold">ANALYSIS</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">ASIA-SO-01-M</td>
+<td class="px-md py-md text-on-surface-variant opacity-60">2023.10.24 13:50:12</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-accent-cyan" data-icon="visibility">visibility</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-md py-md text-accent-cyan">#TX-1109-ZY</td>
+<td class="px-md py-md text-on-surface">Cryptographic Auth Fail</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold">PENDING_PM</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">CORP-CORE-02</td>
+<td class="px-md py-md text-on-surface-variant opacity-60">2023.10.24 12:01:44</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-accent-cyan" data-icon="visibility">visibility</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-md py-md text-accent-cyan">#TX-0943-RE</td>
+<td class="px-md py-md text-on-surface">Unscheduled Power Cycle</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-sm py-xs rounded border border-status-success/30 bg-status-success/10 text-status-success text-[10px] font-bold">MONITORING</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">DMZ-NODE-B7</td>
+<td class="px-md py-md text-on-surface-variant opacity-60">2023.10.24 10:30:22</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-accent-cyan" data-icon="visibility">visibility</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bento Info Grid Below Table -->
+<div class="mt-lg grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col gap-sm cyber-corner relative">
+<div class="scanline opacity-20"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">ACTIVE_RESOLVERS</span>
+<div class="flex items-end gap-sm">
+<span class="font-headline-lg text-headline-lg text-primary">12</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant pb-1">+3 over avg</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col gap-sm cyber-corner relative">
+<span class="font-label-caps text-label-caps text-on-surface-variant">MEAN_RECOVERY_TIME</span>
+<div class="flex items-end gap-sm">
+<span class="font-headline-lg text-headline-lg text-accent-cyan">42m</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant pb-1">Optimizing...</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col gap-sm cyber-corner relative">
+<span class="font-label-caps text-label-caps text-on-surface-variant">NODE_VULNERABILITY</span>
+<div class="flex items-end gap-sm">
+<span class="font-headline-lg text-headline-lg text-status-error">CRITICAL</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant pb-1">Zone: US-EAST</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Telemetry Panel -->
+<aside class="w-telemetry-sidebar-width border-l border-outline-variant bg-surface-container-low hidden xl:flex flex-col p-md gap-lg overflow-y-auto custom-scrollbar">
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant pb-xs">SELECTED_TELEMETRY</h4>
+<div class="bg-surface-container-highest border border-outline-variant p-sm">
+<img alt="Telemetry View" class="w-full h-40 object-cover border border-outline-variant mb-sm" data-alt="A macro high-detail digital display showing a complex network graph with glowing cyan nodes and red connection lines. The visualization is presented in a high-density, technical data dashboard style with monospaced typography overlays. The lighting is low-key, emphasizing the bioluminescent neon glow of the data structures against a deep black industrial background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwGtT3dSmDG1AZo5NSf2Z5C8CtfBUtw8E6BZuYmEeOTuF6sMOUb6E71iMNMObgkrgUX4j5HyYgGd-okBJwvu7Vt4lPD4gX2SmBYqqSXncenqopLZwRz93gOECS8hNvA5v_pLMmL5iSaKfi_Bs7CLNdxW5bLcZWn_UUOq_lPwuCR6V912OevgjCeG5iyEsWBxkwsUlpCMPdojcWJBkKopZRd6zvNCotYozzdmjACprwWUYbC3qZaDZh2flM_fsFu2UUEnX5jrkSjnTj"/>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-caps text-[10px] text-on-surface-variant">LOG_STREAM_#TX-9022</span>
+<span class="font-mono-data text-[10px] text-accent-cyan">ACTIVE</span>
+</div>
+<div class="space-y-1 font-mono-data text-[10px] text-on-surface-variant opacity-80 bg-surface-deep p-xs overflow-hidden h-32">
+<div>[14:22:01] Initializing calibrate sequence...</div>
+<div>[14:22:05] WARNING: Drift exceeds 15% threshold.</div>
+<div>[14:22:12] Attempting node handshake US-EAST-04-A...</div>
+<div>[14:22:18] Handshake: SUCCESS. Data packet parity error.</div>
+<div class="text-status-error">[14:23:00] FATAL: Buffer overflow in sensor buffer 0x44.</div>
+<div class="animate-pulse">_</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant pb-xs">SYSTEM_LOAD</h4>
+<div class="space-y-md">
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span>CPU_CORE_01</span>
+<span>88%</span>
+</div>
+<div class="h-2 bg-surface-container w-full rounded-full overflow-hidden">
+<div class="h-full bg-status-error w-[88%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span>MEMORY_ALLOC</span>
+<span>42%</span>
+</div>
+<div class="h-2 bg-surface-container w-full rounded-full overflow-hidden">
+<div class="h-full bg-accent-cyan w-[42%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span>DISK_IO</span>
+<span>15%</span>
+</div>
+<div class="h-2 bg-surface-container w-full rounded-full overflow-hidden">
+<div class="h-full bg-status-success w-[15%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-md">
+<button class="w-full bg-transparent border border-outline-variant text-on-surface py-sm font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors">
+                        EXPORT_SYSTEM_REPORT.PDF
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Nav for Mobile -->
+<nav class="lg:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+<span class="font-label-sm text-label-sm">Login</span>
+</a>
+<a class="flex flex-col items-center justify-center text-accent-cyan font-bold scale-105 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span class="font-label-sm text-label-sm">MFA</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span class="font-label-sm text-label-sm">Recovery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for live feeling
+        document.addEventListener('DOMContentLoaded', () => {
+            const logContainer = document.querySelector('.space-y-1');
+            const logs = [
+                '[14:24:01] Re-routing traffic via bypass 04...',
+                '[14:24:05] Analyzing drift pattern...',
+                '[14:24:12] Heartbeat check: ALL SYSTEMS GO.',
+                '[14:24:18] Updating ticket metadata #TX-9022...'
+            ];
+            let currentLog = 0;
+
+            setInterval(() => {
+                const newLog = document.createElement('div');
+                newLog.textContent = logs[currentLog];
+                newLog.className = 'opacity-0 transition-opacity duration-500 text-accent-cyan';
+                logContainer.insertBefore(newLog, logContainer.lastElementChild);
+                
+                setTimeout(() => newLog.classList.remove('opacity-0'), 100);
+                
+                if (logContainer.children.length > 8) {
+                    logContainer.removeChild(logContainer.children[0]);
+                }
+                
+                currentLog = (currentLog + 1) % logs.length;
+            }, 3000);
+        });
+    </script>
+</body></html>

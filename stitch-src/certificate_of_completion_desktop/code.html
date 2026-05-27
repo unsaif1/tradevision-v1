@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Certificate of Completion - Roof Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdea8",
+                        "background": "#111317",
+                        "secondary-container": "#feb700",
+                        "on-tertiary": "#303031",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#002022",
+                        "on-secondary": "#412d00",
+                        "surface-container-low": "#1a1c20",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface": "#111317",
+                        "surface-container-highest": "#333539",
+                        "surface-bright": "#37393e",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006970",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-high": "#282a2e",
+                        "outline-variant": "#3b494b",
+                        "secondary-fixed-dim": "#ffba20",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "primary-container": "#00f0ff",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-on-surface": "#2f3035",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "on-primary-container": "#006970",
+                        "tertiary-container": "#dad9d9",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-tint": "#00dbe9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface": "#e2e2e8",
+                        "on-error": "#690005",
+                        "surface-variant": "#333539",
+                        "surface-dim": "#111317"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px",
+                        "unit": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .cyber-border {
+            border: 1px solid theme('colors.outline-variant');
+            position: relative;
+        }
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid theme('colors.primary');
+            border-left: 2px solid theme('colors.primary');
+        }
+        .gauge-circle {
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 1.5s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed antialiased h-screen overflow-hidden flex flex-col md:flex-row">
+<!-- TopAppBar (Web/Desktop specific layout handling) -->
+<header class="w-full top-0 sticky border-b border-outline-variant bg-surface dark:bg-surface flex justify-between items-center px-margin-mobile h-14 md:hidden z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary-fixed-dim">ROOF_TERMINAL_V1.0</h1>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform p-1 rounded">settings</span>
+</header>
+<!-- SideNav / NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex h-full w-80 fixed left-0 top-0 border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-low flex-col p-gutter z-40">
+<div class="mb-8 mt-2 flex items-center gap-3 px-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-2xl">terminal</span>
+<div class="font-headline-md text-headline-md text-primary">ROOF_TERMINAL</div>
+</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim mb-4 px-2 opacity-60">FACET_FILTERS</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 p-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">barcode_scanner</span>
+<span>Site ID</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span>Material Type</span>
+</a>
+<a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim rounded-r-DEFAULT duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Compliance</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Status</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4 px-2">
+<div class="font-label-caps text-label-caps text-on-surface-variant text-xs opacity-50">V1.0.4.882</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-80 overflow-y-auto h-full p-margin-mobile md:p-margin-desktop pb-24 md:pb-margin-desktop bg-background">
+<!-- Header Area -->
+<header class="mb-density-comfortable border-b border-outline-variant pb-density-compact">
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-unit">CERTIFICATE_OF_COMPLETION</h1>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Riverside Commons // #TV-88291</span>
+</div>
+</div>
+<div class="font-data-point text-data-point text-primary-fixed flex items-center gap-2 bg-surface-container-highest px-3 py-1 rounded-DEFAULT border border-outline-variant">
+<span class="material-symbols-outlined">verified_user</span>
+                    STATUS: APPROVED
+                </div>
+</div>
+</header>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-density-comfortable">
+<!-- Left Column: Ledger & Protocol -->
+<div class="lg:col-span-8 flex flex-col gap-density-comfortable">
+<!-- Validation Ledger -->
+<section class="cyber-border bg-surface-container-low p-gutter">
+<h2 class="font-label-caps text-label-caps text-primary-fixed-dim mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+                        [VALIDATION_LEDGER]
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-label-caps text-label-caps">
+<div class="bg-surface p-3 border border-outline-variant">
+<div class="text-on-surface-variant text-[10px] mb-1">HASH_ID</div>
+<div class="text-secondary-fixed break-all">0x8F2...A9B1</div>
+</div>
+<div class="bg-surface p-3 border border-outline-variant">
+<div class="text-on-surface-variant text-[10px] mb-1">VERIFIED_DATE</div>
+<div class="text-on-surface">2023.10.24 14:32Z</div>
+</div>
+<div class="bg-surface p-3 border border-outline-variant">
+<div class="text-on-surface-variant text-[10px] mb-1">ADJUSTER_ID</div>
+<div class="text-on-surface">SIG-499-AXL</div>
+</div>
+</div>
+</section>
+<!-- Protocol Adherence -->
+<section class="cyber-border bg-surface-container-low p-gutter flex-1">
+<h2 class="font-label-caps text-label-caps text-primary-fixed-dim mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">list_alt</span>
+                        [PROTOCOL_ADHERENCE]
+                    </h2>
+<div class="flex flex-col gap-2">
+<!-- Protocol Items -->
+<div class="flex justify-between items-center border-b border-surface-container-highest py-2">
+<span class="font-label-caps text-label-caps text-on-surface">STRUCTURAL_INTEGRITY</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-data-point text-data-point text-primary text-sm">OK</span>
+</div>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-highest py-2">
+<span class="font-label-caps text-label-caps text-on-surface">MATERIAL_VERIFICATION</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-data-point text-data-point text-primary text-sm">OK</span>
+</div>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-highest py-2">
+<span class="font-label-caps text-label-caps text-on-surface">SLOPE_TOLERANCE</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-data-point text-data-point text-primary text-sm">OK</span>
+</div>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-label-caps text-label-caps text-on-surface">FASTENER_DENSITY</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-data-point text-data-point text-primary text-sm">OK</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Gauge & Actions -->
+<div class="lg:col-span-4 flex flex-col gap-density-comfortable">
+<!-- Compliance Gauge -->
+<section class="cyber-border bg-surface-container-low p-gutter flex-1 flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full opacity-10" style="background-image: radial-gradient(circle at center, theme('colors.primary') 0%, transparent 70%);"></div>
+<h2 class="font-label-caps text-label-caps text-primary-fixed-dim absolute top-gutter left-gutter flex items-center gap-2 z-10">
+<span class="material-symbols-outlined text-sm">donut_large</span>
+                        [COMPLIANCE]
+                    </h2>
+<div class="relative w-48 h-48 mt-8 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 160 160">
+<!-- Background Circle -->
+<circle class="text-surface-container-highest" cx="80" cy="80" fill="none" r="70" stroke="currentColor" stroke-width="8"></circle>
+<!-- Progress Circle -->
+<circle class="text-primary gauge-circle" cx="80" cy="80" fill="none" r="70" stroke="currentColor" stroke-linecap="square" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary">98.4</span>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">%</span>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<section class="flex flex-col gap-3">
+<button class="w-full bg-primary-container text-on-primary-container hover:bg-primary-fixed hover:text-on-primary-fixed font-label-caps text-label-caps py-4 px-6 flex items-center justify-center gap-2 transition-colors border-b-4 border-inverse-primary rounded-sm active:translate-y-1 active:border-b-0">
+<span class="material-symbols-outlined">sync</span>
+                        [SYNC_TO_VAULT]
+                    </button>
+<button class="w-full bg-surface-container-high text-on-surface hover:bg-surface-container-highest border border-outline-variant font-label-caps text-label-caps py-3 px-6 flex items-center justify-center gap-2 transition-colors rounded-sm">
+<span class="material-symbols-outlined">download</span>
+                        [DOWNLOAD_PDF]
+                    </button>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-container-lowest flex justify-around items-center h-16 px-4">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all w-16">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">Terminal</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all w-16">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">Archive</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1 active:translate-y-0.5 transition-all w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">Queue</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all w-16">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">Map</span>
+</button>
+</nav>
+<script>
+        // Animate gauge on load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const gauge = document.querySelector('.gauge-circle');
+                if(gauge) {
+                    // 98.4% of 440 (circumference)
+                    const offset = 440 - (440 * 0.984);
+                    gauge.style.strokeDashoffset = offset;
+                }
+            }, 100);
+        });
+    </script>
+</body></html>

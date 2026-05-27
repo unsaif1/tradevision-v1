@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial Dashboard - TV-CARE COMMAND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#303031",
+                        "primary": "#dbfcff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "inverse-surface": "#e2e2e8",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-fixed": "#271900",
+                        "primary-container": "#00f0ff",
+                        "on-secondary": "#412d00",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container-high": "#282a2e",
+                        "secondary-fixed": "#ffdea8",
+                        "tertiary-container": "#dad9d9",
+                        "inverse-primary": "#006970",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary-fixed-dim": "#ffba20",
+                        "primary-fixed": "#7df4ff",
+                        "secondary": "#ffdb9d",
+                        "surface-variant": "#333539",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e",
+                        "background": "#111317",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary": "#f7f5f5",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-error": "#690005",
+                        "surface-dim": "#111317",
+                        "secondary-container": "#feb700",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface": "#111317",
+                        "on-primary-container": "#006970",
+                        "outline": "#849495",
+                        "surface-tint": "#00dbe9",
+                        "surface-container": "#1e2024",
+                        "on-background": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "on-tertiary-container": "#5e5f5f",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary": "#00363a",
+                        "outline-variant": "#3b494b",
+                        "neon-blue": "#00f0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .cyber-border {
+            border: 1px solid #2D2D2D;
+        }
+        .cyber-border-active {
+            border: 1px solid #dbfcff;
+            box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.1);
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-fixed antialiased pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 sticky top-0 z-40">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden cyber-border">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary tracking-tighter">TV-CARE COMMAND</h1>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-variant transition-colors duration-200 rounded">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+</header>
+<main class="p-margin-mobile flex flex-col gap-gutter max-w-lg mx-auto">
+<!-- Dashboard Header -->
+<div class="flex justify-between items-end mb-unit">
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-unit">Q3 FINANCIAL OVERVIEW</p>
+<h2 class="text-display-lg-mobile font-display-lg-mobile text-on-surface">Financials</h2>
+</div>
+<div class="flex items-center gap-unit text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
+<span class="text-label-caps font-label-caps">LIVE</span>
+</div>
+</div>
+<!-- Real-time Earnings Metrics (Bento Grid) -->
+<div class="grid grid-cols-2 gap-unit">
+<!-- Total Revenue -->
+<div class="col-span-2 bg-surface-container-high rounded-DEFAULT p-density-comfortable cyber-border relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-density-comfortable">
+<p class="text-label-caps font-label-caps text-on-surface-variant">TOTAL REVENUE (YTD)</p>
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="flex items-end gap-density-compact">
+<span class="text-display-lg-mobile font-display-lg-mobile text-primary">$1,248,500</span>
+<span class="text-label-caps font-label-caps text-primary-fixed-dim mb-2">+14.2%</span>
+</div>
+</div>
+<!-- Net Profit -->
+<div class="bg-surface-container-high rounded-DEFAULT p-margin-mobile cyber-border relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-container"></div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-density-compact">NET PROFIT</p>
+<span class="text-data-point font-data-point text-secondary-container block mb-unit">$218,400</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-label-caps font-label-caps">17.5% MARGIN</span>
+</div>
+</div>
+<!-- YTD Growth -->
+<div class="bg-surface-container-high rounded-DEFAULT p-margin-mobile cyber-border relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-error-container"></div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-density-compact">EXPENSES</p>
+<span class="text-data-point font-data-point text-error block mb-unit">$1,030,100</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span class="text-label-caps font-label-caps">+5% VS PY</span>
+</div>
+</div>
+</div>
+<!-- Revenue vs Expense Chart Placeholder -->
+<div class="bg-surface-container-high rounded-DEFAULT p-margin-mobile cyber-border mt-unit">
+<div class="flex justify-between items-center mb-density-comfortable">
+<p class="text-label-caps font-label-caps text-on-surface-variant">CASH FLOW DYNAMICS</p>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="bar_chart">bar_chart</span>
+</div>
+<div class="h-40 flex items-end justify-between gap-unit relative">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+<div class="w-full h-px bg-outline"></div>
+<div class="w-full h-px bg-outline"></div>
+<div class="w-full h-px bg-outline"></div>
+<div class="w-full h-px bg-outline"></div>
+</div>
+<!-- Bars (Mock Data) -->
+<div class="flex flex-col items-center gap-unit w-full z-10">
+<div class="w-full bg-primary h-[80%] rounded-t-sm opacity-80"></div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">APR</span>
+</div>
+<div class="flex flex-col items-center gap-unit w-full z-10">
+<div class="w-full bg-primary h-[60%] rounded-t-sm opacity-80"></div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">MAY</span>
+</div>
+<div class="flex flex-col items-center gap-unit w-full z-10">
+<div class="w-full bg-primary h-[90%] rounded-t-sm opacity-80"></div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">JUN</span>
+</div>
+<div class="flex flex-col items-center gap-unit w-full z-10">
+<div class="w-full bg-primary h-[75%] rounded-t-sm opacity-80"></div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">JUL</span>
+</div>
+<div class="flex flex-col items-center gap-unit w-full z-10">
+<div class="w-full bg-primary h-[100%] rounded-t-sm opacity-80 cyber-border-active"></div>
+<span class="text-label-caps font-label-caps text-primary">AUG</span>
+</div>
+</div>
+</div>
+<!-- Project Profitability List -->
+<div class="mt-unit">
+<div class="flex justify-between items-center mb-margin-mobile">
+<h3 class="text-headline-md font-headline-md text-on-surface">Project Profitability</h3>
+<button class="text-label-caps font-label-caps text-primary flex items-center gap-1">
+                    VIEW ALL <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="flex flex-col gap-unit">
+<!-- List Item 1 -->
+<div class="bg-surface-container rounded-DEFAULT p-density-compact flex justify-between items-center cyber-border relative">
+<div class="absolute left-0 top-0 h-full w-1 bg-primary rounded-l-DEFAULT"></div>
+<div class="pl-density-compact">
+<p class="text-body-fixed font-body-fixed font-bold text-on-surface">PRJ-882: Northwood Industrial</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">TPO SYSTEM • 450 SQ</p>
+</div>
+<div class="text-right">
+<p class="text-data-point font-data-point text-primary">24.2%</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">MARGIN</p>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="bg-surface-container rounded-DEFAULT p-density-compact flex justify-between items-center cyber-border relative">
+<div class="absolute left-0 top-0 h-full w-1 bg-secondary-container rounded-l-DEFAULT"></div>
+<div class="pl-density-compact">
+<p class="text-body-fixed font-body-fixed font-bold text-on-surface">PRJ-879: Riverside Retail</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">EPDM • 120 SQ</p>
+</div>
+<div class="text-right">
+<p class="text-data-point font-data-point text-secondary-container">18.5%</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">MARGIN</p>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="bg-surface-container rounded-DEFAULT p-density-compact flex justify-between items-center cyber-border relative">
+<div class="absolute left-0 top-0 h-full w-1 bg-error rounded-l-DEFAULT"></div>
+<div class="pl-density-compact">
+<p class="text-body-fixed font-body-fixed font-bold text-on-surface">PRJ-875: Oak St Residential</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">SHINGLE • 45 SQ</p>
+</div>
+<div class="text-right">
+<p class="text-data-point font-data-point text-error">8.1%</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">MARGIN</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-highest border-t border-outline-variant fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-label-sm font-label-sm mt-1 text-[10px]">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="text-label-sm font-label-sm mt-1 text-[10px]">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="photo_camera_back">photo_camera_back</span>
+<span class="text-label-sm font-label-sm mt-1 text-[10px]">Evidence</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-sm font-label-sm mt-1 text-[10px]">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 scale-95 transition-transform duration-150 cyber-border-active" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle" data-weight="fill">account_circle</span>
+<span class="text-label-sm font-label-sm mt-1 text-[10px] text-primary">Account</span>
+</a>
+</nav>
+</body></html>

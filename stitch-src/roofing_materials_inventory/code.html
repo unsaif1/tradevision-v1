@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Materials Inventory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-tertiary": "#303031",
+                      "background": "#111317",
+                      "primary-container": "#00f0ff",
+                      "on-secondary-fixed": "#271900",
+                      "surface-container": "#1e2024",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "inverse-surface": "#e2e2e8",
+                      "surface-container-lowest": "#0c0e12",
+                      "inverse-on-surface": "#2f3035",
+                      "secondary": "#ffdb9d",
+                      "surface-dim": "#111317",
+                      "error": "#ffb4ab",
+                      "tertiary": "#f7f5f5",
+                      "secondary-fixed": "#ffdea8",
+                      "outline": "#849495",
+                      "on-surface-variant": "#b9cacb",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-secondary-container": "#6b4b00",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-primary-container": "#006970",
+                      "on-error": "#690005",
+                      "on-background": "#e2e2e8",
+                      "inverse-primary": "#006970",
+                      "on-secondary": "#412d00",
+                      "primary": "#dbfcff",
+                      "surface-tint": "#00dbe9",
+                      "secondary-container": "#feb700",
+                      "surface-variant": "#333539",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#37393e",
+                      "outline-variant": "#3b494b",
+                      "on-surface": "#e2e2e8",
+                      "surface-container-high": "#282a2e",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-primary": "#00363a",
+                      "on-primary-fixed-variant": "#004f54",
+                      "surface-container-low": "#1a1c20",
+                      "surface": "#111317",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "on-tertiary-container": "#5e5f5f",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "tertiary-container": "#dad9d9",
+                      "surface-container-highest": "#333539",
+                      "on-primary-fixed": "#002022",
+                      "primary-fixed": "#7df4ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "density-comfortable": "24px",
+                      "unit": "4px",
+                      "margin-desktop": "32px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Space Grotesk"],
+                      "body-fixed": ["Inter"],
+                      "label-caps": ["JetBrains Mono"],
+                      "headline-md": ["Space Grotesk"],
+                      "data-point": ["JetBrains Mono"],
+                      "display-lg-mobile": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111317; /* bg-surface */
+            color: #e2e2e8; /* text-on-surface */
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+        
+        /* Custom scrollbar for horizontal filter list */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col md:hidden">
+<!-- TopAppBar Shell Component -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-headline-md text-headline-md uppercase tracking-widest fixed top-0 w-full z-50 border-b border-outline-variant flat no-shadows flex items-center justify-between px-margin-mobile h-16 w-full pt-safe">
+<div class="flex items-center gap-gutter">
+<button class="hover:bg-surface-container-highest active:opacity-80 transition-opacity p-2 -ml-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+<h1 class="font-label-caps text-label-caps font-bold text-primary dark:text-primary m-0">ROOF_COMMAND</h1>
+</div>
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 mb-20 px-margin-mobile py-density-comfortable flex flex-col gap-gutter overflow-y-auto">
+<!-- Header & Search -->
+<div class="flex flex-col gap-density-compact">
+<h2 class="font-headline-md text-headline-md text-on-surface">INVENTORY</h2>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant z-10" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded pl-10 pr-4 py-3 font-label-caps text-label-caps text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="SEARCH SKU OR MATERIAL" type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+</button>
+</div>
+</div>
+<!-- Filter Categories (Horizontal Scroll) -->
+<div class="flex gap-density-compact overflow-x-auto no-scrollbar py-1 -mx-margin-mobile px-margin-mobile">
+<button class="whitespace-nowrap px-4 py-2 border border-primary bg-primary/10 text-primary font-label-caps text-label-caps rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="layers">layers</span>
+                MEMBRANES
+            </button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant bg-surface-container text-on-surface-variant font-label-caps text-label-caps rounded flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]" data-icon="format_shapes">format_shapes</span>
+                INSULATION
+            </button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant bg-surface-container text-on-surface-variant font-label-caps text-label-caps rounded flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]" data-icon="hardware">hardware</span>
+                FASTENERS
+            </button>
+<button class="whitespace-nowrap px-4 py-2 border border-outline-variant bg-surface-container text-on-surface-variant font-label-caps text-label-caps rounded flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]" data-icon="construction">construction</span>
+                ACCESSORIES
+            </button>
+</div>
+<!-- Inventory List (High Density) -->
+<div class="flex flex-col gap-[2px] mt-2">
+<!-- Item: In Stock -->
+<div class="bg-surface-container-low border border-[#2D2D2D] rounded relative overflow-hidden flex flex-col p-3 gap-2">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start pl-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary tracking-wider">SKU: TPO-60-W</span>
+<span class="font-body-fixed text-body-fixed text-on-surface mt-1">60 Mil TPO Membrane (White)</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-point text-data-point text-on-surface">42</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">ROLLS</span>
+</div>
+</div>
+<div class="flex justify-between items-center pl-2 pt-2 border-t border-outline-variant/30 mt-1">
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-container px-2 py-1 rounded">WH-A-12</span>
+<span class="font-label-caps text-label-caps text-primary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span> IN STOCK
+                    </span>
+</div>
+</div>
+<!-- Item: Low Stock -->
+<div class="bg-surface-container-low border border-[#2D2D2D] rounded relative overflow-hidden flex flex-col p-3 gap-2">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div>
+<div class="flex justify-between items-start pl-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-secondary-container tracking-wider">SKU: EPDM-45-B</span>
+<span class="font-body-fixed text-body-fixed text-on-surface mt-1">45 Mil EPDM Membrane (Black)</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-point text-data-point text-secondary-container">08</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">ROLLS</span>
+</div>
+</div>
+<div class="flex justify-between items-center pl-2 pt-2 border-t border-outline-variant/30 mt-1">
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-container px-2 py-1 rounded">WH-B-04</span>
+<span class="font-label-caps text-label-caps text-secondary-container flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container inline-block"></span> LOW STOCK
+                    </span>
+</div>
+</div>
+<!-- Item: Out of Stock -->
+<div class="bg-surface-container-low border border-[#2D2D2D] rounded relative overflow-hidden flex flex-col p-3 gap-2 opacity-75">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start pl-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-error tracking-wider">SKU: PVC-50-G</span>
+<span class="font-body-fixed text-body-fixed text-on-surface mt-1 line-through text-on-surface-variant">50 Mil PVC Membrane (Grey)</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-point text-data-point text-error">00</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">ROLLS</span>
+</div>
+</div>
+<div class="flex justify-between items-center pl-2 pt-2 border-t border-outline-variant/30 mt-1">
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-container px-2 py-1 rounded">WH-A-15</span>
+<span class="font-label-caps text-label-caps text-error flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error inline-block"></span> DEPLETED
+                    </span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell Component -->
+<nav class="bg-surface-container dark:bg-surface-container text-primary dark:text-primary font-label-caps text-label-caps fixed bottom-0 w-full z-50 border-t border-outline-variant flat no-shadows flex justify-around items-center w-full h-20 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant h-full w-full opacity-60 hover:bg-surface-container-highest active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span>COMMAND</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant h-full w-full opacity-60 hover:bg-surface-container-highest active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined mb-1" data-icon="construction">construction</span>
+<span>JOBS</span>
+</button>
+<!-- Assuming 'INSPECT' or similar intent is active for Inventory, mapping loosely -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container h-full w-full border-t-2 border-primary hover:bg-surface-container-highest active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined mb-1" data-icon="architecture" data-weight="fill" style="font-variation-settings: 'FILL' 1;">architecture</span>
+<span>INSPECT</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant h-full w-full opacity-60 hover:bg-surface-container-highest active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined mb-1" data-icon="photo_camera">photo_camera</span>
+<span>EVIDENCE</span>
+</button>
+</nav>
+</body></html>

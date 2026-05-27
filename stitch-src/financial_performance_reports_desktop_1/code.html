@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roof Finance Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#282a2e",
+                      "inverse-primary": "#006970",
+                      "surface": "#111317",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary": "#303031",
+                      "on-primary-fixed": "#002022",
+                      "inverse-on-surface": "#2f3035",
+                      "primary": "#dbfcff",
+                      "on-primary": "#00363a",
+                      "surface-bright": "#37393e",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "secondary-container": "#feb700",
+                      "on-tertiary-container": "#5e5f5f",
+                      "on-secondary-container": "#6b4b00",
+                      "surface-tint": "#00dbe9",
+                      "primary-fixed": "#7df4ff",
+                      "surface-variant": "#333539",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-primary-container": "#006970",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#ffba20",
+                      "secondary": "#ffdb9d",
+                      "tertiary-container": "#dad9d9",
+                      "background": "#111317",
+                      "surface-dim": "#111317",
+                      "on-secondary-fixed": "#271900",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#333539",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-surface-variant": "#b9cacb",
+                      "outline": "#849495",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-surface": "#e2e2e8",
+                      "outline-variant": "#3b494b",
+                      "on-secondary": "#412d00",
+                      "inverse-surface": "#e2e2e8",
+                      "on-background": "#e2e2e8",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "surface-container-low": "#1a1c20",
+                      "error-container": "#93000a",
+                      "primary-container": "#00f0ff",
+                      "on-error": "#690005",
+                      "tertiary": "#f7f5f5",
+                      "surface-container": "#1e2024"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "density-compact": "8px",
+                      "density-comfortable": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { background-color: #111317; color: #e2e2e8; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed antialiased h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="flex flex-col h-full fixed left-0 top-0 py-density-comfortable bg-surface-container-low h-screen w-64 border-r border-outline-variant z-40 hidden md:flex">
+<div class="px-margin-desktop mb-density-comfortable">
+<h1 class="font-headline-md text-headline-md text-primary uppercase">STRUC_DATA</h1>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant">Precision Reporting</p>
+</div>
+<div class="flex-grow">
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-density-compact px-margin-desktop py-density-compact border-l-4 border-primary bg-surface-container-high text-primary font-bold hover:bg-surface-container-highest hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined filled-icon">dashboard</span>
+<span class="font-label-caps text-label-caps">Overview</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-density-compact px-margin-desktop py-density-compact border-l-4 border-transparent text-on-surface-variant font-medium hover:bg-surface-container-highest hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-density-compact px-margin-desktop py-density-compact border-l-4 border-transparent text-on-surface-variant font-medium hover:bg-surface-container-highest hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps">Expenses</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-density-compact px-margin-desktop py-density-compact border-l-4 border-transparent text-on-surface-variant font-medium hover:bg-surface-container-highest hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-caps text-label-caps">Forecasts</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="px-margin-desktop mt-auto">
+<button class="w-full py-density-compact border border-outline-variant bg-surface text-primary font-label-caps text-label-caps uppercase hover:bg-surface-container-high transition-colors mb-density-comfortable">Export Audit</button>
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-density-compact py-density-compact text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-density-compact py-density-compact text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps text-label-caps">Archive</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin-desktop sticky top-0 z-50 w-full h-16 border-b border-outline-variant bg-surface">
+<div class="flex items-center gap-density-comfortable">
+<span class="font-display-lg text-display-lg text-primary tracking-tighter">ROOF_FINANCE_v1</span>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-density-compact top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-outline-variant text-on-surface font-body-fixed text-body-fixed pl-10 pr-4 py-1 rounded-none focus:border-primary focus:ring-0 w-64 placeholder:text-on-surface-variant" placeholder="Search Data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<button class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-density-compact">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high p-density-compact">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Chief Financial Officer Profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPrCX_nHcSgbly8V7tP1af40K2Q0oNMuTyxKLmJlpaaAze6Xr4XMmB1GCuP5Bv9gBGpGZ0fMTB5z-Cu4VXBJwRGHulzTzkBImhkxEZ42nGII_usPIECcdTh2VCVIIrQVt1biog0TyRLiNvAfzvjAyRpq9ksUs7pPtTrOWeDROFMjgoCtGnC-7mgHFkNGM0T7B_EbrpBMZ_flqKVg5isTXMY7BGD6FJ0Ec1LVVi01CHTFcMUARU9M0KdJb13XF4LMfGL6T03uJdZNIY"/>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-desktop grid grid-cols-12 gap-gutter bg-background">
+<!-- Left Pane: Revenue Matrix -->
+<section class="col-span-12 lg:col-span-3 flex flex-col gap-gutter">
+<div class="border border-outline-variant bg-surface-container-low p-density-comfortable relative">
+<div class="absolute top-0 left-0 bg-surface-variant border-b border-r border-outline-variant px-density-compact py-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Matrix</span>
+</div>
+<div class="mt-density-comfortable">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-unit">YTD Revenue</h2>
+<div class="font-data-point text-display-lg text-primary-container">$1.24M</div>
+<div class="flex items-center gap-unit text-secondary-fixed mt-density-compact">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span class="font-label-caps text-label-caps">14.2% VS LY</span>
+</div>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-low p-density-comfortable relative flex-1">
+<div class="absolute top-0 left-0 bg-surface-variant border-b border-r border-outline-variant px-density-compact py-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Margin Trends</span>
+</div>
+<div class="mt-density-comfortable h-full flex flex-col justify-end">
+<!-- Simulated Chart Area -->
+<div class="h-32 w-full border-b border-l border-outline-variant relative flex items-end pt-density-compact px-unit gap-unit">
+<!-- Bars representing data -->
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors h-[40%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 font-label-caps text-label-caps text-primary opacity-0 group-hover:opacity-100">Q1</div></div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors h-[55%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 font-label-caps text-label-caps text-primary opacity-0 group-hover:opacity-100">Q2</div></div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors h-[45%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 font-label-caps text-label-caps text-primary opacity-0 group-hover:opacity-100">Q3</div></div>
+<div class="flex-1 bg-primary-container h-[80%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 font-label-caps text-label-caps text-primary">Q4</div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Pane: High-Yield Projects -->
+<section class="col-span-12 lg:col-span-6 flex flex-col border border-outline-variant bg-surface-container-low relative">
+<div class="absolute top-0 left-0 bg-surface-variant border-b border-r border-outline-variant px-density-compact py-unit z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">High-Yield Active</span>
+</div>
+<div class="mt-density-comfortable p-density-comfortable flex-1 overflow-y-auto">
+<div class="flex flex-col gap-unit">
+<!-- Project Card 1 -->
+<div class="border border-outline-variant bg-surface p-density-compact flex items-center justify-between hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-density-comfortable">
+<div class="w-1 h-12 bg-primary-container"></div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px]">Oakhaven Commercial</h3>
+<div class="flex gap-density-compact mt-unit">
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] uppercase">TPO</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] uppercase">240 SQ</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-point text-data-point text-primary-container">34.2%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Est Margin</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="border border-outline-variant bg-surface p-density-compact flex items-center justify-between hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-density-comfortable">
+<div class="w-1 h-12 bg-secondary-container"></div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px]">Ridgeview Estates</h3>
+<div class="flex gap-density-compact mt-unit">
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] uppercase">SHINGLE</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] uppercase">85 SQ</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-point text-data-point text-on-surface">28.5%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Est Margin</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Operational Burn Rate -->
+<section class="col-span-12 lg:col-span-3 flex flex-col gap-gutter border border-outline-variant bg-surface-container-low p-density-comfortable relative">
+<div class="absolute top-0 left-0 bg-surface-variant border-b border-r border-outline-variant px-density-compact py-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Burn Rate</span>
+</div>
+<div class="mt-density-comfortable flex flex-col gap-density-comfortable">
+<div>
+<div class="flex justify-between items-end mb-unit">
+<span class="font-label-caps text-label-caps text-on-surface">FLEET</span>
+<span class="font-data-point text-[14px] text-error">85%</span>
+</div>
+<div class="w-full bg-surface-variant h-2">
+<div class="bg-error h-2 w-[85%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-unit">
+<span class="font-label-caps text-label-caps text-on-surface">EQUIPMENT</span>
+<span class="font-data-point text-[14px] text-secondary-fixed">62%</span>
+</div>
+<div class="w-full bg-surface-variant h-2">
+<div class="bg-secondary-fixed h-2 w-[62%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-unit">
+<span class="font-label-caps text-label-caps text-on-surface">MATERIALS</span>
+<span class="font-data-point text-[14px] text-primary-container">40%</span>
+</div>
+<div class="w-full bg-surface-variant h-2">
+<div class="bg-primary-container h-2 w-[40%]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

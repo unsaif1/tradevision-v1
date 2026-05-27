@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Evidence Log</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#fffcff",
+                        "surface-container-low": "#171c22",
+                        "primary": "#ffb2b9",
+                        "on-secondary": "#29313c",
+                        "tertiary-container": "#00855e",
+                        "surface-dim": "#0f141a",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#003826",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "outline-variant": "#5c3f42",
+                        "primary-fixed": "#ffdadb",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#72daad",
+                        "surface-variant": "#30353c",
+                        "outline": "#ab888a",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#8ff7c7",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "inverse-surface": "#dee3eb",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "inverse-on-surface": "#2c3137",
+                        "on-tertiary-container": "#f5fff7",
+                        "on-background": "#dee3eb",
+                        "surface-container-highest": "#30353c",
+                        "on-tertiary-fixed": "#002114",
+                        "on-surface": "#dee3eb",
+                        "surface": "#0f141a",
+                        "secondary-container": "#3f4753",
+                        "primary-container": "#e21e51",
+                        "surface-bright": "#353a40",
+                        "on-secondary-container": "#aeb6c3",
+                        "secondary-fixed": "#dbe3f1",
+                        "on-secondary-fixed": "#141c26",
+                        "tertiary-fixed-dim": "#72daad",
+                        "secondary": "#bfc7d5",
+                        "background": "#0f141a",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-primary": "#67001e",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container-lowest": "#0a0f14",
+                        "surface-container-high": "#252a31",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-error": "#690005",
+                        "inverse-primary": "#be003e",
+                        "on-primary-fixed": "#40000f",
+                        "surface-container": "#1b2026"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "sidebar_width": "260px",
+                        "header_height": "64px",
+                        "grid_columns": "12",
+                        "margin": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Barlow Condensed"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "label-caps": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for deep tech theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e21e51; 
+        }
+        
+        .kinetic-border-active:focus-within {
+            border-bottom-color: #e21e51;
+            box-shadow: 0 1px 0 0 #e21e51;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Web & Mobile Shell Anchor) -->
+<header class="bg-surface dark:bg-surface border-b border-surface-variant flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto docked full-width top-0 z-50 flat no shadows">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-2xl" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</span>
+</div>
+<!-- Desktop Navigation Cluster (Responsive Pivot) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-2 font-label-caps text-label-caps tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                Command
+            </a>
+<a class="text-primary-container dark:text-primary-fixed font-bold flex items-center gap-2 font-label-caps text-label-caps tracking-wider relative after:content-[''] after:absolute after:-bottom-[22px] after:left-0 after:w-full after:h-[2px] after:bg-primary-container" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">location_city</span>
+                Projects
+            </a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-2 font-label-caps text-label-caps tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">assignment_late</span>
+                Claims
+            </a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-2 font-label-caps text-label-caps tracking-wider" href="#">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+                Alerts
+            </a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-high border border-surface-variant hover:bg-surface-bright/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface text-[18px]" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-[1440px] mx-auto px-6 md:px-margin py-8 mb-20 md:mb-0">
+<!-- Page Header & Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h1 class="font-display-md text-display-md text-on-surface tracking-tight mb-2 uppercase">Evidence Log</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Active project field submissions and documentation.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<!-- Search Component -->
+<div class="relative w-full sm:w-64 kinetic-border-active border-b border-surface-variant transition-all bg-surface-container-low rounded-t-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-transparent border-none pl-10 pr-3 py-2 text-on-surface font-mono-data text-mono-data focus:ring-0 placeholder:text-surface-variant" placeholder="Search projects, ID..." type="text"/>
+</div>
+<!-- Filter Component -->
+<div class="relative w-full sm:w-48 kinetic-border-active border-b border-surface-variant transition-all bg-surface-container-low rounded-t-sm flex items-center">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">filter_list</span>
+<select class="w-full bg-transparent border-none pl-10 pr-8 py-2 text-on-surface font-mono-data text-mono-data focus:ring-0 appearance-none cursor-pointer">
+<option class="bg-surface-container text-on-surface" value="all">All Statuses</option>
+<option class="bg-surface-container text-on-surface" value="verified">Verified</option>
+<option class="bg-surface-container text-on-surface" value="pending">Pending</option>
+<option class="bg-surface-container text-on-surface" value="flagged">Flagged</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- High-Density Data Grid -->
+<div class="flex flex-col gap-unit">
+<!-- Grid Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-2 border-b border-surface-variant text-on-surface-variant font-label-caps text-label-caps uppercase tracking-widest hidden md:grid"><div class="col-span-3">Project &amp; ID</div>
+<div class="col-span-2">Status</div>
+<div class="col-span-2">Activity</div>
+<div class="col-span-1 text-right">Count</div>
+<div class="col-span-2 text-right pr-4">Timestamp</div>
+<div class="col-span-2 text-right">Action</div></div>
+<!-- Data Row 1 (Verified) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-4 py-2 items-center bg-surface-container-low border border-surface-variant rounded-none hover:bg-surface-bright/5 transition-colors group border-l-2 border-l-tertiary">
+<div class="md:col-span-3 flex flex-col justify-center">
+<span class="font-headline-sm text-[18px] text-on-surface truncate">Sector 7 Pipeline Retrofit</span>
+<span class="font-mono-data text-[11px] text-primary tracking-tighter uppercase opacity-80">PRJ-2094-A</span>
+</div>
+<div class="md:col-span-2 flex items-center">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-none bg-tertiary-container/20 border border-tertiary/40 text-tertiary font-label-caps text-[9px] uppercase tracking-tighter">
+<span class="w-1 h-1 bg-tertiary shadow-[0_0_4px_currentColor]"></span>
+            Verified
+        </span>
+</div>
+<div class="md:col-span-2 flex items-center gap-1">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-3 bg-tertiary/60"></span>
+<span class="w-1.5 h-3 bg-tertiary/60"></span>
+<span class="w-1.5 h-3 bg-tertiary/20"></span>
+<span class="w-1.5 h-3 bg-tertiary/60"></span>
+<span class="w-1.5 h-3 bg-tertiary/80 shadow-[0_0_4px_#72daad]"></span>
+</div>
+<span class="font-label-caps text-[9px] text-on-surface-variant ml-1">TREND</span>
+</div>
+<div class="md:col-span-1 flex md:justify-end items-center gap-1.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">folder_data</span>
+<span class="font-mono-data text-mono-data text-on-surface">142</span>
+</div>
+<div class="md:col-span-2 flex flex-col justify-center text-right md:pr-4">
+<span class="font-mono-data text-[11px] text-on-surface-variant">2023-10-24</span>
+<span class="font-mono-data text-[9px] text-surface-variant uppercase">14:32 UTC</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="border border-primary-container text-primary-container hover:bg-primary-container hover:text-on-primary-container px-3 py-1 text-[10px] font-label-caps uppercase tracking-widest transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">add</span>
+            Evidence
+        </button>
+</div>
+</div>
+<!-- Data Row 2 (Flagged) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-4 py-2 items-center bg-surface-container-low border border-error-container/50 rounded-none hover:bg-surface-bright/5 transition-colors group relative border-l-2 border-l-error">
+<div class="md:col-span-3 flex flex-col justify-center pl-1">
+<span class="font-headline-sm text-[18px] text-on-surface truncate">Nexus Array Foundation</span>
+<span class="font-mono-data text-[11px] text-error tracking-tighter uppercase opacity-80">PRJ-8821-C</span>
+</div>
+<div class="md:col-span-2 flex items-center">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-none bg-error-container/20 border border-error/40 text-error font-label-caps text-[9px] uppercase tracking-tighter animate-pulse">
+<span class="w-1 h-1 bg-error"></span>
+            Flagged
+        </span>
+</div>
+<div class="md:col-span-2 flex items-center gap-1">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-3 bg-error/40"></span>
+<span class="w-1.5 h-3 bg-error/60"></span>
+<span class="w-1.5 h-3 bg-error/80"></span>
+<span class="w-1.5 h-3 bg-error/20"></span>
+<span class="w-1.5 h-3 bg-error shadow-[0_0_4px_#ffb4ab]"></span>
+</div>
+<span class="font-label-caps text-[9px] text-on-surface-variant ml-1">TREND</span>
+</div>
+<div class="md:col-span-1 flex md:justify-end items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-[14px]">warning</span>
+<span class="font-mono-data text-mono-data text-error">87</span>
+</div>
+<div class="md:col-span-2 flex flex-col justify-center text-right md:pr-4">
+<span class="font-mono-data text-[11px] text-on-surface-variant">2023-10-23</span>
+<span class="font-mono-data text-[9px] text-surface-variant uppercase">09:15 UTC</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="border border-error text-error hover:bg-error hover:text-on-error px-3 py-1 text-[10px] font-label-caps uppercase tracking-widest transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">add</span>
+            Evidence
+        </button>
+</div>
+</div>
+<!-- Data Row 3 (Pending) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-4 py-2 items-center bg-surface-container-low border border-surface-variant rounded-none hover:bg-surface-bright/5 transition-colors group border-l-2 border-l-outline">
+<div class="md:col-span-3 flex flex-col justify-center">
+<span class="font-headline-sm text-[18px] text-on-surface truncate">Orbital Dock Repair</span>
+<span class="font-mono-data text-[11px] text-on-surface-variant tracking-tighter uppercase opacity-80">PRJ-104-X</span>
+</div>
+<div class="md:col-span-2 flex items-center">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-none bg-surface-variant/20 border border-outline/40 text-on-surface-variant font-label-caps text-[9px] uppercase tracking-tighter">
+<span class="w-1 h-1 bg-outline"></span>
+            Pending
+        </span>
+</div>
+<div class="md:col-span-2 flex items-center gap-1">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-3 bg-outline/20"></span>
+<span class="w-1.5 h-3 bg-outline/40"></span>
+<span class="w-1.5 h-3 bg-outline/20"></span>
+<span class="w-1.5 h-3 bg-outline/30"></span>
+<span class="w-1.5 h-3 bg-outline/20"></span>
+</div>
+<span class="font-label-caps text-[9px] text-on-surface-variant ml-1">TREND</span>
+</div>
+<div class="md:col-span-1 flex md:justify-end items-center gap-1.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">folder_data</span>
+<span class="font-mono-data text-mono-data text-on-surface">12</span>
+</div>
+<div class="md:col-span-2 flex flex-col justify-center text-right md:pr-4">
+<span class="font-mono-data text-[11px] text-on-surface-variant">2023-10-25</span>
+<span class="font-mono-data text-[9px] text-surface-variant uppercase">11:05 UTC</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="border border-primary-container text-primary-container hover:bg-primary-container hover:text-on-primary-container px-3 py-1 text-[10px] font-label-caps uppercase tracking-widest transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">add</span>
+            Evidence
+        </button>
+</div>
+</div>
+<!-- Data Row 4 (Verified) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-4 py-2 items-center bg-surface-container-low border border-surface-variant rounded-none hover:bg-surface-bright/5 transition-colors group border-l-2 border-l-tertiary">
+<div class="md:col-span-3 flex flex-col justify-center">
+<span class="font-headline-sm text-[18px] text-on-surface truncate">Cryo-Storage Facility C</span>
+<span class="font-mono-data text-[11px] text-primary tracking-tighter uppercase opacity-80">PRJ-5532-B</span>
+</div>
+<div class="md:col-span-2 flex items-center">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-none bg-tertiary-container/20 border border-tertiary/40 text-tertiary font-label-caps text-[9px] uppercase tracking-tighter">
+<span class="w-1 h-1 bg-tertiary shadow-[0_0_4px_currentColor]"></span>
+            Verified
+        </span>
+</div>
+<div class="md:col-span-2 flex items-center gap-1">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-3 bg-tertiary/60"></span>
+<span class="w-1.5 h-3 bg-tertiary/80"></span>
+<span class="w-1.5 h-3 bg-tertiary/60"></span>
+<span class="w-1.5 h-3 bg-tertiary/80"></span>
+<span class="w-1.5 h-3 bg-tertiary shadow-[0_0_4px_#72daad]"></span>
+</div>
+<span class="font-label-caps text-[9px] text-on-surface-variant ml-1">TREND</span>
+</div>
+<div class="md:col-span-1 flex md:justify-end items-center gap-1.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">folder_data</span>
+<span class="font-mono-data text-mono-data text-on-surface">305</span>
+</div>
+<div class="md:col-span-2 flex flex-col justify-center text-right md:pr-4">
+<span class="font-mono-data text-[11px] text-on-surface-variant">2023-10-20</span>
+<span class="font-mono-data text-[9px] text-surface-variant uppercase">08:45 UTC</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="border border-outline text-on-surface hover:border-primary-container hover:text-primary-container px-3 py-1 text-[10px] font-label-caps uppercase tracking-widest transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">add</span>
+            Evidence
+        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only Pivot) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 flex justify-around items-center px-6 py-3 bg-surface-container-high border-t border-border-subtle shadow-lg z-50">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-label-caps text-[10px] tracking-wider uppercase">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all Active: translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">location_city</span>
+<span class="font-label-caps text-[10px] tracking-wider uppercase">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">assignment_late</span>
+<span class="font-label-caps text-[10px] tracking-wider uppercase">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">notifications_active</span>
+<span class="font-label-caps text-[10px] tracking-wider uppercase">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">person</span>
+<span class="font-label-caps text-[10px] tracking-wider uppercase">Account</span>
+</a>
+</nav>
+</body></html>

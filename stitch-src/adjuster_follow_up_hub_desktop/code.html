@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adjuster Follow-Up Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#333539",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "surface-tint": "#00dbe9",
+                        "on-secondary": "#412d00",
+                        "tertiary": "#f7f5f5",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary-container": "#006970",
+                        "on-background": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary-container": "#dad9d9",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006970",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0c0e12",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#303031",
+                        "surface-container": "#1e2024",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-high": "#282a2e",
+                        "background": "#111317",
+                        "on-primary": "#00363a",
+                        "secondary-container": "#feb700",
+                        "inverse-on-surface": "#2f3035",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed": "#ffdea8",
+                        "surface-bright": "#37393e",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface-variant": "#b9cacb",
+                        "on-surface": "#e2e2e8",
+                        "surface": "#111317",
+                        "primary": "#dbfcff",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-container": "#6b4b00",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "primary-container": "#00f0ff",
+                        "surface-variant": "#333539",
+                        "secondary": "#ffdb9d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container h-screen overflow-hidden flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-surface-container dark:bg-surface-container text-primary dark:text-primary fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant flex flex-col h-screen overflow-y-auto z-40 hidden md:flex">
+<!-- Header -->
+<div class="px-6 py-8">
+<h1 class="font-display-md text-display-md font-bold text-primary dark:text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">C.A.R.E. Command</p>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col flex-1 py-4 space-y-1">
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</li>
+</ul>
+<!-- User Profile Area -->
+<div class="p-6 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-3">
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full border border-outline-variant" data-alt="A portrait of a male professional wearing glasses in a modern office environment. High contrast lighting with a cool color palette. Cyber-industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7SlSzDVzgNCgvRu_Y89wQwEJa06rSx1a5tYh1bGwVk6Bem2uQ5tlVlx0mnTRDdGeHaT505687j6UqjWpAQoSPl2LlZTQ6lXuDxgSYupDlMOc-ge4feWIk2aTTpr99W_298pDD_pv-ps48CjXCb7gVjKZL2G5y_oYmH_fBofc-tuwNkPlKvNiZjrD9C5jp2y1rv5JaZM0isD_5qtY9fKakQod2vXLT6oM8jrFdMOsOL91iJToe6AeGhxjPKoQjzI968AsbMBQ6-oEM"/>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface">SYS.ADMIN</div>
+<div class="text-xs font-mono text-on-surface-variant">ID: 49201</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[260px] flex flex-col min-w-0">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary fixed top-0 right-0 left-[260px] h-[64px] z-30 border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin-desktop w-[calc(100%-260px)]">
+<div class="flex items-center gap-4">
+<h2 class="font-display-md text-display-md font-semibold text-on-surface dark:text-on-surface">TradeVision C.A.R.E.</h2>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">ADJUSTER FOLLOW-UP HUB</span>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="bg-surface-container-high border border-outline-variant rounded pl-10 pr-4 py-1.5 text-sm font-data-point text-on-surface focus:ring-1 focus:ring-primary focus:outline-none transition-all w-64 placeholder:text-on-surface-variant/50" placeholder="Search ID..." type="text"/>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none transition-all rounded">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none transition-all rounded">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">apps</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none transition-all rounded">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 mt-[64px] overflow-hidden flex">
+<!-- Left Side: Data Grid -->
+<div class="flex-1 flex flex-col p-6 overflow-y-auto custom-scrollbar">
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Pending Oversight</h3>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mt-1">Require immediate communication action.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-caps text-label-caps text-on-surface hover:border-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> FILTER
+                        </button>
+<button class="px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-caps text-label-caps text-on-surface hover:border-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">sort</span> SORT
+                        </button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="border border-outline-variant bg-surface-container rounded-sm overflow-hidden flex-1 flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 bg-surface-container-highest border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant">
+<div class="col-span-2">CLAIM ID</div>
+<div class="col-span-3">POLICY OWNER</div>
+<div class="col-span-2">LAST CONTACT</div>
+<div class="col-span-3">STATUS</div>
+<div class="col-span-2 text-right">ACTION</div>
+</div>
+<!-- Table Body (Scrollable) -->
+<div class="flex-1 overflow-y-auto">
+<!-- Row 1: Overdue -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant items-center hover:bg-surface-container-highest transition-colors group cursor-pointer border-l-4 border-l-error">
+<div class="col-span-2 font-data-point text-data-point text-primary">CLM-8492</div>
+<div class="col-span-3">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold">Sarah Jenkins</div>
+<div class="text-xs text-on-surface-variant">Res: 1240 SQ FT</div>
+</div>
+<div class="col-span-2 font-data-point text-sm text-on-surface-variant">48h AGO</div>
+<div class="col-span-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-caps text-label-caps text-error">OVERDUE</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="p-1 rounded hover:bg-surface text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Left on Read -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant items-center hover:bg-surface-container-highest transition-colors group cursor-pointer border-l-4 border-l-secondary-container">
+<div class="col-span-2 font-data-point text-data-point text-primary">CLM-7721</div>
+<div class="col-span-3">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold">Marcus Vance</div>
+<div class="text-xs text-on-surface-variant">Com: 8500 SQ FT</div>
+</div>
+<div class="col-span-2 font-data-point text-sm text-on-surface-variant">12h AGO</div>
+<div class="col-span-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label-caps text-label-caps text-secondary-container">LEFT ON READ</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="p-1 rounded hover:bg-surface text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Row 3: Pending Review -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant items-center hover:bg-surface-container-highest transition-colors group cursor-pointer border-l-4 border-l-primary-container bg-surface-container-highest">
+<div class="col-span-2 font-data-point text-data-point text-primary">CLM-9102</div>
+<div class="col-span-3">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold">Elena Rostova</div>
+<div class="text-xs text-on-surface-variant">Res: 2100 SQ FT</div>
+</div>
+<div class="col-span-2 font-data-point text-sm text-on-surface-variant">2h AGO</div>
+<div class="col-span-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-primary-container">PENDING REVIEW</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="p-1 rounded hover:bg-surface text-on-surface-variant text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Communication Uplink -->
+<div class="w-[400px] bg-surface-container-low border-l border-outline-variant flex flex-col shadow-[-4px_0_12px_rgba(0,0,0,0.5)]">
+<!-- Panel Header -->
+<div class="p-4 border-b border-outline-variant flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">satellite_alt</span>
+<h3 class="font-label-caps text-label-caps text-on-surface tracking-wider">COMMUNICATION UPLINK</h3>
+</div>
+<!-- Active Context Summary -->
+<div class="p-4 border-b border-outline-variant bg-surface">
+<div class="flex justify-between items-start mb-2">
+<div class="font-data-point text-data-point text-primary">CLM-9102</div>
+<div class="px-2 py-0.5 border border-primary-container text-primary-container font-label-caps text-[10px] rounded">ACTIVE</div>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface mb-2">Elena Rostova</div>
+<div class="grid grid-cols-2 gap-2 mt-4">
+<div class="p-2 border border-outline-variant rounded bg-surface-container text-center">
+<div class="font-label-caps text-[10px] text-on-surface-variant mb-1">EST. DAMAGE</div>
+<div class="font-data-point text-sm text-on-surface">$14,500</div>
+</div>
+<div class="p-2 border border-outline-variant rounded bg-surface-container text-center">
+<div class="font-label-caps text-[10px] text-on-surface-variant mb-1">MATERIAL</div>
+<div class="font-data-point text-sm text-on-surface text-primary-fixed-dim">TPO</div>
+</div>
+</div>
+</div>
+<!-- Tone Modulator -->
+<div class="p-4 border-b border-outline-variant">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-3">TONE MODULATOR</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 border border-outline-variant rounded font-label-caps text-[11px] text-on-surface hover:bg-surface-container-highest transition-colors">GENTLE</button>
+<button class="flex-1 py-1.5 border border-primary bg-primary/10 rounded font-label-caps text-[11px] text-primary font-bold shadow-[inset_0_0_8px_rgba(0,219,233,0.2)]">FIRM</button>
+<button class="flex-1 py-1.5 border border-outline-variant rounded font-label-caps text-[11px] text-error hover:border-error hover:bg-error/10 transition-colors">URGENT</button>
+</div>
+</div>
+<!-- Editor -->
+<div class="flex-1 p-4 flex flex-col gap-3">
+<div class="font-label-caps text-label-caps text-on-surface-variant">MESSAGE DRAFT</div>
+<textarea class="flex-1 bg-surface border border-outline-variant rounded p-3 font-body-fixed text-body-fixed text-on-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none resize-none" placeholder="Enter message payload...">Elena, we require the updated site photos to proceed with CLM-9102. Please upload them by EOD to avoid delays in processing your TPO replacement request.</textarea>
+<div class="flex justify-end gap-3 mt-2">
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors">DISCARD</button>
+<button class="px-6 py-2 bg-primary text-on-primary font-label-caps text-label-caps font-bold rounded hover:bg-primary-fixed transition-colors flex items-center gap-2">
+                            TRANSMIT <span class="material-symbols-outlined text-[16px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<style>
+        /* Custom Scrollbar for dark theme */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111317; /* surface */
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3b494b; /* outline-variant */
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #849495; /* outline */
+        }
+    </style>
+</body></html>

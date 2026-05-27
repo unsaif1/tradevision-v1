@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dispute Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-primary-fixed": "#40000f",
+                        "on-primary-container": "#fffcff",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "surface-container-high": "#252a32",
+                        "error-container": "#93000a",
+                        "surface-tint": "#ffb2b9",
+                        "surface-muted": "#2D3748",
+                        "background": "#0f141a",
+                        "text-secondary": "#8896A8",
+                        "tertiary-container": "#6b7588",
+                        "surface": "#0f141a",
+                        "primary-container": "#e21e51",
+                        "on-secondary-container": "#a8b6c9",
+                        "accent-active": "#E21E51",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-surface-variant": "#e4bdbf",
+                        "outline-variant": "#5c3f42",
+                        "tertiary": "#bdc7dc",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffdadb",
+                        "outline": "#ab888a",
+                        "surface-dim": "#0f141a",
+                        "text-primary": "#FFFFFF",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dee2ec",
+                        "on-tertiary-container": "#fefcff",
+                        "surface-container": "#1b2027",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-bright": "#353941",
+                        "on-tertiary-fixed": "#121c2c",
+                        "secondary-fixed": "#d5e4f7",
+                        "inverse-on-surface": "#2c3138",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "surface-container-lowest": "#090f15",
+                        "on-secondary": "#243240",
+                        "on-tertiary": "#273141",
+                        "surface-deep": "#1C2128",
+                        "surface-variant": "#30353d",
+                        "inverse-primary": "#be003e",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "surface-container-highest": "#30353d",
+                        "error": "#ffb4ab",
+                        "secondary": "#bac8db",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-background": "#dee2ec",
+                        "on-primary": "#67001e",
+                        "secondary-container": "#3a4858",
+                        "primary": "#ffb2b9",
+                        "surface-container-low": "#171c23",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "inverse-surface": "#dee2ec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "margin": "24px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0f141a; color: #dee2ec; }
+        .glass-panel {
+            background: rgba(45, 55, 72, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(136, 150, 168, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased pb-24 lg:pb-0 lg:pl-72 flex flex-col min-h-screen">
+<!-- Top App Bar (Web) -->
+<header class="hidden md:flex fixed top-0 left-0 w-full z-50 justify-between items-center px-margin h-16 bg-surface border-b border-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-headline-lg text-headline-lg text-primary tracking-widest uppercase">TRADEVISION</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-[24px]">account_circle</span>
+</div>
+</header>
+<!-- Side Navigation Drawer (Web) -->
+<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] py-gutter flex-col bg-surface-deep w-72 border-r border-surface-variant shadow-lg mt-16">
+<div class="px-margin mb-lg">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 rounded-full bg-surface-muted border border-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up, highly detailed portrait of a mature male construction site supervisor. He is wearing a professional, dark high-visibility vest over a slate grey collared shirt. The lighting is high-key and modern, emphasizing sharp details and professional authority against a minimalist dark background. The mood is serious and analytical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHYA2lv3O-ki1vSU3BkIYlEqc0umFn41OoVIhDYxBMY4Uur_xzbvCr9phHxcOklkxQcBft4vn2LFkQiAAXd3MKrpvtBqLrph_MWRNcKg4YeMtmYOGWsijKn6hEYx4TJwsaUTVD9ayKiW-_1uo0jNpJso0bRNomq7L2qBxdbPc3jycrtk62YL8j6kfzLGP8zsiSZVNS2Qg7PjvtIqNU5OTFltZQAjPvvHNPTrrxjNU8929lB-SSHlOu0ZHYNJzDiaPtv2OmbIrLaMPp"/>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase">COMMANDER ALPHA</h3>
+<p class="font-label-sm text-label-sm text-text-secondary">Site Supervisor</p>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-tertiary-container pl-[56px]">Sector 7G</p>
+</div>
+<nav class="flex-1 px-sm space-y-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">conveyor_belt</span>
+<span class="font-body-md text-body-md">Fleet Status</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory Control</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">engineering</span>
+<span class="font-body-md text-body-md">Personnel</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-surface-container-highest text-primary font-bold border-l-4 border-primary transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_late</span>
+<span class="font-body-md text-body-md">Safety Logs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 max-w-[1440px] mx-auto w-full p-margin md:mt-16">
+<!-- Header Section -->
+<div class="mb-lg flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<a class="text-text-secondary hover:text-on-surface flex items-center transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</a>
+<h1 class="font-headline-xl text-headline-xl text-text-primary uppercase">Dispute #D-4402</h1>
+</div>
+<p class="font-body-md text-body-md text-text-secondary">Related to Claim #8892 • Initiated Oct 12, 2023</p>
+</div>
+<div class="flex items-center gap-sm bg-error-container/20 border border-error-container px-md py-sm rounded-lg">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label-md text-label-md text-error uppercase">Action Required: Evidence Missing</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md">
+<!-- Left Column: Timeline & Evidence (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-md">
+<!-- Dispute Timeline -->
+<section class="bg-surface-deep border border-border-subtle rounded-xl p-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md uppercase flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">timeline</span>
+                        Dispute Timeline
+                    </h2>
+<div class="relative pl-sm">
+<!-- Vertical Line -->
+<div class="absolute left-[15px] top-2 bottom-2 w-px bg-surface-variant"></div>
+<!-- Timeline Items -->
+<div class="space-y-lg relative">
+<!-- Item 1: Complete -->
+<div class="flex gap-md">
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface-container-high border border-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="pt-1">
+<div class="flex items-baseline gap-sm mb-xs">
+<h3 class="font-label-md text-label-md text-on-surface uppercase">Dispute Filed</h3>
+<span class="font-label-sm text-label-sm text-text-secondary">Oct 12, 10:45 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Public Adjuster flagged discrepancy in roof repair estimate.</p>
+</div>
+</div>
+<!-- Item 2: Complete -->
+<div class="flex gap-md">
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface-container-high border border-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="pt-1">
+<div class="flex items-baseline gap-sm mb-xs">
+<h3 class="font-label-md text-label-md text-on-surface uppercase">Initial Review</h3>
+<span class="font-label-sm text-label-sm text-text-secondary">Oct 13, 09:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Internal claims team reviewed flagged items. Awaiting contractor input.</p>
+</div>
+</div>
+<!-- Item 3: Current -->
+<div class="flex gap-md">
+<div class="relative z-10 w-8 h-8 rounded-full bg-primary-container border border-primary flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(226,30,81,0.4)]">
+<span class="material-symbols-outlined text-[16px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+</div>
+<div class="pt-1">
+<div class="flex items-baseline gap-sm mb-xs">
+<h3 class="font-label-md text-label-md text-primary uppercase">GC Response Required</h3>
+<span class="font-label-sm text-label-sm text-text-secondary">Current</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">General Contractor must provide revised invoice or photo evidence of material costs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Evidence & Documentation -->
+<section class="bg-surface-deep border border-border-subtle rounded-xl p-lg">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">folder_open</span>
+                            Evidence &amp; Documentation
+                        </h2>
+<button class="bg-primary-container hover:bg-accent-active text-on-primary-container font-label-md text-label-md py-sm px-md rounded-lg flex items-center gap-xs transition-colors shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                            ADD EVIDENCE
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<!-- File Card 1 -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg hover:border-tertiary-container transition-colors group cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[24px]">image</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md text-label-md text-on-surface truncate group-hover:text-primary transition-colors">damage_photo_roof_01.jpg</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Uploaded Oct 12 • 2.4 MB</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">download</span>
+</div>
+<!-- File Card 2 -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg hover:border-tertiary-container transition-colors group cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[24px]">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-md text-label-md text-on-surface truncate group-hover:text-primary transition-colors">initial_estimate_v1.pdf</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Uploaded Oct 12 • 1.1 MB</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">download</span>
+</div>
+<!-- Missing Evidence Placeholder -->
+<div class="md:col-span-2 flex flex-col items-center justify-center p-lg border-2 border-dashed border-error-container/50 bg-error-container/5 rounded-lg text-center mt-sm">
+<span class="material-symbols-outlined text-error text-[32px] mb-xs">upload_file</span>
+<h4 class="font-label-md text-label-md text-error uppercase mb-xs">Missing: GC Revised Invoice</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Please upload the required documentation to proceed.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Communication (4 cols) -->
+<div class="lg:col-span-4 flex flex-col h-full">
+<section class="bg-surface-deep border border-border-subtle rounded-xl flex flex-col h-[600px] lg:h-full">
+<div class="p-md border-b border-surface-variant flex items-center justify-between shrink-0">
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">forum</span>
+                            Communication
+                        </h2>
+<span class="font-label-sm text-label-sm bg-surface-container-highest px-2 py-1 rounded text-text-secondary">3 Messages</span>
+</div>
+<!-- Chat Thread -->
+<div class="flex-1 overflow-y-auto p-md space-y-lg custom-scrollbar">
+<!-- Message 1 (Other) -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-md text-label-md text-on-surface">J. Smith (Public Adjuster)</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Oct 12, 10:50 AM</span>
+</div>
+<div class="bg-surface-container-high p-sm rounded-lg rounded-tl-none border border-surface-variant inline-block self-start max-w-[90%]">
+<p class="font-body-sm text-body-sm text-on-surface-variant">The line items for the flashing replacement seem excessive compared to standard regional rates. Can we get a breakdown of material vs labor?</p>
+</div>
+</div>
+<!-- Message 2 (Internal/System) -->
+<div class="flex flex-col gap-xs items-center my-md">
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface px-sm py-xs rounded-full border border-surface-variant">Status changed to Initial Review</span>
+</div>
+<!-- Message 3 (Other) -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-md text-label-md text-on-surface">R. Davis (Claims Team)</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Oct 13, 09:20 AM</span>
+</div>
+<div class="bg-surface-container-high p-sm rounded-lg rounded-tl-none border border-surface-variant inline-block self-start max-w-[90%]">
+<p class="font-body-sm text-body-sm text-on-surface-variant">I've flagged this for the GC. We need the revised invoice uploaded before we can proceed to mediation or approval.</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-md border-t border-surface-variant shrink-0 bg-surface">
+<div class="relative">
+<textarea class="w-full bg-surface-deep border border-surface-variant rounded-lg p-sm font-body-sm text-on-surface placeholder:text-text-secondary focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Type a note or message..." rows="3"></textarea>
+<div class="absolute bottom-2 right-2 flex gap-xs">
+<button class="p-1 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="p-1 bg-surface-container-highest text-primary rounded hover:bg-primary hover:text-background transition-colors">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Bottom Action Bar (Fixed on Mobile, Static on Web) -->
+<div class="fixed bottom-[64px] md:bottom-0 left-0 md:left-72 right-0 p-md bg-surface-deep/90 backdrop-blur-md border-t border-surface-variant flex flex-col sm:flex-row justify-end gap-sm z-40">
+<button class="px-lg py-sm font-label-md text-label-md uppercase text-on-surface border border-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors text-center">
+                Escalate to Mediation
+            </button>
+<button class="px-lg py-sm font-label-md text-label-md uppercase bg-primary-container text-on-primary-container hover:bg-accent-active rounded-lg transition-colors shadow-[0_4px_12px_rgba(0,0,0,0.5)] text-center opacity-50 cursor-not-allowed" disabled="" title="Evidence missing">
+                Resolve Dispute
+            </button>
+</div>
+</main>
+<!-- Bottom App Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container border-t border-surface-variant">
+<a class="flex flex-col items-center justify-center text-text-secondary p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-label-sm text-label-sm mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">construction</span>
+<span class="font-label-sm text-label-sm mt-1">PROJECTS</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-2 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-label-sm text-label-sm mt-1">CLAIMS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary p-2 hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="font-label-sm text-label-sm mt-1">ALERTS</span>
+</a>
+</nav>
+<style>
+        /* Custom Scrollbar for Chat */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #30353d;
+            border-radius: 10px;
+        }
+    </style>
+</body></html>

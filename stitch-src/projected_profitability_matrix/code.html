@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projected Profitability Matrix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "surface-container": "#1e2024",
+                        "on-secondary-container": "#6b4b00",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary": "#412d00",
+                        "surface-variant": "#333539",
+                        "on-error": "#690005",
+                        "primary-container": "#00f0ff",
+                        "tertiary-container": "#dad9d9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-low": "#1a1c20",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#271900",
+                        "on-primary-fixed": "#002022",
+                        "secondary-fixed-dim": "#ffba20",
+                        "tertiary": "#f7f5f5",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-primary-container": "#006970",
+                        "surface-container-highest": "#333539",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-container-high": "#282a2e",
+                        "inverse-on-surface": "#2f3035",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#feb700",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed": "#ffdea8",
+                        "on-primary": "#00363a",
+                        "on-primary-fixed-variant": "#004f54",
+                        "outline-variant": "#3b494b",
+                        "inverse-primary": "#006970",
+                        "on-background": "#e2e2e8",
+                        "outline": "#849495",
+                        "on-surface": "#e2e2e8",
+                        "surface-dim": "#111317",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface": "#111317"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for horizontal scrolling tables */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background w-full top-0 sticky border-b border-outline-variant z-40">
+<div class="flex items-center justify-between px-margin-mobile h-16">
+<button class="text-primary dark:text-primary-fixed hover:bg-surface-variant active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary tracking-tighter uppercase">ROOF ANALYTICS</h1>
+<button class="text-primary dark:text-primary-fixed hover:bg-surface-variant active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="p-margin-mobile flex flex-col gap-density-comfortable max-w-7xl mx-auto md:ml-80">
+<!-- Header Section -->
+<div class="flex flex-col gap-unit">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Profitability Matrix</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant">Real-time margin analysis for active high-value sites.</p>
+</div>
+<!-- KPI Summary Bento Grid -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-gutter flex flex-col justify-between h-32">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Total Variance</span>
+<div class="flex items-end justify-between">
+<span class="font-data-point text-data-point text-error">-12.4%</span>
+<span class="material-symbols-outlined text-error" data-icon="trending_down">trending_down</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT p-gutter flex flex-col justify-between h-32 relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-9xl icon-fill text-primary" data-icon="query_stats">query_stats</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase relative z-10">Avg ROI Fcst</span>
+<div class="flex items-end justify-between relative z-10">
+<span class="font-data-point text-data-point text-primary">18.2%</span>
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+</div>
+<!-- High-Density Data Matrix -->
+<div class="bg-surface border border-outline-variant rounded-DEFAULT overflow-hidden">
+<div class="bg-surface-container-high border-b border-outline-variant px-density-compact py-unit flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Active Sites</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4 Records</span>
+</div>
+<div class="overflow-x-auto hide-scrollbar">
+<table class="w-full text-left border-collapse min-w-[500px]">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low">
+<th class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant uppercase font-medium w-32">Proj ID</th>
+<th class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant uppercase font-medium text-right">Actual</th>
+<th class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant uppercase font-medium text-right">Est</th>
+<th class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant uppercase font-medium text-right">Var %</th>
+<th class="px-gutter py-density-compact font-label-caps text-label-caps text-on-surface-variant uppercase font-medium text-right w-24">ROI</th>
+</tr>
+</thead>
+<tbody class="font-data-point text-sm divide-y divide-outline-variant/50">
+<!-- Row 1: Critical Risk -->
+<tr class="hover:bg-surface-container-low transition-colors relative group">
+<!-- Status Indicator Strip -->
+<td class="absolute left-0 top-0 bottom-0 w-1 bg-error"></td>
+<td class="px-gutter py-density-comfortable font-label-caps text-on-surface pl-[20px]">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-bold">#TX-8821</span>
+<span class="text-error text-[10px] flex items-center gap-1"><span class="material-symbols-outlined text-[12px] icon-fill">warning</span> AT RISK</span>
+</div>
+</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$142.5k</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$120.0k</td>
+<td class="px-gutter py-density-comfortable text-right text-error font-bold">+18.7%</td>
+<td class="px-gutter py-density-comfortable text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="text-error">8.2%</span>
+<span class="material-symbols-outlined text-error text-[16px]">arrow_downward</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: Warning -->
+<tr class="hover:bg-surface-container-low transition-colors relative group">
+<td class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></td>
+<td class="px-gutter py-density-comfortable font-label-caps text-on-surface pl-[20px]">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-bold">#AZ-4092</span>
+<span class="text-secondary text-[10px]">MONITORING</span>
+</div>
+</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$88.2k</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$85.0k</td>
+<td class="px-gutter py-density-comfortable text-right text-secondary font-bold">+3.7%</td>
+<td class="px-gutter py-density-comfortable text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="text-secondary">14.5%</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">horizontal_rule</span>
+</div>
+</td>
+</tr>
+<!-- Row 3: Healthy -->
+<tr class="hover:bg-surface-container-low transition-colors relative group">
+<td class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></td>
+<td class="px-gutter py-density-comfortable font-label-caps text-on-surface pl-[20px]">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-bold">#FL-9934</span>
+<span class="text-primary text-[10px]">ON TRACK</span>
+</div>
+</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$210.0k</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$225.0k</td>
+<td class="px-gutter py-density-comfortable text-right text-primary font-bold">-6.6%</td>
+<td class="px-gutter py-density-comfortable text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="text-primary">22.4%</span>
+<span class="material-symbols-outlined text-primary text-[16px]">arrow_upward</span>
+</div>
+</td>
+</tr>
+<!-- Row 4: Healthy -->
+<tr class="hover:bg-surface-container-low transition-colors relative group">
+<td class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></td>
+<td class="px-gutter py-density-comfortable font-label-caps text-on-surface pl-[20px]">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-bold">#NV-1022</span>
+<span class="text-primary text-[10px]">ON TRACK</span>
+</div>
+</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$55.1k</td>
+<td class="px-gutter py-density-comfortable text-right text-on-surface-variant">$60.0k</td>
+<td class="px-gutter py-density-comfortable text-right text-primary font-bold">-8.1%</td>
+<td class="px-gutter py-density-comfortable text-right">
+<div class="flex items-center justify-end gap-2">
+<span class="text-primary">27.8%</span>
+<span class="material-symbols-outlined text-primary text-[16px]">arrow_upward</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-gutter border-t border-outline-variant bg-surface-container-lowest">
+<button class="w-full bg-surface border border-outline-variant hover:bg-surface-variant text-primary font-label-caps py-3 rounded-DEFAULT transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    EXPORT MATRIX (.CSV)
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-low dark:bg-surface-container-low fixed bottom-0 w-full z-50 border-t border-outline-variant flex justify-around items-center h-20 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-variant active:translate-y-0.5 transition-all p-2 rounded-DEFAULT flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-label-caps text-label-caps mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-variant active:translate-y-0.5 transition-all p-2 rounded-DEFAULT flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-caps text-label-caps mt-1">LOGISTICS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-variant active:translate-y-0.5 transition-all p-2 rounded-DEFAULT flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-caps text-label-caps mt-1">FINANCE</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-sm px-density-comfortable py-1 border-b-2 border-on-primary-container active:translate-y-0.5 transition-all flex-1" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="summarize">summarize</span>
+<span class="font-label-caps text-label-caps mt-1 font-bold">REPORTS</span>
+</a>
+</nav>
+<!-- SideNav (Desktop Only - hidden on mobile) -->
+<aside class="hidden md:flex flex-col py-margin-desktop bg-surface-container-lowest h-full w-80 border-r border-outline fixed left-0 top-0 bottom-0 z-50">
+<div class="px-margin-desktop mb-margin-desktop flex items-center gap-gutter">
+<div class="w-12 h-12 bg-surface-variant rounded-full border border-outline flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl">person</span>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-on-tertiary-fixed-variant uppercase">CRM TERMINAL 01</h3>
+<p class="font-body-fixed text-sm text-primary">Lead Inspector</p>
+<p class="font-data-point text-[10px] text-on-surface-variant mt-1">V2.4.0-STABLE</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-unit px-unit">
+<a class="flex items-center gap-gutter px-gutter py-3 rounded-r-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="minor_crash">minor_crash</span>
+<span class="font-body-fixed text-body-fixed">Fleet Status</span>
+</a>
+<a class="flex items-center gap-gutter px-gutter py-3 rounded-r-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-body-fixed text-body-fixed">Crew Tracking</span>
+</a>
+<a class="flex items-center gap-gutter px-gutter py-3 rounded-r-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-fixed text-body-fixed">Material Inventory</span>
+</a>
+<a class="flex items-center gap-gutter px-gutter py-3 rounded-r-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-body-fixed text-body-fixed">Safety Compliance</span>
+</a>
+<div class="my-4 border-t border-outline-variant mx-gutter"></div>
+<a class="flex items-center gap-gutter px-gutter py-3 rounded-r-DEFAULT text-primary bg-surface-variant border-l-4 border-primary transition-colors duration-150 font-medium" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="summarize">summarize</span>
+<span class="font-body-fixed text-body-fixed">Profitability Matrix</span>
+</a>
+<a class="flex items-center gap-gutter px-gutter py-3 rounded-r-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150 mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="archive">archive</span>
+<span class="font-body-fixed text-body-fixed">Archived Sites</span>
+</a>
+</nav>
+</aside>
+</body></html>

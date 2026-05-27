@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Site Hazard Forecast - ROOF_COMMAND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "secondary": "#ffdb9d",
+                    "surface-tint": "#00dbe9",
+                    "primary-container": "#00f0ff",
+                    "surface-container": "#1e2024",
+                    "on-secondary-fixed": "#271900",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-surface-variant": "#b9cacb",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-primary-container": "#006970",
+                    "secondary-fixed-dim": "#ffba20",
+                    "on-tertiary": "#303031",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "surface": "#111317",
+                    "outline-variant": "#3b494b",
+                    "on-error-container": "#ffdad6",
+                    "secondary-container": "#feb700",
+                    "surface-variant": "#333539",
+                    "primary-fixed": "#7df4ff",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-primary": "#00363a",
+                    "on-background": "#e2e2e8",
+                    "outline": "#849495",
+                    "surface-container-low": "#1a1c20",
+                    "surface-bright": "#37393e",
+                    "tertiary-container": "#dad9d9",
+                    "tertiary": "#f7f5f5",
+                    "on-surface": "#e2e2e8",
+                    "surface-container-high": "#282a2e",
+                    "primary-fixed-dim": "#00dbe9",
+                    "inverse-primary": "#006970",
+                    "error-container": "#93000a",
+                    "background": "#111317",
+                    "on-tertiary-container": "#5e5f5f",
+                    "inverse-surface": "#e2e2e8",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#2f3035",
+                    "secondary-fixed": "#ffdea8",
+                    "surface-container-highest": "#333539",
+                    "surface-dim": "#111317",
+                    "on-primary-fixed-variant": "#004f54",
+                    "primary": "#dbfcff",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-secondary-container": "#6b4b00",
+                    "on-secondary": "#412d00",
+                    "on-primary-fixed": "#002022",
+                    "tertiary-fixed": "#e4e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "density-comfortable": "24px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "density-compact": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ],
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            padding-top: 4rem; /* TopAppBar space */
+            padding-bottom: 5rem; /* BottomNavBar space */
+        }
+        
+        /* Custom Scrollbar for timeline */
+        .timeline-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        .timeline-scroll::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-high');
+        }
+        .timeline-scroll::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="md:hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined hover:bg-surface-container-high transition-colors active:scale-95 duration-100 cursor-pointer p-1 rounded">menu</span>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter uppercase">ROOF_COMMAND</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="p-margin-mobile flex flex-col gap-density-comfortable">
+<!-- Header -->
+<section>
+<h1 class="font-headline-md text-headline-md mb-unit">Site Hazard Forecast</h1>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Automated risk assessment for Site Alpha-9.</p>
+</section>
+<!-- 7-Day Timeline -->
+<section class="flex flex-col gap-density-compact">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">7-Day Risk Timeline</h2>
+<div class="timeline-scroll flex gap-density-compact overflow-x-auto pb-2 snap-x">
+<!-- Day 1 (Critical) -->
+<div class="snap-start min-w-[80px] bg-surface-container border border-error p-density-compact rounded flex flex-col items-center justify-center gap-unit relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">TODAY</span>
+<span class="font-data-point text-data-point text-error">CRIT</span>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<!-- Day 2 (High) -->
+<div class="snap-start min-w-[80px] bg-surface-container border border-secondary p-density-compact rounded flex flex-col items-center justify-center gap-unit relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">TUE</span>
+<span class="font-data-point text-data-point text-secondary">HIGH</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">storm</span>
+</div>
+<!-- Day 3 (Med) -->
+<div class="snap-start min-w-[80px] bg-surface-container border border-outline-variant p-density-compact rounded flex flex-col items-center justify-center gap-unit relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-surface-tint"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">WED</span>
+<span class="font-data-point text-data-point text-surface-tint">MED</span>
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 1;">rainy</span>
+</div>
+<!-- Day 4 (Low) -->
+<div class="snap-start min-w-[80px] bg-surface-container border border-outline-variant p-density-compact rounded flex flex-col items-center justify-center gap-unit relative">
+<span class="font-label-caps text-label-caps text-on-surface-variant">THU</span>
+<span class="font-data-point text-data-point text-outline">LOW</span>
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 1;">partly_cloudy_day</span>
+</div>
+<!-- Day 5 (Low) -->
+<div class="snap-start min-w-[80px] bg-surface-container border border-outline-variant p-density-compact rounded flex flex-col items-center justify-center gap-unit relative">
+<span class="font-label-caps text-label-caps text-on-surface-variant">FRI</span>
+<span class="font-data-point text-data-point text-outline">LOW</span>
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 1;">sunny</span>
+</div>
+</div>
+</section>
+<!-- Weather Hazards Bento -->
+<section class="flex flex-col gap-density-compact">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">thermostat</span>
+                Weather Hazards
+            </h2>
+<div class="grid grid-cols-2 gap-density-compact">
+<!-- Wind Shear Card -->
+<div class="col-span-2 bg-surface-container border border-surface-tint rounded p-margin-mobile relative overflow-hidden flex justify-between items-center">
+<div class="absolute inset-0 bg-surface-tint opacity-5 mix-blend-screen pointer-events-none"></div>
+<div class="flex flex-col gap-1 z-10">
+<span class="font-label-caps text-label-caps text-on-surface-variant">MAX WIND SHEAR</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-[32px] text-surface-tint leading-none">45</span>
+<span class="font-label-caps text-label-caps text-surface-tint">MPH</span>
+</div>
+</div>
+<div class="h-12 w-12 rounded-full border-2 border-surface-tint flex items-center justify-center z-10 relative">
+<span class="material-symbols-outlined text-surface-tint absolute" style="transform: rotate(45deg);">air</span>
+</div>
+</div>
+<!-- Hail Prob -->
+<div class="bg-surface-container border border-outline-variant rounded p-density-compact flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">HAIL PROB</span>
+<span class="font-data-point text-data-point text-on-surface">80%</span>
+<div class="w-full h-1 bg-surface-container-high mt-auto">
+<div class="h-full bg-secondary w-4/5"></div>
+</div>
+</div>
+<!-- Lightning -->
+<div class="bg-surface-container border border-outline-variant rounded p-density-compact flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">LIGHTNING STRIKES</span>
+<span class="font-data-point text-data-point text-on-surface">12</span>
+<span class="font-label-caps text-[10px] text-error mt-auto">WITHIN 5 MILES</span>
+</div>
+</div>
+</section>
+<!-- Structural Anomalies List -->
+<section class="flex flex-col gap-density-compact">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">memory</span>
+                AI Detected Anomalies
+            </h2>
+<div class="flex flex-col border border-outline-variant rounded overflow-hidden bg-surface-container">
+<!-- Row 1 -->
+<div class="flex items-center p-density-compact border-b border-outline-variant relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="pl-2 flex-1">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold text-sm">Thermal Bridging Detected</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">SECTOR 4 - PARAPET WALL</div>
+</div>
+<span class="font-data-point text-data-point text-error text-sm">-4.2°C</span>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center p-density-compact border-b border-outline-variant relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="pl-2 flex-1">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold text-sm">Membrane Stress</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">HVAC UNIT 2 BASE</div>
+</div>
+<span class="font-data-point text-data-point text-secondary text-sm">85%</span>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center p-density-compact relative opacity-60">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline"></div>
+<div class="pl-2 flex-1">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold text-sm">Drainage Blockage</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">SCUPPER B - EAST FACING</div>
+</div>
+<span class="font-data-point text-data-point text-outline text-sm">CLR</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-container dark:text-primary-container font-label-caps text-label-caps font-display-lg-mobile text-display-lg-mobile text-primary fixed bottom-0 w-full z-50 h-20 border-t border-outline-variant flex justify-around items-center px-gutter md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all cursor-pointer p-1">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span>Command</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all cursor-pointer p-1">
+<span class="material-symbols-outlined mb-1">roofing</span>
+<span>Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-4 py-1 border border-primary active:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span>Inspect</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all cursor-pointer p-1">
+<span class="material-symbols-outlined mb-1">add_a_photo</span>
+<span>Evidence</span>
+</div>
+</nav>
+</body></html>

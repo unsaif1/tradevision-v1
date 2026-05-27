@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>C.A.R.E. Protocol Documentation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#060e20", "on-tertiary": "#003824", "background": "#0b1326", "surface-input": "#0F172A", "on-error": "#690005", "primary-container": "#2563eb", "tertiary-container": "#007d55", "on-tertiary-fixed": "#002113", "surface-tint": "#b4c5ff", "surface-card": "#1E293B", "on-secondary-fixed": "#001e2c", "tertiary": "#4edea3", "on-error-container": "#ffdad6", "tertiary-fixed": "#6ffbbe", "secondary-container": "#00a6e0", "tertiary-fixed-dim": "#4edea3", "secondary-fixed": "#c4e7ff", "on-primary": "#002a78", "inverse-primary": "#0053db", "on-background": "#dae2fd", "outline": "#8d90a0", "on-surface": "#dae2fd", "secondary": "#7bd0ff", "neon-blue": "#2563EB", "surface-container": "#171f33", "on-secondary-container": "#00374d", "on-surface-variant": "#c3c6d7", "on-secondary": "#00354a", "surface-variant": "#2d3449", "surface-container-low": "#131b2e", "neon-cyan": "#06B6D4", "error-container": "#93000a", "on-primary-fixed": "#00174b", "secondary-fixed-dim": "#7bd0ff", "inverse-surface": "#dae2fd", "surface-bright": "#31394d", "on-tertiary-container": "#bdffdb", "on-secondary-fixed-variant": "#004c69", "on-primary-container": "#eeefff", "surface-container-highest": "#2d3449", "primary": "#b4c5ff", "on-tertiary-fixed-variant": "#005236", "surface-container-high": "#222a3d", "inverse-on-surface": "#283044", "error": "#ffb4ab", "primary-fixed": "#dbe1ff", "on-primary-fixed-variant": "#003ea8", "outline-variant": "#434655", "border-muted": "#334155", "surface-dim": "#0b1326", "primary-fixed-dim": "#b4c5ff", "surface": "#0b1326"
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                    spacing: { "gutter": "16px", "container-max": "1440px", "margin-desktop": "32px", "margin-mobile": "16px", "unit": "4px" },
+                    fontFamily: { "label-sm": ["JetBrains Mono"], "headline-sm": ["JetBrains Mono"], "headline-md": ["JetBrains Mono"], "headline-lg-mobile": ["JetBrains Mono"], "body-md": ["Inter"], "label-md": ["JetBrains Mono"], "headline-lg": ["JetBrains Mono"], "body-lg": ["Inter"] },
+                    fontSize: { "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }] }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: #434655; }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low border-r border-border-muted flex flex-col h-screen py-6 w-64 flex-shrink-0 z-20">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center border border-border-muted overflow-hidden">
+<img alt="Organization Logo" class="w-full h-full object-cover" data-alt="A stylized geometric logo featuring interlocking metallic gears and a vibrant neon blue accent line, representing an industrial technology firm, set against a dark background with sharp, modern lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANZRpTnbZeJkIqBIAx5C8ezc70SAIrIyHurdeqEFj6bgTPTqkWQk54NeVREuP_Xau0EGvm33XAICcjG0UuNyynZHeelQozGhJWpL1LGihoNZqOBmR0uWzp3ghD5CEtQ3WyRoF1lsOmtZJht-eynHlZmWKXHopHs8e3YYjcU0kRQWq67qPgZYF-pdYJFYL94McKaqY4eR8NGgYRyPip_GD4OTDJvS8-1xs-MrdmRvmRY1ZKzNhpgcdnDU0x6rIxK2YYNPvy193ZcxvZ"/>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Industrial Field Ops</h2>
+<p class="text-label-sm font-label-sm text-neon-blue mt-1">Active Session: 8h 12m</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-neon-blue hover:bg-inverse-primary text-on-primary-container text-label-md font-label-md py-2 px-4 rounded transition-colors duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Job Order
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+<span class="text-label-md font-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">photo_library</span>
+<span class="text-label-md font-label-md">Evidence</span>
+</a>
+<!-- Active Tab: Inventory maps closest to Documentation/Database -->
+<a class="flex items-center gap-3 px-3 py-2 rounded text-neon-blue font-bold border-l-4 border-neon-blue bg-surface-variant/50 transition-all duration-150 translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-md font-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span class="text-label-md font-label-md">Team</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</div>
+<div class="px-4 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-label-md font-label-md">Log Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="bg-surface-container border-b border-border-muted flex justify-between items-center w-full px-margin-desktop h-16 flex-shrink-0 z-10">
+<div class="flex items-center gap-6">
+<span class="text-headline-md font-headline-md font-bold text-neon-blue tracking-tight">ContractorOS</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-variant/50 border border-border-muted rounded">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">System Status: Optimal</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-border-muted overflow-hidden ml-2 cursor-pointer border-neon-blue">
+<img alt="Contractor Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a contractor wearing technical safety gear, softly lit against a dark, industrial background with a hint of blue rim lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmrfkeRT_wHDo69cvF0Md0V48Yv1lGfDbZKETIHW2fdtCHsngWK22ws8Mr6I2LKB5KAWtp8yXzDaqbB-iMcpO2R3LihcNEy_oM9ertjM9JN0YYzaOligtbg2JtwburkPaXNfBIH3rHxrHDnr-WQ8heqG2-_oaXHu-yzPkzpTqWN2gkgsB1fkrnK4lUD2VGncwv09FeuDcVfXGS8Ww0KaXmqZTM1PhYK-Ue55M3XWTuCEXSLoIoDtk0QXQc8hHSAVNUrhjzePQsLGj_"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-desktop bg-surface-dim">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-8">
+<!-- Page Header & Search -->
+<div class="flex flex-col gap-4">
+<h1 class="text-headline-lg font-headline-lg text-on-surface">C.A.R.E. Protocol Documentation</h1>
+<div class="relative w-full max-w-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-input border border-border-muted text-on-surface text-body-md font-body-md py-3 pl-12 pr-4 rounded-lg focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors placeholder:text-outline-variant" placeholder="Query protocol database..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
+<span class="px-2 py-1 bg-surface-variant border border-border-muted rounded text-label-sm font-label-sm text-on-surface-variant">⌘</span>
+<span class="px-2 py-1 bg-surface-variant border border-border-muted rounded text-label-sm font-label-sm text-on-surface-variant">K</span>
+</div>
+</div>
+</div>
+<!-- Critical Procedures -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 border-b border-border-muted pb-2">
+<span class="material-symbols-outlined text-error text-[20px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wide">Critical Procedures</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Critical Card 1 -->
+<div class="bg-surface-card border border-error/30 rounded flex flex-col hover:border-error transition-colors cursor-pointer relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-label-sm font-label-sm rounded uppercase">Emergency</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">v4.2</span>
+</div>
+<h3 class="text-body-lg font-body-lg font-semibold text-on-surface">High-Voltage Isolation</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-2">Immediate shutdown sequence for catastrophic electrical faults exceeding 600V.</p>
+<div class="mt-2 flex items-center justify-between text-neon-blue group-hover:text-tertiary transition-colors">
+<span class="text-label-md font-label-md">Initialize Sequence</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Critical Card 2 -->
+<div class="bg-surface-card border border-error/30 rounded flex flex-col hover:border-error transition-colors cursor-pointer relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-label-sm font-label-sm rounded uppercase">Hazard</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">v2.1</span>
+</div>
+<h3 class="text-body-lg font-body-lg font-semibold text-on-surface">Chemical Spill Response</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-2">Containment protocols for Class 3 industrial solvents and reactive agents.</p>
+<div class="mt-2 flex items-center justify-between text-neon-blue group-hover:text-tertiary transition-colors">
+<span class="text-label-md font-label-md">Initialize Sequence</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Critical Card 3 -->
+<div class="bg-surface-card border border-error/30 rounded flex flex-col hover:border-error transition-colors cursor-pointer relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-label-sm font-label-sm rounded uppercase">Evacuation</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">v1.9</span>
+</div>
+<h3 class="text-body-lg font-body-lg font-semibold text-on-surface">Structural Compromise</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-2">Site clearing and reporting path for detected foundation or support column failure.</p>
+<div class="mt-2 flex items-center justify-between text-neon-blue group-hover:text-tertiary transition-colors">
+<span class="text-label-md font-label-md">Initialize Sequence</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Standard Protocols -->
+<section class="flex flex-col gap-4 mt-4">
+<div class="flex items-center gap-2 border-b border-border-muted pb-2">
+<span class="material-symbols-outlined text-neon-blue text-[20px]">folder_copy</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wide">Standard Protocols</h2>
+</div>
+<!-- Category Group: Electrical -->
+<div class="bg-surface-container-low border border-border-muted rounded flex flex-col">
+<div class="px-4 py-3 bg-surface-card/50 flex items-center gap-3 border-b border-border-muted cursor-pointer hover:bg-surface-card transition-colors">
+<span class="material-symbols-outlined text-outline">electrical_services</span>
+<h3 class="text-body-md font-body-md font-medium text-on-surface">Electrical Systems</h3>
+<span class="ml-auto text-label-sm font-label-sm text-outline-variant px-2 py-0.5 bg-surface-variant rounded">12 Items</span>
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</div>
+<div class="flex flex-col divide-y divide-border-muted">
+<!-- Protocol Row -->
+<div class="px-4 py-3 flex items-center hover:bg-surface-variant/30 transition-colors group">
+<span class="material-symbols-outlined text-outline-variant mr-4">description</span>
+<div class="flex flex-col min-w-[200px]">
+<span class="text-label-md font-label-md text-on-surface">ELEC-01A_Lockout_Tagout</span>
+</div>
+<div class="flex-1 flex items-center gap-8 ml-8">
+<span class="text-label-sm font-label-sm text-on-surface-variant w-16">v3.0.4</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant w-12">PDF</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant w-16">1.2 MB</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="px-3 py-1.5 border border-border-muted hover:border-neon-blue text-neon-blue text-label-sm font-label-sm rounded transition-colors">View</button>
+<button class="px-3 py-1.5 bg-surface-variant hover:bg-neon-blue text-on-surface hover:text-on-primary text-label-sm font-label-sm rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+<!-- Protocol Row -->
+<div class="px-4 py-3 flex items-center hover:bg-surface-variant/30 transition-colors group">
+<span class="material-symbols-outlined text-outline-variant mr-4">markdown</span>
+<div class="flex flex-col min-w-[200px]">
+<span class="text-label-md font-label-md text-on-surface">ELEC-04_Generator_Sync</span>
+</div>
+<div class="flex-1 flex items-center gap-8 ml-8">
+<span class="text-label-sm font-label-sm text-on-surface-variant w-16">v1.1.0</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant w-12">MD</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant w-16">45 KB</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="px-3 py-1.5 border border-border-muted hover:border-neon-blue text-neon-blue text-label-sm font-label-sm rounded transition-colors">View</button>
+<button class="px-3 py-1.5 bg-surface-variant hover:bg-neon-blue text-on-surface hover:text-on-primary text-label-sm font-label-sm rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Group: HVAC -->
+<div class="bg-surface-container-low border border-border-muted rounded flex flex-col">
+<div class="px-4 py-3 bg-surface-card/50 flex items-center gap-3 border-b border-border-muted cursor-pointer hover:bg-surface-card transition-colors">
+<span class="material-symbols-outlined text-outline">ac_unit</span>
+<h3 class="text-body-md font-body-md font-medium text-on-surface">HVAC &amp; Environmental</h3>
+<span class="ml-auto text-label-sm font-label-sm text-outline-variant px-2 py-0.5 bg-surface-variant rounded">8 Items</span>
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</div>
+<div class="flex flex-col divide-y divide-border-muted">
+<!-- Protocol Row -->
+<div class="px-4 py-3 flex items-center hover:bg-surface-variant/30 transition-colors group">
+<span class="material-symbols-outlined text-outline-variant mr-4">description</span>
+<div class="flex flex-col min-w-[200px]">
+<span class="text-label-md font-label-md text-on-surface">HVAC-REF_Refrigerant_Purge</span>
+</div>
+<div class="flex-1 flex items-center gap-8 ml-8">
+<span class="text-label-sm font-label-sm text-on-surface-variant w-16">v2.2.1</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant w-12">PDF</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant w-16">2.4 MB</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="px-3 py-1.5 border border-border-muted hover:border-neon-blue text-neon-blue text-label-sm font-label-sm rounded transition-colors">View</button>
+<button class="px-3 py-1.5 bg-surface-variant hover:bg-neon-blue text-on-surface hover:text-on-primary text-label-sm font-label-sm rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

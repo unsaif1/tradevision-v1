@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet Health Matrix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#2a313a",
+                      "surface-container-lowest": "#080f16",
+                      "tertiary-container": "#2171e4",
+                      "on-tertiary-fixed": "#001a42",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary": "#002e6a",
+                      "neon-pink": "#E21E51",
+                      "on-primary-fixed-variant": "#91002e",
+                      "surface-stroke": "#2D3748",
+                      "inverse-surface": "#dce3ee",
+                      "surface": "#0d141c",
+                      "on-surface": "#dce3ee",
+                      "secondary-fixed-dim": "#4de082",
+                      "error": "#ffb4ab",
+                      "surface-elevated": "#1C2128",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "on-error": "#690005",
+                      "on-secondary": "#003919",
+                      "surface-container-high": "#242b33",
+                      "surface-dim": "#0d141c",
+                      "on-background": "#dce3ee",
+                      "neon-blue": "#3B82F6",
+                      "on-tertiary-container": "#fffcff",
+                      "tertiary": "#adc6ff",
+                      "secondary": "#4de082",
+                      "outline": "#ab888a",
+                      "on-secondary-fixed": "#00210c",
+                      "background": "#0d141c",
+                      "neon-green": "#4ADE80",
+                      "primary": "#ffb2b9",
+                      "surface-container-highest": "#2e353e",
+                      "neon-orange": "#F97316",
+                      "error-container": "#93000a",
+                      "surface-tint": "#ffb2b9",
+                      "on-secondary-fixed-variant": "#005227",
+                      "primary-container": "#e21e51",
+                      "surface-container": "#192028",
+                      "on-primary-container": "#fffcff",
+                      "on-primary-fixed": "#40000f",
+                      "text-muted": "#8896A8",
+                      "surface-base": "#111820",
+                      "secondary-container": "#00b55d",
+                      "on-secondary-container": "#003e1c",
+                      "on-primary": "#67001e",
+                      "outline-variant": "#5c3f42",
+                      "inverse-primary": "#be003e",
+                      "surface-variant": "#2e353e",
+                      "tertiary-fixed": "#d8e2ff",
+                      "secondary-fixed": "#6dfe9c",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "on-surface-variant": "#e4bdbf",
+                      "surface-bright": "#333a43",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "surface-container-low": "#151c24",
+                      "primary-fixed": "#ffdadb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-gap": "12px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "stat-display": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-lg-mobile": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Barlow"
+                      ],
+                      "caption": [
+                              "Barlow"
+                      ],
+                      "body-md": [
+                              "Barlow"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-xl": [
+                              "Barlow Condensed"
+                      ]
+              },
+              "fontSize": {
+                      "stat-display": [
+                              "40px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-base text-on-surface font-body-md text-body-md antialiased pb-[88px] pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface dark:bg-surface border-b border-surface-stroke dark:border-surface-stroke">
+<button class="text-neon-pink dark:text-neon-pink hover:bg-surface-container-highest transition-colors opacity-100 hover:opacity-80 duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-label-caps text-label-caps tracking-widest text-neon-pink dark:text-neon-pink">
+            TRADEVISION
+        </div>
+<button class="text-neon-pink dark:text-neon-pink hover:bg-surface-container-highest transition-colors opacity-100 hover:opacity-80 duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<main class="p-margin-mobile flex flex-col gap-stack-gap">
+<!-- Header Section -->
+<div class="flex flex-col gap-unit">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile">FLEET HEALTH MATRIX</h1>
+<p class="font-caption text-caption text-text-muted">Real-time IoT Sensor Monitoring</p>
+</div>
+<!-- Fleet Status Bento Grid -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Active Card -->
+<div class="bg-surface-elevated border border-surface-stroke border-t-2 border-t-neon-green p-gutter flex flex-col justify-between h-24 rounded">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-muted">ACTIVE</span>
+<div class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></div>
+</div>
+<div class="font-stat-display text-stat-display text-neon-green">248</div>
+</div>
+<!-- System Health Gauge Placeholder (spanning 2 rows technically, simulated here) -->
+<div class="col-span-1 row-span-2 bg-surface-elevated border border-surface-stroke p-gutter rounded flex flex-col items-center justify-center gap-unit relative overflow-hidden">
+<div class="absolute inset-0 bg-neon-blue opacity-5"></div>
+<span class="font-label-caps text-label-caps text-text-muted z-10">SYS HEALTH</span>
+<div class="relative w-20 h-20 flex items-center justify-center z-10">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-stroke" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-neon-blue" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-width="3"></path>
+</svg>
+<span class="absolute font-headline-lg-mobile text-headline-lg-mobile text-neon-blue z-10">85%</span>
+</div>
+</div>
+<!-- Warning Card -->
+<div class="bg-surface-elevated border border-surface-stroke border-t-2 border-t-neon-orange p-gutter flex flex-col justify-between h-24 rounded">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-muted">WARNING</span>
+<div class="w-2 h-2 rounded-full bg-neon-orange"></div>
+</div>
+<div class="font-stat-display text-stat-display text-neon-orange">12</div>
+</div>
+<!-- Offline Card -->
+<div class="bg-surface-elevated border border-surface-stroke border-t-2 border-t-neon-pink p-gutter flex flex-col justify-between h-24 rounded">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-muted">OFFLINE</span>
+<div class="w-2 h-2 rounded-full bg-neon-pink"></div>
+</div>
+<div class="font-stat-display text-stat-display text-neon-pink">3</div>
+</div>
+<div class="col-span-1 flex items-end">
+<button class="w-full bg-neon-pink text-on-primary-container font-label-caps text-label-caps py-3 rounded flex items-center justify-center gap-2 hover:bg-inverse-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">tune</span>
+                    CALIBRATE ALL
+                </button>
+</div>
+</div>
+<!-- Sensor List -->
+<div class="flex flex-col gap-unit mt-gutter">
+<h2 class="font-label-caps text-label-caps text-text-muted px-2">SENSOR ARRAY</h2>
+<div class="flex flex-col gap-unit">
+<!-- Sensor Item 1 (Warning) -->
+<div class="bg-surface-elevated border border-surface-stroke p-gutter rounded flex flex-col gap-stack-gap hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-orange">warning</span>
+<span class="font-body-lg text-body-lg font-semibold">Strain Gauge SG-04</span>
+</div>
+<span class="bg-neon-orange/20 text-neon-orange px-2 py-1 rounded font-label-caps text-[10px]">CAL REQ</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Battery</span>
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md">24%</span>
+<div class="h-1 w-full bg-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-neon-orange w-1/4"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Signal</span>
+<span class="font-body-md text-body-md">-85 dBm</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Sync</span>
+<span class="font-body-md text-body-md">2m ago</span>
+</div>
+</div>
+</div>
+<!-- Sensor Item 2 (Active) -->
+<div class="bg-surface-elevated border border-surface-stroke p-gutter rounded flex flex-col gap-stack-gap hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-green">check_circle</span>
+<span class="font-body-lg text-body-lg font-semibold">Thermal Coupler TC-12</span>
+</div>
+<span class="bg-neon-green/20 text-neon-green px-2 py-1 rounded font-label-caps text-[10px]">NOMINAL</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Battery</span>
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md">92%</span>
+<div class="h-1 w-full bg-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-neon-green w-[92%]"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Signal</span>
+<span class="font-body-md text-body-md">-42 dBm</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Sync</span>
+<span class="font-body-md text-body-md">Just now</span>
+</div>
+</div>
+</div>
+<!-- Sensor Item 3 (Offline) -->
+<div class="bg-surface-elevated border border-surface-stroke p-gutter rounded flex flex-col gap-stack-gap hover:bg-surface-container-high transition-colors opacity-60">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-pink">error</span>
+<span class="font-body-lg text-body-lg font-semibold text-text-muted">Vibe Sensor VS-88</span>
+</div>
+<span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded font-label-caps text-[10px]">LOST</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Battery</span>
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md text-text-muted">--</span>
+<div class="h-1 w-full bg-surface-stroke rounded-full overflow-hidden">
+<div class="h-full bg-surface-stroke w-0"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Signal</span>
+<span class="font-body-md text-body-md text-text-muted">--</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="font-caption text-caption text-text-muted text-[10px] uppercase">Sync</span>
+<span class="font-body-md text-body-md text-neon-pink">14h ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container dark:bg-surface-container border-t border-surface-stroke dark:border-surface-stroke">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-xl p-2 w-16 Active: scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">DASHBOARD</span>
+</a>
+<!-- Projects (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 w-16 hover:text-on-surface dark:hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">PROJECTS</span>
+</a>
+<!-- Claims (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 w-16 hover:text-on-surface dark:hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">CLAIMS</span>
+</a>
+<!-- Alerts (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 w-16 hover:text-on-surface dark:hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">ALERTS</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "unsnag-site",
+  "compatibility_date": "2026-05-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true },
+
+  "routes": [
+    { "pattern": "unsnag.io",   "zone_id": "1ddbbc0ecca06f0ee849c854b97d7c4a" },
+    { "pattern": "unsnag.io/*", "zone_id": "1ddbbc0ecca06f0ee849c854b97d7c4a" }
+  ]
+}

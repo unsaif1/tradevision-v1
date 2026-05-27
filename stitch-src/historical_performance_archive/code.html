@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Historical Performance Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#2a313a",
+                        "secondary-fixed": "#6dfe9c",
+                        "text-muted": "#8896A8",
+                        "neon-pink": "#E21E51",
+                        "on-tertiary-fixed": "#001a42",
+                        "surface-variant": "#2e353e",
+                        "surface-container-lowest": "#080f16",
+                        "on-secondary": "#003919",
+                        "on-tertiary": "#002e6a",
+                        "on-secondary-fixed-variant": "#005227",
+                        "surface-elevated": "#1C2128",
+                        "on-secondary-fixed": "#00210c",
+                        "on-background": "#dce3ee",
+                        "error": "#ffb4ab",
+                        "secondary": "#4de082",
+                        "surface-container-highest": "#2e353e",
+                        "inverse-primary": "#be003e",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "inverse-surface": "#dce3ee",
+                        "surface-base": "#111820",
+                        "neon-orange": "#F97316",
+                        "primary": "#ffb2b9",
+                        "surface-container-low": "#151c24",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "neon-blue": "#3B82F6",
+                        "neon-green": "#4ADE80",
+                        "on-primary": "#67001e",
+                        "secondary-container": "#00b55d",
+                        "tertiary-container": "#2171e4",
+                        "surface-tint": "#ffb2b9",
+                        "background": "#0d141c",
+                        "surface-container-high": "#242b33",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#40000f",
+                        "on-primary-container": "#fffcff",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-secondary-container": "#003e1c",
+                        "surface": "#0d141c",
+                        "primary-container": "#e21e51",
+                        "on-surface": "#dce3ee",
+                        "on-tertiary-container": "#fffcff",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#0d141c",
+                        "surface-stroke": "#2D3748",
+                        "primary-fixed": "#ffdadb",
+                        "outline": "#ab888a",
+                        "secondary-fixed-dim": "#4de082",
+                        "on-surface-variant": "#e4bdbf",
+                        "tertiary": "#adc6ff",
+                        "on-error": "#690005",
+                        "outline-variant": "#5c3f42",
+                        "tertiary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-bright": "#333a43",
+                        "surface-container": "#192028",
+                        "cyan-accent": "#00F0FF"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "stack-gap": "12px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Barlow"],
+                        "label-caps": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "stat-display": ["Barlow Condensed"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased pb-24 selection:bg-neon-pink selection:text-white">
+<!-- TopAppBar Component -->
+<header class="bg-surface-base dark:bg-surface-base fixed top-0 w-full z-50 border-b border-surface-stroke flat no shadows md:hidden flex items-center justify-between px-margin-mobile h-16 w-full">
+<button aria-label="History" class="text-secondary dark:text-secondary hover:bg-surface-elevated transition-colors active:opacity-80 p-2 -ml-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold uppercase tracking-wider text-secondary dark:text-secondary">PERFORMANCE ARCHIVE</h1>
+<button aria-label="Search" class="text-secondary dark:text-secondary hover:bg-surface-elevated transition-colors active:opacity-80 p-2 -mr-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<main class="pt-[80px] px-margin-mobile flex flex-col gap-stack-gap">
+<!-- Summary Section -->
+<section class="bg-surface-elevated border-t-2 border-neon-pink rounded p-4 flex flex-col gap-3">
+<h2 class="font-label-caps text-label-caps text-text-muted">[ ARCHIVE_SUMMARY ]</h2>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-caption text-caption text-text-muted uppercase">Total Value Secured</p>
+<p class="font-stat-display text-stat-display text-on-surface">$1.24B</p>
+</div>
+<div>
+<p class="font-caption text-caption text-text-muted uppercase">Avg Quality Score</p>
+<p class="font-stat-display text-stat-display text-cyan-accent">97.8%</p>
+</div>
+<div class="col-span-2 border-t border-surface-stroke pt-2 mt-1">
+<p class="font-caption text-caption text-text-muted uppercase">Lifetime Systems</p>
+<p class="font-headline-lg text-headline-lg text-on-surface">1,402</p>
+</div>
+</div>
+</section>
+<!-- Search & Filter -->
+<section class="bg-surface-elevated border border-surface-stroke rounded p-1 flex items-center focus-within:border-neon-pink transition-colors">
+<span class="material-symbols-outlined text-text-muted pl-3" data-icon="search">search</span>
+<input class="bg-transparent border-none text-on-surface font-mono text-sm w-full focus:ring-0 placeholder-text-muted" placeholder="Search code, client, date..." type="text"/>
+<button class="bg-surface-variant p-2 rounded text-text-muted hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</section>
+<h2 class="font-label-caps text-label-caps text-text-muted mt-2">[ COMPLETED_SYSTEMS ]</h2>
+<!-- Project Feed -->
+<div class="flex flex-col gap-stack-gap">
+<!-- Project Card 1 -->
+<article class="bg-surface-elevated border border-surface-stroke border-l-2 border-l-cyan-accent rounded p-4 flex flex-col gap-3 relative overflow-hidden group hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-mono text-xs text-text-muted block mb-1">RC-442-ARCHIVE</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase">Riverside Commons</h3>
+</div>
+<span class="bg-surface-variant px-2 py-1 rounded font-mono text-xs text-text-muted border border-surface-stroke">2023-11-12</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-2 border-y border-surface-stroke">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase block">Quality Score</span>
+<span class="font-body-lg text-body-lg text-cyan-accent font-bold">98.2%</span>
+</div>
+<div>
+<span class="font-caption text-caption text-text-muted uppercase block">Profitability</span>
+<span class="font-body-lg text-body-lg text-secondary font-bold">+12.4%</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="verified">verified</span>
+<a class="font-mono text-xs text-text-muted hover:text-secondary transition-colors underline decoration-surface-stroke underline-offset-4" href="#">Blockchain Verified Ledger</a>
+</div>
+</article>
+<!-- Project Card 2 -->
+<article class="bg-surface-elevated border border-surface-stroke border-l-2 border-l-cyan-accent rounded p-4 flex flex-col gap-3 relative overflow-hidden group hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-mono text-xs text-text-muted block mb-1">AX-991-ARCHIVE</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase">Apex Industrial</h3>
+</div>
+<span class="bg-surface-variant px-2 py-1 rounded font-mono text-xs text-text-muted border border-surface-stroke">2023-10-04</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-2 border-y border-surface-stroke">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase block">Quality Score</span>
+<span class="font-body-lg text-body-lg text-cyan-accent font-bold">96.5%</span>
+</div>
+<div>
+<span class="font-caption text-caption text-text-muted uppercase block">Profitability</span>
+<span class="font-body-lg text-body-lg text-secondary font-bold">+8.7%</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="verified">verified</span>
+<a class="font-mono text-xs text-text-muted hover:text-secondary transition-colors underline decoration-surface-stroke underline-offset-4" href="#">Blockchain Verified Ledger</a>
+</div>
+</article>
+<!-- Project Card 3 -->
+<article class="bg-surface-elevated border border-surface-stroke border-l-2 border-l-neon-pink rounded p-4 flex flex-col gap-3 relative overflow-hidden group hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-mono text-xs text-text-muted block mb-1">VX-204-ARCHIVE</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface uppercase">Vortex Energy</h3>
+</div>
+<span class="bg-surface-variant px-2 py-1 rounded font-mono text-xs text-text-muted border border-surface-stroke">2023-08-21</span>
+</div>
+<div class="grid grid-cols-2 gap-4 py-2 border-y border-surface-stroke">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase block">Quality Score</span>
+<span class="font-body-lg text-body-lg text-neon-orange font-bold">88.1%</span>
+</div>
+<div>
+<span class="font-caption text-caption text-text-muted uppercase block">Profitability</span>
+<span class="font-body-lg text-body-lg text-neon-pink font-bold">-2.1%</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-text-muted text-sm" data-icon="warning">warning</span>
+<a class="font-mono text-xs text-text-muted hover:text-neon-orange transition-colors underline decoration-surface-stroke underline-offset-4" href="#">Audit Required</a>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar Component -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 border-t border-surface-stroke flat no shadows md:hidden flex justify-around items-center w-full h-20 px-margin-mobile pb-safe">
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted py-1 px-4 hover:text-on-surface transition-all active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary bg-surface-variant/30 rounded-lg py-1 px-4 hover:text-on-surface transition-all active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-caps text-label-caps">ARCHIVE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted py-1 px-4 hover:text-on-surface transition-all active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps text-label-caps">ANALYTICS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted py-1 px-4 hover:text-on-surface transition-all active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">SETTINGS</span>
+</a>
+</nav>
+</body></html>

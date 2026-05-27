@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Field Intake</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#111317",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary": "#303031",
+                        "surface-container-high": "#282a2e",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-dim": "#111317",
+                        "on-primary-container": "#006970",
+                        "surface-variant": "#333539",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary-container": "#dad9d9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary": "#ffdb9d",
+                        "primary": "#dbfcff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed": "#002022",
+                        "primary-container": "#00f0ff",
+                        "inverse-primary": "#006970",
+                        "tertiary": "#f7f5f5",
+                        "outline-variant": "#3b494b",
+                        "on-secondary": "#412d00",
+                        "surface-bright": "#37393e",
+                        "secondary-fixed": "#ffdea8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-error": "#690005",
+                        "surface": "#111317",
+                        "on-background": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "surface-container": "#1e2024",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-low": "#1a1c20",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e2e8",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "on-primary": "#00363a",
+                        "primary-fixed": "#7df4ff",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "outline": "#849495",
+                        "inverse-on-surface": "#2f3035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        /* Custom scrollbar for dark industrial feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.surface-container-low'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.outline-variant'); }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline'); }
+        
+        .industrial-border { border: 1px solid theme('colors.outline-variant'); }
+        .industrial-border-active { border: 1px solid theme('colors.primary-container'); box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.1); }
+        .chamfer-btn {
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-fixed antialiased pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile py-density-compact">
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors active:scale-95 duration-100 p-2 flex items-center justify-center rounded">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary-container uppercase tracking-tighter">FIELD INTAKE</h1>
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors active:scale-95 duration-100 p-2 flex items-center justify-center rounded">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+</header>
+<main class="p-margin-mobile flex flex-col gap-gutter max-w-2xl mx-auto">
+<!-- GPS Location Section -->
+<section class="bg-surface-container border border-outline-variant p-4 relative">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface px-2 py-1 font-label-caps text-label-caps uppercase transform -translate-y-1/2 ml-4">
+                GEO-LOC
+            </div>
+<div class="flex justify-between items-end mt-2">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">LAT / LONG</div>
+<div class="font-data-point text-data-point text-primary-fixed">34.0522° N, 118.2437° W</div>
+</div>
+<button class="flex items-center gap-1 bg-surface-variant hover:bg-surface-bright text-on-surface px-3 py-2 border border-outline-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[18px]">my_location</span>
+<span class="font-label-caps text-label-caps">REFRESH COORDS</span>
+</button>
+</div>
+</section>
+<!-- Company Name -->
+<section class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="companyName">Client / Company Name</label>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface p-3 font-data-point text-data-point focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-none placeholder-outline" id="companyName" placeholder="ENTER IDENTIFIER" type="text"/>
+</section>
+<!-- Source Selector -->
+<section class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Acquisition Source</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="source" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-3 text-center text-on-surface peer-checked:bg-surface-variant peer-checked:border-primary-container peer-checked:text-primary-container transition-all">
+<span class="font-label-caps text-label-caps">REFERRAL</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="source" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-3 text-center text-on-surface peer-checked:bg-surface-variant peer-checked:border-primary-container peer-checked:text-primary-container transition-all">
+<span class="font-label-caps text-label-caps">CANVASSING</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="source" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-3 text-center text-on-surface peer-checked:bg-surface-variant peer-checked:border-primary-container peer-checked:text-primary-container transition-all">
+<span class="font-label-caps text-label-caps">WEB LEAD</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Priority Flags -->
+<section class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Priority Level</label>
+<div class="grid grid-cols-4 gap-2">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="priority" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-2 text-center text-on-surface peer-checked:border-tertiary-fixed peer-checked:text-tertiary-fixed transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[20px]">low_priority</span>
+<span class="font-label-caps text-label-caps">LOW</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="priority" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-2 text-center text-on-surface peer-checked:border-secondary-fixed peer-checked:text-secondary-fixed transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[20px]">horizontal_rule</span>
+<span class="font-label-caps text-label-caps">MED</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="priority" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-2 text-center text-on-surface peer-checked:border-secondary-container peer-checked:text-secondary-container transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[20px]">priority_high</span>
+<span class="font-label-caps text-label-caps">HIGH</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="priority" type="radio"/>
+<div class="bg-surface-container border border-outline-variant p-2 text-center text-on-surface peer-checked:bg-error-container peer-checked:border-error peer-checked:text-error transition-all flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="font-label-caps text-label-caps">CRIT</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Image Upload Section -->
+<section class="flex flex-col gap-2 mt-4">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Site Imagery</label>
+<span class="font-label-caps text-label-caps text-outline">0 / 4 UPLOADED</span>
+</div>
+<button class="w-full border-2 border-dashed border-outline-variant bg-surface-container hover:bg-surface-container-high transition-colors p-8 flex flex-col items-center justify-center gap-3 text-on-surface-variant active:scale-[0.98]">
+<span class="material-symbols-outlined text-[48px] text-primary-container">add_a_photo</span>
+<div class="font-data-point text-data-point">UPLOAD INITIAL PHOTO</div>
+<div class="font-label-caps text-label-caps">TAP TO CAPTURE OR SELECT</div>
+</button>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<!-- Example thumbnail -->
+<div class="relative aspect-video bg-surface-container border border-outline-variant overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-high to-surface-container-highest opacity-50"></div>
+<span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 material-symbols-outlined text-outline">image</span>
+<button class="absolute top-1 right-1 bg-surface/80 p-1 rounded-sm text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+</button>
+</div>
+<div class="relative aspect-video bg-surface-container border border-outline-variant overflow-hidden">
+<span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 material-symbols-outlined text-outline">image</span>
+</div>
+</div>
+</section>
+<!-- Submit Action -->
+<button class="chamfer-btn bg-primary-container text-on-primary-container font-data-point text-data-point p-4 w-full mt-6 border-b-4 border-primary flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-weight="fill">upload</span>
+<span>INITIALIZE RECORD</span>
+</button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-highest border-t border-outline-variant flex justify-around items-center h-16 md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary-fixed-dim p-density-compact flex-1 h-full" href="#">
+<span class="material-symbols-outlined" data-icon="terminal" data-weight="fill">terminal</span>
+<span class="font-label-caps text-label-caps mt-1">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact hover:text-primary transition-all active:bg-surface-bright duration-75 flex-1 h-full" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-label-caps mt-1">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-density-compact hover:text-primary transition-all active:bg-surface-bright duration-75 flex-1 h-full" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps mt-1">Safety</span>
+</a>
+</nav>
+<!-- Desktop Nav Shim (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-24 bg-surface border-r border-outline-variant z-40">
+<a class="flex flex-col items-center justify-center bg-surface-variant text-primary-container border-l-4 border-primary-fixed-dim p-4 h-24" href="#">
+<span class="material-symbols-outlined" data-icon="terminal" data-weight="fill">terminal</span>
+<span class="font-label-caps text-label-caps mt-2">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright p-4 h-24 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-label-caps mt-2">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright p-4 h-24 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps mt-2">Safety</span>
+</a>
+</nav>
+</body></html>

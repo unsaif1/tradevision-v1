@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complete Your Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#dee3eb",
+                      "surface-container-high": "#252a31",
+                      "surface-variant": "#30353c",
+                      "outline": "#ab888a",
+                      "on-error": "#690005",
+                      "secondary": "#bfc7d5",
+                      "on-primary-fixed": "#40000f",
+                      "on-surface-variant": "#e4bdbf",
+                      "on-secondary-container": "#aeb6c3",
+                      "tertiary-container": "#00855e",
+                      "primary-fixed": "#ffdadb",
+                      "on-secondary-fixed": "#141c26",
+                      "tertiary-fixed": "#8ff7c7",
+                      "surface-tint": "#ffb2b9",
+                      "on-primary-fixed-variant": "#91002e",
+                      "error": "#ffb4ab",
+                      "primary-container": "#e21e51",
+                      "secondary-container": "#3f4753",
+                      "surface-container": "#1b2026",
+                      "secondary-fixed-dim": "#bfc7d5",
+                      "surface-bright": "#353a40",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed": "#dbe3f1",
+                      "tertiary-fixed-dim": "#72daad",
+                      "tertiary": "#72daad",
+                      "surface": "#0f141a",
+                      "surface-container-highest": "#30353c",
+                      "on-secondary": "#29313c",
+                      "surface-container-low": "#171c22",
+                      "inverse-on-surface": "#2c3137",
+                      "surface-dim": "#0f141a",
+                      "on-secondary-fixed-variant": "#3f4753",
+                      "primary": "#ffb2b9",
+                      "outline-variant": "#5c3f42",
+                      "on-primary": "#67001e",
+                      "on-primary-container": "#fffcff",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#003826",
+                      "on-tertiary-fixed-variant": "#005138",
+                      "surface-container-lowest": "#0a0f14",
+                      "inverse-surface": "#dee3eb",
+                      "on-tertiary-container": "#f5fff7",
+                      "on-background": "#dee3eb",
+                      "background": "#0f141a",
+                      "on-tertiary-fixed": "#002114",
+                      "inverse-primary": "#be003e",
+                      "primary-fixed-dim": "#ffb2b9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "sidebar_width": "260px",
+                      "gutter": "24px",
+                      "grid_columns": "12",
+                      "header_height": "64px",
+                      "margin": "32px"
+              },
+              "fontFamily": {
+                      "display-md": [
+                              "Barlow Condensed"
+                      ],
+                      "display-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "mono-data": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-sm": [
+                              "Barlow Condensed"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ]
+              },
+              "fontSize": {
+                      "display-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "52px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.03em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-industrial {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #30353c; /* surface-variant */
+            color: #dee3eb; /* on-surface */
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 18px;
+            border-radius: 0;
+            padding-left: 0;
+            padding-right: 0;
+            transition: border-color 0.2s ease-in-out;
+        }
+        .input-industrial:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom: 1px solid #e21e51; /* primary-container */
+        }
+        .input-industrial::placeholder {
+            color: #aeb6c3; /* on-secondary-container */
+        }
+        .btn-primary {
+            background-color: #e21e51; /* primary-container */
+            color: #fffcff; /* on-primary-container */
+            border-radius: 0;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            transition: background-color 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #be003e; /* inverse-primary used as hover */
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center p-gutter">
+<!-- Suppressed TopAppBar & BottomNavBar as per Semantic Shell Mandate for Transactional/Onboarding flows -->
+<main class="w-full max-w-2xl">
+<!-- Progress Indicator -->
+<div class="mb-margin">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Step 1 of 2</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Profile Configuration</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-none flex overflow-hidden">
+<div class="h-full bg-primary-container w-1/2"></div>
+</div>
+</div>
+<!-- Form Card -->
+<div class="bg-[#1a1f26] border border-[#2a323d] p-[32px]">
+<header class="mb-margin">
+<h1 class="font-display-md text-display-md text-on-surface mb-2">Complete Profile</h1>
+<p class="font-body-md text-body-md text-secondary">Establish your operational identity within the TradeVision C.A.R.E. network.</p>
+</header>
+<form class="space-y-[32px]">
+<!-- Photo Upload Placeholder -->
+<div class="flex items-center gap-[24px]">
+<div class="w-[80px] h-[80px] bg-surface-container border border-surface-variant flex items-center justify-center rounded-none group cursor-pointer hover:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors" style="font-size: 32px;">add_a_photo</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface uppercase mb-1">Identity Visual</p>
+<p class="font-body-md text-body-md text-secondary text-sm">Upload a high-resolution portrait. Format: JPG, PNG. Max size: 5MB.</p>
+</div>
+</div>
+<!-- Input Group: Full Name -->
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface uppercase mb-2 flex items-center gap-2" for="fullName">
+<span class="material-symbols-outlined" style="font-size: 16px;">person</span>
+                        Full Legal Name
+                    </label>
+<input class="input-industrial w-full py-2" id="fullName" placeholder="e.g. Jane Doe" type="text"/>
+</div>
+<!-- Input Group: Professional Title -->
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface uppercase mb-2 flex items-center gap-2" for="title">
+<span class="material-symbols-outlined" style="font-size: 16px;">badge</span>
+                        Professional Title
+                    </label>
+<input class="input-industrial w-full py-2" id="title" placeholder="e.g. Senior Operations Analyst" type="text"/>
+</div>
+<!-- Input Group: Contact Number -->
+<div class="flex flex-col">
+<label class="font-label-caps text-label-caps text-on-surface uppercase mb-2 flex items-center gap-2" for="contact">
+<span class="material-symbols-outlined" style="font-size: 16px;">call</span>
+                        Primary Contact Number
+                    </label>
+<input class="input-industrial w-full py-2" id="contact" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<!-- Action Button -->
+<div class="pt-4 flex justify-end">
+<button class="btn-primary flex items-center gap-2" type="button">
+                        Proceed to Step 2
+                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>TIMELINE_FORECAST - Forensic UI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0f141a;
+            color: #dee3eb;
+            overflow-x: hidden;
+        }
+
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, rgba(136, 150, 168, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(136, 150, 168, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        .cyber-border-corner {
+            position: relative;
+        }
+        .cyber-border-corner::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00f2ff;
+            border-left: 2px solid #00f2ff;
+        }
+        .cyber-border-corner::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #00f2ff;
+            border-right: 2px solid #00f2ff;
+        }
+
+        .segmented-bar-segment {
+            height: 8px;
+            margin-right: 2px;
+            flex: 1;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c;
+            border-radius: 2px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#0f141a",
+                      "tertiary-fixed": "#d9e3f9",
+                      "on-secondary": "#243240",
+                      "secondary-container": "#3a4858",
+                      "surface-tint": "#ffb2b9",
+                      "on-tertiary": "#273141",
+                      "status-error": "#f43f5e",
+                      "surface-deep": "#090f15",
+                      "inverse-primary": "#894d54",
+                      "on-primary-fixed-variant": "#6d363d",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#bdc7dc",
+                      "surface-container-highest": "#30353c",
+                      "surface": "#0f141a",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "surface-container-high": "#252a31",
+                      "secondary": "#bac8db",
+                      "surface-dim": "#0f141a",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-secondary-fixed": "#0f1d2b",
+                      "on-tertiary-container": "#495365",
+                      "surface-container-low": "#171c22",
+                      "on-primary-container": "#7b4148",
+                      "on-primary-fixed": "#370c13",
+                      "primary-fixed": "#ffdadc",
+                      "on-surface-variant": "#d7c2c2",
+                      "status-success": "#4ade80",
+                      "secondary-fixed": "#d5e4f7",
+                      "inverse-surface": "#dee3eb",
+                      "inverse-on-surface": "#2c3137",
+                      "on-surface": "#dee3eb",
+                      "on-primary": "#522027",
+                      "on-secondary-fixed-variant": "#3a4858",
+                      "surface-bright": "#353a40",
+                      "accent-cyan": "#00f2ff",
+                      "on-tertiary-fixed": "#121c2c",
+                      "on-secondary-container": "#a8b6c9",
+                      "outline-variant": "#524344",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6",
+                      "surface-variant": "#30353c",
+                      "on-background": "#dee3eb",
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "surface-container": "#1b2026",
+                      "primary-container": "#ffb2b9",
+                      "outline-muted": "rgba(136, 150, 168, 0.15)",
+                      "tertiary": "#d9e3f9",
+                      "secondary-fixed-dim": "#bac8db",
+                      "surface-container-lowest": "#0a0f14",
+                      "primary": "#ffd9dc",
+                      "outline": "#9f8c8d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "sidebar-width": "260px",
+                      "telemetry-sidebar-width": "340px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "xl": "40px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Barlow Condensed"],
+                      "label-md": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "headline-lg": ["Barlow Condensed"],
+                      "mono-data": ["JetBrains Mono"],
+                      "body-sm": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "headline-md": ["Barlow Condensed"],
+                      "label-sm": ["Manrope"]
+              },
+              "fontSize": {
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="cyber-grid min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-dim border-b border-outline-variant flex justify-between items-center px-lg py-md">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary active:opacity-80 transition-all duration-100">arrow_back</button>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-accent-cyan">TIMELINE_FORECAST</h1>
+</div>
+<button class="material-symbols-outlined text-primary active:opacity-80 transition-all duration-100">settings_input_component</button>
+</header>
+<main class="mt-20 px-md space-y-md">
+<!-- Dashboard Intro -->
+<div class="flex flex-col gap-xs">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">System Telemetry</span>
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="text-mono-data font-mono-data text-accent-cyan">STABLE_VELOCITY: 104.2%</span>
+</div>
+</div>
+<!-- Project Velocity Chart -->
+<section class="bg-surface-container border border-outline-variant rounded-lg p-md overflow-hidden relative">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h2 class="text-label-caps font-label-caps text-on-surface-variant">VELOCITY_METRICS_30D</h2>
+<p class="text-headline-md font-headline-md text-on-surface">94.8% <span class="text-body-sm font-mono-data text-accent-cyan">v_baseline</span></p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-sm font-mono-data text-status-success">ACTUAL: 1.2x</span>
+<span class="text-label-sm font-mono-data text-on-surface-variant">PRED: 1.1x</span>
+</div>
+</div>
+<!-- Area Chart Visualization -->
+<div class="h-40 w-full relative flex items-end gap-[2px]">
+<!-- Bars representing area chart -->
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 60%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 70%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 85%"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 65%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 65%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 78%"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 80%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 82%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 92%"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 70%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 68%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 75%"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 90%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 88%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 98%"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 85%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 82%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 89%"></div>
+</div>
+<div class="flex-1 bg-surface-container-highest group relative" style="height: 95%">
+<div class="absolute bottom-0 w-full bg-accent-cyan opacity-40" style="height: 96%"></div>
+<div class="absolute bottom-0 w-full border-t border-accent-cyan" style="height: 100%"></div>
+</div>
+</div>
+<div class="flex justify-between mt-sm">
+<span class="text-mono-data font-mono-data text-label-sm text-on-surface-variant">T-30D</span>
+<span class="text-mono-data font-mono-data text-label-sm text-on-surface-variant">CURRENT</span>
+</div>
+</section>
+<!-- Critical Path Analysis -->
+<section class="cyber-border-corner bg-surface-container border border-outline-variant p-md">
+<div class="flex items-center gap-sm mb-sm text-status-error">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<h2 class="text-label-caps font-label-caps font-bold">CRITICAL_PATH_ALERT</h2>
+</div>
+<div class="bg-surface-deep p-sm border-l-2 border-status-error">
+<div class="flex justify-between items-start">
+<p class="text-body-md font-bold text-on-surface">Supply Chain Latency</p>
+<span class="text-label-caps font-label-caps text-status-error bg-status-error/10 px-xs py-[2px] rounded-sm">HIGH IMPACT</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-xs">Silicon delivery window predicted to shift +14 days. Mitigation recommended.</p>
+<div class="mt-md flex gap-sm">
+<div class="flex-1 h-[2px] bg-outline-variant relative">
+<div class="absolute top-0 left-0 h-full bg-status-error w-4/5"></div>
+</div>
+<span class="text-mono-data font-mono-data text-label-sm text-status-error">82% RISK</span>
+</div>
+</div>
+</section>
+<!-- Completion Predictions Table -->
+<section class="space-y-sm">
+<h2 class="text-label-caps font-label-caps text-on-surface-variant px-xs">PHASE_TRACKING</h2>
+<!-- Project Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-md hover:bg-surface-container-highest transition-colors">
+<div class="flex justify-between items-center">
+<span class="text-mono-data font-mono-data text-accent-cyan">ID_RIVERSIDE</span>
+<span class="text-label-caps font-label-caps text-on-surface bg-surface-container px-sm py-[2px] border border-outline-variant">NOV-24</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-headline-md">Riverside Infrastructure</p>
+<div class="flex items-center justify-between mt-sm">
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface-variant uppercase">Current Phase</span>
+<span class="text-body-md font-bold text-tertiary">BETA_VALIDATION</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-sm text-on-surface-variant uppercase">AI Confidence</span>
+<span class="text-body-md font-bold text-status-success">88%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-md hover:bg-surface-container-highest transition-colors">
+<div class="flex justify-between items-center">
+<span class="text-mono-data font-mono-data text-accent-cyan">ID_SKYLINE</span>
+<span class="text-label-caps font-label-caps text-on-surface bg-surface-container px-sm py-[2px] border border-outline-variant">DEC-24</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-headline-md">Skyline Nexus Expansion</p>
+<div class="flex items-center justify-between mt-sm">
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface-variant uppercase">Current Phase</span>
+<span class="text-body-md font-bold text-tertiary">CORE_DEPLOY</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-sm text-on-surface-variant uppercase">AI Confidence</span>
+<span class="text-body-md font-bold text-accent-cyan">94%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-surface-container-low border border-outline-variant p-md hover:bg-surface-container-highest transition-colors">
+<div class="flex justify-between items-center">
+<span class="text-mono-data font-mono-data text-accent-cyan">ID_ORBIT_ZERO</span>
+<span class="text-label-caps font-label-caps text-on-surface bg-surface-container px-sm py-[2px] border border-outline-variant">JAN-25</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-headline-md">Orbit Zero Mainframe</p>
+<div class="flex items-center justify-between mt-sm">
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface-variant uppercase">Current Phase</span>
+<span class="text-body-md font-bold text-tertiary">PROTOTYPE_STAGING</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-sm text-on-surface-variant uppercase">AI Confidence</span>
+<span class="text-body-md font-bold text-status-error">62%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Telemetry Data Grid -->
+<section class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container border border-outline-variant p-sm flex flex-col gap-xs">
+<span class="text-label-sm text-on-surface-variant font-mono-data uppercase">Drift_Offset</span>
+<span class="text-body-lg font-mono-data text-accent-cyan">+0.04ms</span>
+</div>
+<div class="bg-surface-container border border-outline-variant p-sm flex flex-col gap-xs">
+<span class="text-label-sm text-on-surface-variant font-mono-data uppercase">Node_Uptime</span>
+<span class="text-body-lg font-mono-data text-status-success">99.98%</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant flex justify-around items-center px-md pb-safe py-2">
+<!-- Overview -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-md font-label-md">Overview</span>
+</a>
+<!-- Timeline (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-accent-cyan rounded-xl px-4 py-2 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">timeline</span>
+<span class="text-label-md font-label-md">Timeline</span>
+</a>
+<!-- Finance -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-md font-label-md">Finance</span>
+</a>
+<!-- Resources -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-label-md">Resources</span>
+</a>
+</nav>
+<!-- Visual Artifacts -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] opacity-20">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-cyan rounded-full filter blur-[120px] opacity-10"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary rounded-full filter blur-[120px] opacity-10"></div>
+</div>
+<script>
+        // Simple micro-interaction for tapping cards
+        document.querySelectorAll('.bg-surface-container-low').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.add('border-accent-cyan');
+                setTimeout(() => {
+                    card.classList.remove('border-accent-cyan');
+                }, 400);
+            });
+        });
+    </script>
+</body></html>

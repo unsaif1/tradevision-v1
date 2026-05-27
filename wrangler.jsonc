@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "saifhaven-site",
+  "compatibility_date": "2026-05-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "trade-vision-crm",
+      "database_id": "00000000-0000-0000-0000-000000000001"
+    }
+  ],
+  "routes": [
+    { "pattern": "saifhaven.com",       "zone_id": "108a65443eee7e746fc14bc8a29256b2" },
+    { "pattern": "saifhaven.com/*",     "zone_id": "108a65443eee7e746fc14bc8a29256b2" },
+    { "pattern": "www.saifhaven.com",   "zone_id": "108a65443eee7e746fc14bc8a29256b2" },
+    { "pattern": "www.saifhaven.com/*", "zone_id": "108a65443eee7e746fc14bc8a29256b2" },
+    { "pattern": "closedsi.com",        "zone_id": "fdb39397ba0cf350d85feeabf05eda91" },
+    { "pattern": "closedsi.com/*",      "zone_id": "fdb39397ba0cf350d85feeabf05eda91" },
+    { "pattern": "www.closedsi.com",    "zone_id": "fdb39397ba0cf350d85feeabf05eda91" },
+    { "pattern": "www.closedsi.com/*",  "zone_id": "fdb39397ba0cf350d85feeabf05eda91" }
+  ]
+}

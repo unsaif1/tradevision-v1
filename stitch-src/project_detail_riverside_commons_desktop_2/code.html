@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Riverside Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#72daad",
+                        "secondary-container": "#3f4753",
+                        "tertiary": "#72daad",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-variant": "#30353c",
+                        "error-container": "#93000a",
+                        "on-surface": "#dee3eb",
+                        "on-surface-variant": "#e4bdbf",
+                        "surface-container-highest": "#30353c",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-low": "#171c22",
+                        "on-secondary-fixed": "#141c26",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#e21e51",
+                        "secondary": "#bfc7d5",
+                        "surface-container-high": "#252a31",
+                        "outline-variant": "#5c3f42",
+                        "on-tertiary-container": "#f5fff7",
+                        "inverse-primary": "#be003e",
+                        "surface-bright": "#353a40",
+                        "surface": "#0f141a",
+                        "outline": "#ab888a",
+                        "surface-dim": "#0f141a",
+                        "secondary-fixed": "#dbe3f1",
+                        "tertiary-fixed": "#8ff7c7",
+                        "on-primary": "#67001e",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1b2026",
+                        "on-primary-fixed": "#40000f",
+                        "inverse-surface": "#dee3eb",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#aeb6c3",
+                        "on-secondary": "#29313c",
+                        "on-primary-container": "#fffcff",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-tertiary": "#003826",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-container-lowest": "#0a0f14",
+                        "on-background": "#dee3eb",
+                        "surface-tint": "#ffb2b9",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "background": "#0f141a",
+                        "inverse-on-surface": "#2c3137",
+                        "tertiary-container": "#00855e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "sidebar_width": "260px",
+                        "header_height": "64px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Barlow Condensed"],
+                        "display-md": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Barlow Condensed"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+    </style>
+</head>
+<body class="flex bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col overflow-y-auto z-40">
+<div class="p-6 border-b border-outline-variant dark:border-outline-variant">
+<h1 class="font-display-md text-display-md font-bold text-primary dark:text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">C.A.R.E. Command</p>
+</div>
+<div class="flex-1 py-4">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+<div class="p-6 border-t border-outline-variant dark:border-outline-variant flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR4PfQ90QnmtmgaCZA1jBF21kgvEirr1mXwEjJ8dciUPLbrulr0xPctNaiHm9N43vdGcFUNfJkSuCAd3er4Iwf3QzuBcB1cfpQwAjHOUgQFL6DeYm-7F082rpibttBJdI-9QNCQiiptk2WzxYcW2nFZwBDpGr4POvaIXAU_krjopL-EJ0Mn3rslgoTWl41irvYs180vSVAvbHgjtbfFSLBFCdeAuDsb5LAc7mCEWBYNFvkd9WtqNnPL_kUZbKT1Zm-cyYd-yE3n-o6"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">SYS ADMIN</span>
+<span class="font-mono-data text-[10px] text-on-surface-variant">ID: 9402-A</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-[260px] flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin w-[calc(100%-260px)]">
+<div class="flex items-center gap-4">
+<div class="relative flex items-center focus-within:ring-1 focus-within:ring-primary focus-within:outline-none transition-all rounded">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-high border-none text-on-surface font-body-md pl-10 pr-4 py-2 w-[300px] focus:ring-0 placeholder:text-on-surface-variant/50" placeholder="Search projects, claims, documents..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary focus:outline-none transition-all rounded p-1">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary focus:outline-none transition-all rounded p-1">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary focus:outline-none transition-all rounded p-1">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 pt-[calc(64px+32px)] px-margin pb-margin overflow-y-auto">
+<!-- Project Header -->
+<div class="flex justify-between items-start mb-8">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 bg-tertiary/10 border border-tertiary/30 text-tertiary font-label-caps text-label-caps rounded-sm">Active - Phase 2</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Austin, TX</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Riverside Commons</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-2xl">Mixed-use commercial development consisting of 3 towers, retail podium, and subterranean parking. Current phase involves structural steel erection and initial envelope closure.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 bg-transparent border border-outline text-on-surface hover:bg-surface-container-highest transition-colors font-label-caps text-label-caps flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                        Generate Report
+                    </button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container hover:bg-primary-container/90 transition-colors font-label-caps text-label-caps flex items-center gap-2 border border-primary-container">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Add New Claim
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Metrics Row -->
+<div class="col-span-12 grid grid-cols-3 gap-gutter mb-2">
+<div class="bg-surface-container border border-surface-container-high p-5 rounded-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full"></div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Completion %</h3>
+<div class="flex items-end gap-3">
+<span class="font-display-md text-display-md text-on-surface leading-none">64.2%</span>
+<span class="font-mono-data text-[12px] text-tertiary mb-1">+2.1% this month</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[64.2%]"></div>
+</div>
+</div>
+<div class="bg-surface-container border border-surface-container-high p-5 rounded-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full"></div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Remaining Budget</h3>
+<div class="flex items-end gap-3">
+<span class="font-display-md text-display-md text-on-surface leading-none">$14.2M</span>
+<span class="font-mono-data text-[12px] text-error mb-1">-$450k variance</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-surface-variant h-full w-[35%]"></div>
+</div>
+</div>
+<div class="bg-surface-container border border-surface-container-high p-5 rounded-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error/5 rounded-bl-full"></div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2">Active Claims</h3>
+<div class="flex items-end gap-3">
+<span class="font-display-md text-display-md text-on-surface leading-none">03</span>
+<span class="font-mono-data text-[12px] text-on-surface-variant mb-1">Total value: $1.8M</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 mt-4 rounded-full overflow-hidden flex">
+<div class="bg-error h-full w-[33%]"></div>
+<div class="bg-tertiary h-full w-[66%] border-l border-surface-container"></div>
+</div>
+</div>
+</div>
+<!-- Claims Timeline & Documentation -->
+<div class="col-span-8 flex flex-col gap-gutter">
+<!-- Milestones -->
+<div class="bg-surface-container border border-surface-container-high p-6 rounded-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6 border-b border-surface-container-highest pb-2">Claims Pipeline Flow</h3>
+<div class="relative mt-8">
+<!-- Connecting Line -->
+<div class="absolute top-1/2 left-4 right-4 h-px bg-surface-container-highest -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-4 w-1/2 h-[2px] bg-primary -translate-y-1/2 z-0"></div>
+<div class="flex justify-between relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2 w-24">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container ring-4 ring-surface-container">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface text-center">Intake</span>
+<span class="font-mono-data text-[10px] text-on-surface-variant">14 Claims</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2 w-24">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary flex items-center justify-center text-primary ring-4 ring-surface-container">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary text-center">Documentation</span>
+<span class="font-mono-data text-[10px] text-primary">3 Active</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2 w-24">
+<div class="w-8 h-8 rounded-full bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant ring-4 ring-surface-container">
+<span class="material-symbols-outlined text-[16px]">gavel</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-center">Review</span>
+<span class="font-mono-data text-[10px] text-on-surface-variant">Pending</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-2 w-24">
+<div class="w-8 h-8 rounded-full bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant ring-4 ring-surface-container">
+<span class="material-symbols-outlined text-[16px]">handshake</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-center">Resolution</span>
+<span class="font-mono-data text-[10px] text-on-surface-variant">--</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Claims List -->
+<div class="bg-surface-container border border-surface-container-high rounded-sm overflow-hidden flex-1 flex flex-col">
+<div class="p-6 border-b border-surface-container-highest flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Active Claims &amp; Disputes</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container-highest bg-surface/50">
+<th class="py-3 px-6 font-label-caps text-label-caps text-on-surface-variant">ID</th>
+<th class="py-3 px-6 font-label-caps text-label-caps text-on-surface-variant">Description</th>
+<th class="py-3 px-6 font-label-caps text-label-caps text-on-surface-variant">Value</th>
+<th class="py-3 px-6 font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="py-3 px-6 font-label-caps text-label-caps text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container-highest/50 transition-colors">
+<td class="py-4 px-6 font-mono-data text-mono-data text-on-surface">CLM-2023-089</td>
+<td class="py-4 px-6 font-body-md text-on-surface">Steel Fabrication Delay Impact</td>
+<td class="py-4 px-6 font-mono-data text-mono-data text-on-surface">$1,250,000</td>
+<td class="py-4 px-6">
+<span class="px-2 py-1 bg-surface-variant border border-outline-variant text-on-surface-variant font-label-caps text-[10px] rounded-sm">Under Review</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button>
+</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container-highest/50 transition-colors">
+<td class="py-4 px-6 font-mono-data text-mono-data text-on-surface">CLM-2023-094</td>
+<td class="py-4 px-6 font-body-md text-on-surface">Foundation Water Incursion</td>
+<td class="py-4 px-6 font-mono-data text-mono-data text-on-surface">$345,000</td>
+<td class="py-4 px-6">
+<span class="px-2 py-1 bg-error/10 border border-error/30 text-error font-label-caps text-[10px] rounded-sm">Disputed</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/50 transition-colors">
+<td class="py-4 px-6 font-mono-data text-mono-data text-on-surface">CLM-2023-102</td>
+<td class="py-4 px-6 font-body-md text-on-surface">HVAC Specification Change Order</td>
+<td class="py-4 px-6 font-mono-data text-mono-data text-on-surface">$185,500</td>
+<td class="py-4 px-6">
+<span class="px-2 py-1 bg-tertiary/10 border border-tertiary/30 text-tertiary font-label-caps text-[10px] rounded-sm">Approved</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Docs & Context -->
+<div class="col-span-4 flex flex-col gap-gutter">
+<!-- Documentation Assembly -->
+<div class="bg-surface-container border border-surface-container-high p-6 rounded-sm">
+<div class="flex justify-between items-center mb-6 border-b border-surface-container-highest pb-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Documentation Assembly</h3>
+<span class="font-mono-data text-[12px] text-primary">Action Req.</span>
+</div>
+<div class="flex flex-col gap-3 mb-6">
+<!-- Doc Item -->
+<div class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded-sm hover:border-primary/50 transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">description</span>
+<div>
+<p class="font-body-md text-[13px] text-on-surface line-clamp-1">Site_Photos_BldgA_Oct.pdf</p>
+<p class="font-mono-data text-[10px] text-on-surface-variant">Verified • 4.2 MB</p>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[18px]">download</span></button>
+</div>
+<!-- Doc Item -->
+<div class="flex items-center justify-between p-3 bg-surface border border-error/30 rounded-sm relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-error"></div>
+<div class="flex items-center gap-3 pl-2">
+<span class="material-symbols-outlined text-error">warning</span>
+<div>
+<p class="font-body-md text-[13px] text-on-surface line-clamp-1">Insurance_Cert_Sub04.pdf</p>
+<p class="font-mono-data text-[10px] text-error">Missing Signature • 1.1 MB</p>
+</div>
+</div>
+<button class="text-primary hover:text-primary-fixed text-[12px] font-label-caps">REVIEW</button>
+</div>
+<!-- Doc Item -->
+<div class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded-sm hover:border-primary/50 transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">image</span>
+<div>
+<p class="font-body-md text-[13px] text-on-surface line-clamp-1">Foundation_Core_Sample.jpg</p>
+<p class="font-mono-data text-[10px] text-on-surface-variant">Pending Review • 8.5 MB</p>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+</div>
+</div>
+<button class="w-full py-2 bg-surface border border-dashed border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary transition-all font-label-caps text-label-caps flex items-center justify-center gap-2 rounded-sm">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                            Request Documentation
+                        </button>
+</div>
+<!-- Contextual Map Placeholder -->
+<div class="bg-surface-container border border-surface-container-high p-1 rounded-sm h-[200px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface z-10 opacity-60 group-hover:opacity-40 transition-opacity mix-blend-color"></div>
+<div class="absolute inset-0 bg-primary/10 z-20 pointer-events-none mix-blend-overlay"></div>
+<img alt="Site Map" class="w-full h-full object-cover filter grayscale contrast-125" data-alt="A highly detailed, high-contrast aerial satellite view of a modern urban construction site in Austin, TX. The image should have a dark, sleek, technical aesthetic with deep shadows and sharp details. Neon pink and bright mint green graphical overlays or highlights should subtly mark construction zones, giving it a futuristic, mission-control command center vibe suitable for a deep-tech dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCucaNrQTESvJQYdLCTu77Griq_XGU8ji72IawbuYwbPzRHG2b0LLMA4FQrtqWN7pKm-3VAxp7lO_3IAQYqmpA8zCsHKQW2oM9mRYilJg4r-CB0xKLf_0s-OGmZ7GxCr2Zpzzdjgni9vr-BR4Bac7F1LAKWwBHNMjobqAQnGcxy1IugK_nyFwnTxF-6x2zjWLRm_PKtkHmiS4I2MxAZgK5sVxO6RFToC6lNYH9sYr5LKcQ0FFvsA-uRIZv4YG-NGdacQdmPAmi24ECx"/>
+<div class="absolute bottom-3 left-3 z-30 flex items-center gap-2 bg-surface/80 backdrop-blur-sm px-2 py-1 border border-outline-variant/50 rounded-sm">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-mono-data text-[10px] text-on-surface">Live Telemetry Active</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

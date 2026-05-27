@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Claims Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container-high": "#282a2e",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-secondary-container": "#6b4b00",
+                        "outline-variant": "#3b494b",
+                        "surface-dim": "#111317",
+                        "tertiary": "#f7f5f5",
+                        "surface-variant": "#333539",
+                        "on-primary": "#00363a",
+                        "background": "#111317",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006970",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary": "#dbfcff",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface": "#e2e2e8",
+                        "surface": "#111317",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error": "#690005",
+                        "primary-container": "#00f0ff",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-container": "#dad9d9",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "outline": "#849495",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-low": "#1a1c20",
+                        "secondary": "#ffdb9d",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#e2e2e8",
+                        "secondary-container": "#feb700",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1e2024",
+                        "on-primary-container": "#006970",
+                        "on-secondary": "#412d00",
+                        "secondary-fixed": "#ffdea8",
+                        "surface-tint": "#00dbe9",
+                        "surface-bright": "#37393e",
+                        "inverse-on-surface": "#2f3035",
+                        "on-surface-variant": "#b9cacb",
+                        "inverse-surface": "#e2e2e8",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#00dbe9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Custom scrollbar for high-density tech feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+    </style>
+</head>
+<body class="flex overflow-hidden h-screen antialiased bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col z-40">
+<!-- Brand/Header -->
+<div class="p-6 border-b border-outline-variant">
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">C.A.R.E. Command</p>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+<!-- User Profile Element (from Header alt context) -->
+<div class="p-4 border-t border-outline-variant mt-auto flex items-center gap-3">
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full border border-outline-variant" data-alt="A close up professional headshot of a system administrator in an industrial setting, cool blue lighting, serious expression, high tech corporate aesthetic, dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfYzq4HaVRDlqbSMEg9J1cWwNtTQYzVj3abC17N5xMiM8VpmEo4dZ-Ptfa2PJJ2H-6gZaq48nCE6zGv12FlIctol3vWHaTCtf3QMepVCsx3cH2VtRcvnmXaoQYrijBOol_fzQeOJzu1wwIShACVLSgjQ3RoPfGRVMVQxNYbySqxutNVtOQycm7QPKNw2aBWY2W8Qd6XsG8_ubKE_JxsXqtwtUhy-LUkx8vFTExZBypVD3inAryQ4WITCSHZhAUlRKrdo1myegCK3KA"/>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">SYS_ADMIN</span>
+<span class="font-body-fixed text-[10px] text-on-surface-variant">Active Terminal</span>
+</div>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop">
+<!-- Product Name / Context -->
+<div class="flex items-center">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">TradeVision C.A.R.E.</span>
+<span class="mx-4 text-outline-variant">|</span>
+<span class="font-data-point text-data-point text-primary">CLAIM_REVIEW_TERMINAL_V1.4</span>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-gutter">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[64px] h-[calc(100vh-64px)] w-full flex bg-background overflow-hidden relative">
+<!-- Left Pane: Claim Submission Feed -->
+<section class="w-1/3 min-w-[320px] max-w-[400px] border-r border-outline-variant bg-surface-container-lowest flex flex-col h-full z-10">
+<div class="p-density-comfortable border-b border-outline-variant bg-surface-container flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Incoming Queue</h2>
+<span class="font-data-point text-data-point bg-primary/10 text-primary px-2 py-1 rounded">14</span>
+</div>
+<div class="flex-1 overflow-y-auto p-density-compact space-y-density-compact">
+<!-- Feed Item (Active) -->
+<div class="bg-surface-container p-4 border border-primary relative cursor-pointer group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-data-point text-[14px] text-primary">CLM-8820-X</span>
+<span class="font-label-caps text-label-caps bg-error/20 text-error px-1.5 py-0.5 rounded uppercase">Critical</span>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface mb-1 truncate">Wind Damage - Roof Collapse Risk</div>
+<div class="flex items-center justify-between text-on-surface-variant mt-3">
+<span class="font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 12m ago</span>
+<span class="font-label-caps text-label-caps">Field: Agent 4</span>
+</div>
+</div>
+<!-- Feed Item (Inactive) -->
+<div class="bg-surface-container-high p-4 border border-[#2D2D2D] cursor-pointer hover:border-outline transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-data-point text-[14px] text-on-surface">CLM-8819-A</span>
+<span class="font-label-caps text-label-caps bg-secondary-container/20 text-secondary-container px-1.5 py-0.5 rounded uppercase">Standard</span>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface-variant mb-1 truncate">Hail Impact - Shingle Damage</div>
+<div class="flex items-center justify-between text-outline mt-3">
+<span class="font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 45m ago</span>
+<span class="font-label-caps text-label-caps">Field: Agent 2</span>
+</div>
+</div>
+<!-- Feed Item (Inactive) -->
+<div class="bg-surface-container-high p-4 border border-[#2D2D2D] cursor-pointer hover:border-outline transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-data-point text-[14px] text-on-surface">CLM-8818-B</span>
+<span class="font-label-caps text-label-caps bg-surface-variant text-on-surface-variant px-1.5 py-0.5 rounded uppercase">Low</span>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface-variant mb-1 truncate">Gutter Alignment Issue</div>
+<div class="flex items-center justify-between text-outline mt-3">
+<span class="font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2h ago</span>
+<span class="font-label-caps text-label-caps">Self-Reported</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Pane: Claim Details & Tech Notes -->
+<section class="flex-1 flex flex-col h-full overflow-y-auto bg-surface relative">
+<!-- Header Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant border-b border-outline-variant">
+<!-- Policyholder / Primary Info -->
+<div class="bg-surface p-density-comfortable">
+<div class="flex items-start justify-between mb-6">
+<div>
+<div class="font-label-caps text-label-caps text-primary mb-1 uppercase tracking-widest">Target Entity</div>
+<h2 class="font-display-lg text-[32px] text-on-surface leading-none">Robert Kessler</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mt-2">Policy: #POL-992-881-TX</p>
+</div>
+<div class="bg-error-container/20 border border-error p-2 text-center">
+<div class="font-label-caps text-label-caps text-error mb-1 uppercase">Priority</div>
+<div class="font-data-point text-data-point text-error">CRITICAL</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="border border-[#2D2D2D] p-3 bg-surface-container-lowest">
+<span class="font-label-caps text-label-caps text-outline block mb-1">Lead Source</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Emergency Hotline</span>
+</div>
+<div class="border border-[#2D2D2D] p-3 bg-surface-container-lowest">
+<span class="font-label-caps text-label-caps text-outline block mb-1">Assigned Adj.</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">J. Vance (T-3)</span>
+</div>
+</div>
+</div>
+<!-- Location / Telemetry -->
+<div class="bg-surface p-density-comfortable relative overflow-hidden">
+<!-- Faux Map Background Effect -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at center, theme('colors.primary-fixed-dim') 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative z-10">
+<div class="font-label-caps text-label-caps text-primary mb-4 uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">satellite_alt</span>
+                            Telemetry Data
+                        </div>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-[#2D2D2D] pb-2">
+<span class="font-label-caps text-label-caps text-outline">Coordinates</span>
+<span class="font-data-point text-[16px] text-on-surface">33.0198° N, 96.6989° W</span>
+</div>
+<div class="flex justify-between items-end border-b border-[#2D2D2D] pb-2">
+<span class="font-label-caps text-label-caps text-outline">GPS Accuracy</span>
+<span class="font-data-point text-[16px] text-primary">± 2.4 Meters</span>
+</div>
+<div class="flex justify-between items-end border-b border-[#2D2D2D] pb-2">
+<span class="font-label-caps text-label-caps text-outline">Elevation</span>
+<span class="font-data-point text-[16px] text-on-surface">192M <span class="text-outline text-[12px] ml-1">MSL</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Content Area -->
+<div class="p-density-comfortable grid grid-cols-1 lg:grid-cols-3 gap-gutter flex-1">
+<!-- Damage Evidence (Photos) -->
+<div class="lg:col-span-2 border border-[#2D2D2D] bg-surface-container relative">
+<!-- "Tab" styling -->
+<div class="absolute -top-[1px] -left-[1px] bg-surface-container border-b border-r border-[#2D2D2D] px-4 py-1.5 z-10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">photo_library</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Evidence Matrix</span>
+</div>
+<div class="p-4 pt-12 h-full">
+<div class="grid grid-cols-2 gap-4 h-full">
+<!-- Main Photo -->
+<div class="border border-outline-variant relative group overflow-hidden bg-background">
+<img alt="Roof Damage" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A close up shot of a damaged residential roof showing missing asphalt shingles. The underlying dark underlayment is exposed. The lighting is overcast, creating a flat, stark industrial mood. The image has a slightly desaturated, high-contrast look fitting a technical inspection report." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_u1oEMDIyTrCdxh8eAPFTi6KfHZmmM2kRZdIkWb9bk5A9IiYJYKulR7_6Y2XproI64MpsqzbesSDjzkN__vO0RBLeJNhgwUQITEGhgexQUwkMZANIPUrTfHjaYzfJLYb0nspqvDffqD3KllOf8LoN0RPypG3jv_sNLVnOanr2rx8U3S_8fg8z0p1TQ24S4PhOvROpMx1NWfpXNhslHhiew0zm5oElh5hcT5L34_z9twlR-YqdUQGFV34Ab3ywxC6t4BDbHPT_cwjq"/>
+<div class="absolute bottom-2 left-2 bg-surface-container/90 border border-outline-variant px-2 py-1 flex items-center gap-2 backdrop-blur-sm">
+<span class="material-symbols-outlined text-error text-[14px]">warning</span>
+<span class="font-label-caps text-[10px] text-on-surface">Ridge Cap Failure</span>
+</div>
+</div>
+<!-- Sub Photos Grid -->
+<div class="grid grid-rows-2 gap-4 h-full">
+<div class="border border-[#2D2D2D] relative overflow-hidden bg-background">
+<img alt="Wide roof shot" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all" data-alt="A wide angle shot of a suburban house roof under a cloudy sky. The house has grey siding and dark grey shingles. The scene looks utilitarian and clinical, capturing the architectural structure for analysis rather than aesthetic appeal. High contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjRa-syxmoI3-NovfE4Fblxh_EAPVO3xUgP-A-4MHNL2_r_sVnUTK4msw65tiLe42_ilyvN1ZLKrKvPp1dy1C3xBfyLDfEoJynDs9SRCi2uW3G9nZCdhpcG98QLsC4ViytPse_IzsCjX346Zs9Tr_HAN7oziduVG8uuBFKs4CeF7dRlZewidCHK6hbV_vDHcKGMrk0KNeTiSwxISATkDp34o_P94o9kfBJh2LWxSRdb8AhIF02wZqUzubynCUrhde5dGy3K7N18wXC"/>
+<div class="absolute top-2 right-2 bg-background/80 px-1 py-0.5 border border-[#2D2D2D]">
+<span class="font-data-point text-[10px] text-outline">IMG_02</span>
+</div>
+</div>
+<div class="border border-[#2D2D2D] relative overflow-hidden bg-background flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[32px] opacity-50">add_a_photo</span>
+<span class="absolute bottom-2 font-label-caps text-[10px] text-outline">Awaiting Upload...</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Notes & Specs -->
+<div class="lg:col-span-1 border border-[#2D2D2D] bg-surface-container relative flex flex-col">
+<div class="absolute -top-[1px] -left-[1px] bg-surface-container border-b border-r border-[#2D2D2D] px-4 py-1.5 z-10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">data_object</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">Specs &amp; Notes</span>
+</div>
+<div class="p-4 pt-12 flex-1 overflow-y-auto space-y-6">
+<!-- Measurement Block -->
+<div>
+<h3 class="font-label-caps text-[10px] text-outline mb-2 uppercase tracking-widest border-b border-[#2D2D2D] pb-1">Primary Material Structure</h3>
+<div class="flex gap-2 mb-3">
+<div class="bg-[#1e1e1e] border border-[#333] px-2 py-1 rounded-sm flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed"></div>
+<span class="font-data-point text-[12px] text-on-surface">SHGL</span>
+</div>
+<div class="bg-[#1e1e1e] border border-[#333] px-2 py-1 rounded-sm flex items-center gap-2">
+<span class="font-data-point text-[12px] text-outline">30YR ARCH</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-4">
+<!-- Pitch Gauge (Simulated Textual) -->
+<div class="border border-[#2D2D2D] bg-background p-3 flex flex-col items-center justify-center">
+<span class="font-label-caps text-[10px] text-outline uppercase mb-1">Measured Pitch</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-[24px] text-primary">8</span>
+<span class="font-data-point text-[14px] text-outline">/12</span>
+</div>
+</div>
+<div class="border border-[#2D2D2D] bg-background p-3 flex flex-col items-center justify-center">
+<span class="font-label-caps text-[10px] text-outline uppercase mb-1">Est. Area</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-[20px] text-on-surface">32.4</span>
+<span class="font-data-point text-[12px] text-outline">SQ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notes Field -->
+<div>
+<h3 class="font-label-caps text-[10px] text-outline mb-2 uppercase tracking-widest border-b border-[#2D2D2D] pb-1">Adjuster Log</h3>
+<div class="font-data-point text-[12px] text-on-surface-variant leading-relaxed bg-surface-container-lowest p-3 border border-[#2D2D2D] min-h-[120px]">
+&gt; INITIAL_SCAN_COMPLETE
+&gt; WIND_UPLIFT_DETECTED_NW_SLOPE
+&gt; UNDERLAYMENT_COMPROMISED
+&gt; IMMEDIATE_TARP_RECCOMMENDED
+_
+                             </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer (Sticky Bottom) -->
+<div class="mt-auto border-t border-outline-variant bg-surface-container-highest p-density-comfortable flex items-center justify-between z-20">
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-outline hover:border-on-surface text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center gap-2 bg-background">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                        Synchronize Record
+                    </button>
+<button class="px-6 py-3 border border-error text-error hover:bg-error/10 font-label-caps text-label-caps uppercase tracking-wider transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+                        Flag for Audit
+                    </button>
+</div>
+<!-- Primary Action (Chamfered Industrial Style) -->
+<button class="px-8 py-3 bg-primary text-on-primary font-data-point text-[16px] uppercase tracking-wider hover:bg-primary-fixed transition-colors flex items-center gap-3 border-b-4 border-inverse-primary relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-200"></div>
+<span class="relative z-10 flex items-center gap-2">
+                        Initialize Claim Process
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward_ios</span>
+</span>
+</button>
+</div>
+</section>
+</main>
+</body></html>

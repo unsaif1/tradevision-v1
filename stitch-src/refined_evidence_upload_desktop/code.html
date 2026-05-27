@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision - Evidence Upload</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#aeb6c3",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-primary-container": "#fffcff",
+                        "on-error": "#690005",
+                        "on-background": "#dee3eb",
+                        "inverse-primary": "#be003e",
+                        "secondary-fixed": "#dbe3f1",
+                        "outline": "#ab888a",
+                        "on-surface-variant": "#e4bdbf",
+                        "tertiary-fixed": "#8ff7c7",
+                        "surface-dim": "#0f141a",
+                        "error": "#ffb4ab",
+                        "tertiary": "#72daad",
+                        "secondary": "#bfc7d5",
+                        "surface-container-lowest": "#0a0f14",
+                        "inverse-on-surface": "#2c3137",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002114",
+                        "inverse-surface": "#dee3eb",
+                        "primary-container": "#e21e51",
+                        "on-secondary-fixed": "#141c26",
+                        "surface-container": "#1b2026",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-tertiary": "#003826",
+                        "background": "#0f141a",
+                        "on-primary-fixed": "#40000f",
+                        "primary-fixed": "#ffdadb",
+                        "surface": "#0f141a",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "on-tertiary-container": "#f5fff7",
+                        "tertiary-fixed-dim": "#72daad",
+                        "tertiary-container": "#00855e",
+                        "surface-container-highest": "#30353c",
+                        "surface-container-low": "#171c22",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-container-high": "#252a31",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-primary": "#67001e",
+                        "surface-bright": "#353a40",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee3eb",
+                        "surface-variant": "#30353c",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#29313c",
+                        "primary": "#e21e51", 
+                        "surface-tint": "#ffb2b9",
+                        "secondary-container": "#3f4753"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px", 
+                        "lg": "2px",      
+                        "xl": "4px",      
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "header_height": "64px",
+                        "sidebar_width": "260px",
+                        "margin": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["Barlow Condensed", "sans-serif"],
+                        "display-md": ["Barlow Condensed", "sans-serif"],
+                        "display-lg": ["Barlow Condensed", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-caps": ["Barlow Condensed", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700", "textTransform": "uppercase" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-surface'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        
+        .upload-dashed-border {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%2330353c' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="antialiased overflow-hidden flex">
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col h-screen overflow-y-auto z-40">
+<div class="px-6 py-8 flex items-center gap-4 border-b border-outline-variant dark:border-outline-variant">
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUbdKllLzga0mo4Puy4r_jY4258OHLgMdLRG3vQdcpw57-lBopdDPvjDGhLvvlNmtvvjDUU7Yyb72p8mr9yHh8PKmQeVZLeG766G7B87SAaOsXiCA8jJouHvR_gDn4b5WGVWsEk3unFGlCs84kwhtsrQDhxKp3OwINIMRLvh0oPsxHudgCkFHsIyQA6n5IydSKgAWhtlU-vcVfSHmRMmVApEh-XyZFLsdAHGk5OL3YBPmeyfOJWIJjTU3mYu4e2V8olCRYRyrWvUZX"/>
+<div>
+<div class="font-display-md text-display-md font-bold text-primary dark:text-primary tracking-tight">TradeVision</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">C.A.R.E. Command</div>
+</div>
+</div>
+<div class="flex-1 py-6 flex flex-col gap-2">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined icon-fill text-primary">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+</nav>
+<div class="flex-1 flex flex-col ml-[260px] h-screen">
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin w-[calc(100%-260px)]">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-highest border-none text-on-surface font-body-md text-body-md py-2 pl-10 pr-4 rounded-sm focus:ring-1 focus:ring-primary outline-none transition-all placeholder-on-surface-variant" placeholder="Search system records..." type="text"/>
+</div>
+</div>
+<div class="font-display-md text-display-md font-semibold text-on-surface dark:text-on-surface absolute left-1/2 -translate-x-1/2">
+                TradeVision C.A.R.E.
+            </div>
+<div class="flex items-center gap-6 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary dark:hover:text-primary transition-colors cursor-pointer">help</span>
+<span class="material-symbols-outlined hover:text-primary dark:hover:text-primary transition-colors cursor-pointer">apps</span>
+<span class="material-symbols-outlined hover:text-primary dark:hover:text-primary transition-colors cursor-pointer icon-fill text-on-surface">account_circle</span>
+</div>
+</header>
+<main class="flex-1 mt-[64px] p-margin overflow-y-auto bg-background">
+<div class="mb-8 flex items-end justify-between">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">EVIDENCE INGESTION</h1>
+<p class="font-body-md text-body-md text-secondary-fixed-dim max-w-2xl">Upload raw sensor data, high-resolution imagery, and field reports. System automatically extracts technical metadata and generates SHA256 hashes for chain of custody verification.</p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white font-label-caps text-label-caps px-6 py-3 rounded-sm transition-colors flex items-center gap-2 tracking-widest">
+<span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+                    COMMIT BATCH
+                </button>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 xl:col-span-5 bg-surface-container-low border border-outline-variant p-1 rounded-sm flex flex-col min-h-[400px]">
+<div class="flex-1 upload-dashed-border bg-surface-container/50 hover:bg-surface-container transition-colors flex flex-col items-center justify-center p-12 text-center group cursor-pointer">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[40px] text-primary">upload_file</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">DRAG &amp; DROP SECURE PAYLOAD</h3>
+<p class="font-body-md text-body-md text-secondary-fixed-dim mb-8">Supported formats: .RAW, .ZIP, .MP4, .PCAP. Max file size: 50GB per artifact.</p>
+<button class="border border-outline-variant hover:border-primary text-on-surface font-label-caps text-label-caps px-6 py-2 rounded-sm transition-all bg-surface">
+                            BROWSE DIRECTORY
+                        </button>
+</div>
+</div>
+<div class="col-span-12 xl:col-span-7 bg-[#1a1f26] border border-[#2a323d] rounded-sm flex flex-col shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
+<div class="px-6 py-4 border-b border-[#2a323d] flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">queue</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">PROCESSING QUEUE</h2>
+</div>
+<div class="font-mono-data text-mono-data text-secondary-fixed-dim">
+<span class="text-primary">2</span> / 5 ACTIVE
+                        </div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#2a323d] bg-surface-container/30">
+<th class="font-label-caps text-label-caps text-on-surface-variant py-3 px-6 w-1/3">Artifact Designation</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-3 px-6 w-1/3">Technical Metadata</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-3 px-6 text-right">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-[#2a323d] hover:bg-surface-container-highest transition-colors">
+<td class="py-4 px-6 align-top">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5 text-[20px]">videocam</span>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium truncate w-48">Drone_Sweep_Sector7.mp4</div>
+<div class="font-mono-data text-mono-data text-secondary-fixed-dim mt-1">4.2 GB</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 align-top">
+<div class="font-mono-data text-mono-data text-on-surface-variant flex flex-col gap-1 text-[11px]">
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SHA256:</span><span class="truncate w-32 text-on-surface">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span></div>
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SENSOR:</span><span class="text-on-surface">DJI-M300-RTK-09A</span></div>
+</div>
+</td>
+<td class="py-4 px-6 align-top">
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-mono-data text-primary">68%</span>
+<span class="font-label-caps text-label-caps text-on-surface bg-primary/20 px-2 py-0.5 rounded-sm border border-primary/30">UPLOADING</span>
+</div>
+<div class="w-32 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[68%]"></div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#2a323d] hover:bg-surface-container-highest transition-colors">
+<td class="py-4 px-6 align-top">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5 text-[20px]">folder_zip</span>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium truncate w-48">LIDAR_Scan_Raw_Data.zip</div>
+<div class="font-mono-data text-mono-data text-secondary-fixed-dim mt-1">12.8 GB</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 align-top">
+<div class="font-mono-data text-mono-data text-on-surface-variant flex flex-col gap-1 text-[11px]">
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SHA256:</span><span class="truncate w-32 text-on-surface">8a2b5c...9f1e2d</span> <span class="material-symbols-outlined text-[14px] ml-1 text-primary cursor-pointer" title="Calculating">sync</span></div>
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SENSOR:</span><span class="text-on-surface">Leica-RTC360-XYZ</span></div>
+</div>
+</td>
+<td class="py-4 px-6 align-top">
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-mono-data text-primary">12%</span>
+<span class="font-label-caps text-label-caps text-on-surface bg-primary/20 px-2 py-0.5 rounded-sm border border-primary/30">UPLOADING</span>
+</div>
+<div class="w-32 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[12%]"></div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#2a323d] hover:bg-surface-container-highest transition-colors opacity-60">
+<td class="py-4 px-6 align-top">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim mt-0.5 text-[20px]">description</span>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium truncate w-48">Incident_Report_Initial.pdf</div>
+<div class="font-mono-data text-mono-data text-secondary-fixed-dim mt-1">2.4 MB</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 align-top">
+<div class="font-mono-data text-mono-data text-on-surface-variant flex flex-col gap-1 text-[11px]">
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SHA256:</span><span class="text-secondary-fixed-dim italic">Pending extraction</span></div>
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SENSOR:</span><span class="text-on-surface">Manual Entry</span></div>
+</div>
+</td>
+<td class="py-4 px-6 align-top flex justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim bg-surface-container-high px-2 py-0.5 rounded-sm border border-outline-variant">QUEUED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="py-4 px-6 align-top">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed mt-0.5 text-[20px]">check_circle</span>
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium truncate w-48">Site_Photos_Batch1.zip</div>
+<div class="font-mono-data text-mono-data text-secondary-fixed-dim mt-1">840 MB</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 align-top">
+<div class="font-mono-data text-mono-data text-on-surface-variant flex flex-col gap-1 text-[11px]">
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SHA256:</span><span class="truncate w-32 text-tertiary-fixed">9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08</span></div>
+<div class="flex"><span class="text-secondary-fixed-dim w-16">SENSOR:</span><span class="text-on-surface">Sony-A7RIV-01</span></div>
+</div>
+</td>
+<td class="py-4 px-6 align-top flex justify-end">
+<span class="font-label-caps text-label-caps text-tertiary-fixed bg-tertiary-container/20 px-2 py-0.5 rounded-sm border border-tertiary-fixed/30 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span> VERIFIED
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

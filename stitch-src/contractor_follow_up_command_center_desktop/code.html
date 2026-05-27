@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Follow-Up Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#333539",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "surface-tint": "#00dbe9",
+                        "on-secondary": "#412d00",
+                        "tertiary": "#f7f5f5",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary-container": "#006970",
+                        "on-background": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary-container": "#dad9d9",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006970",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0c0e12",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#303031",
+                        "surface-container": "#1e2024",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-high": "#282a2e",
+                        "background": "#111317",
+                        "on-primary": "#00363a",
+                        "secondary-container": "#feb700",
+                        "inverse-on-surface": "#2f3035",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed": "#ffdea8",
+                        "surface-bright": "#37393e",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface-variant": "#b9cacb",
+                        "on-surface": "#e2e2e8",
+                        "surface": "#111317",
+                        "primary": "#dbfcff",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-container": "#6b4b00",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "primary-container": "#00f0ff",
+                        "surface-variant": "#333539",
+                        "secondary": "#ffdb9d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- NavigationDrawer -->
+<nav class="bg-surface dark:bg-surface text-primary dark:text-primary font-label-caps text-label-caps fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin-desktop z-50">
+<div class="px-6 mb-8">
+<h1 class="font-display-md text-headline-md text-primary dark:text-primary tracking-tight">TRADEVISION</h1>
+</div>
+<div class="flex-1 overflow-y-auto">
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                REPORTS
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-headline-sm text-headline-sm h-[64px] border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-full shrink-0 z-40 relative">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-bold tracking-wider">ADMINISTRATIVE SUITE</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-sm text-on-surface-variant" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<!-- Workspace (3 Columns) -->
+<main class="flex-1 grid grid-cols-12 gap-gutter p-gutter overflow-hidden bg-surface-dim">
+<!-- Column 1: Overdue Alerts (Grid Col Span 3) -->
+<section class="col-span-3 flex flex-col gap-unit h-full border border-[#2D2D2D] bg-surface-container-lowest relative overflow-hidden">
+<div class="p-density-compact border-b border-[#2D2D2D] bg-surface-container-low flex justify-between items-center shrink-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CRITICAL QUEUE</span>
+<span class="font-data-point text-data-point text-error">03</span>
+</div>
+<div class="flex-1 overflow-y-auto p-density-compact space-y-density-compact">
+<!-- Alert Item -->
+<div class="border border-primary_color_hex bg-surface-container-high p-3 cursor-pointer group relative overflow-hidden shadow-[inset_0_0_10px_rgba(0,219,233,0.1)]">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-error"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">SMITH RESIDENCE</span>
+<span class="font-data-point text-data-point text-error text-[14px]">48H+</span>
+</div>
+<p class="font-body-fixed text-[14px] text-on-surface-variant truncate">Left on read - Final Estimate</p>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="border border-[#2D2D2D] bg-surface-container-lowest p-3 cursor-pointer hover:bg-surface-container-low transition-colors group relative">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-secondary-container"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">JOHNSON COMMERCIAL</span>
+<span class="font-data-point text-data-point text-secondary-container text-[14px]">12H</span>
+</div>
+<p class="font-body-fixed text-[14px] text-on-surface-variant truncate">Material Delay Notification</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Column 2: Alert Detail (Grid Col Span 5) -->
+<section class="col-span-5 flex flex-col gap-unit h-full border border-[#2D2D2D] bg-surface-container-lowest relative">
+<div class="absolute top-0 left-0 bg-surface-container-highest px-3 py-1 border-r border-b border-[#2D2D2D]">
+<span class="font-label-caps text-label-caps text-primary">INSPECTION_DETAIL</span>
+</div>
+<div class="mt-[28px] p-density-comfortable flex-1 overflow-y-auto">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">SMITH RESIDENCE RE-ROOF</h2>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="border border-[#2D2D2D] p-3 bg-surface-container-low">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">TOTAL SQUARES</div>
+<div class="font-data-point text-data-point text-on-surface">42.5<span class="text-[12px] text-on-surface-variant ml-1">SQ</span></div>
+</div>
+<div class="border border-[#2D2D2D] p-3 bg-surface-container-low">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">PITCH</div>
+<div class="font-data-point text-data-point text-on-surface">6/12</div>
+</div>
+</div>
+<div class="mb-6">
+<div class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2D2D2D] pb-2 mb-3">MATERIAL SPEC</div>
+<div class="flex gap-2">
+<span class="border border-primary-fixed bg-primary-fixed/10 text-primary-fixed font-data-point text-data-point text-[14px] px-2 py-1">SHNG</span>
+<span class="border border-outline-variant bg-surface-container text-on-surface-variant font-data-point text-data-point text-[14px] px-2 py-1">SYN_UNDR</span>
+</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2D2D2D] pb-2 mb-3">COMMUNICATION LOG</div>
+<div class="space-y-4">
+<div class="flex gap-3 text-[14px]">
+<span class="font-data-point text-data-point text-on-surface-variant w-[60px]">10/24</span>
+<div>
+<span class="text-on-surface block">Sent revised estimate via SMS.</span>
+<span class="text-error text-[12px] block mt-1">Status: Read (10/24 14:32) - No Reply</span>
+</div>
+</div>
+<div class="flex gap-3 text-[14px] opacity-60">
+<span class="font-data-point text-data-point text-on-surface-variant w-[60px]">10/22</span>
+<div>
+<span class="text-on-surface block">Initial site inspection completed.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Column 3: Response Uplink (Grid Col Span 4) -->
+<section class="col-span-4 flex flex-col gap-unit h-full border border-[#2D2D2D] bg-surface-container-lowest">
+<div class="p-density-compact border-b border-[#2D2D2D] bg-surface-container-low flex justify-between items-center shrink-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant">UPLINK COMPOSER</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="satellite_alt">satellite_alt</span>
+</div>
+<div class="flex-1 p-density-comfortable flex flex-col gap-4">
+<div class="flex gap-2">
+<button class="flex-1 border border-primary text-primary font-label-caps text-label-caps py-2 bg-primary/10 hover:bg-primary/20 transition-colors text-center">PROFESSIONAL</button>
+<button class="flex-1 border border-[#2D2D2D] text-on-surface-variant font-label-caps text-label-caps py-2 hover:bg-surface-container-low transition-colors text-center">URGENT</button>
+</div>
+<div class="flex-1 flex flex-col border border-[#2D2D2D] bg-surface-container-low focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="border-b border-[#2D2D2D] p-2 flex gap-2 bg-surface-container">
+<button class="p-1 text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[16px]" data-icon="format_bold">format_bold</span></button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[16px]" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+</div>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface font-body-fixed p-3 resize-none" placeholder="Draft transmission..."></textarea>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps text-[14px] py-4 border-b-4 border-on-primary-container/30 hover:brightness-110 active:border-b-0 active:translate-y-[4px] transition-all flex justify-center items-center gap-2">
+                        TRANSMIT COMMUNIQUE
+                        <span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+</section>
+</main>
+</div>
+</body></html>

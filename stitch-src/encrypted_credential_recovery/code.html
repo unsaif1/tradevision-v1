@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RECOVERY_PORTAL | SECURITY_CENTRAL_V4</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style id="tailwind-config">
+        /* Inclusion of the required Tailwind Config is handled via the script tag and script below */
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0f141a",
+                        "background": "#0f141a",
+                        "surface-container-high": "#252a31",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "inverse-surface": "#dee3eb",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-tertiary": "#273141",
+                        "surface-container-lowest": "#0a0f14",
+                        "outline": "#9f8c8d",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#a8b6c9",
+                        "on-surface-variant": "#d7c2c2",
+                        "primary-fixed": "#ffdadc",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "accent-cyan": "#00f2ff",
+                        "tertiary": "#d9e3f9",
+                        "on-tertiary-container": "#495365",
+                        "secondary": "#bac8db",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-primary-fixed-variant": "#6d363d",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-secondary": "#243240",
+                        "surface-tint": "#ffb2b9",
+                        "status-success": "#4ade80",
+                        "surface-variant": "#30353c",
+                        "status-error": "#f43f5e",
+                        "tertiary-container": "#bdc7dc",
+                        "on-surface": "#dee3eb",
+                        "surface-container-highest": "#30353c",
+                        "surface-container-low": "#171c22",
+                        "outline-variant": "#524344",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-background": "#dee3eb",
+                        "primary": "#ffd9dc",
+                        "on-primary-fixed": "#370c13",
+                        "surface-bright": "#353941",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-primary": "#522027",
+                        "secondary-container": "#3a4858",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "surface-deep": "#090f15",
+                        "inverse-primary": "#894d54",
+                        "secondary-fixed": "#d5e4f7",
+                        "primary-container": "#ffb2b9",
+                        "on-primary-container": "#7b4148",
+                        "inverse-on-surface": "#2c3137",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#1b2026",
+                        "surface": "#0f141a",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "telemetry-sidebar-width": "340px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "sidebar-width": "260px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "label-md": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cyber-border {
+            position: relative;
+            border: 1px solid #524344;
+        }
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00f2ff;
+            border-left: 2px solid #00f2ff;
+        }
+        .cyber-border::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #00f2ff;
+            border-right: 2px solid #00f2ff;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 10;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .glass-overlay {
+            backdrop-filter: blur(20px);
+            background: rgba(27, 32, 39, 0.9);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #524344;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface font-body-md selection:bg-accent-cyan selection:text-surface-deep">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface-dim border-b border-outline-variant flex justify-between items-center px-md h-16 z-[60]">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="security">security</span>
+<h1 class="font-headline-md text-headline-md text-accent-cyan tracking-tighter">SECURITY_CENTRAL_V4</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-sm px-sm py-xs bg-surface-container-low border border-outline-variant rounded">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="font-mono-data text-mono-data text-status-success uppercase">System_Active</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest p-2 rounded transition-colors cursor-pointer" data-icon="settings_input_component">settings_input_component</button>
+</div>
+</header>
+<main class="pt-16 min-h-screen flex flex-col md:flex-row">
+<!-- Sidebar Navigation (Drawer) -->
+<nav class="hidden lg:flex flex-col gap-sm p-md w-sidebar-width h-[calc(100vh-64px)] fixed left-0 bg-surface-container-low border-r border-outline-variant z-50">
+<div class="mb-lg">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-70 mb-sm">CORE_ACCESS_PROTOCOLS</p>
+<div class="space-y-1">
+<div class="flex items-center gap-sm p-md font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span>Terminal</span>
+</div>
+<div class="flex items-center gap-sm p-md font-label-caps text-label-caps text-accent-cyan bg-surface-variant border-r-2 border-accent-cyan transition-all duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+<span>Key_Vault</span>
+</div>
+<div class="flex items-center gap-sm p-md font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span>Audit_Logs</span>
+</div>
+<div class="flex items-center gap-sm p-md font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span>System_Health</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<div class="flex-1 lg:ml-sidebar-width lg:mr-telemetry-sidebar-width p-gutter flex flex-col items-center justify-center min-h-[calc(100vh-64px)]">
+<div class="w-full max-w-xl space-y-md">
+<!-- Hero Image Area -->
+<div class="relative w-full h-48 overflow-hidden cyber-border">
+<img alt="Cybersecurity Matrix" class="w-full h-full object-cover opacity-40 grayscale" data-alt="A high-tech digital security landscape with glowing teal circuit lines and floating binary code against a deep obsidian background. The visual style is cyber-industrial and forensic, featuring sharp geometric patterns and a sense of complex data encryption. Soft atmospheric blue lighting illuminates architectural server structures in the distance, evoking a high-security server vault atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4_DpuNK4sKRwm-_y1i1qDrpiyCejIWWJxJKObAN-4F_j3V7fKtgdP4xEHNcIQrz3DNQh9vkyWvaB3isMubOpjHntDPS59R5lBLGcxNE633q_T4KN3tw9cRXYuC4f5dSRubSzzQ5pd8-_Oz0JHBLS1mQYhsmlc-AztUsy6MoBFP8_RTkj-cGTwS5w3RZYYI0-tEAefj8_J0jIBRoMUtSwwG0WwMC2uwEuhUlXMvycQIPFQ2zJpVF5yIkwfzTHxH24eZAiBwk0myaOj"/>
+<div class="scanline"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-surface-dim to-transparent">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase tracking-widest">Credential_Recovery</h2>
+<p class="font-mono-data text-mono-data text-accent-cyan opacity-80 mt-xs">SECURE_CHANNEL_ESTABLISHED</p>
+</div>
+</div>
+<!-- Recovery Form Container -->
+<section class="bg-surface-container p-lg cyber-border shadow-2xl relative">
+<div class="mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-xs">Identity_Verification</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enter your uniquely assigned identifier to initiate the encrypted reset protocol. All requests are cryptographically signed and logged.</p>
+</div>
+<form class="space-y-lg" onsubmit="return false;">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-primary" for="uid">REGISTERED_UID</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant px-md py-sm font-mono-data text-mono-data text-on-surface focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan outline-none transition-all placeholder:opacity-30" id="uid" name="uid" placeholder="TV-CARE-XXXX-XXXX" type="text"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant" data-icon="fingerprint">fingerprint</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-lowest border border-outline-variant flex items-start gap-md">
+<span class="material-symbols-outlined text-status-error mt-1" data-icon="warning">warning</span>
+<div class="space-y-xs">
+<p class="font-label-md text-label-md text-on-surface font-bold">SECURITY_ADVISORY</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80">This recovery action will terminate all active sessions. Recovery tokens are valid for 15 minutes only.</p>
+</div>
+</div>
+<button class="w-full py-md bg-primary-container text-on-primary-container font-headline-md text-headline-md font-bold uppercase hover:bg-primary transition-colors active:scale-[0.98] cursor-pointer flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="lock_reset">lock_reset</span>
+                            RECOVERY_INIT
+                        </button>
+</form>
+</section>
+<!-- Forensic Ledger / Info Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md border border-outline-variant flex items-center gap-md">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-variant rounded">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="public">public</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">IP_ADDRESS_LOGGED</p>
+<p class="font-mono-data text-mono-data text-on-surface">192.168.1.104</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md border border-outline-variant flex items-center gap-md">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-variant rounded">
+<span class="material-symbols-outlined text-status-success" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">RECOVERY_TOKEN_SIGNED</p>
+<p class="font-mono-data text-mono-data text-on-surface">SHA-256_ACTIVE</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Telemetry Sidebar (Right) -->
+<aside class="hidden lg:flex flex-col w-telemetry-sidebar-width h-[calc(100vh-64px)] fixed right-0 bg-surface-container border-l border-outline-variant p-md gap-lg overflow-y-auto">
+<section>
+<div class="flex justify-between items-end mb-md">
+<h4 class="font-label-caps text-label-caps text-accent-cyan">NETWORK_TRAFFIC_TELEMETRY</h4>
+<span class="font-mono-data text-[10px] text-on-surface-variant opacity-50">Hz: 60.00</span>
+</div>
+<div class="space-y-sm">
+<!-- Segmented Telemetry Bars -->
+<div class="space-y-xs">
+<div class="flex justify-between text-[10px] font-mono-data text-on-surface-variant">
+<span>ENCRYPTION_LOAD</span>
+<span>84%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant flex gap-[1px]">
+<div class="h-full w-1/4 bg-accent-cyan"></div>
+<div class="h-full w-1/4 bg-accent-cyan"></div>
+<div class="h-full w-1/4 bg-accent-cyan"></div>
+<div class="h-full w-[9%] bg-accent-cyan"></div>
+<div class="h-full flex-1"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-[10px] font-mono-data text-on-surface-variant">
+<span>AUTH_CHALLENGE_LATENCY</span>
+<span>12ms</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant flex gap-[1px]">
+<div class="h-full w-1/6 bg-status-success"></div>
+<div class="h-full flex-1"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-accent-cyan">ACTIVITY_FEED</h4>
+<div class="space-y-md border-l border-outline-variant pl-md ml-1">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 bg-accent-cyan rounded-full"></div>
+<p class="font-mono-data text-[11px] text-on-surface uppercase">Request_Received</p>
+<p class="font-body-sm text-[10px] text-on-surface-variant opacity-60">09:42:12 UTC - INBOUND</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 bg-on-surface-variant rounded-full opacity-40"></div>
+<p class="font-mono-data text-[11px] text-on-surface uppercase opacity-60">Handshake_Init</p>
+<p class="font-body-sm text-[10px] text-on-surface-variant opacity-40">09:42:10 UTC - COMPLETE</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 bg-on-surface-variant rounded-full opacity-40"></div>
+<p class="font-mono-data text-[11px] text-on-surface uppercase opacity-60">TLS_Layer_Established</p>
+<p class="font-body-sm text-[10px] text-on-surface-variant opacity-40">09:42:09 UTC - SECURE</p>
+</div>
+</div>
+</section>
+<section class="mt-auto">
+<div class="p-md bg-surface-container-lowest border border-outline-variant">
+<p class="font-label-caps text-label-caps text-primary-container mb-xs">NODE_IDENTITY</p>
+<p class="font-mono-data text-mono-data text-on-surface break-all">VAL_0x82...E9A2</p>
+</div>
+</section>
+</aside>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="lg:hidden fixed bottom-0 w-full h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center z-50">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+<span class="font-label-sm text-label-sm">Login</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+<span class="font-label-sm text-label-sm">MFA</span>
+</div>
+<div class="flex flex-col items-center justify-center text-accent-cyan font-bold scale-105 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span class="font-label-sm text-label-sm">Recovery</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for input pulsing
+        const uidInput = document.getElementById('uid');
+        uidInput.addEventListener('focus', () => {
+            uidInput.parentElement.classList.add('ring-1', 'ring-accent-cyan');
+        });
+        uidInput.addEventListener('blur', () => {
+            uidInput.parentElement.classList.remove('ring-1', 'ring-accent-cyan');
+        });
+
+        // Atmospheric pulsing logic for "RECOVERY_INIT" button on hover
+        const btn = document.querySelector('button.bg-primary-container');
+        btn.addEventListener('mouseenter', () => {
+            btn.style.boxShadow = '0 0 15px rgba(255, 178, 185, 0.4)';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.boxShadow = 'none';
+        });
+    </script>
+</body></html>

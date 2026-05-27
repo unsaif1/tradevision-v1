@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Ledger // ARBITRATOR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#dad9d9",
+                    "background": "#111317",
+                    "surface-dim": "#111317",
+                    "on-secondary-fixed": "#271900",
+                    "secondary-fixed-dim": "#ffba20",
+                    "secondary": "#ffdb9d",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "error": "#ffb4ab",
+                    "outline": "#849495",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-surface": "#e2e2e8",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-surface-variant": "#b9cacb",
+                    "tertiary-fixed": "#e4e2e2",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#333539",
+                    "primary": "#dbfcff",
+                    "on-primary": "#00363a",
+                    "surface-bright": "#37393e",
+                    "secondary-fixed": "#ffdea8",
+                    "on-tertiary": "#303031",
+                    "on-primary-fixed": "#002022",
+                    "inverse-on-surface": "#2f3035",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "surface-container-high": "#282a2e",
+                    "inverse-primary": "#006970",
+                    "surface": "#111317",
+                    "surface-variant": "#333539",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-primary-container": "#006970",
+                    "surface-tint": "#00dbe9",
+                    "primary-fixed": "#7df4ff",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "secondary-container": "#feb700",
+                    "on-tertiary-container": "#5e5f5f",
+                    "on-secondary-container": "#6b4b00",
+                    "tertiary": "#f7f5f5",
+                    "primary-container": "#00f0ff",
+                    "on-error": "#690005",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#1a1c20",
+                    "surface-container": "#1e2024",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-background": "#e2e2e8",
+                    "inverse-surface": "#e2e2e8",
+                    "outline-variant": "#3b494b",
+                    "on-secondary": "#412d00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "density-compact": "8px",
+                    "density-comfortable": "24px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        /* Custom scrollbar for technical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low'); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant'); 
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.primary-fixed-dim'); 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface-container dark:bg-surface-container h-full w-72 rounded-r-none border-r border-outline-variant fixed inset-y-0 left-0 z-50">
+<div class="p-density-comfortable border-b border-outline-variant flex items-center gap-density-compact">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-data-point text-data-point">
+                AX
+            </div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">ID: 8821-XJ</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Verified Arbitrator</span>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">Blockchain Active</span>
+</div>
+</div>
+<div class="flex-1 py-density-compact overflow-y-auto">
+<a class="flex items-center gap-density-compact px-density-comfortable py-3 text-on-surface-variant hover:bg-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-caps text-label-caps">Project Selector</span>
+</a>
+<a class="flex items-center gap-density-compact px-density-comfortable py-3 bg-secondary-container text-on-secondary-container border-l-4 border-primary font-bold hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</a>
+<a class="flex items-center gap-density-compact px-density-comfortable py-3 text-on-surface-variant hover:bg-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps">Mediation History</span>
+</a>
+<a class="flex items-center gap-density-compact px-density-comfortable py-3 text-on-surface-variant hover:bg-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps text-label-caps">Final Award</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 bg-surface dark:bg-surface border-b border-outline-variant docked full-width top-0 z-40 fixed">
+<div class="flex items-center gap-density-compact text-primary dark:text-primary-fixed-dim active elements scale-95 duration-75">
+<span class="material-symbols-outlined">menu</span>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter">LEGAL_CORE // ARBITRATOR</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-data-point text-[12px]">
+            AX
+        </div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-72 pt-16 md:pt-0 pb-16 md:pb-0 min-h-screen">
+<!-- Context Header -->
+<div class="px-margin-mobile md:px-margin-desktop py-density-comfortable border-b border-outline-variant bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-density-comfortable">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-unit">CASE: ROOF_COLLAPSE_092</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant">Reviewing evidence blockchain for structural integrity dispute.</p>
+</div>
+<div class="flex gap-density-compact">
+<div class="flex flex-col items-end border border-outline-variant p-density-compact bg-surface-container">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Network Status</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span> SYNCED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="flex-1 p-margin-mobile md:p-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Blockchain Ledger -->
+<div class="md:col-span-8 flex flex-col gap-gutter">
+<div class="flex justify-between items-center mb-unit border-b border-outline-variant pb-unit">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">dataset</span>
+                        [BLOCKCHAIN_LEDGER]
+                    </h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4 ENTRIES FOUND</span>
+</div>
+<!-- Ledger Entry 1 (Photo) -->
+<div class="border border-outline-variant bg-surface-container p-density-compact hover:border-primary-fixed-dim transition-colors group">
+<div class="flex justify-between items-start mb-density-compact">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-on-surface-variant p-2 bg-surface-container-high border border-outline-variant">photo_camera</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">DRONE_IMG_9942.RAW</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">TIMESTAMP: 2023-10-24T14:32:01Z</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps bg-primary-container text-on-primary-container px-2 py-1 border border-primary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> VERIFIED
+                        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-density-compact mt-density-compact border-t border-outline-variant pt-density-compact">
+<div class="col-span-1 md:col-span-2">
+<img alt="Roof inspection drone shot" class="w-full h-32 object-cover border border-outline-variant grayscale group-hover:grayscale-0 transition-all" data-alt="A high-resolution, technical drone photograph of an industrial roof structure showing signs of stress. The lighting is harsh, midday sunlight casting stark shadows across the corrugated metal panels. The image has a slightly desaturated, clinical color palette typical of inspection footage, with a cyber-industrial overlay highlighting structural anomalies in faint cyan. The mood is analytical and objective." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6GRgrlhFwIi73RhbqmS_mFo8MpaRAe7Mq4lRi9XVHSMmTetYGfIRT8wOoXBBA5olaw9kXwn1S0ccbOnRNcuAAvROSAtlRW3TovlfEcZX1qwo3da7ZiIBzTSwPnYD9jg4PoU51vhLtWaQU0rTLUXS0oTog-8tBPKGeWbGwr2TE6cTkAGHiUB3Sptfwg1SumGnMd5QRk0EFlpi7kXW1gF9KfwsqklHSNMWy4uoVXidWWcz6kea1dUWwKq8BeKwPFwVHIsbglT8xsbKv"/>
+</div>
+<div class="col-span-1 flex flex-col justify-between">
+<div class="flex flex-col gap-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant">HASH ID:</span>
+<span class="font-data-point text-data-point text-on-surface text-[14px] break-all">0x7F...3B9A</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-2">METADATA:</span>
+<span class="font-body-fixed text-body-fixed text-on-surface text-sm">Location: Sector 4 Gutter. Evidence of poor flashing installation leading to water ingress.</span>
+</div>
+<button class="w-full mt-2 border border-outline-variant bg-surface hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps py-2 flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[16px]">gavel</span> EVALUATE
+                            </button>
+</div>
+</div>
+</div>
+<!-- Ledger Entry 2 (Sensor Log) -->
+<div class="border border-outline-variant bg-surface-container p-density-compact hover:border-primary-fixed-dim transition-colors group">
+<div class="flex justify-between items-start mb-density-compact">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-on-surface-variant p-2 bg-surface-container-high border border-outline-variant">sensors</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">MOISTURE_SENSOR_LOG_A1</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">TIMESTAMP: 2023-10-23T08:15:00Z TO 2023-10-24T08:15:00Z</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps bg-primary-container text-on-primary-container px-2 py-1 border border-primary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> VERIFIED
+                        </span>
+</div>
+<div class="flex flex-col gap-density-compact mt-density-compact border-t border-outline-variant pt-density-compact">
+<div class="bg-surface-dim border border-outline-variant p-density-compact font-data-point text-data-point text-[12px] text-primary-fixed-dim h-24 overflow-y-auto">
+                            &gt; INIT SENSOR NODE 0x44<br/>
+                            &gt; CALIBRATING... OK<br/>
+                            &gt; T=0h: MOISTURE=12% (NOMINAL)<br/>
+                            &gt; T=6h: MOISTURE=18% (ELEVATED)<br/>
+                            &gt; T=12h: MOISTURE=45% (CRITICAL) - TRIGGER EVENT<br/>
+                            &gt; T=18h: MOISTURE=52% (CRITICAL)<br/>
+                            &gt; LOG TERMINATED
+                        </div>
+<div class="flex justify-between items-end mt-2">
+<div class="flex flex-col gap-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant">HASH ID:</span>
+<span class="font-data-point text-data-point text-on-surface text-[14px]">0x1A...9C2F</span>
+</div>
+<button class="border border-outline-variant bg-surface hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps py-2 px-4 flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[16px]">gavel</span> EVALUATE
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stakeholder Arguments & Actions -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="flex justify-between items-center mb-unit border-b border-outline-variant pb-unit">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">forum</span>
+                        STAKEHOLDER_ARGUMENTS
+                    </h3>
+</div>
+<div class="flex flex-col gap-density-compact">
+<!-- Contractor Argument -->
+<div class="border-l-2 border-secondary-fixed-dim pl-density-compact bg-surface-container p-density-compact">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim mb-1 block">CONTRACTOR_DEFENSE</span>
+<p class="font-body-fixed text-body-fixed text-on-surface text-sm">"The structural failure was due to an unseasonably heavy snow load exceeding the original engineering specs, not substandard TPO installation."</p>
+</div>
+<!-- Client Argument -->
+<div class="border-l-2 border-error pl-density-compact bg-surface-container p-density-compact mt-2">
+<span class="font-label-caps text-label-caps text-error mb-1 block">CLIENT_CLAIM</span>
+<p class="font-body-fixed text-body-fixed text-on-surface text-sm">"Independent inspection (Log 0x7F) shows flashing was improperly sealed, allowing initial water ingress that compromised the substrate prior to snowfall."</p>
+</div>
+</div>
+<!-- Arbitration Actions -->
+<div class="mt-auto pt-gutter border-t border-outline-variant flex flex-col gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ARBITRATION ACTIONS</span>
+<button class="w-full bg-primary text-on-primary font-data-point text-data-point py-4 border-b-4 border-on-primary-fixed-variant hover:bg-primary-fixed-dim transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+                        COMPILE RULING
+                    </button>
+<button class="w-full border border-outline-variant bg-surface hover:bg-surface-container-high text-on-surface font-label-caps text-label-caps py-3 transition-colors">
+                        REQUEST MORE EVIDENCE
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-density-compact bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-full hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">PROJECTS</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary py-2 w-full" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1 font-bold">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-full hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">TIMELINE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-full hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">draw</span>
+<span class="font-label-caps text-label-caps text-[10px] mt-1">AWARD</span>
+</a>
+</nav>
+</body></html>

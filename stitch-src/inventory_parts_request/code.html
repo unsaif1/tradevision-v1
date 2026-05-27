@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Parts &amp; Inventory Request</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#2e353e",
+                        "neon-blue": "#3B82F6",
+                        "outline-variant": "#5c3f42",
+                        "surface-container-high": "#242b33",
+                        "tertiary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#080f16",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-surface": "#dce3ee",
+                        "surface-dim": "#0d141c",
+                        "text-muted": "#8896A8",
+                        "neon-green": "#4ADE80",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#4de082",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "surface-base": "#111820",
+                        "surface-variant": "#2e353e",
+                        "neon-pink": "#E21E51",
+                        "surface-elevated": "#1C2128",
+                        "error-container": "#93000a",
+                        "outline": "#ab888a",
+                        "on-tertiary-container": "#fffcff",
+                        "secondary-container": "#00b55d",
+                        "on-tertiary-fixed": "#001a42",
+                        "primary-fixed": "#ffdadb",
+                        "surface-stroke": "#2D3748",
+                        "on-secondary-container": "#003e1c",
+                        "on-error-container": "#ffdad6",
+                        "neon-orange": "#F97316",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#333a43",
+                        "surface-tint": "#ffb2b9",
+                        "on-tertiary": "#002e6a",
+                        "tertiary-container": "#2171e4",
+                        "surface": "#0d141c",
+                        "on-background": "#dce3ee",
+                        "on-primary": "#67001e",
+                        "surface-container": "#192028",
+                        "tertiary": "#adc6ff",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "inverse-on-surface": "#2a313a",
+                        "surface-container-low": "#151c24",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "on-primary-fixed": "#40000f",
+                        "on-secondary-fixed-variant": "#005227",
+                        "inverse-surface": "#dce3ee",
+                        "on-secondary-fixed": "#00210c",
+                        "on-secondary": "#003919",
+                        "on-surface-variant": "#e4bdbf",
+                        "secondary": "#4de082",
+                        "primary-container": "#e21e51",
+                        "inverse-primary": "#be003e",
+                        "primary": "#ffb2b9",
+                        "secondary-fixed": "#6dfe9c",
+                        "on-primary-container": "#fffcff",
+                        "background": "#0d141c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-gap": "12px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "stat-display": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "label-caps": ["Barlow Condensed"],
+                        "body-md": ["Barlow"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"]
+                    },
+                    "fontSize": {
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .scanner-line {
+            animation: scan 2s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 10%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 90%; opacity: 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-base text-on-surface font-body-md antialiased pt-16 pb-20 md:pb-0 md:pl-72">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-surface-stroke">
+<div class="flex items-center gap-gutter">
+<button class="md:hidden text-neon-pink p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile tracking-widest text-neon-pink">TRADEVISION</div>
+</div>
+<button class="text-neon-pink p-2 hover:bg-surface-container-highest transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- NavigationDrawer (Web) -->
+<nav class="hidden md:flex flex-col fixed inset-y-0 left-0 z-[60] py-gutter w-72 bg-surface-elevated border-r border-surface-stroke shadow-lg mt-16">
+<div class="px-gutter mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-surface-stroke overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A rugged male site supervisor in a high-vis jacket, looking off-camera in a dimly lit industrial setting. High contrast, dramatic lighting emphasizing determination and grit. Neon futuristic industrial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOdjmWbcB5mzyAlk4JDdkp5FnuklHVEdaR1o9yjIM8px9sYBmzdL1_13UonZb2IxxGByJZd4mtD-BeZRbybLw1mhr98Hu6Pl09_NJRzHo28hMl3bDIA0XAAUSgrKkEY_2ObEYRHlveCdHLrLzkMSgajHh46cShfEs11Yla8J5AEIQNXEFtVC1cBRI4EwysaE1SUJlDwO0zgJuOX7v1xtog5fRTCB64aoZkqLgmUy040NmYAkKz3JsMUrSBSSb7OcCWtKewF5y_MFdI"/>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-neon-orange">COMMANDER ALPHA</div>
+<div class="text-caption text-text-muted">Site Supervisor</div>
+<div class="text-caption text-text-muted text-xs opacity-75">Sector 7G</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 px-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="conveyor_belt">conveyor_belt</span>
+<span class="font-label-caps text-label-caps">Fleet Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-highest text-neon-green font-bold border-l-4 border-neon-green" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-caps text-label-caps">Inventory Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span class="font-label-caps text-label-caps">Personnel</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_late">assignment_late</span>
+<span class="font-label-caps text-label-caps">Safety Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+</nav>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container border-t border-surface-stroke">
+<button class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-on-surface">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px]">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-2 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="construction" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-label-caps text-[10px]">PROJECTS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-on-surface">
+<span class="material-symbols-outlined mb-1" data-icon="gavel">gavel</span>
+<span class="font-label-caps text-[10px]">CLAIMS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted p-2 hover:text-on-surface">
+<span class="material-symbols-outlined mb-1" data-icon="notifications">notifications</span>
+<span class="font-label-caps text-[10px]">ALERTS</span>
+</button>
+</nav>
+<!-- Main Content -->
+<main class="p-margin-mobile md:p-margin-desktop max-w-7xl mx-auto space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">PARTS REQUEST</h1>
+<p class="text-text-muted mt-1">Request reinforcement materials from Local Depot 4.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-elevated px-4 py-2 border-t-4 border-neon-green rounded-DEFAULT">
+<span class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-on-surface">DEPOT 4: ONLINE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Scanner Interface -->
+<div class="lg:col-span-1 flex flex-col gap-4">
+<div class="bg-surface-elevated border border-surface-stroke rounded-lg overflow-hidden relative group">
+<div class="absolute top-0 left-0 w-full h-1 bg-neon-blue"></div>
+<div class="p-4 border-b border-surface-stroke flex justify-between items-center bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-neon-blue">BARCODE SCANNER</span>
+<span class="material-symbols-outlined text-text-muted text-sm" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<div class="aspect-square relative bg-surface-base flex items-center justify-center p-8">
+<!-- Simulated Camera Feed -->
+<div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8ed745eb33?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center" data-alt="A blurry close-up view of industrial shelving with metallic parts, simulating a camera viewfinder searching for a barcode. Dim lighting with heavy vignette. Industrial neon futuristic aesthetic."></div>
+<!-- Scanner Frame -->
+<div class="relative w-full h-full border-2 border-dashed border-text-muted/50 rounded-lg flex items-center justify-center">
+<div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-neon-blue"></div>
+<div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-neon-blue"></div>
+<div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-neon-blue"></div>
+<div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-neon-blue"></div>
+<div class="w-full h-0.5 bg-neon-blue absolute scanner-line shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
+<span class="text-text-muted font-label-caps text-sm bg-surface-base/80 px-3 py-1 rounded">ALIGN BARCODE</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low">
+<button class="w-full py-3 bg-neon-pink text-white font-label-caps text-label-caps rounded-DEFAULT hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="photo_camera">photo_camera</span>
+                            SCAN ITEM
+                        </button>
+</div>
+</div>
+<!-- Manual Entry -->
+<div class="bg-surface-elevated border border-surface-stroke rounded-lg p-6 border-t-4 border-neon-orange">
+<h3 class="font-label-caps text-label-caps text-neon-orange mb-4">MANUAL OVERRIDE</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-caption text-text-muted mb-1">PART ID / SKU</label>
+<input class="w-full bg-surface-base border border-surface-stroke rounded-DEFAULT px-4 py-2 text-on-surface focus:outline-none focus:border-neon-orange transition-colors font-mono uppercase" placeholder="e.g. B-42-X" type="text"/>
+</div>
+<button class="w-full py-2 border border-surface-stroke text-text-muted font-label-caps text-label-caps rounded-DEFAULT hover:bg-surface-container-highest transition-colors">
+                            LOOKUP PART
+                        </button>
+</div>
+</div>
+</div>
+<!-- Request Form & Inventory -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Active Item Details -->
+<div class="bg-surface-elevated border border-surface-stroke rounded-lg p-6 border-t-4 border-neon-blue">
+<div class="flex justify-between items-start mb-6 border-b border-surface-stroke pb-4">
+<div>
+<span class="inline-block px-2 py-1 bg-neon-blue/10 text-neon-blue font-label-caps text-xs rounded mb-2">SCANNED ITEM</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SUPPORT BEAM B-42</h2>
+<p class="text-text-muted text-body-md mt-1 font-mono text-sm">SKU: SB-42-Hvy-Duty</p>
+</div>
+<div class="text-right">
+<div class="text-caption text-text-muted mb-1">REAL-TIME STOCK</div>
+<div class="font-stat-display text-stat-display text-neon-green">124</div>
+<div class="text-caption text-text-muted text-xs">UNITS AT DEPOT 4</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="bg-surface-container-low p-3 rounded-DEFAULT border border-surface-stroke">
+<div class="text-caption text-text-muted text-xs mb-1">WEIGHT</div>
+<div class="font-label-caps text-on-surface">45 KG</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-DEFAULT border border-surface-stroke">
+<div class="text-caption text-text-muted text-xs mb-1">CLASS</div>
+<div class="font-label-caps text-on-surface">STRUCTURAL</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-DEFAULT border border-surface-stroke">
+<div class="text-caption text-text-muted text-xs mb-1">LEAD TIME</div>
+<div class="font-label-caps text-neon-orange">45 MINS</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-DEFAULT border border-surface-stroke">
+<div class="text-caption text-text-muted text-xs mb-1">LOCATION</div>
+<div class="font-label-caps text-on-surface">AISLE 7, BIN 2</div>
+</div>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-caption text-text-muted mb-2 font-label-caps">QUANTITY REQUIRED</label>
+<div class="flex items-center bg-surface-base border border-surface-stroke rounded-DEFAULT overflow-hidden focus-within:border-neon-blue transition-colors">
+<button class="px-4 py-3 bg-surface-container-low text-text-muted hover:text-on-surface border-r border-surface-stroke" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<input class="w-full bg-transparent border-none text-center text-on-surface font-body-md focus:ring-0" max="124" min="1" type="number" value="1"/>
+<button class="px-4 py-3 bg-surface-container-low text-text-muted hover:text-on-surface border-l border-surface-stroke" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-caption text-text-muted mb-2 font-label-caps">URGENCY LEVEL</label>
+<select class="w-full bg-surface-base border border-surface-stroke rounded-DEFAULT px-4 py-3 text-on-surface font-body-md focus:border-neon-blue focus:ring-0 appearance-none">
+<option value="standard">STANDARD (2-4 HRS)</option>
+<option class="text-neon-orange" value="expedited">EXPEDITED (1 HR)</option>
+<option class="text-neon-pink" value="critical">CRITICAL (ASAP)</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-caption text-text-muted mb-2 font-label-caps">DELIVERY ZONE</label>
+<input class="w-full bg-surface-base border border-surface-stroke rounded-DEFAULT px-4 py-3 text-on-surface focus:outline-none focus:border-neon-blue transition-colors" type="text" value="Sector 7G, Loading Bay 3"/>
+</div>
+<div>
+<label class="block text-caption text-text-muted mb-2 font-label-caps">ADDITIONAL NOTES (OPTIONAL)</label>
+<textarea class="w-full bg-surface-base border border-surface-stroke rounded-DEFAULT px-4 py-3 text-on-surface focus:outline-none focus:border-neon-blue transition-colors resize-none placeholder-text-muted" placeholder="e.g. Requires heavy lift crane for offloading." rows="2"></textarea>
+</div>
+<div class="pt-4 border-t border-surface-stroke flex justify-end gap-4">
+<button class="px-6 py-3 border border-surface-stroke text-text-muted font-label-caps text-label-caps rounded-DEFAULT hover:bg-surface-container-highest transition-colors" type="button">
+                                CANCEL
+                            </button>
+<button class="px-8 py-3 bg-neon-blue text-white font-label-caps text-label-caps rounded-DEFAULT hover:bg-blue-600 transition-colors shadow-[0_0_15px_rgba(59,130,246,0.3)]" type="submit">
+                                SUBMIT REQUEST
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+</body></html>

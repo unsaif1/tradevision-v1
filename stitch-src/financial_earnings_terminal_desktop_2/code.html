@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial Command - TradeVision CRM</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts for Typography Hierarchy -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005",
+                        "surface-tint": "#00dbe9",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#006970",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-secondary": "#412d00",
+                        "surface-container-highest": "#333539",
+                        "background": "#111317",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#6b4b00",
+                        "primary-fixed": "#7df4ff",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#f7f5f5",
+                        "on-surface": "#e2e2e8",
+                        "tertiary-fixed": "#e4e2e2",
+                        "outline": "#849495",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary": "#00363a",
+                        "secondary": "#ffdb9d",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary-fixed-dim": "#00dbe9",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-variant": "#333539",
+                        "on-tertiary-container": "#5e5f5f",
+                        "error-container": "#93000a",
+                        "primary": "#dbfcff",
+                        "outline-variant": "#3b494b",
+                        "on-background": "#e2e2e8",
+                        "secondary-fixed": "#ffdea8",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container": "#1e2024",
+                        "surface-container-high": "#282a2e",
+                        "secondary-container": "#feb700",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface": "#111317",
+                        "tertiary-container": "#dad9d9",
+                        "on-primary-container": "#006970",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .grid-bg {
+            background-image: 
+                linear-gradient(to right, #3b494b 1px, transparent 1px),
+                linear-gradient(to bottom, #3b494b 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-color: #111317;
+            opacity: 0.1;
+        }
+        .chart-area-sim {
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.15) 0%, rgba(0, 240, 255, 0) 100%);
+            clip-path: polygon(0 80%, 10% 70%, 20% 75%, 30% 60%, 40% 65%, 50% 40%, 60% 45%, 70% 20%, 80% 30%, 90% 10%, 100% 15%, 100% 100%, 0 100%);
+        }
+        .chart-line-sim {
+            stroke-width: 2px;
+            stroke: #00f0ff;
+            fill: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed text-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- NavigationDrawer -->
+<nav class="bg-surface dark:bg-surface font-label-caps text-label-caps fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin-desktop z-40">
+<div class="px-gutter mb-8">
+<span class="font-display-md text-headline-md text-primary dark:text-primary tracking-tight">TRADEVISION</span>
+</div>
+<div class="flex-1 overflow-y-auto flex flex-col gap-1">
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                REPORTS
+            </a>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-headline-md text-headline-md fixed top-0 right-0 left-[260px] h-[64px] border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+<span class="font-label-caps text-label-caps font-bold text-primary dark:text-primary tracking-wider">ADMINISTRATIVE SUITE</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center text-label-caps font-label-caps overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6cMHMvhGKBG2KY57BJ5trT90dwfmYGSw1cR8hkUOAaUmUJ6EwZkc6ehm8uABn8ljB8CQsK-q-ogQeXdcMaUVXY6Npfl-rSpZc3z_MUevUrislqC_GO6lSWcX4ogWKILm7kJxJ3DTxRRLA7V2aIZAvxYiHSdkC32QjBaUOGy6UIBSK5btV33wdroiBN5Kg4HAe1c_cohPsCOCY6cnGUzQitNPSDoJ4AdTunUkn4ToWLldbcVmkBp7h2dZ2YX4rX22yNMQZn7RtzsJ5"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[64px] min-h-[calc(100vh-64px)] p-gutter md:p-margin-desktop bg-surface-dim relative overflow-hidden flex flex-col gap-margin-desktop">
+<!-- Decorative Background Grid -->
+<div class="absolute inset-0 grid-bg pointer-events-none z-0"></div>
+<!-- Header -->
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-outline-variant pb-density-comfortable">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase tracking-tight">Financial Command</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-unit tracking-widest uppercase">Q3 Executive Summary // System Nominal</p>
+</div>
+<div class="mt-4 md:mt-0 flex gap-2">
+<div class="bg-surface-container-high border border-outline-variant px-3 py-1 flex items-center gap-2 font-label-caps text-label-caps text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    DATA SYNC: LIVE
+                </div>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface-container border border-outline-variant p-6 relative group hover:border-primary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL REVENUE (YTD)</span>
+<span class="material-symbols-outlined text-outline">account_balance_wallet</span>
+</div>
+<div class="font-data-point text-display-lg-mobile text-on-surface tracking-wider">
+                    $4,250,000
+                </div>
+<div class="mt-density-compact flex items-center gap-1 font-label-caps text-label-caps text-primary-container">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12.4% VS LAST YEAR</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container border border-outline-variant p-6 relative group hover:border-primary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">NET PROFIT MARGIN</span>
+<span class="material-symbols-outlined text-outline">pie_chart</span>
+</div>
+<div class="font-data-point text-display-lg-mobile text-on-surface tracking-wider">
+                    18.2<span class="text-headline-md text-outline">%</span>
+</div>
+<div class="mt-density-compact flex items-center gap-1 font-label-caps text-label-caps text-on-surface-variant">
+<span>TARGET: 15.0%</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container border border-outline-variant p-6 relative group hover:border-primary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-error-container"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL YTD EXPENSES</span>
+<span class="material-symbols-outlined text-outline">receipt_long</span>
+</div>
+<div class="font-data-point text-display-lg-mobile text-on-surface tracking-wider">
+                    $3,476,500
+                </div>
+<div class="mt-density-compact flex items-center gap-1 font-label-caps text-label-caps text-error">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>+2.1% OVER BUDGET</span>
+</div>
+</div>
+</div>
+<!-- Main Chart Area -->
+<div class="relative z-10 bg-surface-container-low border border-outline-variant">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+<span class="font-label-caps text-label-caps text-on-surface">CASH FLOW DYNAMICS</span>
+</div>
+<div class="flex gap-2">
+<button class="px-2 py-1 bg-surface-variant border border-outline-variant font-label-caps text-label-caps text-on-surface-variant hover:text-primary">M</button>
+<button class="px-2 py-1 bg-primary border border-primary font-label-caps text-label-caps text-on-primary">YTD</button>
+<button class="px-2 py-1 bg-surface-variant border border-outline-variant font-label-caps text-label-caps text-on-surface-variant hover:text-primary">ALL</button>
+</div>
+</div>
+<div class="h-[300px] w-full relative p-4">
+<!-- Abstract Chart Visualization using CSS -->
+<div class="absolute inset-0 w-full h-full chart-area-sim flex items-end">
+<!-- Grid lines internal to chart -->
+<div class="w-full h-full flex flex-col justify-between absolute top-0 left-0 pointer-events-none p-4 pb-8 pl-12">
+<div class="w-full border-t border-outline-variant opacity-20"></div>
+<div class="w-full border-t border-outline-variant opacity-20"></div>
+<div class="w-full border-t border-outline-variant opacity-20"></div>
+<div class="w-full border-t border-outline-variant opacity-20"></div>
+<div class="w-full border-t border-outline-variant opacity-20"></div>
+</div>
+</div>
+<!-- SVG Line to complement area -->
+<svg class="absolute inset-0 w-full h-full p-4 pb-8 pl-12 pointer-events-none" preserveaspectratio="none" viewbox="0 0 100 100">
+<polyline class="chart-line-sim" points="0,80 10,70 20,75 30,60 40,65 50,40 60,45 70,20 80,30 90,10 100,15"></polyline>
+</svg>
+<!-- Y-Axis Labels -->
+<div class="absolute left-4 top-4 bottom-8 flex flex-col justify-between font-label-caps text-[10px] text-outline">
+<span>1M</span>
+<span>750K</span>
+<span>500K</span>
+<span>250K</span>
+<span>0</span>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute left-12 right-4 bottom-2 flex justify-between font-label-caps text-[10px] text-outline">
+<span>JAN</span>
+<span>MAR</span>
+<span>MAY</span>
+<span>JUL</span>
+<span>SEP</span>
+<span>NOV</span>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="relative z-10 bg-surface-container border border-outline-variant flex-1 flex flex-col">
+<div class="p-4 border-b border-outline-variant bg-surface-container-high flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">PROJECT PROFITABILITY LEADERBOARD</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">filter_list</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low font-label-caps text-label-caps text-on-surface-variant">
+<th class="p-density-compact pl-6 font-medium">JOB ID</th>
+<th class="p-density-compact font-medium">CLIENT</th>
+<th class="p-density-compact font-medium">MATERIAL</th>
+<th class="p-density-compact font-medium text-right">MARGIN %</th>
+<th class="p-density-compact pr-6 font-medium text-right">STATUS</th>
+</tr>
+</thead>
+<tbody class="font-body-fixed text-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-density-compact pl-6 font-data-point text-primary text-[14px]">#RF-8820</td>
+<td class="p-density-compact font-medium uppercase tracking-wide text-xs">Apex Industries Corp</td>
+<td class="p-density-compact">
+<span class="px-2 py-0.5 bg-surface-variant border border-outline text-on-surface-variant font-label-caps text-[10px]">TPO</span>
+</td>
+<td class="p-density-compact text-right font-data-point text-primary-container text-[14px]">24.5%</td>
+<td class="p-density-compact pr-6 text-right">
+<span class="inline-flex items-center gap-1 text-[10px] font-label-caps uppercase text-primary-container">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-none"></span> In-Progress
+                                </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-density-compact pl-6 font-data-point text-primary text-[14px]">#RF-8819</td>
+<td class="p-density-compact font-medium uppercase tracking-wide text-xs">Meridian Logistics Hub</td>
+<td class="p-density-compact">
+<span class="px-2 py-0.5 bg-surface-variant border border-outline text-on-surface-variant font-label-caps text-[10px]">METAL</span>
+</td>
+<td class="p-density-compact text-right font-data-point text-on-surface text-[14px]">18.0%</td>
+<td class="p-density-compact pr-6 text-right">
+<span class="inline-flex items-center gap-1 text-[10px] font-label-caps uppercase text-secondary-fixed-dim">
+<span class="w-1.5 h-1.5 bg-secondary-fixed-dim rounded-none"></span> Ready
+                                </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-density-compact pl-6 font-data-point text-primary text-[14px]">#RF-8794</td>
+<td class="p-density-compact font-medium uppercase tracking-wide text-xs">Westside Retail Park</td>
+<td class="p-density-compact">
+<span class="px-2 py-0.5 bg-surface-variant border border-outline text-on-surface-variant font-label-caps text-[10px]">EPDM</span>
+</td>
+<td class="p-density-compact text-right font-data-point text-error text-[14px]">8.2%</td>
+<td class="p-density-compact pr-6 text-right">
+<span class="inline-flex items-center gap-1 text-[10px] font-label-caps uppercase text-error">
+<span class="w-1.5 h-1.5 bg-error rounded-none"></span> Critical
+                                </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-density-compact pl-6 font-data-point text-primary text-[14px]">#RF-8788</td>
+<td class="p-density-compact font-medium uppercase tracking-wide text-xs">Vanguard Corporate Center</td>
+<td class="p-density-compact">
+<span class="px-2 py-0.5 bg-surface-variant border border-outline text-on-surface-variant font-label-caps text-[10px]">SHINGLE</span>
+</td>
+<td class="p-density-compact text-right font-data-point text-on-surface text-[14px]">15.5%</td>
+<td class="p-density-compact pr-6 text-right">
+<span class="inline-flex items-center gap-1 text-[10px] font-label-caps uppercase text-primary-container">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-none"></span> In-Progress
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</body></html>

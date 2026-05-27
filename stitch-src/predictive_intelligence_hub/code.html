@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Predictive Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #00f2ff, transparent);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
+            opacity: 0.3;
+            z-index: 10;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+        .cyber-corner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00f2ff;
+            border-left: 2px solid #00f2ff;
+        }
+        .cyber-corner-rose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #f43f5e;
+            border-left: 2px solid #f43f5e;
+        }
+        .glass-panel {
+            background: rgba(27, 32, 38, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(82, 67, 68, 0.5);
+        }
+        body {
+            background-color: #0f141a;
+            color: #dee3eb;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#0f141a",
+                      "tertiary-fixed": "#d9e3f9",
+                      "on-secondary": "#243240",
+                      "secondary-container": "#3a4858",
+                      "surface-tint": "#ffb2b9",
+                      "on-tertiary": "#273141",
+                      "status-error": "#f43f5e",
+                      "surface-deep": "#090f15",
+                      "inverse-primary": "#894d54",
+                      "on-primary-fixed-variant": "#6d363d",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#bdc7dc",
+                      "surface-container-highest": "#30353c",
+                      "surface": "#0f141a",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "surface-container-high": "#252a31",
+                      "secondary": "#bac8db",
+                      "surface-dim": "#0f141a",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-secondary-fixed": "#0f1d2b",
+                      "on-tertiary-container": "#495365",
+                      "surface-container-low": "#171c22",
+                      "on-primary-container": "#7b4148",
+                      "on-primary-fixed": "#370c13",
+                      "primary-fixed": "#ffdadc",
+                      "on-surface-variant": "#d7c2c2",
+                      "status-success": "#4ade80",
+                      "secondary-fixed": "#d5e4f7",
+                      "inverse-surface": "#dee3eb",
+                      "inverse-on-surface": "#2c3137",
+                      "on-surface": "#dee3eb",
+                      "on-primary": "#522027",
+                      "on-secondary-fixed-variant": "#3a4858",
+                      "surface-bright": "#353a40",
+                      "accent-cyan": "#00f2ff",
+                      "on-tertiary-fixed": "#121c2c",
+                      "on-secondary-container": "#a8b6c9",
+                      "outline-variant": "#524344",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6",
+                      "surface-variant": "#30353c",
+                      "on-background": "#dee3eb",
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "surface-container": "#1b2026",
+                      "primary-container": "#ffb2b9",
+                      "outline-muted": "rgba(136, 150, 168, 0.15)",
+                      "tertiary": "#d9e3f9",
+                      "secondary-fixed-dim": "#bac8db",
+                      "surface-container-lowest": "#0a0f14",
+                      "primary": "#ffd9dc",
+                      "outline": "#9f8c8d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "sidebar-width": "260px",
+                      "telemetry-sidebar-width": "340px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "xl": "40px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Barlow Condensed"],
+                      "label-md": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "headline-lg": ["Barlow Condensed"],
+                      "mono-data": ["JetBrains Mono"],
+                      "body-sm": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "headline-md": ["Barlow Condensed"],
+                      "label-sm": ["Manrope"]
+              },
+              "fontSize": {
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-accent-cyan/30">
+<!-- TopAppBar -->
+<header class="bg-surface-dim dark:bg-surface-dim border-b border-outline-variant dark:border-outline-variant docked full-width top-0 z-50 sticky flex justify-between items-center w-full px-lg py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-cyan dark:text-accent-cyan">analytics</span>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-accent-cyan dark:text-accent-cyan">PREDICTIVE_COMMAND</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs px-sm py-[2px] bg-status-success/10 border border-status-success/30 rounded-full">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="text-label-caps font-label-caps text-status-success">SYSTEM_STABLE</span>
+</div>
+<button class="p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors rounded-xl active:opacity-80">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+</div>
+</header>
+<main class="p-md pb-[100px] flex flex-col gap-lg">
+<!-- Primary Metrics Bento Grid -->
+<section class="grid grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="relative bg-surface-container dark:bg-surface-container p-md border border-outline-variant rounded-xl overflow-hidden cyber-corner group">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">EST_COMPLETION_INDEX</span>
+<span class="material-symbols-outlined text-accent-cyan text-[16px]">trending_up</span>
+</div>
+<div class="text-headline-md font-mono-data text-accent-cyan">94.2%</div>
+<div class="mt-md h-8 w-full flex items-end gap-[2px]">
+<div class="w-1 bg-accent-cyan/20 h-[30%]"></div>
+<div class="w-1 bg-accent-cyan/30 h-[45%]"></div>
+<div class="w-1 bg-accent-cyan/40 h-[40%]"></div>
+<div class="w-1 bg-accent-cyan/50 h-[60%]"></div>
+<div class="w-1 bg-accent-cyan/60 h-[55%]"></div>
+<div class="w-1 bg-accent-cyan h-[80%]"></div>
+<div class="w-1 bg-accent-cyan h-[75%]"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative bg-surface-container dark:bg-surface-container p-md border border-outline-variant rounded-xl overflow-hidden cyber-corner group">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">REVENUE_PROJECTION</span>
+<span class="material-symbols-outlined text-accent-cyan text-[16px]">account_balance_wallet</span>
+</div>
+<div class="text-headline-md font-mono-data text-accent-cyan">$12.4M</div>
+<div class="mt-md h-8 w-full flex items-end gap-[2px]">
+<div class="w-1 bg-accent-cyan/40 h-[60%]"></div>
+<div class="w-1 bg-accent-cyan/50 h-[55%]"></div>
+<div class="w-1 bg-accent-cyan/60 h-[70%]"></div>
+<div class="w-1 bg-accent-cyan/70 h-[85%]"></div>
+<div class="w-1 bg-accent-cyan/80 h-[80%]"></div>
+<div class="w-1 bg-accent-cyan h-[90%]"></div>
+<div class="w-1 bg-accent-cyan h-[100%]"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative bg-surface-container dark:bg-surface-container p-md border border-outline-variant rounded-xl overflow-hidden cyber-corner-rose group">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-caps font-label-caps text-status-error uppercase">RISK_PROBABILITY</span>
+<span class="material-symbols-outlined text-status-error text-[16px]">warning</span>
+</div>
+<div class="text-headline-md font-mono-data text-status-error">12%</div>
+<div class="mt-md h-8 w-full flex items-end gap-[2px]">
+<div class="w-1 bg-status-error/10 h-[20%]"></div>
+<div class="w-1 bg-status-error/20 h-[25%]"></div>
+<div class="w-1 bg-status-error/30 h-[15%]"></div>
+<div class="w-1 bg-status-error/40 h-[30%]"></div>
+<div class="w-1 bg-status-error/50 h-[25%]"></div>
+<div class="w-1 bg-status-error/60 h-[40%]"></div>
+<div class="w-1 bg-status-error h-[35%]"></div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="relative bg-surface-container dark:bg-surface-container p-md border border-outline-variant rounded-xl overflow-hidden cyber-corner group">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">RESOURCE_VELOCITY</span>
+<span class="material-symbols-outlined text-accent-cyan text-[16px]">speed</span>
+</div>
+<div class="text-headline-md font-mono-data text-accent-cyan">8.4<span class="text-[14px] text-on-surface-variant">s/wk</span></div>
+<div class="mt-md h-8 w-full flex items-end gap-[2px]">
+<div class="w-1 bg-accent-cyan/20 h-[40%]"></div>
+<div class="w-1 bg-accent-cyan/30 h-[45%]"></div>
+<div class="w-1 bg-accent-cyan/40 h-[50%]"></div>
+<div class="w-1 bg-accent-cyan/50 h-[45%]"></div>
+<div class="w-1 bg-accent-cyan/60 h-[60%]"></div>
+<div class="w-1 bg-accent-cyan h-[55%]"></div>
+<div class="w-1 bg-accent-cyan h-[65%]"></div>
+</div>
+</div>
+</section>
+<!-- AI Forecasting Feed -->
+<section class="flex flex-col gap-md">
+<div class="flex justify-between items-center px-xs">
+<h2 class="text-label-caps font-label-caps text-on-surface tracking-[0.2em] uppercase">AI Forecasting Feed</h2>
+<span class="text-label-md font-mono-data text-accent-cyan">LIVE_STREAM</span>
+</div>
+<div class="space-y-sm">
+<!-- Feed Item 1 -->
+<div class="glass-panel p-md border-l-2 border-l-status-error rounded-r-xl flex flex-col gap-xs relative overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="text-mono-data font-mono-data text-status-error text-[10px] bg-status-error/10 px-xs py-[1px] rounded">CRITICAL_ALERT</span>
+<span class="text-mono-data font-mono-data text-on-surface-variant text-[10px]">T+ 0.4s</span>
+</div>
+<p class="text-body-sm font-body-sm leading-snug">
+<span class="text-accent-cyan font-bold">PROJECT-882</span>: 12% probability of delay due to logistics bottleneck in Sector 7.
+                    </p>
+<div class="flex items-center gap-sm mt-xs">
+<button class="bg-secondary-container px-sm py-[4px] rounded text-label-md text-on-secondary-container hover:bg-surface-container-highest transition-colors">Analyze</button>
+<button class="text-label-md text-on-surface-variant underline decoration-outline-variant underline-offset-4">Dismiss</button>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="glass-panel p-md border-l-2 border-l-accent-cyan rounded-r-xl flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<span class="text-mono-data font-mono-data text-accent-cyan text-[10px] bg-accent-cyan/10 px-xs py-[1px] rounded">PREDICTIVE_INSIGHT</span>
+<span class="text-mono-data font-mono-data text-on-surface-variant text-[10px]">T+ 2.1s</span>
+</div>
+<p class="text-body-sm font-body-sm leading-snug">
+<span class="text-accent-cyan font-bold">CREW-04</span>: Over-capacity projected in 14 days based on current sprint trajectory.
+                    </p>
+<div class="flex items-center gap-sm mt-xs">
+<button class="bg-secondary-container px-sm py-[4px] rounded text-label-md text-on-secondary-container hover:bg-surface-container-highest transition-colors">Reallocate</button>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="glass-panel p-md border-l-2 border-l-on-surface-variant rounded-r-xl flex flex-col gap-xs opacity-60">
+<div class="flex justify-between items-start">
+<span class="text-mono-data font-mono-data text-on-surface-variant text-[10px] bg-surface-container-highest px-xs py-[1px] rounded">SYSTEM_LOG</span>
+<span class="text-mono-data font-mono-data text-on-surface-variant text-[10px]">T+ 12.8s</span>
+</div>
+<p class="text-body-sm font-body-sm leading-snug">
+                        Data parity achieved with Central Hub node B-12. No anomalies detected in Finance streams.
+                    </p>
+</div>
+</div>
+</section>
+<!-- System Telemetry Viz -->
+<section class="bg-surface-container-low border border-outline-variant p-md rounded-xl">
+<div class="mb-md">
+<h3 class="text-label-caps font-label-caps text-on-surface mb-sm">Node Processing Density</h3>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="h-full bg-accent-cyan" style="width: 45%;"></div>
+<div class="h-full bg-primary" style="width: 25%;"></div>
+<div class="h-full bg-tertiary" style="width: 15%;"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-sm">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-mono-data">NODE_A</span>
+<span class="text-label-md font-mono-data text-accent-cyan">45%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-mono-data">NODE_B</span>
+<span class="text-label-md font-mono-data text-primary">25%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-mono-data">NODE_C</span>
+<span class="text-label-md font-mono-data text-tertiary">15%</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container border-t border-outline-variant dark:border-outline-variant fixed bottom-0 w-full z-50 flex justify-around items-center w-full px-md pb-safe py-sm">
+<!-- Overview (Active) -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-accent-cyan dark:text-accent-cyan rounded-xl px-4 py-2 transition-transform duration-150 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-label-md font-label-md mt-1">Overview</span>
+</div>
+<!-- Timeline -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-2 hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">timeline</span>
+<span class="text-label-md font-label-md mt-1">Timeline</span>
+</div>
+<!-- Finance -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-2 hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-md font-label-md mt-1">Finance</span>
+</div>
+<!-- Resources -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-2 hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-md font-label-md mt-1">Resources</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for numeric values pulsing or updating
+        function pulseValues() {
+            const values = document.querySelectorAll('.text-headline-md.font-mono-data');
+            values.forEach(val => {
+                if(Math.random() > 0.8) {
+                    val.classList.add('opacity-50');
+                    setTimeout(() => val.classList.remove('opacity-50'), 50);
+                }
+            });
+        }
+        setInterval(pulseValues, 3000);
+
+        // Simple sparkline animation logic
+        const bars = document.querySelectorAll('.h-8.w-full div');
+        setInterval(() => {
+            bars.forEach(bar => {
+                const currentHeight = parseInt(bar.style.height);
+                const shift = Math.floor(Math.random() * 5) - 2;
+                let newHeight = Math.min(Math.max(currentHeight + shift, 10), 100);
+                bar.style.height = newHeight + '%';
+            });
+        }, 800);
+    </script>
+</body></html>

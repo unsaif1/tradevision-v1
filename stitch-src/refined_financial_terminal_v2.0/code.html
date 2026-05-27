@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial &amp; Earnings Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#b4c5ff",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#dae2fd",
+                    "inverse-on-surface": "#283044",
+                    "surface-container-high": "#222a3d",
+                    "inverse-primary": "#0053db",
+                    "tertiary-container": "#007d55",
+                    "primary-fixed": "#dbe1ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#c3c6d7",
+                    "on-error-container": "#ffdad6",
+                    "surface": "#0b1326",
+                    "on-primary-container": "#eeefff",
+                    "border-muted": "#334155",
+                    "on-tertiary-fixed": "#002113",
+                    "on-error": "#690005",
+                    "neon-blue": "#2563EB",
+                    "surface-dim": "#0b1326",
+                    "secondary-container": "#00a6e0",
+                    "on-tertiary-container": "#bdffdb",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#002a78",
+                    "outline-variant": "#434655",
+                    "surface-tint": "#b4c5ff",
+                    "on-background": "#dae2fd",
+                    "neon-cyan": "#06B6D4",
+                    "on-surface": "#dae2fd",
+                    "on-secondary-fixed": "#001e2c",
+                    "on-tertiary": "#003824",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "secondary-fixed": "#c4e7ff",
+                    "primary-container": "#2563eb",
+                    "on-secondary": "#00354a",
+                    "on-primary-fixed": "#00174b",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-card": "#1E293B",
+                    "secondary-fixed-dim": "#7bd0ff",
+                    "surface-variant": "#2d3449",
+                    "secondary": "#7bd0ff",
+                    "tertiary": "#4edea3",
+                    "on-secondary-fixed-variant": "#004c69",
+                    "surface-input": "#0F172A",
+                    "on-secondary-container": "#00374d",
+                    "surface-bright": "#31394d",
+                    "background": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "outline": "#8d90a0",
+                    "surface-container": "#171f33",
+                    "surface-container-highest": "#2d3449"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["JetBrains Mono"],
+                    "headline-md": ["JetBrains Mono"],
+                    "headline-sm": ["JetBrains Mono"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-sm": ["10px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        /* Custom Scrollbar for inner elements if needed */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:hidden pb-20">
+<!-- TopAppBar -->
+<header class="bg-surface-container dark:bg-surface-container fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-gutter w-full h-16">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary dark:text-primary">terminal</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tighter text-neon-blue">TRADEVISION C.A.R.E.</span>
+</div>
+<div>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 px-margin-mobile pt-gutter space-y-gutter flex flex-col">
+<!-- Balance Overview Bento -->
+<section class="bg-surface-card border border-outline-variant rounded-lg p-gutter relative overflow-hidden group">
+<!-- Cyber Accent Glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-neon-blue/10 rounded-full blur-2xl"></div>
+<div class="flex flex-col gap-unit mb-6">
+<span class="font-label-md text-label-md text-on-surface-variant">TOTAL EARNINGS</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tighter">$14,250.00</span><div class="mt-4 flex items-end gap-1 h-8">
+<div class="w-full bg-neon-blue/20 h-[30%] rounded-t-sm"></div>
+<div class="w-full bg-neon-blue/20 h-[45%] rounded-t-sm"></div>
+<div class="w-full bg-neon-blue/20 h-[35%] rounded-t-sm"></div>
+<div class="w-full bg-neon-blue/20 h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-neon-blue/20 h-[50%] rounded-t-sm"></div>
+<div class="w-full bg-neon-blue/20 h-[80%] rounded-t-sm"></div>
+<div class="w-full bg-neon-blue h-[100%] rounded-t-sm shadow-[0_0_10px_#2563EB]"></div>
+</div>
+<span class="text-[10px] text-outline mt-1 uppercase tracking-widest">7-day trend</span>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-1 border-l-2 border-secondary-container pl-2">
+<span class="font-label-md text-label-md text-on-surface-variant">PENDING</span>
+<span class="font-headline-sm text-headline-sm text-secondary-container">$1,850.00</span>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-tertiary pl-2">
+<span class="font-label-md text-label-md text-on-surface-variant">LAST PAYMENT</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Oct 24</span>
+</div>
+</div>
+</section>
+<!-- Payout Progress -->
+<section class="bg-surface-container-low border border-outline-variant rounded-lg p-gutter space-y-4">
+<div class="flex justify-between items-end">
+<span class="font-label-md text-label-md text-on-surface-variant">WEEKLY TARGET</span>
+<span class="font-label-md text-label-md text-primary">$1.8k / $2.0k</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden"><div class="flex gap-0.5 h-full w-full">
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-neon-blue w-[10%] shadow-[0_0_8px_#2563EB]"></div>
+<div class="h-full bg-surface-variant w-[10%]"></div>
+</div></div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-sm text-label-sm text-outline">90% ACHIEVED</span>
+<span class="font-label-sm text-label-sm text-outline">+15% VS LAST WK</span>
+</div>
+</section>
+<!-- Earnings Log -->
+<section class="flex-1 flex flex-col gap-unit"><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2">EARNINGS LOG</h2>
+<!-- Processed Job -->
+<div class="bg-surface-input border border-outline-variant rounded p-3 flex justify-between items-center hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-tertiary rounded-full shadow-[0_0_8px_#4edea3]"></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-on-surface">#TV-9942-A</span>
+<span class="text-[9px] px-1 bg-surface-variant text-outline rounded uppercase">GridCore</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Oct 26 • System Maint</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-md text-tertiary">+$450.00</span>
+<span class="text-[9px] font-bold px-1.5 py-0.5 bg-tertiary/10 text-tertiary rounded">PROCESSED</span>
+</div>
+</div>
+<!-- Pending Job -->
+<div class="bg-surface-input border border-outline-variant rounded p-3 flex justify-between items-center hover:border-primary transition-colors cursor-pointer group mt-2">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-neon-cyan rounded-full shadow-[0_0_8px_#06B6D4]"></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-on-surface">#TV-9943-B</span>
+<span class="text-[9px] px-1 bg-surface-variant text-outline rounded uppercase">NexGen</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Oct 28 • Cable Routing</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-md text-neon-cyan">+$800.00</span>
+<span class="text-[9px] font-bold px-1.5 py-0.5 bg-neon-cyan/10 text-neon-cyan rounded">PENDING</span>
+</div>
+</div>
+<!-- Under Review Job -->
+<div class="bg-surface-input border border-outline-variant rounded p-3 flex justify-between items-center hover:border-primary transition-colors cursor-pointer group mt-2">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-error rounded-full"></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-on-surface">#TV-9945-C</span>
+<span class="text-[9px] px-1 bg-surface-variant text-outline rounded uppercase">Atlas</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Oct 29 • Panel Audit</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-md text-on-surface">+$600.00</span>
+<span class="text-[9px] font-bold px-1.5 py-0.5 bg-error/10 text-error rounded">REVIEW</span>
+</div>
+</div></section>
+<!-- Request Payout Action -->
+<div class="mt-6">
+<button class="w-full bg-neon-blue hover:bg-primary-container text-white font-label-md text-label-md py-4 rounded-lg flex justify-center items-center gap-2 transition-all active:scale-95 shadow-[0_0_15px_rgba(37,99,235,0.3)]">
+<span class="material-symbols-outlined text-sm">payments</span>
+                INITIATE PAYOUT
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<!-- Suppressed on this page as it's a specific Financial Terminal view, but structurally, it would be included if it were a top-level tab. Given the prompt implies this might be the 'Financials' tab itself, I'll render the bottom nav to anchor the user in the app ecosystem. However, the JSON says 'Jobs', 'Evidence', 'Sync', 'Comms'. Financials isn't in the BottomNavBar JSON tabs. Therefore, this is likely a sub-view or accessed via drawer/profile. I will SUPPRESS the bottom nav to focus on the canvas as per rules. Wait, rule says: "Suppress if Intent: Linear/Transactional...". This is a terminal view. I will omit Bottom Nav to prioritize canvas space. -->
+<!-- Using the JSON provided, I will render the BottomNavBar just in case it's a main destination, mapping to one of the tabs loosely if required, but actually rule says: "You MUST exclude the navigation shell if the page intent is: ... Relevant Check: If the page content does not logically sit under the categories defined in the JSON, suppress the navigation to prioritize the content canvas." -->
+<!-- Since 'Financials' is in NavigationDrawer but NOT BottomNavBar, on mobile, this screen is accessed via some other menu. Suppressing BottomNavBar. -->
+</body></html>

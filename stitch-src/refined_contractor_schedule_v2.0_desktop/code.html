@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ContractorOS - Schedule &amp; Route Optimization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary": "#003824",
+                        "background": "#0b1326",
+                        "surface-input": "#0F172A",
+                        "on-error": "#690005",
+                        "primary-container": "#2563eb",
+                        "tertiary-container": "#007d55",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-tint": "#b4c5ff",
+                        "surface-card": "#1E293B",
+                        "on-secondary-fixed": "#001e2c",
+                        "tertiary": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-container": "#00a6e0",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "secondary-fixed": "#c4e7ff",
+                        "on-primary": "#002a78",
+                        "inverse-primary": "#0053db",
+                        "on-background": "#dae2fd",
+                        "outline": "#8d90a0",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#7bd0ff",
+                        "neon-blue": "#2563EB",
+                        "surface-container": "#171f33",
+                        "on-secondary-container": "#00374d",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-secondary": "#00354a",
+                        "surface-variant": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "neon-cyan": "#06B6D4",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "inverse-surface": "#dae2fd",
+                        "surface-bright": "#31394d",
+                        "on-tertiary-container": "#bdffdb",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#2d3449",
+                        "primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-high": "#222a3d",
+                        "inverse-on-surface": "#283044",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline-variant": "#434655",
+                        "border-muted": "#334155",
+                        "surface-dim": "#0b1326",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-sm": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #434655; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563EB; }
+        .bg-cyber-pattern {
+            background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .neon-glow {
+            text-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen overflow-hidden flex flex-col font-body-md antialiased selection:bg-neon-blue selection:text-white">
+<!-- TopNavBar -->
+<header class="bg-surface-container dark:bg-surface-container flex justify-between items-center w-full px-margin-desktop h-16 border-b border-outline-variant flex-shrink-0">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary font-headline-sm">terminal</span>
+<h1 class="text-headline-md font-headline-md font-bold text-neon-blue tracking-tighter">TRADEVISION C.A.R.E.</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-label-md font-label-md text-tertiary flex items-center gap-2 uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                System Status: Optimal
+            </div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-neon-blue hover:bg-surface-variant transition-colors duration-200 p-2 rounded w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-neon-blue hover:bg-surface-variant transition-colors duration-200 p-2 rounded w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-neon-blue hover:bg-surface-variant transition-colors duration-200 p-2 rounded w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden cursor-pointer hover:border-neon-blue transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm font-headline-sm">person</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low flex flex-col h-full py-6 w-64 border-r border-outline-variant flex-shrink-0">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant font-headline-sm" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">OP-7742</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Active Session: 8h 12m</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-neon-blue text-on-primary-container text-label-md font-label-md py-2.5 rounded hover:bg-inverse-primary transition-colors flex items-center justify-center gap-2 font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Job Order
+                </button>
+</div>
+<div class="flex-1 overflow-y-auto cyber-scroll flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded bg-primary-container text-on-primary-container border-l-4 border-neon-blue transition-all duration-200 ease-in-out font-headline-sm translate-x-1" href="#">
+<span class="material-symbols-outlined font-headline-sm">route</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">camera_enhance</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Evidence</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">inventory_2</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">groups</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Team</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">analytics</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Analytics</span>
+</a>
+</div>
+<div class="mt-auto px-3 pt-4 border-t border-outline-variant mx-3">
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 flex items-center gap-3 px-4 py-3 rounded text-label-md font-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+                    Log Out
+                </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-background flex flex-col overflow-hidden relative">
+<!-- Horizontal Date Picker -->
+<div class="h-20 border-b border-outline-variant flex items-center px-6 bg-surface-container-lowest gap-4 flex-shrink-0 z-10">
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-bright transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex-1 flex justify-center gap-2 overflow-hidden">
+<!-- Dates -->
+<button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm">
+<span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Mon</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">12</span>
+<div class="flex gap-0.5 mt-1">
+<div class="w-1 h-1 rounded-full bg-tertiary-container"></div>
+<div class="w-1 h-1 rounded-full bg-tertiary-container"></div>
+</div>
+</button>
+<button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm">
+<span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Tue</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">13</span>
+<div class="flex gap-0.5 mt-1">
+<div class="w-1 h-1 rounded-full bg-tertiary-container"></div>
+</div>
+</button>
+<button class="flex flex-col items-center justify-center w-14 h-16 bg-primary-container border border-neon-blue rounded shadow-[0_0_8px_rgba(37,99,235,0.4)] font-headline-sm">
+<span class="font-headline-sm text-[10px] text-on-primary-container uppercase">Wed</span>
+<span class="font-headline-sm text-headline-sm text-on-primary-container">14</span>
+<div class="flex gap-0.5 mt-1">
+<div class="w-1 h-1 rounded-full bg-on-primary-container"></div>
+<div class="w-1 h-1 rounded-full bg-error animate-pulse"></div>
+<div class="w-1 h-1 rounded-full bg-on-primary-container opacity-50"></div>
+</div>
+</button>
+<button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm">
+<span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Thu</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">15</span>
+<div class="flex gap-0.5 mt-1">
+<div class="w-1 h-1 rounded-full bg-on-surface-variant opacity-30"></div>
+</div>
+</button>
+<button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm">
+<span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Fri</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">16</span>
+</button>
+</div>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-bright transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<!-- Bento Layout Content -->
+<div class="flex-1 flex overflow-hidden p-4 gap-4">
+<!-- Tactical Map Area (Left) -->
+<div class="flex-[3] bg-surface-card rounded-lg border border-outline-variant flex flex-col overflow-hidden relative shadow-[0_4px_12px_rgba(0,0,0,0.5)] bg-cyber-pattern">
+<div class="absolute inset-0 z-0">
+<img alt="Tactical Route Map" class="w-full h-full object-cover opacity-20 grayscale-[50%] contrast-125 mix-blend-screen" data-alt="A high-tech digital map interface displaying city streets." data-location="Seattle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtod9x0WbZXvl8bwGgR2ELp-R_xMr0R97YKQlL9XiOYlnq_jyhSaOr_Fj2HYAeSlbpnNRytXny2LJM8tKsoOWj-066GKjypmtlo0R36Kszdr2c4Q_0mBpX2hFe8dQE7yTVla722hHURjJPu84qQ1ebe47yr6c2Nzhg9TVopA-MHMF3ovFPd1VD4K6ufhKsUamOSww8NeCzruRrloCvEOQYyOBUs-m85FkHijaxttG3PFowpG9r1_rSd44ZlSG4ToksH6y3FY46cFzK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+<!-- Simulated Map Route -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none" style="pointer-events: none;" viewbox="0 0 800 600">
+<path class="animate-[dash_20s_linear_infinite]" d="M 200 150 L 350 220 L 300 400 L 550 500 L 600 300" fill="none" stroke="#2563EB" stroke-dasharray="8 4" stroke-width="2"></path>
+<circle cx="200" cy="150" fill="#4edea3" r="6"></circle>
+<circle class="opacity-50" cx="275" cy="185" fill="#2563EB" r="2"></circle>
+<circle cx="350" cy="220" fill="#1E293B" r="5" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="300" cy="400" fill="#1E293B" r="5" stroke="#2563EB" stroke-width="2"></circle>
+<circle class="opacity-50" cx="425" cy="450" fill="#2563EB" r="2"></circle>
+<circle cx="550" cy="500" fill="#1E293B" r="5" stroke="#2563EB" stroke-width="2"></circle>
+<circle cx="600" cy="300" fill="#ffb4ab" r="6"></circle>
+<!-- Current Location Ping -->
+<circle class="animate-ping opacity-75" cx="320" cy="290" fill="#06B6D4" r="10"></circle>
+<circle cx="320" cy="290" fill="#06B6D4" r="4"></circle>
+</svg>
+</div>
+<!-- Technical Header -->
+<div class="absolute top-0 left-0 w-full bg-surface-container-highest/80 backdrop-blur-sm px-3 py-2 flex justify-between items-center border-b border-outline-variant z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm font-headline-sm">route</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-headline-sm">Tactical Route</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-neon-blue animate-pulse font-headline-sm"></span>
+<span class="font-label-sm text-label-sm text-neon-blue uppercase font-headline-sm">Live Tracking</span>
+</div>
+</div>
+<!-- Map Overlay Controls -->
+<div class="absolute top-14 left-4 z-10 flex flex-col gap-2">
+<div class="z-10 bg-surface-container/80 backdrop-blur-sm border border-outline-variant px-2 py-0.5 rounded">
+<span class="font-label-sm text-[10px] font-headline-sm text-on-surface-variant">GPS_LOCATING_TR_v2.0</span>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 z-10 flex gap-2">
+<button class="bg-surface-container-highest/80 border border-outline-variant text-on-surface px-4 py-2 rounded text-label-md font-label-md hover:border-neon-blue transition-colors flex items-center gap-2 backdrop-blur-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+                            Layers
+                        </button>
+<button class="bg-neon-blue text-on-primary hover:bg-blue-500 font-label-md text-label-md px-4 py-2 rounded shadow-lg flex items-center gap-2 transition-colors border border-blue-400 font-headline-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px] font-headline-sm">auto_awesome</span>
+                            Optimize Route
+                        </button>
+</div>
+<!-- Route Stats -->
+<div class="absolute bottom-0 left-0 w-full bg-surface-container-low/90 backdrop-blur-sm px-4 py-3 flex justify-between items-center border-t border-outline-variant z-10">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-headline-sm">Est. Distance</span>
+<span class="font-label-md text-label-md text-on-surface font-headline-sm text-lg">42.5 MI</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-headline-sm">Est. Duration</span>
+<span class="font-label-md text-label-md text-on-surface font-headline-sm text-lg">6H 15M</span>
+</div>
+</div>
+</div>
+<!-- Daily Agenda List (Right) -->
+<div class="flex-[2] bg-surface-container-lowest border border-outline-variant rounded-lg flex flex-col overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-card">
+<h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue">view_agenda</span>
+                            Daily Agenda
+                        </h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-surface-variant px-2 py-1 rounded">4 Jobs</span>
+</div>
+<div class="flex-1 overflow-y-auto cyber-scroll p-4 flex flex-col relative pl-8">
+<!-- Vertical Spine -->
+<div class="absolute left-[19px] top-4 bottom-0 w-[2px] bg-outline-variant opacity-50"></div>
+<!-- Job 1 (Completed/In Progress conceptually) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[37px] top-3 w-4 h-4 rounded-full bg-surface-card border-2 border-tertiary-container z-10 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></div>
+</div>
+<!-- Job Card: Normal Priority -->
+<div class="bg-surface-card border border-outline-variant rounded relative overflow-hidden group hover:border-primary transition-colors"><div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div><div class="p-3 pl-5"><div class="flex justify-between items-start mb-2"><div class="flex flex-col"><span class="font-headline-sm text-[14px] text-on-surface">JOB-9902-A</span><span class="font-headline-sm text-[11px] text-on-surface-variant uppercase tracking-wider">HVAC Maintenance - Sector 7G</span></div><div class="flex flex-col items-end"><span class="font-headline-sm text-[14px] text-on-surface">08:00 AM</span><div class="flex items-center gap-1 mt-0.5"><div class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-ping"></div><span class="font-headline-sm text-[11px] text-tertiary-container uppercase tracking-tight">Arrived</span></div></div></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/30"><div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm font-headline-sm">location_on</span><span class="font-headline-sm text-[11px]">1420 Industrial Blvd, Unit 4</span></div><div class="flex gap-2"><button class="text-[10px] font-headline-sm border border-outline-variant text-on-surface px-2 py-1 rounded hover:border-on-surface transition-colors uppercase">Details</button><div class="bg-tertiary-container/10 text-tertiary border border-tertiary/20 px-2 py-1 rounded text-[10px] font-headline-sm uppercase cursor-pointer hover:bg-tertiary/20">Submit Evidence</div></div></div></div></div>
+</div>
+<!-- Job 2 (Active/Next) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[37px] top-3 w-4 h-4 rounded-full bg-surface-card border-2 border-neon-blue z-10 flex items-center justify-center shadow-[0_0_8px_rgba(37,99,235,0.6)]">
+<div class="w-1.5 h-1.5 rounded-full bg-neon-blue animate-pulse"></div>
+</div>
+<!-- Job Card: Urgent Priority -->
+<div class="bg-surface-card border-2 border-error-container rounded relative overflow-hidden shadow-[0_0_12px_rgba(147,0,10,0.2)]"><div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error-container"></div><div class="p-3 pl-5"><div class="flex justify-between items-start mb-2"><div class="flex flex-col gap-1"><div class="flex items-center gap-2"><span class="font-headline-sm text-[14px] text-on-surface">JOB-9904-X</span><span class="bg-error-container text-on-error-container px-1.5 py-0.5 rounded text-[9px] font-headline-sm uppercase animate-pulse">URGENT</span></div><span class="font-headline-sm text-[11px] text-on-surface-variant uppercase">Emergency Pipe Repair</span></div><div class="flex flex-col items-end"><span class="font-headline-sm text-[14px] text-neon-blue neon-glow">11:30 AM</span><span class="font-headline-sm text-[11px] text-error opacity-90 tracking-tight font-bold">OVERDUE</span></div></div><div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/30"><div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm font-headline-sm">navigation</span><span class="font-headline-sm text-[11px]">8900 Commerce Way</span></div><div class="flex gap-2"><button class="text-[10px] font-headline-sm border border-outline-variant text-on-surface px-2 py-1 rounded hover:border-on-surface transition-colors uppercase">Details</button><button class="bg-neon-blue text-on-primary font-headline-sm text-[10px] px-3 py-1 rounded uppercase hover:bg-blue-500 transition-colors tracking-widest flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">directions_car</span> TRANSIT</button></div></div></div></div>
+</div>
+<!-- Job 3 (Pending) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[37px] top-3 w-4 h-4 rounded-full bg-surface-container-lowest border-2 border-outline-variant z-10"></div>
+<!-- Job Card: Normal Priority -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded relative overflow-hidden opacity-75 hover:opacity-100 transition-opacity">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="p-3 pl-5">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-on-surface-variant">JOB-9907-C</span>
+<span class="font-headline-sm text-[11px] text-outline uppercase tracking-wider mt-0.5">Electrical Inspection</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-[14px] text-on-surface-variant">02:00 PM</span>
+<span class="font-headline-sm text-[11px] text-outline mt-0.5 uppercase">Pending</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-sm font-headline-sm">location_on</span>
+<span class="font-headline-sm text-[11px]">45 Downtown Plaza, Fl 12</span>
+</div>
+<button class="text-[10px] font-headline-sm border border-outline-variant text-on-surface px-2 py-1 rounded hover:border-on-surface transition-colors uppercase">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Job 4 (Pending) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[37px] top-3 w-4 h-4 rounded-full bg-surface-container-lowest border-2 border-outline-variant z-10"></div>
+<!-- Job Card: Normal Priority -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded relative overflow-hidden opacity-75 hover:opacity-100 transition-opacity">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="p-3 pl-5">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-on-surface-variant">JOB-9909-E</span>
+<span class="font-headline-sm text-[11px] text-outline uppercase tracking-wider mt-0.5">Server Rack Installation</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-[14px] text-on-surface-variant">04:30 PM</span>
+<span class="font-headline-sm text-[11px] text-outline mt-0.5 uppercase">Pending</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-sm font-headline-sm">location_on</span>
+<span class="font-headline-sm text-[11px]">110 Data Center Pkwy</span>
+</div>
+<button class="text-[10px] font-headline-sm border border-outline-variant text-on-surface px-2 py-1 rounded hover:border-on-surface transition-colors uppercase">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- End of Day Indicator -->
+<div class="relative mt-4 flex items-center justify-center py-4 mb-8">
+<span class="font-label-sm text-[10px] text-outline-variant uppercase bg-surface-container-lowest px-2 z-10 relative font-headline-sm tracking-widest">End of Roster</span>
+<div class="absolute w-full h-[1px] bg-outline-variant/30 top-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

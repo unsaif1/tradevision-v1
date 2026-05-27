@@ -1,0 +1,43 @@
+---
+title: "SafeCPA — AI Chatbot + Mobile-First Redesign"
+client: "SafeCPA.com"
+date: "2026-05-18"
+tags: "nextjs, tailwind, openrouter, chatbot, cloudflare"
+status: "live"
+---
+
+# SafeCPA — Orlando CPA Firm
+## AI Chatbot + Full Site Redesign → Live on Cloudflare
+
+### The Ask
+Build a professional, mobile-first website for an AICPA-certified Orlando CPA firm with an integrated AI chatbot powered by a free-tier OpenRouter model.
+
+### What We Delivered
+- **Full Next.js 16 build** — 8 pages (home, services, about, contact, FAQ, team, case-studies, blog)
+- **AI Chatbot backend** — `/api/chatbot` → OpenRouter `google/gemma-4-31b-it:free`, CPA-tuned system prompt, 6-turn conversation history, temperature 0.3
+- **Mobile-first ChatWidget** — full-screen bottom sheet on mobile, 380px floating card on desktop; debounced 400ms, history-truncated prompts
+- **OpenRouter free tier** — zero API cost; credit ceiling respected to avoid 402→502 errors
+- **Cloudflare Pages deploy** via OpenNext — `wrangler.jsonc` configured, `wrangler deploy` in progress
+- **Real client testimonials** sourced and verified from TaxBuzz (5-star, 2025) + Google Maps/Yelp review data
+
+### Stack
+| Layer | Tech |
+|---|---|
+| Framework | Next.js 16 + TypeScript |
+| Styling | Tailwind CSS |
+| AI Backend | OpenRouter (free tier, edge runtime) |
+| Hosting | Cloudflare Pages / OpenNext |
+| Maps | Google Maps Embed |
+
+### Files Added
+- `src/app/api/chatbot/route.ts` — OpenRouter chat endpoint
+- `src/components/ChatWidget.tsx` — floating chat UI
+- `src/app/layout.tsx` — global ChatWidget mount + schema.org
+- `wrangler.jsonc` / `open-next.config.ts` — CF config
+
+### Contact Details
+- **Phone:** (407) 808-1480
+- **Email:** safecpa@gmail.com
+- **Address:** 7901 Kingspointe Pkwy Ste 19, Orlando, FL 32819
+- **Repo:** github.com/unsaif1/safecpa
+

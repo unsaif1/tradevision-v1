@@ -1,0 +1,113 @@
+.page {
+  min-height: 100vh;
+  background: #060e20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Geist', system-ui, sans-serif;
+}
+
+.icon {
+  font-size: 48px;
+  color: #2e5bff;
+  margin-bottom: 28px;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #434656;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.bar {
+  width: 340px;
+  max-width: 100%;
+  height: 3px;
+  background: #2d3449;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.barFill {
+  height: 100%;
+  background: #2e5bff;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 8px rgba(46, 91, 255, 0.6);
+}
+
+.meta {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.metaItem {
+  text-align: center;
+}
+
+.metaLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #434656;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.metaValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8e90a2;
+}
+
+.metaValueBlue { composes: metaValue; color: #4a6fff; }
+
+.log {
+  width: 340px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.logLine {
+  font-size: 11px;
+  color: #434656;
+  font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+}
+
+.logLineActive { composes: logLine; color: #8e90a2; }
+.logLineDone { composes: logLine; color: #2e5bff; }
+
+.logDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receiving Hub - Apex Structural Interface</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts for Design System -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#37393e",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-secondary": "#412d00",
+                    "on-background": "#e2e2e8",
+                    "on-primary-fixed": "#002022",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-primary-fixed-variant": "#004f54",
+                    "secondary": "#ffdb9d",
+                    "tertiary-container": "#dad9d9",
+                    "secondary-container": "#feb700",
+                    "secondary-fixed-dim": "#ffba20",
+                    "on-surface": "#e2e2e8",
+                    "inverse-surface": "#e2e2e8",
+                    "inverse-on-surface": "#2f3035",
+                    "background": "#111317",
+                    "on-secondary-container": "#6b4b00",
+                    "surface-container-high": "#282a2e",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "on-secondary-fixed": "#271900",
+                    "outline": "#849495",
+                    "surface-dim": "#111317",
+                    "primary": "#dbfcff",
+                    "tertiary-fixed": "#e4e2e2",
+                    "on-surface-variant": "#b9cacb",
+                    "surface-container": "#1e2024",
+                    "surface-variant": "#333539",
+                    "surface-tint": "#00dbe9",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#ffdea8",
+                    "outline-variant": "#3b494b",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-error": "#690005",
+                    "on-primary-container": "#006970",
+                    "primary-container": "#00f0ff",
+                    "surface-container-lowest": "#0c0e12",
+                    "primary-fixed": "#7df4ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#333539",
+                    "on-tertiary": "#303031",
+                    "inverse-primary": "#006970",
+                    "error": "#ffb4ab",
+                    "tertiary": "#f7f5f5",
+                    "surface": "#111317",
+                    "on-primary": "#00363a",
+                    "surface-container-low": "#1a1c20",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-tertiary-container": "#5e5f5f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "density-compact": "8px",
+                    "margin-desktop": "32px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "density-comfortable": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ],
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for high-density data feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #849495;
+        }
+        
+        /* Grid background pattern for technical feel */
+        .tech-grid-bg {
+            background-image: 
+                linear-gradient(to right, #1e2024 1px, transparent 1px),
+                linear-gradient(to bottom, #1e2024 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen overflow-hidden font-body-fixed flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- NavigationDrawer Component -->
+<nav class="bg-surface dark:bg-surface fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin z-50">
+<div class="px-gutter mb-8">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight font-headline-md text-headline-md">TRADEVISION</h1>
+</div>
+<div class="flex flex-col gap-1 w-full font-label-caps text-label-caps">
+<!-- Active Node: DASHBOARD (Receiving Hub) -->
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                DASHBOARD
+            </a>
+<!-- Inactive Nodes -->
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                REPORTS
+            </a>
+</div>
+</nav>
+<!-- TopAppBar Component -->
+<header class="bg-surface-container-low dark:bg-surface-container-low fixed top-0 right-0 left-[260px] h-[64px] border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-40">
+<div class="flex items-center gap-3 text-primary dark:text-primary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-bold">ADMINISTRATIVE SUITE</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" data-alt="A highly detailed close-up portrait of an industrial system administrator. The individual has a serious, professional expression, viewed in harsh, high-contrast lighting typical of a server room or technical facility. The background is a dark, out-of-focus array of blinking LEDs and metal racking, enhancing the cyber-industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnNffsksM4EQRgRUaoKBEZ-Hi4fMUxRvmAJhsH5zUbewlWEm-850t28mUnBPpfRamz147mlzShebncmn1LJBm0UtG0tXOoMgrA6ctcDqFVYBrbXNJz_BzhGWlAP_l1O3n9aOHMY0n6m142mhlVeIvV7jML4RFJScW0XqizWNhYhxwjdRCc-tB242Tfe95LdGdNBJ3uFpjX568FhC44c-iEgto0x5sAGXqsGAfnn57IjBgfEAqJCWENp9PCIIgSqrxeQwkoQHqZd3Hj"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[64px] w-[calc(100%-260px)] h-[calc(100vh-64px)] p-gutter tech-grid-bg overflow-y-auto">
+<div class="grid grid-cols-12 gap-gutter h-full items-start">
+<!-- Left/Center: Prioritized Delivery Log (8 cols) -->
+<section class="col-span-8 flex flex-col h-full gap-4">
+<div class="flex justify-between items-end pb-2 border-b border-outline-variant">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight uppercase">Incoming Hub</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Live Manifest Tracking • <span class="text-primary font-data-point text-label-caps">14 Active</span></p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps text-label-caps px-4 py-2 hover:bg-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> FILTER
+                        </button>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-2 flex items-center gap-2 font-bold shadow-[0_4px_0_0_#006970] active:translate-y-[4px] active:shadow-none transition-all">
+<span class="material-symbols-outlined text-[16px]">add_box</span> LOG SHIPMENT
+                        </button>
+</div>
+</div>
+<!-- High-Density Status List -->
+<div class="flex flex-col gap-1 overflow-y-auto pr-2 pb-10">
+<!-- Row 1: Active/Ready -->
+<div class="group relative bg-surface-container-low border border-outline-variant hover:border-primary transition-colors cursor-pointer flex items-center min-h-[64px] overflow-hidden">
+<!-- Leading Edge Status Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<!-- Active Glow Overlay -->
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex w-full items-center px-4 gap-6">
+<div class="flex flex-col w-[120px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SHIPMENT ID</span>
+<span class="font-data-point text-data-point text-primary mt-1">TRX-092A</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUPPLIER</span>
+<span class="font-body-fixed text-body-fixed text-on-surface font-semibold uppercase mt-1">GAF Materials Corp</span>
+</div>
+<div class="flex gap-2 w-[180px]">
+<span class="bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-1 border border-outline-variant rounded-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#8A8A8A]"></span> SHNGL
+                                </span>
+<span class="bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-1 border border-outline-variant rounded-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#B0B0B0]"></span> FLSH
+                                </span>
+</div>
+<div class="flex flex-col w-[100px] text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ETA</span>
+<span class="font-data-point text-[16px] text-on-surface mt-1">ARRIVED</span>
+</div>
+</div>
+</div>
+<!-- Row 2: In-Transit (Secondary) -->
+<div class="group relative bg-surface-container-low border border-outline-variant hover:border-outline transition-colors cursor-pointer flex items-center min-h-[64px] overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex w-full items-center px-4 gap-6">
+<div class="flex flex-col w-[120px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SHIPMENT ID</span>
+<span class="font-data-point text-data-point text-secondary mt-1">TRX-093B</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUPPLIER</span>
+<span class="font-body-fixed text-body-fixed text-on-surface font-semibold uppercase mt-1">Owens Corning</span>
+</div>
+<div class="flex gap-2 w-[180px]">
+<span class="bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-1 border border-outline-variant rounded-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#8A8A8A]"></span> SHNGL
+                                </span>
+</div>
+<div class="flex flex-col w-[100px] text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ETA</span>
+<span class="font-data-point text-[16px] text-on-surface-variant mt-1">14:30</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Flagged/Error -->
+<div class="group relative bg-error-container/10 border border-error/50 hover:border-error transition-colors cursor-pointer flex items-center min-h-[64px] overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex w-full items-center px-4 gap-6">
+<div class="flex flex-col w-[120px]">
+<span class="font-label-caps text-label-caps text-error">SHIPMENT ID</span>
+<span class="font-data-point text-data-point text-error mt-1">TRX-088X</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-label-caps text-label-caps text-error">SUPPLIER</span>
+<span class="font-body-fixed text-body-fixed text-error font-semibold uppercase mt-1">Carlisle SynTec</span>
+</div>
+<div class="flex gap-2 w-[180px]">
+<span class="bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-1 border border-outline-variant rounded-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#E5E5E5]"></span> TPO
+                                </span>
+</div>
+<div class="flex flex-col w-[100px] text-right">
+<span class="font-label-caps text-label-caps text-error">STATUS</span>
+<span class="font-data-point text-[16px] text-error mt-1">FLAGGED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: Technical Side Panel (4 cols) -->
+<aside class="col-span-4 flex flex-col gap-6 h-full overflow-y-auto pb-10">
+<!-- Technical Card: Active Spec -->
+<div class="relative bg-surface-container-low border border-primary p-4 pt-8">
+<!-- Tab Label -->
+<div class="absolute -top-[1px] -left-[1px] bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">receipt_long</span> BOL VERIFICATION
+                    </div>
+<div class="flex justify-between items-start mb-6 mt-2">
+<div>
+<h3 class="font-data-point text-[24px] text-primary">TRX-092A</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">PO #4492-B • DOCK 4</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[32px]">check_circle</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-body-fixed text-body-fixed text-on-surface-variant uppercase text-sm">Pallet Count</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-[24px] text-on-surface">12</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">PLT</span>
+</div>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-body-fixed text-body-fixed text-on-surface-variant uppercase text-sm">Total Weight</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-[24px] text-on-surface">24,500</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">LBS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Card: Evidence Capture -->
+<div class="relative bg-surface-container-low border border-outline-variant p-4 pt-8">
+<!-- Tab Label -->
+<div class="absolute -top-[1px] -left-[1px] bg-surface-variant text-on-surface border-b border-r border-outline-variant font-label-caps text-label-caps px-3 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span> EVIDENCE LOG
+                    </div>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<!-- Evidence Thumbnail 1 -->
+<div class="relative aspect-square border border-outline-variant bg-surface-container overflow-hidden group cursor-pointer">
+<img alt="Pallets of roofing shingles on a loading dock" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0" data-alt="A stark, industrial photograph of several wooden pallets loaded heavily with wrapped packages of architectural roofing shingles. The pallets sit on a worn concrete loading dock in a dimly lit warehouse environment. The lighting is artificial, casting hard shadows that emphasize the weight and raw materiality of the construction supplies, fitting a gritty, high-contrast visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVkzYi0K-6rJJxkH_XMnAvQtyBYbWP_vgGPVduBuOdcI-ivhlkj4s-9DptVToY9tECoUJFQKjZ_Z65P-fqBw5QELBWtisq7AzPXdjp1an5HxgUIdV1Y3dGBkwoZ2O4J1ZIuMhDqTMbrkKKtrBbeZt6KTtgT27bvtZbI-GyAfsU0Y6NZyMz8wZYq6LmwuvUzbncbguSyMf0ebMx1GmRUSD-xauSGpSpwMsYzeecMgpmxsx_LVMJ_6g1OOgkf0XrVKWJSqHyQ20gM0pG"/>
+<div class="absolute bottom-0 left-0 right-0 bg-background/90 p-1 border-t border-outline-variant">
+<span class="font-label-caps text-[10px] text-on-surface-variant block text-center">BOL_SCAN_01.JPG</span>
+</div>
+</div>
+<!-- Evidence Thumbnail 2 -->
+<div class="relative aspect-square border border-outline-variant bg-surface-container overflow-hidden group cursor-pointer">
+<img alt="Close up of metal flashing material" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0" data-alt="An extreme, high-density macro shot of galvanized metal roofing flashing stacked tightly together. The image focuses on the sharp, precise edges of the metallic sheets, catching glints of cool, artificial warehouse light. The composition is highly textured and technical, using a subdued monochrome palette with sharp metallic reflections, conveying a sense of engineered durability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnO1Wk1IpllVGwyFTmLpMiSAbEgGLlfZXoXKoKEMpwUffGqW_N02ycdqG28NwbV65uiYGhRGzL-jvFxPBXaxLrVr9HLM1Ll_6vGmOYvw7mvAfKWpopvDwPGbB68ojxU147n-jF2oIry8e6THd5elT_8cRSYr0ftJcTZ1_BElthEBkupOzIdGyTvOTbCdkPwgTw2mRfVxK4G0IH0VkNrNstaljqlZTatPCX0r_nF0LnXOv_6K9AAqBakZr8t1zXDhDIzKbe6d8kKf8q"/>
+<div class="absolute bottom-0 left-0 right-0 bg-background/90 p-1 border-t border-outline-variant">
+<span class="font-label-caps text-[10px] text-on-surface-variant block text-center">DMG_CHK_01.JPG</span>
+</div>
+</div>
+<!-- Add Evidence Button -->
+<div class="col-span-2 border border-dashed border-outline-variant hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer flex flex-col items-center justify-center py-6 gap-2">
+<span class="material-symbols-outlined text-outline">add_a_photo</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">APPEND RECORD</span>
+</div>
+</div>
+</div>
+<!-- Action Block -->
+<button class="w-full bg-surface-container border border-outline-variant p-4 flex justify-between items-center hover:bg-surface-variant hover:border-primary transition-all group">
+<span class="font-body-fixed text-body-fixed text-on-surface uppercase font-semibold">Finalize Receipt</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+</button>
+</aside>
+</div>
+</main>
+</body></html>

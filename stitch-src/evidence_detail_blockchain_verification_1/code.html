@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Vault - Detail View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary": "#00363a",
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1a1c20",
+                        "secondary": "#ffdb9d",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "tertiary-container": "#dad9d9",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "primary-container": "#00f0ff",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-fixed": "#002022",
+                        "on-background": "#e2e2e8",
+                        "surface-variant": "#333539",
+                        "outline": "#849495",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "surface": "#111317",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-highest": "#333539",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary": "#f7f5f5",
+                        "on-primary-container": "#006970",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-secondary-container": "#6b4b00",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-dim": "#111317",
+                        "on-primary-fixed-variant": "#004f54",
+                        "outline-variant": "#3b494b",
+                        "inverse-primary": "#006970"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Cyber-Industrial utility classes */
+        .industrial-border {
+            border: 1px solid #2D2D2D; /* Zinc outline */
+        }
+        .tech-glow:hover {
+            box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface font-headline-lg-mobile text-headline-lg-mobile fixed top-0 w-full z-50 border-b border-surface-variant flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-2 cursor-pointer hover:bg-surface-bright transition-colors active:scale-95 duration-100 p-2 rounded">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary-container font-extrabold uppercase">FIELD AUDIT TERMINAL</h1>
+<div class="flex items-center gap-2 cursor-pointer hover:bg-surface-bright transition-colors active:scale-95 duration-100 p-2 rounded text-on-surface-variant">
+<span class="material-symbols-outlined">settings_input_component</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-surface-variant pb-4">
+<div>
+<p class="font-label-caps text-label-caps text-primary-container mb-2">EVIDENCE VAULT RECORD</p>
+<h2 class="font-display-lg-mobile md:font-display-lg text-on-surface">#EV-9942</h2>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1 rounded border industrial-border text-secondary-container">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="font-label-caps text-label-caps">BLOCKCHAIN VERIFIED</span>
+</div>
+</div>
+<!-- Desktop Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Core Data & Chain Trace -->
+<div class="md:col-span-5 flex flex-col gap-gutter">
+<!-- Hash Card -->
+<div class="bg-surface-container-low border industrial-border rounded p-density-comfortable relative tech-glow transition-all">
+<div class="absolute top-0 left-0 w-unit h-full bg-primary-container rounded-l"></div>
+<div class="pl-2">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">SHA-256 HASH</p>
+<p class="font-data-point text-data-point text-primary break-all">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</p>
+</div>
+</div>
+<!-- Meta Data Grid -->
+<div class="grid grid-cols-2 gap-unit">
+<div class="bg-surface-container border industrial-border p-density-compact">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">BLOCK HEIGHT</p>
+<p class="font-data-point text-data-point text-on-surface">1,489,021</p>
+</div>
+<div class="bg-surface-container border industrial-border p-density-compact">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">VALIDATOR NODE</p>
+<p class="font-data-point text-data-point text-on-surface">VN-77A.ORCL</p>
+</div>
+<div class="bg-surface-container border industrial-border p-density-compact">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">TIMESTAMP (UTC)</p>
+<p class="font-data-point text-data-point text-on-surface text-sm">2023-10-24 14:32:01</p>
+</div>
+<div class="bg-surface-container border industrial-border p-density-compact">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">INSPECTOR ID</p>
+<p class="font-data-point text-data-point text-on-surface text-sm">OP-7742</p>
+</div>
+</div>
+<!-- Chain Trace Timeline -->
+<div class="bg-surface-container-low border industrial-border rounded p-density-comfortable mt-4">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-surface-variant pb-2">CHAIN TRACE</h3>
+<div class="relative border-l border-surface-variant ml-3 space-y-6">
+<!-- Timeline Item 1 -->
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-surface-variant rounded-full -left-[6.5px] top-1.5 border border-background"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">14:30:05</p>
+<p class="text-on-surface font-bold mt-1">Asset Capture Initiated</p>
+<p class="text-sm text-on-surface-variant mt-1">Raw telemetry and visual data compiled.</p>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-surface-variant rounded-full -left-[6.5px] top-1.5 border border-background"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">14:30:12</p>
+<p class="text-on-surface font-bold mt-1">Local Hash Generation</p>
+<p class="text-sm text-on-surface-variant mt-1">SHA-256 algorithm applied to payload.</p>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-primary-container shadow-[0_0_8px_#00f0ff] rounded-full -left-[6.5px] top-1.5 border border-background"></div>
+<p class="font-label-caps text-label-caps text-primary-container">14:32:01</p>
+<p class="text-primary-container font-bold mt-1">Block Commitment</p>
+<p class="text-sm text-on-surface-variant mt-1">Confirmed by VN-77A.ORCL. Irreversible.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Captured Assets -->
+<div class="md:col-span-7 flex flex-col gap-gutter">
+<div class="bg-surface-container-highest border industrial-border rounded h-full p-density-comfortable relative">
+<!-- Tab Header -->
+<div class="absolute -top-3 left-4 bg-surface px-2 border industrial-border font-label-caps text-label-caps text-on-surface-variant">
+                        CAPTURED ASSETS
+                    </div>
+<div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-unit">
+<!-- Asset 1 -->
+<div class="relative group border industrial-border overflow-hidden">
+<img alt="Technical roofing inspection" class="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity filter grayscale hover:grayscale-0" data-alt="A high-contrast, industrial photograph of a dark, weathered commercial roof surface. The image is taken from a top-down, technical perspective, emphasizing the rough texture of asphalt shingles or membrane material. Harsh, directional white light casts sharp shadows, highlighting structural anomalies. The overall color palette is monochromatic with deep blacks and stark grays, fitting a cyber-industrial, professional diagnostic interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXy1UxX6uoCEHILwiigUZs11gUdpI1F7nB_OQ8nlc0-hq5wv1YZ67STJvpuZv8G9rIp2Vib8VuyOu4GIPxfhR-c-H0IZ5jzy1mi8pN0cR6AgTw5bEqA6jWsgIsMxtyvc7vq2VXPCgXijSvYbwQM7_SIM_NIsIoRkKREiaa49qX3FWvc2QaWnpQq3XuCmMdw3t8DI1dp5bQtvKgnGv-qrCvmVjl8LKOL-TsGEi4hX0sC5YGOs4685-8FrXG3cAtJnaKO5kl48YFYGFN"/>
+<div class="absolute bottom-0 left-0 w-full bg-background/90 p-2 border-t industrial-border flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">IMG_7742_A.RAW</span>
+<span class="material-symbols-outlined text-sm text-primary-container">qr_code_scanner</span>
+</div>
+</div>
+<!-- Asset 2 -->
+<div class="relative group border industrial-border overflow-hidden">
+<div class="w-full h-48 bg-surface-variant flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+<!-- Simulated Wireframe/Blueprint -->
+<div class="w-3/4 h-3/4 border border-outline-variant flex items-center justify-center relative">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-primary-container/30"></div>
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-primary-container/30"></div>
+<div class="absolute left-1/2 top-0 w-[1px] h-full bg-primary-container/30"></div>
+<span class="font-data-point text-data-point text-primary-container opacity-50">SCAN DATA</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-background/90 p-2 border-t industrial-border flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">LIDAR_MESH_01.OBJ</span>
+<span class="material-symbols-outlined text-sm text-primary-container">view_in_ar</span>
+</div>
+</div>
+</div>
+<!-- Material Chips -->
+<div class="mt-6 border-t industrial-border pt-4">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">IDENTIFIED MATERIALS</p>
+<div class="flex gap-2">
+<div class="w-12 h-12 bg-surface-variant border border-outline flex items-center justify-center">
+<span class="font-label-caps text-label-caps text-on-surface">TPO</span>
+</div>
+<div class="w-12 h-12 bg-surface-variant border border-outline flex items-center justify-center">
+<span class="font-label-caps text-label-caps text-on-surface">METL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container dark:bg-surface-container font-label-caps text-label-caps fixed bottom-0 w-full z-50 border-t border-surface-variant flex justify-around items-center h-20 w-full px-gutter">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="mt-1">IDENTIFY</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 hover:text-secondary transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined text-on-secondary-container">visibility</span>
+<span class="mt-1">EVIDENCE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="mt-1">VERIFY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="mt-1">STACK</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION C.A.R.E. | Resource Forecasting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .cyber-border {
+            position: relative;
+        }
+        .cyber-border::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #ffb2b9;
+            border-left: 2px solid #ffb2b9;
+        }
+        .cyber-border::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #ffb2b9;
+            border-right: 2px solid #ffb2b9;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c;
+            border-radius: 3px;
+        }
+        .segmented-bar-node {
+            height: 100%;
+            border-right: 1px solid rgba(15, 20, 26, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#0f141a",
+                      "on-background": "#dee3eb",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#dee3eb",
+                      "tertiary": "#d9e3f9",
+                      "status-success": "#4ade80",
+                      "on-tertiary-fixed": "#121c2c",
+                      "on-surface-variant": "#d7c2c2",
+                      "on-secondary": "#243240",
+                      "surface-bright": "#353941",
+                      "inverse-on-surface": "#2c3137",
+                      "status-error": "#f43f5e",
+                      "on-error": "#690005",
+                      "on-secondary-container": "#a8b6c9",
+                      "inverse-primary": "#894d54",
+                      "surface-container-highest": "#30353c",
+                      "outline": "#9f8c8d",
+                      "tertiary-container": "#bdc7dc",
+                      "on-tertiary-container": "#495365",
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "on-tertiary": "#273141",
+                      "background": "#0f141a",
+                      "tertiary-fixed": "#d9e3f9",
+                      "accent-cyan": "#00f2ff",
+                      "surface-container-high": "#252a31",
+                      "surface-container-low": "#171c22",
+                      "secondary": "#bac8db",
+                      "outline-variant": "#524344",
+                      "primary-fixed": "#ffdadc",
+                      "secondary-fixed": "#d5e4f7",
+                      "on-primary": "#522027",
+                      "surface-container-lowest": "#0a0f14",
+                      "outline-muted": "rgba(136, 150, 168, 0.15)",
+                      "surface-tint": "#ffb2b9",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#370c13",
+                      "on-primary-fixed-variant": "#6d363d",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#0f1d2b",
+                      "primary": "#ffd9dc",
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "surface-dim": "#0f141a",
+                      "surface-deep": "#090f15",
+                      "on-primary-container": "#7b4148",
+                      "secondary-fixed-dim": "#bac8db",
+                      "secondary-container": "#3a4858",
+                      "on-secondary-fixed-variant": "#3a4858",
+                      "primary-container": "#ffb2b9",
+                      "surface-container": "#1b2026",
+                      "on-surface": "#dee3eb",
+                      "surface-variant": "#30353c",
+                      "primary-fixed-dim": "#ffb2b9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "sidebar-width": "260px",
+                      "telemetry-sidebar-width": "340px",
+                      "sm": "8px",
+                      "xl": "40px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "label-md": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "headline-md": ["Barlow Condensed"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg": ["Barlow Condensed"],
+                      "mono-data": ["JetBrains Mono"],
+                      "headline-xl": ["Barlow Condensed"]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-accent-cyan/30 overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar Left (Primary Nav) -->
+<aside class="w-sidebar-width h-full flex flex-col py-lg border-r border-outline-variant bg-surface-container shrink-0">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter">TRADEVISION C.A.R.E.</h1>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-xs">Logic Engine v4.02</p>
+</div>
+<nav class="flex-1 space-y-xs px-md">
+<a class="flex items-center gap-md px-md py-sm text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-caps text-label-caps">Validator Node</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-outline-variant/30">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-2 h-2 rounded-full bg-status-success animate-pulse"></div>
+<span class="font-mono-data text-mono-data text-outline">NODE_SECURE_ENCRYPTED</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface overflow-hidden">
+<!-- Top Bar -->
+<header class="w-full h-16 flex items-center justify-between px-lg border-b border-outline-variant bg-surface-deep sticky top-0 z-50 shrink-0">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="terminal">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-widest">RESOURCE_CAPACITY_WORKSTATION</h2>
+</div>
+<div class="flex items-center gap-xl font-mono-data text-mono-data">
+<div class="flex flex-col items-end">
+<span class="text-outline uppercase text-[10px]">Active Node</span>
+<span class="text-accent-cyan">US-EAST-TX-09</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-outline uppercase text-[10px]">Auth Context</span>
+<span class="text-primary uppercase">Chief_Forecaster_Admin</span>
+</div>
+<span class="material-symbols-outlined text-on-surface hover:text-accent-cyan cursor-pointer transition-all active:scale-95" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-lg custom-scrollbar">
+<!-- Top Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-lg">
+<div class="bg-surface-container p-md border border-outline-variant cyber-border">
+<span class="font-label-caps text-label-caps text-outline block mb-xs">TOTAL ALLOCATION</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">94.2%</span>
+<span class="font-mono-data text-mono-data text-status-success">+2.1% ↑</span>
+</div>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant">
+<span class="font-label-caps text-label-caps text-outline block mb-xs">TPO BURN RATE</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">1,240 <span class="text-body-sm opacity-50">sq/wk</span></span>
+<span class="font-mono-data text-mono-data text-status-error">-14% Δ</span>
+</div>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant">
+<span class="font-label-caps text-label-caps text-outline block mb-xs">STEEL FUTURES</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">412 <span class="text-body-sm opacity-50">tons</span></span>
+<span class="font-mono-data text-mono-data text-accent-cyan">NOMINAL</span>
+</div>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant relative overflow-hidden">
+<div class="scanline"></div>
+<span class="font-label-caps text-label-caps text-primary block mb-xs">AI OPTIMIZATION CAP</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-primary">$214.8k</span>
+<span class="font-mono-data text-mono-data text-primary animate-pulse">LIVE</span>
+</div>
+</div>
+</div>
+<!-- 12-Week Allocation Grid -->
+<div class="bg-surface-container border border-outline-variant mb-lg overflow-hidden">
+<div class="p-md border-b border-outline-variant flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline" data-icon="group_work">group_work</span>
+<h3 class="font-label-caps text-label-caps">12-WEEK CREW ALLOCATION PROJECTION</h3>
+</div>
+<div class="flex gap-xs">
+<button class="px-sm py-xs bg-surface-container-highest border border-outline-variant text-[10px] font-bold uppercase hover:bg-primary-container hover:text-on-primary transition-colors">Export CSV</button>
+<button class="px-sm py-xs bg-surface-container-highest border border-outline-variant text-[10px] font-bold uppercase hover:bg-primary-container hover:text-on-primary transition-colors">Recalculate</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full font-mono-data text-mono-data">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md text-left text-outline font-label-caps sticky left-0 bg-surface-container-low z-20">CREW_ID</th>
+<th class="p-md text-center text-outline">W1</th>
+<th class="p-md text-center text-outline">W2</th>
+<th class="p-md text-center text-outline">W3</th>
+<th class="p-md text-center text-outline">W4</th>
+<th class="p-md text-center text-outline">W5</th>
+<th class="p-md text-center text-outline">W6</th>
+<th class="p-md text-center text-outline">W7</th>
+<th class="p-md text-center text-outline">W8</th>
+<th class="p-md text-center text-outline">W9</th>
+<th class="p-md text-center text-outline">W10</th>
+<th class="p-md text-center text-outline">W11</th>
+<th class="p-md text-center text-outline">W12</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="p-md sticky left-0 bg-surface-container group-hover:bg-surface-container-highest border-r border-outline-variant">TX-ALPHA_01</td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/20 border border-status-success/50 text-[10px] flex items-center justify-center">85%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-error/40 border border-status-error text-[10px] flex items-center justify-center">120%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/20 border border-status-success/50 text-[10px] flex items-center justify-center">70%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-surface-container-lowest border border-outline-variant text-[10px] flex items-center justify-center">0%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-surface-container-lowest border border-outline-variant text-[10px] flex items-center justify-center">0%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-accent-cyan/20 border border-accent-cyan/50 text-[10px] flex items-center justify-center">PEND</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-accent-cyan/20 border border-accent-cyan/50 text-[10px] flex items-center justify-center">PEND</div></td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="p-md sticky left-0 bg-surface-container group-hover:bg-surface-container-highest border-r border-outline-variant">CO-BRAVO_02</td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="p-md sticky left-0 bg-surface-container group-hover:bg-surface-container-highest border-r border-outline-variant">FL-GAMMA_09</td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/20 border border-status-success/50 text-[10px] flex items-center justify-center">45%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/20 border border-status-success/50 text-[10px] flex items-center justify-center">45%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/20 border border-status-success/50 text-[10px] flex items-center justify-center">45%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-error/40 border border-status-error text-[10px] flex items-center justify-center">140%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+<td class="p-sm text-center"><div class="h-6 bg-status-success/40 border border-status-success text-[10px] flex items-center justify-center">100%</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Material Burn-Rate Analytics (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter h-[400px]">
+<!-- TPO Analytics -->
+<div class="bg-surface-container border border-outline-variant p-lg flex flex-col">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-label-caps text-label-caps text-outline">TPO_MATERIAL_BURN_RATE</h3>
+<span class="font-mono-data text-accent-cyan">UNIT: ROLLS / WEEK</span>
+</div>
+<div class="flex-1 flex items-end gap-xs">
+<div class="flex-1 bg-surface-container-highest relative group h-[120px]">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary transition-all" style="height: 45%;"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono-data text-[10px]">W01</span>
+</div>
+<div class="flex-1 bg-surface-container-highest relative group h-[140px]">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary transition-all" style="height: 60%;"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono-data text-[10px]">W02</span>
+</div>
+<div class="flex-1 bg-surface-container-highest relative group h-[160px]">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary transition-all" style="height: 85%;"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono-data text-[10px]">W03</span>
+</div>
+<div class="flex-1 bg-surface-container-highest relative group h-[180px]">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary transition-all" style="height: 40%;"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono-data text-[10px]">W04</span>
+</div>
+<div class="flex-1 bg-surface-container-highest relative group h-[150px]">
+<div class="absolute bottom-0 w-full bg-status-error/40 group-hover:bg-status-error transition-all" style="height: 100%;"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono-data text-[10px]">W05</span>
+</div>
+<div class="flex-1 bg-surface-container-highest relative group h-[130px]">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary transition-all" style="height: 55%;"></div>
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono-data text-[10px]">W06</span>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-around text-center">
+<div>
+<span class="block text-[10px] text-outline font-label-caps">EST. SHORTAGE</span>
+<span class="font-headline-md text-status-error">1,400 sq.</span>
+</div>
+<div>
+<span class="block text-[10px] text-outline font-label-caps">PROCUREMENT ETA</span>
+<span class="font-headline-md text-on-surface">3.4 DAYS</span>
+</div>
+</div>
+</div>
+<!-- Steel Capacity -->
+<div class="bg-surface-container border border-outline-variant p-lg flex flex-col">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-label-caps text-label-caps text-outline">STEEL_INVENTORY_FORECAST</h3>
+<span class="font-mono-data text-accent-cyan">UNIT: METRIC TONS</span>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-md">
+<div class="space-y-xs">
+<div class="flex justify-between font-mono-data text-[11px]">
+<span>STRUCTURAL_H-BEAMS</span>
+<span class="text-status-success">82% NOMINAL</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-accent-cyan w-[82%]"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-mono-data text-[11px]">
+<span>GALVANIZED_SHEETING</span>
+<span class="text-status-success">95% OVERSTOCK</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-accent-cyan w-[95%]"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-mono-data text-[11px]">
+<span>DECKING_PANELS</span>
+<span class="text-status-error">12% CRITICAL</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-status-error w-[12%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-md pt-lg">
+<button class="bg-surface-container-highest border border-outline-variant py-sm font-label-caps text-label-caps hover:bg-primary-container hover:text-on-primary transition-all">Order Re-stock</button>
+<button class="bg-surface-container-highest border border-outline-variant py-sm font-label-caps text-label-caps hover:bg-accent-cyan hover:text-surface transition-all">Market Analysis</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Side Telemetry (AI Optimization) -->
+<aside class="w-telemetry-sidebar-width h-screen border-l border-outline-variant bg-surface-container-low fixed right-0 top-0 flex flex-col p-md shrink-0">
+<div class="mb-lg pt-sm">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-status-success animate-pulse-subtle" data-icon="sensors">sensors</span>
+<h2 class="font-label-caps text-label-caps text-outline">TELEMETRY_LOG</h2>
+</div>
+<div class="p-md bg-surface-container border-l-2 border-primary cyber-border">
+<div class="flex items-center gap-md mb-xs">
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+<span class="font-label-caps text-label-caps text-primary">AI OPTIMIZER ACTIVE</span>
+</div>
+<p class="text-[11px] text-on-surface-variant font-mono-data leading-relaxed">Analyzing 12-week trajectory... detected bottleneck in Week 5 (TX-ALPHA_01). Cross-referencing with steel delivery delays.</p>
+</div>
+</div>
+<div class="flex-1 space-y-md overflow-y-auto no-scrollbar">
+<!-- AI Suggestion 1 -->
+<div class="p-md bg-surface-container-high border border-outline-variant group hover:border-primary transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-caps text-label-caps text-accent-cyan">OPTIMIZATION_ID: A09</span>
+<span class="bg-status-success/10 text-status-success text-[10px] px-sm py-0.5 border border-status-success">READY</span>
+</div>
+<h4 class="font-body-md text-on-surface font-bold mb-xs">Re-allocate FL-GAMMA to Dallas</h4>
+<p class="text-[11px] text-outline mb-md">Shift 14 crew members from Florida to Texas project 09. Resolves W5 bottleneck.</p>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low p-xs border border-outline-variant/30">
+<span class="block text-[9px] text-outline uppercase font-bold">Eff. Gain</span>
+<span class="font-mono-data text-accent-cyan text-sm">+18.2%</span>
+</div>
+<div class="bg-surface-container-low p-xs border border-outline-variant/30">
+<span class="block text-[9px] text-outline uppercase font-bold">Avoidance</span>
+<span class="font-mono-data text-status-success text-sm">$42,500</span>
+</div>
+</div>
+<button class="w-full mt-md py-sm bg-primary-container text-on-primary font-bold text-[10px] uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all">Execute Transfer</button>
+</div>
+<!-- AI Suggestion 2 -->
+<div class="p-md bg-surface-container-high border border-outline-variant opacity-70 hover:opacity-100 transition-opacity">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-caps text-label-caps text-outline">OPTIMIZATION_ID: B42</span>
+<span class="bg-outline/10 text-outline text-[10px] px-sm py-0.5 border border-outline">QUEUED</span>
+</div>
+<h4 class="font-body-md text-on-surface font-bold mb-xs">TPO Substitution Protocol</h4>
+<p class="text-[11px] text-outline mb-md">Utilize overstock PVC membrane for Section D. Offset cost difference via procurement credits.</p>
+<div class="grid grid-cols-2 gap-sm opacity-50">
+<div class="bg-surface-container-low p-xs border border-outline-variant/30">
+<span class="block text-[9px] text-outline uppercase font-bold">Eff. Gain</span>
+<span class="font-mono-data text-accent-cyan text-sm">+4.5%</span>
+</div>
+<div class="bg-surface-container-low p-xs border border-outline-variant/30">
+<span class="block text-[9px] text-outline uppercase font-bold">Avoidance</span>
+<span class="font-mono-data text-status-success text-sm">$8,120</span>
+</div>
+</div>
+</div>
+<!-- System Health Stats -->
+<div class="pt-lg border-t border-outline-variant space-y-md">
+<div class="flex items-center justify-between font-mono-data text-[10px]">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="memory">memory</span>
+<span>CPU_LOAD</span>
+</div>
+<span class="text-status-success">24.5%</span>
+</div>
+<div class="flex items-center justify-between font-mono-data text-[10px]">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="speed">speed</span>
+<span>NET_LATENCY</span>
+</div>
+<span class="text-status-success">14ms</span>
+</div>
+<div class="flex items-center justify-between font-mono-data text-[10px]">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="storage">storage</span>
+<span>MEM_MAP</span>
+</div>
+<span class="text-accent-cyan">8.4GB / 32GB</span>
+</div>
+</div>
+</div>
+<div class="mt-auto bg-surface-container-highest p-md border border-outline-variant">
+<img alt="Neural Network Graph" class="w-full h-24 object-cover border border-outline-variant grayscale mb-md" data-alt="A detailed, complex neural network visualization displayed on a high-resolution technical monitor. The graph shows interconnected nodes glowing with soft cyber-cyan and primary-red light against a deep matte black background. Elegant data streams and monospaced code fragments float between the connections, creating a sense of intense real-time computation. The overall aesthetic is industrial, forensic, and highly systematic, mirroring a secure blockchain validator node interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgYKoAqWUCnbZtHQvAv_9nWQ8Z73WqKo4vSmIEA4cV3bh22HPLmKT9i00Zg_Iajd58eC-Y9ER8oIU20emr0xyMV4Dyu7cvEP_niF1YLZYRv7q-tOX3vK6pQfpx5SRd-6JSEXyXb_j3hhrKzOxvyLJ-vMQMuqXIjdwVnhquFyaDf5nK2qZScKBCkMfm1-Ih4ZO58OqFhqioJEF_G9hB41jLA8q6Bqh2_sUQYxfKQ8UUJ0WZbF90H0-0v6K3HOTEjtqlI6PJxcmktYf4"/>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">SYNC_STATUS</span>
+<span class="font-mono-data text-mono-data text-status-success">VERIFIED</span>
+</div>
+</div>
+</aside>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple pulsing simulation for active indicators
+        document.querySelectorAll('.animate-pulse-subtle').forEach(el => {
+            setInterval(() => {
+                el.style.opacity = el.style.opacity === '0.4' ? '1' : '0.4';
+            }, 1500);
+        });
+
+        // Hover effect for table rows to show data details
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.querySelector('td:first-child').style.color = '#ffb2b9';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.querySelector('td:first-child').style.color = '';
+            });
+        });
+
+        // Dynamic terminal text effect for AI panel
+        const terminalText = document.querySelector('.telemetry-p');
+        if (terminalText) {
+            let text = terminalText.innerText;
+            terminalText.innerText = '';
+            let i = 0;
+            const type = () => {
+                if (i < text.length) {
+                    terminalText.innerText += text.charAt(i);
+                    i++;
+                    setTimeout(type, 20);
+                }
+            }
+            type();
+        }
+    </script>
+</body></html>

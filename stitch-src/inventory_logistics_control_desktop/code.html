@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TECH-COMMAND V2 | Inventory Management</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Barlow & Barlow Condensed -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Guidelines -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#d8e2ff",
+                        "neon-blue": "#3B82F6",
+                        "secondary-container": "#00b55d",
+                        "on-surface-variant": "#e4bdbf",
+                        "outline-variant": "#5c3f42",
+                        "on-primary-fixed-variant": "#91002e",
+                        "inverse-primary": "#be003e",
+                        "on-tertiary-container": "#fffcff",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-secondary-fixed": "#00210c",
+                        "error-container": "#93000a",
+                        "surface-stroke": "#2D3748",
+                        "background": "#0d141c",
+                        "primary-container": "#e21e51",
+                        "surface-base": "#111820",
+                        "surface": "#0d141c",
+                        "surface-container-high": "#242b33",
+                        "outline": "#ab888a",
+                        "on-background": "#dce3ee",
+                        "on-tertiary-fixed": "#001a42",
+                        "neon-orange": "#F97316",
+                        "surface-elevated": "#1C2128",
+                        "neon-pink": "#E21E51",
+                        "surface-container": "#192028",
+                        "secondary-fixed": "#6dfe9c",
+                        "on-error-container": "#ffdad6",
+                        "text-muted": "#8896A8",
+                        "on-secondary": "#003919",
+                        "on-surface": "#dce3ee",
+                        "on-error": "#690005",
+                        "secondary": "#4de082",
+                        "inverse-on-surface": "#2a313a",
+                        "on-secondary-container": "#003e1c",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container-highest": "#2e353e",
+                        "on-primary-container": "#fffcff",
+                        "tertiary": "#adc6ff",
+                        "surface-dim": "#0d141c",
+                        "on-primary-fixed": "#40000f",
+                        "surface-container-lowest": "#080f16",
+                        "on-tertiary": "#002e6a",
+                        "primary": "#ffb2b9",
+                        "surface-variant": "#2e353e",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#005227",
+                        "tertiary-container": "#2171e4",
+                        "neon-green": "#4ADE80",
+                        "secondary-fixed-dim": "#4de082",
+                        "inverse-surface": "#dce3ee",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-low": "#151c24",
+                        "primary-fixed": "#ffdadb",
+                        "on-primary": "#67001e",
+                        "surface-bright": "#333a43"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "stack-gap": "12px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "stat-display": ["Barlow Condensed"],
+                        "label-caps": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "body-md": ["Barlow"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for rugged feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-base');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-stroke');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.text-muted');
+        }
+        /* Grid pattern background for rugged tech feel */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, theme('colors.surface-stroke') 1px, transparent 1px),
+                linear-gradient(to bottom, theme('colors.surface-stroke') 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-color: theme('colors.surface-base');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-hidden selection:bg-neon-pink selection:text-white">
+<!-- App Container -->
+<div class="flex h-screen w-full relative">
+<!-- SideNavBar (from JSON) -->
+<nav class="bg-surface-base dark:bg-surface-base border-r border-surface-stroke fixed left-0 top-0 h-full flex flex-col z-50 w-64">
+<!-- Header -->
+<div class="px-6 py-8 border-b border-surface-stroke flex items-center gap-4">
+<img alt="Facility Command Logo" class="w-10 h-10 rounded bg-surface-container-high border border-surface-stroke object-cover" data-alt="A rugged, industrial logo or avatar for a facility command center. High contrast, dark mode aesthetic with neon accents. Tech-focused design suitable for a desktop management dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvFXlXk_IvQd3BZpsUtGRfsqW9RuqRYoJu3KTC4v2Rn8qFGi2MzHIneyL8NieRZK3IfhaP8sLvdNG8ph0CvhS66xjNbjB7pXeZ4xLUSzb7SunBo1OBP-cf7cCkl1bxuNr1zg5uPRHOoscilE2J4nOJ8j5NAdtmOX1RuOqs_qeWkeSNLvS5el-U12XlZrE_pQ_1xnBLA_8W70TEuQOiuqCGmEJALpH5JgGial9mFkWoQ93tK-BqWfHXaRn7Yd7NrfqJeyT6Qnof06Pe"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">MAIN_HUB</h1>
+<p class="font-label-caps text-label-caps text-text-muted mt-1">SECTOR_07</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex-1 py-6 flex flex-col gap-2">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assignment_late</span>
+                    Dispatch Queue
+                </a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">precision_manufacturing</span>
+                    Active Repairs
+                </a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">fact_check</span>
+                    Verification Logs
+                </a>
+<!-- ACTIVE NAV ITEM -->
+<a class="bg-primary-container text-on-primary-container border-r-4 border-neon-pink px-4 py-3 flex items-center gap-3 transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                    Inventory
+                </a>
+</div>
+<!-- CTA -->
+<div class="px-4 py-6">
+<button class="w-full bg-neon-pink text-white font-label-caps text-label-caps py-3 rounded hover:bg-inverse-primary transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                    NEW DISPATCH
+                </button>
+</div>
+<!-- Footer -->
+<div class="border-t border-surface-stroke py-4">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+                    Logout
+                </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col h-full bg-background relative overflow-hidden">
+<!-- TopNavBar (from JSON) -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin-desktop h-16 border-b border-surface-stroke sticky top-0 z-40">
+<div class="flex items-center gap-6">
+<div class="font-headline-lg text-headline-lg font-bold text-neon-pink tracking-tight">TECH-COMMAND V2</div>
+<!-- Search Bar (on_left) -->
+<div class="relative w-80 ml-8">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full bg-surface-elevated border border-surface-stroke text-on-surface pl-10 pr-4 py-2 rounded focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-all font-body-md text-body-md" placeholder="Search components, IDs, or locations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="ml-4 h-8 w-px bg-surface-stroke"></div>
+<img alt="Manager Avatar" class="w-8 h-8 rounded-full border border-surface-stroke ml-2 object-cover" data-alt="A professional headshot of a technical manager in a high-tech control room environment. Dark, atmospheric lighting with subtle blue neon rim light. The subject looks focused and authoritative, fitting a command center aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhpAl_89qqOVDj0UboCPhj8Y1kYBgDqi9RpsEGzFwe_J9ox4Oz0slDEdAoXPPqdKwG5LttyKQ4JZsk6I-U1x1YDGwqXLcSOMZFLHK-h7kvPh7bOLHBT0fzJNluabQOMgHZwZQomp5z7LR_-wquz98pZgNKE-9jYTxHcb5c6M_zQ8BOlmKaqBUQpS3GkaccWka7xpPN-troVA919jKPSlHMsUyuEL53d1Q6q0z6lgpU_FEaKYv7PYA2ngCnzOXmRfh2IkqtHrfa3n7S"/>
+</div>
+</header>
+<!-- Dashboard Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-gutter lg:p-margin-desktop bg-grid-pattern relative">
+<!-- Page Title Area -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface">INVENTORY COMMAND</h2>
+<p class="font-body-lg text-body-lg text-text-muted mt-2">Real-time telemetry and supply chain overview.</p>
+</div>
+<div class="flex gap-3">
+<span class="bg-neon-green/10 text-neon-green font-label-caps text-label-caps px-3 py-1 rounded border border-neon-green/30 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+                            DEPOT 4: ONLINE
+                        </span>
+<button class="border border-surface-stroke text-text-muted hover:bg-surface-container hover:text-on-surface px-4 py-2 rounded font-label-caps text-label-caps flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            EXPORT LOG
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter lg:gap-6">
+<!-- Metric: Total Stock -->
+<div class="col-span-12 md:col-span-4 bg-surface-elevated rounded border-t-2 border-neon-blue p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-neon-blue">inventory</span>
+</div>
+<p class="font-label-caps text-label-caps text-text-muted mb-2">CRITICAL INVENTORY</p>
+<div class="font-stat-display text-stat-display text-on-surface mb-4">4,892 <span class="text-body-md text-text-muted font-normal ml-1">UNITS</span></div>
+<div class="flex items-center gap-2 text-neon-green font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12.4% vs last cycle</span>
+</div>
+</div>
+<!-- Metric: Pending Requests -->
+<div class="col-span-12 md:col-span-4 bg-surface-elevated rounded border-t-2 border-neon-orange p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-neon-orange">pending_actions</span>
+</div>
+<p class="font-label-caps text-label-caps text-text-muted mb-2">ACTIVE REQUISITIONS</p>
+<div class="font-stat-display text-stat-display text-on-surface mb-4">14 <span class="text-body-md text-text-muted font-normal ml-1">PENDING</span></div>
+<div class="flex items-center gap-2 text-neon-orange font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>3 flagged urgent</span>
+</div>
+</div>
+<!-- Metric: Turnover -->
+<div class="col-span-12 md:col-span-4 bg-surface-elevated rounded border-t-2 border-tertiary-container p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-tertiary-container">autorenew</span>
+</div>
+<p class="font-label-caps text-label-caps text-text-muted mb-2">AVG TURNOVER RATE</p>
+<div class="font-stat-display text-stat-display text-on-surface mb-4">8.2 <span class="text-body-md text-text-muted font-normal ml-1">DAYS</span></div>
+<div class="flex items-center gap-2 text-text-muted font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Nominal parameters</span>
+</div>
+</div>
+<!-- Detailed Part View (Glassmorphism / Tech Panel) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-elevated border border-surface-stroke rounded p-0 flex flex-col">
+<div class="p-4 border-b border-surface-stroke flex justify-between items-center bg-surface-container-high/50">
+<h3 class="font-label-caps text-label-caps text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue text-[18px]">build</span>
+                                FOCUS ASSET: SUPPORT BEAM B-42
+                            </h3>
+<button class="text-neon-blue hover:text-white transition-colors">
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+</div>
+<div class="p-6 flex flex-col md:flex-row gap-8">
+<!-- Diagram / Image Area -->
+<div class="w-full md:w-1/3 aspect-square bg-surface-container rounded border border-surface-stroke relative overflow-hidden flex items-center justify-center group">
+<!-- Simulated Tech Blueprint -->
+<div class="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity" style="background-image: radial-gradient(theme('colors.neon-blue') 1px, transparent 1px); background-size: 10px 10px;"></div>
+<img alt="Support Beam Tech Schematic" class="w-3/4 h-3/4 object-contain mix-blend-screen opacity-80" data-alt="A highly detailed, neon-blue wireframe schematic of an industrial support beam or structural component against a pure black background. Technical interface elements, grid lines, and measurements overlay the image to create a high-tech HUD aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoIR0Jot8GumkCbvdSesA0kz49dtHUM4JmHsz2y19ac0frk2gmjAupY8FZYh0hCrw9CMy9lGQX0ZGOUbd9_X7jEUjeGdUz46paoyBYTd1-7SoNtGkktxvgQIK9Gti0NZDlBFBMcUyGcGT9lrZtuK80hS3QDPrd0nYpaBLs5Vrl7-cWX926YMKclm9fmKgJnh-7GdgT0qxhzVCTKLlATtVq3TuOqvPMaf4EXCEekXKowGoMsvFYAW4ZeKnJoZ1CJizN_iOLhHnOdpa0"/>
+<div class="absolute bottom-2 left-2 right-2 flex justify-between text-neon-blue font-caption text-caption opacity-70">
+<span>SCAN: COMPLETE</span>
+<span>V 2.04</span>
+</div>
+</div>
+<!-- Specs Area -->
+<div class="flex-1 flex flex-col gap-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-caption text-caption text-text-muted mb-1">MATERIAL CLASS</div>
+<div class="font-body-lg text-body-lg text-on-surface">Titanium Alloy 7G</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-caption text-caption text-text-muted mb-1">UNIT WEIGHT</div>
+<div class="font-body-lg text-body-lg text-on-surface">142.5 KG</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-caption text-caption text-text-muted mb-1">STORAGE LOC</div>
+<div class="font-body-lg text-body-lg text-on-surface">Aisle 4, Rack B2</div>
+</div>
+<div class="bg-surface-container p-3 rounded border border-surface-stroke">
+<div class="font-caption text-caption text-text-muted mb-1">STOCK LEVEL</div>
+<div class="font-body-lg text-body-lg text-neon-orange flex items-center gap-2">
+                                            42 UNITS 
+                                            <span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+</div>
+</div>
+<div class="mt-auto flex gap-4">
+<button class="flex-1 bg-neon-blue text-white font-label-caps text-label-caps py-2 px-4 rounded hover:bg-blue-400 transition-colors">
+                                        ORDER STOCK
+                                    </button>
+<button class="flex-1 border border-surface-stroke text-text-muted font-label-caps text-label-caps py-2 px-4 rounded hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                                        USAGE LOGS
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pending Requests List -->
+<div class="col-span-12 lg:col-span-4 bg-surface-elevated border border-surface-stroke rounded flex flex-col max-h-[450px]">
+<div class="p-4 border-b border-surface-stroke flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-orange text-[18px]">priority</span>
+                                ACTION REQUIRED
+                            </h3>
+<span class="bg-neon-orange/20 text-neon-orange font-caption text-caption px-2 py-0.5 rounded">3 URGENT</span>
+</div>
+<div class="overflow-y-auto flex-1 p-2 space-y-1">
+<!-- Request Item 1 -->
+<div class="p-3 border-b border-surface-stroke/50 hover:bg-surface-container-high transition-colors group flex items-start gap-3 cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-neon-pink mt-2"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<div class="font-body-md text-body-md text-on-surface font-medium">REQ-9942</div>
+<div class="font-caption text-caption text-text-muted">10m ago</div>
+</div>
+<div class="font-caption text-caption text-text-muted mb-2">Zone C Repair • Req ID: X-22</div>
+<div class="flex justify-between items-center">
+<span class="bg-surface-container text-on-surface font-caption text-caption px-2 py-1 border border-surface-stroke rounded text-[11px]">2x Hydro-Valve</span>
+<button class="text-neon-blue font-label-caps text-[12px] opacity-0 group-hover:opacity-100 transition-opacity">APPROVE</button>
+</div>
+</div>
+</div>
+<!-- Request Item 2 -->
+<div class="p-3 border-b border-surface-stroke/50 hover:bg-surface-container-high transition-colors group flex items-start gap-3 cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-neon-pink mt-2"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<div class="font-body-md text-body-md text-on-surface font-medium">REQ-9941</div>
+<div class="font-caption text-caption text-text-muted">45m ago</div>
+</div>
+<div class="font-caption text-caption text-text-muted mb-2">Assembly Line 2 • Req ID: Y-04</div>
+<div class="flex justify-between items-center">
+<span class="bg-surface-container text-on-surface font-caption text-caption px-2 py-1 border border-surface-stroke rounded text-[11px]">1x Control Board</span>
+<button class="text-neon-blue font-label-caps text-[12px] opacity-0 group-hover:opacity-100 transition-opacity">APPROVE</button>
+</div>
+</div>
+</div>
+<!-- Request Item 3 -->
+<div class="p-3 border-b border-surface-stroke/50 hover:bg-surface-container-high transition-colors group flex items-start gap-3 cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-neon-blue mt-2"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<div class="font-body-md text-body-md text-on-surface font-medium">REQ-9938</div>
+<div class="font-caption text-caption text-text-muted">2h ago</div>
+</div>
+<div class="font-caption text-caption text-text-muted mb-2">Maintenance Bay • Req ID: M-11</div>
+<div class="flex justify-between items-center">
+<span class="bg-surface-container text-on-surface font-caption text-caption px-2 py-1 border border-surface-stroke rounded text-[11px]">50m Copper Wire</span>
+<button class="text-neon-blue font-label-caps text-[12px] opacity-0 group-hover:opacity-100 transition-opacity">APPROVE</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-3 text-center border-t border-surface-stroke">
+<button class="text-text-muted font-label-caps text-label-caps hover:text-on-surface transition-colors">VIEW ALL QUEUE</button>
+</div>
+</div>
+</div> <!-- End Grid -->
+</div>
+</main>
+</div>
+</body></html>

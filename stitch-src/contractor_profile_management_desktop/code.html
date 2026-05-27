@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Profile - Admin Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005138",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-container-high": "#252a31",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "error-container": "#93000a",
+                        "surface-bright": "#353a40",
+                        "surface-container": "#1b2026",
+                        "on-surface": "#dee3eb",
+                        "surface-container-lowest": "#0a0f14",
+                        "surface-container-highest": "#30353c",
+                        "tertiary-container": "#00855e",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-tertiary": "#003826",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-secondary-container": "#aeb6c3",
+                        "secondary": "#bfc7d5",
+                        "tertiary": "#72daad",
+                        "on-secondary": "#29313c",
+                        "primary": "#ffb2b9",
+                        "tertiary-fixed-dim": "#72daad",
+                        "surface-container-low": "#171c22",
+                        "on-secondary-fixed": "#141c26",
+                        "secondary-fixed": "#dbe3f1",
+                        "on-primary-fixed": "#40000f",
+                        "on-error": "#690005",
+                        "secondary-container": "#3f4753",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#e21e51",
+                        "outline": "#ab888a",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-variant": "#30353c",
+                        "on-surface-variant": "#e4bdbf",
+                        "surface": "#0f141a",
+                        "on-primary-container": "#fffcff",
+                        "on-primary": "#67001e",
+                        "background": "#0f141a",
+                        "primary-fixed": "#ffdadb",
+                        "outline-variant": "#5c3f42",
+                        "inverse-primary": "#be003e",
+                        "tertiary-fixed": "#8ff7c7",
+                        "on-primary-fixed-variant": "#91002e",
+                        "inverse-surface": "#dee3eb",
+                        "on-background": "#dee3eb",
+                        "on-tertiary-container": "#f5fff7",
+                        "surface-tint": "#ffb2b9",
+                        "surface-dim": "#0f141a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "header_height": "64px",
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "sidebar_width": "260px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "display-md": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for density */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5c3f42; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden flex h-screen w-screen">
+<!-- Navigation Drawer -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface border-r border-outline-variant flex flex-col py-margin z-50">
+<div class="px-gutter mb-8">
+<h1 class="font-display-md text-display-md text-primary tracking-tight">TRADEVISION</h1>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>DASHBOARD</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-xl">history</span>
+<span>AUDIT LOG</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>SYSTEM SETTINGS</span>
+</a>
+</li>
+<li>
+<a class="text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-xl" data-weight="fill">group</span>
+<span>USERS</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined text-xl">assessment</span>
+<span>REPORTS</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col h-screen relative bg-background">
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] bg-surface-container-low border-b border-outline-variant flex justify-between items-center px-gutter z-40">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-2xl">admin_panel_settings</span>
+<h2 class="font-headline-sm text-headline-sm">ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 mt-[64px] overflow-hidden flex">
+<!-- Left Pane: Entity Metadata -->
+<div class="w-[400px] border-r border-outline-variant bg-surface-container-low flex flex-col overflow-y-auto">
+<div class="p-gutter border-b border-outline-variant">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-container border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="Contractor Logo" class="w-full h-full object-cover opacity-80" data-alt="A small, stylized logo representing an industrial construction or engineering firm. The logo is rendered in dark greys and deep reds on a high-tech dark background. It conveys strength, precision, and structural integrity. The visual style aligns with a modern, data-dense command center aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe6oFAw6MOKQupAERwNn8IDGFbx1nWYq9xKaarst84dRneUPZS8axoKz4bK6RZaU9eAnJH6Cms4zfuLFKBi9AkUCS459-oSClLyOAoR6hftg1tBhGBT0wl2kQW1rcsadxt1iXCiUL2J6hdyzlGGjrpOnyc9IbgQ7PGaTjxs--E3SEVL7k_MfYQa6yL02vm3ZQ4W4nlCliCHgN6bOsZAlLGHprhsMnkKa5rrUqh-mRddtPxVF4cKOj1R7mrO2Up-8KW-r8Gvn4OQRzx"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">APEX ENGINEERING, LLC</h3>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">UID: APX-992-441-B</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface p-3 rounded border border-outline-variant mt-6">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AUTHORIZED ENTITY</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="p-gutter flex-1 space-y-6">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-3 border-b border-outline-variant pb-2">CORE METADATA</h4>
+<div class="space-y-3">
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-70 text-[11px]">TAX IDENTIFICATION</span>
+<span class="font-mono-data text-mono-data text-on-surface">##-#######89</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-70 text-[11px]">DATE OF INCORPORATION</span>
+<span class="font-mono-data text-mono-data text-on-surface">2014-08-12</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-70 text-[11px]">JURISDICTION</span>
+<span class="font-body-md text-body-md text-on-surface">State of Nevada, Commercial Reg.</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-3 border-b border-outline-variant pb-2">PRIMARY CONTACTS</h4>
+<div class="space-y-4">
+<div class="bg-surface border border-outline-variant p-3 rounded">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface text-[16px]">Sarah Jenkins</span>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-caps text-[10px] px-2 py-0.5 rounded">PRINCIPAL</span>
+</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[12px] space-y-1">
+<p>T: +1 (555) 019-8233</p>
+<p>E: s.jenkins@apex-eng.net</p>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-3 rounded">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface text-[16px]">Marcus Vance</span>
+<span class="bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] px-2 py-0.5 rounded border border-outline-variant">COMPLIANCE OFFICER</span>
+</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[12px] space-y-1">
+<p>T: +1 (555) 019-8234</p>
+<p>E: m.vance@apex-eng.net</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: Tabbed Interface -->
+<div class="flex-1 flex flex-col bg-surface overflow-hidden">
+<!-- Tabs Header -->
+<div class="border-b border-outline-variant bg-surface-container-low px-gutter pt-4 flex gap-6">
+<button class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-3 px-2 flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                        CREDENTIALING LOG
+                    </button>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface border-b-2 border-transparent hover:border-outline-variant pb-3 px-2 flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[16px]">engineering</span>
+                        OPERATIONAL HISTORY
+                    </button>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface border-b-2 border-transparent hover:border-outline-variant pb-3 px-2 flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[16px]">gavel</span>
+                        DISPUTE RECORDS
+                    </button>
+</div>
+<!-- Tab Content: Credentialing Log -->
+<div class="flex-1 overflow-y-auto p-gutter bg-surface">
+<!-- KPI Row -->
+<div class="grid grid-cols-3 gap-4 mb-8">
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">shield</span> ACTIVE LICENSES
+                            </span>
+<span class="font-display-md text-display-md text-on-surface">04</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">warning</span> PENDING RENEWALS
+                            </span>
+<span class="font-display-md text-display-md text-primary">01</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">assignment_turned_in</span> COMPLIANCE SCORE
+                            </span>
+<span class="font-display-md text-display-md text-tertiary">98.5%</span>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container border border-outline-variant rounded overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-label-caps text-label-caps text-on-surface">CERTIFICATIONS &amp; INSURANCE</h3>
+<button class="bg-transparent border border-outline-variant text-on-surface font-label-caps text-[10px] px-3 py-1 rounded hover:bg-surface-variant transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span> EXPORT
+                            </button>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest border-b border-outline-variant">
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant">CREDENTIAL TYPE</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant">ISSUING AUTHORITY</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant">EXPIRATION</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data">
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-3 text-on-surface">Gen. Contractor License (Class A)</td>
+<td class="p-3 text-on-surface-variant">NV State Contractors Board</td>
+<td class="p-3 text-on-surface-variant">2025-10-31</td>
+<td class="p-3">
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded text-[10px] uppercase">Valid</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-3 text-on-surface">Commercial Liability Ins.</td>
+<td class="p-3 text-on-surface-variant">Travelers Indemnity Co.</td>
+<td class="p-3 text-primary">2023-11-15</td>
+<td class="p-3">
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] uppercase">Expiring Soon</span>
+</td>
+<td class="p-3 text-right">
+<button class="bg-primary-container text-on-primary-container font-label-caps text-[10px] px-2 py-1 rounded hover:bg-inverse-primary transition-colors">
+                                            TRIGGER RENEWAL
+                                        </button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-3 text-on-surface">Workers' Compensation</td>
+<td class="p-3 text-on-surface-variant">Employers Insurance Group</td>
+<td class="p-3 text-on-surface-variant">2024-06-01</td>
+<td class="p-3">
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded text-[10px] uppercase">Valid</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="p-3 text-on-surface">OSHA 30-Hour Certification</td>
+<td class="p-3 text-on-surface-variant">Occupational Safety Dept.</td>
+<td class="p-3 text-on-surface-variant">2026-01-20</td>
+<td class="p-3">
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded text-[10px] uppercase">Valid</span>
+</td>
+<td class="p-3 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Claim Portal - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffdb9d",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-secondary-container": "#6b4b00",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-container": "#006970",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "background": "#111317",
+                        "primary-container": "#00f0ff",
+                        "surface-container": "#1e2024",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-lowest": "#0c0e12",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-low": "#1a1c20",
+                        "surface": "#111317",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "on-primary-fixed": "#002022",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary": "#412d00",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "primary": "#dbfcff",
+                        "surface-variant": "#333539",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#37393e",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "surface-container-high": "#282a2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-fixed": ["Inter"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, rgba(59, 73, 75, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 73, 75, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glow-active {
+            box-shadow: inset 0 0 12px rgba(0, 240, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col md:flex-row cyber-grid">
+<!-- Mobile Top App Bar -->
+<header class="md:hidden w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant flat no shadows flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary">APEX CLAIM PORTAL</span>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-variant flex items-center justify-center border border-outline overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an individual wearing a dark suit against a subtle, dark background. The lighting is crisp and modern, highlighting the subject's face with a professional, authoritative tone suitable for an enterprise portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsC2XtiEHtA1FeuOeu6L3SdkJfMSnJPzPaiHWTPGfNeApzm_7O9vY0ZPlafPkhkBX5KdQ3Mu-3ustq3PHES-z03izre0Jx75G5BTvInEvYsEASc_UXyY39SErYT3RRolW5yiXp4fJrOyT-HnXZCvPpt8i_-gDIqe3q9ydq9vG3WE06LEZQ_4Nl_9sSR43TL5C0aIyw12jA-d5KCYTQdfTTOE_JCGoV7nyc_rpl877eeYP9WDMwu8VFSdUnt-YUI6hCLkeS2omdrczO"/>
+</div>
+</header>
+<!-- Desktop Side Navigation Drawer -->
+<nav class="hidden md:flex bg-surface-container h-full w-80 rounded-r-none border-r border-outline-variant shadow-lg flex-col py-density-comfortable sticky top-0 h-screen shrink-0 z-40">
+<div class="px-density-comfortable mb-8 flex flex-col gap-unit">
+<div class="flex items-center gap-density-compact mb-4">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-headline-md text-headline-md text-primary tracking-widest uppercase">APEX</span>
+</div>
+<div class="flex items-center gap-density-comfortable bg-surface-variant p-density-compact rounded border border-outline-variant">
+<img alt="Policy Owner" class="w-10 h-10 rounded-full border border-primary-fixed-dim object-cover" data-alt="A professional headshot of an individual wearing a dark suit against a subtle, dark background. The lighting is crisp and modern, highlighting the subject's face with a professional, authoritative tone suitable for an enterprise portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIUuE7U-fwn6ul-fJ6NokcXVLwD-LmiChMm3CF4QrqR7nSx88LL6txY1Pb_15eds9D5axjSeFVoQ47LmgbqnBa8qFrk0gX8gtP9rF5kT8S724oZrNsvAZQylRtm2C3jxiCrxW9fnXZ18f4FVJA5GiqiKtW9cknHZKQiyKOgGuGBPOhYpj0E4Qyc7D4DkqjNbkYme-4AtesC1jHNBwLOscUws0Jj1n2GzFYpxVBikX4CHbLLvbBKLKNDoQ1LcNm0UAqsg-rBKAC6tZg"/>
+<div>
+<div class="font-body-fixed text-body-fixed font-bold text-on-surface">Claims Portal</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Policy #APX-99281</div>
+<div class="font-label-caps text-label-caps text-primary mt-1">Status: Active</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 px-density-compact flex-grow">
+<!-- Active state conceptually maps to 'Dashboard' though the Nav labels provided differ. Assuming Dashboard context maps loosely or we just use the provided labels but highlight none if it doesn't match, or highlight Account Settings as the closest anchor. We'll highlight none of these exactly as "Dashboard" isn't listed in the Drawer JSON labels, but we will style them accordingly. Wait, the prompt says "Active State Logic: Pick single closest match". Let's map Dashboard -> Coverage Details loosely, or maybe just leave them inactive if no perfect match, but we must pick one. Let's pick 'Coverage Details' as active for a claim. -->
+<a class="flex items-center gap-density-compact px-density-comfortable py-density-compact text-on-surface hover:bg-surface-variant transition-transform duration-300 ease-in-out rounded" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-fixed text-body-fixed">Account Settings</span>
+</a>
+<a class="flex items-center gap-density-compact px-density-comfortable py-density-compact text-on-surface hover:bg-surface-variant transition-transform duration-300 ease-in-out rounded" href="#">
+<span class="material-symbols-outlined">policy</span>
+<span class="font-body-fixed text-body-fixed">Insurance Policy</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-density-compact px-density-comfortable py-density-compact bg-secondary-container text-on-secondary-container font-bold transition-transform duration-300 ease-in-out rounded glow-active border border-secondary-container" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-body-fixed text-body-fixed">Coverage Details</span>
+</a>
+<a class="flex items-center gap-density-compact px-density-comfortable py-density-compact text-on-surface hover:bg-surface-variant transition-transform duration-300 ease-in-out rounded" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-fixed text-body-fixed">Help Center</span>
+</a>
+</div>
+<div class="px-density-compact mt-auto">
+<a class="flex items-center gap-density-compact px-density-comfortable py-density-compact text-on-surface hover:bg-surface-variant transition-transform duration-300 ease-in-out rounded border-t border-outline-variant pt-density-comfortable" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-fixed text-body-fixed">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col p-margin-mobile md:p-margin-desktop gap-gutter md:gap-density-comfortable pb-24 md:pb-margin-desktop overflow-y-auto">
+<!-- Header Area -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-density-comfortable mb-4 border-b border-outline-variant pb-density-comfortable">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">Claim Dashboard</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 tracking-widest uppercase">ID: CLM-2023-884A | Severe Wind Damage</p>
+</div>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-density-comfortable py-density-compact rounded hover:bg-primary-fixed transition-colors border-b-4 border-inverse-primary uppercase tracking-wider flex items-center justify-center gap-unit w-full md:w-auto">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+                Submit Documents
+            </button>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter md:gap-density-comfortable">
+<!-- Timeline Section (Spans 8 columns on desktop) -->
+<section class="md:col-span-8 bg-surface-container-low border border-outline-variant rounded-DEFAULT p-density-comfortable relative overflow-hidden">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-br-DEFAULT uppercase">Timeline</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-6 mb-8">Current Claim Status</h2>
+<div class="relative pt-4">
+<!-- Progress Line -->
+<div class="absolute top-[28px] left-4 right-4 h-[2px] bg-outline-variant z-0"></div>
+<div class="absolute top-[28px] left-4 w-1/2 h-[2px] bg-primary z-0 shadow-[0_0_8px_rgba(0,240,255,0.8)]"></div>
+<div class="flex justify-between relative z-10">
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center gap-unit w-1/5">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface mt-2 text-center">Intake</span>
+</div>
+<!-- Step 2: Complete -->
+<div class="flex flex-col items-center gap-unit w-1/5">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface mt-2 text-center">Inspection</span>
+</div>
+<!-- Step 3: Active -->
+<div class="flex flex-col items-center gap-unit w-1/5">
+<div class="w-8 h-8 rounded-full bg-secondary-container border-2 border-secondary-fixed flex items-center justify-center text-on-secondary-container animate-pulse">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary-fixed mt-2 text-center font-bold">Approval</span>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex flex-col items-center gap-unit w-1/5 opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined text-[16px]">build</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-2 text-center">Repair</span>
+</div>
+<!-- Step 5: Pending -->
+<div class="flex flex-col items-center gap-unit w-1/5 opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined text-[16px]">flag</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-2 text-center">Completion</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics / Health Score (Spans 4 columns) -->
+<section class="md:col-span-4 bg-surface-container border border-outline-variant rounded-DEFAULT flex flex-col relative overflow-hidden">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-br-DEFAULT uppercase">Metrics</div>
+<div class="p-density-comfortable flex-grow flex flex-col justify-center items-center mt-6 border-b border-outline-variant bg-gradient-to-b from-surface-container to-surface-container-lowest">
+<div class="relative w-32 h-32 flex items-center justify-center mb-4">
+<!-- Custom Circular Gauge CSS hack using conic-gradient -->
+<div class="absolute inset-0 rounded-full border-4 border-surface-variant" style="background: conic-gradient(from 180deg at 50% 50%, #00f0ff 0deg, #00f0ff 280deg, transparent 280deg, transparent 360deg);"></div>
+<div class="absolute inset-2 bg-surface-container rounded-full flex items-center justify-center flex-col shadow-inner">
+<span class="font-data-point text-data-point text-primary text-3xl">78</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">/100</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Claim Health Score</span>
+</div>
+<div class="grid grid-cols-2 divide-x divide-outline-variant">
+<div class="p-density-compact flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-variant transition-colors">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Est. Value</span>
+<span class="font-data-point text-data-point text-on-surface">$14,250</span>
+</div>
+<div class="p-density-compact flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-variant transition-colors">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Target ETA</span>
+<span class="font-data-point text-[16px] font-data-point text-on-surface">NOV 14</span>
+</div>
+</div>
+</section>
+<!-- Activity Feed (Spans full width or 6 cols depending on density, let's do full for structural solidity) -->
+<section class="md:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative mt-4">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-br-DEFAULT uppercase z-10">Activity Log</div>
+<div class="p-density-comfortable pt-12">
+<div class="flex flex-col gap-0 border-l-2 border-surface-variant ml-4 relative">
+<!-- Feed Item 1 -->
+<div class="flex items-start gap-density-comfortable pb-density-comfortable relative group">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-secondary-container border-2 border-surface-container-lowest z-10"></div>
+<div class="flex-grow pl-4 bg-surface-container-low border border-outline-variant p-density-compact rounded-r group-hover:border-secondary-container transition-colors glow-active">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Action Required</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">2 HOURS AGO</span>
+</div>
+<p class="font-body-fixed text-body-fixed text-on-surface font-semibold">Adjuster Review in Progress</p>
+<p class="font-body-fixed text-[14px] text-on-surface-variant mt-1">Pending secondary sign-off on structural damage assessment.</p>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="flex items-start gap-density-comfortable pb-density-comfortable relative group">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-2 border-surface-container-lowest z-10"></div>
+<div class="flex-grow pl-4 bg-surface-container border border-outline-variant p-density-compact rounded-r group-hover:border-primary transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Update</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">YESTERDAY</span>
+</div>
+<p class="font-body-fixed text-body-fixed text-on-surface">New Site Photos Uploaded</p>
+<div class="flex gap-2 mt-2">
+<div class="w-16 h-16 bg-surface-variant border border-outline-variant rounded overflow-hidden">
+<img alt="Roof Damage 1" class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all" data-alt="Close up of a dark, industrial roofing structure showing signs of weather wear and tear. The lighting is overcast, emphasizing the texture of the shingles and the raw, utilitarian nature of the construction materials. The palette is dominated by dark greys and muted tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGG0KgMAhI3etWsaygqSEDiftPdF65qHoeU5D-49pUzbFYapm1uA9yh8_DFgq2XfWL8wdX-RLqoLVJyucD6FzijDTWC8jJiNcBeUmSE_-FzZSlltyI32yVJ91ta7KQNtOBy6Xt9E5j5ISYftshINAryH9_FTIal9ReSEipe4_eFTvqbG3UVutvrNp710Q0pnAnQ8acZ-tXxp68s1uuMCjRDuWFDwBUz0dBIXxvGTl2EABV19f1kn59L3kYLUa7FrIqyTDx-LfHiotO"/>
+</div>
+<div class="w-16 h-16 bg-surface-variant border border-outline-variant rounded flex items-center justify-center text-on-surface-variant">
+<span class="font-data-point text-[14px]">+3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="flex items-start gap-density-comfortable relative group">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-surface-variant border-2 border-surface-container-lowest z-10"></div>
+<div class="flex-grow pl-4 bg-surface-container-low border border-outline-variant p-density-compact rounded-r group-hover:border-outline transition-colors opacity-70">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">System</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">OCT 24</span>
+</div>
+<p class="font-body-fixed text-body-fixed text-on-surface">Claim Initialized via Field App</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 h-20 border-t border-outline-variant flat no shadows flex justify-around items-center px-2 pb-safe">
+<!-- Assuming Dashboard is the active intent here since it's the main portal page -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-lg px-3 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined">photo_library</span>
+<span class="font-label-caps text-label-caps mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps mt-1">Documents</span>
+</a>
+</nav>
+</body></html>

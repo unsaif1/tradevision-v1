@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "surface-container-high": "#282a2e",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "primary": "#dbfcff",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "on-secondary": "#412d00",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333539",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "surface-container-highest": "#333539",
+                        "surface": "#111317",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-fixed": "#002022",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-low": "#1a1c20",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "inverse-surface": "#e2e2e8",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container-lowest": "#0c0e12",
+                        "background": "#111317",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container": "#1e2024",
+                        "primary-container": "#00f0ff",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-container": "#006970",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e8",
+                        "inverse-primary": "#006970",
+                        "on-secondary-container": "#6b4b00",
+                        "secondary": "#ffdb9d",
+                        "tertiary": "#f7f5f5",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Cyber-Industrial custom styles */
+        .tech-border {
+            border: 1px solid theme('colors.outline-variant');
+        }
+        .tech-border-primary {
+            border: 1px solid theme('colors.primary');
+            box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1);
+        }
+        .tech-tab {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: theme('colors.surface-container-high');
+            padding: 2px 8px;
+            border: 1px solid theme('colors.outline-variant');
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+        }
+        .status-indicator {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .bg-grid-pattern {
+            background-image: linear-gradient(theme('colors.outline-variant') 1px, transparent 1px),
+            linear-gradient(90deg, theme('colors.outline-variant') 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: center center;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed overflow-hidden h-screen flex">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col z-40">
+<!-- Brand Header -->
+<div class="p-6 border-b border-outline-variant">
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">C.A.R.E. Command</p>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100 mb-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</a>
+<!-- Inactive Links -->
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 mb-1" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps uppercase">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 mb-1" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-label-caps text-label-caps uppercase">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 mb-1" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps uppercase">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 mb-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps uppercase">Settings</span>
+</a>
+</div>
+<!-- User Avatar Footer (Placeholder based on header_avatar_alt) -->
+<div class="p-4 border-t border-outline-variant flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-outline-variant overflow-hidden">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9M4kAmxEqz2DMnFjfFA8B70jAcb_t7zMeLdWg7xnp770mzOTtnFoDezI6ATbyOL1DX8ak99ROeevvtRD17NyJcTal5f7e_PrCaxbfVUEOx__uSkBNATKCM87eLQGgMCLXjLeXMkWgv6DyR6ce2eykEyEQivsSOHBpZ0htRSz39ANWn-IASlrRYoRF8bowvECDM0SsHKvHo_vt6csywN23ogYyU2_P1WDJvSkPePaWnWxGQJejNkFqk0yqCwG3Sjzo_eEA4NMH1zBM"/>
+</div>
+<div class="flex-col">
+<div class="font-label-caps text-label-caps text-on-surface">SYS_ADMIN_01</div>
+<div class="text-[10px] font-data-point text-primary mt-1">AUTH_LEVEL: OMEGA</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen relative">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop">
+<!-- Left: Search/Product Name -->
+<div class="flex items-center gap-6">
+<h2 class="font-display-md text-headline-md font-semibold text-on-surface">TradeVision C.A.R.E.</h2>
+<!-- Search Input mimicking industrial style -->
+<div class="relative hidden lg:flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container border border-outline-variant text-on-surface font-data-point text-sm py-1.5 pl-9 pr-4 focus:ring-1 focus:ring-primary focus:outline-none transition-all w-64 uppercase placeholder:text-on-surface-variant/50" placeholder="QUERY.INSPECTION_ID" type="text"/>
+</div>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer p-2">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer p-2">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer p-2">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Layout Grid (Below TopAppBar) -->
+<main class="flex-1 mt-[64px] p-4 gap-4 grid grid-cols-12 h-[calc(100vh-64px)] overflow-hidden bg-surface-lowest">
+<!-- Left Column: Live Audit Queue (Cols 1-4) -->
+<section class="col-span-4 flex flex-col gap-4 h-full">
+<!-- High Level Stats Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="tech-border bg-surface-container p-4 relative">
+<div class="tech-tab font-label-caps text-label-caps text-on-surface-variant uppercase">Active_Sites</div>
+<div class="font-data-point text-display-lg text-primary mt-2">14</div>
+<div class="text-xs text-on-surface-variant font-body-fixed mt-1">+2 from 0800hrs</div>
+</div>
+<div class="tech-border bg-surface-container p-4 relative">
+<div class="tech-tab font-label-caps text-label-caps text-on-surface-variant uppercase">Crit_Alerts</div>
+<div class="font-data-point text-display-lg text-error mt-2">03</div>
+<div class="text-xs text-on-surface-variant font-body-fixed mt-1">Requires intervention</div>
+</div>
+</div>
+<!-- Audit Queue List -->
+<div class="tech-border bg-surface-container flex-1 relative flex flex-col">
+<div class="tech-tab font-label-caps text-label-caps text-primary uppercase border-primary bg-primary/10">Live_Audit_Queue</div>
+<div class="p-2 border-b border-outline-variant mt-6 flex justify-between font-label-caps text-[10px] text-on-surface-variant uppercase px-4">
+<span>Site_ID / Location</span>
+<span>Specs / Status</span>
+</div>
+<div class="flex-1 overflow-y-auto p-2 flex flex-col gap-2">
+<!-- Active Item -->
+<div class="tech-border-primary bg-surface p-3 relative cursor-pointer hover:bg-surface-bright transition-colors">
+<div class="status-indicator bg-primary"></div>
+<div class="flex justify-between items-start ml-2">
+<div>
+<div class="font-data-point text-primary text-sm">TX-8842-A</div>
+<div class="font-body-fixed text-xs text-on-surface mt-1">Austin, TX Sect 4</div>
+</div>
+<div class="text-right">
+<div class="flex gap-2 justify-end mb-1">
+<span class="bg-surface-variant text-on-surface font-data-point text-[10px] px-1 py-0.5 border border-outline-variant">SHGL</span>
+<span class="bg-surface-variant text-on-surface font-data-point text-[10px] px-1 py-0.5 border border-outline-variant">4500 SQ_FT</span>
+</div>
+<div class="text-[10px] font-label-caps text-primary uppercase flex items-center justify-end gap-1">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> IN_PROGRESS
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Inactive Items -->
+<div class="tech-border bg-surface p-3 relative cursor-pointer hover:bg-surface-bright transition-colors">
+<div class="status-indicator bg-secondary-container"></div>
+<div class="flex justify-between items-start ml-2">
+<div>
+<div class="font-data-point text-on-surface text-sm">CO-9921-B</div>
+<div class="font-body-fixed text-xs text-on-surface-variant mt-1">Denver, CO Sect 1</div>
+</div>
+<div class="text-right">
+<div class="flex gap-2 justify-end mb-1">
+<span class="bg-surface-variant text-on-surface font-data-point text-[10px] px-1 py-0.5 border border-outline-variant">TPO</span>
+<span class="bg-surface-variant text-on-surface font-data-point text-[10px] px-1 py-0.5 border border-outline-variant">12000 SQ_FT</span>
+</div>
+<div class="text-[10px] font-label-caps text-secondary-container uppercase">PENDING_REVIEW</div>
+</div>
+</div>
+</div>
+<div class="tech-border bg-surface p-3 relative cursor-pointer hover:bg-surface-bright transition-colors">
+<div class="status-indicator bg-error"></div>
+<div class="flex justify-between items-start ml-2">
+<div>
+<div class="font-data-point text-error text-sm">FL-1102-C</div>
+<div class="font-body-fixed text-xs text-on-surface-variant mt-1">Miami, FL Sect 9</div>
+</div>
+<div class="text-right">
+<div class="flex gap-2 justify-end mb-1">
+<span class="bg-surface-variant text-on-surface font-data-point text-[10px] px-1 py-0.5 border border-outline-variant">MTL</span>
+<span class="bg-surface-variant text-on-surface font-data-point text-[10px] px-1 py-0.5 border border-outline-variant">8500 SQ_FT</span>
+</div>
+<div class="text-[10px] font-label-caps text-error uppercase">WIND_HALT</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center/Right Area: Map & Telemetry (Cols 5-12) -->
+<section class="col-span-8 flex flex-col gap-4 h-full">
+<!-- Main Map View -->
+<div class="tech-border bg-surface-container flex-1 relative overflow-hidden flex flex-col">
+<div class="tech-tab font-label-caps text-label-caps text-on-surface-variant uppercase z-10">Global_Field_Ops</div>
+<!-- HUD Overlays -->
+<div class="absolute top-4 right-4 z-10 flex gap-2">
+<button class="bg-surface-container/80 backdrop-blur border border-outline-variant p-1.5 text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">layers</span>
+</button>
+<button class="bg-surface-container/80 backdrop-blur border border-outline-variant p-1.5 text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">my_location</span>
+</button>
+</div>
+<!-- Placeholder Map Image using background styling -->
+<div class="w-full h-full bg-surface-variant relative bg-cover bg-center" data-alt="A highly stylized, dark-mode satellite map view from above, rendered with a cyber-industrial aesthetic. The map features stark black and deep teal tones, overlaid with a glowing cyan grid and sharp geometric reticles marking various locations. High-contrast, glowing neon blue data nodes dot the landscape, conveying a high-tech, military-grade surveillance interface. The overall mood is cold, precise, and heavily data-driven, fitting a command center display." data-location="Austin, Texas" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqdwMlVv6yf6u96kTPPCS6y9T4DdMs55fGULXrgMSzdMq_rLyoHlxIvPj04MhAM50LFeorh6Ku1XEDB7vPL5ljYBCy2bwAf3aDo_wC0M85FpbqAEhOy24Pp_pwA-VBPhrdnwx1_aEjDHX2B05iKKEIWLeb3-cpPpWiqdLVu93c3GQ-LWZ5DBFO14XEa-N7ZTJ7yh064Rhz0-HRxaUCGAST-kZ96dHNEERuxJVfgNVMbYfAy7jMojM7v6u26JDliIBobrrMYJitQbk7'); filter: grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.6) contrast(1.2);">
+<!-- Map Grid Overlay -->
+<div class="absolute inset-0 bg-grid-pattern z-0 pointer-events-none"></div>
+<!-- Active Site Marker -->
+<div class="absolute top-[40%] left-[50%] z-10 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border border-primary/50 flex items-center justify-center animate-pulse bg-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="bg-surface/90 border border-primary px-2 py-1 mt-1 flex flex-col items-center">
+<span class="font-data-point text-[10px] text-primary">TX-8842-A</span>
+<span class="font-label-caps text-[8px] text-on-surface uppercase">Active Scan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Environmental Telemetry Panel -->
+<div class="h-48 tech-border bg-surface-container relative flex flex-row">
+<div class="tech-tab font-label-caps text-label-caps text-primary uppercase border-primary bg-primary/10">Env_Telemetry_Stream</div>
+<div class="flex-1 grid grid-cols-4 divide-x divide-outline-variant pt-6 p-4">
+<!-- GPS Data -->
+<div class="px-4 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">satellite_alt</span>
+<span class="font-label-caps text-[10px] uppercase">GPS_COORD</span>
+</div>
+<div class="font-data-point text-primary text-sm mb-1">30°16'02.4"N</div>
+<div class="font-data-point text-primary text-sm">97°44'35.2"W</div>
+<div class="text-[9px] font-body-fixed text-on-surface-variant mt-2">SIG_STR: EXCELLENT</div>
+</div>
+<!-- Altitude / Pitch -->
+<div class="px-4 flex flex-col justify-center relative">
+<div class="flex items-center gap-2 mb-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">height</span>
+<span class="font-label-caps text-[10px] uppercase">ALT_&amp;_SLOPE</span>
+</div>
+<div class="flex items-end gap-1 mb-1">
+<span class="font-data-point text-headline-md text-on-surface">842</span>
+<span class="font-data-point text-xs text-on-surface-variant pb-1">FT</span>
+</div>
+<div class="flex items-center gap-2 mt-1 border-t border-outline-variant pt-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">PITCH:</span>
+<span class="font-data-point text-primary text-sm">6/12</span>
+</div>
+</div>
+<!-- Wind Vectors -->
+<div class="px-4 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">air</span>
+<span class="font-label-caps text-[10px] uppercase">WIND_VECT</span>
+</div>
+<div class="flex items-center gap-3">
+<!-- Minimal Wind Compass -->
+<div class="w-10 h-10 rounded-full border border-outline-variant relative flex items-center justify-center">
+<div class="absolute w-[1px] h-full bg-outline-variant/50"></div>
+<div class="absolute h-[1px] w-full bg-outline-variant/50"></div>
+<!-- Wind Direction Arrow (SE) -->
+<span class="material-symbols-outlined text-secondary-container absolute transform rotate-135 text-lg">navigation</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-end gap-1">
+<span class="font-data-point text-headline-md text-secondary-container">14</span>
+<span class="font-data-point text-xs text-on-surface-variant pb-1">KTS</span>
+</div>
+<span class="font-label-caps text-[9px] text-on-surface-variant uppercase mt-1">DIR: SE (135°)</span>
+</div>
+</div>
+</div>
+<!-- Action/Control -->
+<div class="px-4 flex flex-col justify-center items-center">
+<button class="w-full bg-surface border-b-4 border-primary text-primary font-label-caps text-label-caps py-4 px-2 hover:bg-primary/10 transition-colors uppercase flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">connect_without_contact</span>
+                                Comm_Link
+                            </button>
+<button class="w-full mt-2 bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-[10px] py-2 hover:text-on-surface transition-colors uppercase">
+                                View_Blueprint
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

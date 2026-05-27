@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION C.A.R.E. - Notification Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#171c22",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "error-container": "#93000a",
+                        "secondary-container": "#3f4753",
+                        "on-tertiary-fixed": "#002114",
+                        "on-secondary-container": "#aeb6c3",
+                        "secondary": "#bfc7d5",
+                        "on-primary": "#67001e",
+                        "on-error": "#690005",
+                        "on-background": "#dee3eb",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container-highest": "#30353c",
+                        "inverse-primary": "#be003e",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-primary-fixed": "#40000f",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "primary": "#ffb2b9",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#72daad",
+                        "outline": "#ab888a",
+                        "surface-variant": "#30353c",
+                        "surface-container-high": "#252a31",
+                        "surface": "#0f141a",
+                        "tertiary-fixed-dim": "#72daad",
+                        "on-tertiary-container": "#f5fff7",
+                        "on-primary-container": "#fffcff",
+                        "secondary-fixed": "#dbe3f1",
+                        "primary-fixed": "#ffdadb",
+                        "tertiary-fixed": "#8ff7c7",
+                        "on-surface-variant": "#e4bdbf",
+                        "inverse-surface": "#dee3eb",
+                        "inverse-on-surface": "#2c3137",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#e21e51",
+                        "tertiary-container": "#00855e",
+                        "outline-variant": "#5c3f42",
+                        "surface-dim": "#0f141a",
+                        "background": "#0f141a",
+                        "surface-container-lowest": "#0a0f14",
+                        "on-surface": "#dee3eb",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#003826",
+                        "surface-container": "#1b2026",
+                        "on-secondary": "#29313c",
+                        "surface-bright": "#353a40",
+                        "on-secondary-fixed": "#141c26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "header_height": "64px",
+                        "sidebar_width": "260px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Barlow Condensed"],
+                        "body-lg": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "display-md": ["Barlow Condensed"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: theme('colors.primary-container');
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: theme('colors.primary-container');
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-lg antialiased">
+<!-- TopAppBar (Hidden on settings/sub-pages per rules, but provided as anchor if needed. Suppressed here for focus on content canvas, though Settings is a sub-page, we might need a header. Let's provide a custom sub-page header) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-header_height bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-display-md text-display-md font-bold tracking-tighter text-primary">NOTIFICATION SETTINGS</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 border border-outline-variant rounded text-on-surface-variant hover:text-primary hover:border-primary transition-colors font-label-caps text-label-caps">
+                DISCARD CHANGES
+            </button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded font-label-caps text-label-caps hover:bg-inverse-primary transition-colors">
+                SAVE PREFERENCES
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[calc(theme(spacing.header_height)+theme(spacing.margin))] pb-24 px-margin max-w-5xl mx-auto">
+<div class="mb-8 border-b border-outline-variant pb-4">
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                Configure your real-time alert preferences. High-priority alerts will bypass these settings to ensure critical system integrity.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Global Channels -->
+<div class="md:col-span-12 lg:col-span-4 space-y-6">
+<section class="bg-[#1a1f26] border border-[#2a323d] rounded-lg p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 border-b border-outline-variant pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">router</span>
+                        DELIVERY CHANNELS
+                    </h2>
+<div class="space-y-6">
+<!-- Push Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">PUSH NOTIFICATIONS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Instant alerts on authorized devices.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-high border-4 appearance-none cursor-pointer border-outline-variant" id="toggle_push" name="toggle_push" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer border border-outline-variant" for="toggle_push"></label>
+</div>
+</div>
+<!-- Email Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">EMAIL SUMMARIES</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Detailed logs sent to registered inbox.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-high border-4 appearance-none cursor-pointer border-outline-variant" id="toggle_email" name="toggle_email" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer border border-outline-variant" for="toggle_email"></label>
+</div>
+</div>
+<!-- In-App Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">IN-APP ALERTS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Persistent banner notifications.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-high border-4 appearance-none cursor-pointer border-outline-variant" id="toggle_inapp" name="toggle_inapp" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer border border-outline-variant" for="toggle_inapp"></label>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Granular Categories -->
+<div class="md:col-span-12 lg:col-span-8 space-y-6">
+<section class="bg-[#1a1f26] border border-[#2a323d] rounded-lg p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 border-b border-outline-variant pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">category</span>
+                        EVENT CATEGORIES
+                    </h2>
+<div class="space-y-6">
+<!-- Credential Expiry -->
+<div class="p-4 bg-surface-container-low rounded border border-outline-variant/30 hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" data-weight="fill">verified_user</span>
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">Credential Expiry</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-3">Alerts for impending expiration of operational licenses and certifications.</p>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                PUSH
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                EMAIL
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                IN-APP
+                                            </label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- New Evidence Submissions -->
+<div class="p-4 bg-surface-container-low rounded border border-outline-variant/30 hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1" data-weight="fill">upload_file</span>
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">New Evidence Submissions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-3">Notifications when new data or documentation is logged to an active project.</p>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                PUSH
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                EMAIL
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                IN-APP
+                                            </label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Dispute Updates -->
+<div class="p-4 bg-surface-container-low rounded border border-outline-variant/30 hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-error mt-1" data-weight="fill">gavel</span>
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">Dispute Updates</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-3">Status changes and required actions for ongoing claim disputes.</p>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                PUSH
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                EMAIL
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                IN-APP
+                                            </label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- System Maintenance -->
+<div class="p-4 bg-surface-container-low rounded border border-outline-variant/30 hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1" data-weight="fill">settings_suggest</span>
+<div>
+<h3 class="font-mono-data text-mono-data text-on-surface">System Maintenance</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 mb-3">Scheduled downtime and critical system upgrades.</p>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant opacity-50 cursor-not-allowed">
+<input class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" disabled="" type="checkbox"/>
+                                                PUSH
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                EMAIL
+                                            </label>
+<label class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface cursor-pointer">
+<input checked="" class="form-checkbox text-primary-container bg-surface border-outline-variant rounded-sm focus:ring-primary-container focus:ring-offset-background" type="checkbox"/>
+                                                IN-APP
+                                            </label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on this specific sub-page/settings screen as per rules, keeping focus on the canvas) -->
+</body></html>

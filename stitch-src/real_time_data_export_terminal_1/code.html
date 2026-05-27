@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real-Time Data Export Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#080f16",
+                        "on-tertiary-fixed": "#001a42",
+                        "surface-tint": "#ffb2b9",
+                        "tertiary-fixed": "#d8e2ff",
+                        "primary-container": "#e21e51",
+                        "primary-fixed": "#ffdadb",
+                        "inverse-surface": "#dce3ee",
+                        "on-secondary-container": "#003e1c",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "secondary-fixed": "#6dfe9c",
+                        "surface": "#0d141c",
+                        "neon-green": "#4ADE80",
+                        "tertiary-container": "#2171e4",
+                        "on-surface": "#dce3ee",
+                        "secondary-container": "#00b55d",
+                        "on-primary-fixed": "#40000f",
+                        "primary": "#ffb2b9",
+                        "error-container": "#93000a",
+                        "surface-dim": "#0d141c",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "on-tertiary": "#002e6a",
+                        "neon-orange": "#F97316",
+                        "surface-elevated": "#1C2128",
+                        "surface-base": "#111820",
+                        "neon-blue": "#3B82F6",
+                        "text-muted": "#8896A8",
+                        "on-tertiary-container": "#fffcff",
+                        "on-primary-fixed-variant": "#91002e",
+                        "inverse-primary": "#be003e",
+                        "secondary": "#4de082",
+                        "surface-container": "#192028",
+                        "on-primary-container": "#fffcff",
+                        "surface-container-high": "#242b33",
+                        "surface-variant": "#2e353e",
+                        "on-secondary-fixed-variant": "#005227",
+                        "on-secondary": "#003919",
+                        "on-surface-variant": "#e4bdbf",
+                        "background": "#0d141c",
+                        "on-secondary-fixed": "#00210c",
+                        "inverse-on-surface": "#2a313a",
+                        "on-primary": "#67001e",
+                        "outline-variant": "#5c3f42",
+                        "outline": "#ab888a",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "tertiary": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#151c24",
+                        "surface-bright": "#333a43",
+                        "surface-container-highest": "#2e353e",
+                        "on-background": "#dce3ee",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "secondary-fixed-dim": "#4de082",
+                        "surface-stroke": "#2D3748",
+                        "neon-pink": "#E21E51",
+                        "neon-cyan": "#00f0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-gap": "12px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Barlow Condensed"],
+                        "label-caps": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "stat-display": ["Barlow Condensed"],
+                        "body-md": ["Barlow"],
+                        "body-lg": ["Barlow"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface-base'); color: theme('colors.on-surface'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bracket-container { position: relative; padding: 1px; }
+        .bracket-container::before, .bracket-container::after { content: ''; position: absolute; width: 6px; height: 100%; border: 1px solid theme('colors.surface-stroke'); top: 0; pointer-events: none; }
+        .bracket-container::before { left: 0; border-right: none; }
+        .bracket-container::after { right: 0; border-left: none; }
+        .format-btn.active { border-color: theme('colors.neon-cyan'); color: theme('colors.neon-cyan'); }
+        .format-btn.active::before { border-color: theme('colors.neon-cyan'); }
+        .format-btn.active::after { border-color: theme('colors.neon-cyan'); }
+        
+        .log-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: theme('colors.surface-stroke') theme('colors.surface-elevated');
+        }
+        .log-scroll::-webkit-scrollbar { width: 4px; }
+        .log-scroll::-webkit-scrollbar-track { background: theme('colors.surface-elevated'); }
+        .log-scroll::-webkit-scrollbar-thumb { background-color: theme('colors.surface-stroke'); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pt-16 pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface-dim border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint">settings_input_component</span>
+<h1 class="font-headline-md text-headline-lg-mobile font-bold text-surface-tint uppercase tracking-wider">[ DATA_EXPORT_TERMINAL ]</h1>
+</div>
+<div class="flex items-center gap-2 text-xs font-mono text-[theme('colors.neon-cyan')]">
+<span class="w-2 h-2 rounded-full bg-[theme('colors.neon-cyan')] animate-pulse"></span>
+            TELEMETRY: ACTIVE
+        </div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-margin-mobile py-6 flex flex-col gap-6">
+<!-- Format Selection -->
+<section class="flex flex-col gap-3">
+<h2 class="font-label-caps text-label-caps text-text-muted">FORMAT_SELECTION</h2>
+<div class="grid grid-cols-3 gap-3">
+<button class="format-btn active bracket-container py-3 flex items-center justify-center font-mono text-sm bg-surface-elevated hover:bg-surface-variant transition-colors group">
+<span class="text-neon-cyan">[ CSV ]</span>
+</button>
+<button class="format-btn bracket-container py-3 flex items-center justify-center font-mono text-sm text-text-muted bg-surface-elevated hover:bg-surface-variant transition-colors group">
+<span class="group-hover:text-inverse-surface">[ JSON ]</span>
+</button>
+<button class="format-btn bracket-container py-3 flex items-center justify-center font-mono text-sm text-text-muted bg-surface-elevated hover:bg-surface-variant transition-colors group">
+<span class="group-hover:text-inverse-surface">[ PDF ]</span>
+</button>
+</div>
+</section>
+<!-- Parameter Configuration -->
+<section class="flex flex-col gap-3">
+<h2 class="font-label-caps text-label-caps text-text-muted">PARAMETER_CONFIG</h2>
+<div class="bg-surface-elevated border border-surface-stroke p-4 flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-mono text-xs text-text-muted">&gt; DATE_RANGE_START</label>
+<div class="relative">
+<input class="w-full bg-surface-base border border-surface-stroke text-inverse-surface font-mono text-sm p-2 focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors" readonly="" type="text" value="2024-01-01T00:00:00Z"/>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-text-muted text-sm">calendar_today</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-mono text-xs text-text-muted">&gt; DATE_RANGE_END</label>
+<div class="relative">
+<input class="w-full bg-surface-base border border-surface-stroke text-inverse-surface font-mono text-sm p-2 focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors" readonly="" type="text" value="CURRENT_TIMESTAMP"/>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-text-muted text-sm">calendar_today</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-mono text-xs text-text-muted">&gt; DATA_NODE_PATH</label>
+<input class="w-full bg-surface-base border border-surface-stroke text-inverse-surface font-mono text-sm p-2 focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors" type="text" value="/PROJECTS/RC-442/TELEMETRY/*"/>
+</div>
+</div>
+</section>
+<!-- Live Extraction Monitor -->
+<section class="flex flex-col gap-3">
+<h2 class="font-label-caps text-label-caps text-text-muted flex justify-between items-center">
+                EXTRACTION_MONITOR
+                <span class="text-xs text-neon-cyan font-mono">STATUS: READY</span>
+</h2>
+<div class="bg-surface-elevated border-t-2 border-neon-cyan p-4 flex flex-col gap-3">
+<div class="w-full bg-surface-base h-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-neon-cyan w-[45%] opacity-50"></div>
+</div>
+<div class="log-scroll bg-surface-base border border-surface-stroke h-32 p-2 overflow-y-auto font-mono text-xs text-text-muted flex flex-col gap-1">
+<div>&gt; INIT_STREAM_SEQ... OK</div>
+<div>&gt; AUTH_TOKEN_VALID... OK</div>
+<div>&gt; RESOLVING_PATH: /PROJECTS/RC-442...</div>
+<div class="text-secondary">&gt; GET: /PROJECTS/RC-442/DATA_NODE_1... 200 OK</div>
+<div class="text-secondary">&gt; GET: /PROJECTS/RC-442/DATA_NODE_2... 200 OK</div>
+<div>&gt; WAITING_FOR_EXECUTION_COMMAND...</div>
+</div>
+</div>
+</section>
+<!-- Primary Action -->
+<button class="w-full bg-neon-pink text-white font-label-caps text-label-caps py-4 flex items-center justify-center gap-2 hover:bg-inverse-primary transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">download</span>
+            [ INITIATE_STREAM ]
+        </button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2 h-16 bg-surface-container-lowest border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">INSPECTION</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">MODELS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-surface-tint border-t-2 border-surface-tint pt-2 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-caps text-[10px] uppercase mt-1 font-data-point text-surface-tint">REPORTS</span>
+</a>
+</nav>
+<script>
+        // Simple interaction for format buttons
+        document.querySelectorAll('.format-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.format-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.querySelector('span').classList.remove('text-neon-cyan');
+                    b.classList.add('text-text-muted');
+                });
+                this.classList.add('active');
+                this.classList.remove('text-text-muted');
+                this.querySelector('span').classList.add('text-neon-cyan');
+            });
+        });
+    </script>
+</body></html>

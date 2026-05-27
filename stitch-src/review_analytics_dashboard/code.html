@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Analytics - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#aeb6c3",
+                        "surface-bright": "#353a40",
+                        "background": "#0f141a",
+                        "tertiary-fixed": "#8ff7c7",
+                        "tertiary": "#72daad",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#bfc7d5",
+                        "surface-variant": "#30353c",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-tint": "#ffb2b9",
+                        "surface-container": "#1b2026",
+                        "on-background": "#dee3eb",
+                        "surface-container-highest": "#30353c",
+                        "on-tertiary-container": "#f5fff7",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#171c22",
+                        "on-primary": "#67001e",
+                        "outline-variant": "#5c3f42",
+                        "on-tertiary-fixed": "#002114",
+                        "on-error": "#690005",
+                        "surface-dim": "#0f141a",
+                        "secondary-container": "#3f4753",
+                        "surface-container-lowest": "#0a0f14",
+                        "surface": "#0f141a",
+                        "on-primary-container": "#fffcff",
+                        "outline": "#ab888a",
+                        "primary-container": "#e21e51",
+                        "on-secondary": "#29313c",
+                        "on-primary-fixed": "#40000f",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-container-high": "#252a31",
+                        "secondary-fixed": "#dbe3f1",
+                        "on-tertiary": "#003826",
+                        "primary": "#ffb2b9",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#72daad",
+                        "inverse-surface": "#dee3eb",
+                        "on-surface": "#dee3eb",
+                        "on-secondary-fixed": "#141c26",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "primary-fixed": "#ffdadb",
+                        "tertiary-container": "#00855e",
+                        "inverse-primary": "#be003e",
+                        "on-tertiary-fixed-variant": "#005138"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid_columns": "12",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "sidebar_width": "260px",
+                        "unit": "4px",
+                        "header_height": "64px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Barlow Condensed"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "label-caps": ["Barlow Condensed"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Tonal Layering */
+        .card-panel {
+            background-color: #1a1f26; /* Level 1 */
+            border: 1px solid #2a323d;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background pb-20 md:pb-0 pt-header_height md:pt-0">
+<!-- TopAppBar (Web/Desktop) -->
+<header class="hidden md:flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto docked full-width top-0 z-50 border-b border-border-subtle bg-surface dark:bg-surface text-primary-container dark:text-primary-fixed-dim flat no shadows font-headline-md text-headline-md. Body: font-body-md text-body-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">analytics</span>
+<span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</span>
+</div>
+<nav class="flex gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors font-headline-md text-headline-md" href="#">Command</a>
+<a class="text-primary-container dark:text-primary-fixed font-bold hover:bg-surface-bright/10 transition-colors font-headline-md text-headline-md" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors font-headline-md text-headline-md" href="#">Claims</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors font-headline-md text-headline-md" href="#">Alerts</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors font-headline-md text-headline-md" href="#">Account</a>
+</nav>
+<div class="flex items-center">
+<img alt="User profile" class="w-8 h-8 rounded-full border-2 border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKU2Am4LwHSb2-4f2Ozd-_Ii3M2QFkbjN4jDThOzyaWbhZc_obOa8k9BusdqxXb1rn0sOOZ9VPnOrU71Ik9MI4G5ATScaV9FsoynTaG3zFvIoaKx9rYENAiWlNsXL-RL-fKTyxNixapvMiRrDQXLTlt_upEsrHRKIh9Va-jKR8FtLUol2RW4iKMAht4y5_hNg1tZstQCyqkCr8m-6GkJiQMyHKdniBkYXG-jrkl8A_zQQnlufTZowMy6nHw9F9bugq3KbRDtvL5K9S"/>
+</div>
+</header>
+<!-- Mobile Top Header (Just a simplified brand bar for mobile canvas spacing) -->
+<header class="md:hidden fixed top-0 w-full z-40 bg-surface flex items-center justify-between px-4 h-header_height border-b border-[#2a323d]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">analytics</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</span>
+</div>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV2t5TnAUm5jwFiVTT8SSpB7gKgVW6oJuXrGOc_67qCo8nb9PU3YA-KtWSsPHiEQBukZgWBCTBiV5pqLgldQN2eGcQ2Qhvd0a3gzLrmvZHUxZb-db6PGcIoNg7JrJDug6H2l87iBS_eTFOlA3-adq5oi9vZfRaC2fvXW8fe5si5LffIp59bw2eH_Flwi8560Rvg5GcHGQkdi4JM6HGw5RhdW6CVF4cDHMFSRBY-NXIRCrN7hgfOYoMi49JVA9n4o57uuqeMSiFSBUm"/>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-[1440px] mx-auto p-4 md:p-margin">
+<div class="mb-6 flex justify-between items-end">
+<div>
+<h1 class="font-display-md text-display-md">Review Analytics</h1>
+<p class="font-body-md text-body-md text-on-secondary-container">Project Manager Portal - Overview</p>
+</div>
+<button class="bg-primary-container text-white px-4 py-2 rounded font-label-caps text-label-caps flex items-center gap-2 hover:bg-inverse-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                EXPORT REPORT
+            </button>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<!-- Pending Reviews -->
+<div class="card-panel rounded p-4 flex flex-col justify-between h-[120px]">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Pending Reviews</span>
+<span class="material-symbols-outlined text-primary-container">assignment_late</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-primary-container">142</div>
+<div class="font-body-md text-body-md text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12% from yesterday
+                    </div>
+</div>
+</div>
+<!-- Verification Accuracy -->
+<div class="card-panel rounded p-4 flex flex-col justify-between h-[120px]">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Verification Accuracy</span>
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg">94.8%</div>
+<div class="font-body-md text-body-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +0.5% this week
+                    </div>
+</div>
+</div>
+<!-- Average Turnaround -->
+<div class="card-panel rounded p-4 flex flex-col justify-between h-[120px]">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Avg Turnaround Time</span>
+<span class="material-symbols-outlined text-secondary">schedule</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg">4.2 <span class="text-headline-sm font-headline-sm text-on-secondary-container">hrs</span></div>
+<div class="font-body-md text-body-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> -0.3 hrs vs avg
+                    </div>
+</div>
+</div>
+<!-- Critical Alerts -->
+<div class="card-panel rounded p-4 flex flex-col justify-between h-[120px] border-primary-container border-opacity-50">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Critical Alerts</span>
+<span class="material-symbols-outlined text-primary-container">warning</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-primary-container">7</div>
+<div class="font-body-md text-body-md text-on-secondary-container flex items-center gap-1">
+                       Needs immediate action
+                   </div>
+</div>
+</div>
+</div>
+<!-- Charts and Lists Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Submission Volume Chart Placeholder -->
+<div class="card-panel rounded p-4 md:col-span-2 flex flex-col">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-sm text-headline-sm">Submission Volume (Last 7 Days)</h2>
+<div class="flex gap-2">
+<button class="bg-surface-variant text-on-background px-2 py-1 rounded text-xs font-mono-data border border-[#2a323d] hover:border-primary-container">VOL</button>
+<button class="bg-transparent text-on-secondary-container px-2 py-1 rounded text-xs font-mono-data border border-transparent">ACC</button>
+</div>
+</div>
+<div class="flex-grow flex items-end gap-2 relative h-[250px] border-b border-[#2a323d] pb-2 px-2 mt-4">
+<!-- Y-Axis Grid Lines (Decorative) -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
+<div class="border-t border-white w-full"></div>
+<div class="border-t border-white w-full"></div>
+<div class="border-t border-white w-full"></div>
+<div class="border-t border-white w-full"></div>
+</div>
+<!-- Chart Bars -->
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors rounded-t group relative" style="height: 40%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-high px-2 py-1 rounded text-xs font-mono-data">42</div>
+</div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors rounded-t group relative" style="height: 60%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-high px-2 py-1 rounded text-xs font-mono-data">65</div>
+</div>
+<div class="flex-1 bg-primary-container/20 border border-primary-container/50 hover:bg-primary-container/40 transition-colors rounded-t group relative" style="height: 85%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-primary-container text-white px-2 py-1 rounded text-xs font-mono-data z-10">92</div>
+</div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors rounded-t group relative" style="height: 50%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-high px-2 py-1 rounded text-xs font-mono-data">55</div>
+</div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors rounded-t group relative" style="height: 70%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-high px-2 py-1 rounded text-xs font-mono-data">78</div>
+</div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors rounded-t group relative" style="height: 95%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-high px-2 py-1 rounded text-xs font-mono-data">105</div>
+</div>
+<div class="flex-1 bg-surface-variant hover:bg-surface-bright transition-colors rounded-t group relative" style="height: 30%">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-high px-2 py-1 rounded text-xs font-mono-data">34</div>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-2 font-mono-data text-mono-data text-on-secondary-container px-2">
+<span>Mon</span>
+<span>Tue</span>
+<span class="text-primary-container">Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Top Contributors List -->
+<div class="card-panel rounded p-4 flex flex-col">
+<h2 class="font-headline-sm text-headline-sm mb-4">Top Contributors</h2>
+<div class="flex flex-col gap-0">
+<!-- Header -->
+<div class="flex justify-between pb-2 border-b border-[#2a323d] mb-2 font-label-caps text-label-caps text-on-secondary-container uppercase">
+<span>Contractor</span>
+<span>Verified</span>
+</div>
+<!-- Row 1 -->
+<div class="flex justify-between items-center py-3 border-b border-[#2a323d] hover:bg-[#2a323d] -mx-4 px-4 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-secondary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3hheTaksYV4xCNBYX4U8Qb2WwKakMbuulT0z1NZrLCsoTiW756yqJ_oB7Igv4cJ1DWlnmGL6ve7QDlYzm7NQjAFfiiMrEQfJHEkUoPyPleTZFDe4JNKK3nHS4ezKgjb5SrSUHLqIj3QeEdtU3sfCJXGcyqX8xoOuZTAhAefmzMFA910Lf_2sKbvkRtnT0YfcTLvOw54iD-VR4gxTY_5n8n2ajUkSA4pCGZm9B1SgtLL-d6j4t7zBAEo1UqZ4KJLkYOyPivTdQ7JCs"/>
+<div>
+<div class="font-body-md text-body-md font-medium text-white">Apex Builders</div>
+<div class="font-body-md text-[12px] text-on-secondary-container">Struct. Framing</div>
+</div>
+</div>
+<div class="font-mono-data text-mono-data text-tertiary">1,240</div>
+</div>
+<!-- Row 2 -->
+<div class="flex justify-between items-center py-3 border-b border-[#2a323d] hover:bg-[#2a323d] -mx-4 px-4 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-secondary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuM65NFPjmnEBpNHhqEsWgxZgH9tLKhYUfTQZAJNIeuAeOcrv5SJsIhUx9DGYWbJKoYLSB8F30VqBLYq20S9WB7t68afCD2FiFPPHUHkS-QkDj7pim8kNMfWXk8vZL1VETZwU7Z_PHfxwHlgesUF6IkCm0Z-c9OvQEVBRawbharV27u5m1Ze4Evkj_KeJs08lcVG762Wj1NjuAfjQ2YfziZIHf3-3G-3I_j8LhoNMpCQkRif6zlL404aJqjDs_G-yn8J06IbMI1uwe"/>
+<div>
+<div class="font-body-md text-body-md font-medium text-white">Volt Systems</div>
+<div class="font-body-md text-[12px] text-on-secondary-container">Electrical</div>
+</div>
+</div>
+<div class="font-mono-data text-mono-data">985</div>
+</div>
+<!-- Row 3 -->
+<div class="flex justify-between items-center py-3 border-b border-[#2a323d] hover:bg-[#2a323d] -mx-4 px-4 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-secondary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkcr6ICz-rX9GaMPhq9w5ekntc9J20HHj0F_ft0OyGPdLmXRfNZ03b-S2qlD1WjSuKWCzChtV_4vFO-qth4x66moY_dxIrCUaV6rabMx2mIDnS0UQYh2ZSZclOobCGtPJVX_xWiHXaEY2l5VY_iGPT7JThfxLXMFM4hyBq4nRyGdKB9H1m324tPVy7rn-avZ9d1SocNr2WsvTljp6DYVapH3HoBl9NB0QVQZR_3qMirtGt0Cee4PX_6o3T7x-ulPNR0XfRmRVzfgEh"/>
+<div>
+<div class="font-body-md text-body-md font-medium text-white">Flow Tech</div>
+<div class="font-body-md text-[12px] text-on-secondary-container">HVAC</div>
+</div>
+</div>
+<div class="font-mono-data text-mono-data">842</div>
+</div>
+<!-- Row 4 -->
+<div class="flex justify-between items-center py-3 border-b border-[#2a323d] hover:bg-[#2a323d] -mx-4 px-4 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-secondary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC04Q-RhCefZyYYH-fT-ZsFTUaydoJqE6KAmkHmVI1BcA7HlTDuemZdvgc-0hxs3gAiTK5GTaa-pdbx9Dx7GTMJWJIIC-cLQ1b3LYwUUX63L05SBplBAp4se_E4PtUDAKXl84AyCQRKggszYlAIZJxbXTkZJKeEQnrNa3dMhZZOMNNnw84XE4koLj6HDZhm8WSDrC2NhIsA4peXnkROzj1AAJMJSb20DqA969q9lHonJDx5pVMR08HO6GHFlzmP-buAva5P7vxpAClp"/>
+<div>
+<div class="font-body-md text-body-md font-medium text-white">Core Drillers</div>
+<div class="font-body-md text-[12px] text-on-secondary-container">Foundation</div>
+</div>
+</div>
+<div class="font-mono-data text-mono-data">610</div>
+</div>
+<button class="w-full mt-4 py-2 text-center text-primary-container border border-primary-container/30 hover:bg-primary-container/10 transition-colors rounded font-label-caps text-label-caps uppercase tracking-wider">
+                        View All
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high dark:bg-surface-container-high w-full z-50 border-t border-border-subtle shadow-lg">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all py-2 w-full" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-md text-label-md text-[10px]">Command</span>
+</a>
+<!-- Active Tab: Projects (closest match to Review Analytics/Project Manager Portal) -->
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all py-2 w-full translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined mb-1">location_city</span>
+<span class="font-label-md text-label-md text-[10px]">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all py-2 w-full" href="#">
+<span class="material-symbols-outlined mb-1">assignment_late</span>
+<span class="font-label-md text-label-md text-[10px]">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all py-2 w-full" href="#">
+<span class="material-symbols-outlined mb-1">notifications_active</span>
+<span class="font-label-md text-label-md text-[10px]">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all py-2 w-full" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md text-label-md text-[10px]">Account</span>
+</a>
+</nav>
+</body></html>

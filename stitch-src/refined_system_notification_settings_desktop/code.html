@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Notification Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#192028",
+                      "on-secondary-container": "#003e1c",
+                      "on-surface-variant": "#e4bdbf",
+                      "on-secondary": "#003919",
+                      "surface-variant": "#2e353e",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#40000f",
+                      "surface-container-low": "#151c24",
+                      "surface-bright": "#333a43",
+                      "neon-green": "#4ADE80",
+                      "inverse-surface": "#dce3ee",
+                      "secondary-fixed-dim": "#4de082",
+                      "on-secondary-fixed-variant": "#005227",
+                      "on-tertiary-container": "#fffcff",
+                      "surface-container-high": "#242b33",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "primary-fixed": "#ffdadb",
+                      "inverse-on-surface": "#2a313a",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#2e353e",
+                      "surface-stroke": "#2D3748",
+                      "on-primary-container": "#fffcff",
+                      "primary": "#ffb2b9",
+                      "on-primary-fixed-variant": "#91002e",
+                      "outline-variant": "#5c3f42",
+                      "neon-pink": "#E21E51",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "surface-dim": "#0d141c",
+                      "surface": "#0d141c",
+                      "surface-base": "#111820",
+                      "surface-container-lowest": "#080f16",
+                      "on-tertiary": "#002e6a",
+                      "background": "#0d141c",
+                      "neon-orange": "#F97316",
+                      "on-error": "#690005",
+                      "tertiary-container": "#2171e4",
+                      "primary-container": "#e21e51",
+                      "on-secondary-fixed": "#00210c",
+                      "on-tertiary-fixed": "#001a42",
+                      "surface-tint": "#ffb2b9",
+                      "tertiary": "#adc6ff",
+                      "on-error-container": "#ffdad6",
+                      "text-muted": "#8896A8",
+                      "surface-elevated": "#1C2128",
+                      "tertiary-fixed": "#d8e2ff",
+                      "secondary-container": "#00b55d",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "secondary-fixed": "#6dfe9c",
+                      "on-primary": "#67001e",
+                      "secondary": "#4de082",
+                      "neon-blue": "#3B82F6",
+                      "inverse-primary": "#be003e",
+                      "outline": "#ab888a",
+                      "on-surface": "#dce3ee",
+                      "on-background": "#dce3ee"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "unit": "4px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "stack-gap": "12px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Barlow Condensed"
+                      ],
+                      "caption": [
+                              "Barlow"
+                      ],
+                      "body-md": [
+                              "Barlow"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ],
+                      "stat-display": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-xl": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Barlow"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "stat-display": [
+                              "40px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for Technical Feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d141c; 
+            border-left: 1px solid #2D3748;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2e353e; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5c3f42; 
+        }
+
+        /* Toggle Switch Custom CSS */
+        .tech-toggle-input:checked + .tech-toggle-bg {
+            background-color: #E21E51; /* neon-pink */
+        }
+        .tech-toggle-input:checked + .tech-toggle-bg .tech-toggle-knob {
+            transform: translateX(18px);
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-surface-base text-on-surface h-screen w-full overflow-hidden flex font-body-md text-body-md selection:bg-neon-pink selection:text-white">
+<!-- NavigationDrawer (Shared Component Blueprint) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant bg-surface dark:bg-surface flex flex-col py-margin z-50">
+<!-- Header -->
+<div class="px-6 mb-8">
+<span class="font-headline-lg text-headline-lg text-primary dark:text-primary tracking-tight">TRADEVISION</span>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-1 px-2">
+<!-- Inactive -->
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+<span class="font-label-caps text-label-caps">AUDIT LOG</span>
+</a>
+<!-- Active State: SYSTEM SETTINGS -->
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-caps text-label-caps">SYSTEM SETTINGS</span>
+</a>
+<!-- Inactive -->
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-label-caps text-label-caps">USERS</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+<span class="font-label-caps text-label-caps">REPORTS</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="ml-[260px] flex-1 flex flex-col h-full relative">
+<!-- TopAppBar (Shared Component Blueprint) -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] border-b border-outline-variant dark:border-outline-variant bg-surface-container-low dark:bg-surface-container-low flex justify-between items-center px-gutter z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary" style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+<h1 class="font-headline-sm text-headline-sm text-primary dark:text-primary">ADMINISTRATIVE SUITE</h1>
+</div>
+<!-- Trailing Avatar -->
+<button class="w-8 h-8 rounded-full bg-surface-variant border border-surface-stroke overflow-hidden flex items-center justify-center hover:text-primary dark:hover:text-primary transition-colors cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">person</span>
+</button>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="pt-[64px] pb-[80px] h-full overflow-y-auto w-full bg-surface-base">
+<div class="max-w-7xl mx-auto p-margin-desktop">
+<!-- Page Header -->
+<div class="mb-8 flex items-center gap-4 border-b border-surface-stroke pb-4">
+<span class="material-symbols-outlined text-neon-blue text-[32px]">notifications_active</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-widest uppercase">
+                        [ SYSTEM_NOTIFICATION_SETTINGS ]
+                    </h2>
+</div>
+<!-- Grid Layout: PREFERENCE_CONFIG -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: NODE_CONTACTS -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-6">
+<!-- Contact Card -->
+<div class="bg-surface-elevated border-t-[2px] border-neon-blue border-x border-b border-surface-stroke rounded-DEFAULT p-6 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<h3 class="font-label-caps text-label-caps text-neon-blue mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">contact_mail</span>
+                                [ NODE_CONTACTS ]
+                            </h3>
+<div class="space-y-6">
+<!-- Primary Email -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted flex items-center justify-between">
+<span>PRIMARY_EMAIL_GATEWAY</span>
+<span class="text-neon-green text-[10px] uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-neon-green inline-block"></span> VALIDATED</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-surface-stroke text-on-surface font-body-md text-body-md p-3 pr-10 rounded-DEFAULT focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors bg-[length:4px_4px] bg-[radial-gradient(circle,#2D3748_1px,transparent_1px)] font-mono" readonly="" type="text" value="admin.node@tradevision.sys"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-neon-green text-[18px]">verified</span>
+</div>
+<p class="font-caption text-caption text-text-muted mt-1">Main routing address for critical system alerts.</p>
+</div>
+<!-- Primary SMS -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted flex items-center justify-between">
+<span>PRIMARY_SMS_LINK</span>
+<span class="text-neon-orange text-[10px] uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-neon-orange inline-block"></span> PENDING VERIFICATION</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-surface-stroke text-on-surface font-body-md text-body-md p-3 pr-10 rounded-DEFAULT focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors font-mono" type="text" value="+1 (555) 019-8472"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-muted text-[18px]">warning</span>
+</div>
+<button class="text-neon-blue font-label-caps text-label-caps text-left hover:text-white transition-colors mt-1">RESEND_VERIFICATION_CODE()</button>
+</div>
+</div>
+</div>
+<!-- Secondary Info Card -->
+<div class="bg-surface border border-surface-stroke rounded-DEFAULT p-4 flex items-start gap-4">
+<span class="material-symbols-outlined text-text-muted">info</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">PROTOCOL_NOTE</span>
+<span class="font-caption text-caption text-text-muted mt-1">Updates to node contacts require a secondary authorization sequence via the primary email gateway.</span>
+</div>
+</div>
+</div>
+<!-- Right Columns: NOTIFICATION_PROTOCOLS -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-8">
+<!-- Category: SYSTEM TELEMETRY -->
+<div class="flex flex-col gap-3">
+<h3 class="font-label-caps text-label-caps text-neon-green border-b border-surface-stroke pb-2">
+                                [ SYSTEM_TELEMETRY ]
+                            </h3>
+<!-- List Container -->
+<div class="flex flex-col border border-surface-stroke rounded-DEFAULT bg-surface overflow-hidden">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-4 border-b border-surface-stroke hover:bg-surface-container transition-colors group">
+<div class="flex-1 pr-6">
+<div class="flex items-center gap-3 mb-1">
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-neon-green transition-colors">NODE_LATENCY_SPIKE</span>
+<span class="px-2 py-0.5 rounded-sm bg-error-container text-on-error-container font-label-caps text-[10px] tracking-widest border border-error">PRIORITY_HIGH</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Triggers when network latency exceeds 500ms threshold for &gt; 3 polling cycles.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps text-text-muted">REAL_TIME</span>
+<div class="flex items-center gap-4 border-l border-surface-stroke pl-6">
+<!-- Toggle Email -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">EMAIL</span>
+<div class="relative w-10 h-5">
+<input checked="" class="sr-only tech-toggle-input" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300"></div>
+</div>
+</div>
+</label>
+<!-- Toggle SMS -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">SMS</span>
+<div class="relative w-10 h-5">
+<input checked="" class="sr-only tech-toggle-input" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container transition-colors group">
+<div class="flex-1 pr-6">
+<div class="flex items-center gap-3 mb-1">
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-neon-green transition-colors">DATABASE_SYNC_ANOMALY</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-variant text-text-muted border border-surface-stroke font-label-caps text-[10px] tracking-widest">PRIORITY_MED</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Alerts on secondary replica desynchronization events lasting over 60 seconds.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps text-text-muted">BATched_1H</span>
+<div class="flex items-center gap-4 border-l border-surface-stroke pl-6">
+<!-- Toggle Email -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">EMAIL</span>
+<div class="relative w-10 h-5">
+<input checked="" class="sr-only tech-toggle-input" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300"></div>
+</div>
+</div>
+</label>
+<!-- Toggle SMS -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">SMS</span>
+<div class="relative w-10 h-5">
+<input class="sr-only tech-toggle-input" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: COMPLIANCE_ALERTS -->
+<div class="flex flex-col gap-3">
+<h3 class="font-label-caps text-label-caps text-neon-pink border-b border-surface-stroke pb-2">
+                                [ COMPLIANCE_ALERTS ]
+                            </h3>
+<!-- List Container -->
+<div class="flex flex-col border border-surface-stroke rounded-DEFAULT bg-surface overflow-hidden">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-4 border-b border-surface-stroke hover:bg-surface-container transition-colors group">
+<div class="flex-1 pr-6">
+<div class="flex items-center gap-3 mb-1">
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-neon-pink transition-colors">UNAUTHORIZED_ACCESS_ATTEMPT</span>
+<span class="px-2 py-0.5 rounded-sm bg-error-container text-on-error-container font-label-caps text-[10px] tracking-widest border border-error">PRIORITY_CRITICAL</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Multiple failed authentication sequences from flagged IP subnets.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps text-neon-pink">REAL_TIME</span>
+<div class="flex items-center gap-4 border-l border-surface-stroke pl-6">
+<!-- Toggle Email -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">EMAIL</span>
+<div class="relative w-10 h-5">
+<input checked="" class="sr-only tech-toggle-input" disabled="" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative opacity-50">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300 translate-x-[18px]"></div>
+</div>
+</div>
+</label>
+<!-- Toggle SMS -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">SMS</span>
+<div class="relative w-10 h-5">
+<input checked="" class="sr-only tech-toggle-input" disabled="" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative opacity-50">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300 translate-x-[18px]"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container transition-colors group">
+<div class="flex-1 pr-6">
+<div class="flex items-center gap-3 mb-1">
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-neon-pink transition-colors">DATA_EXPORT_VOLUME_EXCEEDED</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-variant text-text-muted border border-surface-stroke font-label-caps text-[10px] tracking-widest">PRIORITY_MED</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Triggers when data export payload exceeds 5GB within a 24-hour window.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps text-text-muted">END_OF_DAY</span>
+<div class="flex items-center gap-4 border-l border-surface-stroke pl-6">
+<!-- Toggle Email -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">EMAIL</span>
+<div class="relative w-10 h-5">
+<input checked="" class="sr-only tech-toggle-input" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300"></div>
+</div>
+</div>
+</label>
+<!-- Toggle SMS -->
+<label class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="font-caption text-[10px] text-text-muted">SMS</span>
+<div class="relative w-10 h-5">
+<input class="sr-only tech-toggle-input" type="checkbox"/>
+<div class="tech-toggle-bg w-full h-full bg-surface-variant rounded-full border border-surface-stroke transition-colors duration-300 relative">
+<div class="tech-toggle-knob absolute top-[1px] left-[1px] w-4 h-4 bg-text-muted rounded-full transition-transform duration-300"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Action Bar -->
+<footer class="absolute bottom-0 right-0 left-0 bg-surface-container-low border-t border-surface-stroke p-4 flex justify-end items-center gap-4 z-40 shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<button class="px-6 py-2 border border-surface-stroke text-on-surface-variant font-label-caps text-label-caps rounded-sm hover:bg-surface-variant hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-surface-stroke uppercase tracking-wider">
+                [ DISCARD_CHANGES ]
+            </button>
+<button class="px-6 py-2 bg-neon-pink text-white font-label-caps text-label-caps rounded-sm flex items-center gap-2 hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-neon-pink focus:ring-offset-2 focus:ring-offset-surface-base uppercase tracking-wider shadow-[0_0_15px_rgba(226,30,81,0.4)]">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                [ COMMIT_PREFERENCES ]
+            </button>
+</footer>
+</div>
+</body></html>

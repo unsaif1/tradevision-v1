@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Portfolio Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024",
+                        "outline": "#849495",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-on-surface": "#2f3035",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-container": "#006970",
+                        "tertiary": "#f7f5f5",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e2e2e8",
+                        "on-error": "#690005",
+                        "surface-variant": "#333539",
+                        "surface-dim": "#111317",
+                        "surface-tint": "#00dbe9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "tertiary-container": "#dad9d9",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary-fixed": "#002022",
+                        "error-container": "#93000a",
+                        "secondary-container": "#feb700",
+                        "on-tertiary": "#303031",
+                        "secondary-fixed": "#ffdea8",
+                        "background": "#111317",
+                        "surface-container-highest": "#333539",
+                        "surface-bright": "#37393e",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface": "#111317",
+                        "surface-container-low": "#1a1c20",
+                        "on-secondary": "#412d00",
+                        "inverse-primary": "#006970",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "secondary-fixed-dim": "#ffba20",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-high": "#282a2e",
+                        "outline-variant": "#3b494b",
+                        "inverse-surface": "#e2e2e8",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .gauge-circle {
+            stroke-dasharray: 251;
+            stroke-dashoffset: calc(251 - (251 * 84) / 100);
+            transition: stroke-dashoffset 1s ease-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-fixed antialiased pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface-dim dark:bg-surface-dim docked full-width top-0 sticky z-40 border-b border-outline-variant dark:border-outline-variant flex justify-between items-center w-full px-margin-mobile h-16">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<h1 class="text-headline-md font-headline-md tracking-tighter text-primary-fixed-dim dark:text-primary-fixed-dim">TradeVision C.A.R.E.</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</header>
+<main class="p-margin-mobile flex flex-col gap-density-comfortable">
+<!-- Portfolio Metrics -->
+<section class="grid grid-cols-2 gap-unit">
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-DEFAULT flex flex-col gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Active Claims</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim">42</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-DEFAULT flex flex-col gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Portfolio Value</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim">$1.2M</span>
+</div>
+<div class="col-span-2 bg-surface-container-low border border-outline-variant p-gutter rounded-DEFAULT flex items-center justify-between">
+<div class="flex flex-col gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Portfolio Health</span>
+<span class="font-label-caps text-label-caps text-secondary-container">Optimal Range</span>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="40" stroke="theme('colors.surface-container-highest')" stroke-width="8"></circle>
+<circle class="gauge-circle" cx="50" cy="50" fill="none" r="40" stroke="theme('colors.primary-fixed-dim')" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-data-point text-[14px] text-primary-fixed-dim font-bold tracking-tighter">84</span>
+</div>
+</div>
+<div class="col-span-2 bg-error-container/20 border border-error-container p-gutter rounded-DEFAULT flex flex-col gap-density-compact border-l-4 border-l-error">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-error uppercase">Pending Approvals</span>
+<span class="material-symbols-outlined text-error text-sm">warning</span>
+</div>
+<span class="font-data-point text-data-point text-error">12</span>
+</div>
+</section>
+<!-- Claim Distribution by Stage -->
+<section class="flex flex-col gap-density-compact">
+<h2 class="font-headline-md text-headline-md text-on-surface pb-density-compact border-b border-outline-variant">Stage Distribution</h2>
+<div class="flex flex-col gap-unit">
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant w-24">INTAKE</span>
+<div class="flex-1 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-outline w-[20%]"></div>
+</div>
+<span class="font-data-point text-[14px] text-on-surface w-6 text-right">8</span>
+</div>
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant w-24">INSPECTION</span>
+<div class="flex-1 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-[40%]"></div>
+</div>
+<span class="font-data-point text-[14px] text-on-surface w-6 text-right">15</span>
+</div>
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps text-secondary-container w-24">APPROVAL</span>
+<div class="flex-1 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[35%]"></div>
+</div>
+<span class="font-data-point text-[14px] text-secondary-container w-6 text-right">12</span>
+</div>
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant w-24">REPAIR</span>
+<div class="flex-1 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-outline-variant w-[15%]"></div>
+</div>
+<span class="font-data-point text-[14px] text-on-surface w-6 text-right">7</span>
+</div>
+</div>
+</section>
+<!-- Priority Claims List -->
+<section class="flex flex-col gap-density-compact">
+<div class="flex justify-between items-end pb-density-compact border-b border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-on-surface">Action Required</h2>
+<span class="font-label-caps text-label-caps text-secondary-container uppercase">Priority Sort</span>
+</div>
+<div class="flex flex-col gap-unit">
+<!-- Item 1 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-DEFAULT p-density-compact flex flex-col gap-density-compact border-l-4 border-l-secondary-container">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CLM-2023-884A</span>
+<span class="font-body-fixed text-body-fixed text-on-surface font-semibold">Riverside Commons</span>
+</div>
+<span class="bg-error-container/20 text-error font-label-caps text-[10px] px-2 py-1 rounded-sm border border-error-container">STALENESS_DETECTED</span>
+</div>
+<div class="flex justify-between items-center mt-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Stage: Inspection</span>
+<button class="bg-surface-variant text-on-surface font-label-caps text-label-caps px-4 py-2 rounded-sm border border-outline-variant hover:bg-surface-bright active:scale-95 transition-all">REVIEW</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-DEFAULT p-density-compact flex flex-col gap-density-compact border-l-4 border-l-primary-fixed-dim">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CLM-2023-902C</span>
+<span class="font-body-fixed text-body-fixed text-on-surface font-semibold">Oakwood Estates</span>
+</div>
+<span class="bg-secondary-container/20 text-secondary-container font-label-caps text-[10px] px-2 py-1 rounded-sm border border-secondary-container/50">PENDING_SIGNATURE</span>
+</div>
+<div class="flex justify-between items-center mt-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Stage: Approval</span>
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps px-4 py-2 rounded-sm border border-primary-fixed hover:brightness-110 active:scale-95 transition-all">SIGN NOW</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Financial Exposure Summary -->
+<section class="bg-surface-container border border-outline-variant p-gutter rounded-DEFAULT flex flex-col gap-density-compact mt-density-compact">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase border-b border-outline-variant pb-unit">Financial Exposure</h3>
+<div class="flex justify-between items-center pt-unit">
+<span class="font-body-fixed text-[14px] text-on-surface">Approved Payouts</span>
+<span class="font-data-point text-[16px] text-on-surface">$450,200</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-fixed text-[14px] text-on-surface-variant">Reserve Remaining</span>
+<span class="font-data-point text-[16px] text-primary-fixed-dim">$750,000</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-surface-container-highest dark:bg-surface-container-highest fixed bottom-0 left-0 w-full z-50 border-t border-outline-variant dark:border-outline-variant flex justify-around items-center h-20 px-density-compact">
+<!-- Portfolio (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-fixed-dim text-on-primary-fixed rounded-none px-4 py-1 border-t-2 border-primary-fixed transition-all duration-200 ease-in-out hover:bg-surface-bright dark:hover:bg-surface-bright w-full h-full">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1">Portfolio</span>
+</button>
+<!-- Claims (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 px-4 py-1 transition-all duration-200 ease-in-out hover:bg-surface-bright dark:hover:bg-surface-bright w-full h-full">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps mt-1">Claims</span>
+</button>
+<!-- Alerts (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 px-4 py-1 transition-all duration-200 ease-in-out hover:bg-surface-bright dark:hover:bg-surface-bright w-full h-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-4 right-1/4 w-2 h-2 bg-error rounded-full"></span>
+<span class="font-label-caps text-label-caps mt-1">Alerts</span>
+</button>
+<!-- Settings (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 px-4 py-1 transition-all duration-200 ease-in-out hover:bg-surface-bright dark:hover:bg-surface-bright w-full h-full">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

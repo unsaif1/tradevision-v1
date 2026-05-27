@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Audit Log - TradeVision</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#40000f",
+                    "secondary-container": "#3f4753",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "primary-container": "#e21e51",
+                    "outline": "#ab888a",
+                    "inverse-on-surface": "#2c3137",
+                    "surface-variant": "#30353c",
+                    "on-surface-variant": "#e4bdbf",
+                    "surface": "#0f141a",
+                    "on-primary-container": "#fffcff",
+                    "primary-fixed": "#ffdadb",
+                    "outline-variant": "#5c3f42",
+                    "inverse-primary": "#be003e",
+                    "on-primary": "#67001e",
+                    "background": "#0f141a",
+                    "tertiary-fixed": "#8ff7c7",
+                    "on-primary-fixed-variant": "#91002e",
+                    "on-background": "#dee3eb",
+                    "inverse-surface": "#dee3eb",
+                    "surface-tint": "#ffb2b9",
+                    "on-tertiary-container": "#f5fff7",
+                    "surface-dim": "#0f141a",
+                    "on-tertiary-fixed-variant": "#005138",
+                    "on-tertiary-fixed": "#002114",
+                    "surface-container-high": "#252a31",
+                    "on-secondary-fixed-variant": "#3f4753",
+                    "error-container": "#93000a",
+                    "surface-bright": "#353a40",
+                    "surface-container": "#1b2026",
+                    "on-surface": "#dee3eb",
+                    "tertiary-container": "#00855e",
+                    "surface-container-lowest": "#0a0f14",
+                    "surface-container-highest": "#30353c",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#003826",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "secondary": "#bfc7d5",
+                    "secondary-fixed-dim": "#bfc7d5",
+                    "on-secondary-container": "#aeb6c3",
+                    "primary": "#ffb2b9",
+                    "tertiary": "#72daad",
+                    "on-secondary": "#29313c",
+                    "tertiary-fixed-dim": "#72daad",
+                    "secondary-fixed": "#dbe3f1",
+                    "surface-container-low": "#171c22",
+                    "on-secondary-fixed": "#141c26"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "sidebar_width": "260px",
+                    "margin": "32px",
+                    "grid_columns": "12",
+                    "header_height": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Barlow Condensed"],
+                    "mono-data": ["JetBrains Mono"],
+                    "headline-sm": ["Barlow Condensed"],
+                    "display-md": ["Barlow Condensed"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Barlow Condensed"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "display-md": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface h-screen w-screen overflow-hidden flex font-body-md">
+<!-- NavigationDrawer -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin z-20">
+<div class="px-gutter mb-8">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight uppercase">TRADEVISION</h1>
+</div>
+<nav class="flex flex-col flex-1 gap-1 font-label-caps text-label-caps">
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                REPORTS
+            </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col h-full bg-background relative z-10">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-20">
+<div class="flex items-center gap-4 text-primary dark:text-primary">
+<span class="material-symbols-outlined text-[24px]">admin_panel_settings</span>
+<span class="font-headline-sm text-headline-sm">ADMINISTRATIVE SUITE</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<!-- Placeholder Avatar -->
+<div class="w-full h-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-caps text-label-caps">SA</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="mt-[64px] flex-1 overflow-hidden flex p-margin gap-gutter box-border h-[calc(100vh-64px)]">
+<!-- Data Table Section (8 Columns approx) -->
+<section class="flex-1 flex flex-col bg-surface-container rounded border border-outline-variant overflow-hidden min-w-0">
+<!-- Toolbar -->
+<div class="flex justify-between items-center p-4 border-b border-outline-variant bg-surface-container-high">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded pl-10 pr-3 py-1.5 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder:text-on-surface-variant" placeholder="Search events, actors, IPs..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded hover:bg-surface text-body-md font-medium text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                        </button>
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded hover:bg-surface text-body-md font-medium text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Export
+                        </button>
+</div>
+</div>
+<!-- Table Header -->
+<div class="grid grid-cols-[1.5fr_1.5fr_1fr_1fr_1.5fr] gap-4 p-4 border-b border-outline-variant bg-surface-container-low font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary">TIMESTAMP <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span></div>
+<div>EVENT CATEGORY</div>
+<div>ACTOR</div>
+<div>IMPACT LEVEL</div>
+<div>ACTION TAKEN</div>
+</div>
+<!-- Table Body -->
+<div class="flex-1 overflow-y-auto">
+<!-- Row 1 (Selected) -->
+<div class="grid grid-cols-[1.5fr_1.5fr_1fr_1fr_1.5fr] gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-highest cursor-pointer transition-colors items-center bg-surface-container-highest border-l-2 border-l-primary">
+<div class="font-mono-data text-mono-data text-secondary">2023-10-27 14:32:01.445Z</div>
+<div class="font-medium">AUTH_CONFIG_MODIFIED</div>
+<div class="font-mono-data text-mono-data">sysadmin_01</div>
+<div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold uppercase tracking-wider bg-error-container text-on-error-container border border-error">High</span>
+</div>
+<div class="text-on-surface-variant truncate">Updated SAML IdP metadata URL</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-[1.5fr_1.5fr_1fr_1fr_1.5fr] gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-highest cursor-pointer transition-colors items-center">
+<div class="font-mono-data text-mono-data text-secondary">2023-10-27 14:28:15.102Z</div>
+<div class="font-medium">USER_LOGIN_SUCCESS</div>
+<div class="font-mono-data text-mono-data">jdoe@tradevision.com</div>
+<div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold uppercase tracking-wider bg-surface-bright text-on-surface border border-outline-variant">Low</span>
+</div>
+<div class="text-on-surface-variant truncate">Session created via SSO</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-[1.5fr_1.5fr_1fr_1fr_1.5fr] gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-highest cursor-pointer transition-colors items-center">
+<div class="font-mono-data text-mono-data text-secondary">2023-10-27 14:15:00.000Z</div>
+<div class="font-medium">SYSTEM_BACKUP_COMPLETED</div>
+<div class="font-mono-data text-mono-data">system_daemon</div>
+<div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold uppercase tracking-wider bg-tertiary-container text-on-tertiary-container border border-tertiary">Medium</span>
+</div>
+<div class="text-on-surface-variant truncate">Automated snapshot to cold storage</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-[1.5fr_1.5fr_1fr_1fr_1.5fr] gap-4 p-4 border-b border-outline-variant hover:bg-surface-container-highest cursor-pointer transition-colors items-center">
+<div class="font-mono-data text-mono-data text-secondary">2023-10-27 13:55:22.881Z</div>
+<div class="font-medium">API_RATE_LIMIT_EXCEEDED</div>
+<div class="font-mono-data text-mono-data">api_client_v2</div>
+<div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold uppercase tracking-wider bg-error-container text-on-error-container border border-error">High</span>
+</div>
+<div class="text-on-surface-variant truncate">Blocked request from 192.168.1.105</div>
+</div>
+</div>
+</section>
+<!-- Event Details Side Panel (4 Columns approx) -->
+<section class="w-[400px] bg-surface-container rounded border border-outline-variant flex flex-col overflow-hidden shrink-0 shadow-lg shadow-black/20">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest">Event Details</h2>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-4 flex-1 overflow-y-auto space-y-6">
+<!-- Metadata block -->
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Event ID</span>
+<span class="font-mono-data text-mono-data text-on-surface">evt_8x92nd81k</span>
+</div>
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Timestamp</span>
+<span class="font-mono-data text-mono-data text-on-surface">2023-10-27T14:32:01.445Z</span>
+</div>
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Source IP</span>
+<span class="font-mono-data text-mono-data text-on-surface">10.0.45.201</span>
+</div>
+</div>
+<!-- Raw JSON Log -->
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Raw Payload</h3>
+<div class="bg-surface p-3 rounded border border-outline-variant overflow-x-auto">
+<pre class="font-mono-data text-[12px] leading-relaxed text-secondary"><code class="language-json">{
+  "event_type": "AUTH_CONFIG_MODIFIED",
+  "actor": {
+    "id": "usr_9921",
+    "username": "sysadmin_01",
+    "roles": ["SUPER_ADMIN", "SECURITY_OPS"]
+  },
+  "resource": "saml_idp_config",
+  "changes": {
+    "metadata_url": {
+      "old": "https://auth.old-provider.com/metadata.xml",
+      "new": "https://sso.new-provider.com/saml2/metadata"
+    },
+    "signature_algorithm": {
+      "old": "RSA-SHA1",
+      "new": "RSA-SHA256"
+    }
+  },
+  "context": {
+    "session_id": "sess_ajk291x",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)...",
+    "ip_address": "10.0.45.201"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-container-low flex gap-2">
+<button class="flex-1 bg-surface-bright hover:bg-surface border border-outline-variant text-on-surface font-label-caps text-label-caps py-2 rounded transition-colors uppercase tracking-widest">
+                        Copy JSON
+                    </button>
+<button class="flex-1 bg-primary-container hover:bg-inverse-primary text-on-primary-container font-label-caps text-label-caps py-2 rounded transition-colors uppercase tracking-widest">
+                        Escalate
+                    </button>
+</div>
+</section>
+</div>
+</main>
+</body></html>

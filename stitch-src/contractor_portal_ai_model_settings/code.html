@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Model Settings - Contractor Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#111317",
+                    "surface-tint": "#00dbe9",
+                    "surface-container-low": "#1a1c20",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#2f3035",
+                    "surface-bright": "#37393e",
+                    "on-surface": "#e2e2e8",
+                    "background": "#111317",
+                    "tertiary-container": "#dad9d9",
+                    "tertiary": "#f7f5f5",
+                    "surface-variant": "#333539",
+                    "on-background": "#e2e2e8",
+                    "surface-container-highest": "#333539",
+                    "error": "#ffb4ab",
+                    "on-primary": "#00363a",
+                    "surface-container": "#1e2024",
+                    "inverse-primary": "#006970",
+                    "secondary": "#ffdb9d",
+                    "on-primary-fixed-variant": "#004f54",
+                    "secondary-fixed": "#ffdea8",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "primary-container": "#00f0ff",
+                    "on-secondary-container": "#6b4b00",
+                    "on-primary-fixed": "#002022",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#e2e2e8",
+                    "on-tertiary": "#303031",
+                    "surface-container-high": "#282a2e",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-secondary-fixed": "#271900",
+                    "primary": "#dbfcff",
+                    "primary-fixed": "#7df4ff",
+                    "on-secondary": "#412d00",
+                    "primary-fixed-dim": "#00dbe9",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#e4e2e2",
+                    "on-primary-container": "#006970",
+                    "secondary-fixed-dim": "#ffba20",
+                    "surface": "#111317",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "outline": "#849495",
+                    "on-surface-variant": "#b9cacb",
+                    "on-tertiary-container": "#5e5f5f",
+                    "secondary-container": "#feb700",
+                    "outline-variant": "#3b494b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "density-compact": "8px",
+                    "gutter": "16px",
+                    "density-comfortable": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Base styles */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            padding-top: 64px; /* Space for TopAppBar */
+            padding-bottom: 64px; /* Space for BottomNavBar on mobile */
+        }
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+            }
+        }
+        /* Custom scrollbar for data tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+        /* Technical Card specific styles */
+        .tech-card {
+            border: 1px solid theme('colors.outline-variant');
+            background-color: theme('colors.surface-container-low');
+            position: relative;
+        }
+        .tech-card-tab {
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            background-color: theme('colors.surface-variant');
+            border: 1px solid theme('colors.outline-variant');
+            border-bottom: none;
+            padding: 4px 8px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            transform: translateY(-100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased font-body-fixed text-body-fixed selection:bg-surface-tint selection:text-on-primary min-h-screen flex flex-col">
+<!-- TopAppBar JSON Component -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-margin-mobile h-16 bg-surface-dim dark:bg-surface-dim transition-colors duration-150 ease-in-out md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="text-surface-tint dark:text-surface-tint hover:bg-surface-variant p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-bold text-surface-tint uppercase tracking-wider">MODEL_CONFIG</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-surface-tint h-full flex items-center border-b-2 border-transparent hover:border-surface-tint transition-colors" href="#">DASHBOARD</a>
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-surface-tint h-full flex items-center border-b-2 border-transparent hover:border-surface-tint transition-colors" href="#">INSPECTION</a>
+<a class="font-label-caps text-label-caps uppercase text-surface-tint border-b-2 border-surface-tint h-full flex items-center transition-colors" href="#">MODELS</a>
+<a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-surface-tint h-full flex items-center border-b-2 border-transparent hover:border-surface-tint transition-colors" href="#">REPORTS</a>
+</div>
+<div>
+<button class="text-surface-tint dark:text-surface-tint hover:bg-surface-variant p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">sensors</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex flex-col md:flex-row p-margin-mobile md:p-margin-desktop gap-gutter max-w-[1600px] mx-auto w-full">
+<!-- Left Column: Active Model & Connectivity (Mobile full width, Desktop 4 cols) -->
+<div class="w-full md:w-1/3 flex flex-col gap-gutter">
+<!-- Active Model Card -->
+<div class="tech-card rounded mt-6 p-density-comfortable">
+<div class="tech-card-tab font-label-caps text-label-caps uppercase text-on-surface-variant">ACTIVE_SYS</div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface">INSP_VISION_V4</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 uppercase">Provider: RoofAI Systems</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-variant px-3 py-1 rounded border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-surface-tint animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-surface-tint uppercase">ONLINE</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-density-compact mb-6">
+<div class="bg-surface-container p-density-compact border border-outline-variant rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Latency (Avg)</span>
+<span class="font-data-point text-data-point text-on-surface">142<span class="text-label-caps text-on-surface-variant ml-1">ms</span></span>
+</div>
+<div class="bg-surface-container p-density-compact border border-outline-variant rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Accuracy Score</span>
+<span class="font-data-point text-data-point text-surface-tint">98.4<span class="text-label-caps text-on-surface-variant ml-1">%</span></span>
+</div>
+<div class="bg-surface-container p-density-compact border border-outline-variant rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Cost/Req</span>
+<span class="font-data-point text-data-point text-on-surface">$0.04</span>
+</div>
+<div class="bg-surface-container p-density-compact border border-outline-variant rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Endpoints</span>
+<span class="font-data-point text-data-point text-on-surface">3/3<span class="text-label-caps text-on-surface-variant ml-1">act</span></span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Model Type</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">Computer Vision (Damage)</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Context Window</span>
+<span class="font-body-fixed text-body-fixed text-on-surface">16k</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Last Trained</span>
+<span class="font-label-caps text-label-caps text-on-surface">2023-10-15</span>
+</div>
+</div>
+</div>
+<!-- Connectivity Action -->
+<button class="w-full bg-surface-container hover:bg-surface-variant text-surface-tint font-label-caps text-label-caps uppercase border border-surface-tint p-4 rounded flex items-center justify-center gap-2 transition-colors group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">sync</span>
+                RUN DIAGNOSTIC PING
+            </button>
+</div>
+<!-- Right Column: Provider Grid & Metrics (Mobile full width, Desktop 8 cols) -->
+<div class="w-full md:w-2/3 flex flex-col gap-gutter">
+<!-- Provider Grid -->
+<div class="tech-card rounded mt-6 p-density-comfortable flex-grow">
+<div class="tech-card-tab font-label-caps text-label-caps uppercase text-on-surface-variant">NODE_REGISTRY</div>
+<div class="flex justify-between items-end mb-4 border-b border-outline-variant pb-4">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">AVAILABLE MODELS</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">7 Nodes Detected</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-unit">
+<!-- Provider 1 (Active) -->
+<div class="border border-surface-tint bg-surface-container-low p-3 flex flex-col relative overflow-hidden group cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="absolute top-0 right-0 w-8 h-8 bg-surface-tint/10 flex items-center justify-center rounded-bl-lg">
+<span class="material-symbols-outlined text-surface-tint text-sm">check</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-surface-tint"></div>
+<span class="font-label-caps text-label-caps text-surface-tint uppercase">INSP_VISION_V4</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">RoofAI</span>
+<div class="mt-auto flex justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">L: 142ms</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">C: $0.04</span>
+</div>
+</div>
+<!-- Provider 2 -->
+<div class="border border-outline-variant bg-surface-container p-3 flex flex-col cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-surface-tint opacity-50"></div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">STRUCT_LLM_8B</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">ConstructData</span>
+<div class="mt-auto flex justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">L: 210ms</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">C: $0.02</span>
+</div>
+</div>
+<!-- Provider 3 (Offline) -->
+<div class="border border-outline-variant bg-surface-container-high p-3 flex flex-col opacity-50 cursor-not-allowed">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase line-through">GEO_MAPPER_X</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">MapBox AI</span>
+<div class="mt-auto flex justify-between">
+<span class="font-label-caps text-label-caps text-error">ERR_CONN</span>
+</div>
+</div>
+<!-- Provider 4 -->
+<div class="border border-outline-variant bg-surface-container p-3 flex flex-col cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-surface-tint opacity-50"></div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">MEASURE_FAST_2</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">EagleView</span>
+<div class="mt-auto flex justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">L: 850ms</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">C: $0.15</span>
+</div>
+</div>
+<!-- Provider 5 -->
+<div class="border border-outline-variant bg-surface-container p-3 flex flex-col cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 rounded-full bg-surface-tint opacity-50"></div>
+<span class="font-label-caps text-label-caps text-on-surface uppercase">MATERIAL_EST_V1</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">BuildOps</span>
+<div class="mt-auto flex justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">L: 320ms</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">C: $0.05</span>
+</div>
+</div>
+<!-- Add New -->
+<div class="border border-dashed border-outline-variant bg-transparent p-3 flex flex-col items-center justify-center cursor-pointer hover:border-surface-tint hover:text-surface-tint text-on-surface-variant transition-colors min-h-[100px]">
+<span class="material-symbols-outlined mb-1">add</span>
+<span class="font-label-caps text-label-caps uppercase">ADD ENDPOINT</span>
+</div>
+</div>
+</div>
+<!-- Performance Metrics Mockup -->
+<div class="tech-card rounded mt-6 p-density-comfortable">
+<div class="tech-card-tab font-label-caps text-label-caps uppercase text-on-surface-variant">METRICS_LOG</div>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">LATENCY VS COST (24H)</h3>
+</div>
+<!-- Abstract Graph Rep -->
+<div class="h-32 bg-surface-container border border-outline-variant relative overflow-hidden flex items-end p-2 gap-1">
+<!-- Grid Lines -->
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTAgMjBoMjBWMEgwem0xOS0xaC0xOFYxaDE4djE4eiIgZmlsbD0iIzNiNDk0YiIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=')] opacity-20"></div>
+<!-- Bars (Mock Data) -->
+<div class="w-full h-[40%] bg-surface-variant border-t border-outline relative z-10 hover:bg-surface-tint/20 transition-colors"></div>
+<div class="w-full h-[60%] bg-surface-variant border-t border-outline relative z-10 hover:bg-surface-tint/20 transition-colors"></div>
+<div class="w-full h-[30%] bg-surface-variant border-t border-outline relative z-10 hover:bg-surface-tint/20 transition-colors"></div>
+<div class="w-full h-[80%] bg-surface-tint/30 border-t border-surface-tint relative z-10"></div>
+<div class="w-full h-[45%] bg-surface-variant border-t border-outline relative z-10 hover:bg-surface-tint/20 transition-colors"></div>
+<div class="w-full h-[55%] bg-surface-variant border-t border-outline relative z-10 hover:bg-surface-tint/20 transition-colors"></div>
+<div class="w-full h-[90%] bg-error/30 border-t border-error relative z-10"></div>
+<div class="w-full h-[50%] bg-surface-variant border-t border-outline relative z-10 hover:bg-surface-tint/20 transition-colors"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar JSON Component (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2 h-16 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary-fixed-dim active:scale-95 transition-transform w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+<span class="font-label-caps text-label-caps uppercase mt-1 text-[10px]">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary-fixed-dim active:scale-95 transition-transform w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">architecture</span>
+<span class="font-label-caps text-label-caps uppercase mt-1 text-[10px]">INSPECTION</span>
+</a>
+<a class="flex flex-col items-center justify-center text-surface-tint border-t-2 border-surface-tint pt-2 active:scale-95 transition-transform w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">memory</span>
+<span class="font-label-caps text-label-caps uppercase mt-1 text-[10px]">MODELS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-primary-fixed-dim active:scale-95 transition-transform w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-caps text-label-caps uppercase mt-1 text-[10px]">REPORTS</span>
+</a>
+</nav>
+</body></html>

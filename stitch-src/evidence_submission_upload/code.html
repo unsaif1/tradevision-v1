@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Evidence Submission - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#fffcff",
+                      "surface-container-low": "#171c22",
+                      "primary": "#ffb2b9",
+                      "on-secondary": "#29313c",
+                      "tertiary-container": "#00855e",
+                      "surface-dim": "#0f141a",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#003826",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "outline-variant": "#5c3f42",
+                      "primary-fixed": "#ffdadb",
+                      "on-surface-variant": "#e4bdbf",
+                      "on-error-container": "#ffdad6",
+                      "tertiary": "#72daad",
+                      "surface-variant": "#30353c",
+                      "outline": "#ab888a",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#8ff7c7",
+                      "on-secondary-fixed-variant": "#3f4753",
+                      "inverse-surface": "#dee3eb",
+                      "on-tertiary-fixed-variant": "#005138",
+                      "inverse-on-surface": "#2c3137",
+                      "on-tertiary-container": "#f5fff7",
+                      "on-background": "#dee3eb",
+                      "surface-container-highest": "#30353c",
+                      "on-tertiary-fixed": "#002114",
+                      "on-surface": "#dee3eb",
+                      "surface": "#0f141a",
+                      "secondary-container": "#3f4753",
+                      "primary-container": "#e21e51",
+                      "surface-bright": "#353a40",
+                      "on-secondary-container": "#aeb6c3",
+                      "secondary-fixed": "#dbe3f1",
+                      "on-secondary-fixed": "#141c26",
+                      "tertiary-fixed-dim": "#72daad",
+                      "secondary": "#bfc7d5",
+                      "background": "#0f141a",
+                      "on-primary-fixed-variant": "#91002e",
+                      "on-primary": "#67001e",
+                      "surface-tint": "#ffb2b9",
+                      "surface-container-lowest": "#0a0f14",
+                      "surface-container-high": "#252a31",
+                      "secondary-fixed-dim": "#bfc7d5",
+                      "on-error": "#690005",
+                      "inverse-primary": "#be003e",
+                      "on-primary-fixed": "#40000f",
+                      "surface-container": "#1b2026",
+                      "border-subtle": "#2a323d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "sidebar_width": "260px",
+                      "header_height": "64px",
+                      "grid_columns": "12",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "display-md": ["Barlow Condensed", "sans-serif"],
+                      "headline-sm": ["Barlow Condensed", "sans-serif"],
+                      "mono-data": ["JetBrains Mono", "monospace"],
+                      "label-caps": ["Barlow Condensed", "sans-serif"],
+                      "display-lg": ["Barlow Condensed", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "headline-md": ["Barlow Condensed", "sans-serif"],
+                      "label-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                      "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                      "headline-md": ["24px", { "lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                      "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                      "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                      "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                      "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                      "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                      "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: #0f141a; color: #dee3eb; }
+        .tech-border { border: 1px solid #2a323d; }
+        .focus-ring:focus-within { border-color: #e21e51; outline: none; box-shadow: 0 0 0 1px #e21e51; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md bg-surface text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle docked full-width top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto sticky">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<!-- Navigation (Web) -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-3 py-2 rounded-DEFAULT font-label-caps text-label-caps uppercase" href="#">Command</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-3 py-2 rounded-DEFAULT font-label-caps text-label-caps uppercase" href="#">Projects</a>
+<a class="text-primary-container dark:text-primary-fixed font-bold hover:bg-surface-bright/10 transition-colors px-3 py-2 rounded-DEFAULT font-label-caps text-label-caps uppercase border-b-2 border-primary-container" href="#">Claims</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-3 py-2 rounded-DEFAULT font-label-caps text-label-caps uppercase" href="#">Alerts</a>
+</nav>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center tech-border">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-start p-margin max-w-[1024px] mx-auto w-full gap-gutter">
+<!-- Header -->
+<div class="w-full mb-4">
+<div class="flex items-center gap-2 mb-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="font-label-caps text-label-caps uppercase cursor-pointer hover:text-on-surface transition-colors">Back to Claim Details</span>
+</div>
+<h2 class="font-display-md text-display-md mb-1">New Evidence Submission</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Step 1 of 3: Document Upload. Securely transfer operational data and technical schematics.</p>
+</div>
+<!-- Upload Zone -->
+<div class="w-full bg-[#1a1f26] tech-border rounded-DEFAULT p-margin flex flex-col items-center justify-center min-h-[320px] transition-all duration-200 border-dashed hover:border-primary-container hover:bg-surface-variant/50 cursor-pointer group relative overflow-hidden" id="drop-zone">
+<!-- Atmospheric Background Element -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at center, #ffb2b9 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="flex gap-4 mb-6 relative z-10 text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'wght' 300;">description</span>
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'wght' 300;">image</span>
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'wght' 300;">analytics</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2 relative z-10">Drag &amp; Drop Files Here</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 relative z-10 text-center max-w-md">
+                Supported formats: PDF, JPG, PNG, CSV. Maximum file size: 250MB per document. Ensure all data is sanitized before upload.
+            </p>
+<button class="relative z-10 bg-transparent border tech-border hover:border-on-surface text-on-surface font-label-caps text-label-caps uppercase px-6 py-3 rounded-DEFAULT transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                Browse System
+            </button>
+<input accept=".pdf,.jpg,.jpeg,.png,.csv" class="hidden" id="file-input" multiple="" type="file"/>
+</div>
+<!-- Queued Files -->
+<div class="w-full flex flex-col gap-sm mt-4">
+<h4 class="font-label-caps text-label-caps uppercase text-on-surface-variant mb-2">Queued Files (2)</h4>
+<!-- File Item 1 -->
+<div class="bg-[#1a1f26] tech-border p-4 rounded-DEFAULT flex items-center justify-between group">
+<div class="flex items-center gap-4 w-full">
+<span class="material-symbols-outlined text-primary-container">picture_as_pdf</span>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-mono-data text-mono-data">incident_report_Q3_final.pdf</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[11px]">100% - 4.2 MB</span>
+</div>
+<div class="w-full bg-surface-dim h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full w-full"></div>
+</div>
+</div>
+</div>
+<button class="ml-4 text-on-surface-variant hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<!-- File Item 2 -->
+<div class="bg-[#1a1f26] tech-border p-4 rounded-DEFAULT flex items-center justify-between group">
+<div class="flex items-center gap-4 w-full">
+<span class="material-symbols-outlined text-secondary">image</span>
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-mono-data text-mono-data">structural_damage_scan.jpg</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[11px]">Uploading 45% - 12.8 MB</span>
+</div>
+<div class="w-full bg-surface-dim h-1 rounded-full overflow-hidden relative">
+<!-- Animated progress -->
+<div class="bg-primary-container h-full rounded-full w-[45%] relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20 w-full animate-[shimmer_2s_infinite]" style="transform: skewX(-20deg);"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="ml-4 text-on-surface-variant hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="w-full flex justify-between items-center mt-lg pt-lg border-t border-border-subtle">
+<button class="bg-transparent border tech-border hover:border-on-surface text-on-surface font-label-caps text-label-caps uppercase px-6 py-3 rounded-DEFAULT transition-colors">
+                Cancel
+            </button>
+<button class="bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-caps text-label-caps uppercase px-8 py-3 rounded-DEFAULT transition-colors flex items-center gap-2" disabled="" style="opacity: 0.5; cursor: not-allowed;">
+                Next Step
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-high dark:bg-surface-container-high shadow-lg border-t border-border-subtle pb-safe">
+<div class="fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md text-[10px]">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">location_city</span>
+<span class="font-label-md text-label-md text-[10px]">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_late</span>
+<span class="font-label-md text-label-md text-[10px]">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-label-md text-label-md text-[10px]">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md text-[10px]">Account</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple drag and drop visual interaction
+        const dropZone = document.getElementById('drop-zone');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('border-primary-container', 'bg-surface-variant/50');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('border-primary-container', 'bg-surface-variant/50');
+        }
+    </script>
+<style>
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) skewX(-20deg); }
+            100% { transform: translateX(200%) skewX(-20deg); }
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+</body></html>

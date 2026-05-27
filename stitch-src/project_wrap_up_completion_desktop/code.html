@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROOF_TERMINAL_V1.0 - Project Wrap-Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdea8",
+                        "background": "#111317",
+                        "secondary-container": "#feb700",
+                        "on-tertiary": "#303031",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#002022",
+                        "on-secondary": "#412d00",
+                        "surface-container-low": "#1a1c20",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface": "#111317",
+                        "surface-container-highest": "#333539",
+                        "surface-bright": "#37393e",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006970",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-high": "#282a2e",
+                        "outline-variant": "#3b494b",
+                        "secondary-fixed-dim": "#ffba20",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "primary-container": "#00f0ff",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-on-surface": "#2f3035",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "on-primary-container": "#006970",
+                        "tertiary-container": "#dad9d9",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-tint": "#00dbe9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface": "#e2e2e8",
+                        "on-error": "#690005",
+                        "surface-variant": "#333539",
+                        "surface-dim": "#111317"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px",
+                        "unit": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317; 
+            border-left: 1px solid #3b494b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #849495; 
+        }
+        
+        /* Data grid lines */
+        .data-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(59, 73, 75, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 73, 75, 0.1) 1px, transparent 1px);
+        }
+        
+        .chamfer-btn {
+            clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Web) -->
+<header class="bg-surface dark:bg-surface w-full top-0 sticky border-b border-outline-variant flat no shadows flex justify-between items-center px-margin-desktop h-14 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="terminal">terminal</span>
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-bold tracking-tight">ROOF_TERMINAL_V1.0</span>
+</div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span> Terminal
+            </a>
+<a class="font-label-caps text-label-caps text-primary hover:bg-surface-variant active:scale-95 transition-transform px-3 py-2 rounded-DEFAULT flex items-center gap-2 border-b-2 border-primary" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span> Archive
+            </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span> Queue
+            </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform px-3 py-2 rounded-DEFAULT flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span> Map
+            </a>
+</nav>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-variant p-2 rounded-DEFAULT transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<div class="flex h-[calc(100vh-56px)]">
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="bg-surface-container-low dark:bg-surface-container-low h-full w-80 fixed left-0 top-14 border-r border-outline-variant flat no shadows flex flex-col p-gutter z-40 hidden lg:flex">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-primary tracking-wide">FACET_FILTERS</h2>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-container-highest duration-150 ease-in-out p-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span> Site ID
+                </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-container-highest duration-150 ease-in-out p-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span> Material Type
+                </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-container-highest duration-150 ease-in-out p-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="verified">verified</span> Compliance
+                </a>
+<a class="font-label-caps text-label-caps bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim p-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined fill" data-icon="analytics" data-weight="fill">analytics</span> Status
+                </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<div class="flex justify-between items-center text-on-surface-variant font-label-caps text-label-caps">
+<span>SYS_STATUS:</span>
+<span class="text-primary-fixed-dim">ONLINE</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-80 bg-background data-grid p-gutter md:p-margin-desktop overflow-y-auto relative">
+<!-- Page Header -->
+<div class="mb-density-comfortable flex flex-col md:flex-row justify-between items-start md:items-end border-b border-outline-variant pb-4">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-fixed uppercase tracking-tighter">[PROJECT_FINALIZATION]</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="tag">tag</span> SITE_ID: RF-90210-DELTA
+                    </p>
+</div>
+<div class="mt-4 md:mt-0 font-data-point text-data-point text-secondary-fixed flex items-center gap-2 bg-surface-container px-3 py-1 border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span> T-MINUS: 00:00:00
+                </div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Performance Review Section (Col Span 8) -->
+<section class="xl:col-span-8 bg-surface-container border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-2 h-full bg-primary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="query_stats">query_stats</span>
+                            [PERFORMANCE_REVIEW]
+                        </h2>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">QUALITY_SCORE</p>
+<div class="font-display-lg text-display-lg text-primary-fixed-dim drop-shadow-[0_0_10px_rgba(0,219,233,0.3)]">
+                                9.8<span class="text-headline-md text-on-surface-variant">/10</span>
+</div>
+</div>
+</div>
+<div class="mb-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-high p-3 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">PITCH</span>
+<span class="font-data-point text-data-point text-on-surface">6/12</span>
+</div>
+<div class="bg-surface-container-high p-3 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">SQ_FT</span>
+<span class="font-data-point text-data-point text-on-surface">2450</span>
+</div>
+<div class="bg-surface-container-high p-3 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">MATERIAL</span>
+<span class="font-data-point text-data-point text-secondary-fixed">TPO</span>
+</div>
+<div class="bg-surface-container-high p-3 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">VARIANCES</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim">00</span>
+</div>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="contractor_notes">CONTRACTOR_LOG_ENTRY</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-body-fixed p-3 focus:ring-1 focus:ring-primary-fixed-dim focus:border-primary-fixed-dim transition-colors resize-none placeholder-on-surface-variant/50" id="contractor_notes" placeholder="Enter final deployment notes, anomalies, or structural observations..." rows="4"></textarea>
+</div>
+</section>
+<!-- Archive Prep Telemetry (Col Span 4) -->
+<section class="xl:col-span-4 bg-surface-container border border-outline-variant p-density-comfortable relative flex flex-col justify-between">
+<div>
+<div class="absolute top-0 right-0 bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps px-2 py-1">SECURE</div>
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="memory">memory</span>
+                            [ARCHIVE_PREP]
+                        </h2>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-surface-container-highest pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL_PAYLOAD</span>
+<span class="font-data-point text-data-point text-on-surface">1.42 GB</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-highest pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ENCRYPTION</span>
+<span class="font-label-caps text-label-caps text-primary-fixed bg-primary-fixed/10 px-2 py-1 rounded-DEFAULT border border-primary-fixed/30">AES-256</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-highest pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">NODE_DESTINATION</span>
+<span class="font-label-caps text-label-caps text-on-surface">US-EAST-SERVER-09</span>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-surface-container-lowest border border-outline-variant flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim animate-pulse" data-icon="cloud_sync">cloud_sync</span>
+<span class="font-label-caps text-label-caps text-on-surface">AWAITING_UPLINK</span>
+</div>
+</section>
+<!-- Mandatory Closure Checks (Col Span 6) -->
+<section class="xl:col-span-6 bg-surface-container border border-outline-variant p-density-comfortable">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-error" data-icon="fact_check">fact_check</span>
+                        [MANDATORY_CLOSURE_CHECKS]
+                    </h2>
+<div class="space-y-3">
+<label class="flex items-start gap-3 p-3 bg-surface-container-high border border-outline-variant cursor-pointer hover:border-primary-fixed-dim transition-colors group">
+<input class="mt-1 w-5 h-5 bg-surface-container-lowest border-outline-variant text-primary-fixed-dim focus:ring-primary-fixed-dim focus:ring-offset-surface-container" type="checkbox"/>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface block group-hover:text-primary-fixed-dim transition-colors">SITE_CLEANLINESS_VERIFIED</span>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mt-1 block">All debris removed. Magnetic sweep completed.</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 bg-surface-container-high border border-outline-variant cursor-pointer hover:border-primary-fixed-dim transition-colors group">
+<input class="mt-1 w-5 h-5 bg-surface-container-lowest border-outline-variant text-primary-fixed-dim focus:ring-primary-fixed-dim focus:ring-offset-surface-container" type="checkbox"/>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface block group-hover:text-primary-fixed-dim transition-colors">SAFETY_AUDIT_LOGGED</span>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mt-1 block">Harnesses stowed. Edge protection dismantled.</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 bg-surface-container-high border border-outline-variant cursor-pointer hover:border-primary-fixed-dim transition-colors group">
+<input class="mt-1 w-5 h-5 bg-surface-container-lowest border-outline-variant text-primary-fixed-dim focus:ring-primary-fixed-dim focus:ring-offset-surface-container" type="checkbox"/>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface block group-hover:text-primary-fixed-dim transition-colors">CUSTOMER_SIGN_OFF_ACQUIRED</span>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mt-1 block">Digital signature securely hashed.</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Final Documentation (Col Span 6) -->
+<section class="xl:col-span-6 bg-surface-container border border-outline-variant p-density-comfortable">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="snippet_folder">snippet_folder</span>
+                        [FINAL_DOCUMENTATION]
+                    </h2>
+<ul class="space-y-3">
+<li class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary-fixed transition-colors">Final_Audit_Report.pdf</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors" data-icon="download">download</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="csv">csv</span>
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary-fixed transition-colors">Settlement_Overview.csv</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors" data-icon="download">download</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="folder_zip">folder_zip</span>
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary-fixed transition-colors">Evidence_Ledger_IMG.zip</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors" data-icon="download">download</span>
+</li>
+</ul>
+</section>
+<!-- Primary Action Area (Col Span 12) -->
+<section class="xl:col-span-12 mt-4 flex justify-end">
+<button class="chamfer-btn bg-primary-fixed-dim hover:bg-primary-fixed text-on-primary-fixed font-data-point text-data-point py-4 px-8 border-b-4 border-on-primary-fixed-variant transition-all active:translate-y-1 active:border-b-0 flex items-center gap-3 shadow-[0_0_15px_rgba(0,219,233,0.4)]">
+<span class="material-symbols-outlined font-bold" data-icon="publish">publish</span>
+                        [EXECUTE_PROJECT_CLOSURE]
+                    </button>
+</section>
+</div>
+<!-- Bottom padding for mobile nav -->
+<div class="h-24 md:h-0"></div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 border-t border-outline-variant flat no shadows flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-caps text-label-caps mt-1">Terminal</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1 active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined fill" data-icon="folder_open" data-weight="fill">folder_open</span>
+<span class="font-label-caps text-label-caps text-primary font-label-caps mt-1">Archive</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span class="font-label-caps text-label-caps mt-1">Queue</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-caps text-label-caps mt-1">Map</span>
+</a>
+</nav>
+<script>
+        // Simple script to handle checkbox interaction highlighting
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const parent = this.closest('label');
+                if(this.checked) {
+                    parent.classList.add('border-primary-fixed-dim', 'bg-surface-container');
+                    parent.classList.remove('bg-surface-container-high');
+                } else {
+                    parent.classList.remove('border-primary-fixed-dim', 'bg-surface-container');
+                    parent.classList.add('bg-surface-container-high');
+                }
+            });
+        });
+    </script>
+</body></html>

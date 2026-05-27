@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision - Audit Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#40000f",
+                        "secondary-container": "#3f4753",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "primary-container": "#e21e51",
+                        "outline": "#ab888a",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-variant": "#30353c",
+                        "on-surface-variant": "#e4bdbf",
+                        "surface": "#0f141a",
+                        "on-primary-container": "#fffcff",
+                        "primary-fixed": "#ffdadb",
+                        "outline-variant": "#5c3f42",
+                        "inverse-primary": "#be003e",
+                        "on-primary": "#67001e",
+                        "background": "#0f141a",
+                        "tertiary-fixed": "#8ff7c7",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-background": "#dee3eb",
+                        "inverse-surface": "#dee3eb",
+                        "surface-tint": "#ffb2b9",
+                        "on-tertiary-container": "#f5fff7",
+                        "surface-dim": "#0f141a",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-container-high": "#252a31",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "error-container": "#93000a",
+                        "surface-bright": "#353a40",
+                        "surface-container": "#1b2026",
+                        "on-surface": "#dee3eb",
+                        "tertiary-container": "#00855e",
+                        "surface-container-lowest": "#0a0f14",
+                        "surface-container-highest": "#30353c",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#003826",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "secondary": "#bfc7d5",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-secondary-container": "#aeb6c3",
+                        "primary": "#ffb2b9",
+                        "tertiary": "#72daad",
+                        "on-secondary": "#29313c",
+                        "tertiary-fixed-dim": "#72daad",
+                        "secondary-fixed": "#dbe3f1",
+                        "surface-container-low": "#171c22",
+                        "on-secondary-fixed": "#141c26"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "sidebar_width": "260px",
+                        "margin": "32px",
+                        "grid_columns": "12",
+                        "header_height": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "display-md": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f141a; /* surface */
+            color: #dee3eb; /* on-surface */
+        }
+        /* Mobile Specific Overrides */
+        @media (max-width: 767px) {
+            .mobile-padding-bottom { padding-bottom: 80px; }
+            .mobile-padding-top { padding-top: 64px; }
+        }
+        
+        .log-entry-border {
+            border-bottom: 1px solid #2a323d; /* Approximate surface-container-highest */
+        }
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col md:flex-row font-body-md">
+<!-- Desktop Sidebar (NavigationDrawer) - Hidden on Mobile -->
+<aside class="hidden md:flex flex-col bg-surface-elevated dark:bg-surface-elevated text-neon-green dark:text-neon-green font-body-md text-body-md full-height w-72 border-r border-surface-stroke dark:border-surface-stroke shadow-lg fixed inset-y-0 left-0 z-[60] py-gutter" style="background-color: #1b2026; border-color: #30353c; color: #72daad;">
+<!-- Header -->
+<div class="px-6 mb-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZoNbjqXBNq6y4KzHhJHS2bdLECw56izQEoDlbuphSw-OnridZ9_VKgF6tfyYvqzjQJHhz77tS0om2V43PoKDkh0KaCWvkUunCXXpV328bJuDR8Vk0K4YA2GWGkcL7D5CFpB9u9qNTwYb7ycrcQ5jWhz16bXM1VnDeJk6KGqqNzcHrxybyGNo9QDO5MH3PPRwCRIuTdv8QdsgNW0aRkzVKPPtaGxBtGyl4w1VFW0k-02nnd81Un23K6gd4LBkgvXtAgBfPKpXLbzeb"/>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-neon-orange" style="color: #ffb2b9;">COMMANDER ALPHA</div>
+<div class="text-xs text-on-surface-variant">Site Supervisor</div>
+<div class="text-xs text-on-surface-variant opacity-75">Sector 7G</div>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="conveyor_belt">conveyor_belt</span>
+<span>Fleet Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Inventory Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span>Personnel</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_late">assignment_late</span>
+<span>Safety Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<!-- Audit Log (Active for semantic intent of system events) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-highest text-neon-green font-bold border-l-4 border-neon-green hover:bg-surface-container-high transition-all opacity-80 duration-150" href="#" style="color: #72daad; border-color: #72daad;">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit Logs</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-h-screen md:ml-[260px] mobile-padding-top mobile-padding-bottom">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden bg-surface dark:bg-surface text-neon-pink dark:text-neon-pink font-headline-lg-mobile text-headline-lg-mobile docked full-width top-0 border-b border-surface-stroke dark:border-surface-stroke flat no shadows fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16" style="border-bottom: none; color: #ffb2b9;">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<div class="font-label-caps text-label-caps tracking-widest text-neon-pink dark:text-neon-pink" style="color: #ffb2b9;">TRADEVISION</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- Page Header & Filters -->
+<div class="p-6 md:p-8 bg-surface-container-lowest border-b border-surface-variant sticky md:top-0 top-16 z-40">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Audit Log</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Chronological feed of system events and data modifications.</p>
+</div>
+<div class="flex flex-wrap gap-3 w-full md:w-auto">
+<!-- Severity Filter -->
+<div class="relative flex-1 md:flex-none">
+<select class="w-full appearance-none bg-surface-container border border-surface-variant text-body-md text-on-surface py-2 pl-4 pr-10 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option>All Severities</option>
+<option>Critical</option>
+<option>Warning</option>
+<option>Success</option>
+<option>Info</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+<!-- Date Range Filter -->
+<div class="relative flex-1 md:flex-none">
+<select class="w-full appearance-none bg-surface-container border border-surface-variant text-body-md text-on-surface py-2 pl-4 pr-10 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>Custom Range</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none" data-icon="calendar_today">calendar_today</span>
+</div>
+<button class="bg-surface-container border border-surface-variant text-on-surface p-2 rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Log Feed Container -->
+<div class="flex-1 p-4 md:p-8 overflow-y-auto">
+<div class="bg-surface-container rounded-xl border border-surface-variant overflow-hidden">
+<!-- Log Entry 1: Critical -->
+<div class="log-entry log-entry-border p-4 md:p-5 hover:bg-surface-container-highest transition-colors flex flex-col md:flex-row gap-4">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center border border-error/30 mt-1">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-error/10 text-error border border-error/20">CRITICAL</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">2023-10-27 14:32:01 UTC</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-medium">Unauthorized Access Attempt</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Multiple failed login attempts detected from IP 192.168.1.45 targeting admin credentials.</p>
+<div class="mt-3 flex flex-wrap gap-4 text-xs font-mono-data text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+<span>Actor: SYSTEM</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="tag">tag</span>
+<span>Event ID: #SEC-9921</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-32 flex md:justify-end items-start pt-1">
+<button class="text-primary hover:text-inverse-primary text-sm font-medium">Investigate</button>
+</div>
+</div>
+<!-- Log Entry 2: Success -->
+<div class="log-entry log-entry-border p-4 md:p-5 hover:bg-surface-container-highest transition-colors flex flex-col md:flex-row gap-4">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center border border-tertiary/30 mt-1">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-tertiary/10 text-tertiary border border-tertiary/20">SUCCESS</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">2023-10-27 13:15:44 UTC</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-medium">Document Verified</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Bill of Lading BOL-8842 has been cryptographically signed and verified.</p>
+<div class="mt-3 flex flex-wrap gap-4 text-xs font-mono-data text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+<span>Actor: Admin_01</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="tag">tag</span>
+<span>Event ID: #DOC-1104</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-32 flex md:justify-end items-start pt-1">
+<button class="text-on-surface-variant hover:text-on-surface text-sm font-medium">Details</button>
+</div>
+</div>
+<!-- Log Entry 3: Warning -->
+<div class="log-entry log-entry-border p-4 md:p-5 hover:bg-surface-container-highest transition-colors flex flex-col md:flex-row gap-4">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-tint/20 flex items-center justify-center border border-surface-tint/30 mt-1">
+<span class="material-symbols-outlined text-surface-tint" data-icon="escalator_warning">escalator_warning</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-surface-tint/10 text-surface-tint border border-surface-tint/20">WARNING</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">2023-10-27 11:05:12 UTC</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-medium">Case Escalated</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Dispute case #DSP-441 breached SLA threshold and auto-escalated to Tier 2 support.</p>
+<div class="mt-3 flex flex-wrap gap-4 text-xs font-mono-data text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+<span>Actor: SYS_AUTO</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="tag">tag</span>
+<span>Event ID: #SLA-882</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-32 flex md:justify-end items-start pt-1">
+<button class="text-on-surface-variant hover:text-on-surface text-sm font-medium">Details</button>
+</div>
+</div>
+<!-- Log Entry 4: Info -->
+<div class="log-entry p-4 md:p-5 hover:bg-surface-container-highest transition-colors flex flex-col md:flex-row gap-4">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center border border-secondary/30 mt-1">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-secondary/10 text-secondary border border-secondary/20">INFO</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">2023-10-27 09:00:05 UTC</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-medium">Routine Backup Completed</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Database snapshot DB_SNAP_20231027 completed successfully. 4.2GB archived.</p>
+<div class="mt-3 flex flex-wrap gap-4 text-xs font-mono-data text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+<span>Actor: DB_CRON</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="tag">tag</span>
+<span>Event ID: #SYS-001</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-32 flex md:justify-end items-start pt-1">
+<button class="text-on-surface-variant hover:text-on-surface text-sm font-medium">Details</button>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-center">
+<button class="bg-surface-container border border-surface-variant text-on-surface px-6 py-2 rounded-lg font-label-caps text-label-caps hover:bg-surface-container-high transition-colors">
+                    LOAD MORE
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container dark:bg-surface-container text-neon-pink dark:text-neon-pink font-label-caps text-label-caps docked full-width bottom-0 border-t border-surface-stroke dark:border-surface-stroke flat no shadows fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2" style="border-top: none; background-color: #1b2026;">
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface" href="#" style="color: #aeb6c3;">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span>DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface" href="#" style="color: #aeb6c3;">
+<span class="material-symbols-outlined mb-1" data-icon="construction">construction</span>
+<span>PROJECTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface" href="#" style="color: #aeb6c3;">
+<span class="material-symbols-outlined mb-1" data-icon="gavel">gavel</span>
+<span>CLAIMS</span>
+</a>
+<!-- Using Alerts as the closest semantic match for Audit Logs/System events on Mobile Nav -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-xl p-2 scale-95 transition-transform duration-200" href="#" style="background-color: #e21e51; color: #fffcff;">
+<span class="material-symbols-outlined mb-1" data-icon="notifications">notifications</span>
+<span>ALERTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface" href="#" style="color: #aeb6c3;">
+<span class="material-symbols-outlined mb-1" data-icon="hub">hub</span>
+<span>HUB</span>
+</a>
+</nav>
+</body></html>

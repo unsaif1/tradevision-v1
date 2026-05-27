@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. | Project Evidence Review Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --primary-glow: rgba(226, 30, 81, 0.2);
+            --cyan-accent: #00f2ff;
+        }
+        body {
+            background-color: #0f141a;
+            color: #dee2ec;
+            font-family: 'Manrope', sans-serif;
+        }
+        .font-mono-data { font-family: 'JetBrains Mono', monospace; }
+        .cyber-border {
+            border: 1px solid rgba(136, 150, 168, 0.15);
+            position: relative;
+        }
+        .cyber-border::before, .cyber-border::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-color: #ffb2b9;
+            border-style: solid;
+        }
+        .cyber-border::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .cyber-border::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+        
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffb2b9, transparent);
+            position: absolute;
+            top: 0;
+            animation: scan 3s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .verification-overlay {
+            background: radial-gradient(circle at center, transparent 40%, rgba(15, 20, 26, 0.8) 100%);
+        }
+        /* Custom scrollbar for high-density UI */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #1b2027; }
+        ::-webkit-scrollbar-thumb { background: #3a4858; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ffb2b9; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#40000f",
+                    "tertiary": "#bdc7dc",
+                    "on-secondary-fixed-variant": "#3a4858",
+                    "on-tertiary": "#273141",
+                    "surface-container": "#1b2027",
+                    "secondary-fixed-dim": "#bac8db",
+                    "inverse-primary": "#be003e",
+                    "on-background": "#dee2ec",
+                    "on-tertiary-fixed": "#121c2c",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#0f1d2b",
+                    "border-subtle": "rgba(136, 150, 168, 0.15)",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "surface-variant": "#30353d",
+                    "secondary-container": "#3a4858",
+                    "secondary-fixed": "#d5e4f7",
+                    "primary": "#ffb2b9",
+                    "surface-muted": "#2D3748",
+                    "surface-container-low": "#171c23",
+                    "on-tertiary-container": "#fefcff",
+                    "surface": "#0f141a",
+                    "text-primary": "#FFFFFF",
+                    "primary-fixed": "#ffdadb",
+                    "on-surface-variant": "#e4bdbf",
+                    "tertiary-container": "#6b7588",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#30353d",
+                    "inverse-on-surface": "#2c3138",
+                    "surface-tint": "#ffb2b9",
+                    "on-primary-container": "#fffcff",
+                    "surface-container-lowest": "#090f15",
+                    "surface-dim": "#0f141a",
+                    "on-primary": "#67001e",
+                    "tertiary-fixed": "#d9e3f9",
+                    "inverse-surface": "#dee2ec",
+                    "primary-container": "#e21e51",
+                    "surface-bright": "#353941",
+                    "on-surface": "#dee2ec",
+                    "on-primary-fixed-variant": "#91002e",
+                    "tertiary-fixed-dim": "#bdc7dc",
+                    "secondary": "#bac8db",
+                    "on-secondary": "#243240",
+                    "on-tertiary-fixed-variant": "#3d4759",
+                    "on-error-container": "#ffdad6",
+                    "background": "#0f141a",
+                    "text-secondary": "#8896A8",
+                    "on-secondary-container": "#a8b6c9",
+                    "outline-variant": "#5c3f42",
+                    "surface-deep": "#1C2128",
+                    "accent-active": "#E21E51",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#252a32",
+                    "outline": "#ab888a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xl": "40px",
+                    "margin": "24px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Barlow Condensed"],
+                    "body-sm": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "headline-md": ["Barlow Condensed"],
+                    "headline-xl": ["Barlow Condensed"],
+                    "mono-data": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="flex overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col z-40">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+</div>
+<div>
+<h1 class="font-display-md text-display-md font-bold text-primary dark:text-primary tracking-tight leading-none">TradeVision</h1>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant opacity-70">C.A.R.E. Command</p>
+</div>
+</div>
+<nav class="mt-4 flex-1">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-surface-container-highest/30 rounded-lg p-4 border border-outline-variant">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+<span class="text-label-sm font-bold text-on-surface">NODE: US-EAST-01</span>
+</div>
+<div class="h-1 bg-surface-container-low w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 uppercase tracking-tighter">Sync Stability: 98.2%</p>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin w-full">
+<div class="flex items-center gap-6">
+<h2 class="font-display-md text-display-md font-semibold text-on-surface dark:text-on-surface">Evidence Review</h2>
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-body-sm w-[320px] focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search Project ID, TxHash, or Node..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary transition-colors cursor-pointer" data-icon="help">help</span>
+<span class="material-symbols-outlined hover:text-primary transition-colors cursor-pointer" data-icon="apps">apps</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-label-md font-bold leading-none">Admin_429</p>
+<p class="text-[10px] text-primary uppercase font-bold">L-7 Validator</p>
+</div>
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full border border-primary/30 object-cover" data-alt="A professional headshot of a male system administrator with a focused and serious expression. He is wearing a modern charcoal suit in a high-tech corporate office setting. The lighting is sophisticated and directional, casting subtle shadows that emphasize his technical authority. The overall aesthetic is clean, minimalist, and authoritative, matching a premium fintech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEqJTvDfkblqJTFIxbV232OMFs2gN38HLktb5Jq6Ey7XkAhbEtdy9r7RsfINrIQw6XoxkELa_rhQY-fD48jfeBG0i9YXP1cCrmgGrniWxPqE2FTXaRvO22WEY9Nn0b8DiRklcYp2U7ZnBw1Ri2H_M0raW-sTYXmCrrRQFr09xmFJ_l-dA2m12NZD7f2Pf5UdF6qc5np1mml5tJD4qek6LBnKDcwQhdPoz2rEqw6bpZYAZPOxNrINDXMBeVmtXP_94Hl9yyw3aGTWBR"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-[64px] ml-[260px] w-[calc(100%-260px)] h-[calc(100vh-64px)] overflow-hidden flex bg-surface">
+<!-- Center Workspace: Review & Ledger -->
+<section class="flex-1 flex flex-col overflow-hidden border-r border-outline-variant">
+<!-- Technical Audit Ledger (Bento Header) -->
+<div class="p-6 border-b border-outline-variant bg-surface-container-low/30">
+<div class="flex justify-between items-end mb-4">
+<div>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded border border-primary/20 uppercase tracking-widest">Active Ledger</span>
+<h3 class="font-headline-md text-headline-md mt-1">Field Data Verification Stack</h3>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded text-label-md font-bold hover:bg-surface-bright transition-colors flex items-center gap-2 border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                        </button>
+<button class="bg-primary-container px-4 py-2 rounded text-label-md font-bold text-on-primary-container hover:opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-[18px]">sync</span> Force Sync All Nodes
+                        </button>
+</div>
+</div>
+<!-- High-Density Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[11px] font-headline-md text-on-surface-variant uppercase tracking-wider border-b border-outline-variant">
+<th class="pb-3 font-semibold">Project ID / Signature</th>
+<th class="pb-3 font-semibold">Geo-Coordinate</th>
+<th class="pb-3 font-semibold">Timestamp (UTC)</th>
+<th class="pb-3 font-semibold">Auth Status</th>
+<th class="pb-3 font-semibold text-right">Blockchain Hash</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-[12px]">
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-highest/20 transition-colors">
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-400 text-[14px]">verified</span>
+<span>PRJ-9928-ALPHA</span>
+</div>
+</td>
+<td class="py-3 text-on-surface-variant">40.7128° N, 74.0060° W</td>
+<td class="py-3">2023-11-24 14:22:01</td>
+<td class="py-3">
+<span class="flex items-center gap-1.5 text-green-400">
+<span class="w-1 h-1 bg-green-400 rounded-full"></span> VALIDATED
+                                    </span>
+</td>
+<td class="py-3 text-right text-primary">0x4F...3B92</td>
+</tr>
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-highest/20 transition-colors bg-error-container/5">
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-rose-500 text-[14px]">warning</span>
+<span>PRJ-1102-DELTA</span>
+</div>
+</td>
+<td class="py-3 text-on-surface-variant">34.0522° N, 118.2437° W</td>
+<td class="py-3">2023-11-24 14:18:45</td>
+<td class="py-3">
+<span class="flex items-center gap-1.5 text-rose-500">
+<span class="w-1 h-1 bg-rose-500 rounded-full animate-ping"></span> MISMATCH
+                                    </span>
+</td>
+<td class="py-3 text-right text-rose-500">0xERR_SIG_04</td>
+</tr>
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-highest/20 transition-colors">
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400 text-[14px]">pending</span>
+<span>PRJ-4431-ZETA</span>
+</div>
+</td>
+<td class="py-3 text-on-surface-variant">51.5074° N, 0.1278° W</td>
+<td class="py-3">2023-11-24 14:15:10</td>
+<td class="py-3">
+<span class="flex items-center gap-1.5 text-cyan-400">
+<span class="w-1 h-1 bg-cyan-400 rounded-full"></span> PENDING
+                                    </span>
+</td>
+<td class="py-3 text-right text-on-surface-variant">WAITING_SYNC...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Evidence Gallery -->
+<div class="flex-1 overflow-y-auto p-6 bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-headline-md text-headline-md">High-Res Field Evidence (Verification Mode)</h4>
+<div class="flex items-center gap-4 text-label-md">
+<span class="flex items-center gap-2 text-on-surface-variant"><span class="w-2 h-2 bg-green-500 rounded-full"></span> AI-Matched</span>
+<span class="flex items-center gap-2 text-on-surface-variant"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> Anomaly Found</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<!-- Evidence Card 1 -->
+<div class="cyber-border group overflow-hidden bg-surface-container">
+<div class="relative h-[300px]">
+<img alt="Site Evidence Alpha" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A detailed high-angle technical shot of a modern construction site with reinforced steel foundations. The lighting is harsh afternoon sun, emphasizing structural textures. The image is framed as a digital evidence capture with visible geometric corner brackets and a subtle cyan-tinted crosshair UI overlay. The color palette is dominated by industrial grays and earth tones, with sharp red digital markings for verification." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwKJFJ87cS8dwvdG7tcOvV0Bt5duh1zHFrBw7Ko3TZFaZbnUeDwQ4JlrhwRliuXXvWI4HVfdSgQIWw5Pli6OXo7ZaDD_4jjgiWNOFs4OkJSQMYUqWJStQWHHxD4AuhJEmhBMILkPsm6Thv6M9yHCu1f7iTrUR6BGyUlAReLPftU6P3DSKFDb9lSDIU9z8lXpaSFD3ZnTEnZUuoV14Pe5epW4sexpxJHvvL0qdoS4IXRPV1Fwgz1e0Nva8llwjq2UGs7ZPp78PZjqr4"/>
+<div class="scanline"></div>
+<div class="absolute inset-0 verification-overlay pointer-events-none"></div>
+<!-- Technical UI Overlays -->
+<div class="absolute top-4 left-4 flex flex-col gap-1">
+<span class="bg-black/80 px-2 py-0.5 text-[10px] font-mono-data border border-cyan-400/50 text-cyan-400">LAT: 40.7128N</span>
+<span class="bg-black/80 px-2 py-0.5 text-[10px] font-mono-data border border-cyan-400/50 text-cyan-400">LNG: 74.0060W</span>
+</div>
+<div class="absolute top-4 right-4 bg-green-500/90 text-on-primary text-[10px] font-bold px-2 py-1 rounded">MATCH: 99.4%</div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-surface-container/90 backdrop-blur-md p-3 border border-outline-variant">
+<div>
+<p class="text-label-md font-bold uppercase">Foundation Structural Integrity</p>
+<p class="text-[10px] text-on-surface-variant">ID: EV-229-Z | Sensor Node: SN-04</p>
+</div>
+<button class="bg-primary px-3 py-1.5 rounded text-[10px] font-bold text-on-primary-fixed uppercase tracking-wider">Review Metadata</button>
+</div>
+</div>
+</div>
+<!-- Evidence Card 2 (Anomaly) -->
+<div class="cyber-border group overflow-hidden bg-surface-container border-rose-500/30">
+<div class="relative h-[300px]">
+<img alt="Site Anomaly Delta" class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700" data-alt="A macro technical photograph of a structural concrete crack being analyzed by a digital laser tool. Red laser lines are projected onto the gray surface, highlighting a jagged fissure. The lighting is clinical and cool-toned, creating a sense of forensic investigation. High-tech UI elements like corner brackets and metadata tags are overlaid on the image, emphasizing the industrial 'Cyber Industrial' aesthetic of the review portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCF7di5-spcJXtgUgmA5mCeu3r_Zh2-54VZJbALMSrDn6LVN-9skh_g2WQnrCCazLRp_i7WqCJ7HwQ-Ex-0-lbtsdMx40dVT5-f5IbwWfW3RGW0NJybAzCV0h0Fb3ag_XtFEDkUFLXXW98xRL128iO6cHRIaB0tZU5Ygl3PaCmEq9T3UGX_GXbPsB-kraY2z_rCq6aSRrAa4Urv7YbjdbtkklGahN1ho0nhOVGKIimxuFf8mGnhtFqnK2-Xjb4-sWBoOfS5QZIag1Z"/>
+<div class="scanline"></div>
+<div class="absolute inset-0 verification-overlay pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-rose-500 text-[64px] opacity-50 animate-pulse">priority_high</span>
+</div>
+<div class="absolute top-4 left-4 bg-rose-500/90 text-white text-[10px] font-bold px-2 py-1 rounded">SIGNATURE MISMATCH</div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-surface-container/90 backdrop-blur-md p-3 border border-rose-500/30">
+<div>
+<p class="text-label-md font-bold uppercase text-rose-400">Moisture Intrusion Alert</p>
+<p class="text-[10px] text-on-surface-variant">ID: EV-110-A | Sensor Node: SN-12</p>
+</div>
+<button class="bg-surface-container-highest px-3 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider text-rose-500 border border-rose-500/30">Flag for Re-Sync</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Telemetry & Admin -->
+<aside class="w-[340px] flex flex-col bg-surface-container-low">
+<!-- Live Telemetry Section -->
+<div class="p-6 border-b border-outline-variant">
+<div class="flex items-center justify-between mb-4">
+<h5 class="text-label-caps font-bold text-on-surface-variant tracking-widest uppercase">Live Telemetry</h5>
+<span class="text-[10px] bg-green-500/10 text-green-400 px-2 py-0.5 rounded border border-green-500/20">REAL-TIME</span>
+</div>
+<div class="space-y-4">
+<!-- Telemetry Item -->
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Moisture Content</p>
+<p class="font-mono-data text-xl text-primary">12.4%</p>
+</div>
+<span class="material-symbols-outlined text-primary">water_drop</span>
+</div>
+<div class="h-8 w-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-primary/20 h-[40%]" style="height: 45%;"></div>
+<div class="flex-1 bg-primary/20 h-[60%]" style="height: 60%;"></div>
+<div class="flex-1 bg-primary/20 h-[50%]" style="height: 55%;"></div>
+<div class="flex-1 bg-primary/20 h-[80%]" style="height: 85%;"></div>
+<div class="flex-1 bg-primary/40 h-[90%]" style="height: 95%;"></div>
+<div class="flex-1 bg-primary h-[100%]" style="height: 100%;"></div>
+</div>
+<p class="text-[9px] text-on-surface-variant mt-2 uppercase tracking-tight">+0.2% vs baseline (Safe)</p>
+</div>
+<!-- Telemetry Item -->
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant border-rose-500/20">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Structural Stress</p>
+<p class="font-mono-data text-xl text-rose-500">84.2 kN</p>
+</div>
+<span class="material-symbols-outlined text-rose-500">sensors</span>
+</div>
+<div class="h-8 w-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-rose-500/20" style="height: 20%;"></div>
+<div class="flex-1 bg-rose-500/30" style="height: 40%;"></div>
+<div class="flex-1 bg-rose-500/40" style="height: 35%;"></div>
+<div class="flex-1 bg-rose-500/60" style="height: 70%;"></div>
+<div class="flex-1 bg-rose-500/80" style="height: 85%;"></div>
+<div class="flex-1 bg-rose-500" style="height: 90%;"></div>
+</div>
+<p class="text-[9px] text-rose-500 mt-2 uppercase tracking-tight">Warning: Approaching Limit (90kN)</p>
+</div>
+</div>
+</div>
+<!-- Validation Log -->
+<div class="flex-1 p-6 overflow-y-auto">
+<h5 class="text-label-caps font-bold text-on-surface-variant tracking-widest uppercase mb-4">Command History</h5>
+<div class="space-y-4 font-mono-data text-[11px]">
+<div class="flex gap-3">
+<span class="text-on-surface-variant">14:30:12</span>
+<p><span class="text-cyan-400">USR_429:</span> Verification initiated for Node_04</p>
+</div>
+<div class="flex gap-3">
+<span class="text-on-surface-variant">14:28:45</span>
+<p><span class="text-primary">SYS:</span> Ledger block 0x992.. confirmed by 12 nodes</p>
+</div>
+<div class="flex gap-3">
+<span class="text-on-surface-variant">14:22:01</span>
+<p><span class="text-rose-400">WARN:</span> Mismatch detected in signature PRJ-1102</p>
+</div>
+<div class="flex gap-3">
+<span class="text-on-surface-variant">14:15:55</span>
+<p><span class="text-cyan-400">USR_429:</span> Refreshing telemetry buffer...</p>
+</div>
+</div>
+</div>
+<!-- Admin Actions -->
+<div class="p-6 bg-surface-container-highest/20 border-t border-outline-variant">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-bold text-label-md uppercase tracking-widest flex items-center justify-center gap-2 mb-3 hover:scale-[1.02] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Verify &amp; Push to Ledger
+                </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-surface-container-highest border border-outline-variant py-2 rounded text-[11px] font-bold uppercase text-on-surface-variant hover:text-white transition-colors">
+                        Download Report
+                    </button>
+<button class="bg-surface-container-highest border border-outline-variant py-2 rounded text-[11px] font-bold uppercase text-on-surface-variant hover:text-white transition-colors">
+                        Assign Auditor
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Floating UI: Status Messenger -->
+<div class="fixed bottom-6 right-margin z-50 pointer-events-none">
+<div class="bg-surface-container-highest/90 backdrop-blur-xl border border-primary/30 p-4 rounded-xl shadow-2xl flex items-center gap-4 animate-bounce pointer-events-auto cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary animate-pulse">hub</span>
+</div>
+<div>
+<p class="text-label-sm font-bold text-on-surface uppercase">Blockchain Healthy</p>
+<p class="text-[10px] text-on-surface-variant">Last Block: 0x99281... (2.4s ago)</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">close</span>
+</div>
+</div>
+<script>
+        // Micro-interactions for the 'Cyber' feel
+        document.querySelectorAll('.cyber-border').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simulating telemetry update
+        setInterval(() => {
+            const stressVal = document.querySelector('.text-rose-500.font-mono-data');
+            if (stressVal) {
+                const current = parseFloat(stressVal.innerText);
+                const noise = (Math.random() - 0.5) * 0.5;
+                stressVal.innerText = (current + noise).toFixed(1) + " kN";
+            }
+        }, 2000);
+    </script>
+</body></html>

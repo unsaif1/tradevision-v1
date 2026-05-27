@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subcontractor Trade Portal - Claim Detail View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffdb9d",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-primary": "#00363a",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary": "#412d00",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-bright": "#37393e",
+                        "on-secondary-container": "#6b4b00",
+                        "background": "#111317",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e2e2e8",
+                        "on-primary-fixed-variant": "#004f54",
+                        "tertiary-container": "#dad9d9",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary": "#303031",
+                        "on-surface": "#e2e2e8",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffba20",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary-container": "#006970",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary-fixed": "#002022",
+                        "error": "#ffb4ab",
+                        "primary": "#dbfcff",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333539",
+                        "tertiary": "#f7f5f5",
+                        "secondary-container": "#feb700",
+                        "on-secondary-fixed": "#271900",
+                        "surface": "#111317",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024",
+                        "outline": "#849495",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed": "#ffdea8",
+                        "outline-variant": "#3b494b",
+                        "surface-tint": "#00dbe9",
+                        "surface-dim": "#111317",
+                        "on-surface-variant": "#b9cacb",
+                        "primary-container": "#00f0ff",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container-high": "#282a2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "data-point": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .symbol-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed min-h-screen flex flex-col md:flex-row pb-16 md:pb-0">
+<!-- TopAppBar (Mobile & Desktop Header) -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 docked full-width top-0 z-40 sticky md:hidden">
+<button class="text-primary-fixed-dim dark:text-primary-fixed-dim hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="text-center">
+<h1 class="font-headline-md text-headline-md-mobile text-on-surface">CLAIM-4082 // ACTIVE</h1>
+</div>
+<button class="text-primary-fixed-dim dark:text-primary-fixed-dim hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+</header>
+<!-- SideNav (Desktop Only) -->
+<nav class="hidden md:flex flex-col bg-surface-container border-r border-outline-variant w-20 lg:w-64 min-h-screen fixed left-0 top-0 z-50">
+<div class="p-gutter border-b border-outline-variant h-14 flex items-center justify-center lg:justify-start">
+<span class="font-label-caps text-label-caps text-primary font-bold tracking-widest hidden lg:block">APEX STRUCTURAL</span>
+<span class="material-symbols-outlined text-primary lg:hidden" data-icon="architecture">architecture</span>
+</div>
+<div class="flex flex-col flex-1 py-density-comfortable gap-unit">
+<!-- Project / Claim Context info -->
+<div class="px-gutter mb-density-comfortable hidden lg:block">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit">Current Project</p>
+<p class="font-headline-md text-body-fixed font-bold text-on-surface truncate">Riverside Commons</p>
+<p class="font-data-point text-label-caps text-primary mt-1">CLM-4082</p>
+</div>
+<a class="flex flex-row items-center gap-density-compact px-gutter py-density-comfortable lg:py-density-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mx-auto lg:mx-0" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps hidden lg:block uppercase tracking-wider">Command</span>
+</a>
+<a class="flex flex-row items-center gap-density-compact px-gutter py-density-comfortable lg:py-density-compact bg-primary-container text-on-primary-container border-r-2 border-primary hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined symbol-filled mx-auto lg:mx-0" data-icon="inventory_2" data-weight="fill">inventory_2</span>
+<span class="font-label-caps text-label-caps hidden lg:block uppercase tracking-wider font-bold">Projects</span>
+</a>
+<a class="flex flex-row items-center gap-density-compact px-gutter py-density-comfortable lg:py-density-compact text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mx-auto lg:mx-0" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-label-caps text-label-caps hidden lg:block uppercase tracking-wider">Safety</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:ml-20 lg:ml-64 w-full">
+<!-- Desktop Context Header -->
+<div class="hidden md:flex bg-surface dark:bg-surface border-b border-outline-variant justify-between items-center px-margin-desktop h-14 sticky top-0 z-30">
+<div class="flex items-center gap-density-comfortable">
+<button class="text-primary-fixed-dim hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 rounded-DEFAULT -ml-2">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface">CLAIM-4082 // ACTIVE</h1>
+</div>
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant border border-outline-variant px-2 py-1 rounded-sm bg-surface-container-low">RIVERSIDE COMMONS</span>
+<button class="text-primary-fixed-dim hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+</div>
+</div>
+<div class="p-margin-mobile md:p-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter max-w-[1600px] mx-auto w-full">
+<!-- Left Column: Status & Docs -->
+<div class="flex flex-col gap-gutter md:col-span-5 lg:col-span-4">
+<!-- Status Timeline Card -->
+<section class="bg-surface-container border border-outline-variant rounded-DEFAULT relative overflow-hidden">
+<!-- Industrial Tab -->
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface px-3 py-1 font-label-caps text-[10px] uppercase tracking-wider rounded-br-DEFAULT border-b border-r border-outline-variant z-10">
+                        Progression Matrix
+                    </div>
+<div class="p-density-comfortable pt-10">
+<div class="relative pl-6 border-l border-outline-variant space-y-6">
+<!-- Timeline Item: Completed -->
+<div class="relative">
+<div class="absolute -left-[29px] top-0 w-4 h-4 rounded-full bg-surface-container border-2 border-primary-fixed-dim flex items-center justify-center z-10">
+<div class="w-1.5 h-1.5 bg-primary-fixed-dim rounded-full"></div>
+</div>
+<div class="font-data-point text-body-fixed text-primary-fixed-dim"><span class="text-[10px] opacity-50 mr-2">STP-01</span>Assignment</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">OCT 12 0800 HRS</div>
+</div>
+<!-- Timeline Item: Active -->
+<div class="relative">
+<div class="absolute -left-[29px] top-0 w-4 h-4 rounded-full bg-primary-container border-2 border-primary flex items-center justify-center shadow-[0_0_8px_rgba(0,240,255,0.5)] z-10">
+<div class="w-1.5 h-1.5 bg-on-primary-container rounded-full animate-pulse"></div>
+</div>
+<div class="absolute -left-[28px] top-0 w-1 h-full bg-primary -z-0 -ml-[1px]"></div>
+<div class="font-data-point text-body-fixed text-primary shadow-primary"><div class="flex items-center gap-2"><span class="text-[10px] opacity-50">STP-02</span>Work in Progress <span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span></div></div>
+<div class="font-label-caps text-label-caps text-on-surface mt-1">CURRENT PHASE</div>
+<div class="mt-density-compact bg-surface border border-outline-variant p-2 rounded-sm text-sm text-on-surface-variant font-label-caps">
+                                    Tear-off 60% complete. Underlayment staging pending.
+                                </div>
+</div>
+<!-- Timeline Item: Pending -->
+<div class="relative">
+<div class="absolute -left-[29px] top-0 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-outline-variant flex items-center justify-center z-10"></div>
+<div class="font-data-point text-body-fixed text-on-surface-variant"><span class="text-[10px] opacity-50 mr-2">STP-03</span>Final Inspection</div>
+<div class="font-label-caps text-label-caps text-outline mt-1">PENDING QA</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Document Vault Card -->
+<section class="bg-surface-container border border-outline-variant rounded-DEFAULT relative overflow-hidden flex-1">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface px-3 py-1 font-label-caps text-[10px] uppercase tracking-wider rounded-br-DEFAULT border-b border-r border-outline-variant z-10">
+                        Document Vault
+                    </div>
+<div class="p-density-comfortable pt-10 flex flex-col h-full gap-density-comfortable">
+<div class="border border-dashed border-outline-variant rounded-DEFAULT p-4 flex flex-col items-center justify-center text-center hover:bg-surface-container-highest transition-colors cursor-pointer group bg-surface-container-low">
+<span class="material-symbols-outlined text-outline group-hover:text-primary mb-2 text-3xl" data-icon="cloud_upload">cloud_upload</span>
+<span class="font-label-caps text-label-caps text-on-surface">DRAG &amp; DROP TO UPLOAD</span>
+<span class="text-xs text-on-surface-variant mt-1">PDF, JPG, PNG (Max 50MB)</span>
+</div>
+<div class="flex flex-col gap-unit">
+<!-- Doc Row -->
+<div class="flex items-center justify-between p-density-compact bg-surface border border-outline-variant rounded-sm hover:border-primary-fixed-dim transition-colors group">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+<div>
+<div class="font-label-caps text-[11px] text-on-surface">RIVERSIDE_BLUEPRINT_V2.PDF</div>
+<div class="text-[9px] text-on-surface-variant font-data-point">12.4 MB • SYS_GEN</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+</div>
+<!-- Doc Row -->
+<div class="flex items-center justify-between p-density-compact bg-surface border border-outline-variant rounded-sm hover:border-primary-fixed-dim transition-colors group">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-secondary-container" data-icon="image">image</span>
+<div>
+<div class="font-label-caps text-[11px] text-on-surface">SITE_CONDITION_PRE.JPG</div>
+<div class="text-[9px] text-on-surface-variant font-data-point">4.2 MB • FIELD_UPL</div>
+</div>
+</div>
+<button class="text-outline hover:text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Estimate Terminal -->
+<div class="md:col-span-7 lg:col-span-8">
+<section class="bg-surface-container border border-outline-variant rounded-DEFAULT relative h-full flex flex-col">
+<div class="absolute top-0 left-0 bg-primary-fixed-dim text-on-primary-fixed px-3 py-1 font-label-caps text-[10px] uppercase tracking-wider rounded-br-DEFAULT border-b border-r border-primary-fixed-dim z-10 font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)]">
+                        Estimate Terminal
+                    </div>
+<div class="p-density-comfortable pt-12 flex-1 flex flex-col gap-density-comfortable">
+<!-- Header Specs -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-unit border-b border-outline-variant pb-density-comfortable">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">TOTAL SQ FT</p>
+<p class="font-data-point text-data-point text-primary">12,450</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">PITCH</p>
+<p class="font-data-point text-data-point text-on-surface">4/12</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">MATERIAL</p>
+<div class="inline-block bg-surface border border-outline-variant px-2 py-1 text-on-surface font-label-caps text-[10px] mt-1">
+                                    TPO
+                                </div>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">PERMIT #</p>
+<p class="font-data-point text-body-fixed text-on-surface">P-88219</p>
+</div>
+</div>
+<!-- Line Items -->
+<div class="flex-1 flex flex-col gap-unit overflow-auto bg-[radial-gradient(#3b494b_1px,transparent_1px)] [background-size:16px_16px]">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-unit px-2 pb-2 border-b border-outline-variant font-label-caps text-[10px] text-on-surface-variant">
+<div class="col-span-1">CODE</div>
+<div class="col-span-5">DESCRIPTION</div>
+<div class="col-span-2 text-right">QTY/UNIT</div>
+<div class="col-span-2 text-right">RATE</div>
+<div class="col-span-2 text-right">TOTAL</div>
+</div>
+<!-- Input Row -->
+<div class="grid grid-cols-12 gap-unit items-center bg-surface border border-outline-variant p-2 rounded-sm focus-within:border-primary-fixed-dim focus-within:shadow-[0_0_4px_rgba(0,219,233,0.3)] transition-colors">
+<div class="col-span-1 font-data-point text-[11px] text-outline"><div class="flex items-center gap-1">MAT-4<span class="material-symbols-outlined text-[12px] opacity-50">sync_alt</span></div></div>
+<div class="col-span-5">
+<input class="w-full bg-transparent border-none text-[12px] font-label-caps text-on-surface focus:ring-0 p-0" placeholder="Description" type="text" value="Tear-off &amp; Disposal"/>
+</div>
+<div class="col-span-2 flex items-center justify-end border-l border-outline-variant pl-2">
+<input class="w-16 bg-transparent border-none text-right text-[12px] font-data-point text-primary focus:ring-0 p-0 text-right" type="number" value="125"/>
+<span class="text-[10px] font-label-caps text-on-surface-variant ml-1">SQ</span>
+</div>
+<div class="col-span-2 flex items-center justify-end border-l border-outline-variant pl-2">
+<span class="text-[10px] text-on-surface-variant mr-1">$</span>
+<input class="w-16 bg-transparent border-none text-right text-[12px] font-data-point text-on-surface focus:ring-0 p-0" type="number" value="45.00"/>
+</div>
+<div class="col-span-2 text-right font-data-point text-[12px] text-on-surface border-l border-outline-variant pl-2">
+                                    $5,625.00
+                                </div>
+</div>
+<!-- Input Row -->
+<div class="grid grid-cols-12 gap-unit items-center bg-surface border border-outline-variant p-2 rounded-sm focus-within:border-primary-fixed-dim focus-within:shadow-[0_0_4px_rgba(0,219,233,0.3)] transition-colors">
+<div class="col-span-1 font-data-point text-[11px] text-outline">MAT-4</div>
+<div class="col-span-5">
+<input class="w-full bg-transparent border-none text-[12px] font-label-caps text-on-surface focus:ring-0 p-0" placeholder="Description" type="text" value="60-mil TPO Membrane (White)"/>
+</div>
+<div class="col-span-2 flex items-center justify-end border-l border-outline-variant pl-2">
+<input class="w-16 bg-transparent border-none text-right text-[12px] font-data-point text-primary focus:ring-0 p-0 text-right" type="number" value="130"/>
+<span class="text-[10px] font-label-caps text-on-surface-variant ml-1">RL</span>
+</div>
+<div class="col-span-2 flex items-center justify-end border-l border-outline-variant pl-2">
+<span class="text-[10px] text-on-surface-variant mr-1">$</span>
+<input class="w-16 bg-transparent border-none text-right text-[12px] font-data-point text-on-surface focus:ring-0 p-0" type="number" value="180.00"/>
+</div>
+<div class="col-span-2 text-right font-data-point text-[12px] text-on-surface border-l border-outline-variant pl-2">
+                                    $23,400.00
+                                </div>
+</div>
+<button class="w-full border border-dashed border-outline-variant bg-surface-container-low text-on-surface-variant hover:text-primary hover:border-primary py-2 rounded-sm font-label-caps text-[10px] flex items-center justify-center gap-1 transition-colors mt-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span> ADD LINE ITEM
+                            </button>
+</div>
+<!-- Totals & Submit -->
+<div class="bg-surface border border-outline-variant p-density-comfortable mt-auto relative shadow-[0_-4px_16px_rgba(0,0,0,0.5)]">
+<div class="flex justify-between items-end mb-density-comfortable border-b border-outline-variant pb-density-comfortable">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED TOTAL</span>
+<span class="font-data-point text-headline-md text-primary">$29,025.00</span>
+</div>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed font-headline-md text-[18px] py-4 rounded-sm border-b-4 border-on-primary-fixed hover:bg-primary transition-colors flex justify-center items-center gap-2 uppercase tracking-wide shadow-[0_4px_0_#002022_inset]">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                                Transmit Estimate
+                            </button><div class="w-full text-center mt-2 font-label-caps text-[10px] text-primary-fixed-dim animate-pulse tracking-[0.2em]">READY FOR PROTOCOL</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container dark:bg-surface-container border-t border-outline-variant md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-full h-full hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-[10px] uppercase">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container w-full h-full border-t-2 border-primary active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1 symbol-filled" data-icon="inventory_2" data-weight="fill">inventory_2</span>
+<span class="font-label-caps text-[10px] uppercase font-bold">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-full h-full hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-label-caps text-[10px] uppercase">Safety</span>
+</a>
+</nav>
+</body></html>

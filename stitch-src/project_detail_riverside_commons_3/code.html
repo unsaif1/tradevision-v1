@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roof Command - Riverside Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#006970",
+                      "inverse-on-surface": "#2f3035",
+                      "primary-container": "#00f0ff",
+                      "secondary": "#ffdb9d",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#5e5f5f",
+                      "tertiary": "#f7f5f5",
+                      "surface-container": "#1e2024",
+                      "surface": "#111317",
+                      "on-error-container": "#ffdad6",
+                      "on-primary": "#00363a",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "on-surface-variant": "#b9cacb",
+                      "surface-bright": "#37393e",
+                      "secondary-container": "#feb700",
+                      "on-primary-fixed": "#002022",
+                      "on-secondary-container": "#6b4b00",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-error": "#690005",
+                      "secondary-fixed": "#ffdea8",
+                      "inverse-primary": "#006970",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "primary-fixed": "#7df4ff",
+                      "on-surface": "#e2e2e8",
+                      "tertiary-container": "#dad9d9",
+                      "outline-variant": "#3b494b",
+                      "surface-container-low": "#1a1c20",
+                      "surface-container-highest": "#333539",
+                      "inverse-surface": "#e2e2e8",
+                      "tertiary-fixed": "#e4e2e2",
+                      "primary": "#dbfcff",
+                      "outline": "#849495",
+                      "surface-container-lowest": "#0c0e12",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#303031",
+                      "on-background": "#e2e2e8",
+                      "on-secondary-fixed": "#271900",
+                      "on-secondary": "#412d00",
+                      "background": "#111317",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-primary-fixed-variant": "#004f54",
+                      "surface-dim": "#111317",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "surface-variant": "#333539",
+                      "surface-container-high": "#282a2e",
+                      "surface-tint": "#00dbe9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "density-compact": "8px",
+                      "margin-desktop": "32px",
+                      "density-comfortable": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Space Grotesk"],
+                      "headline-md": ["Space Grotesk"],
+                      "data-point": ["JetBrains Mono"],
+                      "body-fixed": ["Inter"],
+                      "display-lg-mobile": ["Space Grotesk"],
+                      "label-caps": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .symbol-filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Cyber-Industrial Specific Styles */
+        .industrial-border {
+            border: 1px solid #2D2D2D;
+        }
+        .tech-tab {
+            position: absolute;
+            top: -12px;
+            left: 16px;
+            background-color: var(--color-surface-container);
+            padding: 2px 8px;
+            border: 1px solid #2D2D2D;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            z-index: 10;
+        }
+        .data-glow:focus-within {
+            border-color: theme('colors.primary');
+            box-shadow: inset 0 0 8px rgba(0, 219, 233, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased pb-24 md:pb-0 md:pl-80 pt-16 md:pt-0 overflow-x-hidden">
+<!-- TopAppBar (Mobile Only - Based on Destination Rule, this is a detail view but TopNav provides context. Using minimal context variant) -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant bg-surface dark:bg-surface md:hidden flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-100 p-2 rounded">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter uppercase">ROOF_COMMAND</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop Only) -->
+<nav class="hidden md:flex flex-col h-full p-density-comfortable bg-surface-container dark:bg-surface-container border-r border-outline-variant w-80 fixed left-0 top-0 z-40 transition-transform duration-300 ease-in-out">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-primary symbol-filled" data-icon="engineering">engineering</span>
+</div>
+<div>
+<h2 class="font-display-lg text-display-lg-mobile text-primary tracking-tighter">ROOF_CMD</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant">v2.4.0-Industrial</p>
+</div>
+</div>
+<div class="mb-6 pb-6 border-b border-outline-variant">
+<h3 class="font-body-fixed text-body-fixed font-bold text-on-surface mb-1">Lead Inspector</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Region: North-East</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-fixed text-body-fixed">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-bold border-l-4 border-primary transition-colors" href="#">
+<span class="material-symbols-outlined symbol-filled" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-body-fixed text-body-fixed">Jobs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-body-fixed text-body-fixed">Team Sync</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-body-fixed text-body-fixed">Safety Protocols</span>
+</a>
+</li>
+</ul>
+<ul class="mt-auto flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-fixed text-body-fixed">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Canvas -->
+<main class="p-margin-mobile md:p-margin-desktop max-w-7xl mx-auto min-h-screen">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-density-comfortable">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-secondary-container uppercase tracking-widest">Active Site</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Riverside Commons</h1>
+<p class="font-data-point text-data-point text-on-surface-variant mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                    482 Industrial Pkwy, Sector 7
+                </p>
+</div>
+<button class="bg-primary text-on-primary-container font-data-point text-data-point px-8 py-4 rounded hover:bg-primary-fixed-dim transition-colors border-b-4 border-on-primary-fixed active:border-b-0 active:translate-y-1 flex items-center justify-center gap-2 w-full md:w-auto shrink-0">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                START INSPECTION
+            </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Aerial Telemetry (Large Canvas) -->
+<div class="md:col-span-8 relative mt-3 rounded-lg industrial-border bg-surface-container-low overflow-hidden group min-h-[300px] md:min-h-[400px]">
+<div class="tech-tab font-label-caps text-label-caps text-primary uppercase">
+                    Aerial Telemetry
+                </div>
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity group-hover:opacity-60 transition-opacity duration-500" data-alt="A highly detailed overhead drone shot of a large industrial flat roof complex. The image uses a technical, low-saturation cyber-industrial aesthetic dominated by deep blacks, cool zinc grays, and precise grid lines. The lighting is stark and analytical, revealing subtle textures of the roofing membrane and HVAC units. Neon cyan data overlays faintly suggest thermal scanning or structural analysis modes active." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVTJEA3iTjkbEEYjX4wX-61az1i87p5MAGVd6UMrG-8D3aApDxoH9LXH6-oIlKzqj89z1q6ZfXJvirgbh44jcn3PpO-hFpTnX1D42o9IWglADwMwB4Bj8PWztfCHQaGmtqOmVRuWOGPWt_Aqu9Wj7Bb2lz-A4XiNt8OZyLbyDDAKaAy_W7B31_CGVj364gl27X04na35r25BJxcqAH5dGj4JJkTrF7dTW7xC3yqiGcBhkFWZUnly5DvuWr149aKKOo2H36fPgQgubr')">
+</div>
+<div class="absolute inset-0 border border-primary opacity-20 pointer-events-none" style="background-image: linear-gradient(rgba(0, 219, 233, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 219, 233, 0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- HUD Elements -->
+<div class="absolute top-4 right-4 flex gap-2">
+<div class="bg-surface/80 backdrop-blur industrial-border px-3 py-1 rounded font-data-point text-label-caps text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="flight_takeoff">flight_takeoff</span>
+                        ALT: 124FT
+                    </div>
+<div class="bg-surface/80 backdrop-blur industrial-border px-3 py-1 rounded font-data-point text-label-caps text-error flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+                        REC
+                    </div>
+</div>
+<div class="absolute bottom-4 left-4 bg-surface/90 backdrop-blur industrial-border p-3 rounded max-w-xs">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">Estimated Area</div>
+<div class="font-data-point text-headline-md text-primary">12,450 <span class="text-sm text-on-surface-variant">SQ FT</span></div>
+</div>
+</div>
+<!-- Structure Health (Vertical Panel) -->
+<div class="md:col-span-4 relative mt-3 rounded-lg industrial-border bg-surface-container flex flex-col p-4">
+<div class="tech-tab font-label-caps text-label-caps text-secondary-container uppercase">
+                    Structure Health
+                </div>
+<div class="mt-4 flex-grow flex flex-col gap-4">
+<!-- Moisture Reading -->
+<div class="bg-surface-container-highest rounded p-3 industrial-border relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="water_drop">water_drop</span>
+                                Sub-deck Moisture
+                            </span>
+<span class="font-data-point text-label-caps text-error border border-error/30 px-1 rounded bg-error/10">CRITICAL</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile text-error">24.5</span>
+<span class="font-data-point text-data-point text-on-surface-variant mb-1">%</span>
+</div>
+<!-- Simple Progress Bar -->
+<div class="w-full bg-surface h-2 mt-3 rounded overflow-hidden">
+<div class="bg-error h-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- Deck Integrity -->
+<div class="bg-surface-container-highest rounded p-3 industrial-border relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="foundation">foundation</span>
+                                Core Integrity
+                            </span>
+<span class="font-data-point text-label-caps text-primary border border-primary/30 px-1 rounded bg-primary/10">NOMINAL</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">88</span>
+<span class="font-data-point text-data-point text-on-surface-variant mb-1">/100</span>
+</div>
+</div>
+<!-- Pitch Gauge (Simplified) -->
+<div class="bg-surface-container-highest rounded p-3 industrial-border mt-auto flex items-center justify-between">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">Measured Pitch</div>
+<div class="font-data-point text-headline-md text-on-surface">4:12</div>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant relative flex items-center justify-center">
+<div class="absolute w-full h-0.5 bg-primary transform -rotate-[18deg]"></div>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="architecture">architecture</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Material Inventory (Bottom Full Width) -->
+<div class="md:col-span-12 relative mt-3 rounded-lg industrial-border bg-surface-container overflow-hidden">
+<div class="tech-tab font-label-caps text-label-caps text-on-surface uppercase">
+                    Material Inventory
+                </div>
+<div class="p-0 overflow-x-auto">
+<table class="w-full text-left border-collapse mt-4">
+<thead>
+<tr class="bg-surface-container-highest border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant uppercase">
+<th class="p-density-compact font-medium pl-4">Type</th>
+<th class="p-density-compact font-medium">SKU / Designation</th>
+<th class="p-density-compact font-medium text-right">Est. Req</th>
+<th class="p-density-compact font-medium text-right">On Site</th>
+<th class="p-density-compact font-medium text-center pr-4">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-fixed text-body-fixed divide-y divide-outline-variant/50">
+<!-- Row 1 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-density-compact pl-4">
+<div class="inline-flex items-center justify-center w-8 h-8 rounded bg-surface-bright industrial-border font-data-point text-label-caps text-on-surface">
+                                        TPO
+                                    </div>
+</td>
+<td class="p-density-compact font-data-point text-[14px]">
+<div class="text-on-surface">TPO-060-WHT</div>
+<div class="text-[10px] text-on-surface-variant">Membrane Roll 10x100</div>
+</td>
+<td class="p-density-compact text-right font-data-point">14 <span class="text-xs text-on-surface-variant">rl</span></td>
+<td class="p-density-compact text-right font-data-point text-primary">14 <span class="text-xs text-on-surface-variant">rl</span></td>
+<td class="p-density-compact text-center pr-4">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-density-compact pl-4">
+<div class="inline-flex items-center justify-center w-8 h-8 rounded bg-surface-bright industrial-border font-data-point text-label-caps text-on-surface">
+                                        ISO
+                                    </div>
+</td>
+<td class="p-density-compact font-data-point text-[14px]">
+<div class="text-on-surface">ISO-20-4X8</div>
+<div class="text-[10px] text-on-surface-variant">Polyiso Board 2.0"</div>
+</td>
+<td class="p-density-compact text-right font-data-point">400 <span class="text-xs text-on-surface-variant">bd</span></td>
+<td class="p-density-compact text-right font-data-point text-secondary-container">120 <span class="text-xs text-on-surface-variant">bd</span></td>
+<td class="p-density-compact text-center pr-4">
+<span class="material-symbols-outlined text-secondary-container" data-icon="local_shipping">local_shipping</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-density-compact pl-4">
+<div class="inline-flex items-center justify-center w-8 h-8 rounded bg-surface-bright industrial-border font-data-point text-label-caps text-on-surface">
+                                        ADH
+                                    </div>
+</td>
+<td class="p-density-compact font-data-point text-[14px]">
+<div class="text-on-surface">BOND-LV-5G</div>
+<div class="text-[10px] text-on-surface-variant">Bonding Auth 5 Gal</div>
+</td>
+<td class="p-density-compact text-right font-data-point">22 <span class="text-xs text-on-surface-variant">pl</span></td>
+<td class="p-density-compact text-right font-data-point text-error">0 <span class="text-xs text-on-surface-variant">pl</span></td>
+<td class="p-density-compact text-center pr-4">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

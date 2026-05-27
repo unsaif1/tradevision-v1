@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Predictive Risk Forecasting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "secondary": "#ffdb9d",
+                    "surface-tint": "#00dbe9",
+                    "primary-container": "#00f0ff",
+                    "surface-container": "#1e2024",
+                    "on-secondary-fixed": "#271900",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-surface-variant": "#b9cacb",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-primary-container": "#006970",
+                    "secondary-fixed-dim": "#ffba20",
+                    "on-tertiary": "#303031",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "surface": "#111317",
+                    "outline-variant": "#3b494b",
+                    "on-error-container": "#ffdad6",
+                    "secondary-container": "#feb700",
+                    "surface-variant": "#333539",
+                    "primary-fixed": "#7df4ff",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-primary": "#00363a",
+                    "on-background": "#e2e2e8",
+                    "outline": "#849495",
+                    "surface-container-low": "#1a1c20",
+                    "surface-bright": "#37393e",
+                    "tertiary-container": "#dad9d9",
+                    "tertiary": "#f7f5f5",
+                    "on-surface": "#e2e2e8",
+                    "surface-container-high": "#282a2e",
+                    "primary-fixed-dim": "#00dbe9",
+                    "inverse-primary": "#006970",
+                    "error-container": "#93000a",
+                    "background": "#111317",
+                    "on-tertiary-container": "#5e5f5f",
+                    "inverse-surface": "#e2e2e8",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#2f3035",
+                    "secondary-fixed": "#ffdea8",
+                    "surface-container-highest": "#333539",
+                    "surface-dim": "#111317",
+                    "on-primary-fixed-variant": "#004f54",
+                    "primary": "#dbfcff",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-secondary-container": "#6b4b00",
+                    "on-secondary": "#412d00",
+                    "on-primary-fixed": "#002022",
+                    "tertiary-fixed": "#e4e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "density-comfortable": "24px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "density-compact": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Space Grotesk"
+                    ],
+                    "display-lg": [
+                            "Space Grotesk"
+                    ],
+                    "data-point": [
+                            "JetBrains Mono"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "body-fixed": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "data-point": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-fixed": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { background-color: #111317; color: #e2e2e8; }
+        .gauge-meter {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 79; /* 72% */
+            transition: stroke-dashoffset 1s ease-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background pb-20 md:pb-0 font-body-fixed antialiased">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-headline-md text-headline-md-mobile fixed top-0 w-full z-50 border-b border-outline-variant flat no shadows">
+<div class="flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-density-compact cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95 duration-100 rounded p-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter uppercase">
+                ROOF_COMMAND
+            </div>
+<div class="flex items-center cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95 duration-100 rounded-full p-1">
+<img alt="Contractor Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, high-contrast avatar portrait of an industrial contractor. Deep shadows and sharp lighting, consistent with a dark-mode technical dashboard. Minimalist background, high-definition details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVnm0lUCfmrtRvllTdAboZyajaF2Xgpj5Fz49kZBzIFdlYpnZZLBVpYWTCmyID5Ra6CJ6XB3n2lQsGToOm6pCH3c1Jn2NKYivt8usIrEGIUjG-HgfZKd_3VwmboPapA8G7bL4IPh41wdBk6gU23u4oRbMfULKS_qZgwC-IOmpBEAnXjI4RexspM1E6sN_ND9HVeEjB0421pTBs-epyiewh77nqBIyPbM5hhCXCNnSl67GpQrq4uRpDBMmdb4YaZG0LvMAHI_skHNiR"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-20 px-margin-mobile md:px-margin-desktop md:pt-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Risk Score Card -->
+<section class="md:col-span-4 bg-surface-container border border-outline-variant rounded-lg p-density-comfortable relative overflow-hidden flex flex-col items-center justify-center">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded-br-DEFAULT">SYS_STATUS</div>
+<div class="relative w-48 h-48 flex items-center justify-center mt-4">
+<svg class="transform -rotate-90 w-full h-full" viewbox="0 0 100 100">
+<!-- Background circle -->
+<circle cx="50" cy="50" fill="none" r="45" stroke="#282a2e" stroke-width="8"></circle>
+<!-- Foreground circle -->
+<circle class="gauge-meter" cx="50" cy="50" fill="none" r="45" stroke="#ffb4ab" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-error">72</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">/100 RISK</span>
+</div>
+</div>
+<div class="mt-density-comfortable w-full flex justify-between items-center border-t border-outline-variant pt-density-compact">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TREND</span>
+<span class="font-data-point text-data-point text-error flex items-center"><span class="material-symbols-outlined text-sm mr-1">trending_up</span> +4.2</span>
+</div>
+</section>
+<!-- Risk Matrix -->
+<section class="md:col-span-8 bg-surface-container border border-outline-variant rounded-lg p-density-comfortable relative">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded-br-DEFAULT">RISK_MATRIX</div>
+<div class="mt-6 flex flex-col h-full">
+<div class="flex items-end mb-2 h-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant w-8">IMP</span>
+<div class="flex-grow flex justify-between ml-2">
+<span class="font-label-caps text-label-caps text-outline text-[10px]">LOW</span>
+<span class="font-label-caps text-label-caps text-outline text-[10px]">HIGH</span>
+</div>
+</div>
+<div class="flex flex-grow relative pb-6 pl-8">
+<!-- Y-axis Label -->
+<div class="absolute left-0 top-0 bottom-6 w-8 flex flex-col justify-between items-center py-2">
+<span class="font-label-caps text-label-caps text-outline text-[10px] transform -rotate-90 origin-center whitespace-nowrap -translate-x-2">HIGH</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant transform -rotate-90 origin-center">PROB</span>
+<span class="font-label-caps text-label-caps text-outline text-[10px] transform -rotate-90 origin-center whitespace-nowrap -translate-x-2">LOW</span>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-4 grid-rows-4 w-full h-48 gap-unit bg-surface">
+<!-- Row 1 (High Prob) -->
+<div class="bg-secondary-container/20 rounded-sm"></div>
+<div class="bg-secondary-container/40 rounded-sm"></div>
+<div class="bg-error/60 rounded-sm relative"><div class="absolute inset-1 border border-error/50 rounded-sm"></div></div>
+<div class="bg-error/90 rounded-sm shadow-[0_0_8px_rgba(255,180,171,0.5)] relative"><div class="absolute right-1 top-1 w-2 h-2 rounded-full bg-surface-container animate-ping"></div></div>
+<!-- Row 2 -->
+<div class="bg-primary/10 rounded-sm"></div>
+<div class="bg-secondary-container/20 rounded-sm"></div>
+<div class="bg-secondary-container/60 rounded-sm"></div>
+<div class="bg-error/70 rounded-sm"></div>
+<!-- Row 3 -->
+<div class="bg-surface-container-highest rounded-sm"></div>
+<div class="bg-primary/20 rounded-sm"></div>
+<div class="bg-secondary-container/30 rounded-sm"></div>
+<div class="bg-error/40 rounded-sm"></div>
+<!-- Row 4 (Low Prob) -->
+<div class="bg-surface-container-high rounded-sm"></div>
+<div class="bg-surface-container-highest rounded-sm"></div>
+<div class="bg-primary/30 rounded-sm"></div>
+<div class="bg-secondary-container/40 rounded-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Alerts List -->
+<section class="md:col-span-12 flex flex-col gap-unit">
+<div class="font-headline-md text-headline-md-mobile text-on-surface py-density-compact">Active Anomalies</div>
+<!-- Alert 1 -->
+<div class="bg-surface border border-outline-variant rounded p-gutter flex items-center justify-between border-l-4 border-l-error">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps bg-error text-on-error px-2 py-0.5 rounded-sm">CRITICAL</span>
+<span class="font-data-point text-data-point text-on-surface text-sm">STRUC-TENSION-99A</span>
+</div>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Load bearing threshold exceeded on North Sector.</span>
+</div>
+<div class="hidden sm:flex w-24 h-8 bg-surface-container relative overflow-hidden rounded-sm border border-outline-variant">
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 100 30">
+<polyline fill="none" points="0,25 20,20 40,28 60,15 80,5 100,2" stroke="#ffb4ab" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="bg-surface border border-outline-variant rounded p-gutter flex items-center justify-between border-l-4 border-l-secondary-container">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-sm">ELEVATED</span>
+<span class="font-data-point text-data-point text-on-surface text-sm">MOISTURE-DET-22C</span>
+</div>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Micro-fracture detected in membrane sealing.</span>
+</div>
+<div class="hidden sm:flex w-24 h-8 bg-surface-container relative overflow-hidden rounded-sm border border-outline-variant">
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 100 30">
+<polyline fill="none" points="0,25 20,22 40,25 60,18 80,12 100,10" stroke="#feb700" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<!-- Alert 3 -->
+<div class="bg-surface border border-outline-variant rounded p-gutter flex items-center justify-between border-l-4 border-l-primary-container">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps bg-primary-container text-on-primary-container px-2 py-0.5 rounded-sm">MONITOR</span>
+<span class="font-data-point text-data-point text-on-surface text-sm">WIND-UPLIFT-REQ</span>
+</div>
+<span class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Incoming front approaches design tolerances.</span>
+</div>
+<div class="hidden sm:flex w-24 h-8 bg-surface-container relative overflow-hidden rounded-sm border border-outline-variant">
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 100 30">
+<polyline fill="none" points="0,15 20,18 40,12 60,15 80,10 100,12" stroke="#00f0ff" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-container dark:text-primary-container font-label-caps text-label-caps fixed bottom-0 w-full z-50 h-20 border-t border-outline-variant flat no shadows flex justify-around items-center px-gutter">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all cursor-pointer rounded p-1">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-4 py-1 border border-primary hover:text-primary active:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span>Forecasting</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all cursor-pointer rounded p-1">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">shield</span>
+<span>Mitigation</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all cursor-pointer rounded p-1">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">description</span>
+<span>Reports</span>
+</div>
+</nav>
+</body></html>

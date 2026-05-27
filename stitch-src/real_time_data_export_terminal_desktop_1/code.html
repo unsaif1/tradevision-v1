@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real-Time Data Export Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#333a43",
+                        "secondary": "#4de082",
+                        "on-secondary-container": "#003e1c",
+                        "surface-elevated": "#1C2128",
+                        "on-primary": "#67001e",
+                        "surface-container-low": "#151c24",
+                        "on-surface": "#dce3ee",
+                        "tertiary": "#adc6ff",
+                        "on-secondary": "#003919",
+                        "surface-container-lowest": "#080f16",
+                        "error-container": "#93000a",
+                        "on-background": "#dce3ee",
+                        "surface-base": "#111820",
+                        "tertiary-container": "#2171e4",
+                        "surface-stroke": "#2D3748",
+                        "surface-container-highest": "#2e353e",
+                        "secondary-fixed-dim": "#4de082",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-tint": "#ffb2b9",
+                        "neon-green": "#4ADE80",
+                        "inverse-primary": "#be003e",
+                        "inverse-on-surface": "#2a313a",
+                        "background": "#0d141c",
+                        "inverse-surface": "#dce3ee",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#002e6a",
+                        "neon-orange": "#F97316",
+                        "surface-container": "#192028",
+                        "surface-container-high": "#242b33",
+                        "secondary-container": "#00b55d",
+                        "primary": "#ffb2b9",
+                        "surface-variant": "#2e353e",
+                        "primary-fixed": "#ffdadb",
+                        "neon-blue": "#3B82F6",
+                        "surface-dim": "#0d141c",
+                        "on-primary-container": "#fffcff",
+                        "outline": "#ab888a",
+                        "on-error": "#690005",
+                        "text-muted": "#8896A8",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "secondary-fixed": "#6dfe9c",
+                        "on-tertiary-fixed": "#001a42",
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#e21e51",
+                        "on-secondary-fixed": "#00210c",
+                        "neon-pink": "#E21E51",
+                        "on-surface-variant": "#e4bdbf",
+                        "outline-variant": "#5c3f42",
+                        "on-secondary-fixed-variant": "#005227",
+                        "surface": "#0d141c",
+                        "on-tertiary-container": "#fffcff",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-primary-fixed": "#40000f",
+                        "status-cyan": "#00f0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "stack-gap": "12px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "stat-display": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "label-caps": ["Barlow Condensed"],
+                        "caption": ["Barlow"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-md": ["Barlow"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    "fontSize": {
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Barlow', sans-serif; background-color: theme('colors.surface-base'); color: theme('colors.on-surface'); }
+        .mono-text { font-family: theme('fontFamily.mono'); }
+        .card-border-top { border-top: 4px solid theme('colors.neon-pink'); }
+        .card-border-full { border: 1px solid theme('colors.neon-pink'); }
+        .glow-text-cyan { text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); }
+        /* Custom scrollbar for terminal */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: theme('colors.surface-container-low'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-stroke'); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.text-muted'); }
+    </style>
+</head>
+<body class="bg-surface-base text-on-surface h-screen overflow-hidden flex">
+<!-- Navigation Drawer -->
+<nav class="bg-surface dark:bg-surface font-label-caps text-label-caps fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin z-20">
+<div class="px-4 mb-8">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight font-headline-lg text-headline-lg">TRADEVISION</h1>
+</div>
+<ul class="flex-1 space-y-2 px-2">
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                    DASHBOARD
+                </a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+                    AUDIT LOG
+                </a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                    SYSTEM SETTINGS
+                </a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+                    USERS
+                </a>
+</li>
+<li>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assessment</span>
+                    REPORTS
+                </a>
+</li>
+</ul>
+<div class="px-4 mt-auto border-t border-outline-variant pt-4">
+<div class="mono-text text-xs text-status-cyan glow-text-cyan flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-status-cyan animate-pulse"></div>
+                 TELEMETRY: ACTIVE
+             </div>
+<div class="mono-text text-xs text-text-muted mt-1">
+                 AUTH_LEVEL: 4
+             </div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col h-full bg-surface-base relative">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low h-[64px] border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-full sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<div class="font-headline-sm text-headline-sm text-primary font-bold tracking-wider">
+                    ADMINISTRATIVE SUITE <span class="text-text-muted mx-2 font-normal">/</span> DATA EXPORT
+                </div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-stroke flex items-center justify-center overflow-hidden border border-primary-container">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</div>
+</header>
+<!-- Workspace -->
+<div class="flex-1 p-margin-desktop overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Parameter Config -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-elevated rounded card-border-top p-6 flex flex-col h-full shadow-lg border border-surface-stroke">
+<h2 class="mono-text text-text-muted text-sm tracking-widest mb-6 font-bold">[ PARAMETER_CONFIG ]</h2>
+<form class="space-y-6 flex-1 flex flex-col">
+<!-- Format Selection -->
+<div>
+<label class="mono-text text-xs text-text-muted mb-2 block uppercase">Format_Selection</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="bg-surface-container-highest border border-primary text-primary px-3 py-2 text-xs mono-text rounded hover:bg-surface-container transition-colors" type="button">CSV</button>
+<button class="bg-surface-base border border-surface-stroke text-text-muted px-3 py-2 text-xs mono-text rounded hover:border-text-muted transition-colors" type="button">JSON</button>
+<button class="bg-surface-base border border-surface-stroke text-text-muted px-3 py-2 text-xs mono-text rounded hover:border-text-muted transition-colors" type="button">PDF</button>
+</div>
+</div>
+<!-- Date Range -->
+<div>
+<label class="mono-text text-xs text-text-muted mb-2 block uppercase">Date_Range</label>
+<div class="space-y-3">
+<div class="relative">
+<span class="absolute left-3 top-2.5 text-xs text-text-muted mono-text">START:</span>
+<input class="w-full bg-surface-base border border-surface-stroke text-on-surface mono-text text-xs pl-14 pr-3 py-2 rounded focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-colors" type="text" value="2023-10-24T00:00:00Z"/>
+</div>
+<div class="relative">
+<span class="absolute left-3 top-2.5 text-xs text-text-muted mono-text">END_ :</span>
+<input class="w-full bg-surface-base border border-surface-stroke text-on-surface mono-text text-xs pl-14 pr-3 py-2 rounded focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-colors" type="text" value="2023-10-25T23:59:59Z"/>
+</div>
+</div>
+</div>
+<!-- Data Node Path -->
+<div class="flex-1">
+<label class="mono-text text-xs text-text-muted mb-2 block uppercase">Data_Node_Path</label>
+<div class="bg-surface-base border border-surface-stroke rounded p-1 h-32 overflow-y-auto">
+<ul class="mono-text text-xs space-y-1">
+<li class="flex items-center gap-2 p-1 hover:bg-surface-container-low cursor-pointer rounded">
+<span class="material-symbols-outlined text-[14px]">folder</span> /prod/db/main
+                                    </li>
+<li class="flex items-center gap-2 p-1 pl-4 hover:bg-surface-container-low cursor-pointer rounded text-primary">
+<span class="material-symbols-outlined text-[14px]">folder_open</span> /users/activity_logs
+                                    </li>
+<li class="flex items-center gap-2 p-1 pl-8 hover:bg-surface-container-low cursor-pointer rounded text-text-muted">
+<span class="material-symbols-outlined text-[14px]">description</span> 2023_Q3_records.dat
+                                    </li>
+</ul>
+</div>
+</div>
+<!-- Action -->
+<div class="pt-4 mt-auto border-t border-surface-stroke">
+<button class="w-full bg-neon-pink text-on-primary-container mono-text font-bold text-sm py-3 rounded uppercase tracking-wider hover:bg-primary-container transition-colors shadow-[0_0_15px_rgba(226,30,81,0.3)]" type="button">
+                                [ INITIATE_STREAM ]
+                             </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Extraction Monitor -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="bg-surface-container-lowest border border-surface-stroke rounded p-1 flex flex-col h-full shadow-inner relative overflow-hidden">
+<!-- Terminal Header -->
+<div class="bg-surface-elevated border-b border-surface-stroke px-4 py-2 flex justify-between items-center z-10">
+<h2 class="mono-text text-text-muted text-sm tracking-widest font-bold">[ EXTRACTION_MONITOR ]</h2>
+<div class="flex items-center gap-4">
+<span class="mono-text text-xs text-status-cyan glow-text-cyan">STATUS: READY</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-surface-stroke"></div>
+<div class="w-2 h-2 rounded-full bg-surface-stroke"></div>
+<div class="w-2 h-2 rounded-full bg-status-cyan"></div>
+</div>
+</div>
+</div>
+<!-- Terminal Body -->
+<div class="flex-1 p-4 font-mono text-xs overflow-y-auto bg-[#05080c] text-text-muted space-y-1 relative" id="terminal-output">
+<!-- Decorative grid background -->
+<div class="absolute inset-0 pointer-events-none opacity-5" style="background-image: linear-gradient(theme('colors.status-cyan') 1px, transparent 1px), linear-gradient(90deg, theme('colors.status-cyan') 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="text-neon-pink">sys_init: connecting to primary node...</div>
+<div>[2023-10-25 14:02:11 UTC] Handshake established.</div>
+<div>[2023-10-25 14:02:12 UTC] Requesting path: /prod/db/main/users/activity_logs</div>
+<div class="text-status-cyan">HTTP/1.1 200 OK</div>
+<div>[2023-10-25 14:02:13 UTC] Resolving schema definitions...</div>
+<div>[2023-10-25 14:02:13 UTC] Schema validated against v4.2.1</div>
+<div class="text-yellow-500">[WARN] Deprecated field 'last_login_v1' detected in node stream. Proceeding with mapping...</div>
+<div>[2023-10-25 14:02:14 UTC] Estimating payload size: ~45.2 MB</div>
+<div>[2023-10-25 14:02:14 UTC] Awaiting manual initialization sequence.</div>
+<div class="mt-4 animate-pulse">_</div>
+</div>
+<!-- Progress Bar (Inactive) -->
+<div class="bg-surface-elevated border-t border-surface-stroke px-4 py-3 z-10 flex flex-col gap-2">
+<div class="flex justify-between items-center mono-text text-[10px] text-text-muted">
+<span>STREAM_PROGRESS</span>
+<span>0%</span>
+</div>
+<div class="w-full h-1 bg-surface-base rounded-full overflow-hidden">
+<div class="h-full bg-status-cyan w-0"></div>
+</div>
+</div>
+</div>
+<!-- Secondary Metric Cards below terminal -->
+<div class="grid grid-cols-3 gap-4 h-24">
+<div class="bg-surface-elevated border border-surface-stroke rounded p-3 flex flex-col justify-center">
+<div class="mono-text text-[10px] text-text-muted uppercase mb-1">Active_Nodes</div>
+<div class="font-stat-display text-stat-display text-on-surface">12</div>
+</div>
+<div class="bg-surface-elevated border border-surface-stroke rounded p-3 flex flex-col justify-center">
+<div class="mono-text text-[10px] text-text-muted uppercase mb-1">Avg_Latency</div>
+<div class="font-stat-display text-stat-display text-status-cyan">42<span class="text-lg text-text-muted">ms</span></div>
+</div>
+<div class="bg-surface-elevated border border-surface-stroke rounded p-3 flex flex-col justify-center">
+<div class="mono-text text-[10px] text-text-muted uppercase mb-1">Queue_Depth</div>
+<div class="font-stat-display text-stat-display text-on-surface">0</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple terminal animation effect
+        const terminal = document.getElementById('terminal-output');
+        const initiateBtn = document.querySelector('button.bg-neon-pink');
+        
+        initiateBtn.addEventListener('click', () => {
+            const lines = [
+                "[ INIT ] Stream sequence started...",
+                "Allocating buffer memory: 1024MB",
+                "<span class='text-status-cyan'>[ STREAM ] Fetching chunks 1-1000...</span>",
+                "Processing row data... 45%",
+                "Processing row data... 89%",
+                "<span class='text-status-cyan'>[ STREAM ] Fetching chunks 1001-2000...</span>",
+                "<span class='text-neon-pink'>sys_msg: Stream stabilization required...</span>",
+                "[ OK ] Resuming..."
+            ];
+            
+            let delay = 0;
+            lines.forEach((line, index) => {
+                setTimeout(() => {
+                    // Remove cursor
+                    if(terminal.lastElementChild.classList.contains('animate-pulse')) {
+                        terminal.removeChild(terminal.lastElementChild);
+                    }
+                    
+                    const div = document.createElement('div');
+                    div.innerHTML = `[2023-10-25 14:05:${(15+index).toString().padStart(2, '0')} UTC] ${line}`;
+                    terminal.appendChild(div);
+                    
+                    // Add cursor back
+                    const cursor = document.createElement('div');
+                    cursor.className = 'mt-4 animate-pulse';
+                    cursor.textContent = '_';
+                    terminal.appendChild(cursor);
+                    
+                    terminal.scrollTop = terminal.scrollHeight;
+                }, delay);
+                delay += 400 + Math.random() * 600;
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Core Vend Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0f141a",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "surface": "#0f141a",
+                        "on-primary-fixed-variant": "#91002e",
+                        "outline-variant": "#5c3f42",
+                        "text-primary": "#FFFFFF",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "surface-container-high": "#252a32",
+                        "inverse-on-surface": "#2c3138",
+                        "error": "#ffb4ab",
+                        "surface-muted": "#2D3748",
+                        "primary-fixed": "#ffdadb",
+                        "on-primary-container": "#fffcff",
+                        "surface-container-highest": "#30353d",
+                        "primary": "#ffb2b9",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "on-tertiary-container": "#fefcff",
+                        "inverse-surface": "#dee2ec",
+                        "surface-bright": "#353941",
+                        "secondary-fixed-dim": "#bac8db",
+                        "error-container": "#93000a",
+                        "surface-deep": "#1C2128",
+                        "on-primary-fixed": "#40000f",
+                        "surface-container-low": "#171c23",
+                        "surface-variant": "#30353d",
+                        "surface-container": "#1b2027",
+                        "on-secondary-container": "#a8b6c9",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary": "#243240",
+                        "secondary": "#bac8db",
+                        "accent-active": "#E21E51",
+                        "inverse-primary": "#be003e",
+                        "on-background": "#dee2ec",
+                        "outline": "#ab888a",
+                        "on-surface": "#dee2ec",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "secondary-fixed": "#d5e4f7",
+                        "on-primary": "#67001e",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "secondary-container": "#3a4858",
+                        "tertiary-fixed": "#d9e3f9",
+                        "tertiary": "#bdc7dc",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "text-secondary": "#8896A8",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-tint": "#ffb2b9",
+                        "on-error": "#690005",
+                        "primary-container": "#e21e51",
+                        "tertiary-container": "#6b7588",
+                        "surface-container-lowest": "#090f15",
+                        "on-tertiary": "#273141",
+                        "background": "#0f141a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "40px",
+                        "margin": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700", "textTransform": "uppercase" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #30353d; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen w-screen flex overflow-hidden font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Left Sidebar (Desktop Nav adapted from BottomNavBar JSON) -->
+<aside class="hidden md:flex w-[240px] flex-shrink-0 flex-col bg-surface-container-lowest border-r border-outline-variant h-full py-margin z-40">
+<div class="px-margin pb-md mb-md border-b border-outline-variant flex items-center gap-sm text-primary-container">
+<span class="material-symbols-outlined">api</span>
+<span class="font-headline-md text-headline-md font-bold uppercase tracking-tighter">C.A.R.E. STACK</span>
+</div>
+<nav class="flex flex-col px-sm gap-xs flex-1">
+<a class="flex flex-row items-center gap-md text-outline px-md py-sm hover:text-primary-fixed-dim hover:bg-surface-variant transition-all rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="flex flex-row items-center gap-md text-outline px-md py-sm hover:text-primary-fixed-dim hover:bg-surface-variant transition-all rounded" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps text-label-caps">CATALOG</span>
+</a>
+<a class="flex flex-row items-center gap-md text-outline px-md py-sm hover:text-primary-fixed-dim hover:bg-surface-variant transition-all rounded" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-caps">ORDERS</span>
+</a>
+<!-- Active State Navigation Logically Determined -->
+<a class="flex flex-row items-center gap-md bg-primary-container text-on-primary-container px-md py-sm transition-all border-l-2 border-primary-container" href="#">
+<span class="material-symbols-outlined fill">local_shipping</span>
+<span class="font-label-caps text-label-caps">LOGISTICS</span>
+</a>
+</nav>
+<div class="px-margin mt-auto">
+<div class="border border-border-subtle bg-surface-deep p-sm rounded flex items-center gap-sm cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-text-primary">VEND-992</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Vendor Profile</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 h-full relative">
+<!-- TopAppBar (From JSON) -->
+<header class="flex justify-between items-center px-margin h-16 w-full sticky top-0 z-50 border-b border-outline-variant bg-surface-container-lowest">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary-container md:hidden">menu</span>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-container">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold uppercase tracking-tighter text-primary-container dark:text-primary-container">CORE_VEND_TERMINAL</h1>
+<span class="font-label-caps text-label-caps text-primary-container border border-primary-container px-2 py-1 ml-sm hidden sm:inline-block bg-surface-container-highest">VEND-992</span>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center bg-surface-deep border border-border-subtle rounded px-sm py-xs min-w-[200px]">
+<span class="material-symbols-outlined text-text-secondary text-sm mr-xs">search</span>
+<input class="bg-transparent border-none text-body-sm text-text-primary focus:ring-0 p-0 w-full placeholder-text-secondary outline-none" placeholder="Search orders, manifests..." type="text"/>
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-container px-1 rounded ml-auto">⌘K</span>
+</div>
+<div class="flex items-center gap-xs px-2 py-1 border border-border-subtle rounded bg-surface-deep">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_rgba(226,30,81,0.6)]"></div>
+<span class="font-label-caps text-label-caps text-text-secondary">SYS_LINK_SECURE</span>
+</div>
+</div>
+</header>
+<!-- Workspace Canvas -->
+<div class="flex-1 overflow-y-auto p-md lg:p-margin bg-background">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-md h-full">
+<!-- Column 1: Supply Chain Overview (Metrics) -->
+<section class="md:col-span-12 lg:col-span-3 flex flex-col gap-md">
+<h2 class="font-label-md text-label-md text-text-secondary uppercase border-b border-border-subtle pb-xs mb-xs flex justify-between">
+<span>Metrics Telemetry</span>
+<span class="material-symbols-outlined text-sm">monitoring</span>
+</h2>
+<div class="grid grid-cols-2 lg:grid-cols-1 gap-md">
+<!-- Metric Card -->
+<div class="bg-surface-deep border border-border-subtle rounded p-md flex flex-col gap-xs relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-16 h-16 bg-primary-container/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-xs">pending_actions</span> OPEN ORDERS
+                            </span>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-xl text-headline-xl text-text-primary">142</span>
+<span class="font-label-sm text-label-sm text-primary-container bg-primary-container/10 px-1 rounded">+12%</span>
+</div>
+</div>
+<!-- Metric Card -->
+<div class="bg-surface-deep border border-border-subtle rounded p-md flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-xs">account_balance_wallet</span> INVENTORY VALUE
+                            </span>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-text-primary">$4.2M</span>
+<span class="font-label-sm text-label-sm text-text-secondary">USD</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-xs rounded overflow-hidden">
+<div class="bg-primary-container h-full w-[65%]"></div>
+</div>
+</div>
+<!-- Metric Card -->
+<div class="bg-surface-deep border border-border-subtle rounded p-md flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-xs">rv_hookup</span> TRANSIT STATUS
+                            </span>
+<div class="flex items-center justify-between mt-xs">
+<div class="text-center">
+<span class="block font-headline-md text-headline-md text-text-primary">18</span>
+<span class="font-label-caps text-label-caps text-text-secondary">EN ROUTE</span>
+</div>
+<div class="text-center">
+<span class="block font-headline-md text-headline-md text-text-primary">3</span>
+<span class="font-label-caps text-label-caps text-primary-container">DELAYED</span>
+</div>
+</div>
+</div>
+<!-- Metric Card -->
+<div class="bg-surface-deep border border-border-subtle rounded p-md flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-xs">speed</span> FILL RATE (30D)
+                            </span>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full border-4 border-surface-container flex items-center justify-center relative">
+<!-- Fake SVG circle progress -->
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-width="4"></path>
+</svg>
+<span class="font-label-md text-label-md text-text-primary">94%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary">Target: 98%</span>
+<span class="font-label-caps text-label-caps text-outline-variant">BELOW NOMINAL</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Column 2: Active Requisitions Grid (Technical List) -->
+<section class="md:col-span-7 lg:col-span-6 flex flex-col gap-md">
+<div class="flex justify-between items-end border-b border-border-subtle pb-xs mb-xs">
+<h2 class="font-label-md text-label-md text-text-secondary uppercase flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">view_list</span> Active Requisitions Grid
+                        </h2>
+<button class="font-label-caps text-label-caps text-text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">filter_alt</span> FILTER
+                        </button>
+</div>
+<div class="bg-surface-deep border border-border-subtle rounded overflow-hidden flex-1 flex flex-col min-h-[400px]">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-sm p-sm border-b border-border-subtle bg-surface-container-low font-headline-md text-label-md text-text-secondary tracking-wider">
+<div class="col-span-2">REQ_ID</div>
+<div class="col-span-3">PROJECT</div>
+<div class="col-span-4">MATERIAL SPEC</div>
+<div class="col-span-3 text-right">ACTION</div>
+</div>
+<!-- Table Body (High Density) -->
+<div class="flex-1 overflow-y-auto flex flex-col">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-sm p-sm items-center border-b border-border-subtle bg-transparent hover:bg-surface-variant/50 transition-colors">
+<div class="col-span-2 font-body-sm text-body-sm text-text-primary font-mono text-xs">RQ-8842</div>
+<div class="col-span-3 font-body-sm text-body-sm text-text-secondary truncate">Riverside Commons</div>
+<div class="col-span-4 flex flex-col">
+<span class="font-body-sm text-body-sm text-text-primary truncate">Firestone TPO 60mil</span>
+<span class="font-label-sm text-label-sm text-outline-variant">White / 10x100 Roll x 40</span>
+</div>
+<div class="col-span-3 flex justify-end gap-xs">
+<button class="px-2 py-1 bg-surface-container border border-border-subtle rounded text-text-primary hover:border-primary-container transition-colors font-label-sm text-label-sm">DENY</button>
+<button class="px-2 py-1 bg-primary-container text-on-primary-container rounded transition-transform active:scale-95 font-label-sm text-label-sm">APPROVE</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-sm p-sm items-center border-b border-border-subtle bg-surface-container-low hover:bg-surface-variant/50 transition-colors">
+<div class="col-span-2 font-body-sm text-body-sm text-text-primary font-mono text-xs flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container"></div> RQ-8845
+                                </div>
+<div class="col-span-3 font-body-sm text-body-sm text-text-secondary truncate">Apex Tower Unit B</div>
+<div class="col-span-4 flex flex-col">
+<span class="font-body-sm text-body-sm text-text-primary truncate">WeatherBond EPDM</span>
+<span class="font-label-sm text-label-sm text-outline-variant">Black / 90mil x 15 Rl</span>
+</div>
+<div class="col-span-3 flex justify-end gap-xs">
+<button class="px-2 py-1 bg-surface-container border border-border-subtle rounded text-text-primary hover:border-primary-container transition-colors font-label-sm text-label-sm">DENY</button>
+<button class="px-2 py-1 bg-primary-container text-on-primary-container rounded transition-transform active:scale-95 font-label-sm text-label-sm">APPROVE</button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-sm p-sm items-center border-b border-border-subtle bg-transparent hover:bg-surface-variant/50 transition-colors">
+<div class="col-span-2 font-body-sm text-body-sm text-text-primary font-mono text-xs">RQ-8850</div>
+<div class="col-span-3 font-body-sm text-body-sm text-text-secondary truncate">Northfield Ind Park</div>
+<div class="col-span-4 flex flex-col">
+<span class="font-body-sm text-body-sm text-text-primary truncate">Structural Fasteners</span>
+<span class="font-label-sm text-label-sm text-outline-variant">#14 HD / 5" / 5000bx</span>
+</div>
+<div class="col-span-3 flex justify-end gap-xs">
+<button class="px-2 py-1 bg-surface-container border border-border-subtle rounded text-text-primary hover:border-primary-container transition-colors font-label-sm text-label-sm">DENY</button>
+<button class="px-2 py-1 bg-primary-container text-on-primary-container rounded transition-transform active:scale-95 font-label-sm text-label-sm">APPROVE</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-sm p-sm items-center border-b border-border-subtle bg-surface-container-low hover:bg-surface-variant/50 transition-colors opacity-50">
+<div class="col-span-2 font-body-sm text-body-sm text-text-primary font-mono text-xs">RQ-8831</div>
+<div class="col-span-3 font-body-sm text-body-sm text-text-secondary truncate">Delta Storage</div>
+<div class="col-span-4 flex flex-col">
+<span class="font-body-sm text-body-sm text-text-primary truncate">Polyisocyanurate Insul</span>
+<span class="font-label-sm text-label-sm text-outline-variant">2.0" / 4x8 / 200pc</span>
+</div>
+<div class="col-span-3 flex justify-end gap-xs items-center">
+<span class="font-label-caps text-label-caps text-text-secondary mr-2">PROCESSED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Column 3: Logistics & Tracking (Timeline) -->
+<section class="md:col-span-5 lg:col-span-3 flex flex-col gap-md">
+<div class="flex justify-between items-end border-b border-border-subtle pb-xs mb-xs">
+<h2 class="font-label-md text-label-md text-text-secondary uppercase flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">route</span> Inbound Logistics
+                        </h2>
+</div>
+<div class="bg-surface-deep border border-border-subtle rounded p-md flex-1 overflow-hidden relative">
+<!-- Abstract Map Background Hint -->
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 50% 50%, #e21e51 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative z-10 flex flex-col gap-lg pl-4 border-l border-surface-container-highest">
+<!-- Timeline Node 1 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-primary-container ring-4 ring-surface-deep"></div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-text-primary bg-surface-container-highest px-1 rounded font-mono">NODE: TX-DFW-01</span>
+<span class="font-label-caps text-label-caps text-primary-container">ARRIVING TODAY</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-primary">Firestone TPO Shipment</span>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-xs text-text-secondary">local_shipping</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Carrier: Swift Heavy</span>
+</div>
+<div class="mt-xs font-mono text-[10px] text-outline-variant break-all bg-surface-container-lowest p-1 rounded border border-border-subtle">
+                                        HASH: 0x9f8b...e4a1 [VERIFIED]
+                                    </div>
+</div>
+</div>
+<!-- Timeline Node 2 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-surface-container-high border border-outline-variant ring-4 ring-surface-deep"></div>
+<div class="flex flex-col gap-1 opacity-80">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-text-primary bg-surface-container-highest px-1 rounded font-mono">NODE: OH-CLE-04</span>
+<span class="font-label-caps text-label-caps text-text-secondary">ETA: TMRW 14:00</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-primary">WeatherBond EPDM Restock</span>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-xs text-text-secondary">train</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Rail Freight: CSX</span>
+</div>
+</div>
+</div>
+<!-- Timeline Node 3 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-surface-container-high border border-outline-variant ring-4 ring-surface-deep"></div>
+<div class="flex flex-col gap-1 opacity-60">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-text-primary bg-surface-container-highest px-1 rounded font-mono">NODE: PA-PHL-02</span>
+<span class="font-label-caps text-label-caps text-text-secondary">IN TRANSIT</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-primary">Fastener Bulk Load</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>

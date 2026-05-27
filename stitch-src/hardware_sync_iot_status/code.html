@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hardware Sync &amp; IoT Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#b4c5ff",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "surface-container-high": "#222a3d",
+                        "inverse-primary": "#0053db",
+                        "tertiary-container": "#007d55",
+                        "primary-fixed": "#dbe1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#0b1326",
+                        "on-primary-container": "#eeefff",
+                        "border-muted": "#334155",
+                        "on-tertiary-fixed": "#002113",
+                        "on-error": "#690005",
+                        "neon-blue": "#2563EB",
+                        "surface-dim": "#0b1326",
+                        "secondary-container": "#00a6e0",
+                        "on-tertiary-container": "#bdffdb",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#131b2e",
+                        "on-primary": "#002a78",
+                        "outline-variant": "#434655",
+                        "surface-tint": "#b4c5ff",
+                        "on-background": "#dae2fd",
+                        "neon-cyan": "#06B6D4",
+                        "on-surface": "#dae2fd",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-tertiary": "#003824",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "secondary-fixed": "#c4e7ff",
+                        "primary-container": "#2563eb",
+                        "on-secondary": "#00354a",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-card": "#1E293B",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-variant": "#2d3449",
+                        "secondary": "#7bd0ff",
+                        "tertiary": "#4edea3",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "surface-input": "#0F172A",
+                        "on-secondary-container": "#00374d",
+                        "surface-bright": "#31394d",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "outline": "#8d90a0",
+                        "surface-container": "#171f33",
+                        "surface-container-highest": "#2d3449"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"],
+                        "headline-sm": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .scrolling-bg {
+            background-image: radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.15) 1px, transparent 0);
+            background-size: 16px 16px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-neon-blue selection:text-white">
+<!-- TopAppBar -->
+<header class="bg-surface-container dark:bg-surface-container fixed top-0 w-full z-50 flex justify-between items-center px-gutter w-full h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary">terminal</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tighter text-neon-blue">TRADEVISION C.A.R.E.</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">person</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 pt-20 pb-24 px-margin-mobile scrolling-bg flex flex-col gap-4">
+<!-- Live Connectivity Header -->
+<section class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-2 h-2 rounded-full bg-tertiary pulse-dot shadow-[0_0_8px_rgba(78,222,163,0.8)]"></div>
+<span class="font-label-md text-label-md text-tertiary uppercase tracking-wider">Sys: Online</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Hardware Sync</h1>
+</div>
+<button class="bg-neon-blue hover:bg-primary-container active:scale-95 duration-100 text-white font-label-md text-label-md px-3 py-2 rounded flex items-center gap-2 shadow-[0_0_12px_rgba(37,99,235,0.4)]">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+                    FORCE RESYNC
+                </button>
+</div>
+</section>
+<!-- Troubleshooting Alerts -->
+<section class="bg-error-container/10 border border-error/50 rounded-lg p-3 flex gap-3 items-start relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<span class="material-symbols-outlined text-error mt-0.5" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-error uppercase mb-1">Link Degradation Alert</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Sensor N-4 Connection Weak. Reposition device closer to mesh node for optimal sync.</p>
+</div>
+</section>
+<!-- Data Flow Telemetry Card -->
+<section class="bg-surface-container-low border border-outline-variant rounded-lg p-4 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Live Data Flux</h2>
+<span class="font-headline-sm text-headline-sm text-secondary-fixed">142.8 kb/s</span>
+</div>
+<!-- SVG Sparkline representing data flow -->
+<div class="h-16 w-full relative">
+<!-- Grid lines -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-20 pointer-events-none">
+<div class="border-b border-neon-blue w-full"></div>
+<div class="border-b border-neon-blue w-full"></div>
+<div class="border-b border-neon-blue w-full"></div>
+</div>
+<svg class="w-full h-full preserve-3d" preserveaspectratio="none" viewbox="0 0 100 30">
+<defs>
+<lineargradient id="lineGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#2563EB" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#2563EB" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,25 L10,22 L20,28 L30,15 L40,18 L50,5 L60,12 L70,25 L80,20 L90,28 L100,10" fill="none" stroke="#2563EB" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+<path d="M0,25 L10,22 L20,28 L30,15 L40,18 L50,5 L60,12 L70,25 L80,20 L90,28 L100,10 L100,30 L0,30 Z" fill="url(#lineGrad)"></path>
+</svg>
+</div>
+</section>
+<!-- Connected Devices List -->
+<section class="flex flex-col gap-2">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Active Endpoints (2)</h3>
+<!-- Device Card: Thermal Sensor (Weak Link) -->
+<div class="bg-surface-card border border-outline-variant rounded relative flex items-center p-3 gap-4 group hover:border-outline transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error rounded-l"></div>
+<div class="w-10 h-10 rounded bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Thermal Sensor N-4</span>
+<span class="font-label-md text-label-md text-error">STATUS: DEGRADED</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span>42%</span>
+<span class="material-symbols-outlined text-[14px]">battery_3_bar</span>
+</div>
+<span class="material-symbols-outlined text-error text-[18px]">wifi_1_bar</span>
+</div>
+</div>
+<!-- Device Card: Moisture Meter (Stable) -->
+<div class="bg-surface-card border border-outline-variant rounded relative flex items-center p-3 gap-4 group hover:border-outline transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary rounded-l"></div>
+<div class="w-10 h-10 rounded bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Moisture Meter B-2</span>
+<span class="font-label-md text-label-md text-tertiary">STATUS: OPTIMAL</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span>88%</span>
+<span class="material-symbols-outlined text-[14px]">battery_full</span>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[18px]">wifi</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-highest dark:bg-surface-container-highest fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-margin-mobile md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-bright transition-all p-unit rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-bright transition-all p-unit rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">upload_file</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Evidence</span>
+</a>
+<!-- Active Tab: Sync -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-unit hover:text-primary active:bg-surface-bright transition-all" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-bold">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-bright transition-all p-unit rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">forum</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Comms</span>
+</a>
+</nav>
+</body></html>

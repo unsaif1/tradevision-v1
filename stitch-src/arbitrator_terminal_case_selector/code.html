@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arbitrator Dashboard // Active Cases</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#dad9d9",
+                        "background": "#111317",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-fixed-dim": "#ffba20",
+                        "secondary": "#ffdb9d",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "error": "#ffb4ab",
+                        "outline": "#849495",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface": "#e2e2e8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "surface-bright": "#37393e",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container-high": "#282a2e",
+                        "inverse-primary": "#006970",
+                        "surface": "#111317",
+                        "surface-variant": "#333539",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-container": "#006970",
+                        "surface-tint": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary-container": "#feb700",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary": "#f7f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container": "#1e2024",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "outline-variant": "#3b494b",
+                        "on-secondary": "#412d00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .cyber-border { border: 1px solid theme('colors.outline-variant'); }
+        .cyber-border-active { border: 1px solid theme('colors.primary'); box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.1); }
+        .bracket-header::before { content: "[ "; color: theme('colors.primary'); }
+        .bracket-header::after { content: " ]"; color: theme('colors.primary'); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col md:flex-row min-h-screen">
+<!-- Mobile TopAppBar -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl">menu</span>
+<span class="font-headline-md text-headline-md text-primary tracking-tighter bracket-header">LEGAL_CORE</span>
+</div>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG503wPfg6qcxIcjKsuJySrBmvbXZ-NgMQX59cw2r-37xS9odeRilv5n2nPeIk3045YnXb9Mi0S4bZeWynJj9Iw34EcMBKRBco0ADqu5ZvYx_MHD23c5pBeV5bZvv783SLi02N5Z_gKvDtNe2dFTGwcKPfIFt3DdxUSV1E3vDhJ-_3FlEOvyT-VL-hvodoD4rkLb3ti5mGw_fy4GqTnGaLxLp076zrvJlHoDhoDrRVDrwIkQXoxgQ9qqSNUAA0-2Z8U32cQgJl0a18"/>
+</header>
+<!-- Desktop SideNav (NavigationDrawer) -->
+<nav class="hidden md:flex flex-col h-screen w-72 bg-surface-container border-r border-outline-variant fixed inset-y-0 left-0 z-50">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Arbitrator Profile" class="w-12 h-12 rounded-none border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnPAbROUY2Bsvdv6QzkXpmM3UOeinpNmA0c18nS1cioXwoz2B7pZAqhaGd_VhI8IDXioQPWYtqHi6exJfEBV22rqJDhRNZ1WYT9NzM4bZEVSkTEkTwCo5V1tnK51IP8uEDRwMMrZVHj9Z61KQY8TWyJWx_CeEEBQJR2ckFmqML7gVZ0R0W2rNrPZ_zlJBNDTKn0s_zccFaA_U3_4KYEV0PFuoZh7IsRkaY05rILNQ_T32FwXioUuJMEPwTZiZFJCX1O8FtsvqFCUOa"/>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">ID: 8821-XJ</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Verified Arbitrator</p>
+<p class="font-label-caps text-label-caps text-primary text-[10px] mt-1 cyber-border px-1 inline-block">Blockchain Active</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col py-4 flex-grow">
+<!-- Active: Project Selector -->
+<li>
+<a class="flex items-center gap-4 px-6 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-primary font-bold transition-all hover:bg-surface-variant group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span class="font-label-caps text-label-caps uppercase">Project Selector</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all border-l-4 border-transparent hover:border-outline-variant group" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps uppercase">Evidence Ledger</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all border-l-4 border-transparent hover:border-outline-variant group" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps uppercase">Mediation History</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all border-l-4 border-transparent hover:border-outline-variant group" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps text-label-caps uppercase">Final Award</span>
+</a>
+</li>
+</ul>
+<div class="p-6 border-t border-outline-variant">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter bracket-header text-sm">ARBITRATOR</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-72 p-margin-mobile md:p-margin-desktop bg-background min-h-screen pb-24 md:pb-margin-desktop">
+<!-- Header & Controls -->
+<div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2 bracket-header uppercase">Active Cases</h1>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant">System synchronization complete. Awaiting review.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<div class="relative cyber-border bg-surface-container flex items-center px-4 py-2 flex-grow sm:flex-grow-0">
+<span class="material-symbols-outlined text-outline mr-2">search</span>
+<input class="bg-transparent border-none text-on-surface font-data-point text-sm focus:ring-0 w-full md:w-48 placeholder-outline-variant" placeholder="QUERY_ID..." type="text"/>
+</div>
+<div class="flex cyber-border bg-surface-container">
+<button class="px-4 py-2 font-label-caps text-label-caps text-primary border-b-2 border-primary bg-surface-variant transition-colors hover:bg-surface-container-high">ALL</button>
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-surface-variant border-b-2 border-transparent transition-colors hover:bg-surface-container-high">MEDIATION</button>
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-surface-variant border-b-2 border-transparent transition-colors hover:bg-surface-container-high">ARBITRATION</button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Cases -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Case Card 1 (Active) -->
+<div class="cyber-border-active bg-surface-container p-6 flex flex-col justify-between relative overflow-hidden group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-data-point text-data-point text-primary bg-surface-container-highest px-2 py-1 cyber-border">#CAS-992-ALPHA</div>
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-variant px-2 py-1 cyber-border flex items-center gap-1">
+<span class="w-2 h-2 bg-error rounded-full animate-pulse"></span> IN_REVIEW
+                    </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 uppercase">Industrial Roofing Dispute</h3>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mb-6 line-clamp-2">Discrepancy in TPO material specifications versus installed product. Plaintiff claims 15% variance in mil thickness.</p>
+<div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-outline-variant mb-1">TECH_DENSITY</p>
+<div class="flex gap-1">
+<div class="w-6 h-2 bg-primary"></div>
+<div class="w-6 h-2 bg-primary"></div>
+<div class="w-6 h-2 bg-primary"></div>
+<div class="w-6 h-2 bg-surface-variant"></div>
+</div>
+</div>
+<button class="font-label-caps text-label-caps text-background bg-primary px-4 py-2 hover:bg-primary-fixed transition-colors flex items-center gap-2 uppercase">
+                        Access File <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Case Card 2 -->
+<div class="cyber-border bg-surface-container p-6 flex flex-col justify-between relative hover:border-outline transition-colors cursor-pointer group">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-data-point text-data-point text-secondary bg-surface-container-highest px-2 py-1 cyber-border">#CAS-841-BETA</div>
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-variant px-2 py-1 cyber-border flex items-center gap-1">
+<span class="w-2 h-2 bg-secondary rounded-full"></span> EVIDENCE_PENDING
+                    </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 uppercase">Commercial Slope Failure</h3>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mb-6 line-clamp-2">Awaiting drone telemetry data and structural load assessments from independent engineering team.</p>
+<div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-outline-variant mb-1">TECH_DENSITY</p>
+<div class="flex gap-1">
+<div class="w-6 h-2 bg-secondary"></div>
+<div class="w-6 h-2 bg-secondary"></div>
+<div class="w-6 h-2 bg-surface-variant"></div>
+<div class="w-6 h-2 bg-surface-variant"></div>
+</div>
+</div>
+<button class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant cyber-border px-4 py-2 group-hover:text-on-surface transition-colors uppercase">
+                        Review Status
+                    </button>
+</div>
+</div>
+<!-- Case Card 3 -->
+<div class="cyber-border bg-surface-container p-6 flex flex-col justify-between relative hover:border-outline transition-colors cursor-pointer group">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="font-data-point text-data-point text-on-surface bg-surface-container-highest px-2 py-1 cyber-border">#CAS-710-GAMMA</div>
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-variant px-2 py-1 cyber-border flex items-center gap-1">
+<span class="w-2 h-2 bg-outline rounded-full"></span> DRAFTING_AWARD
+                    </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 uppercase">Residential Shingle Defect</h3>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm mb-6 line-clamp-2">Mediation failed. Preparing final binding arbitration document regarding manufacturer warranty voidance.</p>
+<div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-outline-variant mb-1">TECH_DENSITY</p>
+<div class="flex gap-1">
+<div class="w-6 h-2 bg-outline"></div>
+<div class="w-6 h-2 bg-surface-variant"></div>
+<div class="w-6 h-2 bg-surface-variant"></div>
+<div class="w-6 h-2 bg-surface-variant"></div>
+</div>
+</div>
+<button class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant cyber-border px-4 py-2 group-hover:text-on-surface transition-colors uppercase">
+                        Review Status
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-density-compact bg-surface-container-lowest border-t border-outline-variant z-50">
+<!-- Active: PROJECTS -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary py-2 w-full hover:bg-surface-container-high transition-colors duration-100 transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">folder_managed</span>
+<span class="font-label-caps text-label-caps uppercase">PROJECTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-full border-t-2 border-transparent hover:bg-surface-container-high transition-colors duration-100 transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">account_balance</span>
+<span class="font-label-caps text-label-caps uppercase">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-full border-t-2 border-transparent hover:bg-surface-container-high transition-colors duration-100 transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">timeline</span>
+<span class="font-label-caps text-label-caps uppercase">TIMELINE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 w-full border-t-2 border-transparent hover:bg-surface-container-high transition-colors duration-100 transform active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">draw</span>
+<span class="font-label-caps text-label-caps uppercase">AWARD</span>
+</a>
+</nav>
+</body></html>

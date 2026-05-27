@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Command - Active Jobs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-primary-container": "#006970",
+                "inverse-on-surface": "#2f3035",
+                "primary-container": "#00f0ff",
+                "secondary": "#ffdb9d",
+                "error": "#ffb4ab",
+                "on-tertiary-container": "#5e5f5f",
+                "tertiary": "#f7f5f5",
+                "surface-container": "#1e2024",
+                "surface": "#111317",
+                "on-error-container": "#ffdad6",
+                "on-primary": "#00363a",
+                "on-tertiary-fixed": "#1b1c1c",
+                "on-surface-variant": "#b9cacb",
+                "surface-bright": "#37393e",
+                "secondary-container": "#feb700",
+                "on-primary-fixed": "#002022",
+                "on-secondary-container": "#6b4b00",
+                "primary-fixed-dim": "#00dbe9",
+                "on-error": "#690005",
+                "secondary-fixed": "#ffdea8",
+                "inverse-primary": "#006970",
+                "on-secondary-fixed-variant": "#5e4200",
+                "primary-fixed": "#7df4ff",
+                "on-surface": "#e2e2e8",
+                "tertiary-container": "#dad9d9",
+                "outline-variant": "#3b494b",
+                "surface-container-low": "#1a1c20",
+                "surface-container-highest": "#333539",
+                "inverse-surface": "#e2e2e8",
+                "tertiary-fixed": "#e4e2e2",
+                "primary": "#dbfcff",
+                "outline": "#849495",
+                "surface-container-lowest": "#0c0e12",
+                "error-container": "#93000a",
+                "on-tertiary": "#303031",
+                "on-background": "#e2e2e8",
+                "on-secondary-fixed": "#271900",
+                "on-secondary": "#412d00",
+                "background": "#111317",
+                "tertiary-fixed-dim": "#c7c6c6",
+                "secondary-fixed-dim": "#ffba20",
+                "on-primary-fixed-variant": "#004f54",
+                "surface-dim": "#111317",
+                "on-tertiary-fixed-variant": "#464747",
+                "surface-variant": "#333539",
+                "surface-container-high": "#282a2e",
+                "surface-tint": "#00dbe9"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-mobile": "16px",
+                "unit": "4px",
+                "gutter": "16px",
+                "density-compact": "8px",
+                "margin-desktop": "32px",
+                "density-comfortable": "24px"
+        },
+        "fontFamily": {
+                "display-lg": [
+                        "Space Grotesk"
+                ],
+                "headline-md": [
+                        "Space Grotesk"
+                ],
+                "data-point": [
+                        "JetBrains Mono"
+                ],
+                "body-fixed": [
+                        "Inter"
+                ],
+                "display-lg-mobile": [
+                        "Space Grotesk"
+                ],
+                "label-caps": [
+                        "JetBrains Mono"
+                ]
+        },
+        "fontSize": {
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "data-point": [
+                        "20px",
+                        {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-fixed": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "1.0",
+                                "fontWeight": "500"
+                        }
+                ]
+        }
+    }
+  }
+</script>
+<style>
+  .border-zinc { border-color: #2D2D2D; }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen font-body-fixed pt-16 pb-20 md:pb-0 md:pl-80 flex flex-col">
+<!-- TopAppBar (Mobile) -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface text-primary dark:text-primary font-headline-md text-headline-md-mobile border-b border-outline-variant flat no shadows flex justify-between items-center px-margin-mobile h-16 md:hidden">
+<button class="text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-100 p-2 rounded">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter uppercase">ROOF_COMMAND</div>
+<button class="hover:bg-surface-container-high transition-colors active:scale-95 duration-100 p-2 rounded">
+<img alt="Contractor Profile" class="w-8 h-8 rounded-full border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJf7uvOKsuYuo1FVFTYccbiuiRhtVxHg5FJntr7_ZaIcNnMCZg5uRd38vpbrtHQVMsXnBKrL0Bm7Vl2nM35oSO9nfcmyTMpzzQiCRecGLDDKoJvrW61qoPCRHimDWLG7Nhe2sHYgVLSmKH5SPS5ftXKW6t_XOjXV9sat1NDX7SQpU2HOr70lGbDuiDR8jXhUqLQ-8HvC-FaGMk6g0K6SPL-MRzHoeirm-hkm6SPuahZchoRnDeUTO9kM_l7n-S39kPUkO6abDLAL1v"/>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full p-density-comfortable bg-surface-container dark:bg-surface-container text-primary dark:text-primary font-body-fixed text-body-fixed h-full w-80 border-r border-outline-variant flat no shadows fixed left-0 top-0 z-40">
+<div class="font-display-lg text-display-lg text-primary mb-8 tracking-tighter uppercase">ROOF_COMMAND</div>
+<div class="flex items-center gap-4 mb-8">
+<img alt="Field Lead" class="w-12 h-12 rounded-full border border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAHQGgrGb-aI-5b80Ugh-V1wXRrt5WRFIwkYKMXnDfDQ4lnHPTMH9aqwHSqTms-ArDl2SJyaNqrhFw6BayKwgYElrNwZabeXFp0ViDxC_GvooY8phUvs9ur3s5WBW1WPYMtbCRvsUZ9vIwNrR3fgTkJfNG1igAVq9C1BP5lMZLfeKxqLHHduKFT555h304z1f76qbWw-s-VFNuEY8c8OyL98J9dgLuzokkn09MI4gfo509X6kJ91S5eyRVMPoqMzTIe4BGj8peIuCg"/>
+<div>
+<div class="font-bold text-on-surface">Lead Inspector</div>
+<div class="text-sm text-on-surface-variant">Region: North-East</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-transform duration-300 ease-in-out p-3 rounded flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">analytics</span> Dashboard
+    </a>
+<a class="bg-secondary-container text-on-secondary-container font-bold border-l-4 border-primary transition-transform duration-300 ease-in-out p-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">roofing</span> Jobs
+    </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-transform duration-300 ease-in-out p-3 rounded flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">view_in_ar</span> Materials Inventory
+    </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-transform duration-300 ease-in-out p-3 rounded flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">groups</span> Team Sync
+    </a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-transform duration-300 ease-in-out p-3 rounded flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">shield</span> Safety Protocols
+    </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-zinc flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-transform duration-300 ease-in-out p-3 rounded flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+    </a>
+<div class="text-xs text-on-surface-variant font-data-point pl-3">v2.4.0-Industrial</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<div class="flex justify-between items-end mb-8 border-b border-zinc pb-4">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface tracking-tighter">Active Jobs</h1>
+<p class="text-on-surface-variant mt-2 font-data-point text-label-caps">SYS.STATE: 3 CRITICAL | 12 ACTIVE</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="bg-surface-container border border-zinc text-on-surface px-4 py-2 hover:bg-surface-container-high transition-colors font-label-caps text-label-caps flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> FILTER
+      </button>
+<button class="bg-primary text-on-primary px-6 py-2 border-b-4 border-on-primary-container hover:bg-primary-fixed transition-colors font-data-point text-label-caps flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span> NEW JOB
+      </button>
+</div>
+</div>
+<!-- Bento Grid for Jobs -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Job Card 1 -->
+<div class="bg-surface-container border border-zinc p-density-comfortable relative overflow-hidden flex flex-col">
+<!-- Status Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div>
+<div class="flex justify-between items-start mb-4 pl-2">
+<div>
+<div class="font-data-point text-on-surface-variant text-label-caps">ID: RJ-9482</div>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface mt-1">Smith Residence</h2>
+</div>
+<div class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 border border-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">construction</span> TEAR-OFF
+        </div>
+</div>
+<div class="grid grid-cols-2 gap-density-compact mb-6 flex-1 pl-2">
+<div class="border border-zinc p-2 flex flex-col justify-center">
+<span class="text-on-surface-variant font-label-caps text-[10px]">MATERIAL</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-3 h-3 bg-tertiary-container border border-outline"></div>
+<span class="font-data-point text-[14px]">SHGL</span>
+</div>
+</div>
+<div class="border border-zinc p-2 flex flex-col justify-center">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PITCH</span>
+<span class="font-data-point text-[16px] text-primary">6/12</span>
+</div>
+<div class="border border-zinc p-2 col-span-2 flex justify-between items-end">
+<span class="text-on-surface-variant font-label-caps text-[10px]">TOTAL SQUARES</span>
+<div class="font-data-point text-data-point text-on-surface">32.5 <span class="text-[12px] text-on-surface-variant">SQ</span></div>
+</div>
+</div>
+<button class="w-full bg-surface border border-primary text-primary py-2 hover:bg-surface-container-high transition-colors font-label-caps text-label-caps flex justify-center items-center gap-2 mt-auto">
+        OPEN SPEC <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Job Card 2 (Critical) -->
+<div class="bg-surface-container border border-error border-opacity-50 p-density-comfortable relative overflow-hidden flex flex-col shadow-[4px_4px_0px_#93000a]">
+<!-- Status Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start mb-4 pl-2">
+<div>
+<div class="font-data-point text-error text-label-caps">ID: RJ-9485</div>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface mt-1">Industrial Park WH3</h2>
+</div>
+<div class="bg-error text-on-error font-label-caps text-label-caps px-2 py-1 border border-error-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span> STAGING
+        </div>
+</div>
+<div class="grid grid-cols-2 gap-density-compact mb-6 flex-1 pl-2">
+<div class="border border-zinc p-2 flex flex-col justify-center">
+<span class="text-on-surface-variant font-label-caps text-[10px]">MATERIAL</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-3 h-3 bg-surface-variant border border-outline"></div>
+<span class="font-data-point text-[14px]">TPO</span>
+</div>
+</div>
+<div class="border border-zinc p-2 flex flex-col justify-center">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PITCH</span>
+<span class="font-data-point text-[16px] text-primary">1/12</span>
+</div>
+<div class="border border-zinc p-2 col-span-2 flex justify-between items-end">
+<span class="text-on-surface-variant font-label-caps text-[10px]">TOTAL SQUARES</span>
+<div class="font-data-point text-data-point text-on-surface">150.0 <span class="text-[12px] text-on-surface-variant">SQ</span></div>
+</div>
+</div>
+<button class="w-full bg-error-container text-on-error-container py-2 hover:bg-error transition-colors font-label-caps text-label-caps flex justify-center items-center gap-2 mt-auto">
+        REVIEW SAFETY <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Job Card 3 -->
+<div class="bg-surface-container border border-zinc p-density-comfortable relative overflow-hidden flex flex-col">
+<!-- Status Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-4 pl-2">
+<div>
+<div class="font-data-point text-on-surface-variant text-label-caps">ID: RJ-9488</div>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface mt-1">Oaktree Clinic</h2>
+</div>
+<div class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-2 py-1 border border-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">build</span> INSTALLATION
+        </div>
+</div>
+<div class="grid grid-cols-2 gap-density-compact mb-6 flex-1 pl-2">
+<div class="border border-zinc p-2 flex flex-col justify-center">
+<span class="text-on-surface-variant font-label-caps text-[10px]">MATERIAL</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-3 h-3 bg-secondary border border-outline"></div>
+<span class="font-data-point text-[14px]">MTL</span>
+</div>
+</div>
+<div class="border border-zinc p-2 flex flex-col justify-center">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PITCH</span>
+<span class="font-data-point text-[16px] text-primary">8/12</span>
+</div>
+<div class="border border-zinc p-2 col-span-2 flex justify-between items-end">
+<span class="text-on-surface-variant font-label-caps text-[10px]">TOTAL SQUARES</span>
+<div class="font-data-point text-data-point text-on-surface">45.2 <span class="text-[12px] text-on-surface-variant">SQ</span></div>
+</div>
+</div>
+<button class="w-full bg-surface border border-zinc text-on-surface py-2 hover:bg-surface-container-high transition-colors font-label-caps text-label-caps flex justify-center items-center gap-2 mt-auto">
+        OPEN SPEC <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 h-20 bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-container dark:text-primary-container font-label-caps text-label-caps border-t border-outline-variant flat no shadows flex justify-around items-center px-gutter md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+    Command
+  </a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-4 py-1 border border-primary active:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">roofing</span>
+    Jobs
+  </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mb-1">visibility</span>
+    Inspect
+  </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mb-1">add_a_photo</span>
+    Evidence
+  </a>
+</nav>
+</body></html>

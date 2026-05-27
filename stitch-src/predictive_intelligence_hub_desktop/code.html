@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION C.A.R.E. | Predictive Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 217, 220, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .cyber-border {
+            position: relative;
+        }
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 4px;
+            border-top: 2px solid #ffb2b9;
+            border-left: 2px solid #ffb2b9;
+        }
+        .cyber-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0; width: 4px; height: 4px;
+            border-bottom: 2px solid #ffb2b9;
+            border-right: 2px solid #ffb2b9;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0f141a; }
+        ::-webkit-scrollbar-thumb { background: #30353c; }
+        .pulse-dot { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f141a",
+                        "on-background": "#dee3eb",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dee3eb",
+                        "tertiary": "#d9e3f9",
+                        "status-success": "#4ade80",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-surface-variant": "#d7c2c2",
+                        "on-secondary": "#243240",
+                        "surface-bright": "#353941",
+                        "inverse-on-surface": "#2c3137",
+                        "status-error": "#f43f5e",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#a8b6c9",
+                        "inverse-primary": "#894d54",
+                        "surface-container-highest": "#30353c",
+                        "outline": "#9f8c8d",
+                        "tertiary-container": "#bdc7dc",
+                        "on-tertiary-container": "#495365",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-tertiary": "#273141",
+                        "background": "#0f141a",
+                        "tertiary-fixed": "#d9e3f9",
+                        "accent-cyan": "#00f2ff",
+                        "surface-container-high": "#252a31",
+                        "surface-container-low": "#171c22",
+                        "secondary": "#bac8db",
+                        "outline-variant": "#524344",
+                        "primary-fixed": "#ffdadc",
+                        "secondary-fixed": "#d5e4f7",
+                        "on-primary": "#522027",
+                        "surface-container-lowest": "#0a0f14",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "surface-tint": "#ffb2b9",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#370c13",
+                        "on-primary-fixed-variant": "#6d363d",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "primary": "#ffd9dc",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "surface-dim": "#0f141a",
+                        "surface-deep": "#090f15",
+                        "on-primary-container": "#7b4148",
+                        "secondary-fixed-dim": "#bac8db",
+                        "secondary-container": "#3a4858",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "primary-container": "#ffb2b9",
+                        "surface-container": "#1b2026",
+                        "on-surface": "#dee3eb",
+                        "surface-variant": "#30353c",
+                        "primary-fixed-dim": "#ffb2b9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "24px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "sidebar-width": "260px",
+                        "telemetry-sidebar-width": "340px",
+                        "sm": "8px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-xl": ["Barlow Condensed"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden h-screen flex">
+<!-- Sidebar Left: NavigationDrawer -->
+<aside class="w-sidebar-width h-screen border-r border-outline-variant bg-surface-container flex flex-col py-lg flex-shrink-0">
+<div class="px-md mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter uppercase">TRADEVISION C.A.R.E.</h1>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<div class="flex items-center gap-md px-md py-sm text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Validator Node</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</div>
+<div class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</div>
+</nav>
+<div class="mt-auto px-md pt-lg border-t border-outline-variant/30">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-2 h-2 rounded-full bg-status-success pulse-dot"></div>
+<span class="font-mono-data text-mono-data text-status-success uppercase">Core Connection Active</span>
+</div>
+<div class="bg-surface-container-low p-sm rounded-sm cyber-border overflow-hidden">
+<div class="text-[10px] text-outline font-mono-data leading-none mb-1">NODE_ID: 77-AF-92</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-3/4"></div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Fluid Canvas -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-lg w-full sticky top-0 z-50 bg-surface-deep border-b border-outline-variant h-16">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-cyan cursor-pointer transition-all active:scale-95">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-widest">SYSTEM_CORE_V2.0</h2>
+</div>
+<div class="flex items-center gap-xl">
+<div class="hidden md:flex items-center gap-lg">
+<span class="font-mono-data text-mono-data text-primary cursor-pointer hover:text-accent-cyan transition-all">LATEST_SYNC: 12:44:02</span>
+<span class="font-mono-data text-mono-data text-outline cursor-pointer hover:text-accent-cyan transition-all">LATENCY: 12ms</span>
+</div>
+<span class="material-symbols-outlined text-outline hover:text-accent-cyan cursor-pointer transition-all active:scale-95">account_circle</span>
+</div>
+</header>
+<!-- Scrollable Dashboard Area -->
+<div class="flex-1 overflow-y-auto p-lg custom-scrollbar">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- KPI Row -->
+<section class="col-span-12 grid grid-cols-1 md:grid-cols-4 gap-gutter mb-lg">
+<div class="bg-surface-container p-md border border-outline-variant relative overflow-hidden group hover:border-primary/50 transition-all">
+<div class="scanline opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<p class="font-label-caps text-label-caps text-outline mb-xs">Forecast Completion</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">94.8%</h3>
+<div class="flex items-center gap-xs mt-sm">
+<span class="material-symbols-outlined text-status-success text-[16px]">arrow_drop_up</span>
+<span class="font-mono-data text-mono-data text-status-success">+2.4% vs T-1</span>
+</div>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant relative group">
+<p class="font-label-caps text-label-caps text-outline mb-xs">Revenue Projection</p>
+<h3 class="font-headline-lg text-headline-lg text-secondary">$12.4M</h3>
+<div class="flex items-center gap-xs mt-sm">
+<span class="material-symbols-outlined text-status-success text-[16px]">trending_up</span>
+<span class="font-mono-data text-mono-data text-status-success">On Track</span>
+</div>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant relative group">
+<p class="font-label-caps text-label-caps text-outline mb-xs">Validator Load</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">620 GB/s</h3>
+<div class="flex items-center gap-xs mt-sm">
+<span class="material-symbols-outlined text-outline text-[16px]">memory</span>
+<span class="font-mono-data text-mono-data text-outline">Nominal Load</span>
+</div>
+</div>
+<div class="bg-surface-container p-md border border-outline-variant relative group">
+<p class="font-label-caps text-label-caps text-outline mb-xs">System Confidence</p>
+<h3 class="font-headline-lg text-headline-lg text-status-success">High</h3>
+<div class="flex items-center gap-xs mt-sm">
+<span class="material-symbols-outlined text-status-success text-[16px]">verified_user</span>
+<span class="font-mono-data text-mono-data text-status-success">99.98% Auth</span>
+</div>
+</div>
+</section>
+<!-- Global AI Forecasting Feed (Asymmetric Bento) -->
+<section class="col-span-12 lg:col-span-8 flex flex-col gap-gutter">
+<div class="bg-surface-container border border-outline-variant flex flex-col h-[500px]">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h3 class="font-label-caps text-label-caps">Global AI Forecasting Feed</h3>
+</div>
+<span class="font-mono-data text-mono-data text-outline">STREAM_ACTIVE_001</span>
+</div>
+<div class="flex-1 overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-30 mix-blend-luminosity" data-alt="A sophisticated data visualization dashboard showing complex neural network pathways and digital abstract patterns. The visual is dominated by dark charcoal and slate tones, accented by glowing lines of soft rose and neon cyan. The lighting is low-key, evoking a high-security monitoring center or a deep-tech laboratory. The overall mood is intense, forensic, and highly technical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ9RUKI_eq-jfkPqIfZulafSSzqsjCJEDA4Q_Ydh7Dh07qaCkTrGM3J2XOVUCTndkNbqkNkRI3Ivug7cgYhMKpwCaetbyAloTVRCgnLfYABcjRnkrcWtfe2IGgmIzNOIVW1e6GxswyivFrWUHa5Q-z5C-g1SF7wXTjn1zdj5dgEdLEGcjMccVR0RS_QExvZeHQBEAkzfGSCPkbJX4C39TUCeSPlvZVxjrfnhJIhO-N1NJSXejB4y68luTNyWmzfiVAiIV-83Cyfxqg"/>
+<div class="absolute inset-0 p-lg flex flex-col justify-end bg-gradient-to-t from-surface via-surface/60 to-transparent">
+<div class="grid grid-cols-2 gap-xl">
+<div class="p-md bg-surface-container/80 backdrop-blur-md border-l-2 border-primary">
+<div class="font-label-caps text-label-caps text-primary mb-xs">Anomaly Detected</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-md">Pattern divergence in sector 7-B. Potential trade-volume escalation projected within 4 hours.</div>
+<button class="bg-primary-container text-on-primary-container px-md py-xs font-label-md text-label-md uppercase font-bold hover:brightness-110 transition-all">Verify Protocol</button>
+</div>
+<div class="p-md bg-surface-container-highest/80 backdrop-blur-md border-l-2 border-accent-cyan">
+<div class="font-label-caps text-label-caps text-accent-cyan mb-xs">Prediction Hash</div>
+<div class="font-mono-data text-mono-data truncate mb-md text-outline">0x77fA923B...12EF5D</div>
+<div class="flex gap-sm">
+<span class="px-xs py-[2px] border border-outline-variant text-[10px] text-outline font-mono-data">STABLE</span>
+<span class="px-xs py-[2px] border border-outline-variant text-[10px] text-outline font-mono-data">VERIFIED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- System-wide Risk Probability Matrix -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant flex flex-col">
+<div class="p-md border-b border-outline-variant bg-surface-container-low flex items-center gap-sm">
+<span class="material-symbols-outlined text-status-error">grid_view</span>
+<h3 class="font-label-caps text-label-caps">Risk Probability Matrix</h3>
+</div>
+<div class="p-md flex-1">
+<div class="grid grid-cols-5 grid-rows-5 gap-xs h-[400px]">
+<!-- Matrix Cells -->
+<div class="bg-status-error/10 border border-status-error/30 flex items-center justify-center font-mono-data text-status-error text-[10px] relative group">
+                                98.2
+                                <div class="absolute inset-0 bg-status-error/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="bg-status-error/5 border border-status-error/20 flex items-center justify-center font-mono-data text-status-error/70 text-[10px]">91.0</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">74.5</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">62.1</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">55.0</div>
+<!-- Row 2 -->
+<div class="bg-status-error/5 border border-status-error/20 flex items-center justify-center font-mono-data text-status-error/70 text-[10px]">88.4</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">77.9</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">58.4</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">42.1</div>
+<div class="bg-status-success/5 border border-status-success/20 flex items-center justify-center font-mono-data text-status-success/70 text-[10px]">12.4</div>
+<!-- Repeat for matrix effect... (truncated for brevity but keeping structure) -->
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">66.3</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">54.2</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">33.1</div>
+<div class="bg-status-success/5 border border-status-success/20 flex items-center justify-center font-mono-data text-status-success/70 text-[10px]">09.8</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">04.2</div>
+<!-- Fill remaining rows -->
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">44.1</div>
+<div class="bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono-data text-outline text-[10px]">21.9</div>
+<div class="bg-status-success/5 border border-status-success/20 flex items-center justify-center font-mono-data text-status-success/70 text-[10px]">08.4</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">03.1</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">02.7</div>
+<div class="bg-status-success/5 border border-status-success/20 flex items-center justify-center font-mono-data text-status-success/70 text-[10px]">11.5</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">07.2</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">04.5</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">02.1</div>
+<div class="bg-status-success/10 border border-status-success/30 flex items-center justify-center font-mono-data text-status-success text-[10px]">01.4</div>
+</div>
+<div class="mt-md flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">IMPACT_LOW</span>
+<span class="font-label-sm text-label-sm text-outline">IMPACT_CRITICAL</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-[16px]">info</span>
+<p class="font-body-sm text-body-sm text-outline leading-tight">Current risk profile indicates localized divergence in North-West Nodes.</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Sidebar Right: Telemetry Panel -->
+<aside class="w-telemetry-sidebar-width h-screen border-l border-outline-variant bg-surface-container-low flex flex-col p-md flex-shrink-0">
+<div class="mb-lg">
+<h4 class="font-label-caps text-label-caps text-outline mb-md">TELEMETRY_LOG</h4>
+<div class="space-y-sm">
+<!-- Telemetry Item -->
+<div class="flex flex-col gap-xs p-sm bg-surface-container-high rounded-sm animate-pulse-subtle">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-status-success text-[14px]">sensors</span>
+<span class="font-label-sm text-label-sm text-status-success">Real-time Feed</span>
+</div>
+<span class="font-mono-data text-[10px] text-outline">ACTIVE</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full">
+<div class="h-full bg-status-success w-[88%] shadow-[0_0_8px_rgba(74,222,128,0.5)]"></div>
+</div>
+</div>
+<!-- Telemetry Item -->
+<div class="flex flex-col gap-xs p-sm opacity-70 hover:opacity-100 hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-tertiary-container text-[14px]">memory</span>
+<span class="font-label-sm text-label-sm">CPU Load</span>
+</div>
+<span class="font-mono-data text-[10px] text-outline">42%</span>
+</div>
+<div class="flex gap-[2px]">
+<div class="h-1 flex-1 bg-status-success"></div>
+<div class="h-1 flex-1 bg-status-success"></div>
+<div class="h-1 flex-1 bg-status-success"></div>
+<div class="h-1 flex-1 bg-surface-container-highest"></div>
+<div class="h-1 flex-1 bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- Telemetry Item -->
+<div class="flex flex-col gap-xs p-sm opacity-70 hover:opacity-100 transition-colors">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-tertiary-container text-[14px]">speed</span>
+<span class="font-label-sm text-label-sm">Network Latency</span>
+</div>
+<span class="font-mono-data text-[10px] text-outline">12ms</span>
+</div>
+</div>
+<!-- Telemetry Item -->
+<div class="flex flex-col gap-xs p-sm opacity-70 hover:opacity-100 transition-colors">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-tertiary-container text-[14px]">storage</span>
+<span class="font-label-sm text-label-sm">Memory Map</span>
+</div>
+<span class="font-mono-data text-[10px] text-outline">9.2TB</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-md">
+<h4 class="font-label-caps text-label-caps text-outline">LIVE_EVIDENCE_STREAM</h4>
+<div class="flex-1 overflow-y-auto space-y-md pr-xs custom-scrollbar">
+<!-- Evidence Entry 1 -->
+<div class="p-sm bg-surface-container border-l-2 border-primary cyber-border">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-mono-data text-[10px] text-primary">#HASH-9921</span>
+<span class="font-mono-data text-[10px] text-outline">12:44:01</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface leading-snug">Validation pass successful for block 4,822,101. No drift detected.</p>
+</div>
+<!-- Evidence Entry 2 -->
+<div class="p-sm bg-surface-container border-l-2 border-status-error/50">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-mono-data text-[10px] text-status-error">#HASH-9920</span>
+<span class="font-mono-data text-[10px] text-outline">12:43:58</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface leading-snug">Minor timestamp variance found in Peer-32. Auto-resolving...</p>
+</div>
+<!-- Evidence Entry 3 -->
+<div class="p-sm bg-surface-container border-l-2 border-primary cyber-border opacity-60">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-mono-data text-[10px] text-primary">#HASH-9919</span>
+<span class="font-mono-data text-[10px] text-outline">12:43:52</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface leading-snug">New asset verified: [PROJECT_ALPHA_REVENUE_STREAM].</p>
+</div>
+</div>
+</div>
+<button class="mt-md w-full border border-outline-variant py-sm font-label-caps text-label-caps text-outline hover:bg-surface-container-highest hover:text-on-surface transition-all active:scale-95">
+            EXPORT_LOGS_CSV
+        </button>
+</aside>
+<!-- Active Floating Status Message (Glassmorphism) -->
+<div class="fixed bottom-lg right-[360px] p-md bg-surface-container-highest/90 backdrop-blur-xl border border-primary/30 flex items-center gap-md rounded-lg shadow-2xl z-[100] animate-bounce-subtle">
+<div class="w-10 h-10 rounded bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary">Predictive Model Updated</span>
+<span class="font-body-sm text-[12px] text-on-surface/80">New revenue vectors added for Q4 projections.</span>
+</div>
+<button class="ml-xl hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<script>
+        // Micro-interactions and atmospheric logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Randomize telemetry pulses
+            setInterval(() => {
+                const telemetryValue = Math.floor(Math.random() * (95 - 85) + 85);
+                const bar = document.querySelector('.bg-status-success.shadow-\\[0_0_8px_rgba\\(74\\,222\\,128\\,0\\.5\\)\\]');
+                if (bar) bar.style.width = `${telemetryValue}%`;
+            }, 3000);
+
+            // Matrix simulation
+            const matrixCells = document.querySelectorAll('.grid-cols-5 > div');
+            setInterval(() => {
+                const randomCell = matrixCells[Math.floor(Math.random() * matrixCells.length)];
+                randomCell.classList.add('brightness-150');
+                setTimeout(() => randomCell.classList.remove('brightness-150'), 100);
+            }, 500);
+        });
+    </script>
+</body></html>

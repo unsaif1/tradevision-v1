@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Claim Detail - C.A.R.E. Stack</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for technical feel */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #30353d; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: #5c3f42; }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d5e4f7",
+                    "on-surface-variant": "#e4bdbf",
+                    "tertiary-fixed": "#d9e3f9",
+                    "on-secondary-container": "#a8b6c9",
+                    "secondary-fixed-dim": "#bac8db",
+                    "on-primary-container": "#fffcff",
+                    "on-error": "#690005",
+                    "on-background": "#dee2ec",
+                    "secondary": "#bac8db",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#dee2ec",
+                    "primary-container": "#e21e51",
+                    "on-secondary-fixed": "#0f1d2b",
+                    "on-tertiary-container": "#fefcff",
+                    "surface-container-highest": "#30353d",
+                    "border-subtle": "rgba(136, 150, 168, 0.15)",
+                    "on-primary-fixed-variant": "#91002e",
+                    "surface-container-low": "#171c23",
+                    "text-primary": "#FFFFFF",
+                    "surface-deep": "#1C2128",
+                    "on-surface": "#dee2ec",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "on-secondary": "#243240",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#ab888a",
+                    "inverse-primary": "#be003e",
+                    "surface-dim": "#0f141a",
+                    "error": "#ffb4ab",
+                    "tertiary": "#bdc7dc",
+                    "on-tertiary-fixed": "#121c2c",
+                    "surface-container-lowest": "#090f15",
+                    "inverse-on-surface": "#2c3138",
+                    "accent-active": "#E21E51",
+                    "on-tertiary": "#273141",
+                    "on-secondary-fixed-variant": "#3a4858",
+                    "background": "#0f141a",
+                    "surface-container": "#1b2027",
+                    "surface": "#0f141a",
+                    "on-tertiary-fixed-variant": "#3d4759",
+                    "tertiary-fixed-dim": "#bdc7dc",
+                    "tertiary-container": "#6b7588",
+                    "on-primary-fixed": "#40000f",
+                    "primary-fixed": "#ffdadb",
+                    "text-secondary": "#8896A8",
+                    "surface-bright": "#353941",
+                    "outline-variant": "#5c3f42",
+                    "on-primary": "#67001e",
+                    "surface-container-high": "#252a32",
+                    "surface-muted": "#2D3748",
+                    "surface-tint": "#ffb2b9",
+                    "secondary-container": "#3a4858",
+                    "primary": "#ffb2b9",
+                    "surface-variant": "#30353d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "margin": "24px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Barlow Condensed"],
+                    "headline-md": ["Barlow Condensed"],
+                    "body-sm": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "headline-lg": ["Barlow Condensed"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                    "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-deep text-text-primary antialiased font-body-md min-h-screen flex justify-center selection:bg-primary-container selection:text-text-primary">
+<!-- Mobile Device Simulator Container -->
+<div class="w-full max-w-md bg-surface-deep h-screen flex flex-col relative overflow-hidden shadow-2xl sm:border-x sm:border-border-subtle">
+<!-- Task-Focused Header (Suppresses Global Nav per guidelines) -->
+<header class="h-16 shrink-0 bg-surface/90 backdrop-blur-md border-b border-border-subtle flex items-center px-4 sticky top-0 z-50">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center -ml-2 rounded-full text-text-secondary hover:text-text-primary hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_back</span>
+</button>
+<div class="ml-2 flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-text-secondary uppercase tracking-widest">Incident File</span>
+<span class="font-headline-md text-headline-md text-text-primary leading-tight">CLM-894-XQ</span>
+</div>
+<div class="ml-auto flex items-center gap-2 bg-surface-container-highest px-3 py-1.5 rounded-full border border-border-subtle">
+<!-- Status Pip -->
+<span class="w-2 h-2 rounded-full bg-accent-active shadow-[0_0_8px_rgba(226,30,81,0.8)] animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-text-primary uppercase tracking-wide">Review</span>
+</div>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Context Card -->
+<section class="m-4 p-5 rounded-lg bg-surface border border-border-subtle relative overflow-hidden">
+<!-- Decorative Kinetic Element -->
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute right-0 top-0 w-16 h-16 bg-[radial-gradient(circle_at_center,_rgba(136,150,168,0.1)_1px,_transparent_1px)] bg-[size:4px_4px] opacity-50 pointer-events-none"></div>
+<div class="relative z-10">
+<h1 class="font-headline-lg text-headline-lg text-text-primary mb-1">Structural Integrity Failure</h1>
+<div class="flex items-center gap-2 text-text-secondary mb-6">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-body-sm text-body-sm">Sector 7G, Primary Coolant Tower</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-border-subtle pt-4">
+<div>
+<span class="block font-label-sm text-label-sm text-text-secondary uppercase tracking-wider mb-0.5">Recorded Vector</span>
+<span class="block font-body-sm text-body-sm text-text-primary">2023-10-24 08:45:00Z</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-text-secondary uppercase tracking-wider mb-0.5">Primary Analyst</span>
+<span class="block font-body-sm text-body-sm text-text-primary">Dr. E. Vance</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-text-secondary uppercase tracking-wider mb-0.5">Risk Exposure</span>
+<span class="block font-body-sm text-body-sm text-primary font-medium">Critical / Tier 1</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-text-secondary uppercase tracking-wider mb-0.5">Telemetry Status</span>
+<span class="block font-body-sm text-body-sm text-text-primary">Online (Degraded)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Documentation Stack -->
+<section class="mt-8">
+<div class="px-4 mb-3 flex items-end justify-between">
+<h2 class="font-headline-md text-headline-md text-text-primary">DOCUMENTATION STACK</h2>
+<span class="font-label-sm text-label-sm text-text-secondary">3 ITEMS</span>
+</div>
+<div class="mx-4 border border-border-subtle rounded-lg bg-surface overflow-hidden">
+<!-- Line Item 1 -->
+<div class="group flex items-start gap-3 p-4 border-b border-border-subtle last:border-0 hover:bg-surface-container-highest/30 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded bg-surface-container-highest border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-text-primary truncate pr-2">incident_report_final_signed.pdf</h3>
+<span class="font-label-sm text-label-sm text-text-secondary shrink-0">4.2 MB</span>
+</div>
+<div class="flex items-center justify-between bg-surface-deep px-2 py-1.5 rounded border border-border-subtle mt-2">
+<code class="font-mono text-[10px] text-text-secondary truncate pr-2 tracking-tighter">SHA256: 8f4e9a3b...2c1d5e6f</code>
+<button aria-label="Copy Hash" class="text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Line Item 2 -->
+<div class="group flex items-start gap-3 p-4 border-b border-border-subtle last:border-0 hover:bg-surface-container-highest/30 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded bg-surface-container-highest border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">image</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-text-primary truncate pr-2">drone_survey_fracture_site.jpg</h3>
+<span class="font-label-sm text-label-sm text-text-secondary shrink-0">12.8 MB</span>
+</div>
+<div class="flex items-center justify-between bg-surface-deep px-2 py-1.5 rounded border border-border-subtle mt-2">
+<code class="font-mono text-[10px] text-text-secondary truncate pr-2 tracking-tighter">SHA256: d4735e3a...9f11a2b0</code>
+<button aria-label="Copy Hash" class="text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Line Item 3 -->
+<div class="group flex items-start gap-3 p-4 border-b border-border-subtle last:border-0 hover:bg-surface-container-highest/30 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded bg-surface-container-highest border border-border-subtle flex items-center justify-center text-text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-text-primary truncate pr-2">sensor_telemetry_dump.json</h3>
+<span class="font-label-sm text-label-sm text-text-secondary shrink-0">845 KB</span>
+</div>
+<div class="flex items-center justify-between bg-surface-deep px-2 py-1.5 rounded border border-border-subtle mt-2">
+<code class="font-mono text-[10px] text-text-secondary truncate pr-2 tracking-tighter">SHA256: 1a9b2c3d...4e5f6g7h</code>
+<button aria-label="Copy Hash" class="text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Audit Trail -->
+<section class="mt-8 mb-6">
+<div class="px-4 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">history</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">AUDIT TRAIL</h2>
+</div>
+<div class="mx-4 relative">
+<!-- Vertical Timeline Line -->
+<div class="absolute left-[11px] top-3 bottom-3 w-px bg-border-subtle"></div>
+<div class="space-y-6">
+<!-- Timeline Node: Active -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-deep border border-border-subtle flex items-center justify-center z-10">
+<div class="w-2.5 h-2.5 rounded-full bg-accent-active shadow-[0_0_6px_rgba(226,30,81,0.8)]"></div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-lg p-3">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-text-primary">Legal Review Started</h3>
+<span class="font-label-sm text-label-sm text-text-secondary whitespace-nowrap ml-2">Today, 14:30</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Assigned to External Counsel group (ID: GRP-442) for preliminary liability assessment.</p>
+</div>
+</div>
+<!-- Timeline Node: Past -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-deep border border-border-subtle flex items-center justify-center z-10">
+<div class="w-2 h-2 rounded-full bg-text-secondary"></div>
+</div>
+<div class="bg-surface/50 border border-border-subtle rounded-lg p-3">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-text-primary">Metadata Validated</h3>
+<span class="font-label-sm text-label-sm text-text-secondary whitespace-nowrap ml-2">Yesterday, 09:15</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Automated system verified cryptographic hashes against origin chain.</p>
+</div>
+</div>
+<!-- Timeline Node: Origin -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-deep border border-border-subtle flex items-center justify-center z-10">
+<div class="w-2 h-2 rounded-full bg-text-secondary"></div>
+</div>
+<div class="bg-surface/50 border border-border-subtle rounded-lg p-3">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-text-primary">Evidence Ingested</h3>
+<span class="font-label-sm text-label-sm text-text-secondary whitespace-nowrap ml-2">Oct 24, 08:45</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Initial packet received from field operative terminal.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Action Bar (Bottom) -->
+<div class="absolute bottom-0 left-0 w-full bg-surface/95 backdrop-blur-md border-t border-border-subtle p-4 pb-safe flex gap-3 z-50">
+<button class="flex-1 bg-surface-container-highest text-text-primary border border-border-subtle font-label-md text-label-md h-12 rounded-lg flex items-center justify-center gap-2 hover:bg-surface-bright transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+                ESCALATE
+            </button>
+<button class="flex-[2] bg-primary-container text-text-primary font-label-md text-label-md h-12 rounded-lg flex items-center justify-center gap-2 hover:bg-inverse-primary transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                ACKNOWLEDGE
+            </button>
+</div>
+</div>
+</body></html>

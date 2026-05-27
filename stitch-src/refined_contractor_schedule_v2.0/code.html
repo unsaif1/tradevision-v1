@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Scheduling &amp; Dispatch</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#b4c5ff",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#dae2fd",
+                      "inverse-on-surface": "#283044",
+                      "surface-container-high": "#222a3d",
+                      "inverse-primary": "#0053db",
+                      "tertiary-container": "#007d55",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-surface-variant": "#c3c6d7",
+                      "on-error-container": "#ffdad6",
+                      "surface": "#0b1326",
+                      "on-primary-container": "#eeefff",
+                      "border-muted": "#334155",
+                      "on-tertiary-fixed": "#002113",
+                      "on-error": "#690005",
+                      "neon-blue": "#2563EB",
+                      "surface-dim": "#0b1326",
+                      "secondary-container": "#00a6e0",
+                      "on-tertiary-container": "#bdffdb",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#131b2e",
+                      "on-primary": "#002a78",
+                      "outline-variant": "#434655",
+                      "surface-tint": "#b4c5ff",
+                      "on-background": "#dae2fd",
+                      "neon-cyan": "#06B6D4",
+                      "on-surface": "#dae2fd",
+                      "on-secondary-fixed": "#001e2c",
+                      "on-tertiary": "#003824",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "secondary-fixed": "#c4e7ff",
+                      "primary-container": "#2563eb",
+                      "on-secondary": "#00354a",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-card": "#1E293B",
+                      "secondary-fixed-dim": "#7bd0ff",
+                      "surface-variant": "#2d3449",
+                      "secondary": "#7bd0ff",
+                      "tertiary": "#4edea3",
+                      "on-secondary-fixed-variant": "#004c69",
+                      "surface-input": "#0F172A",
+                      "on-secondary-container": "#00374d",
+                      "surface-bright": "#31394d",
+                      "background": "#0b1326",
+                      "surface-container-lowest": "#060e20",
+                      "outline": "#8d90a0",
+                      "surface-container": "#171f33",
+                      "surface-container-highest": "#2d3449"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["JetBrains Mono"],
+                      "headline-md": ["JetBrains Mono"],
+                      "headline-sm": ["JetBrains Mono"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-sm": ["10px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for cyber industrial look */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #434655; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563EB; 
+        }
+        .bg-cyber-pattern {
+            background-image: linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .neon-glow {
+            text-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-neon-blue selection:text-white">
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-surface-container dark:bg-surface-container border-b border-outline-variant flex justify-between items-center px-gutter h-16 flat no shadows">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary dark:text-primary font-headline-sm">terminal</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tighter text-neon-blue font-headline-sm">TRADEVISION C.A.R.E.</span>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden" title="Contractor Profile">
+<span class="material-symbols-outlined text-on-surface-variant text-sm font-headline-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-16 mb-16 px-margin-mobile py-4 flex flex-col gap-4 overflow-x-hidden md:pl-[288px] md:mb-0">
+<!-- Header Section: Context & Optimization -->
+<section class="flex flex-col gap-unit">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-headline-sm">Schedule</h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-1 font-headline-sm">Route &amp; Timeline Control</p>
+</div>
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-neon-blue text-sm font-headline-sm" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+<span class="font-label-sm text-label-sm text-neon-blue uppercase font-headline-sm">Synced</span>
+</div>
+</div>
+</section>
+<!-- Horizontal Weekly Date Picker -->
+<section class="w-full overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile">
+<div class="flex gap-2 min-w-max"><button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm"><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Mon</span><span class="font-headline-sm text-headline-sm text-on-surface-variant">12</span><div class="flex gap-0.5 mt-1"><div class="w-1 h-1 rounded-full bg-tertiary-container"></div><div class="w-1 h-1 rounded-full bg-tertiary-container"></div></div></button><button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm"><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Tue</span><span class="font-headline-sm text-headline-sm text-on-surface-variant">13</span><div class="flex gap-0.5 mt-1"><div class="w-1 h-1 rounded-full bg-tertiary-container"></div></div></button><button class="flex flex-col items-center justify-center w-14 h-16 bg-primary-container border border-neon-blue rounded shadow-[0_0_8px_rgba(37,99,235,0.4)] font-headline-sm"><span class="font-headline-sm text-[10px] text-on-primary-container uppercase">Wed</span><span class="font-headline-sm text-headline-sm text-on-primary-container">14</span><div class="flex gap-0.5 mt-1"><div class="w-1 h-1 rounded-full bg-on-primary-container"></div><div class="w-1 h-1 rounded-full bg-error animate-pulse"></div><div class="w-1 h-1 rounded-full bg-on-primary-container opacity-50"></div></div></button><button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm"><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Thu</span><span class="font-headline-sm text-headline-sm text-on-surface">15</span><div class="flex gap-0.5 mt-1"><div class="w-1 h-1 rounded-full bg-on-surface-variant opacity-30"></div></div></button><button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm"><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Fri</span><span class="font-headline-sm text-headline-sm text-on-surface">16</span></button><button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm"><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Sat</span><span class="font-headline-sm text-headline-sm text-on-surface">17</span></button><button class="flex flex-col items-center justify-center w-14 h-16 bg-surface-container-low border border-outline-variant rounded hover:bg-surface-bright transition-colors font-headline-sm"><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Sun</span><span class="font-headline-sm text-headline-sm text-on-surface">18</span></button></div>
+</section>
+<!-- Route Map Widget & Optimization Action -->
+<section class="bg-surface-card border border-outline-variant rounded-lg overflow-hidden flex flex-col relative group">
+<!-- Technical Header -->
+<div class="bg-surface-container-highest px-3 py-2 flex justify-between items-center border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm font-headline-sm">route</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-headline-sm">Tactical Route</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-neon-blue animate-pulse font-headline-sm"></span>
+<span class="font-label-sm text-label-sm text-neon-blue uppercase font-headline-sm">Live Tracking</span>
+</div>
+</div>
+<!-- Map Area Placeholder (Data Store) -->
+<div class="h-40 w-full bg-surface-container-lowest relative bg-cyber-pattern flex items-center justify-center"><div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(37, 99, 235, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.2) 1px, transparent 1px); background-size: 10px 10px;"></div><div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.4) 0%, transparent 60%);"></div><svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none" viewbox="0 0 400 160"><path class="opacity-40" d="M 40,120 C 100,120 150,40 220,60 C 280,80 320,100 360,40" fill="none" stroke="#2563EB" stroke-dasharray="2 2" stroke-width="1.5"></path><circle cx="40" cy="120" fill="#2563EB" r="3"></circle><circle class="opacity-50" cx="110" cy="95" fill="#2563EB" r="1.5"></circle><circle class="opacity-50" cx="180" cy="65" fill="#2563EB" r="1.5"></circle><circle cx="220" cy="60" fill="#1E293B" r="4" stroke="#2563EB" stroke-width="2"></circle><circle class="opacity-50" cx="290" cy="70" fill="#2563EB" r="1.5"></circle><circle cx="360" cy="40" fill="#1E293B" r="4" stroke="#2563EB" stroke-width="2"></circle></svg><div class="absolute top-2 left-2 flex gap-1"><button class="bg-surface-container-highest/80 backdrop-blur-sm border border-outline-variant px-2 py-0.5 rounded text-[8px] font-headline-sm text-on-surface-variant hover:text-neon-blue transition-colors uppercase tracking-tighter flex items-center gap-1"><span class="material-symbols-outlined text-[10px] font-headline-sm">layers</span> Heatmap</button></div><div class="z-10 bg-surface-container/80 backdrop-blur-sm border border-outline-variant px-2 py-0.5 rounded"><span class="font-label-sm text-[10px] font-headline-sm text-on-surface-variant">GPS_LOCATING_TR_v2.0</span></div></div>
+<!-- AI Optimize Button Overlaid -->
+<div class="absolute bottom-3 right-3">
+<button class="bg-neon-blue text-on-primary hover:bg-blue-500 font-label-md text-label-md px-3 py-2 rounded shadow-lg flex items-center gap-2 transition-colors border border-blue-400 font-headline-sm">
+<span class="material-symbols-outlined text-sm font-headline-sm">auto_awesome</span>
+                    OPTIMIZE ROUTE
+                </button>
+</div>
+<!-- Route Stats -->
+<div class="bg-surface-container-low px-3 py-2 flex justify-between items-center border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-headline-sm">Est. Distance</span>
+<span class="font-label-md text-label-md text-on-surface font-headline-sm">42.5 MI</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-headline-sm">Est. Duration</span>
+<span class="font-label-md text-label-md text-on-surface font-headline-sm">6H 15M</span>
+</div>
+</div>
+</section>
+<!-- Vertical Timeline / Agenda -->
+<section class="flex flex-col mt-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Agenda: AUG 14</h2>
+<div class="relative pl-6">
+<!-- Vertical Spine -->
+<div class="absolute left-[11px] top-2 bottom-0 w-[2px] bg-outline-variant opacity-50"></div>
+<!-- Job 1 (Completed/In Progress conceptually) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[29px] top-3 w-4 h-4 rounded-full bg-surface-card border-2 border-tertiary-container z-10 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></div>
+</div>
+<!-- Job Card: Normal Priority -->
+<div class="bg-surface-card border border-outline-variant rounded relative overflow-hidden group hover:border-primary transition-colors"><div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div><div class="p-2.5 pl-4"><div class="flex justify-between items-start mb-1"><div class="flex flex-col"><span class="font-headline-sm text-[12px] text-on-surface">JOB-9902-A</span><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase tracking-wider">HVAC Diagnostic</span></div><div class="flex flex-col items-end"><span class="font-headline-sm text-[12px] text-on-surface">08:00 AM</span><div class="flex items-center gap-1 mt-0.5"><div class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-ping"></div><span class="font-headline-sm text-[10px] text-tertiary-container uppercase tracking-tight">Arrived</span></div></div></div><div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant/30"><div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-xs font-headline-sm">location_on</span><span class="font-headline-sm text-[10px]">S4, IND PARK</span></div><div class="bg-tertiary-container/10 text-tertiary border border-tertiary/20 px-1.5 py-0.5 rounded text-[9px] font-headline-sm uppercase">EVIDENCE: 2/2</div></div></div></div>
+</div>
+<!-- Job 2 (Active/Next) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[29px] top-3 w-4 h-4 rounded-full bg-surface-card border-2 border-neon-blue z-10 flex items-center justify-center shadow-[0_0_8px_rgba(37,99,235,0.6)]">
+<div class="w-1.5 h-1.5 rounded-full bg-neon-blue animate-pulse"></div>
+</div>
+<!-- Job Card: Urgent Priority -->
+<div class="bg-surface-card border-2 border-error-container rounded relative overflow-hidden shadow-[0_0_12px_rgba(147,0,10,0.2)]"><div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error-container"></div><div class="p-2.5 pl-4"><div class="flex justify-between items-start mb-1"><div class="flex flex-col gap-0.5"><div class="flex items-center gap-2"><span class="font-headline-sm text-[12px] text-on-surface">JOB-9904-X</span><span class="bg-error-container text-on-error-container px-1.5 py-0 rounded text-[8px] font-headline-sm uppercase animate-pulse">URGENT</span></div><span class="font-headline-sm text-[10px] text-on-surface-variant uppercase">Mainframe Power Fail</span></div><div class="flex flex-col items-end"><span class="font-headline-sm text-[12px] text-neon-blue neon-glow">10:30 AM</span><span class="font-headline-sm text-[10px] text-on-surface-variant opacity-70 tracking-tight">IN 45m</span></div></div><div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant/30"><div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-xs font-headline-sm">navigation</span><span class="font-headline-sm text-[10px]">12.4 MI DIST</span></div><button class="bg-neon-blue text-on-primary font-headline-sm text-[10px] px-3 py-1 rounded uppercase hover:bg-blue-500 transition-colors tracking-widest">TRANSIT</button></div></div></div>
+</div>
+<!-- Job 3 (Pending) -->
+<div class="relative mb-6">
+<!-- Timeline Node -->
+<div class="absolute -left-[29px] top-3 w-4 h-4 rounded-full bg-surface-container-lowest border-2 border-outline-variant z-10"></div>
+<!-- Job Card: Normal Priority -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded relative overflow-hidden opacity-75">
+<!-- Left Accent Stripe - Normal (Blue, muted) -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="p-3 pl-4">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant font-headline-sm">JOB-9907-C</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider mt-0.5 font-headline-sm">Routine Inspection</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-md text-label-md text-on-surface-variant font-headline-sm">02:00 PM</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5 uppercase font-headline-sm">Pending</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-sm font-headline-sm">location_on</span>
+<span class="font-label-sm text-label-sm font-headline-sm">Sector 9, Comm Hub</span>
+</div>
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-sm font-headline-sm">sync_disabled</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End of Day Indicator -->
+<div class="relative mt-2 flex items-center justify-center py-4">
+<span class="font-label-sm text-label-sm text-outline-variant uppercase bg-background px-2 z-10 relative font-headline-sm">End of Roster</span>
+<div class="absolute w-full h-[1px] bg-outline-variant/30 top-1/2"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-margin-mobile md:hidden bg-surface-container-highest dark:bg-surface-container-highest fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant shadow-lg">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-bright transition-all w-full h-full font-headline-sm">
+<span class="material-symbols-outlined text-xl mb-1 font-headline-sm">dashboard</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-headline-sm">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-bright transition-all w-full h-full font-headline-sm">
+<span class="material-symbols-outlined text-xl mb-1 font-headline-sm">upload_file</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-headline-sm">Evidence</span>
+</button>
+<!-- Active Tab: Schedule is a subset of Sync/Operations in this hypothetical structure, but let's highlight 'Sync' as the closest operational hub if 'Schedule' isn't explicitly there, actually wait, the prompt is 'Contractor Scheduling & Dispatch'. 'Sync' is for syncing data. Let's assume 'Jobs' is the closest to Scheduling if it's the main dashboard. Wait, looking at JSON: NavigationDrawer has "Schedule". BottomNav has "Jobs", "Evidence", "Sync", "Comms". "Jobs" is the most appropriate active tab for a daily roster/agenda. -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-unit w-16 h-[80%] my-auto font-headline-sm">
+<span class="material-symbols-outlined text-xl mb-0.5 font-headline-sm">sensors</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-[8px] font-headline-sm">Sync</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:bg-surface-bright transition-all w-full h-full font-headline-sm">
+<span class="material-symbols-outlined text-xl mb-1 font-headline-sm">forum</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-headline-sm">Comms</span>
+</button>
+</nav>
+<!-- NavigationDrawer (from JSON) - Hidden on mobile, visible on md+ -->
+<aside class="hidden md:flex flex-col h-full py-6 bg-surface-container-low dark:bg-surface-container-low h-full w-72 docked left-0 border-r border-outline-variant flat no shadows fixed top-0 bottom-0 pt-20">
+<!-- Profile Header Layout: left_align -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden shrink-0">
+<span aria-label="Field Operator" class="material-symbols-outlined text-on-surface-variant font-headline-sm">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">OP-7742</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-headline-sm">Verified Contractor</span>
+<span class="font-label-sm text-label-sm text-tertiary mt-1 font-headline-sm">Status: Online</span>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">construction</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Job Terminal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">camera_enhance</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Evidence Hub</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">sync_alt</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Sync Engine</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-3 py-3 rounded bg-primary-container text-on-primary-container border-l-4 border-neon-blue transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">route</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">account_balance_wallet</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Financials</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out font-headline-sm" href="#">
+<span class="material-symbols-outlined font-headline-sm">description</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-headline-sm">Protocols</span>
+</a>
+</nav>
+</aside>
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial Dashboard - Roofing CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#333539",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "background": "#111317",
+                        "secondary-container": "#feb700",
+                        "on-primary": "#00363a",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e",
+                        "secondary": "#ffdb9d",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024",
+                        "surface": "#111317",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "primary": "#dbfcff",
+                        "tertiary-container": "#dad9d9",
+                        "surface-dim": "#111317",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "on-error": "#690005",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-low": "#1a1c20",
+                        "surface-tint": "#00dbe9",
+                        "inverse-on-surface": "#2f3035",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "on-primary-fixed": "#002022",
+                        "on-background": "#e2e2e8",
+                        "secondary-fixed-dim": "#ffba20",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-container": "#006970",
+                        "inverse-surface": "#e2e2e8",
+                        "inverse-primary": "#006970",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#282a2e",
+                        "tertiary": "#f7f5f5",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "primary-container": "#00f0ff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "outline": "#849495"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .industrial-border {
+            border: 1px solid #2D2D2D;
+        }
+        .data-glitch {
+            position: relative;
+        }
+        .data-glitch::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 219, 233, 0) 0%, rgba(0, 219, 233, 0.05) 50%, rgba(0, 219, 233, 0) 100%);
+            pointer-events: none;
+        }
+        .active-indicator {
+            box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-fixed antialiased pb-24 md:pb-0 overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant bg-surface dark:bg-surface flex justify-between items-center px-margin-mobile h-16 w-full bg-surface">
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">person</span>
+</div>
+</div>
+<h1 class="font-headline-md text-display-lg-mobile text-primary-fixed-dim tracking-tight">FINANCIAL TERMINAL</h1>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant/50 transition-colors rounded-full active:opacity-80">
+<span class="material-symbols-outlined text-primary-fixed-dim">settings</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-[80px] px-margin-mobile md:px-margin-desktop space-y-density-comfortable pb-24">
+<!-- Total Revenue Overview Card -->
+<section class="industrial-border bg-surface-container rounded p-density-comfortable relative overflow-hidden active-indicator">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-fixed-dim opacity-10 rounded-bl-full pointer-events-none"></div>
+<div class="flex justify-between items-start mb-unit">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">TOTAL REVENUE (YTD)</h2>
+<div class="flex items-center gap-1 text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span class="font-data-point text-[12px]">+14.2%</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mb-density-compact">
+<span class="font-data-point text-display-lg-mobile text-on-surface tracking-tight">$1,248,500</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">.00</span>
+</div>
+<div class="flex justify-between items-center border-t border-[#2D2D2D] pt-density-compact mt-density-compact">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant mb-1">PREV PERIOD</span>
+<span class="font-data-point text-label-caps text-on-surface">$1,093,200</span>
+</div>
+<div class="h-8 w-[1px] bg-[#2D2D2D]"></div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-[10px] text-on-surface-variant mb-1">PROFIT MARGIN</span>
+<span class="font-data-point text-label-caps text-primary-fixed-dim">28.4%</span>
+</div>
+</div>
+</section>
+<!-- Revenue vs Goal Progress -->
+<section class="industrial-border bg-surface-container rounded p-gutter">
+<div class="flex justify-between mb-density-compact">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Q3 REVENUE TARGET</h3>
+<span class="font-data-point text-label-caps text-on-surface">62%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden border border-[#2D2D2D]">
+<div class="bg-primary-fixed-dim h-full rounded-full" style="width: 62%;"></div>
+</div>
+<div class="flex justify-between mt-unit">
+<span class="font-data-point text-[10px] text-on-surface-variant">$310K</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">$500K</span>
+</div>
+</section>
+<!-- Monthly Trends Chart (CSS based for UI representation) -->
+<section class="industrial-border bg-surface-container rounded p-gutter">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-density-comfortable">MONTHLY NET PROFIT</h3>
+<div class="h-32 flex items-end justify-between gap-1 mt-4 relative">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none z-0">
+<div class="w-full h-[1px] bg-outline-variant/30"></div>
+<div class="w-full h-[1px] bg-outline-variant/30"></div>
+<div class="w-full h-[1px] bg-outline-variant/30"></div>
+<div class="w-full h-[1px] bg-outline-variant/30"></div>
+</div>
+<!-- Bars -->
+<div class="w-full flex flex-col justify-end items-center group z-10">
+<div class="w-full bg-primary-fixed-dim/30 hover:bg-primary-fixed-dim transition-colors rounded-t h-[40%]"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-2">MAY</span>
+</div>
+<div class="w-full flex flex-col justify-end items-center group z-10">
+<div class="w-full bg-primary-fixed-dim/50 hover:bg-primary-fixed-dim transition-colors rounded-t h-[65%]"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-2">JUN</span>
+</div>
+<div class="w-full flex flex-col justify-end items-center group z-10">
+<div class="w-full bg-primary-fixed-dim/40 hover:bg-primary-fixed-dim transition-colors rounded-t h-[55%]"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-2">JUL</span>
+</div>
+<div class="w-full flex flex-col justify-end items-center group z-10">
+<div class="w-full bg-primary-fixed-dim hover:bg-primary-fixed-dim transition-colors rounded-t h-[85%] relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-surface-variant text-on-surface font-data-point text-[10px] px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$42K</div>
+</div>
+<span class="font-label-caps text-[10px] text-primary-fixed-dim mt-2">AUG</span>
+</div>
+<div class="w-full flex flex-col justify-end items-center group z-10">
+<div class="w-full bg-primary-fixed-dim/20 hover:bg-primary-fixed-dim transition-colors rounded-t h-[30%]"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-2">SEP</span>
+</div>
+</div>
+</section>
+<!-- Top Performing Projects -->
+<section class="space-y-density-compact">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">HIGH YIELD PROJECTS</h3>
+<div class="flex flex-col gap-unit">
+<!-- List Item 1 -->
+<div class="industrial-border bg-surface-container rounded p-density-compact flex items-center justify-between group hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-gutter">
+<div class="w-1 h-10 bg-primary-fixed-dim rounded-r"></div>
+<div class="flex flex-col">
+<span class="font-body-fixed text-[14px] font-semibold text-on-surface">Oakhaven Commercial</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-[10px] px-1 rounded border border-outline-variant">TPO</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">12,500 SQ FT</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-point text-[14px] text-primary-fixed-dim">34.2%</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-1">MARGIN</span>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="industrial-border bg-surface-container rounded p-density-compact flex items-center justify-between group hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-gutter">
+<div class="w-1 h-10 bg-secondary-fixed-dim rounded-r"></div>
+<div class="flex flex-col">
+<span class="font-body-fixed text-[14px] font-semibold text-on-surface">Ridgeview Estates</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-[10px] px-1 rounded border border-outline-variant">METAL</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">8,200 SQ FT</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-point text-[14px] text-secondary-fixed-dim">31.8%</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-1">MARGIN</span>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="industrial-border bg-surface-container rounded p-density-compact flex items-center justify-between group hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-gutter">
+<div class="w-1 h-10 bg-surface-variant rounded-r"></div>
+<div class="flex flex-col">
+<span class="font-body-fixed text-[14px] font-semibold text-on-surface">Valley View HS</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-[10px] px-1 rounded border border-outline-variant">EPDM</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">22,000 SQ FT</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-point text-[14px] text-on-surface">26.5%</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-1">MARGIN</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 h-20 border-t border-outline-variant bg-surface-container dark:bg-surface-container">
+<ul class="flex justify-around items-center h-full px-gutter">
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+</li>
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="font-label-caps text-label-caps">JOBS</span>
+</a>
+</li>
+<li class="flex-1">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-label-caps text-label-caps">EXPENSES</span>
+</a>
+</li>
+<li class="flex-1 h-full">
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim border-t-2 border-primary-fixed-dim pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100 w-full h-full bg-primary-fixed-dim/5" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-caps text-label-caps">TERMINAL</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Desktop Side Nav (Hidden on mobile) -->
+<aside class="hidden md:flex fixed left-0 top-16 bottom-0 w-64 bg-surface-container border-r border-outline-variant flex-col py-margin-desktop z-40">
+<nav class="flex-grow">
+<ul class="flex flex-col gap-2 px-margin-mobile">
+<li>
+<a class="flex items-center gap-3 p-density-comfortable rounded text-on-surface-variant hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-density-comfortable rounded text-on-surface-variant hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="font-label-caps text-label-caps">JOBS</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-density-comfortable rounded text-on-surface-variant hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-label-caps text-label-caps">EXPENSES</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-density-comfortable rounded bg-primary-fixed-dim/10 text-primary-fixed-dim border-l-2 border-primary-fixed-dim" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-caps text-label-caps font-bold">TERMINAL</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+</body></html>

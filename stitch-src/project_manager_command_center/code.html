@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PM Command Center - Roofing CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#37393e",
+                      "surface-container-low": "#1a1c20",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "tertiary-fixed": "#e4e2e2",
+                      "primary": "#dbfcff",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "inverse-surface": "#e2e2e8",
+                      "surface-container": "#1e2024",
+                      "secondary-container": "#feb700",
+                      "on-primary": "#00363a",
+                      "on-error-container": "#ffdad6",
+                      "surface-dim": "#111317",
+                      "secondary": "#ffdb9d",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#5e5f5f",
+                      "on-background": "#e2e2e8",
+                      "on-surface": "#e2e2e8",
+                      "on-secondary-fixed": "#271900",
+                      "tertiary": "#f7f5f5",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#00dbe9",
+                      "outline-variant": "#3b494b",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-surface-variant": "#b9cacb",
+                      "inverse-primary": "#006970",
+                      "outline": "#849495",
+                      "surface-container-highest": "#333539",
+                      "primary-fixed": "#7df4ff",
+                      "on-tertiary": "#303031",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-secondary": "#412d00",
+                      "on-secondary-container": "#6b4b00",
+                      "surface-variant": "#333539",
+                      "primary-container": "#00f0ff",
+                      "surface": "#111317",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "inverse-on-surface": "#2f3035",
+                      "tertiary-container": "#dad9d9",
+                      "secondary-fixed": "#ffdea8",
+                      "on-primary-fixed": "#002022",
+                      "on-primary-container": "#006970",
+                      "on-primary-fixed-variant": "#004f54",
+                      "surface-tint": "#00dbe9",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "background": "#111317",
+                      "surface-container-high": "#282a2e",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "density-comfortable": "24px",
+                      "margin-mobile": "16px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container'); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant'); 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.primary'); 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pt-[64px] pb-[72px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[64px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="terminal" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="text-headline-md font-headline-md text-primary tracking-tighter uppercase">PM_COMMAND_CENTER</h1>
+</div>
+<div class="flex items-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">v4.0.2_SYS</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col p-margin-mobile gap-gutter overflow-y-auto">
+<!-- Macro Metrics -->
+<section class="grid grid-cols-2 gap-unit">
+<!-- Global Health -->
+<div class="col-span-2 bg-surface-container border border-[#2D2D2D] p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-container to-transparent opacity-50"></div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-label-caps font-label-caps text-on-surface-variant">[ GLOBAL_PROJECT_HEALTH ]</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="monitoring">monitoring</span>
+</div>
+<div class="text-display-lg-mobile font-display-lg-mobile text-primary tracking-tighter">94<span class="text-headline-md font-headline-md text-primary-fixed-dim">%</span></div>
+<div class="mt-density-compact h-[2px] w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<!-- Budget Velocity -->
+<div class="bg-surface-container border border-[#2D2D2D] p-gutter relative">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps font-label-caps text-on-surface-variant block w-min">[ BUDGET_VELOCITY ]</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim text-sm" data-icon="speed">speed</span>
+</div>
+<div class="text-data-point font-data-point text-on-surface mt-2">1.2<span class="text-sm text-on-surface-variant">x</span></div>
+</div>
+<!-- Critical Milestones -->
+<div class="bg-surface-container border border-[#2D2D2D] p-gutter relative">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps font-label-caps text-on-surface-variant block w-min">[ CRITICAL_MILESTONES ]</span>
+<span class="material-symbols-outlined text-error text-sm" data-icon="warning">warning</span>
+</div>
+<div class="text-data-point font-data-point text-on-surface mt-2">12 <span class="text-sm text-on-surface-variant uppercase">Pending</span></div>
+</div>
+</section>
+<!-- Project Feed Header -->
+<div class="mt-density-comfortable mb-unit flex justify-between items-center border-b border-outline-variant pb-2">
+<h2 class="text-label-caps font-label-caps text-primary-fixed-dim tracking-widest uppercase">&gt;&gt;&gt; ACTIVE_PROJECT_FEED</h2>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="filter_list">filter_list</span>
+</div>
+<!-- Project Feed List -->
+<div class="flex flex-col gap-unit">
+<!-- Project Card 1 (ACTIVE) -->
+<div class="bg-surface-container border border-[#2D2D2D] relative overflow-hidden flex flex-col hover:border-outline-variant transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-primary"></div>
+<div class="p-gutter pl-density-comfortable">
+<div class="flex justify-between items-start mb-unit">
+<div>
+<span class="text-label-caps font-label-caps text-on-surface-variant block mb-1">SITE_ID: #R-8992</span>
+<h3 class="text-body-fixed font-body-fixed font-semibold text-on-surface truncate max-w-[200px]">142 Industrial Pkwy</h3>
+</div>
+<span class="bg-primary-container text-on-primary-container text-label-caps font-label-caps px-2 py-1 uppercase rounded-sm border border-primary/30">ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 gap-unit mt-density-compact bg-surface-container-highest p-2 rounded-sm border border-[#2D2D2D]">
+<div>
+<span class="text-[10px] text-on-surface-variant font-label-caps uppercase block mb-[2px]">Foreman</span>
+<span class="text-label-caps font-label-caps text-tertiary-fixed">J. Miller</span>
+</div>
+<div>
+<span class="text-[10px] text-on-surface-variant font-label-caps uppercase block mb-[2px]">Est. Comp</span>
+<span class="text-label-caps font-label-caps text-tertiary-fixed">4 Days</span>
+</div>
+</div>
+<div class="mt-gutter flex items-center gap-2">
+<span class="text-[10px] font-label-caps text-primary-fixed-dim w-[30px] text-right">68%</span>
+<div class="flex-1 h-[4px] bg-surface-container-highest relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 (DELAYED) -->
+<div class="bg-surface-container border border-[#2D2D2D] relative overflow-hidden flex flex-col hover:border-outline-variant transition-colors">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-error"></div>
+<div class="p-gutter pl-density-comfortable">
+<div class="flex justify-between items-start mb-unit">
+<div>
+<span class="text-label-caps font-label-caps text-on-surface-variant block mb-1">SITE_ID: #C-4410</span>
+<h3 class="text-body-fixed font-body-fixed font-semibold text-on-surface truncate max-w-[200px]">7700 Westheimer Rd</h3>
+</div>
+<span class="bg-error-container text-on-error-container text-label-caps font-label-caps px-2 py-1 uppercase rounded-sm border border-error/30">DELAYED</span>
+</div>
+<div class="grid grid-cols-2 gap-unit mt-density-compact bg-surface-container-highest p-2 rounded-sm border border-[#2D2D2D]">
+<div>
+<span class="text-[10px] text-on-surface-variant font-label-caps uppercase block mb-[2px]">Foreman</span>
+<span class="text-label-caps font-label-caps text-tertiary-fixed">T. Nguyen</span>
+</div>
+<div>
+<span class="text-[10px] text-on-surface-variant font-label-caps uppercase block mb-[2px]">Blocker</span>
+<span class="text-label-caps font-label-caps text-error truncate">Material Shortage</span>
+</div>
+</div>
+<div class="mt-gutter flex items-center gap-2">
+<span class="text-[10px] font-label-caps text-primary-fixed-dim w-[30px] text-right">32%</span>
+<div class="flex-1 h-[4px] bg-surface-container-highest relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-error" style="width: 32%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 3 (AUDIT) -->
+<div class="bg-surface-container border border-[#2D2D2D] relative overflow-hidden flex flex-col hover:border-outline-variant transition-colors opacity-80">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-secondary-fixed-dim"></div>
+<div class="p-gutter pl-density-comfortable">
+<div class="flex justify-between items-start mb-unit">
+<div>
+<span class="text-label-caps font-label-caps text-on-surface-variant block mb-1">SITE_ID: #M-1022</span>
+<h3 class="text-body-fixed font-body-fixed font-semibold text-on-surface truncate max-w-[200px]">South Terminal Dist</h3>
+</div>
+<span class="bg-secondary-container/20 text-secondary-fixed-dim text-label-caps font-label-caps px-2 py-1 uppercase rounded-sm border border-secondary-fixed-dim/30">AUDIT</span>
+</div>
+<div class="grid grid-cols-2 gap-unit mt-density-compact bg-surface-container-highest p-2 rounded-sm border border-[#2D2D2D]">
+<div>
+<span class="text-[10px] text-on-surface-variant font-label-caps uppercase block mb-[2px]">Foreman</span>
+<span class="text-label-caps font-label-caps text-tertiary-fixed">R. Davis</span>
+</div>
+<div>
+<span class="text-[10px] text-on-surface-variant font-label-caps uppercase block mb-[2px]">Status</span>
+<span class="text-label-caps font-label-caps text-secondary-fixed-dim">Final Inspection</span>
+</div>
+</div>
+<div class="mt-gutter flex items-center gap-2">
+<span class="text-[10px] font-label-caps text-primary-fixed-dim w-[30px] text-right">99%</span>
+<div class="flex-1 h-[4px] bg-surface-container-highest relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-secondary-fixed-dim" style="width: 99%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="h-unit"></div> <!-- spacer -->
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-stretch bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant h-[72px]">
+<!-- PROJECTS (Active) -->
+<a class="flex-1 flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary py-density-compact scale-95 opacity-100" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="layers" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="text-label-caps font-label-caps">PROJECTS</span>
+</a>
+<!-- LOGISTICS (Inactive) -->
+<a class="flex-1 flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-density-compact hover:text-primary transition-all duration-75" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="text-label-caps font-label-caps">LOGISTICS</span>
+</a>
+<!-- TEAM (Inactive) -->
+<a class="flex-1 flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-density-compact hover:text-primary transition-all duration-75" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="groups">groups</span>
+<span class="text-label-caps font-label-caps">TEAM</span>
+</a>
+</nav>
+</body></html>

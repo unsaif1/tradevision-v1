@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sensor Calibration Wizard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#2a313a",
+                        "surface-container-lowest": "#080f16",
+                        "tertiary-container": "#2171e4",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#002e6a",
+                        "neon-pink": "#E21E51",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-stroke": "#2D3748",
+                        "inverse-surface": "#dce3ee",
+                        "surface": "#0d141c",
+                        "on-surface": "#dce3ee",
+                        "secondary-fixed-dim": "#4de082",
+                        "error": "#ffb4ab",
+                        "surface-elevated": "#1C2128",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "on-error": "#690005",
+                        "on-secondary": "#003919",
+                        "surface-container-high": "#242b33",
+                        "surface-dim": "#0d141c",
+                        "on-background": "#dce3ee",
+                        "neon-blue": "#3B82F6",
+                        "on-tertiary-container": "#fffcff",
+                        "tertiary": "#adc6ff",
+                        "secondary": "#4de082",
+                        "outline": "#ab888a",
+                        "on-secondary-fixed": "#00210c",
+                        "background": "#0d141c",
+                        "neon-green": "#4ADE80",
+                        "primary": "#ffb2b9",
+                        "surface-container-highest": "#2e353e",
+                        "neon-orange": "#F97316",
+                        "error-container": "#93000a",
+                        "surface-tint": "#ffb2b9",
+                        "on-secondary-fixed-variant": "#005227",
+                        "primary-container": "#e21e51",
+                        "surface-container": "#192028",
+                        "on-primary-container": "#fffcff",
+                        "on-primary-fixed": "#40000f",
+                        "text-muted": "#8896A8",
+                        "surface-base": "#111820",
+                        "secondary-container": "#00b55d",
+                        "on-secondary-container": "#003e1c",
+                        "on-primary": "#67001e",
+                        "outline-variant": "#5c3f42",
+                        "inverse-primary": "#be003e",
+                        "surface-variant": "#2e353e",
+                        "tertiary-fixed": "#d8e2ff",
+                        "secondary-fixed": "#6dfe9c",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-surface-variant": "#e4bdbf",
+                        "surface-bright": "#333a43",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "surface-container-low": "#151c24",
+                        "primary-fixed": "#ffdadb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-gap": "12px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "stat-display": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-lg": ["Barlow"],
+                        "caption": ["Barlow"],
+                        "body-md": ["Barlow"],
+                        "label-caps": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "stat-display": ["40px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom styles for Webkit Scrollbar to fit aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.background');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-stroke');
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.text-muted');
+        }
+        
+        /* Flashing animation for live signal dot */
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .animate-flash {
+            animation: flash 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-base min-h-screen text-on-background font-body-md selection:bg-neon-pink selection:text-white">
+<!-- Wizard Header (Transactional flow, suppresses standard BottomNavBar) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-surface-stroke">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-pink" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-label-caps text-label-caps tracking-widest text-neon-pink">CALIBRATION WIZARD</span>
+</div>
+<button aria-label="Cancel Wizard" class="text-text-muted hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 pb-24 px-margin-mobile flex flex-col gap-6 max-w-lg mx-auto">
+<!-- Progress Stepper -->
+<div class="py-4 flex items-center justify-between relative mt-2">
+<!-- Connecting Line -->
+<div class="absolute top-1/2 left-4 right-4 h-[1px] bg-surface-stroke -z-10 transform -translate-y-1/2"></div>
+<!-- Step 1 (Active) -->
+<div class="flex flex-col items-center gap-2 bg-surface-base px-2">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container border-2 border-neon-pink flex items-center justify-center font-label-caps text-label-caps shadow-[0_0_10px_rgba(226,30,81,0.4)]">1</div>
+<span class="font-label-caps text-label-caps text-neon-pink">ISOLATE</span>
+</div>
+<!-- Step 2 (Pending) -->
+<div class="flex flex-col items-center gap-2 bg-surface-base px-2 opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface-elevated text-text-muted border border-surface-stroke flex items-center justify-center font-label-caps text-label-caps">2</div>
+<span class="font-label-caps text-label-caps text-text-muted">SAMPLE</span>
+</div>
+<!-- Step 3 (Pending) -->
+<div class="flex flex-col items-center gap-2 bg-surface-base px-2 opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface-elevated text-text-muted border border-surface-stroke flex items-center justify-center font-label-caps text-label-caps">3</div>
+<span class="font-label-caps text-label-caps text-text-muted">VERIFY</span>
+</div>
+</div>
+<!-- Section Header -->
+<div class="mb-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Initialize Sensor Baseline</h1>
+<p class="font-body-md text-body-md text-text-muted mt-1">Disconnect the sensor loop to establish a zero-state reference before executing sampling procedures.</p>
+</div>
+<!-- Metric Card: Live Raw Signal -->
+<div class="bg-surface-elevated border border-neon-blue rounded-lg p-6 relative overflow-hidden flex flex-col items-center shadow-lg">
+<!-- Ambient Glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-neon-blue opacity-10 blur-2xl rounded-full pointer-events-none"></div>
+<div class="flex w-full justify-between items-start mb-4 z-10">
+<div class="flex items-center gap-2 text-neon-blue">
+<div class="w-2 h-2 rounded-full bg-neon-blue animate-flash"></div>
+<span class="font-label-caps text-label-caps tracking-widest">LIVE RAW SIGNAL</span>
+</div>
+<span class="material-symbols-outlined text-text-muted">online_prediction</span>
+</div>
+<div class="font-stat-display text-stat-display text-on-background z-10 flex items-baseline gap-1 mt-2">
+<span id="signal-readout">4.21</span>
+<span class="text-text-muted font-headline-lg-mobile text-headline-lg-mobile">mA</span>
+</div>
+<!-- Graphical Bar Indicator -->
+<div class="mt-6 w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden border border-surface-stroke">
+<div class="h-full bg-neon-blue transition-all duration-200 ease-out" id="signal-bar" style="width: 42%;"></div>
+</div>
+<div class="flex w-full justify-between mt-2 font-caption text-caption text-text-muted">
+<span>0mA</span>
+<span>10mA</span>
+</div>
+</div>
+<!-- Content Card: Controls -->
+<div class="bg-surface-elevated border-t-[4px] border-t-neon-pink border-x border-b border-surface-stroke rounded-lg p-5 flex flex-col gap-stack-gap shadow-md">
+<!-- Toggle Control -->
+<div class="flex items-center justify-between py-2">
+<div class="flex flex-col pr-4">
+<span class="font-label-caps text-label-caps text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-pink">power_off</span>
+                        ISOLATE SENSOR FEED
+                    </span>
+<span class="font-caption text-caption text-text-muted mt-1">Mechanically decouple from main loop</span>
+</div>
+<!-- Toggle Switch UI -->
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" id="isolate-toggle" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-background after:border-surface-stroke after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-pink border border-surface-stroke"></div>
+</label>
+</div>
+<!-- Divider -->
+<hr class="border-surface-stroke my-2"/>
+<!-- Input Control -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-background flex items-center gap-2" for="baseline-input">
+<span class="material-symbols-outlined text-text-muted">tune</span>
+                    REFERENCE BASELINE
+                </label>
+<div class="relative mt-1">
+<input class="w-full bg-surface-container-lowest border border-surface-stroke rounded-DEFAULT px-4 py-3 font-body-lg text-body-lg text-on-background focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all placeholder-text-muted shadow-inner appearance-none" id="baseline-input" step="0.01" type="number" value="4.00"/>
+<span class="absolute right-4 top-1/2 transform -translate-y-1/2 font-body-md text-text-muted pointer-events-none">mA</span>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-text-muted" style="font-size: 14px;">info</span>
+<p class="font-caption text-caption text-text-muted">Expected 4.00mA in isolated state.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-surface-stroke px-margin-mobile py-4 z-50 pb-safe">
+<button class="w-full bg-neon-pink hover:bg-inverse-primary text-on-primary-container font-label-caps text-label-caps tracking-widest py-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-[0_4px_14px_rgba(226,30,81,0.3)]">
+            START SAMPLING
+            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Micro-interaction Script for Live Signal -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const readout = document.getElementById('signal-readout');
+            const bar = document.getElementById('signal-bar');
+            const toggle = document.getElementById('isolate-toggle');
+            
+            let baseValue = 4.20;
+            let targetValue = 4.20;
+
+            // Handle toggle logic to simulate isolation
+            toggle.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    targetValue = 4.20; // Isolated state
+                    document.getElementById('signal-readout').parentElement.previousElementSibling.firstElementChild.classList.add('animate-flash');
+                } else {
+                    targetValue = 8.75; // Connected state (arbitrary higher value)
+                    document.getElementById('signal-readout').parentElement.previousElementSibling.firstElementChild.classList.remove('animate-flash');
+                }
+            });
+
+            // Simulate live reading fluctuations
+            setInterval(() => {
+                // Drift towards target
+                if (Math.abs(baseValue - targetValue) > 0.1) {
+                    baseValue += (targetValue - baseValue) * 0.1;
+                }
+                
+                // Add minor noise
+                const noise = (Math.random() - 0.5) * 0.05;
+                const currentValue = Math.max(0, baseValue + noise).toFixed(2);
+                
+                readout.textContent = currentValue;
+                
+                // Update bar (assuming 0-10mA scale)
+                const percentage = Math.min(100, (currentValue / 10) * 100);
+                bar.style.width = `${percentage}%`;
+                
+                // Change bar color if it strays too far from 4.00 baseline while isolated
+                if (toggle.checked && (currentValue > 4.5 || currentValue < 3.5)) {
+                    bar.classList.replace('bg-neon-blue', 'bg-neon-orange');
+                    readout.classList.replace('text-on-background', 'text-neon-orange');
+                } else {
+                    bar.classList.replace('bg-neon-orange', 'bg-neon-blue');
+                    readout.classList.replace('text-neon-orange', 'text-on-background');
+                }
+            }, 300);
+        });
+    </script>
+</body></html>

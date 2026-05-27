@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Certificate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#006970",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#7df4ff",
+                      "tertiary": "#f7f5f5",
+                      "on-background": "#e2e2e8",
+                      "on-tertiary": "#303031",
+                      "outline": "#849495",
+                      "on-secondary-container": "#6b4b00",
+                      "on-surface": "#e2e2e8",
+                      "on-primary-fixed-variant": "#004f54",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#111317",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "surface-container-highest": "#333539",
+                      "background": "#111317",
+                      "on-primary-fixed": "#002022",
+                      "inverse-surface": "#e2e2e8",
+                      "error-container": "#93000a",
+                      "secondary": "#ffdb9d",
+                      "on-secondary": "#412d00",
+                      "secondary-container": "#feb700",
+                      "on-surface-variant": "#b9cacb",
+                      "tertiary-fixed": "#e4e2e2",
+                      "tertiary-container": "#dad9d9",
+                      "primary-container": "#00f0ff",
+                      "surface-container-high": "#282a2e",
+                      "surface-container": "#1e2024",
+                      "on-primary": "#00363a",
+                      "surface-bright": "#37393e",
+                      "on-error": "#690005",
+                      "inverse-primary": "#006970",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-secondary-fixed": "#271900",
+                      "on-tertiary-container": "#5e5f5f",
+                      "surface-tint": "#00dbe9",
+                      "primary": "#dbfcff",
+                      "inverse-on-surface": "#2f3035",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "surface-variant": "#333539",
+                      "primary-fixed-dim": "#00dbe9",
+                      "surface": "#111317",
+                      "surface-container-lowest": "#0c0e12",
+                      "outline-variant": "#3b494b",
+                      "surface-container-low": "#1a1c20"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "density-compact": "8px",
+                      "margin-desktop": "32px",
+                      "unit": "4px",
+                      "density-comfortable": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for raw data viewer */
+        .raw-scroll::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .raw-scroll::-webkit-scrollbar-track {
+            background: #0c0e12; 
+        }
+        .raw-scroll::-webkit-scrollbar-thumb {
+            background: #3b494b; 
+        }
+        .raw-scroll::-webkit-scrollbar-thumb:hover {
+            background: #849495; 
+        }
+        
+        /* Cyber-industrial corner accents */
+        .corner-accent-tl {
+            position: relative;
+        }
+        .corner-accent-tl::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #dbfcff; /* primary */
+            border-left: 2px solid #dbfcff;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed text-body-fixed antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- Navigation Drawer Component -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface border-r border-outline-variant flex flex-col py-margin-desktop z-50">
+<div class="px-gutter mb-12">
+<h1 class="font-display-md text-display-lg text-primary tracking-tight" style="font-size: 32px;">TRADEVISION</h1>
+</div>
+<div class="flex flex-col gap-unit w-full font-label-caps text-label-caps">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+                REPORTS
+            </a>
+</div>
+<div class="mt-auto px-gutter">
+<div class="border-t border-outline-variant pt-4 flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest border border-outline flex items-center justify-center text-on-surface-variant font-label-caps text-label-caps">
+                    SA
+                </div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface">SYS_ADMIN</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant opacity-70">ONLINE</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Top App Bar Component -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] bg-surface-container-low border-b border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary p-1">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-[260px] mt-[64px] min-h-[calc(100vh-64px)] p-margin-desktop">
+<!-- Page Header -->
+<div class="flex flex-col gap-4 mb-8 border-b border-outline-variant pb-6">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant">
+<span>AUDIT LOG</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>ASSET REGISTRY</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">IMG-4092-A</span>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2 tracking-tight">VERIFICATION CERTIFICATE</h1>
+<div class="flex items-center gap-4">
+<span class="font-data-point text-data-point text-on-surface-variant">ID: IMG-4092-A</span>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container border border-primary-fixed-variant corner-accent-tl">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-primary">CRYPTOGRAPHICALLY VERIFIED</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-outline text-on-surface font-label-caps text-label-caps hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        EXPORT PDF
+                    </button>
+<button class="px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps hover:bg-primary-fixed transition-colors flex items-center gap-2" style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                        SHARE NODE
+                    </button>
+</div>
+</div>
+</div>
+<!-- 12-Column Grid Layout -->
+<div class="grid grid-cols-12 gap-margin-desktop">
+<!-- Left Canvas (col-span-8): Technical Metadata & Source Viewer -->
+<div class="col-span-8 flex flex-col gap-6">
+<!-- Bento Grid: Metadata -->
+<div class="grid grid-cols-3 gap-unit">
+<!-- Asset Preview & Hash (Spans 3) -->
+<div class="col-span-3 border border-outline-variant bg-surface-container p-1 relative overflow-hidden group flex gap-1">
+<div class="w-1/3 aspect-video bg-surface-dim relative border border-outline-variant overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-500" data-alt="A high-resolution, industrial drone photograph showing the top-down view of a complex commercial flat roof. The image is overlayed with technical HUD graphics, grid lines, and targeting reticles in stark cyan and yellow. The lighting is harsh, overcast daylight typical of an industrial park. The aesthetic is gritty, technical, and hyper-detailed, fitting a cyber-industrial surveillance context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDENAUTZ6uBAYUjd-ombdAJ2PQndAgTfZDLRCEsOxnW6Zl2wIGhpU4TybAZKwlgxY461Ze0DFcXvD6mOYzlekomd7AOPebdKBbXCfYPcqVQjfAANCXEggGwsTcdAlaxyEeA7tjo3Rpw2gf4Z9tm-2UQXIes5xvXHsYcKUK0EE9Slg-8MZKOP7yP54YFKidSJBTVpjnwhSchAFzQzd7Y5gUFd9UlLOgWVTyUHz2ViGPBpCOEjVUnlvCIZRIHy3JuC10psRrOq4HSzWVi');">
+</div>
+<div class="absolute top-2 left-2 px-2 py-1 bg-surface/80 backdrop-blur border border-outline font-label-caps text-label-caps text-primary">
+                                 RAW_CAPTURE
+                             </div>
+<!-- Crosshairs overlay -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-primary opacity-50 rounded-full"></div>
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-primary opacity-30"></div>
+<div class="absolute top-0 left-1/2 w-[1px] h-full bg-primary opacity-30"></div>
+</div>
+<div class="w-2/3 bg-surface border border-outline-variant p-6 flex flex-col justify-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">SHA-256 ROOT HASH (IMMUTABLE)</div>
+<div class="font-data-point text-data-point text-on-surface break-all selection:bg-primary-container selection:text-on-primary-container">
+                                e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                            </div>
+<div class="mt-4 flex items-center gap-4">
+<div class="flex items-center gap-1 font-label-caps text-label-caps text-outline">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                                    ALGORITHM: SHA-256
+                                </div>
+<div class="flex items-center gap-1 font-label-caps text-label-caps text-outline">
+<span class="material-symbols-outlined text-[14px]">memory</span>
+                                    COMPUTATION TIME: 14ms
+                                </div>
+</div>
+</div>
+</div>
+<!-- Block Height -->
+<div class="border border-outline-variant bg-surface-container p-6 relative corner-accent-tl">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-4">ANCHOR BLOCK HEIGHT</div>
+<div class="font-data-point text-display-lg-mobile text-primary tracking-tight">84,902,110</div>
+<div class="mt-2 text-label-caps font-label-caps text-outline">NETWORK: MAINNET</div>
+</div>
+<!-- Timestamp -->
+<div class="border border-outline-variant bg-surface-container p-6 relative">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-4">NTP SECURE TIMESTAMP</div>
+<div class="font-data-point text-data-point text-on-surface">2023-10-27</div>
+<div class="font-data-point text-data-point text-on-surface-variant mt-1">14:32:05.992Z</div>
+<div class="mt-4 text-label-caps font-label-caps text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            STRATUM 1 SERVER
+                        </div>
+</div>
+<!-- Location / Device -->
+<div class="border border-outline-variant bg-surface-container p-6 relative">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-4">SENSOR TELEMETRY</div>
+<div class="font-data-point text-data-point text-on-surface text-[16px]">LAT: 34.0522° N</div>
+<div class="font-data-point text-data-point text-on-surface text-[16px] mt-1">LNG: 118.2437° W</div>
+<div class="mt-4 text-label-caps font-label-caps text-outline">DEVICE: DRONE-XT-99</div>
+</div>
+</div>
+<!-- Source Data Viewer -->
+<div class="border border-outline-variant bg-surface-container flex flex-col h-[400px]">
+<!-- Viewer Header -->
+<div class="flex items-center justify-between px-4 py-2 border-b border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">data_object</span>
+                            RAW JSON PAYLOAD
+                        </div>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-surface border border-transparent hover:border-outline transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<button class="p-1 hover:bg-surface border border-transparent hover:border-outline transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">open_in_full</span>
+</button>
+</div>
+</div>
+<!-- Viewer Body (Scrollable) -->
+<div class="flex-1 bg-surface-container-lowest p-4 overflow-auto raw-scroll">
+<pre class="font-data-point text-[14px] leading-relaxed text-on-surface-variant"><code class="language-json">
+{
+  <span class="text-secondary-fixed">"asset_id"</span>: <span class="text-primary">"IMG-4092-A"</span>,
+  <span class="text-secondary-fixed">"schema_version"</span>: <span class="text-primary">"2.1.0"</span>,
+  <span class="text-secondary-fixed">"capture_metadata"</span>: {
+    <span class="text-secondary-fixed">"device_id"</span>: <span class="text-primary">"DRONE-XT-99"</span>,
+    <span class="text-secondary-fixed">"operator_id"</span>: <span class="text-primary">"OP-774-B"</span>,
+    <span class="text-secondary-fixed">"sensor_type"</span>: <span class="text-primary">"CMOS_48MP_IR"</span>,
+    <span class="text-secondary-fixed">"focal_length_mm"</span>: <span class="text-primary">24.5</span>,
+    <span class="text-secondary-fixed">"altitude_agl_m"</span>: <span class="text-primary">45.2</span>
+  },
+  <span class="text-secondary-fixed">"cryptography"</span>: {
+    <span class="text-secondary-fixed">"algorithm"</span>: <span class="text-primary">"SHA-256"</span>,
+    <span class="text-secondary-fixed">"original_hash"</span>: <span class="text-primary">"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"</span>,
+    <span class="text-secondary-fixed">"signature_ed25519"</span>: <span class="text-primary">"9a8b7c6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t..."</span>
+  },
+  <span class="text-secondary-fixed">"chain_anchor"</span>: {
+    <span class="text-secondary-fixed">"network"</span>: <span class="text-primary">"MAINNET_V2"</span>,
+    <span class="text-secondary-fixed">"block_height"</span>: <span class="text-primary">84902110</span>,
+    <span class="text-secondary-fixed">"tx_id"</span>: <span class="text-primary">"0x4f8a9b2c1d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9"</span>,
+    <span class="text-secondary-fixed">"confirmations"</span>: <span class="text-primary">14092</span>
+  },
+  <span class="text-secondary-fixed">"context_tags"</span>: [
+    <span class="text-primary">"ROOF_INSPECTION"</span>, <span class="text-primary">"COMMERCIAL"</span>, <span class="text-primary">"DAMAGE_ASSESSMENT_SECTOR_4"</span>
+  ]
+}
+                        </code></pre>
+</div>
+</div>
+</div>
+<!-- Right Canvas (col-span-4): Chain of Custody Timeline -->
+<div class="col-span-4 border border-outline-variant bg-surface-container p-6 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-8 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+<h3 class="font-headline-md text-[20px] text-on-surface">CHAIN OF CUSTODY</h3>
+</div>
+<!-- Vertical Timeline -->
+<div class="flex-1 relative">
+<!-- Central continuous line -->
+<div class="absolute left-[15px] top-4 bottom-4 w-[2px] bg-outline-variant"></div>
+<div class="flex flex-col gap-8 relative z-10">
+<!-- Node 4 (Latest) -->
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-primary flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-primary mb-1">VERIFICATION CONFIRMED</div>
+<div class="font-body-fixed text-[14px] text-on-surface mb-2">Network consensus reached. Asset is immutably anchored to block 84,902,110.</div>
+<div class="font-data-point text-[12px] text-outline">2023-10-27 14:35:12 UTC</div>
+<div class="mt-2 inline-flex items-center gap-1 px-2 py-0.5 bg-surface-variant border border-outline font-label-caps text-[10px] text-on-surface-variant">
+                                    NODE: CONSENSUS_ROOT_01
+                                </div>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="flex gap-4 opacity-80">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">link</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface mb-1">TRANSACTION BROADCAST</div>
+<div class="font-body-fixed text-[14px] text-on-surface-variant mb-2">Hash payload submitted to mempool for inclusion in next block.</div>
+<div class="font-data-point text-[12px] text-outline">2023-10-27 14:32:06 UTC</div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="flex gap-4 opacity-70">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">fingerprint</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface mb-1">CRYPTOGRAPHIC HASH GENERATED</div>
+<div class="font-body-fixed text-[14px] text-on-surface-variant mb-2">SHA-256 algorithm applied to raw binary data. Digital signature appended.</div>
+<div class="font-data-point text-[12px] text-outline">2023-10-27 14:32:05 UTC</div>
+</div>
+</div>
+<!-- Node 1 (Origin) -->
+<div class="flex gap-4 opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">photo_camera</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface mb-1">ASSET CAPTURED (ORIGIN)</div>
+<div class="font-body-fixed text-[14px] text-on-surface-variant mb-2">Raw sensor data recorded by field device.</div>
+<div class="font-data-point text-[12px] text-outline">2023-10-27 14:32:01 UTC</div>
+<div class="mt-2 inline-flex items-center gap-1 px-2 py-0.5 bg-surface-variant border border-outline font-label-caps text-[10px] text-on-surface-variant">
+                                    DEVICE: DRONE-XT-99
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

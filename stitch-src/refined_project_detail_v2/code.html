@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Riverside Commons Project Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#e21e51",
+                        "on-secondary-container": "#a8b6c9",
+                        "surface-dim": "#0f141a",
+                        "secondary-fixed": "#d5e4f7",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "tertiary": "#bdc7dc",
+                        "background": "#0f141a",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-highest": "#30353d",
+                        "secondary-container": "#3a4858",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-tertiary-container": "#fefcff",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "secondary": "#bac8db",
+                        "on-primary-container": "#fffcff",
+                        "on-secondary": "#243240",
+                        "surface-deep": "#1C2128",
+                        "text-secondary": "#8896A8",
+                        "accent-active": "#E21E51",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "inverse-primary": "#be003e",
+                        "on-error": "#690005",
+                        "text-primary": "#FFFFFF",
+                        "on-background": "#dee2ec",
+                        "surface-container": "#1b2027",
+                        "error-container": "#93000a",
+                        "surface-muted": "#2D3748",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#353941",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary-fixed": "#40000f",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee2ec",
+                        "surface-container-high": "#252a32",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-variant": "#30353d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "tertiary-container": "#6b7588",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-surface": "#dee2ec",
+                        "on-primary": "#67001e",
+                        "tertiary-fixed": "#d9e3f9",
+                        "outline": "#ab888a",
+                        "surface": "#0f141a",
+                        "surface-container-low": "#171c23",
+                        "on-primary-fixed-variant": "#91002e",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-tertiary": "#273141",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        base: "8px",
+                        xl: "40px",
+                        sm: "8px",
+                        md: "16px",
+                        xs: "4px",
+                        lg: "24px",
+                        gutter: "16px",
+                        margin: "24px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    fontSize: {
+                        "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "0.02em", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-sm": ["11px", { lineHeight: "14px", fontWeight: "500" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined[data-weight="fill"] { font-variation-settings: 'FILL' 1; }
+        body { background-color: theme('colors.surface-deep'); color: theme('colors.on-surface'); }
+        .glass-panel { background: rgba(45, 55, 72, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid theme('colors.border-subtle'); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md pb-24 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto docked full-width top-0 z-50">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim" data-icon="analytics">analytics</span>
+<span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 rounded-full bg-surface-muted border border-border-subtle flex items-center justify-center hover:bg-surface-bright/10 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-gutter py-lg md:px-margin space-y-lg">
+<!-- Hero Banner Section -->
+<section class="relative w-full h-[320px] md:h-[400px] rounded-lg overflow-hidden border border-border-subtle shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<div class="absolute inset-0 bg-cover bg-center bg-black/40" style="background-image: url('https://lh3.googleusercontent.com/aida/ADBb0uhn6V5ach9kieos4dmUSuwd9HVGRibOgrxxmp6qsvjbKdB1dlB-HDQPqxI_GmxCCUvTVngAMWe280BZmXsaaIYycEAfTfEMHbwKaSBa9ZKMesoO53MRMkXx57LKXG8XLj4AuhTkfw7OaOnzme6-fnhdqYvU0zdlIhQAAZiVdzHa2vmKg-IuG3l4etaQ2drJ5rm0IDTluGbINYCpvThMSDnHTdE2UVa_GgqhUvuIfHGYpTtbuIXBRwRWjyWo');">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-deep via-surface-deep/80 to-transparent"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-deep via-surface-deep/40 to-transparent"></div><div class="absolute bottom-0 left-0 w-full p-lg flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div class="flex flex-col gap-xs z-10">
+<div class="flex items-center gap-sm mb-xs">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider">Active Project</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-text-primary m-0">Riverside Commons</h1>
+<p class="font-body-md text-body-md text-on-secondary-container flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                        1402 River Walk Dr, Tampa, FL 33602
+                    </p>
+</div>
+<div class="flex flex-row gap-sm z-10 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-md py-sm bg-surface-muted border border-border-subtle rounded-DEFAULT hover:bg-surface-bright/10 transition-colors font-label-md text-label-md text-on-surface active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+                        Upload Photo
+                    </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-md py-sm bg-primary-container rounded-DEFAULT hover:bg-accent-active transition-colors font-label-md text-label-md text-text-primary active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="mail">mail</span>
+                        Contact
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content Column -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Status Timeline -->
+<section class="bg-surface-muted border border-border-subtle rounded-lg p-lg">
+<h2 class="font-headline-lg text-headline-lg text-text-primary mb-md">Project Timeline</h2>
+<div class="relative pl-md mt-md">
+<!-- Vertical Line -->
+<div class="absolute left-[23px] top-2 bottom-6 w-[1px] bg-border-subtle"></div>
+<div class="flex flex-col gap-lg relative z-10">
+<!-- Milestone 1 -->
+<div class="flex items-start gap-md">
+<div class="w-6 h-6 rounded-full flex items-center justify-center mt-1 border-4 border-surface-muted shrink-0"><span class="material-symbols-outlined text-[18px] text-primary" data-icon="check_circle" data-weight="fill">check_circle</span></div>
+<div class="flex flex-col">
+<h3 class="font-label-md text-label-md text-text-primary">Initiated</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Oct 12, 2023 - Project logged into C.A.R.E. stack.</p>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="flex items-start gap-md">
+<div class="w-6 h-6 rounded-full flex items-center justify-center mt-1 border-4 border-surface-muted shrink-0"><span class="material-symbols-outlined text-[18px] text-primary" data-icon="check_circle" data-weight="fill">check_circle</span></div>
+<div class="flex flex-col">
+<h3 class="font-label-md text-label-md text-text-primary">Documentation Uploaded</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Oct 18, 2023 - Initial site survey and photos secured.</p>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="flex items-start gap-md">
+<div class="w-6 h-6 rounded-full flex items-center justify-center mt-1 border-4 border-surface-muted shrink-0"><span class="material-symbols-outlined text-[18px] text-primary" data-icon="schedule">schedule</span></div>
+<div class="flex flex-col">
+<h3 class="font-label-md text-label-md text-primary-fixed-dim">Estimates Pending</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Awaiting public adjuster finalizing scope of loss.</p>
+</div>
+</div>
+<!-- Milestone 4 -->
+<div class="flex items-start gap-md">
+<div class="w-6 h-6 rounded-full flex items-center justify-center mt-1 border-4 border-surface-muted shrink-0"><span class="material-symbols-outlined text-[18px] text-text-secondary" data-icon="radio_button_unchecked">radio_button_unchecked</span></div>
+<div class="flex flex-col opacity-50">
+<h3 class="font-label-md text-label-md text-on-surface">Resolution</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Pending settlement agreement.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Access / Claims Folder -->
+<section class="bg-surface-container border border-border-subtle rounded-lg p-lg flex flex-col md:flex-row items-center justify-between gap-md transition-all hover:border-primary-container/30">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-surface-muted border border-border-subtle flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="folder_open">folder_open</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Claims Folder</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Manage documents and communication records.</p>
+</div>
+</div>
+<button class="w-full md:w-auto px-lg py-sm bg-surface-muted hover:bg-surface-bright border border-border-subtle rounded-lg transition-all active:scale-95 font-label-md text-label-md text-on-surface flex items-center justify-center gap-xs">
+        Open Folder
+        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+</div>
+<!-- Side Column -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Stakeholders -->
+<section class="bg-surface-muted border border-border-subtle rounded-lg p-lg flex flex-col gap-md">
+<h2 class="font-headline-md text-headline-md text-text-primary">Key Stakeholders</h2>
+<!-- Stakeholder 1 -->
+<div class="p-md bg-surface-container-high border border-border-subtle rounded-xl flex flex-col gap-sm transition-all hover:bg-surface-container-highest group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<h3 class="font-label-md text-label-md text-text-primary">Marcus Vance</h3>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Public Adjuster</p>
+</div>
+<div class="p-xs rounded bg-surface-muted group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors" data-icon="gavel">gavel</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs mt-xs">
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary flex items-center gap-xs transition-colors" href="tel:8135550192">
+<span class="material-symbols-outlined text-[14px]" data-icon="call">call</span>
+            (813) 555-0192
+        </a>
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary flex items-center gap-xs transition-colors" href="mailto:m.vance@tradevision.com">
+<span class="material-symbols-outlined text-[14px]" data-icon="mail">mail</span>
+            m.vance@tradevision.com
+        </a>
+</div>
+</div>
+<!-- Stakeholder 2 -->
+<div class="p-md bg-surface-container-high border border-border-subtle rounded-xl flex flex-col gap-sm transition-all hover:bg-surface-container-highest group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<h3 class="font-label-md text-label-md text-text-primary">Marcus Vance</h3>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Public Adjuster</p>
+</div>
+<div class="p-xs rounded bg-surface-muted group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors" data-icon="gavel">gavel</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs mt-xs">
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary flex items-center gap-xs transition-colors" href="tel:8135550192">
+<span class="material-symbols-outlined text-[14px]" data-icon="call">call</span>
+            (813) 555-0192
+        </a>
+<a class="font-body-sm text-body-sm text-on-secondary-container hover:text-primary flex items-center gap-xs transition-colors" href="mailto:m.vance@tradevision.com">
+<span class="material-symbols-outlined text-[14px]" data-icon="mail">mail</span>
+            m.vance@tradevision.com
+        </a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high dark:bg-surface-container-high shadow-lg md:hidden z-50">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md mt-xs">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="location_city" data-weight="fill">location_city</span>
+<span class="font-label-md text-label-md mt-xs">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_late">assignment_late</span>
+<span class="font-label-md text-label-md mt-xs">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="font-label-md text-label-md mt-xs">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-xs">Account</span>
+</a>
+</nav>
+</body></html>

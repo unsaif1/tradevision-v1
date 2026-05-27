@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. | Notification Protocols</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pitch-gauge-gradient {
+            background: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+        }
+        /* Custom Toggle Switch styling for Cyan accent */
+        .toggle-switch:checked {
+            background-color: #00dbe9;
+        }
+        .toggle-switch:checked + .toggle-dot {
+            transform: translateX(100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#dad9d9",
+                      "primary-container": "#00f0ff",
+                      "surface-variant": "#333539",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary": "#412d00",
+                      "surface-container": "#1e2024",
+                      "on-secondary-container": "#6b4b00",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-tertiary": "#303031",
+                      "background": "#111317",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#37393e",
+                      "tertiary": "#f7f5f5",
+                      "inverse-surface": "#e2e2e8",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-primary-fixed": "#002022",
+                      "on-secondary-fixed": "#271900",
+                      "error-container": "#93000a",
+                      "surface-tint": "#00dbe9",
+                      "surface-container-low": "#1a1c20",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "secondary-container": "#feb700",
+                      "primary-fixed": "#7df4ff",
+                      "inverse-on-surface": "#2f3035",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#282a2e",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "primary": "#dbfcff",
+                      "surface-container-highest": "#333539",
+                      "on-primary-container": "#006970",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-tertiary-container": "#5e5f5f",
+                      "tertiary-fixed": "#e4e2e2",
+                      "surface": "#111317",
+                      "primary-fixed-dim": "#00dbe9",
+                      "surface-dim": "#111317",
+                      "secondary": "#ffdb9d",
+                      "outline": "#849495",
+                      "on-surface": "#e2e2e8",
+                      "on-background": "#e2e2e8",
+                      "inverse-primary": "#006970",
+                      "outline-variant": "#3b494b",
+                      "on-primary-fixed-variant": "#004f54",
+                      "secondary-fixed": "#ffdea8",
+                      "on-primary": "#00363a",
+                      "tertiary-fixed-dim": "#c7c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "density-comfortable": "24px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Space Grotesk"],
+                      "display-lg-mobile": ["Space Grotesk"],
+                      "data-point": ["JetBrains Mono"],
+                      "display-lg": ["Space Grotesk"],
+                      "body-fixed": ["Inter"],
+                      "label-caps": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-fixed-dim selection:text-on-primary-fixed font-body-fixed">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col z-40">
+<div class="p-6 flex flex-col gap-2">
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">C.A.R.E. Command</p>
+</div>
+<nav class="mt-8 flex flex-col overflow-y-auto">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/10 text-primary font-bold transition-all duration-100" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-6 flex items-center gap-3 border-t border-outline-variant">
+<img alt="System Administrator Avatar" class="w-10 h-10 rounded-full border border-outline object-cover" data-alt="A professional headshot of a male systems administrator in a high-tech office environment. He has a focused and serious expression, wearing a dark navy tactical polo shirt. The background is softly blurred with glowing blue and white server rack indicator lights, echoing the industrial and cyber-technical aesthetic of the TradeVision command center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYhl8HZ4Os58n969UpVtTYgDTtpVSxC8ZMxjW-qWqiF-WGqqaoS8fHc1ydTSIId-BSPT8OROc1ijh-xaR9e1F8a3IYq1kqJN19viTMl0xOtzl7KV_I_yG2h_JzfbAM1RfMsGdCu0DzxK7Nky_0q7SFcj6X3rr9ENLT2S1dQ0HZlKUZ6tF1Kr1rDPQlpNUdZJzW21rSeisz_5F3mCw-W_wHumVP8_1sTAhJtlX6k-QbPp7QWdnQsbGwhbTy6skNhjYFyMYBX-8bt0MY"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Admin_01</p>
+<p class="text-[10px] text-on-surface-variant font-mono">SYS_AUTH_VERIFIED</p>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-desktop">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface font-label-caps tracking-widest placeholder:text-outline focus:ring-0" placeholder="SEARCH PROTOCOLS..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">help</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">apps</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">account_circle</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-[16px] font-semibold text-on-surface">PROTOCOL CONFIG</span>
+<span class="font-mono text-[10px] text-primary tracking-tighter">NODE: 7F-B2-A1</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] pt-[64px] min-h-screen p-margin-desktop flex flex-col gap-gutter">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-3">
+                    Notification Protocols
+                    <span class="text-xs bg-primary-fixed-dim/20 text-primary-fixed-dim px-2 py-0.5 border border-primary-fixed-dim/30 font-mono">STABLE_V4.2</span>
+</h2>
+<p class="text-on-surface-variant mt-1">Configure automated escalation paths and channel redundancies across the claim lifecycle.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest border border-outline-variant px-4 py-2 font-label-caps text-label-caps hover:bg-surface-variant transition-colors">RESET DEFAULTS</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 font-label-caps text-label-caps font-bold hover:opacity-90 transition-opacity">DEPLOY CHANGES</button>
+</div>
+</div>
+<!-- Protocol Matrix -->
+<section class="border border-outline-variant bg-surface-container-lowest overflow-hidden">
+<div class="bg-surface-container-high px-6 py-3 border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-label-caps font-bold text-on-surface">CHANNEL DISPATCH MATRIX</span>
+<span class="font-mono text-[11px] text-outline">REF: GRID_CFG_721</span>
+</div>
+<div class="p-0 overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container">
+<th class="p-6 text-left font-label-caps text-on-surface-variant border-b border-r border-outline-variant uppercase">Claim Stage</th>
+<th class="p-6 text-center font-label-caps text-on-surface border-b border-r border-outline-variant w-40">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">sms</span>
+<span>SMS</span>
+</div>
+</th>
+<th class="p-6 text-center font-label-caps text-on-surface border-b border-r border-outline-variant w-40">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span>Email</span>
+</div>
+</th>
+<th class="p-6 text-center font-label-caps text-on-surface border-b border-outline-variant w-40">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<span>Push</span>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Intake -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="p-6 border-r border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-secondary-container"></div>
+<div>
+<p class="font-bold text-on-surface">Intake</p>
+<p class="text-xs text-on-surface-variant font-mono">INITIAL_SUBMISSION_TRIGGER</p>
+</div>
+</div>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+</tr>
+<!-- Inspection -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="p-6 border-r border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-primary-fixed-dim"></div>
+<div>
+<p class="font-bold text-on-surface">Inspection</p>
+<p class="text-xs text-on-surface-variant font-mono">DATA_CAPTURE_COMPLETE</p>
+</div>
+</div>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+</tr>
+<!-- Approval -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="p-6 border-r border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-green-500"></div>
+<div>
+<p class="font-bold text-on-surface">Approval</p>
+<p class="text-xs text-on-surface-variant font-mono">FINANCE_AUTH_VERIFIED</p>
+</div>
+</div>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+</tr>
+<!-- Repair -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="p-6 border-r border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 bg-blue-500"></div>
+<div>
+<p class="font-bold text-on-surface">Repair</p>
+<p class="text-xs text-on-surface-variant font-mono">SITE_CREW_ACTIVATION</p>
+</div>
+</div>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 border-r border-outline-variant text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+<td class="p-6 text-center">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-12 h-6 bg-surface-variant rounded-full peer-checked:bg-primary-fixed-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Analytics and Overrides Row -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Protocol Latency Chart -->
+<div class="col-span-8 border border-outline-variant bg-surface-container p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Protocol Latency Analysis</h3>
+<p class="text-xs text-on-surface-variant font-mono">AVG DISPATCH SPEED BY CHANNEL (ms)</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary-fixed-dim"></div>
+<span class="text-[10px] font-label-caps">OPTIMAL</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-surface-variant"></div>
+<span class="text-[10px] font-label-caps">TOLERANCE</span>
+</div>
+</div>
+</div>
+<div class="flex items-end gap-12 h-40 mt-4">
+<!-- SMS Bar -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full flex flex-col justify-end gap-1 h-full">
+<div class="bg-primary-fixed-dim w-full h-[85%] relative group-hover:opacity-80 transition-opacity">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-xs font-bold text-primary">140ms</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SMS</span>
+</div>
+<!-- Email Bar -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full flex flex-col justify-end gap-1 h-full">
+<div class="bg-primary-fixed-dim w-full h-[60%] relative group-hover:opacity-80 transition-opacity">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-xs font-bold text-primary">420ms</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">EMAIL</span>
+</div>
+<!-- Push Bar -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full flex flex-col justify-end gap-1 h-full">
+<div class="bg-primary-fixed-dim w-full h-[95%] relative group-hover:opacity-80 transition-opacity">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-xs font-bold text-primary">82ms</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PUSH</span>
+</div>
+<!-- Webhook Bar -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full flex flex-col justify-end gap-1 h-full">
+<div class="bg-surface-variant w-full h-[40%] relative group-hover:opacity-80 transition-opacity">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-xs font-bold text-on-surface-variant">940ms</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">WEBHOOK</span>
+</div>
+</div>
+<!-- Hard Decorative Grid Lines -->
+<div class="absolute inset-0 pointer-events-none border-t border-b border-outline-variant/10 flex flex-col justify-between p-6 opacity-30">
+<div class="border-t border-dashed border-outline-variant w-full"></div>
+<div class="border-t border-dashed border-outline-variant w-full"></div>
+<div class="border-t border-dashed border-outline-variant w-full"></div>
+</div>
+</div>
+<!-- Safety Override Section -->
+<div class="col-span-4 border border-error bg-error-container/10 p-6 flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-error">
+<span class="material-symbols-outlined text-[32px]">warning</span>
+<h3 class="font-headline-md text-[18px] font-bold uppercase tracking-tighter">Safety Override</h3>
+</div>
+<p class="text-sm text-on-background/80 font-medium">
+                        Trigger emergency broadcast for critical structural failures. This bypasses user notification preferences and force-sends alerts to <span class="font-bold underline">all channels</span> including secondary emergency contacts.
+                    </p>
+<div class="p-3 bg-error-container/20 border border-error/30 rounded">
+<p class="text-[10px] font-mono text-error uppercase leading-relaxed">
+                            [!] ACTION_REQUIRED: REQUIRES LEVEL 4 SECURITY CLEARANCE. <br/>
+                            [!] SYSTEM_LOG: OVERRIDE WILL BE LOGGED AS COMPLIANCE EVENT.
+                        </p>
+</div>
+</div>
+<button class="mt-6 w-full bg-error hover:bg-red-500 text-on-error py-4 px-6 font-display-md text-[18px] font-extrabold uppercase border-b-4 border-red-900 active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-3 group">
+<span class="material-symbols-outlined group-hover:animate-pulse">rocket_launch</span>
+                    Force All Channels
+                </button>
+</div>
+</div>
+<!-- Technical Log Footer -->
+<section class="mt-4 border-t border-outline-variant pt-gutter">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">Protocol Deployment Logs</h4>
+<div class="flex gap-4 text-[10px] font-mono text-outline">
+<span>LIVE_STREAM: ACTIVE</span>
+<span class="animate-pulse text-green-500">●</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 font-mono text-[12px] leading-relaxed text-on-surface-variant max-h-40 overflow-y-auto border border-outline-variant/30">
+<div class="flex gap-4"><span class="text-primary">[14:22:01]</span> <span class="text-on-surface">SYS_AUTH_VERIFIED:</span> Admin_01 requested log audit.</div>
+<div class="flex gap-4"><span class="text-primary">[14:23:45]</span> <span class="text-on-surface">NODE_SCAN:</span> 7F-B2-A1 protocol integrity check completed 100%.</div>
+<div class="flex gap-4"><span class="text-primary">[14:25:12]</span> <span class="text-secondary">LATENCY_WARN:</span> Webhook-C3 reports delay exceeding 800ms. Routing remains stable.</div>
+<div class="flex gap-4"><span class="text-primary">[14:28:03]</span> <span class="text-on-surface">CH_MTX_UPDATE:</span> SMS channel priority updated for INTAKE stage.</div>
+<div class="flex gap-4"><span class="text-primary">[14:29:59]</span> <span class="text-on-surface">SIGNAL_REDUNDANCY:</span> Backup SMS gateway switched to secondary provider (Telcom-B).</div>
+<div class="flex gap-4 opacity-50"><span class="text-primary">[14:30:00]</span> <span class="text-on-surface">DAEMON:</span> Awaiting manual configuration commit...</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (Only for major actions) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-transform active:scale-95 group z-50">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-12 transition-transform">save</span>
+</button>
+<script>
+        // Simple interactivity for the switches
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const row = this.closest('tr');
+                if (this.checked) {
+                    console.log('Activating protocol on', row.querySelector('.font-bold').innerText);
+                }
+            });
+        });
+
+        // Hover effect for the matrix
+        const cells = document.querySelectorAll('td');
+        cells.forEach(cell => {
+            cell.addEventListener('mouseenter', () => {
+                cell.style.boxShadow = 'inset 0 0 10px rgba(0, 219, 233, 0.05)';
+            });
+            cell.addEventListener('mouseleave', () => {
+                cell.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body></html>

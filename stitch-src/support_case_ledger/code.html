@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>C.A.R.E. HUB | Ticket Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 178, 185, 0.2), transparent);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .cyber-border {
+            position: relative;
+        }
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #ffb2b9;
+            border-left: 2px solid #ffb2b9;
+        }
+        .cyber-border::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #ffb2b9;
+            border-right: 2px solid #ffb2b9;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #524344;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "outline-variant": "#524344",
+                "on-secondary-fixed-variant": "#3a4858",
+                "surface": "#0f141a",
+                "on-tertiary-container": "#495365",
+                "primary-fixed-dim": "#ffb2b9",
+                "outline-muted": "rgba(136, 150, 168, 0.15)",
+                "on-primary-fixed": "#370c13",
+                "tertiary-fixed-dim": "#bdc7dc",
+                "status-success": "#4ade80",
+                "secondary-fixed": "#d5e4f7",
+                "on-tertiary-fixed": "#121c2c",
+                "tertiary-fixed": "#d9e3f9",
+                "on-tertiary-fixed-variant": "#3d4759",
+                "on-error-container": "#ffdad6",
+                "primary-container": "#ffb2b9",
+                "on-secondary-fixed": "#0f1d2b",
+                "on-surface-variant": "#d7c2c2",
+                "on-primary-container": "#7b4148",
+                "outline": "#9f8c8d",
+                "on-error": "#690005",
+                "on-tertiary": "#273141",
+                "surface-container": "#1b2026",
+                "status-error": "#f43f5e",
+                "surface-container-high": "#252a31",
+                "secondary-container": "#3a4858",
+                "primary": "#ffd9dc",
+                "surface-variant": "#30353c",
+                "primary-fixed": "#ffdadc",
+                "surface-dim": "#0f141a",
+                "surface-tint": "#ffb2b9",
+                "inverse-primary": "#894d54",
+                "inverse-on-surface": "#2c3137",
+                "surface-bright": "#353a40",
+                "background": "#0f141a",
+                "inverse-surface": "#dee3eb",
+                "error": "#ffb4ab",
+                "on-background": "#dee3eb",
+                "accent-cyan": "#00f2ff",
+                "tertiary-container": "#bdc7dc",
+                "surface-container-highest": "#30353c",
+                "secondary-fixed-dim": "#bac8db",
+                "on-primary-fixed-variant": "#6d363d",
+                "on-surface": "#dee3eb",
+                "tertiary": "#d9e3f9",
+                "on-secondary": "#243240",
+                "surface-container-lowest": "#0a0f14",
+                "error-container": "#93000a",
+                "secondary": "#bac8db",
+                "on-secondary-container": "#a8b6c9",
+                "on-primary": "#522027",
+                "surface-deep": "#090f15",
+                "surface-container-low": "#171c22"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "sm": "8px",
+                "margin": "24px",
+                "telemetry-sidebar-width": "340px",
+                "xs": "4px",
+                "md": "16px",
+                "lg": "24px",
+                "xl": "40px",
+                "sidebar-width": "260px",
+                "gutter": "16px"
+              },
+              "fontFamily": {
+                "mono-data": ["JetBrains Mono"],
+                "label-md": ["Manrope"],
+                "headline-md": ["Barlow Condensed"],
+                "headline-lg": ["Barlow Condensed"],
+                "headline-xl": ["Barlow Condensed"],
+                "body-sm": ["Manrope"],
+                "body-md": ["Manrope"],
+                "label-caps": ["Manrope"],
+                "body-lg": ["Manrope"],
+                "label-sm": ["Manrope"]
+              },
+              "fontSize": {
+                "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface flex justify-between items-center px-md h-16 border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center">
+<img alt="Avatar" class="w-full h-full" data-alt="A highly detailed 3D avatar of a professional system operator wearing sleek, dark tactical gear with glowing crimson accents. The character has a focused expression, illuminated by the blue and red light of nearby terminal screens in a futuristic server room. The background features blurred rows of blinking mainframe computers and network cables in a high-tech industrial setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPnI_hDttoZmD6VT6x3VoptfU6dkESzc-4jcelOQvvtzygcBVyYV2fp3uDoj7V7g5MdojoYGbg0XPG5h368E1oAdN5xhTy6CQYl7_vfuNhcJUQN-R6VLUuwny-8oNY-hdMAH0Q-846iegy9hU89KRubmrcrGrYpZsG6t65O_oL-3ISfChesHqNk3VumjqK0l5o0lITCxFQ_LNNKImGKSwReVItMwGaq9l-XSXD_8-nYUzbAW3DqYnwBf2CifuJ73nlwUI77dl0apbM"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">C.A.R.E. HUB</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm rounded hover:bg-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="p-sm rounded hover:bg-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<!-- Sidebar Navigation -->
+<aside class="h-full w-[260px] fixed left-0 top-0 z-40 bg-surface-container border-r border-outline-variant hidden md:flex flex-col gap-sm p-md pt-20">
+<div class="mb-lg">
+<span class="font-headline-lg text-headline-lg font-black text-primary px-sm">CORE TERMINAL</span>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+<span class="font-label-md text-label-md">Tickets</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Documentation</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md text-label-md">Network</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-md text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="md:pl-[260px] pt-16 h-screen flex flex-col md:flex-row">
+<!-- Central Review Area (Ticket Ledger) -->
+<section class="flex-1 flex flex-col bg-background overflow-hidden">
+<!-- Filter Bar -->
+<div class="px-lg py-md border-b border-outline-variant bg-surface flex flex-wrap items-center gap-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant mr-sm">FILTER_SET:</span>
+<button class="px-md py-xs rounded-full border border-primary text-primary font-label-md hover:bg-primary/10 transition-colors">OPEN</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-variant transition-colors">PENDING</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-variant transition-colors">RESOLVED</button>
+<div class="flex-1"></div>
+<div class="flex items-center gap-xs font-mono-data text-mono-data text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+                    ACTIVE_FEED: LIVE
+                </div>
+</div>
+<!-- Ledger Content -->
+<div class="flex-1 overflow-y-auto p-lg space-y-md">
+<!-- Ticket Card 1 (CRITICAL) -->
+<div class="cyber-border bg-surface-container-low p-md flex flex-col md:flex-row gap-md hover:bg-surface-container-high transition-all group relative overflow-hidden">
+<div class="scanline"></div>
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-mono-data text-mono-data text-primary">[TICKET_ID: #TK-8821]</span>
+<span class="px-sm py-xs bg-status-error/20 border border-status-error text-status-error font-label-caps text-[10px] rounded">CRITICAL</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Sensor Calibration Drift</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Deviation detected in Sector 7G thermal arrays. Verification hash failure on subsequent cycles.</p>
+</div>
+<div class="flex flex-col justify-between items-end gap-sm min-w-[180px]">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
+<span class="font-mono-data text-mono-data text-secondary">PENDING_PM</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP</span>
+<span class="font-mono-data text-mono-data">2023-11-24T14:42:01Z</span>
+</div>
+</div>
+</div>
+<!-- Ticket Card 2 (WARNING) -->
+<div class="bg-surface-container-low p-md border border-outline-variant flex flex-col md:flex-row gap-md hover:bg-surface-container-high transition-all group">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-mono-data text-mono-data text-primary">[TICKET_ID: #TK-8845]</span>
+<span class="px-sm py-xs bg-secondary-container/30 border border-secondary text-secondary font-label-caps text-[10px] rounded">HIGH</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Network Packet Loss (Node_04)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Ingress traffic stalling on primary validator pipe. Re-routing initiated via secondary bridge.</p>
+</div>
+<div class="flex flex-col justify-between items-end gap-sm min-w-[180px]">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
+<span class="font-mono-data text-mono-data text-secondary">ANALYSIS</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP</span>
+<span class="font-mono-data text-mono-data">2023-11-24T15:10:55Z</span>
+</div>
+</div>
+</div>
+<!-- Ticket Card 3 (LOW) -->
+<div class="bg-surface-container-low p-md border border-outline-variant flex flex-col md:flex-row gap-md hover:bg-surface-container-high transition-all group">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-mono-data text-mono-data text-primary">[TICKET_ID: #TK-8890]</span>
+<span class="px-sm py-xs bg-surface-variant/30 border border-outline text-on-surface-variant font-label-caps text-[10px] rounded">LOW</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">UI Glitch in Telemetry Tab</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Missing border-radius on hover state in mobile view for the 'Ledger' component.</p>
+</div>
+<div class="flex flex-col justify-between items-end gap-sm min-w-[180px]">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
+<span class="font-mono-data text-mono-data text-secondary">ASSIGNED</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP</span>
+<span class="font-mono-data text-mono-data">2023-11-24T16:22:10Z</span>
+</div>
+</div>
+</div>
+<!-- Ticket Card 4 (CRITICAL) -->
+<div class="bg-surface-container-low p-md border border-outline-variant flex flex-col md:flex-row gap-md hover:bg-surface-container-high transition-all group">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-mono-data text-mono-data text-primary">[TICKET_ID: #TK-8912]</span>
+<span class="px-sm py-xs bg-status-error/20 border border-status-error text-status-error font-label-caps text-[10px] rounded">CRITICAL</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Storage Cluster Quorum Lost</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Immediate intervention required. Database write-operations halted to prevent corruption.</p>
+</div>
+<div class="flex flex-col justify-between items-end gap-sm min-w-[180px]">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
+<span class="font-mono-data text-mono-data text-secondary">TRIAGE</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TIMESTAMP</span>
+<span class="font-mono-data text-mono-data">2023-11-24T18:01:00Z</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side Telemetry Panel -->
+<aside class="w-telemetry-sidebar-width bg-surface-container border-l border-outline-variant hidden xl:flex flex-col p-md">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary border-b border-primary block pb-xs mb-md">SYSTEM_HEALTH</span>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span>CPU_UTILIZATION</span>
+<span class="text-primary font-mono-data">42.8%</span>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42.8%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span>MEMORY_BUFFER</span>
+<span class="text-status-success font-mono-data">12.1 GB</span>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-status-success w-[65%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-primary border-b border-primary block pb-xs mb-md">INCIDENT_DENSITY</span>
+<div class="aspect-video bg-surface-container-low border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="Density Graph" class="w-full h-full object-cover" data-alt="A sophisticated data visualization showing a line graph and bar charts representing network incident density. The chart is rendered in high-contrast neon reds and cool grays against a dark, minimalist background. The aesthetic is technical and cybernetic, with thin grid lines and monospaced data labels. The overall mood is intense, urgent, and analytical, suggesting high-stakes real-time monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbG-jwZ7C__GFYPez0AnNp3JtF1fVL1yq5Hq3SdkjwOuGx1UIDUbPjrjsoXlSOO4JahiZnNqZe-aKFQfqpTESPe0ffbZfbdRO5YFAse-MbPrdQL0kd0nu7FGZGSNM__umRCIYfi_W7SUbL_Sx3CD5lZtenpNfCGNZYl9VlZISOyxwg3_B3SBqMSpdz1Roxpw0tE3ff-4JF-FnSdrPq0b61zoIMdqvXqK2VS5hOQgr7sQY354sVEYonBNJPJeyaaxsUsZQbf8_zQdNS"/>
+</div>
+</div>
+<div class="mt-auto">
+<div class="p-md bg-primary-container text-on-primary-container rounded-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-md text-label-md font-bold">VERIFICATION_ON</span>
+</div>
+<p class="text-body-sm font-body-sm">All ticket updates are cryptographically signed by your operator key [OP-992].</p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 md:bottom-10 right-10 w-14 h-14 bg-primary text-on-primary rounded-lg shadow-xl flex items-center justify-center active:scale-95 transition-transform duration-150 z-50 group">
+<span class="material-symbols-outlined text-[32px]">add</span>
+<div class="absolute right-16 bg-surface-container border border-primary px-md py-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+<span class="font-mono-data text-mono-data text-primary">INIT_TICKET</span>
+</div>
+</button>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Status</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-label-sm text-label-sm">Ledger</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">quick_reference_all</span>
+<span class="font-label-sm text-label-sm">Docs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="font-label-sm text-label-sm">Post</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for hover states and terminal feel
+        document.querySelectorAll('.cyber-border').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential to trigger audio cues or more complex animation
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Profile - TradeVision C.A.R.E.</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb2b9",
+                        "inverse-on-surface": "#2c3137",
+                        "tertiary-fixed-dim": "#72daad",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-primary": "#67001e",
+                        "on-background": "#dee3eb",
+                        "tertiary": "#72daad",
+                        "on-error": "#690005",
+                        "surface-container": "#1b2026",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#8ff7c7",
+                        "surface-container-high": "#252a31",
+                        "tertiary-container": "#00855e",
+                        "surface": "#0f141a",
+                        "on-surface": "#dee3eb",
+                        "surface-dim": "#0f141a",
+                        "surface-container-lowest": "#0a0f14",
+                        "surface-bright": "#353a40",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-tint": "#ffb2b9",
+                        "on-tertiary": "#003826",
+                        "surface-container-highest": "#30353c",
+                        "on-secondary-container": "#aeb6c3",
+                        "outline-variant": "#5c3f42",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "secondary-fixed": "#dbe3f1",
+                        "on-primary-container": "#fffcff",
+                        "background": "#0f141a",
+                        "primary-fixed": "#ffdadb",
+                        "secondary": "#bfc7d5",
+                        "primary-container": "#e21e51",
+                        "outline": "#ab888a",
+                        "on-tertiary-container": "#f5fff7",
+                        "inverse-primary": "#be003e",
+                        "on-tertiary-fixed": "#002114",
+                        "secondary-container": "#3f4753",
+                        "inverse-surface": "#dee3eb",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary-fixed": "#141c26",
+                        "on-secondary": "#29313c",
+                        "surface-container-low": "#171c22",
+                        "surface-variant": "#30353c",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "on-primary-fixed": "#40000f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "header_height": "64px",
+                        "unit": "4px",
+                        "margin": "32px",
+                        "sidebar_width": "260px",
+                        "grid_columns": "12"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "display-lg": ["Barlow Condensed"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Barlow Condensed"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dense data areas if needed */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #353a40; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #5c3f42; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-md shadow-black/40 flex justify-between items-center px-6 py-4 max-w-[1440px] mx-auto md:px-margin transition-all duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-8 w-8 rounded-full bg-surface-bright border border-surface-variant overflow-hidden flex-shrink-0 cursor-pointer hover:border-primary-container transition-colors">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a male contractor in his late 30s. He has short dark hair and a slight beard, wearing a rugged, dark grey utility jacket. The lighting is studio quality, slightly moody, with a technical, high-contrast dark mode aesthetic. The background is a solid deep charcoal grey to match a modern industrial interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo7a9cXH8JZ3XW2NHlsuhXhid-PQ3VISOXSsspbEEEcW88y92pLYCT_2iBqZQR24GrWCX0pPTy_4ptO2IduJP2IfwDljfgz4jHS7m_JqXech4d-pttJI2-xy36sjmGAZXrYNASZBR7r2dbH9gU9IHIE5XhNGyK1DOzPoqjDDrEyoT2rtwLyt6na5QdGYu5zXrC6A8ZKDDciq-iWW0RVG_r-4Cdg4X-uWo-Tb2HohoYiVU2NENqS8oNmZ0ZAXtWmbHq2a3d0Dfbbi_A"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] pb-[100px] px-4 md:px-margin max-w-3xl mx-auto w-full md:pb-12">
+<!-- Profile Header -->
+<section class="flex items-center gap-5 mb-8 pt-4">
+<div class="relative">
+<div class="h-20 w-20 rounded-full bg-surface-container border-2 border-surface-bright overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a male contractor in his late 30s. He has short dark hair and a slight beard, wearing a rugged, dark grey utility jacket. The lighting is studio quality, slightly moody, with a technical, high-contrast dark mode aesthetic. The background is a solid deep charcoal grey to match a modern industrial interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNAuY7qpYUlX1ebrJdpX1HTsxqQqVO-zfOpuIty0C7_h-M9Hr-aHISIIeaPHkzV65C2_qxBDjgifbApNeTZyc5bG2MTeYtRAF-7dHVwQBOEXCGP99VrZHCIVZpoZtpX7yinEj9woWaDmMATtH7Lgv_KEEF-SJaV0e9Jru39ItjtMBdX5jSr1t73OlmXmgP3YNPnEUiW3mQs8a5Xaw-PXPYaXV3yc0C1J-KS-tSsqqRk44DZNlE2nDrv4YPJpg64UP7F_bU5rWmDqKV"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-surface-bright border border-surface-variant p-1.5 rounded-full hover:bg-primary-container hover:text-white hover:border-primary-container transition-all group shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-white">edit</span>
+</button>
+</div>
+<div>
+<h2 class="font-display-md text-display-md text-inverse-surface mb-1">MARCUS VANCE</h2>
+<div class="flex items-center gap-3">
+<span class="font-mono-data text-mono-data text-secondary">ID: TVC-88942-A</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 border border-tertiary-container/30 text-tertiary font-label-caps text-label-caps flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                        ACTIVE
+                    </span>
+</div>
+</div>
+</section>
+<!-- Certification Status Alert -->
+<section class="mb-6 rounded bg-error-container/10 border border-error/40 p-4 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-error mt-0.5" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-error mb-1">CERTIFICATION EXPIRING</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">Your Class A Heavy Machinery Operator license requires renewal.</p>
+<div class="flex gap-4 font-mono-data text-mono-data">
+<div class="flex flex-col">
+<span class="text-secondary-fixed-dim text-[10px]">EXPIRATION DATE</span>
+<span class="text-error">2023-11-15</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary-fixed-dim text-[10px]">DAYS REMAINING</span>
+<span class="text-error">14 DAYS</span>
+</div>
+</div>
+</div>
+</div>
+<button class="bg-error text-on-error font-label-caps text-label-caps px-4 py-2 rounded hover:bg-error/90 transition-colors whitespace-nowrap">
+                    RENEW NOW
+                </button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Personal Information -->
+<section class="bg-surface-container rounded border border-surface-bright p-5 col-span-1 md:col-span-2 shadow-sm">
+<div class="flex justify-between items-center mb-5 border-b border-surface-variant pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim">badge</span>
+<h3 class="font-headline-sm text-headline-sm text-inverse-surface">PERSONAL INFORMATION</h3>
+</div>
+<button class="text-primary-container hover:text-primary-fixed-dim font-label-caps text-label-caps flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit_square</span> EDIT
+                    </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">FULL LEGAL NAME</span>
+<span class="font-mono-data text-mono-data text-inverse-surface">Marcus Thomas Vance</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">CONTACT NUMBER</span>
+<span class="font-mono-data text-mono-data text-inverse-surface">+1 (555) 842-9901</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">EMAIL ADDRESS</span>
+<span class="font-mono-data text-mono-data text-inverse-surface">m.vance@contractors.tvc.com</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">BASE LOCATION</span>
+<span class="font-mono-data text-mono-data text-inverse-surface">Sector 4, Outpost Delta</span>
+</div>
+</div>
+</section>
+<!-- Security Credentials -->
+<section class="bg-surface-container rounded border border-surface-bright p-5 flex flex-col shadow-sm">
+<div class="flex items-center gap-2 mb-5 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim">shield_locked</span>
+<h3 class="font-headline-sm text-headline-sm text-inverse-surface">SECURITY CREDENTIALS</h3>
+</div>
+<div class="flex-grow flex flex-col gap-3 mb-6">
+<!-- Credential Item -->
+<div class="flex items-center justify-between p-3 rounded bg-surface-dim border border-surface-variant hover:border-surface-bright transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-tertiary">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-data text-[12px] text-inverse-surface">Level 3 Site Access</span>
+<span class="font-label-caps text-[10px] text-tertiary">VERIFIED</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-inverse-surface cursor-pointer text-[18px]">more_vert</span>
+</div>
+<!-- Credential Item -->
+<div class="flex items-center justify-between p-3 rounded bg-surface-dim border border-surface-variant hover:border-surface-bright transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-tertiary">health_and_safety</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-data text-[12px] text-inverse-surface">HAZMAT Clearance</span>
+<span class="font-label-caps text-[10px] text-tertiary">VERIFIED</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-inverse-surface cursor-pointer text-[18px]">more_vert</span>
+</div>
+</div>
+<button class="w-full bg-primary-container hover:bg-inverse-primary text-on-primary-container font-label-caps text-label-caps py-3 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                    UPLOAD CREDENTIALS
+                </button>
+</section>
+<!-- Notification Preferences -->
+<section class="bg-surface-container rounded border border-surface-bright p-5 shadow-sm">
+<div class="flex items-center gap-2 mb-5 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim">notifications_active</span>
+<h3 class="font-headline-sm text-headline-sm text-inverse-surface">NOTIFICATIONS</h3>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Toggle Item -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-mono-data text-[13px] text-inverse-surface">System Alerts</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">Critical platform updates &amp; outages</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-surface-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle Item -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-mono-data text-[13px] text-inverse-surface">Project Assignments</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">New tasks and status changes</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-surface-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle Item -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-mono-data text-[13px] text-inverse-surface">Credential Expiry</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">30-day and 14-day warnings</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-surface-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high shadow-lg md:hidden z-50 transition-all duration-300 pb-safe-bottom" style="padding-bottom: env(safe-area-inset-bottom, 16px); padding-top: 12px;">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-label-caps text-[10px]">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">location_city</span>
+<span class="font-label-caps text-[10px]">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">assignment_late</span>
+<span class="font-label-caps text-[10px]">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">notifications_active</span>
+<span class="font-label-caps text-[10px]">Alerts</span>
+</a>
+<!-- Active State for Profile/Account -->
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-[10px]">Account</span>
+</a>
+</nav>
+<!-- Optional JS for toggle interactions if needed, CSS handles the basics -->
+<script>
+        // Simple script to handle generic button clicks for demonstration
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            btn.addEventListener('mouseup', function() {
+                this.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

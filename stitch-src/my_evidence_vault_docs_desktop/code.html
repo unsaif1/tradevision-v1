@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Vault &amp; Docs | Apex Claim Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400..700&amp;family=Inter:wght@400..600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pitch-gauge-ring {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 70;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+        .glass-surface {
+            background: rgba(30, 32, 36, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .chamfer-btn {
+            clip-path: polygon(0 0, 95% 0, 100% 25%, 100% 100%, 5% 100%, 0 75%);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border-radius: 10px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "error-container": "#93000a",
+                "surface-container-lowest": "#0c0e12",
+                "on-secondary": "#412d00",
+                "outline": "#849495",
+                "on-error": "#690005",
+                "on-surface": "#e2e2e8",
+                "tertiary": "#f7f5f5",
+                "on-primary-container": "#006970",
+                "surface-dim": "#111317",
+                "surface-variant": "#333539",
+                "surface-container-low": "#1a1c20",
+                "primary-fixed": "#7df4ff",
+                "primary": "#dbfcff",
+                "secondary-container": "#feb700",
+                "on-primary": "#00363a",
+                "on-secondary-container": "#6b4b00",
+                "surface-container-high": "#282a2e",
+                "surface-container": "#1e2024",
+                "secondary": "#ffdb9d",
+                "surface-bright": "#37393e",
+                "on-tertiary": "#303031",
+                "primary-fixed-dim": "#00dbe9",
+                "on-primary-fixed": "#002022",
+                "inverse-surface": "#e2e2e8",
+                "error": "#ffb4ab",
+                "on-tertiary-container": "#5e5f5f",
+                "background": "#111317",
+                "surface": "#111317",
+                "inverse-primary": "#006970",
+                "inverse-on-surface": "#2f3035",
+                "outline-variant": "#3b494b",
+                "on-secondary-fixed-variant": "#5e4200",
+                "surface-tint": "#00dbe9",
+                "surface-container-highest": "#333539",
+                "secondary-fixed-dim": "#ffba20",
+                "on-primary-fixed-variant": "#004f54",
+                "on-surface-variant": "#b9cacb",
+                "tertiary-fixed": "#e4e2e2",
+                "on-tertiary-fixed-variant": "#464747",
+                "on-error-container": "#ffdad6",
+                "primary-container": "#00f0ff",
+                "on-secondary-fixed": "#271900",
+                "on-tertiary-fixed": "#1b1c1c",
+                "tertiary-container": "#dad9d9",
+                "secondary-fixed": "#ffdea8",
+                "tertiary-fixed-dim": "#c7c6c6",
+                "on-background": "#e2e2e8"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-desktop": "32px",
+                "margin-mobile": "16px",
+                "gutter": "16px",
+                "unit": "4px",
+                "density-compact": "8px",
+                "density-comfortable": "24px"
+              },
+              "fontFamily": {
+                "display-lg-mobile": ["Space Grotesk"],
+                "data-point": ["JetBrains Mono"],
+                "label-caps": ["JetBrains Mono"],
+                "body-fixed": ["Inter"],
+                "display-lg": ["Space Grotesk"],
+                "headline-md": ["Space Grotesk"]
+              },
+              "fontSize": {
+                "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-fixed selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary">APEX CLAIM PORTAL</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">DASHBOARD</a>
+<a class="text-primary font-bold transition-colors duration-200 font-label-caps text-label-caps border-b-2 border-primary-fixed-dim pb-1" href="#">VAULT</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">MESSAGES</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-label-caps" href="#">DOCUMENTS</a>
+</nav>
+<div class="flex items-center gap-density-compact">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate policy owner with a minimalist, clean aesthetic. The lighting is crisp and modern, featuring a cool-toned background that matches the dark-mode cyber-industrial interface of the portal. The style is high-end digital photography with a sharp focus and professional color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADVDS863dbYDX-qvV41319tZpLYsk9j6r5joBgSmPm_4_NbwsRWRmkD68ip1BRrNVklaM3agJb8XfcOi2c_g5_SYQjsEVbx1xM4ChNYzv-ftofFQlk0griwk4T9TX2Fy5hqJSow_dA_3i7xnCCq3FBEfvI4tROZ4je3k4zzIJpdRYdRC_uXWcvF65vUWfL2BwaT1gDiU6NOUxnXM8CLd7XymwYB-_ggiMFq3s3vwufqv0UZczERSUmkwxc7Ke6vp6MnTgMHtHWMObr"/>
+</div>
+</div>
+</header>
+<main class="flex min-h-[calc(100vh-64px)] overflow-hidden">
+<!-- NavigationDrawer (Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-full w-80 bg-surface-container border-r border-outline-variant py-density-comfortable shrink-0">
+<div class="px-6 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary">Claims Portal</h2>
+<p class="text-on-surface-variant font-label-caps text-label-caps mt-1">Policy #APX-99281</p>
+<div class="mt-4 flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded border border-outline-variant w-fit">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="text-[10px] font-label-caps text-on-surface-variant">STATUS: ACTIVE</span>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface hover:bg-surface-variant transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-fixed text-body-fixed">Account Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container font-bold rounded" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span class="font-body-fixed text-body-fixed">Insurance Policy</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface hover:bg-surface-variant transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-body-fixed text-body-fixed">Coverage Details</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface hover:bg-surface-variant transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-fixed text-body-fixed">Help Center</span>
+</a>
+<div class="mt-auto">
+<a class="flex items-center gap-4 px-4 py-3 text-error hover:bg-error-container/20 transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-fixed text-body-fixed">Logout</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 overflow-y-auto bg-background p-margin-mobile md:p-margin-desktop space-y-gutter">
+<!-- Page Header & Hero Action -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 flex flex-col justify-end p-density-comfortable border border-outline-variant bg-surface-container-low relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute inset-0 bg-[radial-gradient(#3b494b_1px,transparent_1px)] [background-size:20px_20px]"></div>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary z-10">Evidence Vault</h1>
+<p class="text-on-surface-variant max-w-lg mt-2 z-10">Secure, encrypted repository for all project legalities, inspection media, and finalized contracts.</p>
+</div>
+<!-- Upload Drop-Zone -->
+<div class="border-2 border-dashed border-outline-variant hover:border-primary-fixed-dim bg-surface-container-highest transition-colors flex flex-col items-center justify-center p-8 text-center cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center mb-4 group-hover:bg-primary-container group-hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary mb-1">DRAG &amp; DROP</span>
+<span class="text-xs text-on-surface-variant">MAX FILE SIZE 100MB</span>
+</div>
+</div>
+<!-- Category Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Category Card: Signed Contracts -->
+<div class="border border-outline-variant bg-surface-container p-0 overflow-hidden">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider">SEC_01</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="gavel">gavel</span>
+</div>
+<div class="p-4">
+<h3 class="font-label-caps text-primary mb-4">SIGNED CONTRACTS</h3>
+<div class="space-y-3">
+<div class="flex flex-col gap-1 p-2 bg-surface-container-lowest border-l-2 border-secondary-container">
+<div class="flex justify-between items-start">
+<span class="text-xs font-semibold truncate pr-2">Master_Service_v4.pdf</span>
+<span class="font-data-point text-[10px] text-secondary">LEDGER</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">12.04.2023 | 2.4 MB</span>
+</div>
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Roof_Amd_Annex_A.pdf</span>
+<span class="material-symbols-outlined text-[10px] text-on-surface-variant" data-icon="verified">verified</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">11.15.2023 | 1.1 MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Card: Audit Reports -->
+<div class="border border-outline-variant bg-surface-container p-0 overflow-hidden">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider">SEC_02</span>
+<span class="material-symbols-outlined text-xs text-primary-fixed-dim" data-icon="analytics">analytics</span>
+</div>
+<div class="p-4">
+<h3 class="font-label-caps text-primary mb-4">AUDIT REPORTS</h3>
+<div class="space-y-3">
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Q3_Safety_Compliance.pdf</span>
+<span class="material-symbols-outlined text-[10px] text-error" data-icon="warning">warning</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">09.30.2023 | 4.8 MB</span>
+</div>
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Inspection_Site_88.csv</span>
+<span class="material-symbols-outlined text-[10px] text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">08.22.2023 | 0.4 MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Card: Payment History -->
+<div class="border border-outline-variant bg-surface-container p-0 overflow-hidden">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider">SEC_03</span>
+<span class="material-symbols-outlined text-xs text-secondary-container" data-icon="payments">payments</span>
+</div>
+<div class="p-4">
+<h3 class="font-label-caps text-primary mb-4">PAYMENT HISTORY</h3>
+<div class="space-y-3">
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Invoice_DEC_2023.pdf</span>
+<span class="font-data-point text-[10px] text-secondary">PAID</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">12.01.2023 | 0.8 MB</span>
+</div>
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Dep_Receipt_662.png</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">ARCHIVE</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">10.14.2023 | 3.2 MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Card: Policy Documents -->
+<div class="border border-outline-variant bg-surface-container p-0 overflow-hidden">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider">SEC_04</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="description">description</span>
+</div>
+<div class="p-4">
+<h3 class="font-label-caps text-primary mb-4">POLICY DOCUMENTS</h3>
+<div class="space-y-3">
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Main_Coverage_Terms.pdf</span>
+<span class="font-data-point text-[10px] text-secondary">LOCKED</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">01.01.2024 | 12.5 MB</span>
+</div>
+<div class="flex flex-col gap-1 p-2 bg-surface-container-low hover:bg-surface-variant cursor-pointer transition-colors">
+<div class="flex justify-between items-start">
+<span class="text-xs truncate">Addendum_Fire_Haz.pdf</span>
+<span class="material-symbols-outlined text-[10px] text-on-surface-variant" data-icon="history">history</span>
+</div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">01.05.2024 | 0.5 MB</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Technical Files Table -->
+<div class="bg-surface-container border border-outline-variant overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface">Recent Activity</h2>
+<div class="flex gap-2">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="search">search</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-high border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3 font-label-caps text-[10px] text-on-surface-variant uppercase">Filename</th>
+<th class="px-6 py-3 font-label-caps text-[10px] text-on-surface-variant uppercase">Type</th>
+<th class="px-6 py-3 font-label-caps text-[10px] text-on-surface-variant uppercase">Size</th>
+<th class="px-6 py-3 font-label-caps text-[10px] text-on-surface-variant uppercase">Status</th>
+<th class="px-6 py-3 font-label-caps text-[10px] text-on-surface-variant uppercase text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-variant transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="font-body-fixed text-sm">Damage_Assessment_Feb_2024.pdf</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="font-label-caps text-[10px] px-2 py-0.5 bg-surface-container-lowest border border-outline-variant">PDF</span></td>
+<td class="px-6 py-4 font-data-point text-xs">8.4 MB</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim shadow-[0_0_8px_#00dbe9]"></span>
+<span class="font-label-caps text-[10px]">SYNCED</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="image">image</span>
+<span class="font-body-fixed text-sm">Roof_Site_Survey_Aerial.jpg</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="font-label-caps text-[10px] px-2 py-0.5 bg-surface-container-lowest border border-outline-variant">JPG</span></td>
+<td class="px-6 py-4 font-data-point text-xs">15.2 MB</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container shadow-[0_0_8px_#feb700]"></span>
+<span class="font-label-caps text-[10px]">LEDGER</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Sidebar Content -->
+<aside class="space-y-gutter">
+<!-- Vault Health Card -->
+<div class="border border-outline-variant bg-surface-container p-6 relative">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-fixed-dim/5 flex items-center justify-center -translate-y-1/2 translate-x-1/2 rotate-45 border border-outline-variant"></div>
+<h3 class="font-label-caps text-primary mb-6">VAULT HEALTH</h3>
+<div class="flex justify-center mb-6">
+<div class="relative w-32 h-32">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="45" stroke="#1a1c20" stroke-width="8"></circle>
+<circle class="pitch-gauge-ring" cx="50" cy="50" fill="transparent" r="45" stroke="#00dbe9" stroke-linecap="square" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-point text-2xl">98%</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant">INTEGRITY</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">CAPACITY</span>
+<span class="font-data-point text-xs">12.4 / 100 GB</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-[10px] text-on-surface-variant">FILES</span>
+<span class="font-data-point text-xs">412 OBJECTS</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant">ENCRYPTION</span>
+<span class="font-data-point text-xs text-primary-fixed-dim">AES-256</span>
+</div>
+</div>
+</div>
+<!-- Sync Status Card -->
+<div class="border border-primary-fixed-dim bg-primary/5 p-6 overflow-hidden relative">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-label-caps text-primary">SYNC STATUS</h3>
+<span class="flex items-center gap-1.5 px-2 py-0.5 bg-primary-container text-on-primary-container rounded text-[10px] font-bold">
+<span class="w-1.5 h-1.5 bg-on-primary-container rounded-full animate-ping"></span>
+                                LIVE
+                            </span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">System is communicating with the distributed ledger. All document hashes are being verified in real-time.</p>
+<div class="mt-6 font-data-point text-[10px] text-primary-fixed-dim opacity-50 space-y-1">
+<div>&gt; INIT LEDGER SYNC... DONE</div>
+<div>&gt; VERIFYING BLOCKS... 44/44</div>
+<div>&gt; SYSTEM READY</div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container h-14 chamfer-btn font-label-caps tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                        VALIDATE ALL DOCS
+                    </button>
+</aside>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 h-20 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-lg px-3 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="photo_library">photo_library</span>
+<span class="font-label-caps text-label-caps mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps mt-1">Documents</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Update health ring on load
+        window.addEventListener('load', () => {
+            const circle = document.querySelector('.pitch-gauge-ring');
+            if(circle) {
+                circle.style.strokeDashoffset = '5'; // 98% approximately
+            }
+        });
+
+        // Simple Drag & Drop visual feedback
+        const dropzone = document.querySelector('.border-dashed');
+        if(dropzone) {
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    dropzone.classList.add('bg-primary-container/10', 'border-primary');
+                }, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, e => {
+                    e.preventDefault();
+                    dropzone.classList.remove('bg-primary-container/10', 'border-primary');
+                }, false);
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crew Performance &amp; Analytics Dashboard - TRADEVISION</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#1e2024",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1a1c20",
+                        "tertiary": "#f7f5f5",
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e2e2e8",
+                        "outline-variant": "#3b494b",
+                        "on-secondary": "#412d00",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#e2e2e8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "outline": "#849495",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#dad9d9",
+                        "background": "#111317",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-fixed-dim": "#ffba20",
+                        "secondary": "#ffdb9d",
+                        "surface-tint": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary-container": "#feb700",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-variant": "#333539",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-container": "#006970",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container-high": "#282a2e",
+                        "inverse-primary": "#006970",
+                        "surface": "#111317",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "surface-bright": "#37393e",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-surface'); }
+        .cyber-grid {
+            background-image: linear-gradient(to right, theme('colors.surface-container-highest') 1px, transparent 1px),
+                              linear-gradient(to bottom, theme('colors.surface-container-highest') 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .tech-border { border: 1px solid #2D2D2D; }
+        .active-border { border: 1px solid theme('colors.primary'); box-shadow: inset 0 0 10px rgba(0, 219, 233, 0.1); }
+        .status-strip-ready { border-left: 4px solid theme('colors.primary'); }
+        .status-strip-critical { border-left: 4px solid theme('colors.error'); }
+        .status-strip-progress { border-left: 4px solid theme('colors.secondary-container'); }
+        
+        /* Custom Radar Chart CSS implementation for simplified visual */
+        .radar-chart {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px dashed theme('colors.outline-variant');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .radar-chart::before {
+            content: '';
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 1px solid theme('colors.surface-container-highest');
+        }
+        .radar-polygon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 219, 233, 0.2);
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            border: 1px solid theme('colors.primary');
+        }
+        .radar-polygon.secondary-crew {
+            background: rgba(254, 183, 0, 0.2);
+            clip-path: polygon(50% 10%, 80% 30%, 90% 70%, 60% 90%, 30% 90%, 10% 60%, 20% 20%);
+            border: 1px solid theme('colors.secondary-container');
+        }
+    </style>
+</head>
+<body class="font-body-fixed text-body-fixed h-screen overflow-hidden flex">
+<!-- NavigationDrawer -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin z-20">
+<div class="px-gutter mb-density-comfortable">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight" style="font-size: 24px; font-weight: 700; font-family: 'Space Grotesk';">TRADEVISION</h1>
+</div>
+<ul class="flex flex-col flex-1 gap-1 font-label-caps text-label-caps">
+<li class="cursor-pointer text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined">dashboard</span>
+                DASHBOARD
+            </li>
+<li class="cursor-pointer text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]">
+<span class="material-symbols-outlined">history</span>
+                AUDIT LOG
+            </li>
+<li class="cursor-pointer text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]">
+<span class="material-symbols-outlined">settings</span>
+                SYSTEM SETTINGS
+            </li>
+<li class="cursor-pointer text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]">
+<span class="material-symbols-outlined">group</span>
+                USERS
+            </li>
+<li class="cursor-pointer text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]">
+<span class="material-symbols-outlined">assessment</span>
+                REPORTS
+            </li>
+</ul>
+</nav>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary">admin_panel_settings</span>
+<h2 class="font-headline-sm text-headline-sm text-primary dark:text-primary" style="font-size: 20px; font-weight: 600; font-family: 'Space Grotesk';">ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center tech-border overflow-hidden cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary hover:text-primary dark:hover:text-primary transition-colors">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" data-alt="A detailed headshot of a rugged, professional industrial manager or technician. The lighting is dramatic and moody, reflecting a high-tech dark-mode aesthetic. The background is a blurred industrial or technical setting. The overall color palette leans towards deep blacks, stark whites, and subtle cool cyan accents. The mood is serious, competent, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhJ55UAVjxyAsXv3GDJh2irZ_ZivSsUFkX55xZupPEpu2pre873RnfkXidqc6zOTiSrKUxCKIYxb8oR3N8Ig7mMFGAdA-E4Ad1x3ZDnX2q3glmpJPYu8gwB1c63BcASkCRelq1ZoAQGobqE-pwr_PHGME_-KN6whAVqLaoU5ZriafnU14ogtwARy8RCJlelBkg02wpAgWmpORoOqvJbitbcFtQOOl8LntzsBp1TeGaYQTLUwwl82Id-qmzzDIWLpTRpoYqv3yFr9A8"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[260px] mt-[64px] h-[calc(100vh-64px)] w-[calc(100%-260px)] bg-surface cyber-grid overflow-y-auto p-gutter relative flex gap-gutter">
+<!-- Center Dashboard Area -->
+<div class="flex-1 flex flex-col gap-gutter">
+<!-- Top Crew Profiles (Bento Grid) -->
+<section class="grid grid-cols-3 gap-gutter h-[280px]">
+<!-- Rank 1 -->
+<div class="bg-surface-container-low tech-border active-border p-density-comfortable flex flex-col relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 left-0 bg-primary text-on-primary font-label-caps text-label-caps px-2 py-1">RANK #01</div>
+<div class="flex justify-between items-start mt-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">ALPHA SQUAD</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">LEAD: M. KOWALSKI</p>
+</div>
+<div class="text-right">
+<span class="font-data-point text-data-point text-primary">98.4%</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">EFFICIENCY SCORE</p>
+</div>
+</div>
+<div class="mt-auto flex justify-center items-center h-[120px]">
+<div class="radar-chart scale-[0.7]">
+<div class="radar-polygon"></div>
+<div class="absolute top-[-20px] font-label-caps text-[8px] text-on-surface-variant">SPD</div>
+<div class="absolute bottom-[-20px] font-label-caps text-[8px] text-on-surface-variant">QLTY</div>
+<div class="absolute right-[-20px] font-label-caps text-[8px] text-on-surface-variant">SFTY</div>
+<div class="absolute left-[-20px] font-label-caps text-[8px] text-on-surface-variant">MAT</div>
+</div>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="bg-surface-container-low tech-border p-density-comfortable flex flex-col relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 left-0 bg-surface-container-highest text-on-surface font-label-caps text-label-caps px-2 py-1 border-b border-r border-outline-variant">RANK #02</div>
+<div class="flex justify-between items-start mt-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface" style="font-size: 20px;">BRAVO TEAM</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">LEAD: S. VANCE</p>
+</div>
+<div class="text-right">
+<span class="font-data-point text-data-point text-secondary-container">94.1%</span>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant mb-1">
+<span>SPEED</span><span>92%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest mb-3">
+<div class="h-full bg-secondary-container w-[92%]"></div>
+</div>
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant mb-1">
+<span>SAFETY</span><span>98%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest mb-3">
+<div class="h-full bg-secondary-container w-[98%]"></div>
+</div>
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant mb-1">
+<span>QUALITY</span><span>90%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-secondary-container w-[90%]"></div>
+</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="bg-surface-container-low tech-border p-density-comfortable flex flex-col relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 left-0 bg-surface-container-highest text-on-surface font-label-caps text-label-caps px-2 py-1 border-b border-r border-outline-variant">RANK #03</div>
+<div class="flex justify-between items-start mt-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface" style="font-size: 20px;">DELTA FORCE</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">LEAD: R. STONE</p>
+</div>
+<div class="text-right">
+<span class="font-data-point text-data-point text-on-surface">89.7%</span>
+</div>
+</div>
+<div class="mt-auto flex justify-center items-center h-[120px]">
+<div class="radar-chart scale-[0.7]">
+<div class="radar-polygon secondary-crew"></div>
+<div class="absolute top-[-20px] font-label-caps text-[8px] text-on-surface-variant">SPD</div>
+<div class="absolute bottom-[-20px] font-label-caps text-[8px] text-on-surface-variant">QLTY</div>
+<div class="absolute right-[-20px] font-label-caps text-[8px] text-on-surface-variant">SFTY</div>
+<div class="absolute left-[-20px] font-label-caps text-[8px] text-on-surface-variant">MAT</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Leaderboard List -->
+<section class="bg-surface-container-low tech-border flex-1 flex flex-col relative">
+<div class="absolute -top-3 left-4 bg-surface px-2 border-x border-t border-[#2D2D2D]">
+<span class="font-label-caps text-label-caps text-on-surface-variant">GLOBAL LEADERBOARD [ALL CREWS]</span>
+</div>
+<div class="p-density-comfortable mt-4 overflow-y-auto">
+<table class="w-full text-left font-label-caps text-label-caps">
+<thead>
+<tr class="text-on-surface-variant border-b border-outline-variant">
+<th class="pb-2 font-normal">RANK / ID</th>
+<th class="pb-2 font-normal">CREW NAME</th>
+<th class="pb-2 font-normal">ACTIVE SITE</th>
+<th class="pb-2 font-normal text-right">SPEED IDX</th>
+<th class="pb-2 font-normal text-right">SAFETY IDX</th>
+<th class="pb-2 font-normal text-right">OVERALL</th>
+</tr>
+</thead>
+<tbody class="text-on-surface">
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors status-strip-ready">
+<td class="py-3 pl-3 font-data-point text-[14px]">#01</td>
+<td class="py-3">ALPHA SQUAD</td>
+<td class="py-3 text-on-surface-variant">SITE-A92 (ROOF)</td>
+<td class="py-3 text-right">104.2</td>
+<td class="py-3 text-right text-primary">100.0</td>
+<td class="py-3 text-right font-data-point text-[14px]">98.4%</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors status-strip-progress">
+<td class="py-3 pl-3 font-data-point text-[14px]">#02</td>
+<td class="py-3">BRAVO TEAM</td>
+<td class="py-3 text-on-surface-variant">SITE-B11 (FOUND)</td>
+<td class="py-3 text-right text-secondary-container">108.5</td>
+<td class="py-3 text-right">96.2</td>
+<td class="py-3 text-right font-data-point text-[14px]">94.1%</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors status-strip-ready">
+<td class="py-3 pl-3 font-data-point text-[14px]">#03</td>
+<td class="py-3">DELTA FORCE</td>
+<td class="py-3 text-on-surface-variant">SITE-C44 (INT)</td>
+<td class="py-3 text-right">98.1</td>
+<td class="py-3 text-right">99.0</td>
+<td class="py-3 text-right font-data-point text-[14px]">89.7%</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors status-strip-critical bg-error-container/10">
+<td class="py-3 pl-3 font-data-point text-[14px]">#04</td>
+<td class="py-3 text-error">ECHO SQUAD</td>
+<td class="py-3 text-on-surface-variant">SITE-D01 (ROOF)</td>
+<td class="py-3 text-right">112.0</td>
+<td class="py-3 text-right text-error font-bold">72.4</td>
+<td class="py-3 text-right font-data-point text-[14px]">84.2%</td>
+</tr>
+<tr class="border-b border-surface-container-highest hover:bg-surface-container transition-colors status-strip-ready">
+<td class="py-3 pl-3 font-data-point text-[14px]">#05</td>
+<td class="py-3">CHARLIE CO</td>
+<td class="py-3 text-on-surface-variant">IDLE</td>
+<td class="py-3 text-right">95.0</td>
+<td class="py-3 text-right">98.5</td>
+<td class="py-3 text-right font-data-point text-[14px]">82.1%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Sidebar: Anomaly Detection -->
+<aside class="w-[320px] flex flex-col gap-gutter">
+<div class="bg-surface-container-low tech-border h-full flex flex-col relative border-l-4 border-error">
+<div class="p-density-comfortable border-b border-outline-variant bg-error-container/20 flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-error" style="font-size: 18px;">ANOMALY DETECTED</h3>
+<p class="font-label-caps text-label-caps text-error/80 mt-1">CRITICAL SAFETY DROP</p>
+</div>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="p-density-comfortable flex-1 overflow-y-auto flex flex-col gap-4">
+<!-- Alert Card -->
+<div class="bg-surface-dim p-3 tech-border border-l-2 border-error">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-on-surface font-bold">ECHO SQUAD</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant bg-surface-container px-1">14:02 UTC</span>
+</div>
+<p class="font-label-caps text-[11px] text-on-surface-variant leading-tight">
+                            Harness compliance dropped below 80% threshold. Rapid movement detected on Pitch &gt; 6/12 without anchor points engaged.
+                        </p>
+<div class="mt-3 flex gap-2">
+<button class="bg-error text-on-error font-label-caps text-[10px] px-3 py-1 uppercase font-bold hover:bg-error/90 transition-colors">Dispatch Sup</button>
+<button class="bg-transparent border border-outline text-on-surface font-label-caps text-[10px] px-3 py-1 uppercase hover:bg-surface-container transition-colors">View Log</button>
+</div>
+</div>
+<!-- Minor Flag -->
+<div class="bg-surface-dim p-3 tech-border border-l-2 border-secondary-container">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-on-surface font-bold">BRAVO TEAM</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant bg-surface-container px-1">11:45 UTC</span>
+</div>
+<p class="font-label-caps text-[11px] text-on-surface-variant leading-tight">
+                            Speed index unusually high (+18% variance). Potential quality risk. Material waste rate tracking +4% above baseline.
+                        </p>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-2">SYSTEM STATUS</h4>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant">SENSORS ONLINE</span>
+<span class="font-data-point text-[12px] text-primary">142/142</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant">LIVESTREAM DELAY</span>
+<span class="font-data-point text-[12px] text-on-surface">45ms</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

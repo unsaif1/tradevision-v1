@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TRADEVISION C.A.R.E. | Data Visualization &amp; Telemetry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .cyber-corner {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+        }
+        .segmented-bar div {
+            height: 100%;
+            margin-right: 2px;
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0f141a; }
+        ::-webkit-scrollbar-thumb { background: #30353c; border-radius: 3px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#353941",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-tertiary": "#273141",
+                        "background": "#0f141a",
+                        "on-surface": "#dee3eb",
+                        "surface-container-lowest": "#0a0f14",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#ffb2b9",
+                        "inverse-surface": "#dee3eb",
+                        "accent-cyan": "#00f2ff",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "surface-container-high": "#252a31",
+                        "surface": "#0f141a",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "secondary-fixed-dim": "#bac8db",
+                        "tertiary": "#d9e3f9",
+                        "outline": "#9f8c8d",
+                        "surface-container-highest": "#30353c",
+                        "on-primary": "#522027",
+                        "on-secondary-container": "#a8b6c9",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "error-container": "#93000a",
+                        "status-error": "#f43f5e",
+                        "surface-container": "#1b2026",
+                        "on-secondary": "#243240",
+                        "surface-dim": "#0f141a",
+                        "status-success": "#4ade80",
+                        "outline-variant": "#524344",
+                        "tertiary-container": "#bdc7dc",
+                        "on-surface-variant": "#d7c2c2",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-deep": "#090f15",
+                        "on-primary-container": "#7b4148",
+                        "on-tertiary-container": "#495365",
+                        "primary-fixed": "#ffdadc",
+                        "secondary-fixed": "#d5e4f7",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-variant": "#30353c",
+                        "primary": "#ffd9dc",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#370c13",
+                        "on-primary-fixed-variant": "#6d363d",
+                        "on-background": "#dee3eb",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-primary": "#894d54",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "on-error": "#690005",
+                        "secondary-container": "#3a4858",
+                        "on-tertiary-fixed": "#121c2c",
+                        "secondary": "#bac8db",
+                        "surface-container-low": "#171c22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "24px",
+                        "telemetry-sidebar-width": "340px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "sidebar-width": "260px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "label-caps": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "mono-data": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar Left: Primary Navigation -->
+<aside class="w-sidebar-width h-screen border-r border-outline-variant bg-surface-container flex flex-col py-lg shrink-0">
+<div class="px-lg mb-xl">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">TRADEVISION C.A.R.E.</span>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-caps text-label-caps">Validator Node</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-deep">
+<!-- Top Bar -->
+<header class="flex items-center justify-between px-lg w-full h-16 border-b border-outline-variant bg-surface-deep sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="terminal">terminal</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-widest">SYSTEM_CORE_V2.0</h1>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="font-mono-data text-mono-data text-status-success">NODE_SYNC: 100%</span>
+</div>
+<span class="material-symbols-outlined text-outline hover:text-accent-cyan cursor-pointer transition-all active:scale-95" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-lg space-y-lg">
+<!-- Hero Data Section: Bento Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Documentation Block -->
+<div class="col-span-12 lg:col-span-7 p-lg bg-surface-container border border-outline-variant relative overflow-hidden">
+<div class="scanline"></div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-md">VISUALIZATION_LOGIC</h2>
+<p class="font-body-md text-on-surface-variant mb-lg max-w-2xl">
+                            The C.A.R.E. system utilizes a <span class="text-accent-cyan">Rose-to-Cyan spectrum</span> for forensic health monitoring. Cyan denotes optimal node sync and integrity, while Rose highlights critical stress points or cryptographic drift.
+                        </p>
+<div class="grid grid-cols-2 gap-md">
+<div class="border-l-2 border-accent-cyan p-md bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-accent-cyan block mb-xs">HEALTH INDICATORS</span>
+<span class="font-body-sm text-on-surface-variant">Used for active validation, low latency, and verified blockchain commits.</span>
+</div>
+<div class="border-l-2 border-primary p-md bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-primary block mb-xs">STRESS MARKERS</span>
+<span class="font-body-sm text-on-surface-variant">Triggered by high memory usage, consensus delays, or thermal alerts.</span>
+</div>
+</div>
+</div>
+<!-- Real-time Sparklines -->
+<div class="col-span-12 lg:col-span-5 grid grid-rows-2 gap-gutter">
+<div class="bg-surface-container border border-outline-variant p-md flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-outline">MOISTURE_STRESS_INDEX</span>
+<span class="font-mono-data text-mono-data text-accent-cyan">88.42%</span>
+</div>
+<div class="h-16 flex items-end gap-1">
+<!-- Sparkline simulated -->
+<div class="bg-accent-cyan w-full" style="height: 40%"></div>
+<div class="bg-accent-cyan w-full" style="height: 45%"></div>
+<div class="bg-accent-cyan w-full" style="height: 60%"></div>
+<div class="bg-accent-cyan w-full opacity-60" style="height: 55%"></div>
+<div class="bg-accent-cyan w-full" style="height: 70%"></div>
+<div class="bg-accent-cyan w-full" style="height: 65%"></div>
+<div class="bg-accent-cyan w-full" style="height: 80%"></div>
+<div class="bg-accent-cyan w-full animate-pulse" style="height: 90%"></div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-md flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-outline">THERMAL_FORENSICS</span>
+<span class="font-mono-data text-mono-data text-primary">72.1°C</span>
+</div>
+<div class="h-16 flex items-end gap-1">
+<div class="bg-primary w-full opacity-40" style="height: 30%"></div>
+<div class="bg-primary w-full opacity-50" style="height: 35%"></div>
+<div class="bg-primary w-full opacity-60" style="height: 50%"></div>
+<div class="bg-primary w-full" style="height: 70%"></div>
+<div class="bg-primary w-full" style="height: 65%"></div>
+<div class="bg-primary w-full animate-pulse" style="height: 75%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Industrial Chart Styles -->
+<div class="bg-surface-container border border-outline-variant p-lg">
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">NODE_CONSENSUS_DISTRIBUTION</h3>
+<span class="font-label-sm text-label-sm text-outline">FORENSIC TELEMETRY DATA RECOVERY</span>
+</div>
+<div class="flex gap-md">
+<button class="px-md py-xs bg-surface-container-highest border border-outline-variant font-label-caps text-label-caps text-on-surface hover:bg-surface-bright transition-colors">EXPORT_CSV</button>
+<button class="px-md py-xs bg-primary-container font-label-caps text-label-caps text-on-primary-fixed hover:opacity-90 transition-opacity">RECALIBRATE</button>
+</div>
+</div>
+<div class="h-64 border-b border-l border-outline-variant relative flex items-end justify-around px-lg">
+<!-- Y-Axis labels -->
+<div class="absolute -left-12 h-full flex flex-col justify-between font-mono-data text-mono-data text-outline py-2">
+<span>100</span>
+<span>75</span>
+<span>50</span>
+<span>25</span>
+<span>0</span>
+</div>
+<!-- Bars -->
+<div class="group relative flex flex-col items-center w-12">
+<div class="bg-surface-container-highest w-full hover:bg-accent-cyan transition-colors" style="height: 180px;"></div>
+<span class="absolute -bottom-8 font-mono-data text-mono-data text-outline text-[10px]">ZONE_A</span>
+</div>
+<div class="group relative flex flex-col items-center w-12">
+<div class="bg-accent-cyan w-full" style="height: 220px;"></div>
+<span class="absolute -bottom-8 font-mono-data text-mono-data text-outline text-[10px]">ZONE_B</span>
+</div>
+<div class="group relative flex flex-col items-center w-12">
+<div class="bg-surface-container-highest w-full" style="height: 140px;"></div>
+<span class="absolute -bottom-8 font-mono-data text-mono-data text-outline text-[10px]">ZONE_C</span>
+</div>
+<div class="group relative flex flex-col items-center w-12">
+<div class="bg-primary w-full" style="height: 190px;"></div>
+<span class="absolute -bottom-8 font-mono-data text-mono-data text-outline text-[10px]">ZONE_D</span>
+</div>
+<div class="group relative flex flex-col items-center w-12">
+<div class="bg-surface-container-highest w-full" style="height: 100px;"></div>
+<span class="absolute -bottom-8 font-mono-data text-mono-data text-outline text-[10px]">ZONE_E</span>
+</div>
+</div>
+</div>
+<!-- Industrial Data Table -->
+<div class="bg-surface-container border border-outline-variant overflow-hidden">
+<div class="p-md border-b border-outline-variant bg-surface-container-low font-label-caps text-label-caps text-on-surface">LATEST_NETWORK_EVENTS</div>
+<table class="w-full text-left font-mono-data text-mono-data">
+<thead class="bg-surface-container-high border-b border-outline-variant">
+<tr>
+<th class="px-md py-sm font-label-caps text-label-caps text-outline">TIMESTAMP</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-outline">EVENT_ID</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-outline">STATUS</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-outline">INTEGRITY</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-md py-sm">14:22:01.04</td>
+<td class="px-md py-sm text-on-surface">TXN_9921_AF</td>
+<td class="px-md py-sm"><span class="px-xs py-[2px] bg-status-success/10 text-status-success border border-status-success/30 text-[10px]">VALIDATED</span></td>
+<td class="px-md py-sm text-accent-cyan">0.99998</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-md py-sm">14:21:58.21</td>
+<td class="px-md py-sm text-on-surface">DRFT_002_XR</td>
+<td class="px-md py-sm"><span class="px-xs py-[2px] bg-primary/10 text-primary border border-primary/30 text-[10px]">WARNING</span></td>
+<td class="px-md py-sm text-primary">0.81224</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-md py-sm">14:21:45.00</td>
+<td class="px-md py-sm text-on-surface">SYNC_FL_99</td>
+<td class="px-md py-sm"><span class="px-xs py-[2px] bg-status-success/10 text-status-success border border-status-success/30 text-[10px]">VALIDATED</span></td>
+<td class="px-md py-sm text-accent-cyan">1.00000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Sidebar Right: Telemetry Panel -->
+<aside class="w-telemetry-sidebar-width h-screen border-l border-outline-variant bg-surface-container-low flex flex-col p-md shrink-0 fixed right-0 top-0 hidden xl:flex">
+<div class="mb-lg">
+<span class="font-label-caps text-label-caps text-outline block mb-sm">TELEMETRY_LOG</span>
+<div class="space-y-md">
+<!-- Real-time Feed Item -->
+<div class="flex items-start gap-md animate-pulse-subtle">
+<span class="material-symbols-outlined text-status-success text-sm" data-icon="sensors">sensors</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface block">REAL-TIME_FEED_ACTIVE</span>
+<span class="font-mono-data text-[10px] text-outline">LATENCY: 14ms | OFFSET: 0.002</span>
+</div>
+</div>
+<!-- CPU Load -->
+<div class="bg-surface-container p-md border border-outline-variant">
+<div class="flex justify-between items-center mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="memory">memory</span>
+<span class="font-label-sm text-label-sm">CPU_LOAD</span>
+</div>
+<span class="font-mono-data text-mono-data text-accent-cyan">42%</span>
+</div>
+<div class="h-1 bg-surface-container-highest flex">
+<div class="bg-accent-cyan h-full" style="width: 42%"></div>
+</div>
+</div>
+<!-- Network Latency -->
+<div class="bg-surface-container p-md border border-outline-variant">
+<div class="flex justify-between items-center mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="speed">speed</span>
+<span class="font-label-sm text-label-sm">NET_LATENCY</span>
+</div>
+<span class="font-mono-data text-mono-data text-status-success">STABLE</span>
+</div>
+<div class="flex gap-1 h-4 segmented-bar">
+<div class="bg-status-success flex-1"></div>
+<div class="bg-status-success flex-1"></div>
+<div class="bg-status-success flex-1"></div>
+<div class="bg-status-success flex-1"></div>
+<div class="bg-surface-container-highest flex-1"></div>
+<div class="bg-surface-container-highest flex-1"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Forensic Viewport -->
+<div class="mt-auto border border-outline-variant bg-surface-deep relative overflow-hidden h-48 cyber-corner">
+<img class="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A macro close-up of high-tech computer hardware components bathed in a cinematic dual-tone lighting scheme of neon cyan and deep rose pink. The image features sharp electronic details, circuit traces, and micro-LED indicators glowing in the dark, reinforcing a hacker-terminal and forensic digital aesthetic. Shallow depth of field highlights the complex technical textures of the silicon boards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4fNJQuPgHagLeUc6rAITEEEl9F7h6D20pJ22UATVWTvjqFg5qtvPqc6343xoS7Pj7EpcobxXJRMhCtodSLlMjo4ehjZV-3_e632RLXOs6typ4BuG1hGWa43g2ZV5GUVWCO7KaMI68MKT9H3NYaJrJo2il6ZdxGihTpiyB5304__GpZ7JKtJmk6PCb6UNLRPLEJB8osaLxrd9_P2w8JEFINwOaEumypvZ5pSXANixZxZ8NFLY6umgLvT9PwpYw4N7rnmxoWVWyr-0w"/>
+<div class="absolute inset-0 flex flex-col justify-end p-md bg-gradient-to-t from-surface-deep to-transparent">
+<span class="font-label-caps text-label-caps text-accent-cyan">LIVE_HARDWARE_NODE</span>
+<span class="font-mono-data text-[10px] text-outline">CAM_SOURCE: RACK_442_SEC</span>
+</div>
+<div class="scanline"></div>
+</div>
+</aside>
+</div>
+<!-- Floating Micro-Interaction Scripts -->
+<script>
+        // Simulate live data updates
+        setInterval(() => {
+            const telemetryValues = document.querySelectorAll('.font-mono-data');
+            telemetryValues.forEach(el => {
+                if(el.textContent.includes('%') && !el.textContent.includes('NODE_SYNC')) {
+                    const current = parseFloat(el.textContent);
+                    const drift = (Math.random() - 0.5) * 2;
+                    el.textContent = (current + drift).toFixed(2) + '%';
+                }
+            });
+        }, 3000);
+    </script>
+</body></html>

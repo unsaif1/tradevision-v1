@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>METEOROLOGICAL_CMD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#006970",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "on-surface": "#e2e2e8",
+                        "on-error": "#690005",
+                        "surface-variant": "#333539",
+                        "surface-dim": "#111317",
+                        "tertiary-container": "#dad9d9",
+                        "on-secondary-container": "#6b4b00",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-tint": "#00dbe9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "primary-container": "#00f0ff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024",
+                        "outline": "#849495",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed": "#271900",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006970",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-high": "#282a2e",
+                        "outline-variant": "#3b494b",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-surface": "#e2e2e8",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#002022",
+                        "secondary-fixed": "#ffdea8",
+                        "background": "#111317",
+                        "secondary-container": "#feb700",
+                        "on-tertiary": "#303031",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface": "#111317",
+                        "surface-container-highest": "#333539",
+                        "surface-bright": "#37393e",
+                        "on-secondary": "#412d00",
+                        "surface-container-low": "#1a1c20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .scanline {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 219, 233, 0.05) 51%);
+            background-size: 100% 4px;
+        }
+        .tech-border {
+            border: 1px solid #2D2D2D;
+        }
+        .tech-card-tab {
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed antialiased scanline min-h-screen pb-24 md:pb-0 pt-14">
+<!-- TopAppBar -->
+<header class="bg-surface-dim dark:bg-surface-dim text-primary-fixed-dim dark:text-primary-fixed-dim font-headline-md text-headline-md fixed top-0 w-full h-14 border-b border-outline-variant flex items-center justify-between px-margin-mobile z-50">
+<div class="flex items-center gap-density-compact active:scale-95 transition-transform hover:bg-surface-variant p-1 rounded">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+<span class="font-label-caps text-label-caps tracking-widest text-primary-fixed-dim">ROOF COMMAND</span>
+<div class="flex items-center gap-density-compact active:scale-95 transition-transform hover:bg-surface-variant p-1 rounded">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+</div>
+</header>
+<main class="p-margin-mobile md:p-margin-desktop grid grid-cols-4 md:grid-cols-12 gap-gutter max-w-7xl mx-auto">
+<!-- Header -->
+<div class="col-span-4 md:col-span-12 mb-unit">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">ROOF_COMMAND_PORTAL</h1>
+<p class="font-data-point text-data-point text-outline mt-unit">SYSTEM ACTIVE // MONITORING</p>
+</div>
+<!-- Top Section: Gauge & Conditions -->
+<section class="col-span-4 md:col-span-6 tech-border bg-surface-container relative p-density-comfortable">
+<div class="absolute top-0 left-0 bg-outline-variant px-2 py-1 tech-card-tab">
+<span class="font-label-caps text-label-caps text-on-surface">ROOF_SAFETY_INDEX</span>
+</div>
+<div class="mt-density-comfortable flex flex-col md:flex-row items-center gap-density-comfortable">
+<!-- Circular Gauge Placeholder -->
+<div class="w-32 h-32 rounded-full border-4 border-surface-variant flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-4 border-error" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);"></div>
+<div class="text-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-error">42</span>
+<span class="font-label-caps text-label-caps text-error block">%</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-density-compact">
+<div class="flex items-center gap-2 border border-error bg-error-container/20 p-2 rounded">
+<span class="material-symbols-outlined text-error">warning</span>
+<span class="font-label-caps text-label-caps text-error tracking-wider">SEVERE_WIND_GUSTS</span>
+</div>
+<div class="grid grid-cols-2 gap-unit">
+<div class="tech-border p-2 bg-surface">
+<span class="font-label-caps text-label-caps text-outline block mb-1">TEMP</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim">82°F</span>
+</div>
+<div class="tech-border p-2 bg-surface">
+<span class="font-label-caps text-label-caps text-outline block mb-1">HUMIDITY</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim">65%</span>
+</div>
+<div class="col-span-2 tech-border p-2 bg-surface">
+<span class="font-label-caps text-label-caps text-outline block mb-1">WIND</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim">18 kts NNW</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Middle Section: 7-Day Forecast -->
+<section class="col-span-4 md:col-span-12 tech-border bg-surface-container relative p-density-comfortable">
+<div class="absolute top-0 left-0 bg-outline-variant px-2 py-1 tech-card-tab">
+<span class="font-label-caps text-label-caps text-on-surface">7_DAY_PROJECTION</span>
+</div>
+<div class="mt-density-comfortable flex overflow-x-auto gap-unit pb-2 scrollbar-hide">
+<!-- Day 1 -->
+<div class="min-w-[120px] tech-border bg-surface p-density-compact flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline">TODAY</span>
+<span class="material-symbols-outlined text-primary-fixed-dim my-2 text-3xl">cloud</span>
+<span class="font-data-point text-data-point text-on-surface">82/70</span>
+<div class="mt-auto w-full bg-surface-variant p-1 text-center mt-2 border-l-4 border-secondary-fixed-dim">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">STANDBY</span>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="min-w-[120px] tech-border bg-surface p-density-compact flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline">TUE</span>
+<span class="material-symbols-outlined text-primary-fixed-dim my-2 text-3xl">sunny</span>
+<span class="font-data-point text-data-point text-on-surface">85/72</span>
+<div class="mt-auto w-full bg-surface-variant p-1 text-center mt-2 border-l-4 border-primary-fixed-dim">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">SAFE</span>
+</div>
+</div>
+<!-- Day 3 RAIN ALERT -->
+<div class="min-w-[120px] border border-error bg-error-container/10 p-density-compact flex flex-col items-center relative overflow-hidden">
+<div class="absolute inset-0 border border-error shadow-[inset_0_0_10px_rgba(255,180,171,0.2)] pointer-events-none"></div>
+<span class="font-label-caps text-label-caps text-error">WED</span>
+<span class="material-symbols-outlined text-error my-2 text-3xl" style="font-variation-settings: 'FILL' 1;">rainy</span>
+<span class="font-data-point text-data-point text-error">78/68</span>
+<div class="mt-auto w-full bg-error-container p-1 text-center mt-2 border-l-4 border-error">
+<span class="font-label-caps text-label-caps text-error">RAIN_ALERT</span>
+</div>
+</div>
+<!-- Day 4 -->
+<div class="min-w-[120px] tech-border bg-surface p-density-compact flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline">THU</span>
+<span class="material-symbols-outlined text-primary-fixed-dim my-2 text-3xl">partly_cloudy_day</span>
+<span class="font-data-point text-data-point text-on-surface">80/69</span>
+<div class="mt-auto w-full bg-surface-variant p-1 text-center mt-2 border-l-4 border-secondary-fixed-dim">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim">CAUTION</span>
+</div>
+</div>
+<!-- Day 5 -->
+<div class="min-w-[120px] tech-border bg-surface p-density-compact flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline">FRI</span>
+<span class="material-symbols-outlined text-primary-fixed-dim my-2 text-3xl">sunny</span>
+<span class="font-data-point text-data-point text-on-surface">84/71</span>
+<div class="mt-auto w-full bg-surface-variant p-1 text-center mt-2 border-l-4 border-primary-fixed-dim">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">SAFE</span>
+</div>
+</div>
+<!-- Day 6 -->
+<div class="min-w-[120px] tech-border bg-surface p-density-compact flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline">SAT</span>
+<span class="material-symbols-outlined text-primary-fixed-dim my-2 text-3xl">sunny</span>
+<span class="font-data-point text-data-point text-on-surface">86/73</span>
+<div class="mt-auto w-full bg-surface-variant p-1 text-center mt-2 border-l-4 border-primary-fixed-dim">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">SAFE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Safety Telemetry -->
+<section class="col-span-4 md:col-span-12 tech-border bg-surface-container relative p-density-comfortable">
+<div class="absolute top-0 left-0 bg-outline-variant px-2 py-1 tech-card-tab">
+<span class="font-label-caps text-label-caps text-on-surface">SAFETY_TELEMETRY</span>
+</div>
+<div class="mt-density-comfortable grid grid-cols-1 md:grid-cols-3 gap-unit">
+<!-- Wind Vector -->
+<div class="tech-border bg-surface p-density-comfortable">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-outline">WIND_VECTOR</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim">air</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<span class="font-display-lg-mobile text-display-lg-mobile text-secondary-fixed-dim block">18</span>
+<span class="font-label-caps text-label-caps text-outline">KTS // CUR</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-data-point text-on-surface block">25</span>
+<span class="font-label-caps text-label-caps text-outline">KTS // MAX_TOL</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-2 mt-4 overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full" style="width: 72%;"></div>
+</div>
+</div>
+<!-- Pitch Surface Hazard -->
+<div class="tech-border bg-surface p-density-comfortable">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-outline">PITCH_SURFACE_MOISTURE</span>
+<span class="material-symbols-outlined text-primary-fixed-dim">water_drop</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary-fixed-dim">NOMINAL</span>
+</div>
+<div class="flex gap-1 mt-4">
+<div class="flex-1 h-2 bg-primary-fixed-dim"></div>
+<div class="flex-1 h-2 bg-surface-variant"></div>
+<div class="flex-1 h-2 bg-surface-variant"></div>
+<div class="flex-1 h-2 bg-surface-variant"></div>
+</div>
+</div>
+<!-- Lightning Proximity -->
+<div class="tech-border bg-surface p-density-comfortable">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-outline">LIGHTNING_PROX</span>
+<span class="material-symbols-outlined text-primary-fixed-dim">bolt</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">&gt;50</span>
+<span class="font-label-caps text-label-caps text-outline pb-1">MILES</span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-outline">SCANNING ACTIVE</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-fixed-dim dark:text-primary-fixed-dim font-label-caps text-label-caps fixed bottom-0 w-full z-50 border-t border-outline-variant fixed bottom-0 left-0 w-full flex justify-around items-stretch h-16">
+<button class="flex flex-col items-center justify-center text-outline px-density-compact hover:text-on-surface hover:bg-surface-container transition-all duration-100 ease-in-out"><span class="material-symbols-outlined mb-1">dashboard</span><span>DASHBOARD</span></button>
+<button class="flex flex-col items-center justify-center text-outline px-density-compact hover:text-on-surface hover:bg-surface-container transition-all duration-100 ease-in-out"><span class="material-symbols-outlined mb-1">location_on</span><span>SITES</span></button>
+<button class="flex flex-col items-center justify-center text-outline px-density-compact hover:text-on-surface hover:bg-surface-container transition-all duration-100 ease-in-out"><span class="material-symbols-outlined mb-1">health_and_safety</span><span>SAFETY</span></button>
+<button class="flex flex-col items-center justify-center text-primary-fixed-dim border-t-2 border-primary-fixed-dim bg-surface-container-high px-density-compact transition-all duration-100 ease-in-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">notification_important</span>
+<span>ALERTS</span>
+</button>
+</nav>
+</body></html>

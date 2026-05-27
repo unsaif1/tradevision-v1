@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#e21e51",
+                        "on-secondary-container": "#a8b6c9",
+                        "surface-dim": "#0f141a",
+                        "secondary-fixed": "#d5e4f7",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "tertiary": "#bdc7dc",
+                        "background": "#0f141a",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-highest": "#30353d",
+                        "secondary-container": "#3a4858",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-tertiary-container": "#fefcff",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "secondary": "#bac8db",
+                        "on-primary-container": "#fffcff",
+                        "on-secondary": "#243240",
+                        "surface-deep": "#1C2128",
+                        "text-secondary": "#8896A8",
+                        "accent-active": "#E21E51",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "inverse-primary": "#be003e",
+                        "on-error": "#690005",
+                        "text-primary": "#FFFFFF",
+                        "on-background": "#dee2ec",
+                        "surface-container": "#1b2027",
+                        "error-container": "#93000a",
+                        "surface-muted": "#2D3748",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#353941",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary-fixed": "#40000f",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee2ec",
+                        "surface-container-high": "#252a32",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-variant": "#30353d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "tertiary-container": "#6b7588",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-surface": "#dee2ec",
+                        "on-primary": "#67001e",
+                        "tertiary-fixed": "#d9e3f9",
+                        "outline": "#ab888a",
+                        "surface": "#0f141a",
+                        "surface-container-low": "#171c23",
+                        "on-primary-fixed-variant": "#91002e",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-tertiary": "#273141",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles to ensure consistency */
+        body {
+            background-color: #0f141a; /* surface */
+            color: #dee2ec; /* on-surface */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-surface dark:bg-surface border-b border-border-subtle w-full">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto">
+<!-- Leading: Logo & Name -->
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container">analytics</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<!-- Web Navigation Cluster (Hidden on Mobile, Derived from BottomNav JSON) -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label-md text-label-md">Command</span>
+</a>
+<a class="flex items-center gap-xs text-primary-container font-bold hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-[20px] fill">location_city</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span>
+<span class="font-label-md text-label-md">Claims</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-sm py-xs rounded" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+<span class="font-label-md text-label-md">Alerts</span>
+</a>
+</nav>
+<!-- Trailing: Avatar -->
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-muted border border-border-subtle hover:bg-surface-bright/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-gutter md:px-lg py-lg pb-[100px] md:pb-lg flex flex-col gap-lg">
+<!-- Header & Controls -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Active Projects</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mt-xs">Manage and monitor ongoing site deployments.</p>
+</div>
+<div class="flex flex-wrap items-center gap-sm w-full md:w-auto">
+<!-- Search -->
+<div class="relative flex-grow md:flex-grow-0 md:w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-text-secondary text-[20px]">search</span>
+<input class="w-full border border-border-subtle rounded text-on-surface font-body-sm text-body-sm pl-[36px] pr-sm py-[6px] focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/50 transition-colors placeholder:text-text-secondary bg-surface-container-lowest" placeholder="Search projects..." type="text"/>
+</div>
+<!-- Filters -->
+<button class="flex items-center gap-xs bg-surface-muted border border-border-subtle rounded px-md py-[6px] text-on-surface font-label-md text-label-md hover:bg-surface-bright/50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Filter
+                </button>
+<button class="flex items-center gap-xs bg-surface-muted border border-border-subtle rounded px-md py-[6px] text-on-surface font-label-md text-label-md hover:bg-surface-bright/50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                    Sort
+                </button>
+</div>
+</div>
+<!-- Project Cards Grid (Bento style / High Density) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<article class="bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-md relative overflow-hidden group">
+<!-- Subtle Gradient Accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-container to-surface-muted opacity-50"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed shadow-[0_0_8px_rgba(213,228,247,0.4)]"></div>
+<span class="font-label-md text-label-md text-text-secondary uppercase tracking-wider">Active - Phase 3 Framing</span>
+</div>
+<button class="text-text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Alpha Site Redevelopment</h3>
+<div class="flex items-center gap-xs mt-xs text-text-secondary font-body-sm text-body-sm"><div class="grid grid-cols-3 gap-xs w-full">
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">PA</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">GC</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">ADJ</span>
+</div></div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-border-subtle">
+<div class="w-8 h-8 rounded bg-surface-deep border border-border-subtle flex items-center justify-center overflow-hidden shrink-0">
+<img alt="JD" class="w-full h-full object-cover" data-alt="A small, professional avatar placeholder image featuring the initials JD in white against a dark minimalist slate background. The style is clean, corporate, and modern, fitting perfectly within a high-density fintech or analytical dashboard interface. Lighting is flat and uniform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEf47BuhKR5EJZ84OZEgQ0R79mol0Z8eiVpztXKIvS1UDY5vJOyuaWLCI2VPcGZjo6EVxpWkKwV5Au8xhdg2LpWeJydQn3Vwp-i7ePtfHk6BhA1Eh8Dn1Geh2byQkUPlGrrT2IaZJzn-w7j2lnS4XXZvIRz4TCmXc1JgXs08L6X2bLURfOwigfqVcv-GAW4ETiA6XjhBnEqanDC8VV_ajQ5pwF2RMQAoByz9UcLUMo9etkTFOCkQR5RJcoRpONl3bB3Pa_Y-BFchEF"/>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-text-secondary">Primary Contact</span>
+<span class="font-body-sm text-body-sm text-on-surface">John Doe (GC)</span>
+</div>
+</div>
+<div class="flex gap-xs mt-xs"><div class="grid grid-cols-3 gap-xs w-full">
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">PA</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">GC</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">ADJ</span>
+</div></div>
+<div class="mt-sm">
+<div class="flex justify-between font-label-sm text-label-sm mb-[4px]">
+<span class="text-text-secondary">Completion</span>
+<span class="text-on-surface">65%</span>
+</div>
+<div class="w-full bg-surface-deep rounded-full overflow-hidden h-[4px]">
+<div class="h-full bg-primary-container w-[65%] rounded-full"></div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-md relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(226,30,81,0.6)]"></div>
+<span class="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider">Delayed - Permitting</span>
+</div>
+<button class="text-text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Nexus Logistics Hub</h3>
+<div class="flex items-center gap-xs mt-xs text-text-secondary font-body-sm text-body-sm"><div class="grid grid-cols-3 gap-xs w-full">
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">PA</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">CP</span>
+<span class="flex items-center justify-center py-[2px] border border-transparent rounded font-label-sm text-label-sm text-transparent">-</span>
+</div></div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-border-subtle">
+<div class="w-8 h-8 rounded bg-surface-deep border border-border-subtle flex items-center justify-center overflow-hidden shrink-0">
+<span class="material-symbols-outlined text-text-secondary text-[16px]">person</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-text-secondary">Primary Contact</span>
+<span class="font-body-sm text-body-sm text-on-surface">Sarah Connor (PA)</span>
+</div>
+</div>
+<div class="flex gap-xs mt-xs"><div class="grid grid-cols-3 gap-xs w-full">
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">PA</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">CP</span>
+<span class="flex items-center justify-center py-[2px] border border-transparent rounded font-label-sm text-label-sm text-transparent">-</span>
+</div></div>
+<div class="mt-sm">
+<div class="flex justify-between font-label-sm text-label-sm mb-[4px]">
+<span class="text-text-secondary">Completion</span>
+<span class="text-on-surface">12%</span>
+</div>
+<div class="w-full bg-surface-deep rounded-full overflow-hidden h-[4px]">
+<div class="h-full w-[12%] rounded-full bg-primary"></div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-muted border border-border-subtle rounded-lg p-md flex flex-col gap-md relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed opacity-50"></div>
+<span class="font-label-md text-label-md text-text-secondary uppercase tracking-wider">Planning - Schematic</span>
+</div>
+<button class="text-text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Echo Valley Substation</h3>
+<div class="flex items-center gap-xs mt-xs text-text-secondary font-body-sm text-body-sm"><div class="grid grid-cols-3 gap-xs w-full">
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">ENG</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">PA</span>
+<span class="flex items-center justify-center py-[2px] border border-transparent rounded font-label-sm text-label-sm text-transparent">-</span>
+</div></div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-border-subtle">
+<div class="w-8 h-8 rounded bg-surface-deep border border-border-subtle flex items-center justify-center overflow-hidden shrink-0">
+<span class="material-symbols-outlined text-text-secondary text-[16px]">person</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-text-secondary">Primary Contact</span>
+<span class="font-body-sm text-body-sm text-on-surface">M. Richards (Eng)</span>
+</div>
+</div>
+<div class="flex gap-xs mt-xs"><div class="grid grid-cols-3 gap-xs w-full">
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">ENG</span>
+<span class="flex items-center justify-center py-[2px] bg-surface-deep border border-border-subtle rounded font-label-sm text-label-sm text-text-secondary">PA</span>
+<span class="flex items-center justify-center py-[2px] border border-transparent rounded font-label-sm text-label-sm text-transparent">-</span>
+</div></div>
+<div class="mt-sm">
+<div class="flex justify-between font-label-sm text-label-sm mb-[4px]">
+<span class="text-text-secondary">Completion</span>
+<span class="text-on-surface">0%</span>
+</div>
+<div class="w-full bg-surface-deep rounded-full overflow-hidden h-[4px]">
+<div class="h-full w-[0%] rounded-full bg-tertiary"></div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-[88px] md:bottom-lg right-gutter md:right-lg w-14 h-14 bg-primary-container text-white rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.5)] hover:bg-inverse-primary transition-colors z-40 group shadow-lg">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high border-t border-border-subtle z-50">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm mt-[2px]">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined fill">location_city</span>
+<span class="font-label-sm text-label-sm mt-[2px]">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-label-sm text-label-sm mt-[2px]">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-label-sm text-label-sm mt-[2px]">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-[2px]">Account</span>
+</a>
+</nav>
+</body></html>

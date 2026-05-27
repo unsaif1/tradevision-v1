@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dispute Resolution Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#353941",
+                        "on-primary-fixed": "#40000f",
+                        "inverse-on-surface": "#2c3138",
+                        "error": "#ffb4ab",
+                        "surface-muted": "#2D3748",
+                        "error-container": "#93000a",
+                        "surface-container": "#1b2027",
+                        "text-primary": "#FFFFFF",
+                        "on-background": "#dee2ec",
+                        "on-error": "#690005",
+                        "inverse-primary": "#be003e",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "accent-active": "#E21E51",
+                        "text-secondary": "#8896A8",
+                        "surface-deep": "#1C2128",
+                        "on-secondary": "#243240",
+                        "on-primary-container": "#fffcff",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "secondary": "#bac8db",
+                        "on-tertiary-container": "#fefcff",
+                        "on-surface-variant": "#e4bdbf",
+                        "secondary-container": "#3a4858",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-highest": "#30353d",
+                        "secondary-fixed": "#d5e4f7",
+                        "surface-dim": "#0f141a",
+                        "on-secondary-container": "#a8b6c9",
+                        "background": "#0f141a",
+                        "tertiary": "#bdc7dc",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#e21e51",
+                        "surface-container-lowest": "#090f15",
+                        "on-tertiary": "#273141",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-primary-fixed-variant": "#91002e",
+                        "outline": "#ab888a",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-primary": "#67001e",
+                        "surface-container-low": "#171c23",
+                        "surface": "#0f141a",
+                        "inverse-surface": "#dee2ec",
+                        "tertiary-container": "#6b7588",
+                        "surface-tint": "#ffb2b9",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-container-high": "#252a32",
+                        "surface-variant": "#30353d",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee2ec",
+                        "tertiary-fixed-dim": "#bdc7dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(136, 150, 168, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(136, 150, 168, 0.2);
+            border-radius: 4px;
+        }
+        .tech-grid {
+            background-size: 24px 24px;
+            background-image: linear-gradient(to right, rgba(136, 150, 168, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(136, 150, 168, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-surface-deep text-text-primary h-screen w-screen overflow-hidden flex flex-col font-body-sm">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-border-subtle flex justify-between items-center px-lg h-20 w-full shrink-0 z-20 shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-2xl">gavel</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-wide">Dispute Resolution Portal</h1>
+<!-- Context Header added to TopAppBar area for terminal feel -->
+<div class="ml-xl flex flex-col border-l border-border-subtle pl-md">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Active Terminal</span>
+<span class="h-2 w-2 rounded-full bg-accent-active animate-pulse"></span>
+</div>
+<div class="font-headline-md text-headline-md text-text-primary">DISPUTE #D-4402</div>
+<div class="font-label-sm text-label-sm text-text-secondary">Related to Claim #8892</div>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<!-- Confidence Gauge -->
+<div class="flex items-center gap-md bg-surface-muted border border-error px-md py-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider">Anomaly Detected</span>
+<span class="font-label-md text-label-md text-text-primary">Confidence Lvl: 24.8%</span>
+</div>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container-high transition-colors p-sm rounded">
+<span class="font-label-md text-label-md text-text-primary">User Profile</span>
+<div class="h-8 w-8 rounded-full bg-surface-muted border border-border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-text-secondary text-sm">person</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- NavigationDrawer -->
+<nav class="bg-surface-container-low border-r border-border-subtle h-full w-64 left-0 flex flex-col gap-sm p-md shrink-0 z-10 hidden md:flex">
+<div class="mb-lg px-sm">
+<h2 class="font-headline-lg text-headline-lg font-black text-primary tracking-widest">C.A.R.E. STACK</h2>
+</div>
+<div class="flex flex-col gap-sm flex-1">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container font-bold rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+                    Case Files
+                </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Arbitrators
+                </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">assignment</span>
+                    Evidence Log
+                </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</div>
+</nav>
+<!-- Main Content Area - 3 Pane Layout -->
+<main class="flex-1 flex overflow-hidden tech-grid">
+<!-- Left Pane: Dispute Timeline -->
+<section class="w-1/4 border-r border-border-subtle bg-surface-deep/80 backdrop-blur flex flex-col">
+<div class="p-md border-b border-border-subtle bg-surface-muted/50 flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest">Event Ledger</h3>
+<span class="material-symbols-outlined text-text-secondary text-sm">history</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-md flex flex-col gap-md">
+<!-- Timeline Item -->
+<div class="relative pl-lg border-l border-border-subtle ml-xs pb-md">
+<div class="absolute w-2 h-2 bg-text-secondary rounded-full -left-[5px] top-1"></div>
+<div class="font-label-sm text-label-sm text-text-secondary mb-xs">08:42:11.092ms - T-MINUS 48H</div>
+<div class="font-body-sm text-body-sm text-text-primary bg-surface-muted border border-border-subtle p-sm rounded rounded-tl-none">
+<span class="text-secondary block font-mono text-[10px] mb-1">HASH: 0x9f8b7c6d5e4f3a2b1...</span>
+<strong>FILE_GENESIS:</strong> Initial claim package received via secure portal.
+                        </div>
+</div>
+<!-- Timeline Item -->
+<div class="relative pl-lg border-l border-border-subtle ml-xs pb-md">
+<div class="absolute w-2 h-2 bg-text-secondary rounded-full -left-[5px] top-1"></div>
+<div class="font-label-sm text-label-sm text-text-secondary mb-xs">09:15:00.441ms - T-MINUS 47H</div>
+<div class="font-body-sm text-body-sm text-text-primary bg-surface-muted border border-border-subtle p-sm rounded rounded-tl-none">
+<span class="text-secondary block font-mono text-[10px] mb-1">HASH: 0x1a2b3c4d5e6f7g8h9...</span>
+<strong>INITIAL_TRIAGE:</strong> Automated severity assessment completed. Assigned to Tier 2 Adjuster.
+                        </div>
+</div>
+<!-- Timeline Item (Alert) -->
+<div class="relative pl-lg border-l border-error/50 ml-xs pb-md">
+<div class="absolute w-2 h-2 bg-error rounded-full -left-[5px] top-1 animate-pulse shadow-[0_0_8px_rgba(255,180,171,0.6)]"></div>
+<div class="font-label-sm text-label-sm text-error mb-xs">11:05:22.881ms - T-MINUS 45H</div>
+<div class="font-body-sm text-body-sm text-text-primary bg-surface-muted border border-error/30 p-sm rounded rounded-tl-none relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<span class="text-error block font-mono text-[10px] mb-1">HASH: 0x!ERROR_SIG_MISMATCH</span>
+<strong>DATA_CONFLICT:</strong> Estimate values deviate &gt;15% from historical node data. Flagged for review.
+                        </div>
+</div>
+<!-- Timeline Item -->
+<div class="relative pl-lg border-l border-border-subtle ml-xs pb-md">
+<div class="absolute w-2 h-2 bg-secondary rounded-full -left-[5px] top-1"></div>
+<div class="font-label-sm text-label-sm text-secondary mb-xs">14:30:00.000ms - T-MINUS 42H</div>
+<div class="font-body-sm text-body-sm text-text-primary bg-surface-muted border border-secondary/30 p-sm rounded rounded-tl-none">
+<span class="text-secondary block font-mono text-[10px] mb-1">HASH: 0x7g8h9i0j1k2l3m4n5...</span>
+<strong>EVIDENCE_APPENDED:</strong> New raw imagery uploaded by node client.
+                        </div>
+</div>
+</div>
+</section>
+<!-- Center Pane: Evidence & Documentation -->
+<section class="w-1/2 border-r border-border-subtle bg-surface/90 flex flex-col relative z-0">
+<div class="p-md border-b border-border-subtle bg-surface-muted/50 flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest">Evidence Registry</h3>
+<div class="flex gap-sm">
+<button class="bg-surface-muted border border-border-subtle px-md py-sm rounded text-text-secondary font-label-md text-label-md hover:bg-surface-container-high transition flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filter
+                        </button>
+<button class="bg-accent-active text-text-primary px-md py-sm rounded font-label-md text-label-md hover:opacity-90 transition flex items-center gap-xs shadow-[0_0_12px_rgba(226,30,81,0.3)]">
+<span class="material-symbols-outlined text-[16px]">upload</span> Inject Data
+                        </button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-lg flex flex-col gap-lg">
+<!-- Missing Documents Banner -->
+<div class="border border-dashed border-text-secondary bg-surface-muted/20 rounded p-md flex items-start gap-md">
+<span class="material-symbols-outlined text-text-secondary mt-1">inventory_2</span>
+<div>
+<h4 class="font-label-md text-label-md text-text-primary mb-xs">Pending Telemetry Packages</h4>
+<p class="font-body-sm text-body-sm text-text-secondary mb-sm">Awaiting structural integrity scan files from Node B to complete anomaly resolution.</p>
+<button class="text-secondary font-label-sm text-label-sm underline hover:text-text-primary transition">Request Resync</button>
+</div>
+</div>
+<!-- Evidence Grid -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-muted border border-border-subtle rounded p-sm flex flex-col gap-sm hover:border-secondary transition cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary text-3xl">image</span>
+<span class="bg-surface border border-border-subtle text-text-secondary text-[10px] px-2 py-1 rounded font-mono">RAW</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-text-primary group-hover:text-secondary transition truncate">roof__dmg_01.raw</div>
+<div class="font-body-sm text-body-sm text-text-secondary text-[11px] font-mono mt-1">Node: 8A-F9 | 14.2 MB</div>
+</div>
+</div>
+<!-- Card 2 (Alert) -->
+<div class="bg-surface-muted border border-error/50 rounded p-sm flex flex-col gap-sm relative overflow-hidden group cursor-pointer">
+<div class="absolute top-0 right-0 w-12 h-12 bg-error/10 rounded-bl-full"></div>
+<div class="flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-error text-3xl">description</span>
+<span class="bg-surface border border-error/30 text-error text-[10px] px-2 py-1 rounded font-mono">PDF</span>
+</div>
+<div class="relative z-10">
+<div class="font-label-md text-label-md text-text-primary group-hover:text-error transition truncate">est_v1_signed.pdf</div>
+<div class="font-body-sm text-body-sm text-text-secondary text-[11px] font-mono mt-1">Node: 2B-C1 | 2.4 MB</div>
+<div class="text-error font-label-sm text-label-sm mt-2 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px]">warning</span> Value Mismatch
+                                </div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-muted border border-border-subtle rounded p-sm flex flex-col gap-sm hover:border-secondary transition cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary text-3xl">videocam</span>
+<span class="bg-surface border border-border-subtle text-text-secondary text-[10px] px-2 py-1 rounded font-mono">MP4</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-text-primary group-hover:text-secondary transition truncate">drone_survey_04.mp4</div>
+<div class="font-body-sm text-body-sm text-text-secondary text-[11px] font-mono mt-1">Node: D4-E7 | 104 MB</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Resolution & Comms -->
+<section class="w-1/4 bg-surface-deep flex flex-col">
+<!-- Top Half: Terminal Input -->
+<div class="flex-1 flex flex-col border-b border-border-subtle">
+<div class="p-md border-b border-border-subtle bg-surface-muted/50 flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest">Resolution Terminal</h3>
+<span class="material-symbols-outlined text-text-secondary text-sm">terminal</span>
+</div>
+<div class="p-md flex-1 flex flex-col gap-md font-mono text-[11px] bg-surface-dim">
+<div class="text-secondary">&gt; INITIATE REBUTTAL SEQUENCE...</div>
+<div class="text-text-secondary">&gt; TARGET: est_v1_signed.pdf</div>
+<div class="mt-2 flex-1 flex flex-col">
+<label class="text-text-primary mb-xs">ENTER OVERRIDE PARAMETERS:</label>
+<textarea class="flex-1 bg-surface-deep border border-border-subtle rounded p-sm text-secondary focus:border-accent-active focus:ring-1 focus:ring-accent-active focus:outline-none resize-none custom-scrollbar" placeholder="Awaiting manual input..."></textarea>
+</div>
+<div class="flex justify-end gap-sm mt-2">
+<button class="bg-surface border border-border-subtle text-text-secondary px-md py-sm rounded hover:text-text-primary transition">Clear</button>
+<button class="bg-secondary-container text-on-secondary-container px-md py-sm rounded hover:bg-opacity-80 transition flex items-center gap-xs">
+                                Submit <span class="material-symbols-outlined text-[14px]">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Half: Comms Feed -->
+<div class="h-2/5 flex flex-col bg-surface-container">
+<div class="p-sm border-b border-border-subtle bg-surface-muted/30 flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest">Live Channel</h3>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-md flex flex-col gap-md">
+<!-- Msg 1 -->
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs text-[10px] text-text-secondary font-mono">
+<span>[SYS_AUTO]</span> • <span>09:16:02</span>
+</div>
+<div class="bg-surface-muted border border-border-subtle rounded p-sm text-text-primary font-body-sm text-[12px]">
+                                Automated flag raised on line item #44 (Roofing Material). Historical cost basis exceeded by 18%.
+                            </div>
+</div>
+<!-- Msg 2 -->
+<div class="flex flex-col gap-xs items-end">
+<div class="flex items-center gap-xs text-[10px] text-text-secondary font-mono">
+<span>14:32:11</span> • <span>[ADJ_J.SMITH]</span>
+</div>
+<div class="bg-secondary-container/20 border border-secondary/30 rounded p-sm text-text-primary font-body-sm text-[12px] text-right">
+                                Reviewing raw drone footage now. It appears the material is a discontinued slate, necessitating a higher replacement cost. Will compile evidence package.
+                            </div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeCPA — Precision Tax &amp; Advisory | Orlando, FL</title>
+  <meta name="description" content="AICPA-certified CPA firm in Orlando, FL. Tax preparation, bookkeeping, and business advisory for growing businesses. Free consultation.">
+  <style>
+    /* ── Reset & Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:     #0c2540;
+      --navy-mid: #143055;
+      --navy-deep:#0b1a30;
+      --gold:     #c8a552;
+      --gold-lite:#e8c96e;
+      --white:    #ffffff;
+      --off:      #f4f5f7;
+      --muted:    #6e7a8a;
+      --text:     #1a2230;
+      --shadow:   rgba(0,0,0,0.08);
+      --radius:   12px;
+      --max:      1200px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      color: var(--text); background: #fff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Nav ──────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(12,37,64,0.06);
+      padding: 0 24px;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 16px; font-weight: 700; color: var(--navy); letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta { background: var(--navy); color: #fff !important; padding: 7px 18px; border-radius: 7px; font-weight: 600 !important; transition: background 0.15s; }
+    .nav-cta:hover { background: var(--navy-mid); }
+
+    /* ── Container ───────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Badge ───────────────────────────────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      background: #fdf3db; color: #8a6b1a; border: 1px solid #edd484;
+    }
+
+    /* ── Hero ─────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(150deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+      color: #fff; padding: 96px 0 80px;
+    }
+    .hero .container { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
+    .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p { color: #8eaac8; font-size: 17px; max-width: 500px; margin: 20px 0 32px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block; background: var(--gold); color: #fff;
+      padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 700;
+      border: none; cursor: pointer; text-decoration: none; transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-lite); }
+    .btn-ghost {
+      display: inline-block; background: rgba(255,255,255,0.07); color: #dce8f5;
+      padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12); cursor: pointer; text-decoration: none; transition: background 0.15s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+    /* Hero Trust Card */
+    .hero-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .hero-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .hero-card-icon {
+      width: 44px; height: 44px; border-radius: 10px; background: rgba(200,165,82,0.15);
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .hero-card-name { font-weight: 700; font-size: 14px; }
+    .hero-card-role { font-size: 12.5px; color: #8eaac8; }
+    blockquote.hero-quote {
+      font-style: italic; font-size: 14.5px; color: #c8dfef; line-height: 1.65;
+    }
+    blockquote.hero-quote cite { display: block; margin-top: 10px; font-style: normal; font-size: 13px; color: #6a8ca0; }
+
+    /* ── Stats strip ──────────────────────────────── */
+    .stats-strip { background: var(--off); padding: 36px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-card { text-align: center; }
+    .stat-card .num { font-size: 40px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-card label { font-size: 13.5px; color: var(--muted); margin-top: 6px; display: block; }
+
+    /* ── Section commons ──────────────────────────── */
+    .section { padding: 80px 0; }
+    .section-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    h2 { font-size: 38px; font-weight: 800; color: var(--navy); line-height: 1.15; letter-spacing: -0.8px; }
+    .section-sub { font-size: 16px; color: var(--muted); max-width: 540px; margin: 10px 0 44px; }
+
+    /* ── Services ─────────────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card {
+      border: 1px solid rgba(12,37,64,0.08); border-radius: var(--radius); padding: 32px 28px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px var(--shadow); border-color: rgba(12,37,64,0.14); }
+    .svc-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .svc-icon.blue   { background: #e8f0fe; color: #3b5fc8; }
+    .svc-icon.green  { background: #e7f8ef; color: #2a9d5a; }
+    .svc-icon.gold   { background: #fdf3db; color: #9e7000; }
+    .service-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .service-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .service-card a  { display: inline-block; margin-top: 16px; font-size: 13.5px; font-weight: 600; color: var(--navy-mid); border-bottom: 2px solid var(--gold); padding-bottom: 1px; }
+
+    /* ── Why Us ───────────────────────────────────── */
+    .why { background: var(--off); }
+    .why-grid { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .check-list li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); align-items: flex-start; }
+    .check-list li::before { content: '✓'; color: #2a9d5a; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .why-card {
+      background: var(--navy); border-radius: var(--radius); padding: 32px;
+      position: relative; overflow: hidden;
+    }
+    .why-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(200,165,82,0.18) 0%, transparent 60%);
+    }
+    .why-card-testi { position: relative; z-index: 1; }
+    .why-card-testi p { font-style: italic; color: #c8dfef; font-size: 15px; line-height: 1.7; }
+    .why-card-testi cite { display: block; margin-top: 12px; color: #6a8ca0; font-style: normal; font-size: 13px; }
+
+    /* ── Testimonials ─────────────────────────────── */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .testi-card {
+      border: 1px solid rgba(12,37,64,0.07); border-radius: var(--radius); padding: 26px;
+      background: var(--off);
+    }
+    .testi-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
+    .testi-card blockquote { font-size: 14.5px; color: var(--text); line-height: 1.65; font-style: italic; }
+    .testi-card cite { display: block; margin-top: 10px; font-style: normal; font-size: 13px; font-weight: 600; color: var(--navy-mid); }
+
+    /* ── Contact / Booking ────────────────────────── */
+    .contact-section { background: var(--off); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-details { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .contact-details li { display: flex; gap: 10px; align-items: center; font-size: 14.5px; }
+    .ci { font-size: 18px; flex-shrink: 0; }
+    .contact-form { background: #fff; border: 1px solid rgba(12,37,64,0.08); border-radius: var(--radius); padding: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group input, .form-group textarea {
+      width: 100%; background: var(--off); border: 1px solid rgba(12,37,64,0.1);
+      border-radius: 7px; padding: 11px 14px; font-size: 14px; font-family: inherit;
+      color: var(--text); outline: none; transition: border-color 0.15s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { display: block; font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+
+    /* ── Footer ───────────────────────────────────── */
+    footer { background: var(--navy-deep); color: #6590b8; padding: 36px 0; text-align: center; font-size: 13.5px; }
+    footer strong { color: #c8dfef; }
+    footer a { color: var(--gold); }
+
+    /* ── ChatBubble ───────────────────────────────── */
+    .chat-bubble {
+      position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px;
+      border-radius: 50%; background: var(--navy); color: #fff; border: none; cursor: pointer;
+      font-size: 24px; display: flex; align-items: center; justify-content: center;
+      z-index: 998; box-shadow: 0 4px 24px rgba(12,37,64,0.35); transition: background 0.15s, transform 0.15s;
+    }
+    .chat-bubble:hover { background: var(--navy-mid); transform: scale(1.07); }
+    .chat-window {
+      position: fixed; bottom: 96px; right: 24px; width: 400px; height: 560px;
+      background: #fff; border: 1px solid rgba(12,37,64,0.1); border-radius: 16px;
+      z-index: 999; display: flex; flex-direction: column;
+      box-shadow: 0 12px 52px rgba(12,37,64,0.18); overflow: hidden;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .chat-window[hidden] { opacity: 0; pointer-events: none; transform: translateY(10px); }
+    .chat-header { padding: 14px 18px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; }
+    .chat-header-left { display: flex; align-items: center; gap: 10px; }
+    .chat-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .chat-msg-name { color: #fff; font-size: 14px; font-weight: 700; }
+    .chat-msg-status { color: #8eaac8; font-size: 11.5px; }
+    .chat-close { color: #8eaac8; background: none; border: none; cursor: pointer; font-size: 17px; }
+    .chat-close:hover { color: #fff; }
+    .chat-body { flex: 1; overflow-y: auto; padding: 14px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .chat-msg { max-width: 85%; font-size: 13.5px; line-height: 1.6; padding: 9px 13px; border-radius: 11px; }
+    .chat-msg.bot { align-self: flex-start; background: var(--off); color: var(--text); border-bottom-left-radius: 3px; }
+    .chat-msg.bot p { margin-bottom: 4px; }
+    .chat-msg.user { align-self: flex-end; background: var(--navy); color: #fff; border-bottom-right-radius: 3px; }
+    .chat-footer { padding: 10px 12px; border-top: 1px solid rgba(12,37,64,0.07); display: flex; gap: 8px; }
+    .chat-footer input { flex: 1; border: 1px solid rgba(12,37,64,0.12); border-radius: 7px; padding: 8px 12px; font-size: 13.5px; font-family: inherit; color: var(--text); outline: none; }
+    .chat-footer input:focus { border-color: var(--navy); }
+    .chat-footer button { background: var(--navy); color: #fff; border: none; border-radius: 7px; padding: 8px 16px; font-size: 13.5px; font-weight: 600; font-family: inherit; cursor: pointer; }
+    .chat-typing { font-size: 11.5px; color: #8eaac8; padding: 4px 18px; font-style: italic; }
+    .chat-typing[hidden] { display: none; }
+    .c-link { font-size: 12px; color: var(--navy-mid); }
+
+    /* ── CTA Banner ───────────────────────────────── */
+    .cta-banner { background: var(--navy); color: #fff; padding: 64px 0; text-align: center; }
+    .cta-banner h2 { color: #fff; font-size: 36px; margin-bottom: 12px; }
+    .cta-banner p { color: #8eaac8; font-size: 16px; margin-bottom: 28px; }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media(max-width: 1024px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 40px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 768px) {
+      nav .nav-links { display: none; }
+      h2 { font-size: 28px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .chat-window { width: calc(100vw - 36px); right: 18px; bottom: 86px; height: 60vh; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero { padding: 64px 0 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <div class="nav-logo">SafeCPA</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#book" class="nav-cta">Book Free Consult</a>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="badge">⛟ AICPA-Certified · Orlando, FL</div>
+      <h1>Precision Tax &amp;<br><em>Advisory</em> for<br>Growing Businesses</h1>
+      <p>We combine decades of CPA-grade expertise with modern automation so your tax filing is accurate, on-time, and actually strategic — not just a compliance checkbox.</p>
+      <div class="hero-btns">
+        <a href="#book" class="btn-primary">Free Consultation</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="hero-card-icon">🛡️</div>
+        <div>
+          <div class="hero-card-name">AICPA Member</div>
+          <div class="hero-card-role">Certified Public Accounting</div>
+        </div>
+      </div>
+      <blockquote class="hero-quote">
+        "SafeCPA caught a $24K deduction we'd missed for four years running. Professional, thorough, and worth every penny."
+        <cite>— Jason M., SaaS CEO</cite>
+      </blockquote>
+      <div style="display:flex;gap:6px;margin-top:16px;">
+        <span style="background:rgba(200,165,82,0.13);color:#7a5800;padding:3px 9px;border-radius:5px;font-size:11.5px;font-weight:600;">Tax Prep</span>
+        <span style="background:rgba(42,157,90,0.1);color:#1a6b2e;padding:3px 9px;border-radius:5px;font-size:11.5px;font-weight:600;">Advisory</span>
+        <span style="background:rgba(59,95,200,0.09);color:#253d80;padding:3px 9px;border-radius:5px;font-size:11.5px;font-weight:600;">Bookkeeping</span>
+        <span style="background:rgba(12,37,64,0.07);color:var(--navy);padding:3px 9px;border-radius:5px;font-size:11.5px;font-weight:600;">Audit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ STATS ════════ -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num">15+</div><label>Years in Practice</label></div>
+      <div class="stat-card"><div class="num">500+</div><label>Businesses Served</label></div>
+      <div class="stat-card"><div class="num">99%</div><label>On-Time Filing Rate</label></div>
+      <div class="stat-card"><div class="num">AICPA</div><label>Certified Firm</label></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SERVICES ════════ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <h2>Comprehensive Accounting,<br>Tailored to You</h2>
+    <p class="section-sub">Three practice areas covering everything a growing business needs from its CPA.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon" style="background:#e8f0fe;color:#3b5fc8;">📋</div>
+        <h3>Tax Preparation</h3>
+        <p>Accurate, deadline-driven individual and business tax filing with proactive optimization strategies reviewed year-round.</p>
+        <a href="#contact">Get a free consult &rarr;</a>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon" style="background:#e7f8ef;color:#2a9d5a;">📊</div>
+        <h3>Bookkeeping</h3>
+        <p>Monthly clean closes, reconciliations, and financial dashboards — so you always know where your business stands.</p>
+        <a href="#contact">Get a free consult &rarr;</a>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon" style="background:#fdf3db;color:#9e7000;">💼</div>
+        <h3>Business Advisory</h3>
+        <p>CFO-level guidance on entity structuring, cash flow, payroll strategy, and long-term tax planning.</p>
+        <a href="#contact">Get a free consult &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ WHY US ════════ -->
+<section class="section why" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why SafeCPA</div>
+        <h2>Precision is our brand,<br>not a nicety</h2>
+        <ul class="check-list">
+          <li>AICPA-certified CPAs with 15+ years of public accounting experience</li>
+          <li>Modern tech stack — QuickBooks, Xero, Avalara, Stripe seamlessly integrated</li>
+          <li>Same-day file exchanges via secure client portal, no emailing sensitive docs</li>
+          <li>Year-round tax planning, not just a once-a-year scramble</li>
+          <li>Flat-rate pricing — no billable-hour surprises</li>
+        </ul>
+        <a href="#book" class="btn-primary" style="display:inline-block;margin-top:28px;">Free Consultation</a>
+      </div>
+      <div class="why-card">
+        <div class="why-card-testi">
+          <p class="section-label" style="color:#8eaac8;margin-bottom:14px;">Reviews</p>
+          <p style="font-style:italic;color:#c8dfef;font-size:15px;line-height:1.7;margin-bottom:20px;">
+            "I can't say enough good things about my CPA! They made the entire tax process smooth, stress-free, and even educational."
+          </p>
+          <p style="font-style:italic;color:#c8dfef;font-size:15px;line-height:1.7;">
+            "Mr. Seif is a one of a kind CPA who genuinely cares about his clients. He is a brilliant man and I have been going to him for years!"
+          </p>
+          <div style="margin-top:20px;color:#c8a552;font-size:12.5px;letter-spacing:1px;">★★★★★ 5.0 — TaxBuzz · Google Maps</div>
+          <div style="margin-top:8px;">
+            <span style="font-size:13px;color:#8eaac8;">— Yehiya M. &amp; Google Maps Reviewer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TESTIMONIALS ════════ -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-label">What Clients Say</div>
+    <h2>Trusted by 500+ businesses</h2>
+    <p class="section-sub">Real reviews from TaxBuzz, Google Maps, and Google Business profiles.</p>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"I can't say enough good things about my CPA! They made the entire tax process smooth, stress-free, and even educational. They were always responsive, patient with my questions, and proactive in finding opportunities to save me money."</blockquote>
+        <cite>— Yehiya M., Client since 2023</cite>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px;">TaxBuzz — 2025</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"Mr. Seif is a one of a kind CPA who genuinely cares about his clients. He is a brilliant man and I have been going to him for years!"</blockquote>
+        <cite>— Google Maps Reviewer</cite>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px;">Google Business · Long-time Client</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"SafeCPA caught a $24K deduction we'd missed for four years running. Professional, thorough, and worth every penny."</blockquote>
+        <cite>— Jason M., SaaS CEO</cite>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"Responsive, professional, and genuinely caring. They took the time to explain things in a way that actually made sense."</blockquote>
+        <cite>— TaxBuzz Reviewer</cite>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px;">TaxBuzz — 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ BOOKING / CONTACT ════════ -->
+<section class="contact-section section" id="book">
+  <div class="container">
+    <div class="section-label">Get Started</div>
+    <h2>Ready to take the guesswork out of your books?</h2>
+    <p class="section-sub">Book a 30-minute free consultation. No payment info required.</p>
+    <div style="max-width:640px;">
+      <div style="background:#fff;border:2px solid rgba(12,37,64,0.12);border-radius:var(--radius);padding:32px;">
+        <a href="https://calendly.com/safecpa/30min" target="_blank" class="btn-primary" style="display:block;text-align:center;font-size:16px;">Open Calendar — Book Free Consult</a>
+        <p style="text-align:center;font-size:12.5px;color:var(--muted);margin-top:10px;">Powered by Calendly · Free 30-min slot</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact" style="border-top:1px solid rgba(12,37,64,0.06);">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2>Still have questions?</h2>
+        <p style="color:var(--muted);font-size:15px;max-width:400px;">Reach out directly. We reply within 24 hours. All conversations are confidential.</p>
+        <ul class="contact-details">
+          <li><span class="ci">📞</span> <a href="tel:+14078081480">(407) 808-1480</a></li>
+          <li><span class="ci">✉️</span> <a href="mailto:safecpa@gmail.com">safecpa@gmail.com</a></li>
+          <li><span class="ci">📍</span> 7901 Kingspointe Pkwy Ste 19, Orlando, FL 32819</li>
+        </ul>
+      </div>
+      <div class="contact-form">
+        <form onsubmit="document.getElementById('form-status').style.display='block';document.getElementById('form-status').textContent='✓ Message sent! We\'ll reply within 24 hours.';return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name *</label>
+              <input type="text" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" placeholder="you@company.com" required>
+            </div>
+          </div>
+          <div class="form-group full" style="margin-bottom:14px;">
+            <label>Subject</label>
+            <input type="text" name="subject" placeholder="How can we help?">
+          </div>
+          <div class="form-group full" style="margin-bottom:16px;">
+            <label>Message *</label>
+            <textarea name="message" placeholder="Tell us about your business, timeline, and needs…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">Send Message →</button>
+          <p id="form-status" style="color:#2a9d5a;font-size:13px;margin-top:10px;display:none;"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CTA ════════ -->
+<div class="cta-banner">
+  <div class="container">
+    <h2>Take the guesswork out of your books</h2>
+    <p>Start with a free consultation — no payment info required.</p>
+    <a href="https://calendly.com/safecpa/30min" target="_blank" class="btn-primary" style="display:inline-block;">Book Free Consultation</a>
+  </div>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="container">
+    <strong>SafeCPA</strong> — Precision Tax &amp; Advisory · AICPA-Certified
+    <br>
+    📞 (407) 808-1480 · ✉️ <a href="mailto:safecpa@gmail.com">safecpa@gmail.com</a>
+    <br>
+    7901 Kingspointe Pkwy Ste 19, Orlando, FL 32819
+    <br><br>
+    <span style="font-size:12px;opacity:0.7;">Hosted on SaifHaven.com — Case Study Deployment</span>
+  </div>
+</footer>
+
+<!-- ════════ AI CHATBOT — simulated (backend needed for live) ════════ -->
+<button class="chat-bubble" id="chatToggle" title="Chat with SafeCPA AI" aria-label="Toggle chat">💬</button>
+
+<div class="chat-window" id="chatWindow" role="dialog" aria-label="AI Chat — SafeCPA" hidden>
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <div class="chat-avatar">S</div>
+      <div>
+        <div class="chat-msg-name">SafeCPA AI</div>
+        <div class="chat-msg-status">● Online</div>
+      </div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">
+      <p>Hi! I'm the <strong>SafeCPA AI Assistant</strong>. Ask me about tax preparation, bookkeeping, services, pricing, or booking a consultation.</p>
+      <p class="c-link">⚠️ Demo mode — connect the backend to enable live AI responses.</p>
+    </div>
+  </div>
+  <div class="chat-typing" id="chatTyping" hidden>SafeCPA AI is typing…</div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="Ask a question…" autocomplete="off" aria-label="Chat message">
+    <button type="button" id="chatSend">Send</button>
+  </div>
+</div>
+
+<script>
+  /* ── Chat Toggle ─────────────────── */
+  const chatWindow = document.getElementById('chatWindow');
+  const chatToggle = document.getElementById('chatToggle');
+  const chatClose  = document.getElementById('chatClose');
+
+  chatToggle.addEventListener('click', () => {
+    const hidden = chatWindow.getAttribute('hidden') !== null;
+    chatWindow.setAttribute('hidden', hidden ? 'false' : 'true');
+    if (!hidden) document.getElementById('chatInput').focus();
+  });
+  chatClose.addEventListener('click', () => chatWindow.setAttribute('hidden', 'true'));
+
+  /* ── Simulated Chat Bot ───────────
+     Replace with real API call when backend is live:
+     fetch('/api/chatbot', { method:'POST', body: JSON.stringify({message, history}) })
+  ────────────────────────────────────── */
+  const knowledgeBase = {
+    default: [
+      "I'd be happy to help! SafeCPA is an AICPA-certified CPA firm in Orlando, FL. We offer tax preparation, bookkeeping, and business advisory. Would you like to know about any of these services?",
+      "You can book a free 30-minute consultation through our calendar — no payment info required. Would you like the link?",
+      "We serve small to mid-sized businesses across the USA with flat-rate pricing (no billable hours). Services start at $497 for tax prep for individuals.",
+    ],
+    "tax": "We handle individual and business tax filing with proactive year-round optimization. Many clients find deductions they've missed for years. Flat-rate pricing, no surprises.",
+    "bookkeeping": "Our bookkeeping includes monthly clean closes, bank reconciliations, and financial dashboards. You always know where your business stands — no surprises at year-end.",
+    "price": "Tax prep starts at $497 for individuals. Business advisory is custom-scoped. Bookkeeping is typically $199–$399/month depending on transaction volume. Flat-rate, no billable-hour surprises.",
+    "consult": "You can book a free 30-minute consultation right here! No payment info required. <a href='https://calendly.com/safecpa/30min' target='_blank'>Open Calendar →</a>",
+    "contact": "You can reach us at <strong>(407) 808-1480</strong> or <a href='mailto:safecpa@gmail.com'>safecpa@gmail.com</a>. Our office is at 7901 Kingspointe Pkwy Ste 19, Orlando, FL 32819.",
+    "orlando": "Yes — SafeCPA is proudly Orlando-based! Our clients span all 50 states, but our team operates out of Central Florida.",
+    "aicpa": "We are proud AICPA members. This certification ensures we uphold the highest professional standards in ethics, accounting, and continuing education.",
+  };
+
+  const chatInput  = document.getElementById('chatInput');
+  const chatSend   = document.getElementById('chatSend');
+  const chatBody   = document.getElementById('chatBody');
+  const chatTyping = document.getElementById('chatTyping');
+
+  function botReply(text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg bot';
+    div.innerHTML = `<p>${text}</p>`;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function userReply(text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg user';
+    div.textContent = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function findReply(msg) {
+    const lower = msg.toLowerCase();
+    for (const [k, v] of Object.entries(knowledgeBase)) {
+      if (k !== 'default' && lower.includes(k)) return v;
+    }
+    return knowledgeBase.default[Math.floor(Math.random() * knowledgeBase.default.length)];
+  }
+
+  function sendMessage() {
+    const msg = chatInput.value.trim();
+    if (!msg) return;
+    userReply(msg);
+    chatInput.value = '';
+    chatTyping.hidden = false;
+    chatBody.scrollTop = chatBody.scrollHeight;
+    setTimeout(() => {
+      chatTyping.hidden = true;
+      botReply(findReply(msg));
+    }, 600 + Math.random() * 500);
+  }
+
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); sendMessage(); } });
+</script>
+
+</body>
+</html>

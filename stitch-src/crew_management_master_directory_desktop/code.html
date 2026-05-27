@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crew Directory - ContractorOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-bright": "#37393e",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container": "#1e2024",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary": "#303031",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "inverse-primary": "#006970",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-background": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-low": "#1a1c20",
+                        "surface": "#111317",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-primary": "#00363a",
+                        "outline": "#849495",
+                        "secondary": "#ffdb9d",
+                        "primary": "#dbfcff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#271900",
+                        "surface-tint": "#00dbe9",
+                        "on-primary-container": "#006970",
+                        "tertiary-container": "#dad9d9",
+                        "surface-variant": "#333539",
+                        "surface-container-high": "#282a2e",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#333539",
+                        "primary-fixed": "#7df4ff",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "primary-container": "#00f0ff",
+                        "tertiary": "#f7f5f5",
+                        "primary-fixed-dim": "#00dbe9",
+                        "background": "#111317",
+                        "surface-dim": "#111317",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "secondary-fixed": "#ffdea8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "data-point": ["20px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-fixed": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", fontWeight: "500" }],
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Tonal Layering & High-Contrast Outlines */
+        .industrial-border { border: 1px solid #2D2D2D; }
+        .industrial-card { background-color: var(--color-surface-container); border: 1px solid #2D2D2D; }
+        .industrial-card:hover { background-color: rgba(255, 255, 255, 0.02); }
+        
+        /* Active State / Focus */
+        .focus-border-primary:focus-within { border-color: var(--color-primary-fixed-dim); box-shadow: inset 0 0 8px rgba(0, 219, 233, 0.1); }
+        
+        /* Custom Scrollbar for dense lists */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: var(--color-surface); }
+        ::-webkit-scrollbar-thumb { background: var(--color-surface-variant); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-outline); }
+
+        /* Status Strips */
+        .status-strip-active { border-left: 4px solid var(--color-primary-fixed-dim); }
+        .status-strip-enroute { border-left: 4px solid var(--color-secondary-container); }
+        .status-strip-break { border-left: 4px solid var(--color-outline); }
+        
+        /* Material symbols setup */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed text-body-fixed h-screen overflow-hidden flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container dark:bg-surface-container text-neon-blue border-b border-border-muted flat no shadows flex justify-between items-center w-full px-margin-desktop h-16 shrink-0 z-50">
+<div class="flex items-center gap-gutter">
+<span class="text-headline-md font-headline-md font-bold text-primary-fixed-dim">ContractorOS</span>
+</div>
+<!-- Search - Left Aligned conceptually per JSON, but pushed to middle for layout balance in standard header -->
+<div class="flex-1 max-w-xl mx-gutter hidden md:block">
+<div class="relative flex items-center bg-surface-container-high rounded border border-outline-variant focus-border-primary transition-colors">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none text-on-surface placeholder:text-on-surface-variant py-2 pl-10 pr-4 focus:ring-0 text-body-fixed font-body-fixed" placeholder="Search crews, locations, or IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="hidden lg:flex items-center gap-2 mr-4">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">System Status: Optimal</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded relative group">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors duration-200 rounded">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded bg-surface-variant industrial-border overflow-hidden ml-2 cursor-pointer">
+<img alt="Contractor Profile" class="w-full h-full object-cover" data-alt="A close-up profile portrait of a confident construction professional wearing a modern hard hat. The lighting is dramatic and moody, fitting a dark-mode industrial UI. The background is a blurred active construction site at dusk. The overall aesthetic is gritty, technical, and highly detailed, emphasizing professional authority in a cyber-industrial setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6L5WkBhKgYOw2GJQ4onS28f2yOLS8f3p1Jzk4b2Ocifks4UfQFL1wBYXOcza21_Bo9NZJiQFFRkZJvL-wgm7SM2CvA_J2DWv3zx0TUFIqyeVM4u5x9PrBqAV6PYEQWG8zZqaJUaRWRUBApy0T6NQqH-FMU2XJv3W4NIcOLfHtITrnWtEmSRb424Z9wrO6fIylkKL1e4eiJIkKqZnfxHnk3wkPmHsqofCuR_r5fENQR412d2oW3vWMaus9zO4bwTX0VihXavirYove"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low text-neon-blue border-r border-border-muted flat no shadows docked left-0 h-full w-64 hidden md:flex flex-col h-screen py-6 shrink-0 z-40">
+<!-- Header Section -->
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded bg-surface-variant industrial-border flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="domain">domain</span>
+</div>
+<div class="overflow-hidden">
+<h2 class="text-headline-sm font-headline-sm text-on-surface truncate">Industrial Field Ops</h2>
+<p class="text-label-caps font-label-caps text-on-surface-variant truncate">Active Session: 8h 12m</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps rounded font-bold hover:bg-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add" style="font-size: 18px;">add</span>
+                    New Job Order
+                </button>
+</div>
+<!-- Main Tabs -->
+<div class="flex-1 overflow-y-auto px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-label-md font-label-caps">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="photo_library">photo_library</span>
+<span class="text-label-md font-label-caps">Evidence</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-caps">Inventory</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-primary-fixed-dim font-bold border-l-4 border-primary-fixed-dim bg-surface-variant/50 Active: translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="groups" data-weight="fill">groups</span>
+<span class="text-label-md font-label-caps text-primary-fixed-dim">Team</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-caps">Analytics</span>
+</a>
+</div>
+<!-- Footer Tab -->
+<div class="px-4 mt-auto pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-caps">Log Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background relative">
+<!-- Page Header -->
+<div class="px-margin-desktop py-6 border-b border-outline-variant/50 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 shrink-0">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase tracking-wider">Directory / Active Operations</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-on-surface">Crew Roster</h1>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container border border-outline-variant rounded flex items-center gap-2 text-on-surface text-label-caps font-label-caps hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="download" style="font-size: 18px;">download</span>
+                        Export Roster
+                    </button>
+<button class="px-4 py-2 bg-surface-container border border-outline-variant rounded flex items-center gap-2 text-on-surface text-label-caps font-label-caps hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="map" style="font-size: 18px;">map</span>
+                        Map View
+                    </button>
+</div>
+</div>
+<!-- Content Layout: Filter Sidebar + Main Grid -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Filter Sidebar -->
+<aside class="w-64 border-r border-outline-variant/50 flex flex-col bg-surface-dim shrink-0 overflow-y-auto hidden lg:flex p-gutter">
+<div class="mb-6">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-3 uppercase tracking-widest border-b border-outline-variant pb-2">Filter Matrix</h3>
+</div>
+<!-- Filter Group: Status -->
+<div class="mb-6">
+<h4 class="text-body-fixed font-body-fixed font-semibold text-on-surface mb-3">Operational Status</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-4 h-4 border border-outline rounded flex items-center justify-center peer-checked:bg-primary-fixed-dim peer-checked:border-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined text-[12px] text-on-primary-fixed opacity-0 peer-checked:opacity-100" data-icon="check">check</span>
+</div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant group-hover:text-on-surface transition-colors flex-1">Active Site</span>
+<span class="text-label-caps font-data-point text-on-surface-variant">12</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-4 h-4 border border-outline rounded flex items-center justify-center peer-checked:bg-secondary-container peer-checked:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[12px] text-on-secondary-container opacity-0 peer-checked:opacity-100" data-icon="check">check</span>
+</div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant group-hover:text-on-surface transition-colors flex-1">En-Route</span>
+<span class="text-label-caps font-data-point text-on-surface-variant">04</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-4 h-4 border border-outline rounded flex items-center justify-center peer-checked:bg-outline peer-checked:border-outline transition-colors">
+<span class="material-symbols-outlined text-[12px] text-surface opacity-0 peer-checked:opacity-100" data-icon="check">check</span>
+</div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant group-hover:text-on-surface transition-colors flex-1">On-Break / Standby</span>
+<span class="text-label-caps font-data-point text-on-surface-variant">02</span>
+</label>
+</div>
+</div>
+<!-- Filter Group: Region -->
+<div class="mb-6">
+<h4 class="text-body-fixed font-body-fixed font-semibold text-on-surface mb-3">Zone Assignment</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer sr-only" name="region" type="radio"/>
+<div class="w-4 h-4 rounded-full border border-outline flex items-center justify-center peer-checked:border-primary-fixed-dim transition-colors">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant group-hover:text-on-surface transition-colors">All Sectors</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer sr-only" name="region" type="radio"/>
+<div class="w-4 h-4 rounded-full border border-outline flex items-center justify-center peer-checked:border-primary-fixed-dim transition-colors">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant group-hover:text-on-surface transition-colors">Northwest Region</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer sr-only" name="region" type="radio"/>
+<div class="w-4 h-4 rounded-full border border-outline flex items-center justify-center peer-checked:border-primary-fixed-dim transition-colors">
+<div class="w-2 h-2 rounded-full bg-primary-fixed-dim opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant group-hover:text-on-surface transition-colors">Eastern Metro</span>
+</label>
+</div>
+</div>
+<!-- Quick Metrics Widget -->
+<div class="mt-auto border border-outline-variant p-4 bg-surface-container rounded relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined" data-icon="speed" style="font-size: 64px;">speed</span>
+</div>
+<h5 class="text-label-caps font-label-caps text-on-surface-variant mb-2">Fleet Efficiency</h5>
+<div class="text-headline-md font-headline-md text-primary-fixed-dim font-bold mb-1">94.2%</div>
+<div class="w-full bg-surface-variant h-1 rounded overflow-hidden">
+<div class="bg-primary-fixed-dim h-full" style="width: 94.2%"></div>
+</div>
+<p class="text-[10px] font-label-caps text-on-surface-variant mt-2 text-right">Target: 90%</p>
+</div>
+</aside>
+<!-- Data Canvas -->
+<div class="flex-1 overflow-y-auto p-gutter bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-density-comfortable">
+<!-- Crew Card: Active -->
+<div class="industrial-card rounded flex flex-col relative overflow-hidden status-strip-active group hover:-translate-y-1 transition-transform duration-200">
+<!-- Header Tab (Industrial style) -->
+<div class="bg-surface-variant border-b border-outline-variant p-2 px-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="text-label-caps font-data-point text-primary-fixed-dim">CRW-Alpha-01</span>
+</div>
+<span class="px-2 py-0.5 bg-primary-fixed-dim/10 border border-primary-fixed-dim/30 text-primary-fixed-dim text-[10px] font-label-caps rounded uppercase">Active Site</span>
+</div>
+<div class="p-4 flex-1 flex flex-col gap-4">
+<!-- Lead Info -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-surface-bright rounded industrial-border overflow-hidden shrink-0">
+<img alt="Lead Portrait" class="w-full h-full object-cover" data-alt="A rugged portrait of a male construction foreman wearing safety gear. Shot with high contrast lighting, emphasizing texture and detail. The background is dark and indistinct, focusing on the intense, professional expression. The style matches a gritty, high-tech industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfQ1bpN1Fot86Jaie1Zq_B1OQlIzHYj6ETBrGTCHKXm6uu9bKwc3Kfm-XKjh4qgEIoAlLqy1fE-5WEEsSu9Yk4u8z17DH8unqiUasZyDxrFO373e3ohO1ro4KxGxxiM5DjpBh2jq5zJRCvJlDPS4yYwWZ4TeBbbgP5vPRotXJZ4bVUmWXZMnGHwxA3xdho5Nwrm89UPkDyHU1hK8QtTC7drfFT-iSqGpTorScjt3iYO2BrkdI5w1bGW7QpzGKqIaFunWX7Z5-NZYxz"/>
+</div>
+<div>
+<p class="text-body-fixed font-body-fixed font-semibold text-on-surface leading-tight">Marcus Vance</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">Foreman • 4 Members</p>
+</div>
+<div class="ml-auto flex gap-1">
+<div class="w-6 h-6 rounded bg-surface border border-outline-variant flex items-center justify-center" title="Roofing Specialist">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="roofing">roofing</span>
+</div>
+</div>
+</div>
+<!-- Current Location / Task -->
+<div class="bg-surface border border-outline-variant p-3 rounded">
+<div class="flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant mt-0.5" data-icon="location_on">location_on</span>
+<div>
+<p class="text-[13px] font-body-fixed text-on-surface leading-tight">Sector 7G, Commercial Dist.</p>
+<p class="text-[11px] font-data-point text-on-surface-variant mt-1">JOB-4921-X</p>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] font-label-caps border-t border-outline-variant/50 pt-2 mt-2">
+<span class="text-on-surface-variant">TPO Installation</span>
+<span class="text-primary-fixed-dim">68% Complete</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded mt-1 overflow-hidden">
+<div class="bg-primary-fixed-dim h-full" style="width: 68%"></div>
+</div>
+</div>
+<!-- Real-time Metrics Grid -->
+<div class="grid grid-cols-2 gap-2 mt-auto">
+<div class="border border-outline-variant p-2 flex flex-col items-center justify-center bg-surface-container-highest rounded">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-1">Efficiency</span>
+<span class="text-body-fixed font-data-point text-on-surface">98.4%</span>
+</div>
+<div class="border border-outline-variant p-2 flex flex-col items-center justify-center bg-surface-container-highest rounded">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-1">Time on Site</span>
+<span class="text-body-fixed font-data-point text-on-surface">04:12:30</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-2 border-t border-outline-variant bg-surface-container-low flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 hover:bg-surface-variant rounded text-on-surface-variant" title="Message Lead">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+</button>
+<button class="p-1.5 hover:bg-surface-variant rounded text-on-surface-variant" title="View Telemetry">
+<span class="material-symbols-outlined text-[18px]" data-icon="monitoring">monitoring</span>
+</button>
+</div>
+</div>
+<!-- Crew Card: En Route -->
+<div class="industrial-card rounded flex flex-col relative overflow-hidden status-strip-enroute group hover:-translate-y-1 transition-transform duration-200">
+<div class="bg-surface-variant border-b border-outline-variant p-2 px-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="text-label-caps font-data-point text-secondary-container">CRW-Bravo-02</span>
+</div>
+<span class="px-2 py-0.5 bg-secondary-container/10 border border-secondary-container/30 text-secondary-container text-[10px] font-label-caps rounded uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]" data-icon="local_shipping">local_shipping</span>
+                                    En-Route
+                                </span>
+</div>
+<div class="p-4 flex-1 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-surface-bright rounded industrial-border overflow-hidden shrink-0">
+<img alt="Lead Portrait" class="w-full h-full object-cover" data-alt="A portrait of a female industrial worker with protective goggles pushed up on her forehead. The lighting is strong, casting hard shadows, emphasizing a tough, capable demeanor. The setting implies a dark, tech-focused workshop environment. The color palette is muted with deep blacks and sharp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSDf2_4mWsNmb5bOuE9-T1n4q-A5ZGcisCUZCwL26oh2xSG2pDBLVx-a7PIiLk37bFXbm8XIW8vwc0rFy7ZH3y0WRv_wWr_5ZoKWyK2olYOxrt81gade-EWMczAtih6JY62cU0fHPWgPrmBq3TkLCjTqECnoB3dr5STwDI7Sk_qiF7EHHpn_v9PWut9KGvXPW7XZ0JdVDzKYzEh_GJ51M8tobJvEazyfXskw3cONXoLIsjehNeWzuYQESQjLUm__Kfkp_ZrLHCpT_A"/>
+</div>
+<div>
+<p class="text-body-fixed font-body-fixed font-semibold text-on-surface leading-tight">Sarah Jenkins</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant mt-1">Lead • 3 Members</p>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-3 rounded border-l-2 border-l-secondary-container">
+<div class="flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant mt-0.5" data-icon="route">route</span>
+<div>
+<p class="text-[13px] font-body-fixed text-on-surface leading-tight">Transit to North Heights</p>
+<p class="text-[11px] font-data-point text-on-surface-variant mt-1">ETA: 14 mins</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-auto">
+<div class="border border-outline-variant p-2 flex flex-col items-center justify-center bg-surface-container-highest rounded">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-1">Vehicle</span>
+<span class="text-body-fixed font-data-point text-on-surface text-[14px]">TRK-092</span>
+</div>
+<div class="border border-outline-variant p-2 flex flex-col items-center justify-center bg-surface-container-highest rounded">
+<span class="text-label-caps font-label-caps text-on-surface-variant mb-1">Status</span>
+<span class="text-body-fixed font-data-point text-secondary-container text-[14px]">Moving</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

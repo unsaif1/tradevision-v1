@@ -1,0 +1,290 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 320px;
+  min-height: 420px;
+  background: #0b1326;
+  color: #fff;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid #2d3449;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.logo-icon { font-size: 18px; color: #2e5bff; }
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #34c759;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #34c759;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Page signal score ── */
+.score-card {
+  margin: 14px 16px;
+  background: #171f33;
+  border: 1px solid #2d3449;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.score-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #434656;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.score-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.score-value {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.score-max {
+  font-size: 14px;
+  color: #434656;
+  margin-bottom: 4px;
+}
+
+.score-bar-track {
+  height: 4px;
+  background: #2d3449;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2e5bff, #6b8fff);
+  box-shadow: 0 0 6px rgba(46,91,255,0.5);
+  transition: width 0.6s ease;
+}
+
+/* ── Metrics ── */
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: #2d3449;
+  border-top: 1px solid #2d3449;
+  border-bottom: 1px solid #2d3449;
+  margin-bottom: 14px;
+}
+
+.metric {
+  background: #0b1326;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.metric-unit { font-size: 10px; color: #4a6fff; }
+
+.metric-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #434656;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── Signals list ── */
+.signals-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
+
+.signals-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #434656;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signals-count {
+  font-size: 10px;
+  font-weight: 600;
+  color: #2e5bff;
+  background: rgba(46,91,255,0.1);
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(46,91,255,0.2);
+}
+
+.signal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #1a2034;
+  transition: background 0.15s;
+}
+
+.signal-item:last-child { border-bottom: none; }
+.signal-item:hover { background: rgba(255,255,255,0.03); }
+
+.signal-icon { font-size: 16px; color: #4a6fff; flex-shrink: 0; }
+
+.signal-text { flex: 1; }
+.signal-name { font-weight: 600; color: #fff; margin-bottom: 1px; }
+.signal-desc { font-size: 11px; color: #8e90a2; }
+
+.signal-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.badge-high {
+  composes: signal-badge;
+  background: rgba(52,199,89,0.1);
+  color: #34c759;
+  border: 1px solid rgba(52,199,89,0.2);
+}
+
+.badge-med {
+  background: rgba(255,185,95,0.1);
+  color: #ffb95f;
+  border: 1px solid rgba(255,185,95,0.2);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* ── Footer CTA ── */
+.footer {
+  padding: 12px 16px;
+  border-top: 1px solid #2d3449;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary {
+  flex: 1;
+  background: #2e5bff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: inherit;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+
+.btn-primary:hover { background: #1f4ce0; }
+
+.btn-ghost {
+  background: transparent;
+  color: #8e90a2;
+  border: 1px solid #2d3449;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+  text-decoration: none;
+}
+
+.btn-ghost:hover { color: #fff; border-color: #434656; }
+
+/* ── Persona badge ── */
+.persona-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(46,91,255,0.06);
+  border-bottom: 1px solid #2d3449;
+  font-size: 11px;
+  color: #8e90a2;
+}
+
+.persona-bar span.material-symbols-outlined { font-size: 15px; color: #4a6fff; }
+.persona-name { font-weight: 600; color: #fff; }
+
+/* ── Onboarding (no persona) ── */
+.onboard {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.onboard-icon { font-size: 40px; color: #2e5bff; margin-bottom: 14px; }
+.onboard-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.onboard-desc { font-size: 12px; color: #8e90a2; line-height: 1.6; margin-bottom: 20px; }

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Profitability Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#333539",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "background": "#111317",
+                        "secondary-container": "#feb700",
+                        "on-primary": "#00363a",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e",
+                        "secondary": "#ffdb9d",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024",
+                        "surface": "#111317",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "primary": "#dbfcff",
+                        "tertiary-container": "#dad9d9",
+                        "surface-dim": "#111317",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "on-error": "#690005",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-low": "#1a1c20",
+                        "surface-tint": "#00dbe9",
+                        "inverse-on-surface": "#2f3035",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "on-primary-fixed": "#002022",
+                        "on-background": "#e2e2e8",
+                        "secondary-fixed-dim": "#ffba20",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-container": "#006970",
+                        "inverse-surface": "#e2e2e8",
+                        "inverse-primary": "#006970",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#282a2e",
+                        "tertiary": "#f7f5f5",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "primary-container": "#00f0ff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "outline": "#849495"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #111317; color: #e2e2e8; }
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        .tech-border { border: 1px solid #2D2D2D; }
+        .tech-grid {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-fixed text-body-fixed antialiased tech-grid min-h-screen pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant bg-surface flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-density-comfortable">
+<span aria-hidden="true" class="material-symbols-outlined text-primary-fixed-dim" data-icon="account_circle">account_circle</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary-fixed-dim tracking-widest font-label-caps text-label-caps">FINANCIAL TERMINAL</h1>
+</div>
+<button aria-label="Settings" class="hover:bg-surface-variant/50 transition-colors active:opacity-80 p-unit rounded-DEFAULT">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin-mobile md:px-margin-desktop py-density-comfortable max-w-7xl mx-auto grid grid-cols-4 md:grid-cols-12 gap-gutter">
+<!-- Project Header -->
+<div class="col-span-4 md:col-span-12 mb-density-compact border-b border-outline-variant pb-density-comfortable">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-density-comfortable">
+<div>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim bg-surface-container-high px-density-compact py-unit rounded-DEFAULT tech-border mb-unit inline-block">PRJ-9942</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Westside Medical Center</h2>
+<p class="text-on-surface-variant mt-unit flex items-center gap-unit">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                        8400 Health Way, Sector 4
+                    </p>
+</div>
+<div class="flex gap-gutter">
+<div class="bg-surface-container-lowest tech-border p-density-comfortable rounded-DEFAULT border-l-4 border-l-primary-fixed-dim">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-unit">GROSS PROFIT</p>
+<p class="font-data-point text-data-point text-primary">$42,850.00</p>
+</div>
+<div class="bg-surface-container-lowest tech-border p-density-comfortable rounded-DEFAULT border-l-4 border-l-error">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-unit">MARGIN VARIANCE</p>
+<p class="font-data-point text-data-point text-error flex items-center gap-unit">
+<span class="material-symbols-outlined text-[20px]" data-icon="trending_down">trending_down</span>
+                            -4.2%
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Profit Breakdown Bento Grid -->
+<!-- Materials Card -->
+<div class="col-span-4 md:col-span-6 bg-surface-container-low tech-border rounded-lg p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 bg-outline-variant text-background font-label-caps text-label-caps px-density-compact py-unit rounded-br-DEFAULT">MAT_COST</div>
+<div class="mt-density-comfortable">
+<div class="flex justify-between items-end mb-density-comfortable border-b border-surface-variant pb-unit">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Material Costs</h3>
+<span class="font-data-point text-data-point text-on-surface">$85,420</span>
+</div>
+<div class="space-y-density-compact">
+<!-- Material Row 1 -->
+<div class="flex justify-between items-center bg-surface p-density-compact rounded-DEFAULT tech-border">
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps bg-primary text-on-primary px-unit py-[2px] rounded-[2px]">TPO</span>
+<span class="text-on-surface">60-mil Membrane</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-label-caps text-on-surface block">$54,200</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">Est: $52k</span>
+</div>
+</div>
+<!-- Material Row 2 -->
+<div class="flex justify-between items-center bg-surface p-density-compact rounded-DEFAULT tech-border">
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-unit py-[2px] rounded-[2px]">SLT</span>
+<span class="text-on-surface">Industrial Sealant</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-label-caps text-on-surface block">$18,450</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">Est: $18k</span>
+</div>
+</div>
+<!-- Material Row 3 -->
+<div class="flex justify-between items-center bg-surface p-density-compact rounded-DEFAULT tech-border">
+<div class="flex items-center gap-density-compact">
+<span class="font-label-caps text-label-caps bg-surface-variant text-on-surface px-unit py-[2px] rounded-[2px]">FST</span>
+<span class="text-on-surface">Fasteners &amp; Plates</span>
+</div>
+<div class="text-right">
+<span class="font-data-point text-label-caps text-on-surface block">$12,770</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">Est: $10k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Labor Card -->
+<div class="col-span-4 md:col-span-6 bg-surface-container-low tech-border rounded-lg p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 bg-outline-variant text-background font-label-caps text-label-caps px-density-compact py-unit rounded-br-DEFAULT">LBR_COST</div>
+<div class="mt-density-comfortable">
+<div class="flex justify-between items-end mb-density-comfortable border-b border-surface-variant pb-unit">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Labor Costs</h3>
+<span class="font-data-point text-data-point text-error">$62,100</span>
+</div>
+<div class="space-y-density-compact">
+<!-- Labor Row 1 -->
+<div class="flex justify-between items-center bg-surface p-density-compact rounded-DEFAULT tech-border border-l-2 border-l-error">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="groups">groups</span>
+<div>
+<span class="block text-on-surface">Crew Alpha</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">420 HRS</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-data-point text-label-caps text-error block">$38,000</span>
+<span class="text-[10px] text-error font-label-caps flex items-center justify-end gap-[2px]">
+<span class="material-symbols-outlined text-[12px]" data-icon="warning">warning</span> Overtime
+                            </span>
+</div>
+</div>
+<!-- Labor Row 2 -->
+<div class="flex justify-between items-center bg-surface p-density-compact rounded-DEFAULT tech-border">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="groups">groups</span>
+<div>
+<span class="block text-on-surface">Crew Bravo</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">280 HRS</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-data-point text-label-caps text-on-surface block">$24,100</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">Est: $25k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Overhead & Equipment -->
+<div class="col-span-4 md:col-span-12 bg-surface-container-low tech-border rounded-lg p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 left-0 bg-outline-variant text-background font-label-caps text-label-caps px-density-compact py-unit rounded-br-DEFAULT">OVR_EQP</div>
+<div class="mt-density-comfortable grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<div class="flex justify-between items-end mb-density-compact border-b border-surface-variant pb-unit">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">OVERHEAD</h4>
+<span class="font-data-point text-label-caps text-on-surface">$12,500</span>
+</div>
+<div class="bg-surface tech-border p-density-compact rounded-DEFAULT flex justify-between">
+<span class="text-on-surface">Permits &amp; Fees</span>
+<span class="font-data-point text-label-caps text-on-surface-variant">$4,200</span>
+</div>
+<div class="bg-surface tech-border p-density-compact rounded-DEFAULT flex justify-between mt-unit">
+<span class="text-on-surface">Insurance Alloc.</span>
+<span class="font-data-point text-label-caps text-on-surface-variant">$8,300</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-density-compact border-b border-surface-variant pb-unit">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">EQUIPMENT RENTAL</h4>
+<span class="font-data-point text-label-caps text-on-surface">$18,200</span>
+</div>
+<div class="bg-surface tech-border p-density-compact rounded-DEFAULT flex justify-between">
+<span class="text-on-surface">Crane (2 Days)</span>
+<span class="font-data-point text-label-caps text-on-surface-variant">$9,500</span>
+</div>
+<div class="bg-surface tech-border p-density-compact rounded-DEFAULT flex justify-between mt-unit">
+<span class="text-on-surface">Dumpsters</span>
+<span class="font-data-point text-label-caps text-on-surface-variant">$8,700</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-gutter bg-surface-container h-20 border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100" href="#">
+<span aria-hidden="true" class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100" href="#">
+<span aria-hidden="true" class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-caps text-label-caps mt-1">JOBS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100" href="#">
+<span aria-hidden="true" class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps mt-1">EXPENSES</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim border-t-2 border-primary-fixed-dim pt-2 hover:text-on-surface transition-colors active:scale-95 duration-100" href="#">
+<span aria-hidden="true" class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps text-label-caps mt-1">TERMINAL</span>
+</a>
+</nav>
+</body></html>

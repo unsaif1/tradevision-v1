@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Certification Portal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Barlow & Barlow Condensed -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#91002e",
+                      "secondary": "#4de082",
+                      "surface-bright": "#333a43",
+                      "surface-dim": "#0d141c",
+                      "surface-container-high": "#242b33",
+                      "on-secondary-fixed": "#00210c",
+                      "on-secondary-container": "#003e1c",
+                      "background": "#0d141c",
+                      "inverse-surface": "#dce3ee",
+                      "secondary-fixed-dim": "#4de082",
+                      "outline-variant": "#5c3f42",
+                      "on-primary-container": "#fffcff",
+                      "on-error": "#690005",
+                      "surface-variant": "#2e353e",
+                      "surface-stroke": "#2D3748",
+                      "surface-tint": "#ffb2b9",
+                      "surface-elevated": "#1C2128",
+                      "neon-orange": "#F97316",
+                      "surface-container": "#192028",
+                      "neon-pink": "#E21E51",
+                      "on-surface-variant": "#e4bdbf",
+                      "surface": "#0d141c",
+                      "on-tertiary-container": "#fffcff",
+                      "surface-container-low": "#151c24",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "neon-green": "#4ADE80",
+                      "error": "#ffb4ab",
+                      "on-error-container": "#ffdad6",
+                      "surface-base": "#111820",
+                      "secondary-container": "#00b55d",
+                      "on-tertiary-fixed": "#001a42",
+                      "text-muted": "#8896A8",
+                      "on-primary-fixed": "#40000f",
+                      "tertiary-container": "#2171e4",
+                      "on-secondary": "#003919",
+                      "on-background": "#dce3ee",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "outline": "#ab888a",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "inverse-on-surface": "#2a313a",
+                      "on-surface": "#dce3ee",
+                      "secondary-fixed": "#6dfe9c",
+                      "on-secondary-fixed-variant": "#005227",
+                      "error-container": "#93000a",
+                      "primary": "#ffb2b9",
+                      "tertiary-fixed": "#d8e2ff",
+                      "tertiary": "#adc6ff",
+                      "on-primary": "#67001e",
+                      "inverse-primary": "#be003e",
+                      "on-tertiary": "#002e6a",
+                      "surface-container-lowest": "#080f16",
+                      "primary-fixed": "#ffdadb",
+                      "surface-container-highest": "#2e353e",
+                      "primary-container": "#e21e51",
+                      "neon-blue": "#3B82F6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "unit": "4px",
+                      "stack-gap": "12px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "stat-display": [
+                              "Barlow Condensed", "sans-serif"
+                      ],
+                      "headline-xl": [
+                              "Barlow Condensed", "sans-serif"
+                      ],
+                      "caption": [
+                              "Barlow", "sans-serif"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed", "sans-serif"
+                      ],
+                      "headline-lg-mobile": [
+                              "Barlow Condensed", "sans-serif"
+                      ],
+                      "headline-lg": [
+                              "Barlow Condensed", "sans-serif"
+                      ],
+                      "body-lg": [
+                              "Barlow", "sans-serif"
+                      ],
+                      "body-md": [
+                              "Barlow", "sans-serif"
+                      ]
+              },
+              "fontSize": {
+                      "stat-display": [
+                              "40px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "caption": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(28, 33, 40, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .neon-text-glow-blue { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+        .neon-text-glow-orange { text-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
+        .neon-text-glow-pink { text-shadow: 0 0 10px rgba(226, 30, 81, 0.5); }
+    </style>
+</head>
+<body class="bg-surface-base text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- SideNavBar (from JSON) -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant flex flex-col h-screen overflow-y-auto z-40">
+<div class="p-6 border-b border-outline-variant dark:border-outline-variant">
+<h1 class="font-display-md text-display-md font-bold text-primary dark:text-primary tracking-tight font-headline-lg text-headline-lg">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-text-muted mt-1 uppercase tracking-widest">C.A.R.E. Command</p>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100 font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span>Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span>Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span>Alerts</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant dark:border-outline-variant py-4">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar (from JSON) -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex items-center justify-between px-margin-desktop">
+<!-- Search Bar (on_left config) -->
+<div class="flex-1 flex items-center max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full bg-surface-elevated border border-surface-stroke text-on-surface pl-10 pr-4 py-2 rounded-DEFAULT focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md placeholder-text-muted" placeholder="Global protocol search..." type="text"/>
+</div>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer p-2 rounded-DEFAULT hover:bg-surface-container-highest">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer p-2 rounded-DEFAULT hover:bg-surface-container-highest">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer p-2 rounded-DEFAULT hover:bg-surface-container-highest border border-surface-stroke rounded-full ml-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-[260px] mt-[64px] p-margin-desktop min-h-[calc(100vh-64px)] flex flex-col gap-margin-desktop bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg0NSwgNTUsIDcyLCAwLjE1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIiAvPjwvc3ZnPg==')] bg-fixed">
+<!-- Header -->
+<div class="flex items-end justify-between border-b border-surface-stroke pb-4">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface tracking-wide uppercase">Workforce Certification</h2>
+<p class="font-body-md text-body-md text-text-muted mt-2">Live monitoring of contractor protocol compliance and zone clearance.</p>
+</div>
+<div class="flex gap-4">
+<!-- Status Indicators -->
+<div class="flex items-center gap-2 bg-surface-elevated border border-surface-stroke px-4 py-2 rounded-DEFAULT">
+<span class="w-2 h-2 rounded-full bg-neon-green shadow-[0_0_8px_rgba(74,222,128,0.6)]"></span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">System Online</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Contractor Roster (Searchable Grid) -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<div class="glass-panel border-t-[4px] border-t-neon-blue border border-surface-stroke rounded-DEFAULT p-6 flex-1 shadow-lg shadow-black/50">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-lg text-headline-lg text-on-surface neon-text-glow-blue uppercase">Contractor Roster</h3>
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-sm">filter_list</span>
+<input class="w-full bg-surface-base border border-surface-stroke text-on-surface pl-10 pr-4 py-1.5 rounded-DEFAULT focus:border-neon-blue focus:ring-1 focus:ring-neon-blue outline-none transition-all font-body-md text-body-md placeholder-text-muted" placeholder="Filter by ID or Name..." type="text"/>
+</div>
+</div>
+<!-- High Density List -->
+<div class="flex flex-col border border-surface-stroke rounded-DEFAULT bg-surface-base overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 bg-surface-container-high border-b border-surface-stroke font-label-caps text-label-caps text-text-muted uppercase tracking-wider">
+<div class="col-span-5">Operative Identity</div>
+<div class="col-span-3">Clearance ID</div>
+<div class="col-span-2 text-center">Global Level</div>
+<div class="col-span-2 text-right">Status</div>
+</div>
+<!-- Rows -->
+<div class="flex flex-col divide-y divide-surface-stroke h-[400px] overflow-y-auto">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-surface-elevated transition-colors cursor-default group">
+<div class="col-span-5 flex items-center gap-3">
+<img alt="" class="w-8 h-8 rounded-full border border-surface-stroke opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A close up portrait of a rugged industrial contractor wearing a dark hard hat and protective eyewear. The lighting is dramatic and moody, featuring sharp contrasts and a cool blue, cinematic rim light typical of a high-tech subterranean facility. The aesthetic is gritty realism meets neon futurism, conveying a sense of serious, technical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqdITBlskhAG4kkPiO3YA3DeLbFHNIR-EYrMTtzuQ4fRa5LP1cMq8mH4bw-Mn46gfhSj-Yyf-hXLdHVUb6GwNxKk5EM53hQTaInHfq4LhE6EU6NZ9b2Qlyd2GJDA-udUIiCsJm2-_s-dQsTpYkYFffvOxUMnSFB7Znj3aPLFUl7_9tAhwPJ-F0tQyf4MXxl7amrm1V3zDROcm2R80CHfLtKkzgP9oHHZJhD11GzS5S9JQtnchGXr_XPQgulFcv5P80B3ZFwM32mxah"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">Marcus Vance</span>
+</div>
+<div class="col-span-3 font-mono text-caption text-text-muted">OP-7742-X</div>
+<div class="col-span-2 flex justify-center">
+<span class="px-2 py-0.5 rounded bg-neon-blue/10 text-neon-blue border border-neon-blue/30 font-label-caps text-label-caps uppercase text-xs">Tier 4</span>
+</div>
+<div class="col-span-2 flex justify-end items-center gap-2">
+<span class="font-caption text-caption text-text-muted">Cleared</span>
+<span class="w-2 h-2 rounded-full bg-neon-green shadow-[0_0_5px_rgba(74,222,128,0.5)]"></span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-surface-elevated transition-colors cursor-default group">
+<div class="col-span-5 flex items-center gap-3">
+<img alt="" class="w-8 h-8 rounded-full border border-surface-stroke opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A portrait of a female engineer in a sterile, dimly lit industrial control room. She is looking intently at an off-camera screen. The scene is illuminated by the soft, ambient glow of data monitors casting subtle orange and pink hues across her face. The style is modern, technical, and highly focused, reflecting a deep, low-light canvas aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0M1scRuxfW3fwHzC8aBhzK6qZbL-jU30vCUFDzaE8510tBpfWsb1ODNVWMTy6Tg4_uIhSa5tQz_Sqs1aMnzO3BOtIegkIKmuNBxqtSYfxXQA65wW-u1xS8Ewzax9ENd41SVjEb-WHurBnKeXooGCjBLa2iKxEMA-8L4w6H0rXS08rvKfF8j3B_euRqyeRkIMMUdQz0XcHgNLWuFmjMzo6lDQgNLjdHMZQ9WRxzz71ZH8OP9zQjD85sxL0aabXLdetgTopt1BuPQv"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">Elena Rostova</span>
+</div>
+<div class="col-span-3 font-mono text-caption text-text-muted">OP-8911-Y</div>
+<div class="col-span-2 flex justify-center">
+<span class="px-2 py-0.5 rounded bg-neon-orange/10 text-neon-orange border border-neon-orange/30 font-label-caps text-label-caps uppercase text-xs">Tier 2</span>
+</div>
+<div class="col-span-2 flex justify-end items-center gap-2">
+<span class="font-caption text-caption text-text-muted">Pending</span>
+<span class="w-2 h-2 rounded-full bg-neon-orange shadow-[0_0_5px_rgba(249,115,22,0.5)]"></span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-surface-elevated transition-colors cursor-default group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-surface-stroke bg-surface-container flex items-center justify-center text-text-muted font-label-caps text-label-caps">DK</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">David Kross</span>
+</div>
+<div class="col-span-3 font-mono text-caption text-text-muted">OP-3320-Z</div>
+<div class="col-span-2 flex justify-center">
+<span class="px-2 py-0.5 rounded bg-neon-pink/10 text-neon-pink border border-neon-pink/30 font-label-caps text-label-caps uppercase text-xs">Tier 5</span>
+</div>
+<div class="col-span-2 flex justify-end items-center gap-2">
+<span class="font-caption text-caption text-text-muted">Restricted</span>
+<span class="w-2 h-2 rounded-full bg-neon-pink shadow-[0_0_5px_rgba(226,30,81,0.5)]"></span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-surface-elevated transition-colors cursor-default group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-surface-stroke bg-surface-container flex items-center justify-center text-text-muted font-label-caps text-label-caps">SJ</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Sarah Jenkins</span>
+</div>
+<div class="col-span-3 font-mono text-caption text-text-muted">OP-1102-A</div>
+<div class="col-span-2 flex justify-center">
+<span class="px-2 py-0.5 rounded bg-neon-blue/10 text-neon-blue border border-neon-blue/30 font-label-caps text-label-caps uppercase text-xs">Tier 3</span>
+</div>
+<div class="col-span-2 flex justify-end items-center gap-2">
+<span class="font-caption text-caption text-text-muted">Cleared</span>
+<span class="w-2 h-2 rounded-full bg-neon-green shadow-[0_0_5px_rgba(74,222,128,0.5)]"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Modules -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Metric Card (Global Integrity) -->
+<div class="bg-surface-base border border-neon-green rounded-DEFAULT p-6 flex flex-col justify-between relative overflow-hidden shadow-[inset_0_0_20px_rgba(74,222,128,0.05)]">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-neon-green">verified_user</span>
+</div>
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase mb-2">Global Workforce Compliance</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-display text-stat-display text-neon-green">94.2%</span>
+<span class="font-caption text-caption text-text-muted uppercase">+1.2% delta</span>
+</div>
+</div>
+<!-- Active Modules (Detailed View) -->
+<div class="glass-panel border-t-[4px] border-t-neon-orange border border-surface-stroke rounded-DEFAULT p-6 flex-1 shadow-lg shadow-black/50">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-neon-orange">science</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface neon-text-glow-orange uppercase">Active Modules</h3>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Module 1 -->
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps text-on-surface uppercase">High-Voltage Safety</span>
+<span class="font-caption text-caption text-text-muted">Avg Pass: <span class="text-neon-orange">82%</span></span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mb-1">
+<div class="bg-neon-orange h-1.5 rounded-full" style="width: 82%"></div>
+</div>
+<div class="flex justify-between font-caption text-caption text-text-muted text-xs">
+<span>142 Processed</span>
+<span>18 Pending</span>
+</div>
+</div>
+<!-- Module 2 -->
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Structural Integrity 101</span>
+<span class="font-caption text-caption text-text-muted">Avg Pass: <span class="text-neon-green">96%</span></span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mb-1">
+<div class="bg-neon-green h-1.5 rounded-full" style="width: 96%"></div>
+</div>
+<div class="flex justify-between font-caption text-caption text-text-muted text-xs">
+<span>310 Processed</span>
+<span>4 Pending</span>
+</div>
+</div>
+<!-- Module 3 -->
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps text-on-surface uppercase">Hazmat Protocol B</span>
+<span class="font-caption text-caption text-text-muted">Avg Pass: <span class="text-neon-blue">65%</span></span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mb-1">
+<div class="bg-neon-blue h-1.5 rounded-full relative overflow-hidden" style="width: 65%">
+<div class="absolute inset-0 bg-white/20 w-full animate-[pulse_2s_ease-in-out_infinite]"></div>
+</div>
+</div>
+<div class="flex justify-between font-caption text-caption text-text-muted text-xs">
+<span>45 Processed</span>
+<span class="text-neon-orange">Critical Review</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Restricted Zone Access (Management) -->
+<div class="lg:col-span-12">
+<div class="glass-panel border-t-[4px] border-t-neon-pink border border-surface-stroke rounded-DEFAULT p-6 shadow-lg shadow-black/50">
+<div class="flex justify-between items-center mb-6 border-b border-surface-stroke pb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neon-pink text-3xl">gpp_bad</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface neon-text-glow-pink uppercase">Restricted Zone Management</h3>
+<p class="font-caption text-caption text-text-muted">Assign access clearance based on aggregated module certification tiers.</p>
+</div>
+</div>
+<button class="bg-neon-pink text-white font-label-caps text-label-caps px-6 py-2 rounded-DEFAULT uppercase hover:bg-white hover:text-neon-pink transition-colors border border-neon-pink">
+                            Audit Matrix
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Zone Card 1 -->
+<div class="bg-surface-base border border-surface-stroke rounded-DEFAULT p-4 hover:border-neon-pink/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase text-lg">Sub-Level Core</h4>
+<span class="font-caption text-caption text-text-muted">Zone ID: 0X-ALPHA</span>
+</div>
+<span class="material-symbols-outlined text-neon-pink">lock</span>
+</div>
+<div class="mb-4">
+<span class="font-caption text-caption text-text-muted block mb-1">Min. Required Cert:</span>
+<span class="inline-block px-2 py-1 rounded bg-neon-pink/10 text-neon-pink border border-neon-pink/30 font-label-caps text-label-caps uppercase text-xs">Tier 5 (Elite)</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-elevated border border-surface-stroke text-text-muted font-label-caps text-label-caps px-3 py-1.5 rounded-DEFAULT uppercase hover:text-on-surface hover:border-text-muted transition-colors text-xs">Edit Rules</button>
+<button class="flex-1 bg-surface-container border border-surface-stroke text-on-surface font-label-caps text-label-caps px-3 py-1.5 rounded-DEFAULT uppercase hover:border-neon-pink transition-colors text-xs">Override</button>
+</div>
+</div>
+<!-- Zone Card 2 -->
+<div class="bg-surface-base border border-surface-stroke rounded-DEFAULT p-4 hover:border-neon-blue/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase text-lg">HV Maintenance Hub</h4>
+<span class="font-caption text-caption text-text-muted">Zone ID: 0X-BETA</span>
+</div>
+<span class="material-symbols-outlined text-neon-blue">electric_bolt</span>
+</div>
+<div class="mb-4">
+<span class="font-caption text-caption text-text-muted block mb-1">Min. Required Cert:</span>
+<span class="inline-block px-2 py-1 rounded bg-neon-blue/10 text-neon-blue border border-neon-blue/30 font-label-caps text-label-caps uppercase text-xs">Tier 3 (Advanced)</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-elevated border border-surface-stroke text-text-muted font-label-caps text-label-caps px-3 py-1.5 rounded-DEFAULT uppercase hover:text-on-surface hover:border-text-muted transition-colors text-xs">Edit Rules</button>
+<button class="flex-1 bg-surface-container border border-surface-stroke text-on-surface font-label-caps text-label-caps px-3 py-1.5 rounded-DEFAULT uppercase hover:border-neon-blue transition-colors text-xs">Override</button>
+</div>
+</div>
+<!-- Zone Card 3 -->
+<div class="bg-surface-base border border-surface-stroke rounded-DEFAULT p-4 hover:border-neon-orange/50 transition-colors relative overflow-hidden">
+<div class="absolute right-0 top-0 w-2 h-full bg-neon-orange"></div>
+<div class="flex justify-between items-start mb-4 pr-4">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase text-lg">Chemical Storage</h4>
+<span class="font-caption text-caption text-text-muted">Zone ID: 0X-GAMMA</span>
+</div>
+<span class="material-symbols-outlined text-neon-orange">warning</span>
+</div>
+<div class="mb-4 pr-4">
+<span class="font-caption text-caption text-text-muted block mb-1">Min. Required Cert:</span>
+<span class="inline-block px-2 py-1 rounded bg-neon-orange/10 text-neon-orange border border-neon-orange/30 font-label-caps text-label-caps uppercase text-xs">Tier 2 (Standard) + HAZMAT</span>
+</div>
+<div class="flex gap-2 pr-4">
+<button class="flex-1 bg-surface-elevated border border-surface-stroke text-text-muted font-label-caps text-label-caps px-3 py-1.5 rounded-DEFAULT uppercase hover:text-on-surface hover:border-text-muted transition-colors text-xs">Edit Rules</button>
+<button class="flex-1 bg-surface-container border border-surface-stroke text-on-surface font-label-caps text-label-caps px-3 py-1.5 rounded-DEFAULT uppercase hover:border-neon-orange transition-colors text-xs">Override</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

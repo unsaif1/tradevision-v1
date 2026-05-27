@@ -1,0 +1,232 @@
+.heading {
+  font-size: 11px;
+  font-weight: 700;
+  color: #434656;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.gridFull {
+  composes: grid;
+  grid-template-columns: 1fr;
+}
+
+/* ── Cards ── */
+.card {
+  background: #171f33;
+  border: 1px solid #2d3449;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.cardIcon { font-size: 20px; color: #4a6fff; }
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.cardBadge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.badgeLive {
+  composes: cardBadge;
+  background: rgba(52, 199, 89, 0.1);
+  color: #34c759;
+  border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+.badgeActive {
+  composes: cardBadge;
+  background: rgba(46, 91, 255, 0.1);
+  color: #6b8fff;
+  border: 1px solid rgba(46, 91, 255, 0.2);
+}
+
+/* ── Metrics row ── */
+.metrics {
+  display: flex;
+  gap: 24px;
+}
+
+.metric { flex: 1; }
+
+.metricValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.metricUnit {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a6fff;
+  margin-left: 2px;
+}
+
+.metricLabel {
+  font-size: 11px;
+  color: #8e90a2;
+}
+
+/* ── Check list ── */
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #c8cadf;
+}
+
+.checkIcon { font-size: 16px; color: #34c759; }
+
+/* ── Score ── */
+.scoreRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.scoreBig {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.scoreMax {
+  font-size: 16px;
+  color: #434656;
+  margin-bottom: 6px;
+}
+
+/* ── Weight bars ── */
+.weights { display: flex; flex-direction: column; gap: 10px; }
+
+.weightRow { display: flex; flex-direction: column; gap: 4px; }
+
+.weightMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8e90a2;
+}
+
+.weightVal { font-weight: 600; color: #4a6fff; }
+
+.weightTrack {
+  height: 4px;
+  background: #2d3449;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.weightFill {
+  height: 100%;
+  background: #2e5bff;
+  border-radius: 999px;
+}
+
+/* ── Gauge rows ── */
+.gaugeRows { display: flex; flex-direction: column; gap: 12px; }
+
+.gaugeRow { display: flex; flex-direction: column; gap: 4px; }
+
+.gaugeMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8e90a2;
+}
+
+.gaugeTrack {
+  height: 4px;
+  background: #2d3449;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.gaugeFill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* ── Build progress ── */
+.buildHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.buildName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.buildPct {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2e5bff;
+}
+
+.buildTrack {
+  height: 6px;
+  background: #2d3449;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.buildFill {
+  height: 100%;
+  background: linear-gradient(90deg, #2e5bff, #6b8fff);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(46,91,255,0.5);
+}
+
+.buildNote {
+  font-size: 11px;
+  color: #434656;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}

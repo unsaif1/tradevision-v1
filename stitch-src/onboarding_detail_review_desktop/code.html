@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractor Onboarding Journey - TradeVision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#8ff7c7",
+                        "error": "#ffb4ab",
+                        "outline": "#ab888a",
+                        "surface-container": "#1b2026",
+                        "surface-variant": "#30353c",
+                        "inverse-surface": "#dee3eb",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0a0f14",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "surface-dim": "#0f141a",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-primary": "#be003e",
+                        "primary": "#ffb2b9",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#141c26",
+                        "secondary": "#bfc7d5",
+                        "secondary-container": "#3f4753",
+                        "tertiary-container": "#00855e",
+                        "surface-bright": "#353a40",
+                        "on-primary-fixed-variant": "#91002e",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#e21e51",
+                        "on-surface": "#dee3eb",
+                        "on-tertiary": "#003826",
+                        "on-background": "#dee3eb",
+                        "tertiary-fixed-dim": "#72daad",
+                        "outline-variant": "#5c3f42",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#252a31",
+                        "surface": "#0f141a",
+                        "background": "#0f141a",
+                        "on-primary": "#67001e",
+                        "on-secondary": "#29313c",
+                        "on-primary-fixed": "#40000f",
+                        "on-tertiary-container": "#f5fff7",
+                        "on-secondary-container": "#aeb6c3",
+                        "inverse-on-surface": "#2c3137",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-primary-container": "#fffcff",
+                        "tertiary": "#72daad",
+                        "surface-container-low": "#171c22",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-tertiary-fixed": "#002114",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "surface-container-highest": "#30353c",
+                        "secondary-fixed": "#dbe3f1",
+                        "primary-fixed": "#ffdadb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "header_height": "64px",
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "mono-data": ["JetBrains Mono"],
+                        "display-md": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "display-md": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden antialiased">
+<!-- Navigation Drawer -->
+<nav class="bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant fixed left-0 top-0 h-full w-[260px] flex flex-col py-margin z-20">
+<div class="px-gutter mb-8">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight">TRADEVISION</h1>
+</div>
+<div class="flex flex-col gap-1">
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-label-caps">AUDIT LOG</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">SYSTEM SETTINGS</span>
+</a>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined fill-icon" data-icon="group" data-weight="fill">group</span>
+<span class="font-label-caps text-label-caps">USERS</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-caps text-label-caps">REPORTS</span>
+</a>
+</div>
+</nav>
+<!-- Top App Bar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant fixed top-0 right-0 left-[260px] h-[64px] flex justify-between items-center px-gutter w-[calc(100%-260px)] z-10">
+<div class="flex items-center gap-3 text-primary dark:text-primary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h2>ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-4 cursor-pointer hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary rounded-full" tabindex="0">
+<div class="h-8 w-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden">
+<img alt="System Administrator Avatar" class="h-full w-full object-cover" data-alt="A close-up portrait of a professional man in a modern, dark-themed command center environment. The lighting is high-contrast, moody, and sophisticated, reflecting a high-performance technical aesthetic with deep shadows and sharp, precise highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlGrItJz77ewtUcNIcqFvnfhfns1RzUKWzk9P4Axy4zTysxXpAWCZGsJZmGYq-n_o7vZDk7i7coPwhWWq3REBxe6nruAcvdkIHxRMBY-iBtVnPp1AN1u4oBx-Wg8ZSVBQfpbk38pqkv_2pnbACEq1w0F1oCgfMBKsYfLNhuTrsBYL76vkbTBAQK51VTD1rpX1agngF7vRrVt_DuTUqJRpNVSBJicw7hXLhPJiW9CrSj8-EzbeziQ9oWFnijrgwyQqNuYgc99T6Va9K"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-[64px] p-margin min-h-[calc(100vh-64px)] grid grid-cols-12 gap-gutter">
+<!-- Header Section (Spans 12) -->
+<div class="col-span-12 flex justify-between items-end mb-4 border-b border-surface-variant pb-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">ONBOARDING JOURNEY</p>
+<h2 class="font-display-md text-display-md text-on-surface">NovaTech Infrastructure Solutions</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container border border-outline-variant rounded text-on-surface font-label-caps text-label-caps hover:bg-surface-variant transition-colors">SUSPEND PROCESS</button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded font-label-caps text-label-caps hover:bg-primary-fixed-dim transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                    AUTHORIZE ENTITY
+                </button>
+</div>
+</div>
+<!-- Left Column: Entity Profile & Audit Trail (Spans 8) -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-gutter">
+<!-- Entity Profile (Bento Top) -->
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-lg p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-caps text-label-caps text-secondary">ENTITY PROFILE</h3>
+<span class="px-2 py-1 bg-[#003826] text-[#8ff7c7] font-mono-data text-mono-data rounded-sm text-xs border border-[#005138]">STATUS: PENDING REVIEW</span>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<div>
+<p class="text-on-surface-variant text-xs mb-1">GLOBAL UID</p>
+<p class="font-mono-data text-mono-data text-on-surface">CTR-892-441-A</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs mb-1">PRIMARY CONTACT</p>
+<p class="font-body-md text-body-md text-on-surface">Sarah Jenkins</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs mb-1">ROLE / CLEARANCE</p>
+<p class="font-body-md text-body-md text-on-surface">Tier 2 Infrastructure</p>
+</div>
+</div>
+</div>
+<!-- Onboarding Audit Trail -->
+<div class="bg-[#1a1f26] border border-[#2a323d] rounded-lg p-5 flex-grow">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-label-caps text-label-caps text-secondary">ONBOARDING AUDIT TRAIL</h3>
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<div class="relative border-l border-surface-variant ml-3 space-y-6 pb-4">
+<!-- Event 1 -->
+<div class="relative pl-6">
+<div class="absolute left-[-5px] top-1 w-[9px] h-[9px] rounded-full bg-primary-container ring-4 ring-[#1a1f26]"></div>
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-on-surface font-medium">Document Uploaded: Certificate of Insurance</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant text-xs">14:22:05 Z</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">System recorded new upload by user Sarah Jenkins (IP: 192.168.1.45).</p>
+</div>
+<!-- Event 2 -->
+<div class="relative pl-6">
+<div class="absolute left-[-5px] top-1 w-[9px] h-[9px] rounded-full bg-tertiary-fixed-dim ring-4 ring-[#1a1f26]"></div>
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-on-surface font-medium">Identity Verification Passed</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant text-xs">09:15:22 Z</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Automated check via Third-Party API completed successfully.</p>
+</div>
+<!-- Event 3 -->
+<div class="relative pl-6">
+<div class="absolute left-[-5px] top-1 w-[9px] h-[9px] rounded-full bg-surface-variant ring-4 ring-[#1a1f26]"></div>
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-on-surface font-medium">Onboarding Sequence Initiated</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant text-xs">OCT 12, 2023</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">UID CTR-892-441-A provisioned by Admin (admin_sys_01).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Document Verification (Spans 4) -->
+<div class="col-span-12 xl:col-span-4 bg-[#1a1f26] border border-[#2a323d] rounded-lg p-5 flex flex-col h-full">
+<h3 class="font-label-caps text-label-caps text-secondary mb-4">DOCUMENT VERIFICATION</h3>
+<div class="flex flex-col gap-4">
+<!-- Doc 1: W-9 -->
+<div class="border border-surface-variant rounded bg-surface p-4 hover:border-outline-variant transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps text-on-surface">FORM W-9</span>
+</div>
+<span class="px-2 py-0.5 bg-[#3f4753] text-[#dbe3f1] font-mono-data text-[10px] rounded-sm">PENDING</span>
+</div>
+<div class="h-24 w-full bg-surface-container-highest rounded mb-3 flex items-center justify-center overflow-hidden border border-surface-variant relative">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-variant to-surface-container-highest opacity-50"></div>
+<span class="material-symbols-outlined text-surface-bright text-4xl relative z-10" data-icon="visibility_off">visibility_off</span>
+</div>
+<button class="w-full py-2 border border-primary text-primary font-label-caps text-label-caps rounded hover:bg-primary-fixed-dim hover:text-on-primary-container transition-colors">VERIFY DOCUMENT</button>
+</div>
+<!-- Doc 2: Insurance -->
+<div class="border border-primary rounded bg-surface p-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<span class="font-label-caps text-label-caps text-on-surface">INSURANCE CERT.</span>
+</div>
+<span class="px-2 py-0.5 bg-[#93000a] text-[#ffdad6] font-mono-data text-[10px] rounded-sm">ACTION REQ</span>
+</div>
+<div class="h-24 w-full bg-surface-container-highest rounded mb-3 flex items-center justify-center overflow-hidden border border-surface-variant">
+<img alt="Document Preview" class="w-full h-full object-cover opacity-70" data-alt="A blurred, low-contrast preview of a formal business document or certificate lying flat on a dark surface. The aesthetic is muted and technical, fitting a dark-mode data dashboard environment, with very subtle cool gray and deep black tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5I0TnrD5l0AIenioTgMuJyXZip-WnxldByRF_wwow_nizXxl_wp5fkNOKb03Xfl6wsmavlSC4V8Rdd2vWv5WDEwDdgYbxtxDymQfG6POYqHg_bmb8XM8_moxu1NQBLGU8o_MNCSRzSLeabRcPXNq2tQIIoQdbXThmIVHrQq3KnqX2eIVzu-MeUrDDNX4yMFWwnnkCJHh7RyQmiVSqNnREx0S6JXht4Vl-g1w-sPo_izf5ijQ0gA1EBWP4wiBsoXJmvNbUpTeghYCG"/>
+</div>
+<button class="w-full py-2 bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded hover:bg-primary-fixed-dim transition-colors">REVIEW EXCEPTION</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

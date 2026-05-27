@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Dispatch Terminal</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#2e353e",
+                    "neon-blue": "#3B82F6",
+                    "outline-variant": "#5c3f42",
+                    "surface-container-high": "#242b33",
+                    "tertiary-fixed": "#d8e2ff",
+                    "surface-container-lowest": "#080f16",
+                    "on-primary-fixed-variant": "#91002e",
+                    "on-surface": "#dce3ee",
+                    "surface-dim": "#0d141c",
+                    "text-muted": "#8896A8",
+                    "neon-green": "#4ADE80",
+                    "on-error": "#690005",
+                    "secondary-fixed-dim": "#4de082",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "surface-base": "#111820",
+                    "surface-variant": "#2e353e",
+                    "neon-pink": "#E21E51",
+                    "surface-elevated": "#1C2128",
+                    "error-container": "#93000a",
+                    "outline": "#ab888a",
+                    "on-tertiary-container": "#fffcff",
+                    "secondary-container": "#00b55d",
+                    "on-tertiary-fixed": "#001a42",
+                    "primary-fixed": "#ffdadb",
+                    "surface-stroke": "#2D3748",
+                    "on-secondary-container": "#003e1c",
+                    "on-error-container": "#ffdad6",
+                    "neon-orange": "#F97316",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#333a43",
+                    "surface-tint": "#ffb2b9",
+                    "on-tertiary": "#002e6a",
+                    "tertiary-container": "#2171e4",
+                    "surface": "#0d141c",
+                    "on-background": "#dce3ee",
+                    "on-primary": "#67001e",
+                    "surface-container": "#192028",
+                    "tertiary": "#adc6ff",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "inverse-on-surface": "#2a313a",
+                    "surface-container-low": "#151c24",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "on-primary-fixed": "#40000f",
+                    "on-secondary-fixed-variant": "#005227",
+                    "inverse-surface": "#dce3ee",
+                    "on-secondary-fixed": "#00210c",
+                    "on-secondary": "#003919",
+                    "on-surface-variant": "#e4bdbf",
+                    "secondary": "#4de082",
+                    "primary-container": "#e21e51",
+                    "inverse-primary": "#be003e",
+                    "primary": "#ffb2b9",
+                    "secondary-fixed": "#6dfe9c",
+                    "on-primary-container": "#fffcff",
+                    "background": "#0d141c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "stack-gap": "12px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "stat-display": [
+                            "Barlow Condensed", "sans-serif"
+                    ],
+                    "headline-xl": [
+                            "Barlow Condensed", "sans-serif"
+                    ],
+                    "caption": [
+                            "Barlow", "sans-serif"
+                    ],
+                    "label-caps": [
+                            "Barlow Condensed", "sans-serif"
+                    ],
+                    "body-md": [
+                            "Barlow", "sans-serif"
+                    ],
+                    "headline-lg-mobile": [
+                            "Barlow Condensed", "sans-serif"
+                    ],
+                    "headline-lg": [
+                            "Barlow Condensed", "sans-serif"
+                    ],
+                    "body-lg": [
+                            "Barlow", "sans-serif"
+            ]
+            },
+            "fontSize": {
+                    "stat-display": [
+                            "40px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "caption": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "14px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .material-symbols-outlined {
+                font-family: 'Material Symbols Outlined';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 24px;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                -webkit-font-feature-settings: 'liga';
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+        
+        body {
+            background-color: theme('colors.surface-base');
+            color: theme('colors.on-surface');
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&amp;family=Barlow+Condensed:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Mobile Top App Bar -->
+<header class="md:hidden bg-surface dark:bg-surface fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 border-b border-surface-stroke dark:border-surface-stroke">
+<button class="text-neon-pink dark:text-neon-pink hover:bg-surface-container-highest transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<span class="font-label-caps text-label-caps tracking-widest text-neon-pink dark:text-neon-pink uppercase">TRADEVISION</span>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<!-- Desktop Navigation Drawer -->
+<nav class="hidden md:flex flex-col bg-surface-elevated dark:bg-surface-elevated full-height w-72 border-r border-surface-stroke dark:border-surface-stroke shadow-lg fixed inset-y-0 left-0 z-[60] py-gutter">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border-2 border-neon-orange">
+<span class="material-symbols-outlined text-neon-orange" style="font-variation-settings: 'FILL' 1;">engineering</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label-caps text-label-caps text-neon-orange uppercase">COMMANDER ALPHA</span>
+<span class="font-caption text-caption text-text-muted">Site Supervisor</span>
+<span class="font-caption text-caption text-neon-green mt-1 text-xs">Sector 7G</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">conveyor_belt</span>
+<span>Fleet Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span>Personnel</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-highest text-neon-green font-bold border-l-4 border-neon-green transition-all font-body-md text-body-md opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span>Safety Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-all font-body-md text-body-md mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 pt-20 pb-24 px-margin-mobile md:pl-[19rem] md:pt-margin-desktop md:pr-margin-desktop md:pb-margin-desktop w-full max-w-7xl mx-auto flex flex-col gap-stack-gap">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4 border-b border-surface-stroke pb-4">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface uppercase tracking-tight">Dispatch Terminal</h1>
+<p class="font-caption text-caption text-text-muted mt-1 uppercase tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+                    Sync Status: Secure
+                </p>
+</div>
+<!-- Quick Metrics -->
+<div class="flex gap-2 w-full md:w-auto">
+<div class="flex-1 md:flex-none bg-surface-elevated border-t-2 border-neon-pink px-4 py-2 flex flex-col items-center justify-center shadow-lg">
+<span class="font-stat-display text-stat-display text-neon-pink">12</span>
+<span class="font-label-caps text-label-caps text-text-muted">Critical</span>
+</div>
+<div class="flex-1 md:flex-none bg-surface-elevated border-t-2 border-neon-orange px-4 py-2 flex flex-col items-center justify-center shadow-lg">
+<span class="font-stat-display text-stat-display text-neon-orange">08</span>
+<span class="font-label-caps text-label-caps text-text-muted">Moderate</span>
+</div>
+<div class="flex-1 md:flex-none bg-surface-elevated border-t-2 border-neon-blue px-4 py-2 flex flex-col items-center justify-center shadow-lg">
+<span class="font-stat-display text-stat-display text-neon-blue">05</span>
+<span class="font-label-caps text-label-caps text-text-muted">Active</span>
+</div>
+</div>
+</header>
+<!-- Task List Area -->
+<div class="flex flex-col gap-3">
+<h2 class="font-label-caps text-label-caps text-text-muted uppercase mb-2">Pending Assignments</h2>
+<!-- Card 1: Critical -->
+<article class="bg-surface-elevated border border-surface-stroke flex flex-col sm:flex-row w-full hover:bg-surface-container-high transition-colors overflow-hidden group">
+<div class="w-full sm:w-48 h-32 sm:h-auto shrink-0 relative bg-surface-dim">
+<img alt="Task Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A close-up view of a massive, heavily worn industrial cooling unit in a dark, cyberpunk-style facility. Deep shadows contrast with vibrant neon pink and cyan lights illuminating leaking pipes and sparking wires. The overall aesthetic is gritty, high-tech, and urgent, showing signs of immediate failure requiring maintenance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYZye8t7X8lkEEJenUIP5a69-y1bp4S6_1IsENy4yXFnc0YIJw8aV-mkBeNPhCco0JsjJf4Duyx_XLQ9YjUseVgCKKxq_MXq9tzXJ6Fb8x7glfSw125K45_vyCRwaon7Zkbad7Hfhv3eUp2mmYb_f8gl4yHbmxfRE64tbl5Zd0z5VgTkHoe-1hPkmNlptUgGHO4zuHzI-R8x6gymIGe1FvcWRY86ma3TvFzDXZdqU5G0_iFh4SP5KJLM_dd-CpsXZV1GF92Vd9w_WP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-base/80 to-transparent sm:hidden"></div>
+<div class="absolute top-2 left-2 sm:top-auto sm:bottom-2 sm:left-2 bg-surface-base/90 border border-neon-pink px-2 py-1 flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[16px] text-neon-pink">warning</span>
+<span class="font-label-caps text-label-caps text-neon-pink text-xs">CRITICAL</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-surface-container text-on-surface px-2 py-0.5 rounded-sm border border-surface-stroke">SECTOR 7G</span>
+<span class="font-caption text-caption text-text-muted">ID: TSK-8942</span>
+</div>
+<h3 class="font-headline-lg-mobile text-[20px] text-on-surface mt-1">Cooling System Failure</h3>
+<p class="font-body-md text-body-md text-text-muted line-clamp-2 mt-1">Primary coolant pump #4 reporting cavitation. Temperature rising above safety thresholds in core processing unit.</p>
+</div>
+<button class="w-full sm:w-auto mt-2 sm:mt-0 bg-neon-pink hover:bg-primary-container text-on-primary-container font-label-caps text-label-caps px-6 py-3 uppercase flex items-center justify-center gap-2 transition-colors shrink-0">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                        Accept &amp; Initiate
+                    </button>
+</div>
+</article>
+<!-- Card 2: Moderate -->
+<article class="bg-surface-elevated border border-surface-stroke flex flex-col sm:flex-row w-full hover:bg-surface-container-high transition-colors overflow-hidden group">
+<div class="w-full sm:w-48 h-32 sm:h-auto shrink-0 relative bg-surface-dim">
+<img alt="Task Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity grayscale hover:grayscale-0" data-alt="A high-angle shot of a jammed industrial conveyor belt in a dimly lit, vast factory setting. The machinery is robust and metallic, covered in grime. Subtle neon orange safety lights blink in the background, casting long shadows. The scene emphasizes heavy industry, mechanical breakdown, and a dark, moody atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHk6xHkc4GM7k2Yu6JN5LSKJs0PJg9OxdYGTEJvLAU12j7q-DT_hD2U7Q1RE8ZM7ZP9IEYF5EvY8I_YqCKChRsVSgqxh6BlsiFscIAdA_xPbaZX69ASLmQLcY7kbuXPZgSyeWZ_Jaz0SRqBlgLinp3FyMoAvb82_u_csRB72ewyIOatdPg8aIawuwgeI7HkbUgEHaTVuEAfD0uqHe_wrDeI08KmZT18KL3HB6DnioE9lcSujGPhSBO63bnpjVLY6yJmFneQl9Pxbc-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-base/80 to-transparent sm:hidden"></div>
+<div class="absolute top-2 left-2 sm:top-auto sm:bottom-2 sm:left-2 bg-surface-base/90 border border-neon-orange px-2 py-1 flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[16px] text-neon-orange">build</span>
+<span class="font-label-caps text-label-caps text-neon-orange text-xs">MODERATE</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-surface-container text-on-surface px-2 py-0.5 rounded-sm border border-surface-stroke">SECTOR 3B</span>
+<span class="font-caption text-caption text-text-muted">ID: TSK-8945</span>
+</div>
+<h3 class="font-headline-lg-mobile text-[20px] text-on-surface mt-1">Conveyor Belt Misalignment</h3>
+<p class="font-body-md text-body-md text-text-muted line-clamp-2 mt-1">Material sorting line B tensioner loose causing minor spillage. Recalibration required to prevent jam.</p>
+</div>
+<button class="w-full sm:w-auto mt-2 sm:mt-0 border border-surface-stroke hover:border-neon-orange hover:text-neon-orange text-on-surface font-label-caps text-label-caps px-6 py-3 uppercase flex items-center justify-center gap-2 transition-colors shrink-0">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        Accept Task
+                    </button>
+</div>
+</article>
+<!-- Card 3: Critical -->
+<article class="bg-surface-elevated border border-surface-stroke flex flex-col sm:flex-row w-full hover:bg-surface-container-high transition-colors overflow-hidden group">
+<div class="w-full sm:w-48 h-32 sm:h-auto shrink-0 relative bg-surface-dim">
+<img alt="Task Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A detailed macro shot of an open, high-voltage electrical panel sparking in a dark, cyber-industrial environment. Intense neon pink and blue light emanates from the short-circuiting components, illuminating the complex wiring and metallic chassis. The mood is dangerous, high-stakes, and technologically dense." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxDy7OWHjhvH8yfmWg1oT9HcmPs3L3lC_Vp8dx9gbWde86HHOcQJCbocwT9E77HAlgNn1M2BVP3S6YW3CWFM3PQj3jVO8BMS1R9dyI20G2ik4ziu7VllcqyTSWABfS85H1goxWGcMVjBF6NLE_DkDACCh3SfynHv6EWYudh6Dym5BtT8dlJL0IppPMpGrC20diC3u1peez8xR-1wbc6vLgcYQu0ANaeqG1r11f_2iCnzScpPVknIrFADv7J2rC2BdIC3DFxYahpsLG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-base/80 to-transparent sm:hidden"></div>
+<div class="absolute top-2 left-2 sm:top-auto sm:bottom-2 sm:left-2 bg-surface-base/90 border border-neon-pink px-2 py-1 flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[16px] text-neon-pink">electric_bolt</span>
+<span class="font-label-caps text-label-caps text-neon-pink text-xs">CRITICAL</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-surface-container text-on-surface px-2 py-0.5 rounded-sm border border-surface-stroke">SECTOR 9A</span>
+<span class="font-caption text-caption text-text-muted">ID: TSK-8950</span>
+</div>
+<h3 class="font-headline-lg-mobile text-[20px] text-on-surface mt-1">High-Voltage Panel Arc</h3>
+<p class="font-body-md text-body-md text-text-muted line-clamp-2 mt-1">Sub-station panel 12 detected sustained arcing. Immediate shutdown and component replacement required.</p>
+</div>
+<button class="w-full sm:w-auto mt-2 sm:mt-0 bg-neon-pink hover:bg-primary-container text-on-primary-container font-label-caps text-label-caps px-6 py-3 uppercase flex items-center justify-center gap-2 transition-colors shrink-0">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                        Accept &amp; Initiate
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- Mobile Bottom Nav Bar -->
+<nav class="md:hidden bg-surface-container dark:bg-surface-container fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 border-t border-surface-stroke dark:border-surface-stroke">
+<button class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface transition-colors w-16">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-[10px] mt-1">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-xl p-2 w-16 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-label-caps text-[10px] mt-1">PROJECTS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface transition-colors w-16">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps text-[10px] mt-1">CLAIMS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted p-2 hover:text-on-surface dark:hover:text-on-surface transition-colors w-16 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-caps text-[10px] mt-1">ALERTS</span>
+<span class="absolute top-1 right-2 w-2 h-2 bg-neon-pink rounded-full border border-surface-container"></span>
+</button>
+</nav>
+</body></html>

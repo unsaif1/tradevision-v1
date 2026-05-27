@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Centralized Reporting Hub</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005",
+                        "surface-tint": "#00dbe9",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#006970",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-secondary": "#412d00",
+                        "surface-container-highest": "#333539",
+                        "background": "#111317",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#6b4b00",
+                        "primary-fixed": "#7df4ff",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#f7f5f5",
+                        "on-surface": "#e2e2e8",
+                        "tertiary-fixed": "#e4e2e2",
+                        "outline": "#849495",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary": "#00363a",
+                        "secondary": "#ffdb9d",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary-fixed-dim": "#00dbe9",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-variant": "#333539",
+                        "on-tertiary-container": "#5e5f5f",
+                        "error-container": "#93000a",
+                        "primary": "#dbfcff",
+                        "outline-variant": "#3b494b",
+                        "on-background": "#e2e2e8",
+                        "secondary-fixed": "#ffdea8",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container": "#1e2024",
+                        "surface-container-high": "#282a2e",
+                        "secondary-container": "#feb700",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface": "#111317",
+                        "tertiary-container": "#dad9d9",
+                        "on-primary-container": "#006970",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for cyber-industrial feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #111317; border-left: 1px solid #3b494b; }
+        ::-webkit-scrollbar-thumb { background: #333539; border: 1px solid #3b494b; }
+        ::-webkit-scrollbar-thumb:hover { background: #849495; }
+        
+        /* Grid background pattern for main canvas */
+        .cyber-grid-bg {
+            background-image: linear-gradient(to right, #1e2024 1px, transparent 1px), linear-gradient(to bottom, #1e2024 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- NAVIGATION DRAWER (From Shared Components) -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant flex flex-col py-margin-desktop z-30">
+<!-- Brand Header -->
+<div class="px-6 pb-8 border-b border-outline-variant mb-4">
+<h1 class="font-display-lg text-display-lg text-primary dark:text-primary tracking-tight uppercase">TRADEVISION</h1>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 w-full">
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps">AUDIT LOG</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">SYSTEM SETTINGS</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">USERS</span>
+</a>
+<!-- ACTIVE TAB: REPORTS -->
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assessment</span>
+<span class="font-label-caps text-label-caps">REPORTS</span>
+</a>
+</div>
+</nav>
+<!-- MAIN WRAPPER -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen relative">
+<!-- TOP APP BAR (From Shared Components) -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter w-[calc(100%-260px)] z-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary">admin_panel_settings</span>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-4">
+<!-- Trailing Avatar -->
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center text-primary" title="System Administrator Avatar">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</header>
+<!-- CONTENT CANVAS -->
+<main class="flex-1 mt-[64px] flex flex-row overflow-hidden cyber-grid-bg">
+<!-- SECONDARY SIDEBAR: REPORT CATEGORIES -->
+<aside class="w-[240px] bg-surface border-r border-outline-variant flex flex-col p-6 gap-6 z-10 shadow-[4px_0_12px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-on-surface-variant">category</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">REPORT DIRECTORY</h3>
+</div>
+<ul class="flex flex-col gap-2">
+<li class="cursor-pointer group">
+<div class="font-label-caps text-label-caps px-3 py-2 border border-primary bg-primary/5 text-primary rounded-sm flex items-center justify-between transition-colors">
+<span>ALL REPORTS</span>
+<span class="font-data-point text-data-point text-xs">142</span>
+</div>
+</li>
+<li class="cursor-pointer group">
+<div class="font-label-caps text-label-caps px-3 py-2 border border-transparent text-on-surface-variant group-hover:border-outline-variant group-hover:bg-surface-container group-hover:text-on-surface rounded-sm flex items-center justify-between transition-colors">
+<span>FINANCIAL</span>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant">38</span>
+</div>
+</li>
+<li class="cursor-pointer group">
+<div class="font-label-caps text-label-caps px-3 py-2 border border-transparent text-on-surface-variant group-hover:border-outline-variant group-hover:bg-surface-container group-hover:text-on-surface rounded-sm flex items-center justify-between transition-colors">
+<span>OPERATIONAL</span>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant">65</span>
+</div>
+</li>
+<li class="cursor-pointer group">
+<div class="font-label-caps text-label-caps px-3 py-2 border border-transparent text-on-surface-variant group-hover:border-outline-variant group-hover:bg-surface-container group-hover:text-on-surface rounded-sm flex items-center justify-between transition-colors">
+<span>COMPLIANCE &amp; TAX</span>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant">12</span>
+</div>
+</li>
+<li class="cursor-pointer group">
+<div class="font-label-caps text-label-caps px-3 py-2 border border-transparent text-on-surface-variant group-hover:border-outline-variant group-hover:bg-surface-container group-hover:text-on-surface rounded-sm flex items-center justify-between transition-colors">
+<span>MATERIAL WASTE</span>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant">27</span>
+</div>
+</li>
+</ul>
+</aside>
+<!-- MAIN GRID AREA -->
+<div class="flex-1 flex flex-col p-margin-desktop gap-8 overflow-y-auto">
+<!-- Search & Filters Header -->
+<div class="flex items-center justify-between gap-4 w-full bg-surface border border-outline-variant p-4 shadow-[0_4px_12px_rgba(0,0,0,0.3)] rounded-sm">
+<div class="relative flex-1 max-w-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-sm pl-12 pr-4 py-3 font-label-caps text-label-caps text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-on-surface-variant" placeholder="QUERY HISTORICAL TELEMETRY..." type="text"/>
+</div>
+<button class="bg-surface-variant border border-outline-variant text-on-surface hover:bg-surface-container hover:border-outline transition-colors px-6 py-3 font-label-caps text-label-caps flex items-center gap-2 rounded-sm shadow-[0_2px_0_#2D2D2D]">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        ADVANCED FILTER
+                    </button>
+</div>
+<!-- Report Cards Grid (Bento Style) -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+<!-- Card 1: Quarterly Tax Summary -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col hover:border-primary/50 transition-colors group relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)]">
+<!-- Top Accent Bar -->
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary to-transparent opacity-50"></div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container border border-outline-variant px-3 py-1 font-label-caps text-label-caps text-primary tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                                    REP-TAX-Q3-24
+                                </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-highest px-2 py-1 border border-outline-variant">Q3 CYCLE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Quarterly Tax Summary</h3>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                2024-07-01 TO 2024-09-30
+                            </div>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mb-6 line-clamp-2">
+                                Aggregated financial telemetry detailing state and federal tax liabilities across all active regional hubs. Includes standardized deduction models and automated variance highlighting against previous quarters.
+                            </p>
+<!-- Technical Metrics Row -->
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant pt-6 mt-auto">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">EST. LIABILITY</span>
+<span class="font-data-point text-data-point text-primary">$142,500.00</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">VAR VS Q2</span>
+<span class="font-data-point text-data-point text-error">-4.2%</span>
+</div>
+</div>
+</div>
+<!-- Actions Footer -->
+<div class="bg-surface-container border-t border-outline-variant p-4 flex justify-end gap-4">
+<button class="bg-transparent border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors px-6 py-2 font-label-caps text-label-caps flex items-center gap-2 rounded-sm">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                                SHARE
+                            </button>
+<button class="bg-primary text-on-primary hover:bg-primary-container transition-all px-6 py-2 font-label-caps text-label-caps flex items-center gap-2 rounded-sm shadow-[0_0_15px_rgba(0,240,255,0.15)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                GENERATE REPORT
+                            </button>
+</div>
+</article>
+<!-- Card 2: Material Waste Report -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col hover:border-secondary-container/50 transition-colors group relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)]">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-secondary-container to-transparent opacity-50"></div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container border border-outline-variant px-3 py-1 font-label-caps text-label-caps text-secondary-container tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary-container rounded-full"></span>
+                                    REP-MAT-WST-WK42
+                                </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-highest px-2 py-1 border border-outline-variant">WEEKLY</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Material Waste Report</h3>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                2024-10-14 TO 2024-10-20
+                            </div>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mb-6 line-clamp-2">
+                                Site-level analysis of material spoilage, focusing on Shingle and TPO deviations against standard allowances. Highlights top 5 offending crews and calculates direct cost impact based on current supplier indices.
+                            </p>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant pt-6 mt-auto">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SPOILAGE VOL</span>
+<span class="font-data-point text-data-point text-secondary-container">1.2 TONS</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">COST IMPACT</span>
+<span class="font-data-point text-data-point text-error">+$4,250.00</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border-t border-outline-variant p-4 flex justify-end gap-4">
+<button class="bg-transparent border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors px-6 py-2 font-label-caps text-label-caps flex items-center gap-2 rounded-sm">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                                SHARE
+                            </button>
+<button class="bg-surface-variant border border-outline-variant text-on-surface hover:bg-surface-bright hover:border-secondary-container transition-all px-6 py-2 font-label-caps text-label-caps flex items-center gap-2 rounded-sm">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                                GENERATE REPORT
+                            </button>
+</div>
+</article>
+<!-- Card 3: Crew Efficiency vs Cost (Spanning full width in bento concept) -->
+<article class="bg-surface border border-outline-variant rounded-sm flex flex-col xl:flex-row hover:border-primary/50 transition-colors group relative overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] xl:col-span-2">
+<div class="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-primary to-transparent opacity-50 hidden xl:block"></div>
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary to-transparent opacity-50 xl:hidden"></div>
+<div class="p-6 flex flex-col flex-1 border-b xl:border-b-0 xl:border-r border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container border border-outline-variant px-3 py-1 font-label-caps text-label-caps text-primary tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+                                    REP-CRW-EFF-SEP
+                                </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-highest px-2 py-1 border border-outline-variant">MONTHLY</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Crew Efficiency vs Cost</h3>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                2024-09-01 TO 2024-09-30
+                            </div>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mb-6 xl:mb-0 max-w-2xl">
+                                Correlates man-hours logged against square footage completed and active labor rates per crew unit. Identifies operational bottlenecks and calculates the true cost-per-square installed metric.
+                            </p>
+</div>
+<!-- Side Metrics & Actions for wide card -->
+<div class="p-6 flex flex-col justify-between bg-surface-container-lowest xl:w-80">
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AVG SQ/HR</span>
+<span class="font-data-point text-data-point text-primary">3.4</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">LABOR VAR</span>
+<span class="font-data-point text-data-point text-primary">+2.1%</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-auto">
+<button class="w-full bg-primary text-on-primary hover:bg-primary-container transition-all px-6 py-3 font-label-caps text-label-caps flex items-center justify-center gap-2 rounded-sm shadow-[0_0_15px_rgba(0,240,255,0.15)] border border-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">download</span>
+                                    GENERATE &amp; EXPORT
+                                </button>
+<button class="w-full bg-transparent border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors px-6 py-2 font-label-caps text-label-caps flex items-center justify-center gap-2 rounded-sm">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                                    SHARE REPORT
+                                </button>
+</div>
+</div>
+</article>
+</div>
+<!-- Bottom spacing -->
+<div class="h-8"></div>
+</div>
+</main>
+</div>
+</body></html>

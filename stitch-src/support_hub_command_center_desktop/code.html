@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>C.A.R.E. Hub Support Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            animation: scan 4s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .cyber-corner {
+            position: relative;
+        }
+        .cyber-corner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00f2ff;
+            border-left: 2px solid #00f2ff;
+        }
+        .cyber-corner-rose::before {
+            border-color: #f43f5e;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30353c;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f2ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#9f8c8d",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "outline-variant": "#524344",
+                        "on-secondary-container": "#a8b6c9",
+                        "surface-variant": "#30353c",
+                        "primary-container": "#ffb2b9",
+                        "surface": "#0f141a",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-surface-variant": "#d7c2c2",
+                        "status-error": "#f43f5e",
+                        "surface-bright": "#353a40",
+                        "secondary-fixed": "#d5e4f7",
+                        "tertiary-container": "#bdc7dc",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "background": "#0f141a",
+                        "accent-cyan": "#00f2ff",
+                        "surface-container": "#1b2026",
+                        "on-primary-fixed": "#370c13",
+                        "surface-container-lowest": "#0a0f14",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "primary-fixed": "#ffdadc",
+                        "on-primary-container": "#7b4148",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "tertiary": "#d9e3f9",
+                        "on-error-container": "#ffdad6",
+                        "status-success": "#4ade80",
+                        "primary": "#ffd9dc",
+                        "secondary": "#bac8db",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-primary": "#522027",
+                        "secondary-container": "#3a4858",
+                        "inverse-on-surface": "#2c3137",
+                        "tertiary-fixed": "#d9e3f9",
+                        "on-surface": "#dee3eb",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "inverse-primary": "#894d54",
+                        "surface-dim": "#0f141a",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-container-high": "#252a31",
+                        "on-tertiary": "#273141",
+                        "surface-container-low": "#171c22",
+                        "error-container": "#93000a",
+                        "surface-deep": "#090f15",
+                        "on-secondary": "#243240",
+                        "surface-container-highest": "#30353c",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "surface-tint": "#ffb2b9",
+                        "on-background": "#dee3eb",
+                        "inverse-surface": "#dee3eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "sidebar-width": "260px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "telemetry-sidebar-width": "340px",
+                        "margin": "24px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["JetBrains Mono"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "label-caps": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "body-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-accent-cyan selection:text-surface">
+<!-- TopAppBar Shell -->
+<header class="bg-surface-dim text-primary w-full top-0 border-b border-outline-variant flex justify-between items-center px-md h-16 w-full fixed z-50">
+<div class="flex items-center gap-sm cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="security">security</span>
+<h1 class="font-headline-md text-headline-md text-accent-cyan tracking-tighter">SECURITY_CENTRAL_V4</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-md px-md">
+<span class="font-mono-data text-mono-data text-accent-cyan">STATION_ID: HUB-09</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-70">UPLINK: ACTIVE</span>
+</div>
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-highest transition-colors p-2 rounded" data-icon="settings_input_component">settings_input_component</span>
+</div>
+</header>
+<!-- Sidebar Shell -->
+<nav class="bg-surface-container-low text-primary w-sidebar-width h-full fixed left-0 top-0 border-r border-outline-variant hidden lg:flex flex-col gap-sm p-md pt-20 z-40">
+<div class="mb-lg">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant opacity-70 mb-sm">CORE_ACCESS_PROTOCOLS</h2>
+</div>
+<div class="flex flex-col gap-xs">
+<!-- Active Item: Terminal / Protocols mapping -->
+<a class="flex items-center gap-md p-md rounded text-accent-cyan bg-surface-variant border-r-2 border-accent-cyan transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps">Terminal</span>
+</a>
+<a class="flex items-center gap-md p-md rounded text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+<span class="font-label-caps text-label-caps">Key_Vault</span>
+</a>
+<a class="flex items-center gap-md p-md rounded text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-label-caps text-label-caps">Audit_Logs</span>
+</a>
+<a class="flex items-center gap-md p-md rounded text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-label-caps text-label-caps">System_Health</span>
+</a>
+</div>
+<div class="mt-xl border-t border-outline-variant pt-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant opacity-50 mb-md px-md">RESOURCES</h3>
+<div class="space-y-sm px-md">
+<div class="flex items-center gap-sm font-mono-data text-mono-data text-on-surface-variant cursor-pointer hover:text-accent-cyan transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="description">description</span> Protocols
+                </div>
+<div class="flex items-center gap-sm font-mono-data text-mono-data text-on-surface-variant cursor-pointer hover:text-accent-cyan transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="memory">memory</span> Hardware
+                </div>
+<div class="flex items-center gap-sm font-mono-data text-mono-data text-on-surface-variant cursor-pointer hover:text-accent-cyan transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="gavel">gavel</span> Legal
+                </div>
+<div class="flex items-center gap-sm font-mono-data text-mono-data text-on-surface-variant cursor-pointer hover:text-accent-cyan transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="hub">hub</span> Network
+                </div>
+</div>
+</div>
+</nav>
+<!-- Main Content Layout -->
+<main class="lg:pl-sidebar-width pt-16 flex flex-col md:flex-row min-h-screen">
+<!-- Central Support Case Ledger -->
+<section class="flex-1 p-md lg:p-lg overflow-y-auto">
+<div class="mb-lg flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SUPPORT_CASE_LEDGER</h2>
+<p class="font-mono-data text-mono-data text-on-surface-variant opacity-60">BLOCKCHAIN_TIMESTAMPED_RECORDS</p>
+</div>
+<div class="flex gap-sm">
+<div class="bg-surface-container-low px-md py-sm rounded-lg border border-outline-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-accent-cyan" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-mono-data text-mono-data text-on-surface w-32" placeholder="FILTER BY ID..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Bento Grid Ledger -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Urgent Card -->
+<div class="bg-surface-container border border-outline-variant cyber-corner cyber-corner-rose relative group overflow-hidden">
+<div class="scanline"></div>
+<div class="p-md flex flex-col md:flex-row gap-md items-center justify-between border-b border-outline-muted">
+<div class="flex items-center gap-md">
+<span class="bg-status-error w-3 h-3 rounded-full animate-pulse"></span>
+<div>
+<h3 class="font-headline-md text-headline-md text-status-error uppercase">CRITICAL_VULN_DETECTED</h3>
+<p class="font-mono-data text-mono-data text-on-surface-variant opacity-70">CASE_ID: 8842-AX-009</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-mono-data text-mono-data bg-error-container text-error px-sm rounded">ROSE-ALERT</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mt-1">TX_HASH: 0x4f...e31b</span>
+</div>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-40">AFFECTED_NODE</p>
+<p class="font-mono-data text-mono-data text-on-surface">NODE_ALPHA_CENTAURI_04</p>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-40">TIMESTAMP</p>
+<p class="font-mono-data text-mono-data text-on-surface">2024-05-24 14:22:01 UTC</p>
+</div>
+<div class="flex justify-end items-center">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-lg py-sm rounded uppercase hover:opacity-90 transition-opacity">Initiate Protocol</button>
+</div>
+</div>
+</div>
+<!-- Standard Cards -->
+<div class="bg-surface-container border border-outline-variant relative group hover:bg-surface-container-high transition-colors">
+<div class="p-md flex flex-col md:flex-row gap-md items-center justify-between border-b border-outline-muted">
+<div class="flex items-center gap-md">
+<span class="bg-status-success w-3 h-3 rounded-full"></span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Network Latency Optimization</h3>
+<p class="font-mono-data text-mono-data text-on-surface-variant opacity-70">CASE_ID: 9910-BW-112</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-mono-data text-mono-data bg-secondary-container text-on-secondary-container px-sm rounded">ACTIVE</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mt-1">TX_HASH: 0x8a...9c44</span>
+</div>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-40">CATEGORY</p>
+<p class="font-mono-data text-mono-data text-on-surface">NETWORK_FABRIC</p>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-40">ORIGIN</p>
+<p class="font-mono-data text-mono-data text-on-surface">REGION_WEST_CLUSTER</p>
+</div>
+<div class="flex justify-end items-center">
+<button class="border border-outline-variant text-on-surface font-label-md text-label-md px-lg py-sm rounded uppercase hover:bg-surface-container-highest transition-colors">Review Docs</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant relative group hover:bg-surface-container-high transition-colors">
+<div class="p-md flex flex-col md:flex-row gap-md items-center justify-between border-b border-outline-muted">
+<div class="flex items-center gap-md">
+<span class="bg-accent-cyan w-3 h-3 rounded-full"></span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Hardware Verification</h3>
+<p class="font-mono-data text-mono-data text-on-surface-variant opacity-70">CASE_ID: 1022-ZH-883</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-mono-data text-mono-data bg-secondary-container text-on-secondary-container px-sm rounded">PENDING</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] mt-1">TX_HASH: 0x11...bb02</span>
+</div>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-40">DEVICE_ID</p>
+<p class="font-mono-data text-mono-data text-on-surface">NVME_ARRAY_Z12</p>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-40">INTEGRITY_INDEX</p>
+<p class="font-mono-data text-mono-data text-on-surface">99.8% VERIFIED</p>
+</div>
+<div class="flex justify-end items-center">
+<button class="border border-outline-variant text-on-surface font-label-md text-label-md px-lg py-sm rounded uppercase hover:bg-surface-container-highest transition-colors">Validate</button>
+</div>
+</div>
+</div>
+<!-- High Density Data Table Sub-Section -->
+<div class="mt-md border border-outline-variant bg-surface-container-lowest overflow-x-auto">
+<table class="w-full text-left font-mono-data text-mono-data">
+<thead>
+<tr class="bg-surface-variant border-b border-outline-variant">
+<th class="p-md font-label-caps text-label-caps text-on-surface">REF_ID</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface">PROTOCOL</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface">LATENCY</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface">STATUS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-outline-muted hover:bg-surface-container-highest transition-colors">
+<td class="p-md">#B-882</td>
+<td class="p-md">TLS_HANDSHAKE_V3</td>
+<td class="p-md text-status-success">4ms</td>
+<td class="p-md"><span class="px-xs border border-status-success text-status-success text-[10px]">OK</span></td>
+</tr>
+<tr class="border-b border-outline-muted hover:bg-surface-container-highest transition-colors">
+<td class="p-md">#B-883</td>
+<td class="p-md">SHARD_SYNC_7</td>
+<td class="p-md text-status-error">24ms</td>
+<td class="p-md"><span class="px-xs border border-status-error text-status-error text-[10px]">LAG</span></td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="p-md">#B-884</td>
+<td class="p-md">QUIC_TRANSPORT</td>
+<td class="p-md text-status-success">11ms</td>
+<td class="p-md"><span class="px-xs border border-status-success text-status-success text-[10px]">OK</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Right Telemetry Panel -->
+<aside class="w-full md:w-telemetry-sidebar-width bg-surface-container-low border-l border-outline-variant p-md flex flex-col gap-lg h-full">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface mb-md border-b border-outline-variant pb-xs">SYSTEM_TELEMETRY</h3>
+<div class="space-y-lg">
+<!-- Stat 1 -->
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">ACTIVE_CASES</span>
+<span class="font-headline-lg text-headline-lg text-accent-cyan">142</span>
+</div>
+<div class="h-1 bg-surface-variant w-full relative overflow-hidden">
+<div class="absolute inset-0 bg-accent-cyan w-3/4 animate-pulse"></div>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">HUB_LOAD</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">42%</span>
+</div>
+<div class="flex gap-1 h-2">
+<div class="flex-1 bg-accent-cyan opacity-80"></div>
+<div class="flex-1 bg-accent-cyan opacity-80"></div>
+<div class="flex-1 bg-accent-cyan opacity-80"></div>
+<div class="flex-1 bg-accent-cyan opacity-80"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<span class="font-mono-data text-mono-data text-on-surface-variant opacity-60">NETWORK_LATENCY</span>
+<span class="font-headline-lg text-headline-lg text-status-success">14ms</span>
+</div>
+<div class="h-24 bg-surface-deep border border-outline-muted relative overflow-hidden flex items-end">
+<!-- SVG Waveform Placeholder for Net Latency -->
+<svg class="w-full h-full text-accent-cyan opacity-20" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0 20 L10 18 L20 19 L30 15 L40 17 L50 14 L60 18 L70 16 L80 19 L90 15 L100 18 L100 20 Z" fill="currentColor"></path>
+</svg>
+<div class="absolute bottom-2 left-2 font-mono-data text-[10px] text-on-surface-variant">MIN: 8ms | MAX: 22ms</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Evidence Overlay / Detail Panel -->
+<div class="mt-auto bg-surface-container-highest p-md rounded-xl border border-outline-variant relative overflow-hidden backdrop-blur-md bg-opacity-90">
+<div class="flex justify-between items-start mb-md">
+<span class="font-label-caps text-label-caps text-accent-cyan">THREAT_LEVEL: LOW</span>
+<span class="material-symbols-outlined text-accent-cyan" data-icon="shield">shield</span>
+</div>
+<div class="space-y-md">
+<div class="h-32 bg-surface-deep rounded overflow-hidden">
+<img alt="Server Node Matrix" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A futuristic server room with rows of blinking hardware, bathed in a deep navy and cyan light. The atmosphere is technical and cold, with sharp geometric lines and a subtle fog drifting across the floor, suggesting a highly controlled, forensic environment in a secure tech facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7gNsPdWOntUHoF0jtJepGpZbEQ5ibxPBKJjbxN7QTMIdH8L_Z7mHpdjuab1b2tr66gxvhj1I0qPYLLrOUZiHMG_-akao3QXPe37yEyPKzZmEYxVHY1NGj9MABE3Yyc8xKCBzGTkaNQ7ca7qk7jZ2jnAS50CeYSWcBMi74QnI9y_2lVnuo89hguZ8748qmiaIJX7GTWbouaNguSC9ufB4oyiSx9C_1HnUy9BvA7BTvXiSy79-8MZ21a9Z4Gj-EzetpzKmjfBvLi5Gs"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        Station HUB-09 is currently operating within nominal parameters. Blockchain verification protocols are being applied to all incoming ticket metadata to ensure chain-of-custody for evidentiary support cases.
+                    </p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<footer class="lg:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-16 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+<span class="font-label-sm text-label-sm">Login</span>
+</button>
+<button class="flex flex-col items-center justify-center text-accent-cyan font-bold scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="fingerprint" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span class="font-label-sm text-label-sm">MFA</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span class="font-label-sm text-label-sm">Recovery</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</button>
+</footer>
+<script>
+        // Micro-interaction for pulsing scanline
+        document.querySelectorAll('.bg-surface-container').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const scanline = card.querySelector('.scanline');
+                if(scanline) scanline.style.animationDuration = '1s';
+            });
+            card.addEventListener('mouseleave', () => {
+                const scanline = card.querySelector('.scanline');
+                if(scanline) scanline.style.animationDuration = '4s';
+            });
+        });
+
+        // Simulating live data update
+        setInterval(() => {
+            const hubLoad = document.querySelector('.font-headline-lg.text-on-surface');
+            if (hubLoad && hubLoad.innerText.includes('%')) {
+                let current = parseInt(hubLoad.innerText);
+                let next = current + (Math.random() > 0.5 ? 1 : -1);
+                hubLoad.innerText = `${Math.max(38, Math.min(48, next))}%`;
+            }
+        }, 3000);
+    </script>
+</body></html>

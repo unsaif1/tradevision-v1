@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Compliance Audit Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary": "#412d00",
+                        "surface-container": "#1e2024",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "tertiary-container": "#dad9d9",
+                        "primary-container": "#00f0ff",
+                        "surface-variant": "#333539",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#002022",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-low": "#1a1c20",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#37393e",
+                        "tertiary": "#f7f5f5",
+                        "inverse-surface": "#e2e2e8",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-tertiary-container": "#5e5f5f",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-container": "#feb700",
+                        "primary-fixed": "#7df4ff",
+                        "inverse-on-surface": "#2f3035",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#282a2e",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "primary": "#dbfcff",
+                        "surface-container-highest": "#333539",
+                        "on-primary-container": "#006970",
+                        "outline-variant": "#3b494b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-fixed": "#ffdea8",
+                        "on-primary": "#00363a",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface": "#111317",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-dim": "#111317",
+                        "secondary": "#ffdb9d",
+                        "outline": "#849495",
+                        "on-surface": "#e2e2e8",
+                        "on-background": "#e2e2e8",
+                        "inverse-primary": "#006970"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .industrial-bg {
+            background-image: 
+                linear-gradient(to right, rgba(59, 73, 75, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 73, 75, 0.1) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 240, 255, 0.2);
+            position: absolute;
+            top: 0;
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 50;
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-fixed antialiased overflow-hidden h-screen flex">
+<div class="scanline"></div>
+<!-- SideNavBar (from JSON) -->
+<aside class="bg-surface-container-lowest dark:bg-surface-container-lowest fixed left-0 top-0 h-full w-64 border-r border-outline-variant flex flex-col py-density-comfortable hidden md:flex z-20">
+<div class="px-gutter mb-density-comfortable">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary-container">OP_CENTER_01</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant">SYSTEM_ACTIVE_V2.4</p>
+</div>
+</div>
+<button class="w-full mt-6 py-2 px-4 bg-primary-container text-on-primary-container font-label-caps text-label-caps font-bold rounded-sm border border-primary-container hover:bg-primary transition-colors uppercase tracking-widest">
+                + NEW AUDIT
+            </button>
+</div>
+<nav class="flex-1 overflow-y-auto px-unit">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary-container hover:bg-surface-variant/50 transition-all duration-150 ease-in-out rounded-sm group font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-container transition-colors">grid_view</span>
+                        [DASHBOARD]
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary-container hover:bg-surface-variant/50 transition-all duration-150 ease-in-out rounded-sm group font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-container transition-colors">architecture</span>
+                        [INSPECTIONS]
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container font-bold border-l-4 border-primary-fixed transition-all duration-150 ease-in-out rounded-r-sm font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                        [COMPLIANCE]
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary-container hover:bg-surface-variant/50 transition-all duration-150 ease-in-out rounded-sm group font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-container transition-colors">monitoring</span>
+                        [TELEMETRY]
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary-container hover:bg-surface-variant/50 transition-all duration-150 ease-in-out rounded-sm group font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-container transition-colors">inventory_2</span>
+                        [ARCHIVE]
+                    </a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto px-unit pt-4 border-t border-outline-variant/50">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary-container hover:bg-surface-variant/50 transition-all duration-150 ease-in-out rounded-sm group font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-container transition-colors">help_center</span>
+                        [SUPPORT]
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-all duration-150 ease-in-out rounded-sm group font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined group-hover:text-error transition-colors">power_settings_new</span>
+                        [LOGOUT]
+                    </a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col ml-0 md:ml-64 h-full relative industrial-bg">
+<!-- TopAppBar (from JSON) -->
+<header class="bg-surface-container-low dark:bg-surface-container-low flex justify-between items-center w-full px-margin-desktop h-16 docked full-width top-0 z-10">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container dark:text-primary-container tracking-widest uppercase">
+                    TradeVision C.A.R.E.
+                </h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer active:opacity-80 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">sensors</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer active:opacity-80 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">security</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer active:opacity-80 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 overflow-y-auto p-gutter lg:p-margin-desktop">
+<div class="grid grid-cols-12 gap-gutter lg:gap-density-comfortable auto-rows-min">
+<!-- [ GLOBAL_COMPLIANCE_INDEX ] -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container border border-outline-variant rounded-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="p-density-comfortable">
+<div class="flex justify-between items-start mb-6">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">public</span>
+                                [ GLOBAL_COMPLIANCE_INDEX ]
+                            </h2>
+<div class="flex items-center gap-2 text-primary-container bg-primary-container/10 px-2 py-1 rounded-sm border border-primary-container/30">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-data-point text-sm">+1.2%</span>
+</div>
+</div>
+<div class="flex items-end gap-6 mb-8">
+<div class="font-display-lg text-display-lg text-on-surface font-bold">96.4<span class="text-on-surface-variant text-3xl">%</span></div>
+<div class="pb-2 font-label-caps text-label-caps text-outline">SYSTEM OPTIMAL</div>
+</div>
+<div class="w-full bg-surface-container-highest h-4 rounded-sm overflow-hidden border border-outline-variant/50">
+<div class="bg-primary-container h-full w-[96.4%] relative">
+<div class="absolute right-0 top-0 bottom-0 w-4 bg-white/30 animate-pulse"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2 font-label-caps text-label-caps text-on-surface-variant text-[10px]">
+<span>0%</span>
+<span>TARGET: 98.0%</span>
+<span>100%</span>
+</div>
+</div>
+</div>
+<!-- [ CRITICAL_ALERTS_STACK ] -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container border border-error/30 rounded-sm relative overflow-hidden flex flex-col h-full">
+<div class="bg-error/10 border-b border-error/20 p-3 flex justify-between items-center">
+<h2 class="font-label-caps text-label-caps text-error tracking-widest flex items-center gap-2 font-bold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">warning</span>
+                            [ CRITICAL_ALERTS_STACK ]
+                        </h2>
+<span class="bg-error text-on-error font-data-point text-xs px-2 py-0.5 rounded-sm">2</span>
+</div>
+<div class="flex-1 overflow-y-auto p-3 space-y-3">
+<!-- Alert 1 -->
+<div class="bg-surface-container-high border-l-2 border-error p-3 rounded-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps text-error font-bold">FALL_PROTECTION_VIOLATION</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">T-02:14:00</span>
+</div>
+<p class="font-body-fixed text-sm text-on-surface mb-3">Site ST-882-NW reports unharnessed personnel in Sector 4G.</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-variant text-on-surface font-label-caps text-xs py-1.5 rounded-sm hover:bg-surface-bright transition-colors border border-outline-variant">ACK</button>
+<button class="flex-1 bg-error/20 text-error font-label-caps text-xs py-1.5 rounded-sm hover:bg-error/30 transition-colors border border-error/50">VIEW</button>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="bg-surface-container-high border-l-2 border-secondary p-3 rounded-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps text-secondary font-bold">CERT_EXPIRATION_IMMINENT</span>
+<span class="font-data-point text-[10px] text-on-surface-variant">T-24:00:00</span>
+</div>
+<p class="font-body-fixed text-sm text-on-surface mb-3">Crew C-Alpha safety certs expiring within 24h.</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-variant text-on-surface font-label-caps text-xs py-1.5 rounded-sm hover:bg-surface-bright transition-colors border border-outline-variant">ACK</button>
+<button class="flex-1 bg-secondary/20 text-secondary font-label-caps text-xs py-1.5 rounded-sm hover:bg-secondary/30 transition-colors border border-secondary/50">VIEW</button>
+</div>
+</div>
+</div>
+</div>
+<!-- [ CREW_READINESS_METRICS ] -->
+<div class="col-span-12 lg:col-span-12 bg-surface-container border border-outline-variant rounded-sm p-density-comfortable">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant tracking-widest mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">groups</span>
+                        [ CREW_READINESS_METRICS ]
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Stat 1 -->
+<div class="flex flex-col border-l border-outline-variant pl-4">
+<span class="font-label-caps text-label-caps text-outline mb-1">TOTAL ACTIVE CREWS</span>
+<div class="font-data-point text-display-lg-mobile text-on-surface font-bold">24</div>
+</div>
+<!-- Stat 2 -->
+<div class="flex flex-col border-l border-primary-container/50 pl-4">
+<span class="font-label-caps text-label-caps text-primary-container mb-1">CERTIFIED COMPLIANCE</span>
+<div class="font-data-point text-display-lg-mobile text-primary-container font-bold">88<span class="text-xl">%</span></div>
+</div>
+<!-- Stat 3: Segmented Bar -->
+<div class="flex flex-col border-l border-secondary/50 pl-4">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-secondary">PENDING RENEWALS</span>
+<span class="font-data-point text-xs bg-secondary/20 text-secondary px-1 py-0.5 rounded-sm border border-secondary/30">3 REQ</span>
+</div>
+<div class="flex gap-1 h-8 mt-2">
+<div class="flex-1 bg-surface-container-highest border border-outline-variant rounded-sm"></div>
+<div class="flex-1 bg-surface-container-highest border border-outline-variant rounded-sm"></div>
+<div class="flex-1 bg-secondary border border-secondary rounded-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-black/20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 8px);"></div>
+</div>
+<div class="flex-1 bg-secondary border border-secondary rounded-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-black/20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 8px);"></div>
+</div>
+<div class="flex-1 bg-secondary border border-secondary rounded-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-black/20" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 8px);"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- [ SITE_COMPLIANCE_MATRIX ] -->
+<div class="col-span-12 bg-surface-container border border-outline-variant rounded-sm overflow-hidden flex flex-col">
+<div class="bg-surface-container-high border-b border-outline-variant p-4 flex justify-between items-center">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">table_chart</span>
+                            [ SITE_COMPLIANCE_MATRIX ]
+                        </h2>
+<button class="text-primary-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest">
+<th class="p-3 font-label-caps text-label-caps text-outline w-1/4">SITE_ID</th>
+<th class="p-3 font-label-caps text-label-caps text-outline w-1/4">FOREMAN</th>
+<th class="p-3 font-label-caps text-label-caps text-outline w-1/4 text-right">T-TO-AUDIT</th>
+<th class="p-3 font-label-caps text-label-caps text-outline w-1/4 text-center">GRADE</th>
+</tr>
+</thead>
+<tbody class="font-data-point text-sm">
+<tr class="border-b border-outline-variant/30 hover:bg-surface-variant/30 transition-colors group">
+<td class="p-3 text-primary-container font-bold">ST-882-NW</td>
+<td class="p-3 text-on-surface">J. MILLER</td>
+<td class="p-3 text-right text-on-surface-variant">T-12 DAYS</td>
+<td class="p-3 text-center">
+<span class="inline-block w-6 h-6 leading-6 text-center rounded-sm bg-primary-container/20 text-primary-container border border-primary-container/50 font-bold text-xs">A</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/30 hover:bg-surface-variant/30 transition-colors group bg-error/5">
+<td class="p-3 text-error font-bold flex items-center gap-2">
+                                        ST-901-SE
+                                        <span class="material-symbols-outlined text-[14px] text-error">warning</span>
+</td>
+<td class="p-3 text-on-surface">R. DAVIS</td>
+<td class="p-3 text-right text-error font-bold">T-02 DAYS</td>
+<td class="p-3 text-center">
+<span class="inline-block w-6 h-6 leading-6 text-center rounded-sm bg-error/20 text-error border border-error/50 font-bold text-xs">C</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/30 hover:bg-surface-variant/30 transition-colors group">
+<td class="p-3 text-on-surface font-bold">ST-443-NE</td>
+<td class="p-3 text-on-surface">S. CHEN</td>
+<td class="p-3 text-right text-on-surface-variant">T-28 DAYS</td>
+<td class="p-3 text-center">
+<span class="inline-block w-6 h-6 leading-6 text-center rounded-sm bg-secondary/20 text-secondary border border-secondary/50 font-bold text-xs">B</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors group">
+<td class="p-3 text-on-surface font-bold">ST-112-SW</td>
+<td class="p-3 text-on-surface">M. KOVAC</td>
+<td class="p-3 text-right text-on-surface-variant">T-45 DAYS</td>
+<td class="p-3 text-center">
+<span class="inline-block w-6 h-6 leading-6 text-center rounded-sm bg-primary-container/20 text-primary-container border border-primary-container/50 font-bold text-xs">A</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

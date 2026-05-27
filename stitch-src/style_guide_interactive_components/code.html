@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interactive Components | TRADEVISION C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline-active::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to bottom, transparent, #ffd9dc, transparent);
+            opacity: 0.3;
+            animation: scanline 3s linear infinite;
+            pointer-events: none;
+        }
+        .cyber-corner {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+        }
+        .cyber-border-accent::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 2px;
+            background: #ffd9dc;
+        }
+        .cyber-border-accent::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 20px;
+            background: #ffd9dc;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#353941",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "on-tertiary": "#273141",
+                        "background": "#0f141a",
+                        "on-surface": "#dee3eb",
+                        "surface-container-lowest": "#0a0f14",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "primary-container": "#ffb2b9",
+                        "inverse-surface": "#dee3eb",
+                        "accent-cyan": "#00f2ff",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "surface-container-high": "#252a31",
+                        "surface": "#0f141a",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "secondary-fixed-dim": "#bac8db",
+                        "tertiary": "#d9e3f9",
+                        "outline": "#9f8c8d",
+                        "surface-container-highest": "#30353c",
+                        "on-primary": "#522027",
+                        "on-secondary-container": "#a8b6c9",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "error-container": "#93000a",
+                        "status-error": "#f43f5e",
+                        "surface-container": "#1b2026",
+                        "on-secondary": "#243240",
+                        "surface-dim": "#0f141a",
+                        "status-success": "#4ade80",
+                        "outline-variant": "#524344",
+                        "tertiary-container": "#bdc7dc",
+                        "on-surface-variant": "#d7c2c2",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-deep": "#090f15",
+                        "on-primary-container": "#7b4148",
+                        "on-tertiary-container": "#495365",
+                        "primary-fixed": "#ffdadc",
+                        "secondary-fixed": "#d5e4f7",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-variant": "#30353c",
+                        "primary": "#ffd9dc",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#370c13",
+                        "on-primary-fixed-variant": "#6d363d",
+                        "on-background": "#dee3eb",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-primary": "#894d54",
+                        "outline-muted": "rgba(136, 150, 168, 0.15)",
+                        "on-error": "#690005",
+                        "secondary-container": "#3a4858",
+                        "on-tertiary-fixed": "#121c2c",
+                        "secondary": "#bac8db",
+                        "surface-container-low": "#171c22"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin": "24px",
+                        "telemetry-sidebar-width": "340px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "sidebar-width": "260px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "label-caps": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "mono-data": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "mono-data": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex h-screen w-full">
+<!-- Sidebar Left: Navigation Drawer -->
+<aside class="w-sidebar-width h-screen border-r border-outline-variant bg-surface-container flex flex-col py-lg shrink-0">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter uppercase">TRADEVISION C.A.R.E.</h1>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-sm transition-colors text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-sm transition-colors text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_tree">account_tree</span>
+<span class="font-label-caps text-label-caps">Evidence Ledger</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-sm transition-colors text-primary font-bold border-r-2 border-primary bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="security">security</span>
+<span class="font-label-caps text-label-caps">Validator Node</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-sm transition-colors text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-sm transition-colors text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="px-lg mt-auto">
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-sm">
+<p class="font-label-sm text-label-sm text-outline mb-xs">NODE_STATUS</p>
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-status-success animate-pulse"></div>
+<span class="font-mono-data text-mono-data text-status-success">ACTIVE_SYNC</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between px-lg w-full h-16 border-b border-outline-variant bg-surface-deep sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-cyan cursor-pointer transition-all active:scale-95" data-icon="terminal">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-widest">SYSTEM_CORE_V2.0</h2>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-md">
+<span class="font-mono-data text-mono-data text-outline">UPTIME: 124:12:09</span>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<span class="font-mono-data text-mono-data text-accent-cyan">USER_ID: FX-9900</span>
+</div>
+<span class="material-symbols-outlined text-outline hover:text-accent-cyan cursor-pointer transition-all active:scale-95" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Scrollable Workspace -->
+<div class="flex-1 overflow-y-auto p-lg">
+<div class="max-w-6xl mx-auto space-y-xl">
+<!-- Section header -->
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase mb-xs">Interactive Components</h3>
+<p class="font-body-md text-on-surface-variant max-w-2xl">Visual documentation for state-driven forensic UI elements. These components maintain system integrity through explicit visual feedback loops.</p>
+</div>
+<!-- Component Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Metric Cards with Sparklines (4 cols) -->
+<div class="lg:col-span-4 space-y-gutter">
+<h4 class="font-label-caps text-label-caps text-outline">Metric State Variants</h4>
+<!-- Metric: Active -->
+<div class="bg-surface-container p-md border border-outline-variant cyber-corner relative overflow-hidden group hover:border-primary transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Hash_Rate</p>
+<p class="font-headline-md text-headline-md text-primary">84.2 TH/s</p>
+</div>
+<div class="bg-primary-container text-on-primary-container px-xs py-1 rounded-sm font-mono-data text-[10px]">ACTIVE</div>
+</div>
+<div class="h-12 w-full flex items-end gap-[2px]">
+<div class="flex-1 bg-primary/20 h-1/2"></div>
+<div class="flex-1 bg-primary/20 h-2/3"></div>
+<div class="flex-1 bg-primary/40 h-3/4"></div>
+<div class="flex-1 bg-primary/20 h-1/2"></div>
+<div class="flex-1 bg-primary/60 h-full group-hover:animate-pulse"></div>
+</div>
+</div>
+<!-- Metric: Pending -->
+<div class="bg-surface-container p-md border border-outline-variant cyber-corner opacity-80 grayscale hover:grayscale-0 transition-all">
+<div class="flex justify-between items-start mb-md">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Sync_Progress</p>
+<p class="font-headline-md text-headline-md text-on-surface">99.98%</p>
+</div>
+<div class="bg-surface-container-highest text-outline px-xs py-1 rounded-sm font-mono-data text-[10px]">PENDING</div>
+</div>
+<div class="w-full bg-outline-variant h-1 rounded-full overflow-hidden">
+<div class="bg-accent-cyan h-full w-[99%]" style="box-shadow: 0 0 10px rgba(0, 242, 255, 0.5)"></div>
+</div>
+</div>
+</div>
+<!-- Blockchain Verification Frame (8 cols) -->
+<div class="lg:col-span-8 space-y-gutter">
+<h4 class="font-label-caps text-label-caps text-outline">Verification Logic &amp; High-Contrast Input</h4>
+<!-- Cyber Verification Frame -->
+<div class="bg-surface-container-high border border-primary cyber-border-accent relative p-lg scanline-active overflow-hidden">
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="flex-1">
+<label class="font-label-caps text-label-caps text-primary mb-sm block">CRYPTOGRAPHIC_SIGNATURE</label>
+<div class="bg-surface-container-lowest p-md border border-outline-variant rounded-sm font-mono-data text-mono-data text-accent-cyan break-all leading-relaxed">
+                                            0x71C7656EC7ab88b098defB751B7401B5f6d8976F1d8976F1d8976F1d8976F...
+                                        </div>
+<div class="mt-md flex gap-md">
+<button class="bg-primary text-on-primary-fixed px-lg py-sm font-label-md text-label-md rounded-sm hover:bg-primary-fixed transition-colors">VERIFY_BLOCK</button>
+<button class="border border-outline-variant text-on-surface px-lg py-sm font-label-md text-label-md rounded-sm hover:bg-surface-container-highest transition-colors">REJECT</button>
+</div>
+</div>
+<div class="w-full md:w-64 flex flex-col items-center justify-center p-md bg-surface-container border border-outline-variant rounded-sm">
+<div class="mb-sm">
+<span class="material-symbols-outlined text-[48px] text-status-success" data-icon="verified" style="font-variation-settings: 'FILL' 1">verified</span>
+</div>
+<p class="font-label-caps text-label-caps text-status-success">VALIDATED</p>
+<p class="font-mono-data text-mono-data text-outline mt-xs text-center">TIMESTAMP: 2023-11-24T12:04:00Z</p>
+</div>
+</div>
+</div>
+<!-- High Contrast Data Inputs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-sm space-y-md">
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-highest border-none pl-xl pr-md py-sm rounded-full text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary font-mono-data text-mono-data" placeholder="QUERY_BLOCK_HEIGHT..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-xs">
+<div class="px-sm py-1 border border-status-success/30 bg-status-success/10 text-status-success rounded-sm font-label-sm text-label-sm">BLOCK_772</div>
+<div class="px-sm py-1 border border-status-error/30 bg-status-error/10 text-status-error rounded-sm font-label-sm text-label-sm">MISMATCH</div>
+<div class="px-sm py-1 border border-outline-variant bg-surface-container-highest text-outline rounded-sm font-label-sm text-label-sm">PENDING_TX</div>
+</div>
+</div>
+<!-- Routing Toggles -->
+<div class="bg-surface-container-low p-md rounded-sm space-y-md">
+<p class="font-label-caps text-label-caps text-outline">ALERT_ROUTING_MATRIX</p>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm bg-surface-container rounded-sm border border-outline-variant">
+<span class="font-label-md text-label-md">CRITICAL_ERRORS</span>
+<button class="w-10 h-5 bg-primary rounded-full relative transition-all" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('bg-surface-container-highest')">
+<div class="absolute right-1 top-1 w-3 h-3 bg-on-primary-fixed rounded-full transition-all"></div>
+</button>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container rounded-sm border border-outline-variant">
+<span class="font-label-md text-label-md">NETWORK_LATENCY</span>
+<button class="w-10 h-5 bg-surface-container-highest rounded-full relative transition-all" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('bg-surface-container-highest')">
+<div class="absolute left-1 top-1 w-3 h-3 bg-outline rounded-full transition-all"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Data Table Bento (Full Width) -->
+<div class="lg:col-span-12 space-y-gutter">
+<h4 class="font-label-caps text-label-caps text-outline">Validation Ledger</h4>
+<div class="bg-surface-container-low border border-outline-variant rounded-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant">
+<th class="p-md font-label-caps text-label-caps text-outline">SENDER_ID</th>
+<th class="p-md font-label-caps text-label-caps text-outline">TRANSACTION_TYPE</th>
+<th class="p-md font-label-caps text-label-caps text-outline">VALUE_EST</th>
+<th class="p-md font-label-caps text-label-caps text-outline">INTEGRITY_INDEX</th>
+<th class="p-md font-label-caps text-label-caps text-outline">STATE</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data">
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="p-md text-on-surface">U_ID: 8820-X</td>
+<td class="p-md text-accent-cyan">CONTRACT_EXEC</td>
+<td class="p-md">0.442 BTC</td>
+<td class="p-md">
+<div class="flex gap-[2px]">
+<div class="w-1 h-3 bg-status-success"></div>
+<div class="w-1 h-3 bg-status-success"></div>
+<div class="w-1 h-3 bg-status-success"></div>
+<div class="w-1 h-3 bg-status-success"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+</div>
+</td>
+<td class="p-md"><span class="text-status-success px-sm py-1 border border-status-success/30 rounded-sm">VALIDATED</span></td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="p-md text-on-surface">U_ID: 9110-Z</td>
+<td class="p-md text-primary">ASSET_MINT</td>
+<td class="p-md">1.220 ETH</td>
+<td class="p-md">
+<div class="flex gap-[2px]">
+<div class="w-1 h-3 bg-status-error"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+</div>
+</td>
+<td class="p-md"><span class="text-status-error px-sm py-1 border border-status-error/30 rounded-sm">MISMATCH</span></td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="p-md text-on-surface">U_ID: 4402-Q</td>
+<td class="p-md text-accent-cyan">STAKE_MOD</td>
+<td class="p-md">12.00 SOL</td>
+<td class="p-md">
+<div class="flex gap-[2px]">
+<div class="w-1 h-3 bg-accent-cyan"></div>
+<div class="w-1 h-3 bg-accent-cyan"></div>
+<div class="w-1 h-3 bg-accent-cyan"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+<div class="w-1 h-3 bg-outline-variant"></div>
+</div>
+</td>
+<td class="p-md"><span class="text-outline px-sm py-1 border border-outline-variant rounded-sm">PENDING</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sidebar Right: Telemetry Panel -->
+<aside class="w-telemetry-sidebar-width h-screen border-l border-outline-variant bg-surface-container-low shrink-0 hidden xl:flex flex-col p-md">
+<div class="mb-lg">
+<p class="font-label-caps text-label-caps text-outline mb-md uppercase">TELEMETRY_LOG</p>
+<div class="space-y-sm">
+<div class="bg-surface-container p-sm border border-outline-variant rounded-sm flex items-center justify-between animate-pulse-subtle">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-status-success text-sm" data-icon="sensors">sensors</span>
+<span class="font-label-sm text-label-sm text-on-surface">CORE_LOAD</span>
+</div>
+<span class="font-mono-data text-mono-data text-status-success">12.4%</span>
+</div>
+<div class="bg-surface-container p-sm border border-outline-variant rounded-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="memory">memory</span>
+<span class="font-label-sm text-label-sm text-on-surface">RAM_ALLOC</span>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface">8.4GB</span>
+</div>
+<div class="bg-surface-container p-sm border border-outline-variant rounded-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-accent-cyan text-sm" data-icon="speed">speed</span>
+<span class="font-label-sm text-label-sm text-on-surface">NETWORK_LAT</span>
+</div>
+<span class="font-mono-data text-mono-data text-accent-cyan">14ms</span>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-hidden flex flex-col">
+<p class="font-label-caps text-label-caps text-outline mb-sm">LIVE_SYSTEM_FEED</p>
+<div class="flex-1 bg-surface-container-lowest p-md font-mono-data text-[10px] leading-relaxed text-outline overflow-y-auto space-y-1">
+<p class="text-status-success">[INFO] VALIDATION_SEQ_INITIATED</p>
+<p>[TRCE] PARSING BLOCK #7721-B</p>
+<p>[TRCE] CHECKING HASH_INTEGRITY...</p>
+<p class="text-accent-cyan">[INFO] HASH_MATCH_FOUND 0x71...F1</p>
+<p class="text-status-success">[COMP] BLOCK_VALIDATED_SUCCESS</p>
+<p>[TRCE] UPDATING LEDGER_STATE</p>
+<p>[TRCE] BROADCASTING NODE_UPDATE</p>
+<p class="text-primary">[WARN] PEER_NODE_34 DISCONNECTED</p>
+<p>[INFO] RE-ROUTING TRAFFIC_GATE_A</p>
+<p class="text-status-success">[INFO] SYSTEM_NOMINAL</p>
+<p>[TRCE] IDLE_MODE_STANDBY</p>
+</div>
+</div>
+<div class="mt-md">
+<div class="relative w-full aspect-video rounded-sm overflow-hidden bg-surface-container-highest">
+<img alt="Server rack closeup" class="w-full h-full object-cover mix-blend-overlay opacity-50" data-alt="A macro photograph of high-tech server racks in a darkened data center, illuminated by cold blue and sharp white status LEDs. The composition is technical and forensic, focusing on the dense cabling and hardware textures. Soft shadows create a sense of depth, while the vibrant accent lights emphasize a state-of-the-art technological environment. The mood is silent, powerful, and highly secure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnnQmJwCZ3LGYDh-YjUH18_JEO-3JuzgI05Z3sCPz3DWK87odF4S813W-cClFU6Nq7XAgXvi5y4pCzaeSr-q8X0-tqQ9XmBt2ORRTSpOAjw_KMbt1motfOxV555z9Jaa7u2WJsmca96hj4elQ7JQTb-MUEf8m6TQlIW34aP4ctvEhOcfnZ_ncwO8Ht8UJ7aLGSFVsljxerD_JAZMYuVJ88rxUnyqKKipJIWAwDbRHeehAxLXhXBKgcuSNViPEqo-yMdowGmtuqfmPI"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="p-sm bg-background/80 backdrop-blur-md border border-outline-variant rounded-sm">
+<p class="font-label-caps text-label-caps text-primary text-[10px]">REALTIME_SURVEILLANCE</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- State Logic Documentation Floating Tooltip (Interactive demo element) -->
+<div class="fixed bottom-lg right-[360px] bg-surface-bright/90 backdrop-blur-xl border border-primary p-md rounded-sm shadow-xl max-w-xs z-50">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-primary text-md" data-icon="info">info</span>
+<p class="font-label-caps text-label-caps text-primary">STATE_LOGIC_REFERENCE</p>
+</div>
+<ul class="space-y-sm font-label-sm text-label-sm text-on-surface">
+<li class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span>ACTIVE: Processing, pulse animation enabled.</span>
+</li>
+<li class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-status-success"></div>
+<span>VALIDATED: Integrity verified, scanline static.</span>
+</li>
+<li class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-status-error"></div>
+<span>MISMATCH: Hash failure, secondary alert triggered.</span>
+</li>
+<li class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span>PENDING: Awaiting peer verification.</span>
+</li>
+</ul>
+<button class="mt-md w-full py-1 bg-surface-container-highest font-label-caps text-[10px] text-outline hover:text-on-surface uppercase border border-outline-variant" onclick="this.parentElement.remove()">Dismiss_Docs</button>
+</div>
+<script>
+        // Micro-interaction for data inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('ring-1', 'ring-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('ring-1', 'ring-primary');
+            });
+        });
+
+        // Toggle state logic for routing matrix switches
+        function toggleRoute(btn) {
+            const isActive = btn.classList.contains('bg-primary');
+            const dot = btn.querySelector('div');
+            if(isActive) {
+                btn.classList.remove('bg-primary');
+                btn.classList.add('bg-surface-container-highest');
+                dot.classList.remove('right-1');
+                dot.classList.add('left-1');
+                dot.classList.replace('bg-on-primary-fixed', 'bg-outline');
+            } else {
+                btn.classList.add('bg-primary');
+                btn.classList.remove('bg-surface-container-highest');
+                dot.classList.remove('left-1');
+                dot.classList.add('right-1');
+                dot.classList.replace('bg-outline', 'bg-on-primary-fixed');
+            }
+        }
+    </script>
+</body></html>

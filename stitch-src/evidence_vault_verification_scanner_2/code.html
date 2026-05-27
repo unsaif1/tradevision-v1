@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Scanner - Evidence Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-surface": "#e2e2e8",
+                      "inverse-surface": "#e2e2e8",
+                      "on-secondary": "#412d00",
+                      "primary-fixed": "#7df4ff",
+                      "on-primary": "#00363a",
+                      "surface-bright": "#37393e",
+                      "on-error": "#690005",
+                      "surface-container-low": "#1a1c20",
+                      "secondary": "#ffdb9d",
+                      "inverse-on-surface": "#2f3035",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "surface-container": "#1e2024",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "tertiary-container": "#dad9d9",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary": "#303031",
+                      "background": "#111317",
+                      "primary-container": "#00f0ff",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-secondary-fixed": "#271900",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0c0e12",
+                      "on-primary-fixed": "#002022",
+                      "on-background": "#e2e2e8",
+                      "surface-variant": "#333539",
+                      "outline": "#849495",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "error": "#ffb4ab",
+                      "surface": "#111317",
+                      "surface-container-high": "#282a2e",
+                      "primary": "#dbfcff",
+                      "surface-tint": "#00dbe9",
+                      "surface-container-highest": "#333539",
+                      "secondary-container": "#feb700",
+                      "on-surface-variant": "#b9cacb",
+                      "tertiary": "#f7f5f5",
+                      "on-primary-container": "#006970",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-secondary-container": "#6b4b00",
+                      "on-tertiary-container": "#5e5f5f",
+                      "surface-dim": "#111317",
+                      "on-primary-fixed-variant": "#004f54",
+                      "outline-variant": "#3b494b",
+                      "inverse-primary": "#006970",
+                      "neon-pink": "#ff007f",
+                      "neon-blue": "#00f0ff",
+                      "surface-stroke": "#2D2D2D",
+                      "text-muted": "#849495"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "density-compact": "8px",
+                      "gutter": "16px",
+                      "margin-desktop": "32px",
+                      "density-comfortable": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .scanner-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        .animate-scan {
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.8; box-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+            50% { opacity: 1; box-shadow: 0 0 20px rgba(0, 240, 255, 0.8); }
+        }
+
+        .border-glow {
+            animation: pulse-glow 2s infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-fixed antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-surface-stroke flex justify-between items-center px-margin-mobile h-16 w-full">
+<button aria-label="Terminal" class="text-neon-pink p-2 hover:bg-surface-bright transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">terminal</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-label-caps text-label-caps tracking-widest text-neon-pink">FIELD AUDIT TERMINAL</h1>
+<button aria-label="Settings" class="text-on-surface-variant p-2 hover:bg-surface-bright transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+</header>
+<!-- Main Content Area - Scanner Canvas -->
+<main class="flex-grow mt-16 mb-20 relative bg-background overflow-hidden flex flex-col">
+<!-- Camera/Scanner Feed Background -->
+<div class="absolute inset-0 z-0 bg-surface-container-lowest">
+<!-- Simulated Camera Feed -->
+<img alt="A high-contrast, industrial close-up of a textured roofing shingle surface being inspected. The lighting is harsh and directional, emphasizing the gritty texture and granular detail of the asphalt shingle. Subtle digital crosshairs and measurement overlays in neon blue hint at a technical analysis process in a dark, moody environment." class="w-full h-full object-cover opacity-40 grayscale contrast-125 mix-blend-luminosity" data-alt="A high-contrast, industrial close-up of a textured roofing shingle surface being inspected. The lighting is harsh and directional, emphasizing the gritty texture and granular detail of the asphalt shingle. Subtle digital crosshairs and measurement overlays in neon blue hint at a technical analysis process in a dark, moody environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7y-mXaaDWxiFNSSH8N3XCjXkeLfD4beMPRVwmWNZZywN7sPaZvYmFwgagQyDYWeXTHbSveoL0GRSCK4FXTuC5lpZzGtqC9gPUFmUca-ZPjejmE7XJMVK6BCOJqXE59RXv1az1d2h13DAT5AFdHLhGAr2POzIRTsXgQGoOwbBmsxWW7zKVTxI6oNPGmk3Olj8ICXXbBlH83xjjevcmQStZl_YFMV3gUKGJAucVdcAUmJjxQw-fwUN24UTsEVkibaQNwKOwqK-i39iK"/>
+<!-- Grid Overlay -->
+<div class="absolute inset-0 z-10 scanner-grid mix-blend-screen pointer-events-none"></div>
+<!-- Scanning Laser -->
+<div class="absolute inset-x-0 top-0 h-1 bg-primary-container shadow-[0_0_15px_rgba(0,240,255,0.8)] z-20 animate-scan pointer-events-none opacity-60"></div>
+</div>
+<!-- Foreground UI Layers -->
+<div class="relative z-30 flex-grow flex flex-col p-margin-mobile justify-between h-full pointer-events-none">
+<!-- Top Telemetry & Status -->
+<div class="flex justify-between items-start pt-4 pointer-events-auto">
+<div class="bg-surface-container-high/80 backdrop-blur-sm border border-surface-stroke p-density-compact rounded-DEFAULT flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">NODE LATENCY: <span class="text-secondary-fixed-dim font-bold">24ms</span></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary-container" style="font-variation-settings: 'FILL' 1;">sync</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">BLOCK SYNC: <span class="text-primary-container font-bold">98%</span></span>
+</div>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-sm border border-error-container p-density-compact rounded-DEFAULT">
+<span class="font-label-caps text-label-caps text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                        LIVE AUDIT
+                    </span>
+</div>
+</div>
+<!-- Central Targeting Reticle -->
+<div class="flex-grow flex items-center justify-center">
+<div class="relative w-64 h-64 border-glow">
+<!-- Corner Brackets -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary-container"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary-container"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary-container"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary-container"></div>
+<!-- Center Crosshair -->
+<div class="absolute inset-0 flex items-center justify-center opacity-30">
+<div class="w-full h-px bg-primary-container"></div>
+<div class="h-full w-px bg-primary-container absolute"></div>
+</div>
+<!-- Target Data -->
+<div class="absolute top-2 left-2 bg-background/60 px-1">
+<span class="font-data-point text-data-point text-primary-fixed-dim text-xs">IMG_8834_RAW</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-background/60 px-1">
+<span class="font-data-point text-data-point text-secondary-container text-xs">AWAITING HASH</span>
+</div>
+</div>
+</div>
+<!-- Bottom Progress & Action -->
+<div class="bg-surface-container/90 backdrop-blur-md border-t border-surface-stroke p-margin-mobile -mx-margin-mobile flex flex-col gap-unit pointer-events-auto">
+<div class="flex justify-between items-end mb-2">
+<span class="font-headline-md text-headline-md text-on-surface font-label-caps">SCANNING...</span>
+<span class="font-data-point text-data-point text-primary-container">64%</span>
+</div>
+<!-- Progress Bar -->
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden mb-4">
+<div class="h-full bg-primary-container w-[64%] relative">
+<div class="absolute inset-0 bg-white/20 w-full animate-pulse"></div>
+</div>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-[16px] animate-spin">autorenew</span>
+                    GENERATING SHA-256 HASH
+                </div>
+<!-- Cancel Button -->
+<button class="w-full py-density-comfortable border border-surface-stroke bg-surface hover:bg-surface-bright active:scale-[0.98] transition-all text-on-surface font-label-caps text-label-caps font-bold tracking-widest flex items-center justify-center gap-2 rounded-sm shadow-[0_4px_0_#2D2D2D] active:shadow-[0_0px_0_#2D2D2D] active:translate-y-[4px]">
+<span class="material-symbols-outlined text-[18px]">close</span>
+                    ABORT VERIFICATION
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-surface-stroke flex justify-around items-center h-20 w-full px-gutter">
+<button aria-label="Identify" class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">biotech</span>
+<span class="font-label-caps text-[10px] uppercase">IDENTIFY</span>
+</button>
+<button aria-label="Evidence" class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="font-label-caps text-[10px] uppercase font-bold">EVIDENCE</span>
+</button>
+<button aria-label="Verify" class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">assignment_turned_in</span>
+<span class="font-label-caps text-[10px] uppercase">VERIFY</span>
+</button>
+<button aria-label="Stack" class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">layers</span>
+<span class="font-label-caps text-[10px] uppercase">STACK</span>
+</button>
+</nav>
+<script>
+        // Simple script to update progress bar randomly to simulate scanning
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.querySelector('.bg-primary-container.w-\\[64\\%\\]');
+            const progressText = document.querySelector('.text-primary-container.font-data-point');
+            let currentProgress = 64;
+
+            setInterval(() => {
+                if(currentProgress < 99) {
+                    currentProgress += Math.random() > 0.5 ? 1 : 0;
+                    if(progressBar) progressBar.style.width = `${currentProgress}%`;
+                    if(progressText) progressText.textContent = `${currentProgress}%`;
+                }
+            }, 500);
+        });
+    </script>
+</body></html>

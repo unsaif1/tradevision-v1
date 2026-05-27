@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roofing Forecast Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#282a2e",
+                        "inverse-primary": "#006970",
+                        "surface": "#111317",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "primary": "#dbfcff",
+                        "on-primary": "#00363a",
+                        "surface-bright": "#37393e",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary-container": "#feb700",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-tint": "#00dbe9",
+                        "primary-fixed": "#7df4ff",
+                        "surface-variant": "#333539",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-container": "#006970",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#ffba20",
+                        "secondary": "#ffdb9d",
+                        "tertiary-container": "#dad9d9",
+                        "background": "#111317",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333539",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "outline": "#849495",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface": "#e2e2e8",
+                        "outline-variant": "#3b494b",
+                        "on-secondary": "#412d00",
+                        "inverse-surface": "#e2e2e8",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-low": "#1a1c20",
+                        "error-container": "#93000a",
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005",
+                        "tertiary": "#f7f5f5",
+                        "surface-container": "#1e2024"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "data-point": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-fixed": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #111317; color: #e2e2e8; }
+        .data-point { font-family: 'JetBrains Mono', monospace; }
+        .tech-border { border: 1px solid #2D2D2D; }
+        .active-border { border: 1px solid #7df4ff; box-shadow: inset 0 0 8px rgba(125, 244, 255, 0.1); }
+        .status-strip { width: 4px; height: 100%; position: absolute; left: 0; top: 0; }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex text-on-surface">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low h-screen w-64 border-r border-outline-variant flex flex-col fixed left-0 top-0 py-density-comfortable hidden md:flex z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="Contractor Firm Logo" class="w-full h-full object-cover" data-alt="A minimalist, geometric logo of a structural engineering or construction firm, featuring intersecting steel beams or a stylized roofline in stark monochrome. Set against a dark industrial background to match a high-tech roofing application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSyaQfv60Ym9E8W-IyjzPTDOoScnInYZEqB_2tXo4BM8ntmuHO9OUUD4zd-jT4jWSauz-a-ib5jbMgqstZfTzrIwLpQ7aWgW0n0_10ZOFVEQkw3kN5YCTl9blfjxc2bWWn3yWAfl2sg7-q8rHDdkvddsL3ahKDMD7Y9qsBUV0HNrTcotIuBKbYjecAMsSGhsoKNKTKa5lzrgd2papbrEpRcbgy0bW7cM4Rpzufh-dFFB1zrIO31-LmUPfzTxzhdZvcm3DFVTbofcsG"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary uppercase leading-none">STRUC_DATA</h1>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-[12px] mt-1">Precision Reporting</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 px-4 flex-grow">
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-highest hover:text-on-surface transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-label-caps text-label-caps">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-highest hover:text-on-surface transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">architecture</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-highest hover:text-on-surface transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">payments</span>
+<span class="font-label-caps text-label-caps">Expenses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded border-l-4 border-primary bg-surface-container-high text-primary font-bold opacity-80 duration-150 scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-caps text-label-caps">Forecasts</span>
+</a>
+</div>
+<div class="px-4 mt-auto mb-6">
+<button class="w-full py-3 px-4 bg-surface-container-highest border border-outline-variant hover:border-primary text-primary font-label-caps text-label-caps rounded transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span> Export Audit
+             </button>
+</div>
+<div class="flex flex-col gap-1 px-4 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+<span class="font-label-caps text-label-caps">Archive</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 bg-background min-h-screen flex flex-col">
+<!-- TopAppBar (Desktop context handling) -->
+<header class="w-full h-16 border-b border-outline-variant bg-surface flex justify-between items-center px-margin-desktop sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-display-lg text-primary tracking-tighter text-[24px]">ROOF_FINANCE_v1</span>
+</div>
+<div class="flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded pl-10 pr-4 py-2 text-on-surface font-body-fixed text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Search forecasts, clients..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Chief Financial Officer Profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a corporate financial officer, wearing a sharp suit. Lighting is cinematic and slightly dramatic, fitting a high-stakes corporate environment. Dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk62lKVqmHX9PIkKzdsKtUp9MZS4IrE8-dxxY5jW5OUyt9bXtUKgJmH6M-_C5ogl-edmXZC2jxcoOUagkXwXOZPyUOmUFqqiQTAJzgn8HHFh-3VtI_6DyUy5eKRXwJfYDx8lNkK7QPpgpu-tYHkrwIUvQCC0XK_ysxUFezXXcw2L4kxcecLV1cwAG3i7Fa-rX91vEAq9M7mw86qisT7Koql_NUMbheNanTjJeHUEcu-dWTGUyrvguvHfZbhkkyTd4CIZO42maH87qo"/>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-margin-desktop flex-1 grid grid-cols-12 gap-gutter items-start">
+<!-- Header Section -->
+<div class="col-span-12 flex justify-between items-end mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Pipeline Projection Engine</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant text-sm">Real-time revenue forecasting based on signed contracts and weighted probability.</p>
+</div>
+<div class="flex bg-surface-container-high border border-outline-variant rounded p-1">
+<button class="px-4 py-1 text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors">30D</button>
+<button class="px-4 py-1 bg-surface border border-outline-variant text-primary font-label-caps text-label-caps rounded shadow-sm">60D</button>
+<button class="px-4 py-1 text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors">90D</button>
+</div>
+</div>
+<!-- Main Chart Area (Col 1-8) -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<!-- Anticipated Cash Flow Chart Container -->
+<div class="bg-surface-container-low tech-border p-6 rounded relative overflow-hidden h-[400px] flex flex-col">
+<div class="absolute top-0 left-0 px-3 py-1 bg-surface-container-highest border-b border-r border-outline-variant font-label-caps text-label-caps text-on-surface-variant rounded-br">
+                        FIG 1. Anticipated Cash Flow
+                    </div>
+<div class="mt-8 flex-1 relative">
+<!-- Simulated Chart Grid -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-10">
+<div class="border-t border-primary-fixed w-full"></div>
+<div class="border-t border-primary-fixed w-full"></div>
+<div class="border-t border-primary-fixed w-full"></div>
+<div class="border-t border-primary-fixed w-full"></div>
+<div class="border-t border-primary-fixed w-full"></div>
+</div>
+<!-- Simulated Chart Area (Gradient SVG placeholder) -->
+<div class="absolute inset-0 bottom-6 left-12 right-0">
+<div class="w-full h-full bg-gradient-to-t from-primary/20 to-transparent border-t-2 border-primary" style="clip-path: polygon(0 80%, 20% 60%, 40% 70%, 60% 30%, 80% 40%, 100% 10%, 100% 100%, 0 100%);"></div>
+<div class="w-full h-full absolute top-0 left-0 border-t-2 border-surface-variant opacity-50" style="clip-path: polygon(0 90%, 20% 80%, 40% 85%, 60% 60%, 80% 70%, 100% 40%, 100% 100%, 0 100%);"></div>
+</div>
+<!-- Y Axis -->
+<div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between font-data-point text-label-caps text-on-surface-variant text-[10px]">
+<span>$1.2M</span>
+<span>$900k</span>
+<span>$600k</span>
+<span>$300k</span>
+<span>$0</span>
+</div>
+<!-- X Axis -->
+<div class="absolute bottom-0 left-12 right-0 flex justify-between font-label-caps text-label-caps text-on-surface-variant text-[10px]">
+<span>Wk 1</span>
+<span>Wk 2</span>
+<span>Wk 3</span>
+<span>Wk 4</span>
+<span>Wk 5</span>
+<span>Wk 6</span>
+<span>Wk 7</span>
+<span>Wk 8</span>
+</div>
+</div>
+</div>
+<!-- Contract Probability Matrix -->
+<div class="bg-surface-container-low tech-border rounded overflow-hidden">
+<div class="px-4 py-2 bg-surface-container-highest border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Contract Probability Matrix</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">filter_list</span>
+</div>
+<div class="p-0">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-2 border-b border-outline-variant font-label-caps text-[10px] text-on-surface-variant uppercase">
+<div class="col-span-5">Project / Entity</div>
+<div class="col-span-2">Value</div>
+<div class="col-span-3">Confidence</div>
+<div class="col-span-2 text-right">Est. Close</div>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant relative hover:bg-surface-container-high transition-colors items-center group">
+<div class="status-strip bg-secondary-container"></div>
+<div class="col-span-5 pl-2">
+<div class="font-headline-md text-sm text-on-surface">Johnson Commercial</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">TPO Overlay - 450 SQ</div>
+</div>
+<div class="col-span-2 font-data-point text-sm text-primary">$185,400</div>
+<div class="col-span-3 flex items-center gap-2">
+<div class="flex-1 h-1 bg-surface-container-highest rounded overflow-hidden">
+<div class="h-full bg-secondary-container w-[85%]"></div>
+</div>
+<span class="font-data-point text-[10px] text-secondary-container">85%</span>
+</div>
+<div class="col-span-2 text-right font-data-point text-xs text-on-surface-variant">Oct 14</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant relative hover:bg-surface-container-high transition-colors items-center">
+<div class="status-strip bg-primary"></div>
+<div class="col-span-5 pl-2">
+<div class="font-headline-md text-sm text-on-surface">Pine St Duplex</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">Asphalt Shingle - 42 SQ</div>
+</div>
+<div class="col-span-2 font-data-point text-sm text-on-surface">$24,800</div>
+<div class="col-span-3 flex items-center gap-2">
+<div class="flex-1 h-1 bg-surface-container-highest rounded overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+<span class="font-data-point text-[10px] text-primary">95%</span>
+</div>
+<div class="col-span-2 text-right font-data-point text-xs text-on-surface-variant">Oct 18</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-4 py-3 relative hover:bg-surface-container-high transition-colors items-center">
+<div class="status-strip bg-error"></div>
+<div class="col-span-5 pl-2">
+<div class="font-headline-md text-sm text-on-surface">Westside Logistics Hub</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">Metal Seam - 1200 SQ</div>
+</div>
+<div class="col-span-2 font-data-point text-sm text-on-surface">$412,000</div>
+<div class="col-span-3 flex items-center gap-2">
+<div class="flex-1 h-1 bg-surface-container-highest rounded overflow-hidden">
+<div class="h-full bg-error w-[40%]"></div>
+</div>
+<span class="font-data-point text-[10px] text-error">40%</span>
+</div>
+<div class="col-span-2 text-right font-data-point text-xs text-on-surface-variant">Nov 02</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Info Panel (Col 9-12) -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Pipeline Health Score -->
+<div class="bg-surface-container-low tech-border p-6 rounded relative">
+<div class="absolute top-0 right-0 p-2 text-primary opacity-50">
+<span class="material-symbols-outlined text-[48px]">monitor_heart</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase">Pipeline Health</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="font-display-lg text-display-lg text-primary leading-none">A-</span>
+<span class="font-label-caps text-label-caps text-secondary-container mb-2 flex items-center"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 2.4 pts</span>
+</div>
+<p class="font-body-fixed text-[12px] text-on-surface-variant mt-4">Current close velocity indicates a stable revenue trajectory. High concentration of commercial TPO jobs boosting overall margin health.</p>
+</div>
+<!-- Pending Value Breakdown -->
+<div class="bg-surface-container-low tech-border rounded overflow-hidden">
+<div class="px-4 py-2 bg-surface-container-highest border-b border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Pending Value Breakdown</span>
+</div>
+<div class="p-4 space-y-4">
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-[10px] text-on-surface uppercase">Commercial (TPO/EPDM)</span>
+<span class="font-data-point text-[12px] text-primary">$840k</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-sm overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-[10px] text-on-surface uppercase">Residential (Shingle)</span>
+<span class="font-data-point text-[12px] text-secondary-container">$290k</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-sm overflow-hidden">
+<div class="h-full bg-secondary-container" style="width: 25%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-[10px] text-on-surface uppercase">Specialty (Metal/Tile)</span>
+<span class="font-data-point text-[12px] text-tertiary-fixed-dim">$110k</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-sm overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim" style="width: 10%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Card -->
+<div class="active-border bg-surface-container-high p-4 rounded flex items-center justify-between mt-4">
+<div>
+<div class="font-label-caps text-[10px] text-primary mb-1">ACTION REQUIRED</div>
+<div class="font-body-fixed text-sm text-on-surface">2 Contracts pending signature</div>
+</div>
+<button class="bg-primary text-on-primary p-2 rounded hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">edit_document</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

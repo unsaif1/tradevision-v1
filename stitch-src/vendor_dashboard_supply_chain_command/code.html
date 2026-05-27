@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Core Vend Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#333539",
+                        "outline": "#849495",
+                        "on-background": "#e2e2e8",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "surface": "#111317",
+                        "on-primary-container": "#006970",
+                        "tertiary": "#f7f5f5",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-highest": "#333539",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-dim": "#111317",
+                        "on-tertiary-container": "#5e5f5f",
+                        "inverse-primary": "#006970",
+                        "outline-variant": "#3b494b",
+                        "on-primary-fixed-variant": "#004f54",
+                        "inverse-surface": "#e2e2e8",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "surface-bright": "#37393e",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary": "#00363a",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-container-low": "#1a1c20",
+                        "secondary": "#ffdb9d",
+                        "inverse-on-surface": "#2f3035",
+                        "on-error": "#690005",
+                        "surface-container": "#1e2024",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "secondary-fixed": "#ffdea8",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .tech-border { border: 1px solid #2D2D2D; }
+        .glow-border { border: 1px solid theme('colors.primary-container'); box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.1); }
+        .status-strip { width: 4px; height: 100%; position: absolute; left: 0; top: 0; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border-radius: 4px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-fixed antialiased pb-24 selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-background dark:bg-background w-full top-0 sticky z-50 border-b border-outline-variant bg-surface-container-lowest flat no shadows">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-density-compact">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-container font-headline-md text-headline-md font-bold uppercase tracking-tighter hover:bg-surface-variant transition-colors active:scale-95 duration-75 p-1 rounded">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold uppercase tracking-tighter text-on-surface">CORE_VEND_TERMINAL</h1>
+</div>
+<div class="font-label-caps text-label-caps text-primary-container border border-primary-container px-2 py-1 flex items-center justify-center">
+                Vendor Profile
+            </div>
+</div>
+</header>
+<main class="flex-1 p-margin-mobile flex flex-col gap-margin-mobile md:hidden">
+<!-- Dashboard Header -->
+<section class="flex flex-col gap-unit">
+<h2 class="font-headline-md text-headline-md text-on-surface">SUPPLY_CHAIN_OVERVIEW</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant">System Status: <span class="text-primary-container">Nominal</span></p>
+</section>
+<!-- Metrics Grid -->
+<section class="grid grid-cols-2 gap-density-compact">
+<div class="tech-border bg-surface-container-low p-density-compact rounded relative overflow-hidden group">
+<div class="status-strip bg-primary-container"></div>
+<div class="pl-density-compact">
+<span class="font-label-caps text-label-caps text-outline uppercase block mb-1">Active Orders</span>
+<div class="font-data-point text-data-point text-primary-container">142</div>
+</div>
+</div>
+<div class="tech-border bg-surface-container-low p-density-compact rounded relative overflow-hidden">
+<div class="status-strip bg-secondary-container"></div>
+<div class="pl-density-compact">
+<span class="font-label-caps text-label-caps text-outline uppercase block mb-1">Inv Health</span>
+<div class="font-data-point text-data-point text-secondary-container">94%</div>
+</div>
+</div>
+<div class="tech-border bg-surface-container-low p-density-compact rounded relative overflow-hidden col-span-2 glow-border">
+<div class="status-strip bg-error"></div>
+<div class="pl-density-compact flex justify-between items-center">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase block mb-1">Pending Ship</span>
+<div class="font-data-point text-data-point text-error">28</div>
+</div>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+</div>
+</section>
+<!-- Order Queue -->
+<section class="flex flex-col gap-density-compact mt-density-comfortable">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline">list_alt</span>
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">ORDER_QUEUE</h3>
+</div>
+<!-- Order Item 1 -->
+<div class="tech-border bg-surface-container flex flex-col p-density-compact rounded gap-unit relative">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps bg-surface-variant text-on-surface px-1 rounded">ORD-8821</span>
+<span class="font-label-caps text-label-caps text-secondary-container border border-secondary-container px-1">PROCESSING</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<div class="font-body-fixed text-body-fixed text-on-surface">Architectural Shingles (Onyx)</div>
+<div class="font-data-point text-data-point text-on-surface-variant">40 <span class="font-label-caps text-label-caps">sq</span></div>
+</div>
+</div>
+<!-- Order Item 2 -->
+<div class="tech-border bg-surface-container flex flex-col p-density-compact rounded gap-unit relative">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps bg-surface-variant text-on-surface px-1 rounded">ORD-8820</span>
+<span class="font-label-caps text-label-caps text-primary-container border border-primary-container px-1">SHIPPED</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<div class="font-body-fixed text-body-fixed text-on-surface">TPO Membrane (60mil)</div>
+<div class="font-data-point text-data-point text-on-surface-variant">15 <span class="font-label-caps text-label-caps">rl</span></div>
+</div>
+</div>
+<!-- Order Item 3 -->
+<div class="tech-border bg-surface-container flex flex-col p-density-compact rounded gap-unit relative opacity-70">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps bg-surface-variant text-on-surface px-1 rounded">ORD-8819</span>
+<span class="font-label-caps text-label-caps text-outline border border-outline px-1">PENDING</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<div class="font-body-fixed text-body-fixed text-on-surface">Metal Drip Edge (Blk)</div>
+<div class="font-data-point text-data-point text-on-surface-variant">120 <span class="font-label-caps text-label-caps">ft</span></div>
+</div>
+</div>
+</section>
+<!-- Logistics Feed -->
+<section class="flex flex-col gap-density-compact mt-density-comfortable flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline">route</span>
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">LOGISTICS_FEED</h3>
+</div>
+<div class="tech-border bg-surface-container p-density-compact rounded flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-density-compact">
+<li class="flex gap-density-compact border-b border-outline-variant pb-unit">
+<span class="font-label-caps text-label-caps text-outline w-12 shrink-0">14:02</span>
+<span class="font-body-fixed text-body-fixed text-on-surface text-sm">TRK-44 arrived at Depot Alpha</span>
+</li>
+<li class="flex gap-density-compact border-b border-outline-variant pb-unit">
+<span class="font-label-caps text-label-caps text-primary-container w-12 shrink-0">13:45</span>
+<span class="font-body-fixed text-body-fixed text-on-surface text-sm">ORD-8820 loaded for dispatch</span>
+</li>
+<li class="flex gap-density-compact border-b border-outline-variant pb-unit">
+<span class="font-label-caps text-label-caps text-outline w-12 shrink-0">11:30</span>
+<span class="font-body-fixed text-body-fixed text-on-surface text-sm">Inventory re-sync complete.</span>
+</li>
+<li class="flex gap-density-compact border-b border-outline-variant pb-unit">
+<span class="font-label-caps text-label-caps text-error w-12 shrink-0">09:15</span>
+<span class="font-body-fixed text-body-fixed text-on-surface text-sm">Delay on I-95 reported for TRK-21</span>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- Desktop Fallback Message -->
+<div class="hidden md:flex flex-1 items-center justify-center p-margin-desktop text-center flex-col">
+<span class="material-symbols-outlined text-display-lg text-outline mb-4">devices</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Mobile Optimized View</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant max-w-md mt-2">This terminal dashboard is optimized for field devices. Please resize your window to mobile width.</p>
+</div>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 border-t border-outline-variant flat no shadows md:hidden">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-unit pb-safe h-16">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-none border-t-2 border-primary-container p-2 flex-1 h-full font-label-caps text-label-caps hover:text-primary-fixed-dim active:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="flex flex-col items-center justify-center text-outline p-2 flex-1 h-full font-label-caps text-label-caps hover:text-primary-fixed-dim active:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined mb-1">inventory_2</span>
+                CATALOG
+            </a>
+<a class="flex flex-col items-center justify-center text-outline p-2 flex-1 h-full font-label-caps text-label-caps hover:text-primary-fixed-dim active:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+                ORDERS
+            </a>
+<a class="flex flex-col items-center justify-center text-outline p-2 flex-1 h-full font-label-caps text-label-caps hover:text-primary-fixed-dim active:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined mb-1">local_shipping</span>
+                LOGISTICS
+            </a>
+</div>
+</nav>
+</body></html>

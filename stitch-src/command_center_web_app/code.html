@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Command</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#e21e51",
+                        "on-secondary-container": "#a8b6c9",
+                        "surface-dim": "#0f141a",
+                        "secondary-fixed": "#d5e4f7",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "tertiary": "#bdc7dc",
+                        "background": "#0f141a",
+                        "primary-fixed": "#ffdadb",
+                        "surface-container-highest": "#30353d",
+                        "secondary-container": "#3a4858",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-tertiary-container": "#fefcff",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "on-secondary-fixed": "#0f1d2b",
+                        "secondary": "#bac8db",
+                        "on-primary-container": "#fffcff",
+                        "on-secondary": "#243240",
+                        "surface-deep": "#1C2128",
+                        "text-secondary": "#8896A8",
+                        "accent-active": "#E21E51",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "inverse-primary": "#be003e",
+                        "on-error": "#690005",
+                        "text-primary": "#FFFFFF",
+                        "on-background": "#dee2ec",
+                        "surface-container": "#1b2027",
+                        "error-container": "#93000a",
+                        "surface-muted": "#2D3748",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#353941",
+                        "inverse-on-surface": "#2c3138",
+                        "on-primary-fixed": "#40000f",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee2ec",
+                        "surface-container-high": "#252a32",
+                        "on-tertiary-fixed": "#121c2c",
+                        "surface-variant": "#30353d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb2b9",
+                        "tertiary-container": "#6b7588",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "surface-tint": "#ffb2b9",
+                        "inverse-surface": "#dee2ec",
+                        "on-primary": "#67001e",
+                        "tertiary-fixed": "#d9e3f9",
+                        "outline": "#ab888a",
+                        "surface": "#0f141a",
+                        "surface-container-low": "#171c23",
+                        "on-primary-fixed-variant": "#91002e",
+                        "secondary-fixed-dim": "#bac8db",
+                        "on-tertiary": "#273141",
+                        "surface-container-lowest": "#090f15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Barlow Condensed"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #1C2128; color: #dee2ec; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(45, 55, 72, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(136, 150, 168, 0.15); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-deep text-on-surface font-body-md antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-[1440px] mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<div class="hidden md:flex flex-1 justify-center px-8">
+<!-- Nav Links for Desktop -->
+<nav class="flex gap-lg">
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed font-bold hover:bg-surface-bright/10 transition-colors px-4 py-2 rounded" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-4 py-2 rounded" href="#">
+<span class="material-symbols-outlined mb-1">location_city</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-4 py-2 rounded" href="#">
+<span class="material-symbols-outlined mb-1">assignment_late</span>
+<span class="font-label-md text-label-md">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/10 transition-colors px-4 py-2 rounded" href="#">
+<span class="material-symbols-outlined mb-1">notifications_active</span>
+<span class="font-label-md text-label-md">Alerts</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-2 top-1.5 text-text-secondary text-sm">search</span>
+<input class="bg-surface-deep border border-border-subtle rounded-lg py-1 pl-8 pr-3 text-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all w-64" placeholder="Global Search..." type="text"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-muted border border-border-subtle flex items-center justify-center overflow-hidden cursor-pointer hover:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="max-w-[1440px] mx-auto px-gutter py-lg md:py-xl grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Metrics & Actions -->
+<div class="md:col-span-8 flex flex-col gap-lg">
+<!-- Quick Actions -->
+<section class="flex flex-wrap gap-md items-center justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Command Center</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">Overview of current operations and pending tasks.</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface-muted text-on-surface border border-border-subtle hover:bg-surface-bright transition-colors font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+                        Upload Docs
+                    </button>
+<button class="bg-primary-container text-white hover:bg-inverse-primary transition-colors font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm shadow-black/20">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Project
+                    </button>
+</div>
+</section>
+<!-- Priority Alert Bento -->
+<section class="glass-card rounded-xl p-md border-l-4 border-l-error">
+<div class="flex items-start gap-md">
+<div class="p-2 rounded-full bg-error/10 text-error mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Action Required</h3>
+<span class="font-label-sm text-label-sm bg-error/20 text-error px-2 py-0.5 rounded-full uppercase tracking-wider">High Priority</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">Noble Public Adjusting - 3 active claims require contractor estimates.</p>
+<button class="font-label-md text-label-md text-primary-container hover:text-primary-fixed transition-colors flex items-center gap-1">
+                            Review Claims <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 2x2 Metric Grid -->
+<section class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Metric 1 -->
+<div class="bg-surface-muted border border-border-subtle border-t-2 border-t-secondary-fixed rounded-lg p-md hover:bg-surface-bright transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Active Projects</span>
+<span class="material-symbols-outlined text-secondary-fixed opacity-70 group-hover:opacity-100 transition-opacity">location_city</span>
+</div>
+<div class="font-headline-xl text-headline-xl text-on-surface">24</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-muted border border-border-subtle border-t-2 border-t-error rounded-lg p-md hover:bg-surface-bright transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Open Claims</span>
+<span class="material-symbols-outlined text-error opacity-70 group-hover:opacity-100 transition-opacity">assignment_late</span>
+</div>
+<div class="font-headline-xl text-headline-xl text-on-surface">11</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-muted border border-border-subtle border-t-2 border-t-[#4ade80] rounded-lg p-md hover:bg-surface-bright transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Approved SOWs</span>
+<span class="material-symbols-outlined text-[#4ade80] opacity-70 group-hover:opacity-100 transition-opacity">task_alt</span>
+</div>
+<div class="font-headline-xl text-headline-xl text-on-surface">8</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-muted border border-border-subtle border-t-2 border-t-tertiary rounded-lg p-md hover:bg-surface-bright transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Pending Transfers</span>
+<span class="material-symbols-outlined text-tertiary opacity-70 group-hover:opacity-100 transition-opacity">sync</span>
+</div>
+<div class="font-headline-xl text-headline-xl text-on-surface">36</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Recent Projects List -->
+<div class="md:col-span-4">
+<section class="bg-surface-muted border border-border-subtle rounded-xl h-full flex flex-col">
+<div class="p-md border-b border-border-subtle flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Projects</h3>
+<button class="material-symbols-outlined text-text-secondary hover:text-on-surface transition-colors">more_horiz</button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Project Item 1 -->
+<div class="p-md border-b border-border-subtle hover:bg-surface-bright/50 transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium group-hover:text-primary-container transition-colors">Riverside Commons</h4>
+<div class="flex gap-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed/20 text-secondary-fixed">PA</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3 text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">map</span>
+<span class="font-body-sm text-body-sm">Miami, FL</span>
+</div>
+<div class="w-full bg-surface-deep rounded-full h-1.5 mb-1">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-text-secondary">
+<span>Estimate Review</span>
+<span>75%</span>
+</div>
+</div>
+<!-- Project Item 2 -->
+<div class="p-md border-b border-border-subtle hover:bg-surface-bright/50 transition-colors group cursor-pointer bg-white/[0.02]">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium group-hover:text-primary-container transition-colors">Highland Oaks</h4>
+<div class="flex gap-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary/20 text-tertiary">GC</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3 text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">map</span>
+<span class="font-body-sm text-body-sm">Austin, TX</span>
+</div>
+<div class="w-full bg-surface-deep rounded-full h-1.5 mb-1">
+<div class="bg-[#4ade80] h-1.5 rounded-full" style="width: 30%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-text-secondary">
+<span>Site Inspection</span>
+<span>30%</span>
+</div>
+</div>
+<!-- Project Item 3 -->
+<div class="p-md border-b border-border-subtle hover:bg-surface-bright/50 transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-body-lg text-body-lg text-on-surface font-medium group-hover:text-primary-container transition-colors">Meridian Warehouse</h4>
+<div class="flex gap-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed/20 text-secondary-fixed">PA</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary/20 text-tertiary">GC</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3 text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">map</span>
+<span class="font-body-sm text-body-sm">Denver, CO</span>
+</div>
+<div class="w-full bg-surface-deep rounded-full h-1.5 mb-1">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 90%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-text-secondary">
+<span>Final Settlement</span>
+<span>90%</span>
+</div>
+</div>
+</div>
+<div class="p-3 text-center border-t border-border-subtle">
+<button class="font-label-md text-label-md text-text-secondary hover:text-on-surface transition-colors">View All Projects</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 flex justify-around items-center px-gutter py-sm bg-surface-container-high shadow-lg z-50">
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all active:translate-y-[-2px] duration-200 w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-[10px]">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">location_city</span>
+<span class="font-label-sm text-[10px]">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">assignment_late</span>
+<span class="font-label-sm text-[10px]">Claims</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">notifications_active</span>
+<span class="font-label-sm text-[10px]">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">person</span>
+<span class="font-label-sm text-[10px]">Account</span>
+</a>
+</nav>
+</body></html>

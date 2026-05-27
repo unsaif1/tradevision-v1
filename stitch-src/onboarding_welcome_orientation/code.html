@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to C.A.R.E. | TradeVision</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#dee3eb",
+                        "surface-container-high": "#252a31",
+                        "surface-variant": "#30353c",
+                        "outline": "#ab888a",
+                        "on-error": "#690005",
+                        "secondary": "#bfc7d5",
+                        "on-primary-fixed": "#40000f",
+                        "on-surface-variant": "#e4bdbf",
+                        "on-secondary-container": "#aeb6c3",
+                        "tertiary-container": "#00855e",
+                        "primary-fixed": "#ffdadb",
+                        "on-secondary-fixed": "#141c26",
+                        "tertiary-fixed": "#8ff7c7",
+                        "surface-tint": "#ffb2b9",
+                        "on-primary-fixed-variant": "#91002e",
+                        "error": "#ffb4ab",
+                        "primary-container": "#e21e51",
+                        "secondary-container": "#3f4753",
+                        "surface-container": "#1b2026",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "surface-bright": "#353a40",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#dbe3f1",
+                        "tertiary-fixed-dim": "#72daad",
+                        "tertiary": "#72daad",
+                        "surface": "#0f141a",
+                        "surface-container-highest": "#30353c",
+                        "on-secondary": "#29313c",
+                        "surface-container-low": "#171c22",
+                        "inverse-on-surface": "#2c3137",
+                        "surface-dim": "#0f141a",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "primary": "#ffb2b9",
+                        "outline-variant": "#5c3f42",
+                        "on-primary": "#67001e",
+                        "on-primary-container": "#fffcff",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#003826",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "surface-container-lowest": "#0a0f14",
+                        "inverse-surface": "#dee3eb",
+                        "on-tertiary-container": "#f5fff7",
+                        "on-background": "#dee3eb",
+                        "background": "#0f141a",
+                        "on-tertiary-fixed": "#002114",
+                        "inverse-primary": "#be003e",
+                        "primary-fixed-dim": "#ffb2b9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "grid_columns": "12",
+                        "header_height": "64px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "body-lg": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Subtle entrance animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden font-body-md selection:bg-primary-container selection:text-white">
+<!-- High-Tech Background Layer -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none" data-alt="A macro shot of a complex server rack or high-tech optical fiber network. The image is dominated by deep space blacks and dark monochromatic greys, creating a vast, slightly mysterious technological atmosphere. Intermittent, highly saturated neon red and crimson light beams cut through the darkness, implying high-speed data transfer and system vitality. The overall aesthetic is precise, authoritative, and cinematic, perfectly suiting a mission-critical command center dark mode UI." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCY3hpyQKCWyf0cl8nDlJW5gIuILEsgKBSebPWXmBrbGgmvuCbA5l8fDuksJyBlmovH1nmr1COwr00bV39LhGIOJtKnxLwQdE1iXWsiGCxpvmdpzad3DElj1bwxtP7GyChXsk4vqhftf7jd7P_vcYjQRRbvYO7p9_7o33KHuQtkkd6RiVR8MNXMa-_HmL5NjmgYN4VT-zfpq1PeErrX8BrWEYVYGb1gCLFKGh9fpuTfCBqoGOOd7jqzf68KjynoHdOzghKYxUo4Z_i5'); background-size: cover; background-position: center;">
+</div>
+<!-- Vignette/Gradient Overlay to ensure readability -->
+<div class="absolute inset-0 z-0 bg-gradient-to-b from-surface/80 via-surface to-surface/90 pointer-events-none"></div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-4xl px-gutter animate-fade-in">
+<!-- Orientation Card (Glassmorphism inspired, adapted for technical dark mode) -->
+<div class="bg-surface-container/90 backdrop-blur-md border border-surface-bright rounded-xl shadow-2xl p-8 md:p-12 overflow-hidden relative">
+<!-- Top Accent Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-surface-container via-primary-container to-surface-container"></div>
+<!-- Header Section -->
+<div class="text-center mb-12">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-container-high border border-surface-bright mb-6 shadow-inner">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="analytics" data-weight="fill">analytics</span>
+</div>
+<h1 class="font-display-lg text-on-surface mb-2 tracking-tight">Welcome to C.A.R.E.</h1>
+<p class="font-body-lg text-secondary max-w-lg mx-auto">
+                    TradeVision Command &amp; Reporting Environment initialization complete. Your unified hub for critical site intelligence is ready.
+                </p>
+</div>
+<!-- Bento Grid: The Three Hubs -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Hub 1: Projects -->
+<div class="bg-surface-container-high border border-surface-bright rounded-lg p-6 hover:border-outline-variant transition-colors group animate-fade-in delay-100">
+<div class="w-10 h-10 rounded bg-surface border border-surface-bright flex items-center justify-center mb-4 group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors" data-icon="location_city">location_city</span>
+</div>
+<h2 class="font-headline-sm text-on-surface mb-1">Projects</h2>
+<p class="font-body-md text-secondary leading-relaxed">
+                        Manage Site Data. Access blueprints, monitor localized timelines, and oversee comprehensive infrastructure metrics across all active zones.
+                    </p>
+</div>
+<!-- Hub 2: Claims -->
+<div class="bg-surface-container-high border border-surface-bright rounded-lg p-6 hover:border-outline-variant transition-colors group animate-fade-in delay-200">
+<div class="w-10 h-10 rounded bg-surface border border-surface-bright flex items-center justify-center mb-4 group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors" data-icon="assignment_late">assignment_late</span>
+</div>
+<h2 class="font-headline-sm text-on-surface mb-1">Claims</h2>
+<p class="font-body-md text-secondary leading-relaxed">
+                        Dispute Resolution. Track, process, and finalize incident reports and financial adjustments with high-fidelity audit trails.
+                    </p>
+</div>
+<!-- Hub 3: Alerts -->
+<div class="bg-surface-container-high border border-surface-bright rounded-lg p-6 hover:border-outline-variant transition-colors group animate-fade-in delay-300">
+<div class="w-10 h-10 rounded bg-surface border border-surface-bright flex items-center justify-center mb-4 group-hover:border-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary-container transition-colors" data-icon="notifications_active">notifications_active</span>
+</div>
+<h2 class="font-headline-sm text-on-surface mb-1">Alerts</h2>
+<p class="font-body-md text-secondary leading-relaxed">
+                        Safety &amp; Compliance. Real-time monitoring of critical protocol deviations and environmental hazard warnings requiring immediate attention.
+                    </p>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="flex justify-center animate-fade-in delay-400">
+<button class="bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim font-headline-sm px-10 py-4 rounded DEFAULT shadow-lg hover:shadow-primary-container/20 transition-all duration-200 flex items-center gap-3 active:scale-95 group border border-transparent hover:border-outline focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface">
+                    Launch Command Center
+                    <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Terminal Stylized Footer -->
+<div class="mt-8 text-center border-t border-surface-bright pt-4">
+<p class="font-mono-data text-secondary opacity-70">
+<span class="text-tertiary-fixed">SYS_READY</span> // AUTH_TOKEN_VALID // PROTOCOL_ENGAGED
+                </p>
+</div>
+</div>
+</main>
+</body></html>

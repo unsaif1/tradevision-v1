@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Refined Evidence Log - TradeVision C.A.R.E.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#aeb6c3",
+                        "secondary-fixed-dim": "#bfc7d5",
+                        "on-primary-container": "#fffcff",
+                        "on-error": "#690005",
+                        "on-background": "#dee3eb",
+                        "inverse-primary": "#be003e",
+                        "secondary-fixed": "#dbe3f1",
+                        "outline": "#ab888a",
+                        "on-surface-variant": "#e4bdbf",
+                        "tertiary-fixed": "#8ff7c7",
+                        "surface-dim": "#0f141a",
+                        "error": "#ffb4ab",
+                        "tertiary": "#72daad",
+                        "secondary": "#bfc7d5",
+                        "surface-container-lowest": "#0a0f14",
+                        "inverse-on-surface": "#2c3137",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002114",
+                        "inverse-surface": "#dee3eb",
+                        "primary-container": "#e21e51",
+                        "on-secondary-fixed": "#141c26",
+                        "surface-container": "#1b2026",
+                        "on-secondary-fixed-variant": "#3f4753",
+                        "on-tertiary": "#003826",
+                        "background": "#0f141a",
+                        "on-primary-fixed": "#40000f",
+                        "primary-fixed": "#ffdadb",
+                        "surface": "#0f141a",
+                        "on-tertiary-fixed-variant": "#005138",
+                        "on-tertiary-container": "#f5fff7",
+                        "tertiary-fixed-dim": "#72daad",
+                        "tertiary-container": "#00855e",
+                        "surface-container-highest": "#30353c",
+                        "surface-container-low": "#171c22",
+                        "on-primary-fixed-variant": "#91002e",
+                        "surface-container-high": "#252a31",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "on-primary": "#67001e",
+                        "surface-bright": "#353a40",
+                        "outline-variant": "#5c3f42",
+                        "on-surface": "#dee3eb",
+                        "surface-variant": "#30353c",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#29313c",
+                        "primary": "#e21e51", 
+                        "surface-tint": "#ffb2b9",
+                        "secondary-container": "#3f4753"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px", 
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "grid_columns": "12",
+                        "unit": "4px",
+                        "header_height": "64px",
+                        "sidebar_width": "260px",
+                        "margin": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Barlow Condensed"],
+                        "display-md": ["Barlow Condensed"],
+                        "display-lg": ["Barlow Condensed"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "headline-sm": ["20px", {"lineHeight": "24px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "display-md": ["32px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.surface-container-lowest'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-container-highest'); border-radius: 0px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline-variant'); }
+    </style>
+</head>
+<body class="flex bg-surface text-on-surface overflow-hidden h-screen font-body-md text-body-md">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col z-40">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center font-display-md text-white">T</div>
+<div>
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight leading-none">TradeVision</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">C.A.R.E. Command</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col h-full overflow-y-auto py-4">
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 border-l-[3px] border-primary bg-secondary-container/30 text-primary font-bold opacity-90 transition-opacity duration-100" href="#">
+<span class="material-symbols-outlined fill" data-icon="account_tree">account_tree</span>
+<span class="font-label-caps text-label-caps uppercase">Projects</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps uppercase">Claims</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-caps text-label-caps uppercase">Alerts</span>
+</a>
+<div class="mt-auto pt-4 border-t border-outline-variant mx-6"></div>
+<a class="flex items-center gap-4 py-3 px-6 text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps uppercase">Settings</span>
+</a>
+</div>
+<div class="p-6 border-t border-outline-variant flex items-center gap-3">
+<img alt="System Administrator Avatar" class="w-10 h-10 border border-outline-variant grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX_2wC3N4yVpx6a4_t7ce9tW0f_t96QZymJ3yrPBftL-Bly6SviE_1XHQ6HWiudA0AT2_YupbQxDQ57FNXmNz37xEyhBoGYBDCI5v7QuD7YQPypB1bCWcUKpPbfwAxJZgVAwQwHWKwF3u8TAwVwPmuEmyM_fiv9HUPDf8jhED0KPbKm5G76_Dvn70Cz_BnQu0swZOFm8EyKeGQKviPkBWrityRTMqFHFdmZAC_GrMIp6UlAw_tJ_NXPTuc-DAAN6EdB7eBmNt5Dqx-"/>
+<div>
+<p class="font-mono-data text-mono-data text-on-surface">SYS.ADMIN_01</p>
+<p class="font-label-caps text-label-caps text-tertiary">ONLINE</p>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden bg-surface-dim">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] z-30 bg-surface border-b border-outline-variant flex items-center justify-between px-margin">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-highest border-0 border-b border-outline-variant py-2 pl-10 pr-4 text-mono-data font-mono-data text-on-surface focus:ring-0 focus:border-primary placeholder-on-surface-variant transition-colors" placeholder="Search Evidence Log..." type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-center">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface tracking-widest uppercase">Evidence Log</h2>
+</div>
+<div class="flex items-center justify-end gap-2 w-1/3">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:ring-1 focus:ring-primary outline-none">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 mt-[64px] overflow-y-auto p-margin">
+<!-- Controls Row -->
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-display-md text-display-md text-on-surface uppercase tracking-tight">Active Investigations</h3>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">Found 43 records | Sorted by Priority</p>
+</div>
+<div class="flex gap-4">
+<div class="flex bg-surface-container border border-outline-variant">
+<button class="px-4 py-2 font-label-caps text-label-caps text-primary border-b-2 border-primary bg-secondary-container/30 uppercase tracking-widest">Grid View</button>
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-container-highest uppercase tracking-widest">Table View</button>
+</div>
+<button class="bg-primary text-white font-label-caps text-label-caps px-6 py-2 uppercase tracking-widest hover:bg-primary-container transition-colors">
+                        + New Entry
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- KPI Sidebar (Spans 3 cols) -->
+<div class="col-span-12 lg:col-span-3 flex flex-col gap-4">
+<div class="bg-surface-container border border-outline-variant p-5">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Total Evidence Count</p>
+<div class="flex items-end justify-between">
+<h4 class="font-display-lg text-display-lg text-on-surface leading-none">1,204</h4>
+<span class="font-mono-data text-mono-data text-tertiary flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_upward</span> 12%</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-5 border-l-4 border-l-error">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Critical Pending</p>
+<div class="flex items-end justify-between">
+<h4 class="font-display-lg text-display-lg text-error leading-none">08</h4>
+<span class="font-mono-data text-mono-data text-error flex items-center">Req. Review</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-5 flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4">Recent Activity Logs</p>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">upload_file</span>
+<div>
+<p class="font-mono-data text-mono-data text-on-surface">SYS.ADMIN_01 uploaded IMG_992</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">2 MINS AGO</p>
+</div>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+<div>
+<p class="font-mono-data text-mono-data text-on-surface">Claim #442 Verified</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">1 HR AGO</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Grid (Spans 9 cols) -->
+<div class="col-span-12 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-[#1a1f26] border border-[#2a323d] hover:border-primary transition-colors group">
+<div class="h-40 bg-surface-container-highest relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity group-hover:opacity-60 transition-opacity" data-alt="A dark, moody close-up photograph of heavy construction machinery gears and hydraulics. The lighting is dramatic, highlighting the metallic textures and grease in a high-contrast, technical style. The overall tone is industrial, precise, and serious, fitting a heavy-duty corporate dashboard aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiIx4cJedKjcWemHJ7qfR_bMwvCKT2-HhTKCvXWtpvZwKsMehcqDZRo7ukhkREERl2lwUuOOVla0xk43eCaEL0ltl1dC-h9oowFlWlv-DLWrN-HUdM9zzPXb2pwF2-tX8_ZsctcUxJ-IS8J3ACUZyra9KfY0-59tBfQx0RSBXXql95wHwEe6eNYle2038IfynFBms6hB55Gjyn9C_HTlQLqXsYU17ivAHau0gU9FjzW7DjYA74e_LGEpBIB7wFILw5Qua2h4udsM5T');"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-surface border border-outline-variant px-2 py-1 font-mono-data text-mono-data text-on-surface">EV-2023-09A</span>
+</div>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="bg-[#003826] text-[#8ff7c7] px-2 py-1 font-label-caps text-label-caps uppercase tracking-wider">Verified</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase mb-1">Structural Fracture - Level 3</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant mb-4">Loc: Sector 7G | Date: 2023.10.24</p>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Confidence</p>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-tertiary w-[92%]"></div></div>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Impact Risk</p>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-error w-[45%]"></div></div>
+</div>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant pt-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-none border border-outline-variant bg-surface-container-highest"></div>
+<div class="w-8 h-8 rounded-none border border-outline-variant bg-surface-container-lowest"></div>
+</div>
+<button class="text-primary font-label-caps text-label-caps uppercase hover:text-primary-container flex items-center gap-1">
+                                    Analyze <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-[#1a1f26] border border-error hover:border-primary transition-colors group">
+<div class="h-40 bg-surface-container-highest relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity group-hover:opacity-60 transition-opacity" data-alt="A macro shot of a cracked concrete surface illuminated by a harsh, cold spotlight. The texture is gritty and detailed, emphasizing the structural failure. The mood is analytical and investigative, with deep shadows creating a stark, high-contrast, technical aesthetic suitable for a damage report dashboard." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBFn9PnLCzQ4NL-Q5twAK8ElqMNKV3QKnNyh64-OXusGz5KqtY4PKP2hOySi1WtB2aG509muyfztptZSO9J1uK3L9tf-5O2uUfyQAmdJmF1DiNqw1Ot5q8g6J2rby6dt4riyVz1KY4OVFloKgCfrDvS6Bh0wa-Z2KpK_rqkXFQgOoXync3wKrFhhST3DIsNQWxZYCSr39nH0RJyps9zOjEgfIi8LuadocwWH_qvRUtM8VSS0b4P4kgY-UeC35dwjh5bY3zfCsDWfVWx');"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-surface border border-outline-variant px-2 py-1 font-mono-data text-mono-data text-on-surface">EV-2023-09B</span>
+</div>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="bg-[#93000a] text-[#ffdad6] px-2 py-1 font-label-caps text-label-caps uppercase tracking-wider">Action Req</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase mb-1">Material Degradation</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant mb-4">Loc: Pipeline A2 | Date: 2023.10.23</p>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Confidence</p>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-tertiary w-[78%]"></div></div>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Impact Risk</p>
+<div class="h-1 bg-surface-container-highest w-full"><div class="h-full bg-error w-[88%]"></div></div>
+</div>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant pt-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-none border border-outline-variant bg-surface-container"></div>
+</div>
+<button class="text-primary font-label-caps text-label-caps uppercase hover:text-primary-container flex items-center gap-1">
+                                    Analyze <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

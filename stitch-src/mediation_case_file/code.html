@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mediation Case File - Dispute Resolution Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#be003e",
+                        "surface-muted": "#2D3748",
+                        "background": "#0f141a",
+                        "accent-active": "#E21E51",
+                        "surface-dim": "#0f141a",
+                        "on-secondary-fixed-variant": "#3a4858",
+                        "primary": "#ffb2b9",
+                        "on-primary": "#67001e",
+                        "surface-container-highest": "#30353d",
+                        "on-secondary": "#243240",
+                        "surface-container-low": "#171c23",
+                        "inverse-on-surface": "#2c3138",
+                        "on-tertiary-container": "#fefcff",
+                        "inverse-surface": "#dee2ec",
+                        "on-tertiary": "#273141",
+                        "surface-container": "#1b2027",
+                        "secondary-container": "#3a4858",
+                        "surface-deep": "#1C2128",
+                        "primary-container": "#e21e51",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "secondary-fixed": "#d5e4f7",
+                        "on-primary-fixed": "#40000f",
+                        "on-surface": "#dee2ec",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-tint": "#ffb2b9",
+                        "text-primary": "#FFFFFF",
+                        "on-surface-variant": "#e4bdbf",
+                        "primary-fixed": "#ffdadb",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-background": "#dee2ec",
+                        "primary-fixed-dim": "#ffb2b9",
+                        "outline-variant": "#5c3f42",
+                        "text-secondary": "#8896A8",
+                        "surface": "#0f141a",
+                        "surface-container-lowest": "#090f15",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "on-primary-container": "#fffcff",
+                        "error-container": "#93000a",
+                        "surface-bright": "#353941",
+                        "secondary-fixed-dim": "#bac8db",
+                        "tertiary": "#bdc7dc",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#bac8db",
+                        "surface-container-high": "#252a32",
+                        "outline": "#ab888a",
+                        "surface-variant": "#30353d",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#91002e",
+                        "on-secondary-container": "#a8b6c9",
+                        "border-subtle": "rgba(136, 150, 168, 0.15)",
+                        "tertiary-container": "#6b7588",
+                        "on-secondary-fixed": "#0f1d2b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "40px",
+                        "margin": "24px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "8px",
+                        "md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Barlow Condensed"],
+                        "label-sm": ["Manrope"],
+                        "headline-xl": ["Barlow Condensed"],
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Barlow Condensed"],
+                        "body-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0f141a; color: #FFFFFF; }
+        .glass-card {
+            background: rgba(45, 55, 72, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(136, 150, 168, 0.15);
+        }
+        .neon-accent { border-left: 4px solid #E21E51; }
+        .stripe-row:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen bg-background font-body-md text-text-primary">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface w-full top-0 border-b border-border-subtle flex justify-between items-center px-lg h-20 w-full z-50 sticky top-0">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary font-headline-md text-headline-md cursor-pointer active:opacity-80">gavel</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">Dispute Resolution Portal</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex gap-md h-full items-end pb-0">
+<!-- Nav items mapped from NavigationDrawer for desktop top bar -->
+<a class="pb-2 text-text-secondary hover:text-primary transition-colors cursor-pointer font-label-md text-label-md" href="#">Dashboard</a>
+<a class="pb-2 text-primary border-b-2 border-primary font-label-md text-label-md" href="#">Case Files</a>
+<a class="pb-2 text-text-secondary hover:text-primary transition-colors cursor-pointer font-label-md text-label-md" href="#">Arbitrators</a>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-muted border border-border-subtle flex items-center justify-center ml-lg cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-text-primary text-[18px]">person</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- NavigationDrawer (Hidden on Desktop, keeping TopNav pattern per requirements for clean view, but semantic shell rules dictate case file is detail view so minimal nav is better) -->
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-margin md:p-xl max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumb / Meta -->
+<div class="flex items-center gap-sm mb-lg text-text-secondary font-label-sm text-label-sm">
+<span>Case Files</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Active Disputes</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">Case #902-AX-88</span>
+</div>
+<!-- Notice of Mediation Header -->
+<div class="glass-card rounded-lg p-xl mb-xl relative overflow-hidden neon-accent">
+<div class="absolute top-0 right-0 p-lg opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px] text-primary">balance</span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-lg">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">Escalated Claim</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-sm text-text-primary">Notice of Mediation</h2>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">
+                            Formal mediation proceedings have been initiated for dispute regarding technical deliverables under contract XJ-992. Attendance is mandatory for lead technical liaisons.
+                        </p>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-text-secondary mb-xs">SCHEDULED FOR</div>
+<div class="font-headline-md text-headline-md text-text-primary">Oct 24, 2024 · 14:00 UTC</div>
+</div>
+<button class="bg-primary-container hover:bg-accent-active text-on-primary-container font-label-md text-label-md py-md px-lg rounded-lg flex items-center gap-sm transition-colors mt-sm shadow-[0_4px_12px_rgba(226,30,81,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videocam</span>
+                            Join Virtual Mediation
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Arbitrator Profile (Left Col, Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-muted border border-border-subtle rounded-lg p-lg">
+<div class="font-headline-md text-headline-md mb-md text-text-primary border-b border-border-subtle pb-sm">Assigned Arbitrator</div>
+<div class="flex items-center gap-md mb-lg mt-md">
+<img alt="Arbitrator Profile" class="w-16 h-16 rounded-full border-2 border-surface-container-highest object-cover" data-alt="A professional headshot of an authoritative older male corporate executive wearing a tailored dark suit. The background is a sleek, modern office setting with subtle high-tech lighting. The lighting emphasizes a serious, analytical mood suitable for a deep-tech legal platform. Color palette includes dark slate and cool tones with sharp contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAihBBZheK-dkrXrYyNFaLnb5F19UvrbOosYPivS91YBujESn6NIy7viHBxqC4zFiUvoAn5LbkHPbDk0HY1rdgBOtMLj_lUaN2TGGcQ7q84sYxvdMh8abLjhXuZfKY53e-7VlH3nGXQA8RXlDkNOFXbP_RYnXjWsLYT3goahGrlS0asw0twn-q-OGuGlbVFQIQPYyfowm93C5laaxx0i1rU-jbbomzWDy8zwCh-j7ZdsX6IviPXdGdQVEieJjP445m3hLRrKgfKZRre"/>
+<div>
+<div class="font-body-lg text-body-lg text-text-primary font-semibold">Hon. Marcus Vance</div>
+<div class="font-label-sm text-label-sm text-text-secondary">Senior Technical Mediator</div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center text-sm">
+<span class="font-body-sm text-body-sm text-text-secondary">Specialty</span>
+<span class="font-body-sm text-body-sm text-text-primary">Software IP &amp; Contract Law</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="font-body-sm text-body-sm text-text-secondary">Resolution Rate</span>
+<span class="font-body-sm text-body-sm text-primary">89.4%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="font-body-sm text-body-sm text-text-secondary">Jurisdiction</span>
+<span class="font-body-sm text-body-sm text-text-primary">Intl. Arbitration Ct.</span>
+</div>
+</div>
+<button class="w-full mt-lg border border-border-subtle hover:border-text-secondary text-text-secondary hover:text-text-primary transition-colors font-label-md text-label-md py-sm rounded-lg flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+                            Secure Message
+                        </button>
+</div>
+<!-- Key Deadlines -->
+<div class="bg-surface-muted border border-border-subtle rounded-lg p-lg flex-1">
+<div class="font-headline-md text-headline-md mb-md text-text-primary border-b border-border-subtle pb-sm">Key Deadlines</div>
+<div class="space-y-md mt-md">
+<div class="flex gap-md">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-px h-full bg-border-subtle my-xs"></div>
+</div>
+<div class="pb-md">
+<div class="font-label-sm text-label-sm text-text-secondary">Oct 15 (Completed)</div>
+<div class="font-body-sm text-body-sm text-text-primary">Initial Discovery Exchange</div>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(255,178,185,0.5)]"></div>
+<div class="w-px h-full bg-border-subtle my-xs"></div>
+</div>
+<div class="pb-md">
+<div class="font-label-sm text-label-sm text-primary font-bold">Oct 20 (Due Today)</div>
+<div class="font-body-sm text-body-sm text-text-primary">Submit Final Evidence Briefs</div>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full border border-text-secondary"></div>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-text-secondary">Oct 24</div>
+<div class="font-body-sm text-body-sm text-text-secondary">Virtual Mediation Session</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Panel (Right Col, Span 8) -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Readiness Checklist -->
+<div class="bg-surface-muted border border-border-subtle rounded-lg p-lg">
+<div class="flex justify-between items-center mb-md border-b border-border-subtle pb-sm">
+<h3 class="font-headline-md text-headline-md text-text-primary">Mediation Readiness</h3>
+<span class="bg-surface-container-low px-sm py-xs rounded text-primary font-label-md text-label-md border border-outline-variant">60% Complete</span>
+</div>
+<div class="space-y-sm mt-md">
+<!-- Checklist Item 1 (Done) -->
+<div class="flex items-center gap-md p-md rounded bg-surface border border-border-subtle stripe-row">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<div class="flex-1">
+<div class="font-body-md text-body-md text-text-primary">Review Arbitrator Disclosures</div>
+<div class="font-label-sm text-label-sm text-text-secondary">Acknowledged by Legal Team on Oct 12</div>
+</div>
+<button class="text-text-secondary hover:text-text-primary"><span class="material-symbols-outlined text-[20px]">visibility</span></button>
+</div>
+<!-- Checklist Item 2 (Done) -->
+<div class="flex items-center gap-md p-md rounded bg-surface border border-border-subtle stripe-row">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<div class="flex-1">
+<div class="font-body-md text-body-md text-text-primary">Upload Opening Statements</div>
+<div class="font-label-sm text-label-sm text-text-secondary">Submitted via portal on Oct 14</div>
+</div>
+<button class="text-text-secondary hover:text-text-primary"><span class="material-symbols-outlined text-[20px]">visibility</span></button>
+</div>
+<!-- Checklist Item 3 (Pending) -->
+<div class="flex items-center gap-md p-md rounded bg-surface border border-primary/30 stripe-row relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<span class="material-symbols-outlined text-text-secondary">radio_button_unchecked</span>
+<div class="flex-1">
+<div class="font-body-md text-body-md text-text-primary font-semibold">Submit Evidence Briefs</div>
+<div class="font-label-sm text-label-sm text-primary flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span> Action Required: Due Today
+                                    </div>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-bright text-text-primary border border-border-subtle font-label-sm text-label-sm py-xs px-md rounded transition-colors">
+                                    Upload
+                                </button>
+</div>
+<!-- Checklist Item 4 (Locked) -->
+<div class="flex items-center gap-md p-md rounded bg-surface-container-lowest border border-border-subtle opacity-60">
+<span class="material-symbols-outlined text-text-secondary">lock</span>
+<div class="flex-1">
+<div class="font-body-md text-body-md text-text-secondary">Sign Settlement Framework</div>
+<div class="font-label-sm text-label-sm text-text-secondary">Unlocks post-mediation session</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Document Repository Preview -->
+<div class="bg-surface-muted border border-border-subtle rounded-lg p-lg">
+<div class="flex justify-between items-center mb-md border-b border-border-subtle pb-sm">
+<h3 class="font-headline-md text-headline-md text-text-primary">Recent Case Documents</h3>
+<button class="text-primary hover:text-primary-fixed-dim font-label-md text-label-md flex items-center gap-xs">
+                                View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<table class="w-full text-left mt-sm">
+<thead>
+<tr class="font-label-md text-label-md text-text-secondary border-b border-border-subtle uppercase">
+<th class="py-sm font-normal">Document Name</th>
+<th class="py-sm font-normal hidden sm:table-cell">Type</th>
+<th class="py-sm font-normal text-right">Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-subtle hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="py-md font-body-sm text-body-sm text-text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">description</span>
+                                        Def_Opening_Stmt_v2.pdf
+                                    </td>
+<td class="py-md font-body-sm text-body-sm text-text-secondary hidden sm:table-cell">Filing</td>
+<td class="py-md font-body-sm text-body-sm text-text-secondary text-right">Oct 14</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="py-md font-body-sm text-body-sm text-text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">description</span>
+                                        Exh_A_Technical_Specs.pdf
+                                    </td>
+<td class="py-md font-body-sm text-body-sm text-text-secondary hidden sm:table-cell">Evidence</td>
+<td class="py-md font-body-sm text-body-sm text-text-secondary text-right">Oct 12</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="py-md font-body-sm text-body-sm text-text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">gavel</span>
+                                        Notice_of_Mediation_Official.pdf
+                                    </td>
+<td class="py-md font-body-sm text-body-sm text-text-secondary hidden sm:table-cell">Court Order</td>
+<td class="py-md font-body-sm text-body-sm text-text-secondary text-right">Oct 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-border-subtle flex justify-between items-center px-lg py-md w-full z-10">
+<span class="font-label-sm text-label-sm text-text-secondary dark:text-text-secondary">© 2024 LegalMediate Analytics. All Rights Reserved. Confidential Tier 1.</span>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-on-surface transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-on-surface transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-on-surface transition-colors cursor-pointer" href="#">Compliance Docs</a>
+</div>
+</footer>
+</body></html>

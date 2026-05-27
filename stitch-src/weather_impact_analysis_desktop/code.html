@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeVision C.A.R.E. - Weather-Impact Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#003919",
+                      "background": "#0d141c",
+                      "neon-blue": "#3B82F6",
+                      "surface-stroke": "#2D3748",
+                      "surface-dim": "#0d141c",
+                      "surface-base": "#111820",
+                      "on-secondary-container": "#003e1c",
+                      "neon-green": "#4ADE80",
+                      "tertiary-fixed": "#d8e2ff",
+                      "on-error": "#690005",
+                      "on-secondary-fixed": "#00210c",
+                      "inverse-surface": "#dce3ee",
+                      "secondary": "#4de082",
+                      "tertiary": "#adc6ff",
+                      "secondary-fixed": "#6dfe9c",
+                      "inverse-primary": "#be003e",
+                      "outline-variant": "#5c3f42",
+                      "surface-container-low": "#151c24",
+                      "on-tertiary-container": "#fffcff",
+                      "on-surface": "#dce3ee",
+                      "on-secondary-fixed-variant": "#005227",
+                      "surface-elevated": "#1C2128",
+                      "outline": "#ab888a",
+                      "on-tertiary": "#002e6a",
+                      "surface-variant": "#2e353e",
+                      "surface-tint": "#ffb2b9",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dce3ee",
+                      "on-tertiary-fixed": "#001a42",
+                      "on-primary-fixed-variant": "#91002e",
+                      "on-primary-fixed": "#40000f",
+                      "inverse-on-surface": "#2a313a",
+                      "error-container": "#93000a",
+                      "neon-pink": "#E21E51",
+                      "on-primary-container": "#fffcff",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "surface-container": "#192028",
+                      "primary-fixed": "#ffdadb",
+                      "tertiary-container": "#2171e4",
+                      "surface-container-lowest": "#080f16",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "text-muted": "#8896A8",
+                      "error": "#ffb4ab",
+                      "primary": "#ffb2b9",
+                      "primary-container": "#e21e51",
+                      "surface": "#0d141c",
+                      "surface-container-highest": "#2e353e",
+                      "secondary-container": "#00b55d",
+                      "surface-container-high": "#242b33",
+                      "surface-bright": "#333a43",
+                      "on-primary": "#67001e",
+                      "on-surface-variant": "#e4bdbf",
+                      "neon-orange": "#F97316",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "secondary-fixed-dim": "#4de082"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "stack-gap": "12px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "stat-display": [
+                              "Barlow Condensed"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Barlow"
+                      ],
+                      "caption": [
+                              "Barlow"
+                      ],
+                      "headline-xl": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-lg": [
+                              "Barlow Condensed"
+                      ],
+                      "body-md": [
+                              "Barlow"
+                      ],
+                      "headline-lg-mobile": [
+                              "Barlow Condensed"
+                      ]
+              },
+              "fontSize": {
+                      "stat-display": [
+                              "40px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Hide scrollbar for a cleaner look but allow scrolling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-base');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-stroke');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.surface-variant');
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar -->
+<nav class="bg-surface-base dark:bg-surface-base text-neon-pink dark:text-primary font-label-caps text-label-caps docked h-screen w-64 left-0 border-r border-surface-stroke flat no shadows transition-all duration-150 ease-in-out fixed left-0 top-0 h-full flex flex-col z-50">
+<div class="p-6 border-b border-surface-stroke mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-elevated border border-surface-stroke flex items-center justify-center overflow-hidden">
+<img alt="Facility Command Logo" class="w-full h-full object-cover" data-alt="A highly detailed, macro shot of a sleek, metallic facility command logo or emblem. The surface reflects harsh, low-angle light, emphasizing its industrial and futuristic design. The background is a dark, out-of-focus control panel with subtle neon pink and blue LED accents. The overall mood is authoritative, precise, and technologically advanced, fitting a high-stakes command center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxlpHzaUIU1_KCV0dLZCQC5fnWs1VaEn8-MzkpruPcVLu48o7j35nLtKpHUU-VbO7D6CnfemzLPG_M8aHsNP0Rupz4kt8kKPw87gR9hQ9rfTxp_eL84o_TeXDAqx8TR_hPIcp6oDcQU0xNgJm8PQ9mxKzr0A3tvwrSFF1eW1XrAs0tCEaJTyxfhiAYqVlsKpDUnb0zDb_Y3Mddp-aI1MQYjbx8Miw4wyDKGzjhUvjhKa2pa6VA2_CUp3dnL6VK6uTALl9dEaOnvbBD"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface text-xl">MAIN_HUB</h1>
+<p class="text-text-muted text-xs tracking-wider">SECTOR_07</p>
+</div>
+</div>
+<button class="w-full mt-6 bg-neon-pink text-white font-label-caps text-label-caps py-2 rounded-DEFAULT hover:bg-opacity-90 transition-colors uppercase flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                NEW DISPATCH
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto space-y-1">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_late">assignment_late</span>
+                Dispatch Queue
+            </a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+                Active Repairs
+            </a>
+<a class="bg-primary-container text-on-primary-container border-r-4 border-neon-pink px-4 py-3 flex items-center gap-3 transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+                Verification Logs
+            </a>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                Inventory
+            </a>
+</div>
+<div class="p-4 border-t border-surface-stroke mt-auto">
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-64 bg-background">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface text-neon-pink dark:text-primary font-body-md text-body-md docked full-width top-0 border-b border-surface-stroke flat no shadows flex justify-between items-center w-full px-margin-desktop h-16 z-40 relative">
+<div class="flex items-center">
+<h2 class="font-headline-lg text-headline-lg font-bold text-neon-pink tracking-tight">TECH-COMMAND V2</h2>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search Bar (on_left as per JSON logic, placed relative to actions) -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted text-[20px]">search</span>
+<input class="bg-surface-elevated border border-surface-stroke text-on-surface pl-10 pr-4 py-1.5 rounded-DEFAULT focus:outline-none focus:border-neon-pink transition-colors font-body-md text-sm w-64 placeholder-text-muted" placeholder="QUERY_SYSTEM..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full border border-surface-stroke overflow-hidden cursor-pointer hover:border-neon-pink transition-colors">
+<img alt="Manager Avatar" class="w-full h-full object-cover" data-alt="A stoic portrait of a technical manager in an industrial setting. The lighting is cinematic, with high-contrast shadows and subtle neon blue rim lighting illuminating the side of their face. They are wearing dark, utilitarian clothing. The background is a blurred, dark control room environment with faint glowing screens. The mood is serious, focused, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPo_LpQ0ASc__eJ6Br5GuqHkFl4AA4hZdxhf7rgzU_lPv9JWtppjz_tFzIY98Waq6Z2joRT5Mp_PJSagnoPDTpdJzubzjmHn2IbZLBaDeL2Iot0-2TAbB_hXaR0RyIzuhJoXzWMyAu_dddLZ_yt7pu5zUHPSwymajR39qBkiF0Zr2CWeUMvt24Lr2TR55EiFKSA3eAjYacAHrK12InzFUx9N2itRtascndl4Aq3kEPSneDaz7smFeai5Up5cneyxTkmMZ-jGm07ND7"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-desktop flex gap-gutter">
+<!-- Left Pane: Main Visualizations -->
+<div class="flex-1 flex flex-col gap-gutter">
+<!-- Hero Matrix -->
+<div class="bg-surface-elevated border border-surface-stroke rounded-DEFAULT flex flex-col h-[512px] relative overflow-hidden">
+<div class="border-t-2 border-neon-blue absolute top-0 left-0 w-full"></div>
+<div class="p-4 border-b border-surface-stroke flex justify-between items-center bg-surface-container-low">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue text-[18px]">radar</span>
+                                Sector Impact Matrix
+                            </h3>
+<p class="font-caption text-caption text-text-muted mt-1">Cross-correlating atmospheric variables with sensor grid integrity.</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-neon-blue/10 text-neon-blue font-label-caps text-xs px-2 py-1 rounded-DEFAULT border border-neon-blue/30 uppercase">Live Sync</span>
+</div>
+</div>
+<!-- Faux Heatmap / Grid Area -->
+<div class="flex-1 p-4 relative flex items-center justify-center">
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: linear-gradient(theme('colors.surface-stroke') 1px, transparent 1px), linear-gradient(90deg, theme('colors.surface-stroke') 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="grid grid-cols-4 grid-rows-3 gap-2 w-full h-full p-4 relative z-10">
+<!-- Matrix Cells -->
+<div class="bg-surface-container-high border border-surface-stroke rounded-DEFAULT flex flex-col justify-center items-center hover:border-neon-pink transition-colors relative group">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-green"></div>
+<span class="font-stat-display text-stat-display text-on-surface">A1</span>
+<span class="font-caption text-caption text-text-muted">NOMINAL</span>
+</div>
+<div class="bg-surface-container-high border border-surface-stroke rounded-DEFAULT flex flex-col justify-center items-center hover:border-neon-pink transition-colors relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-green"></div>
+<span class="font-stat-display text-stat-display text-on-surface">A2</span>
+<span class="font-caption text-caption text-text-muted">NOMINAL</span>
+</div>
+<div class="bg-error/10 border border-error/50 rounded-DEFAULT flex flex-col justify-center items-center relative pulse-border">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="font-stat-display text-stat-display text-error">A3</span>
+<span class="font-caption text-caption text-error font-bold">WIND SHEAR</span>
+</div>
+<div class="bg-surface-container-high border border-surface-stroke rounded-DEFAULT flex flex-col justify-center items-center hover:border-neon-pink transition-colors relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-green"></div>
+<span class="font-stat-display text-stat-display text-on-surface">A4</span>
+<span class="font-caption text-caption text-text-muted">NOMINAL</span>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface-container-high border border-surface-stroke rounded-DEFAULT flex flex-col justify-center items-center hover:border-neon-pink transition-colors relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-green"></div>
+<span class="font-stat-display text-stat-display text-on-surface">B1</span>
+<span class="font-caption text-caption text-text-muted">NOMINAL</span>
+</div>
+<div class="bg-neon-orange/10 border border-neon-orange/50 rounded-DEFAULT flex flex-col justify-center items-center relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-orange"></div>
+<span class="font-stat-display text-stat-display text-neon-orange">B2</span>
+<span class="font-caption text-caption text-neon-orange">ELEVATED HUMIDITY</span>
+</div>
+<div class="bg-surface-container-high border border-surface-stroke rounded-DEFAULT flex flex-col justify-center items-center hover:border-neon-pink transition-colors relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-green"></div>
+<span class="font-stat-display text-stat-display text-on-surface">B3</span>
+<span class="font-caption text-caption text-text-muted">NOMINAL</span>
+</div>
+<div class="bg-surface-container-high border border-surface-stroke rounded-DEFAULT flex flex-col justify-center items-center hover:border-neon-pink transition-colors relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-green"></div>
+<span class="font-stat-display text-stat-display text-on-surface">B4</span>
+<span class="font-caption text-caption text-text-muted">NOMINAL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Lower Metric Row -->
+<div class="grid grid-cols-3 gap-gutter h-48">
+<!-- Metric Card 1 -->
+<div class="bg-surface-elevated border-t-2 border-neon-green border border-surface-stroke rounded-DEFAULT p-4 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">Global Temp Diff</span>
+<span class="material-symbols-outlined text-neon-green">thermostat</span>
+</div>
+<div>
+<div class="font-stat-display text-stat-display text-on-surface flex items-baseline gap-1">
+                                -2.4<span class="text-xl text-text-muted">°C</span>
+</div>
+<div class="font-caption text-caption text-neon-green flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+                                Stabilizing
+                            </div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-elevated border-t-2 border-error border border-surface-stroke rounded-DEFAULT p-4 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">Peak Wind Gusts</span>
+<span class="material-symbols-outlined text-error">air</span>
+</div>
+<div>
+<div class="font-stat-display text-stat-display text-error flex items-baseline gap-1">
+                                48<span class="text-xl text-text-muted">kts</span>
+</div>
+<div class="font-caption text-caption text-error flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                Sector A3 Critical
+                            </div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-elevated border-t-2 border-neon-blue border border-surface-stroke rounded-DEFAULT p-4 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">Array Integrity</span>
+<span class="material-symbols-outlined text-neon-blue">memory</span>
+</div>
+<div>
+<div class="font-stat-display text-stat-display text-on-surface flex items-baseline gap-1">
+                                94.2<span class="text-xl text-text-muted">%</span>
+</div>
+<div class="font-caption text-caption text-text-muted flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                Within Tolerances
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: Predictive Risk Log -->
+<div class="w-80 bg-surface-elevated border border-surface-stroke rounded-DEFAULT flex flex-col h-full relative overflow-hidden">
+<div class="border-t-2 border-neon-pink absolute top-0 left-0 w-full z-10"></div>
+<div class="p-4 border-b border-surface-stroke bg-surface-container-low sticky top-0 z-10">
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-pink text-[18px]">monitoring</span>
+                        Predictive Risk Log
+                    </h3>
+<p class="font-caption text-caption text-text-muted mt-1">Forecast impact on operations.</p>
+</div>
+<div class="flex-1 overflow-y-auto p-0">
+<ul class="flex flex-col">
+<!-- List Item 1 -->
+<li class="border-b border-surface-stroke p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-error/10 text-error font-label-caps text-[10px] px-1.5 py-0.5 rounded-DEFAULT border border-error/30 uppercase">High Risk</span>
+<span class="font-caption text-caption text-text-muted text-xs">T+02:00</span>
+</div>
+<h4 class="font-body-md text-sm font-semibold text-on-surface mb-1">High-Altitude Crane Ops</h4>
+<p class="font-caption text-caption text-text-muted text-xs leading-relaxed">Forecasted wind gusts exceeding operational safety limits (45kts) in Sector A3.</p>
+<div class="mt-3 flex gap-2">
+<button class="text-xs font-label-caps text-neon-pink border border-neon-pink/50 rounded-DEFAULT px-2 py-1 hover:bg-neon-pink hover:text-white transition-colors">HALT OPS</button>
+</div>
+</li>
+<!-- List Item 2 -->
+<li class="border-b border-surface-stroke p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-neon-orange/10 text-neon-orange font-label-caps text-[10px] px-1.5 py-0.5 rounded-DEFAULT border border-neon-orange/30 uppercase">Medium Risk</span>
+<span class="font-caption text-caption text-text-muted text-xs">T+08:30</span>
+</div>
+<h4 class="font-body-md text-sm font-semibold text-on-surface mb-1">Foundation Pour B2</h4>
+<p class="font-caption text-caption text-text-muted text-xs leading-relaxed">Rapid temperature drop predicted. Humidity spike may affect curing time.</p>
+<div class="mt-3 flex gap-2">
+<button class="text-xs font-label-caps text-text-muted border border-surface-stroke rounded-DEFAULT px-2 py-1 hover:text-on-surface transition-colors">REVIEW</button>
+</div>
+</li>
+<!-- List Item 3 -->
+<li class="border-b border-surface-stroke p-4 hover:bg-surface-container-high transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-neon-green/10 text-neon-green font-label-caps text-[10px] px-1.5 py-0.5 rounded-DEFAULT border border-neon-green/30 uppercase">Low Risk</span>
+<span class="font-caption text-caption text-text-muted text-xs">T+12:00</span>
+</div>
+<h4 class="font-body-md text-sm font-semibold text-on-surface mb-1">Material Delivery Array</h4>
+<p class="font-caption text-caption text-text-muted text-xs leading-relaxed">Conditions stabilizing. Route clearance expected to remain nominal.</p>
+</li>
+</ul>
+</div>
+</div>
+</main>
+</div>
+</body></html>

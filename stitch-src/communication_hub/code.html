@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Claim Portal - Messages</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffdb9d",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f7f5f5",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-secondary-container": "#6b4b00",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-container": "#006970",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "background": "#111317",
+                        "primary-container": "#00f0ff",
+                        "surface-container": "#1e2024",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-lowest": "#0c0e12",
+                        "inverse-on-surface": "#2f3035",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-low": "#1a1c20",
+                        "surface": "#111317",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "on-primary-fixed": "#002022",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary": "#412d00",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "primary": "#dbfcff",
+                        "surface-variant": "#333539",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#37393e",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "surface-container-high": "#282a2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-fixed": ["Inter"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-fixed antialiased min-h-screen flex flex-col md:flex-row pb-20 md:pb-0">
+<!-- TopAppBar (Mobile & Web Context) -->
+<header class="w-full sticky top-0 z-50 bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-margin-mobile h-16 md:hidden">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-headline-md text-headline-md-mobile font-label-caps text-label-caps tracking-widest text-primary dark:text-primary-fixed-dim uppercase">APEX CLAIM PORTAL</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-8 w-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant">UP</span>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-screen w-80 rounded-r-none bg-surface-container dark:bg-surface-container border-r border-outline-variant shadow-lg py-density-comfortable sticky top-0 shrink-0">
+<div class="px-density-comfortable mb-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-3xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-headline-md text-headline-md font-label-caps text-label-caps tracking-widest text-primary dark:text-primary-fixed-dim uppercase">APEX CLAIM PORTAL</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-high border border-outline-variant">
+<div class="h-12 w-12 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<span class="font-label-caps text-label-caps text-on-surface-variant">PO</span>
+</div>
+<div>
+<div class="font-headline-md text-primary text-sm font-bold">Claims Portal</div>
+<div class="font-body-fixed text-body-fixed text-on-surface-variant text-xs">Policy #APX-99281</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim mt-1 text-[10px]">Status: Active</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-density-comfortable flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface hover:bg-surface-variant transition-all font-body-fixed text-body-fixed group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface hover:bg-surface-variant transition-all font-body-fixed text-body-fixed group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">photo_library</span>
+<span>Vault</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-secondary-container text-on-secondary-container font-bold font-body-fixed text-body-fixed shadow-[2px_0_0_0_#ffdb9d_inset]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span>Messages</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface hover:bg-surface-variant transition-all font-body-fixed text-body-fixed group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">description</span>
+<span>Documents</span>
+</a>
+</nav>
+<div class="px-density-comfortable mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface hover:bg-surface-variant transition-all font-body-fixed text-body-fixed group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span>Account Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface hover:bg-surface-variant transition-all font-body-fixed text-body-fixed group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col min-h-0 bg-surface">
+<!-- Search & Utility Bar -->
+<div class="px-margin-mobile md:px-margin-desktop py-density-comfortable border-b border-outline-variant bg-surface-container-lowest sticky top-0 z-40 md:static">
+<div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between max-w-5xl mx-auto w-full">
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">forum</span>
+                    Secure Comms Hub
+                </h1>
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-fixed text-sm py-2 pl-10 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary rounded-none" placeholder="Global Search: threads, files, contacts..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Thread List Area -->
+<div class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-density-comfortable">
+<div class="max-w-5xl mx-auto w-full grid grid-cols-1 gap-unit">
+<!-- Thread Item 1 (Active/Urgent) -->
+<div class="group flex flex-col sm:flex-row gap-4 p-4 border border-outline-variant bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-caps text-label-caps text-error bg-error/10 px-2 py-1 rounded border border-error/20">AWAITING SIGNATURE</span>
+<h3 class="font-headline-md text-sm md:text-base text-on-surface font-bold truncate">Roof Replacement Estimate Approval</h3>
+</div>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant whitespace-nowrap ml-4">10:42 AM</span>
+</div>
+<div class="flex items-center gap-3 mb-2 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">engineering</span>
+<span>Site Lead: Mark S.</span>
+</div>
+<span class="text-outline-variant">|</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">assignment_ind</span>
+<span>Adjuster: Sarah L.</span>
+</div>
+</div>
+<p class="font-body-fixed text-body-fixed text-sm text-on-surface-variant truncate">
+<strong class="text-on-surface">Mark S.:</strong> Please review the updated scope of work for the decking repairs. We need approval to proceed by tomorrow.
+                        </p>
+</div>
+</div>
+<!-- Thread Item 2 -->
+<div class="group flex flex-col sm:flex-row gap-4 p-4 border border-outline-variant bg-surface hover:bg-surface-container transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-fixed"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20">NEW EVIDENCE UPLOADED</span>
+<h3 class="font-headline-md text-sm md:text-base text-on-surface font-bold truncate">Initial Inspection Photos - Drone Flight</h3>
+</div>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant whitespace-nowrap ml-4">YESTERDAY</span>
+</div>
+<div class="flex items-center gap-3 mb-2 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">domain</span>
+<span>Contractor HQ</span>
+</div>
+<span class="text-outline-variant">|</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">engineering</span>
+<span>Tech: Drone Ops</span>
+</div>
+</div>
+<p class="font-body-fixed text-body-fixed text-sm text-on-surface-variant truncate">
+<strong class="text-on-surface">Drone Ops:</strong> Uploaded 24 high-res images of the North slope showing hail impact. See attached PDF report.
+                        </p>
+</div>
+</div>
+<!-- Thread Item 3 -->
+<div class="group flex flex-col sm:flex-row gap-4 p-4 border border-outline-variant bg-surface hover:bg-surface-container transition-colors cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-variant"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant/50 px-2 py-1 rounded border border-outline-variant">RESOLVED</span>
+<h3 class="font-headline-md text-sm md:text-base text-on-surface font-bold truncate">Material Delivery Schedule</h3>
+</div>
+<span class="font-data-point text-data-point text-xs text-on-surface-variant whitespace-nowrap ml-4">OCT 12</span>
+</div>
+<div class="flex items-center gap-3 mb-2 font-label-caps text-label-caps text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+<span>Logistics Hub</span>
+</div>
+</div>
+<p class="font-body-fixed text-body-fixed text-sm text-on-surface-variant truncate">
+<strong class="text-on-surface">Logistics:</strong> Materials successfully dropped at site. Confirmed via photo proof.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Context) -->
+<nav class="fixed bottom-0 w-full z-50 h-20 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-2 pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-95 duration-100 active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-caps text-[10px] text-center w-full truncate">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-95 duration-100 active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined mb-1">photo_library</span>
+<span class="font-label-caps text-[10px] text-center w-full truncate">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-lg px-3 py-1 scale-95 duration-100 active:scale-90 w-20" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-label-caps text-[10px] text-center w-full truncate font-bold">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors scale-95 duration-100 active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined mb-1">description</span>
+<span class="font-label-caps text-[10px] text-center w-full truncate">Documents</span>
+</a>
+</nav>
+</body></html>

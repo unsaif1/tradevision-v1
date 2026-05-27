@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crew Performance Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "surface-container": "#1e2024",
+                        "on-secondary-container": "#6b4b00",
+                        "on-surface-variant": "#b9cacb",
+                        "on-secondary": "#412d00",
+                        "surface-variant": "#333539",
+                        "on-error": "#690005",
+                        "primary-container": "#00f0ff",
+                        "tertiary-container": "#dad9d9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-low": "#1a1c20",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#271900",
+                        "on-primary-fixed": "#002022",
+                        "secondary-fixed-dim": "#ffba20",
+                        "tertiary": "#f7f5f5",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-primary-container": "#006970",
+                        "surface-container-highest": "#333539",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-container-high": "#282a2e",
+                        "inverse-on-surface": "#2f3035",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#feb700",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed": "#ffdea8",
+                        "on-primary": "#00363a",
+                        "on-primary-fixed-variant": "#004f54",
+                        "outline-variant": "#3b494b",
+                        "inverse-primary": "#006970",
+                        "on-background": "#e2e2e8",
+                        "outline": "#849495",
+                        "on-surface": "#e2e2e8",
+                        "surface-dim": "#111317",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface": "#111317"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-fixed antialiased min-h-screen flex flex-col md:hidden">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary-fixed w-full top-0 sticky border-b border-outline-variant flex items-center justify-between px-margin-mobile h-16 z-40">
+<button class="text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter uppercase">ROOF ANALYTICS</h1>
+<button class="text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-transform p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col px-margin-mobile py-margin-mobile gap-gutter overflow-y-auto pb-28">
+<!-- Header Section -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-density-compact">
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface uppercase tracking-wide">Crew Perf Leaderboard</h2>
+<div class="flex items-center gap-2 bg-surface-container px-2 py-1 rounded-sm border border-outline-variant">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="filter_list">filter_list</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Q3-24</span>
+</div>
+</div>
+<!-- Anomaly Detection Alerts -->
+<section class="flex flex-col gap-unit">
+<div class="bg-error-container/20 border border-error rounded-sm p-density-compact flex items-start gap-density-compact relative overflow-hidden shadow-[4px_4px_0px_0px_rgba(255,180,171,0.2)]">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<span class="material-symbols-outlined text-error mt-0.5" data-icon="warning">warning</span>
+<div class="flex-1">
+<h3 class="font-label-caps text-label-caps text-error mb-1">ANOMALY DETECTED: CRW-DELTA</h3>
+<p class="font-body-fixed text-[12px] text-on-surface-variant leading-tight">Safety compliance rating dropped below threshold (72%). Immediate foreman review mandated.</p>
+</div>
+</div>
+</section>
+<!-- Leaderboard List -->
+<section class="flex flex-col gap-unit">
+<!-- Rank 1: Grade A -->
+<div class="bg-surface-container border border-primary rounded-sm p-density-compact flex items-center justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary shadow-[0_0_10px_rgba(0,240,255,0.5)]"></div>
+<div class="flex items-center gap-density-comfortable pl-2">
+<div class="flex flex-col items-center justify-center min-w-[24px]">
+<span class="font-data-point text-data-point text-primary">01</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CRW-ALPHA</span>
+<span class="font-headline-md text-[16px] text-on-surface leading-none mt-1">H. Vance</span>
+</div>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="verified_user">verified_user</span>
+<span class="font-data-point text-[14px] text-on-surface">98%</span>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="timer">timer</span>
+<span class="font-data-point text-[14px] text-on-surface">96%</span>
+</div>
+</div>
+<div class="bg-primary/10 border border-primary/30 h-10 w-10 flex items-center justify-center rounded-sm">
+<span class="font-data-point text-[24px] text-primary">A</span>
+</div>
+</div>
+</div>
+<!-- Rank 2: Grade A -->
+<div class="bg-surface-container border border-outline-variant rounded-sm p-density-compact flex items-center justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/70"></div>
+<div class="flex items-center gap-density-comfortable pl-2">
+<div class="flex flex-col items-center justify-center min-w-[24px]">
+<span class="font-data-point text-data-point text-on-surface-variant">02</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CRW-BRAVO</span>
+<span class="font-headline-md text-[16px] text-on-surface leading-none mt-1">M. Torres</span>
+</div>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="verified_user">verified_user</span>
+<span class="font-data-point text-[14px] text-on-surface">94%</span>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="timer">timer</span>
+<span class="font-data-point text-[14px] text-on-surface">92%</span>
+</div>
+</div>
+<div class="bg-primary/5 border border-primary/20 h-10 w-10 flex items-center justify-center rounded-sm">
+<span class="font-data-point text-[24px] text-primary-fixed-dim">A</span>
+</div>
+</div>
+</div>
+<!-- Rank 3: Grade B -->
+<div class="bg-surface-container border border-outline-variant rounded-sm p-density-compact flex items-center justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="flex items-center gap-density-comfortable pl-2">
+<div class="flex flex-col items-center justify-center min-w-[24px]">
+<span class="font-data-point text-data-point text-on-surface-variant">03</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CRW-CHARLIE</span>
+<span class="font-headline-md text-[16px] text-on-surface leading-none mt-1">D. Reed</span>
+</div>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="verified_user">verified_user</span>
+<span class="font-data-point text-[14px] text-on-surface">88%</span>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="timer">timer</span>
+<span class="font-data-point text-[14px] text-on-surface">85%</span>
+</div>
+</div>
+<div class="bg-secondary/10 border border-secondary/30 h-10 w-10 flex items-center justify-center rounded-sm">
+<span class="font-data-point text-[24px] text-secondary">B</span>
+</div>
+</div>
+</div>
+<!-- Rank 4: Grade C (Anomaly) -->
+<div class="bg-surface-container border border-error/50 rounded-sm p-density-compact flex items-center justify-between relative overflow-hidden opacity-90">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex items-center gap-density-comfortable pl-2">
+<div class="flex flex-col items-center justify-center min-w-[24px]">
+<span class="font-data-point text-data-point text-error">04</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-error">CRW-DELTA</span>
+<span class="font-headline-md text-[16px] text-on-surface leading-none mt-1">L. Shaw</span>
+</div>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+<span class="font-data-point text-[14px]">72%</span>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="timer">timer</span>
+<span class="font-data-point text-[14px] text-on-surface">81%</span>
+</div>
+</div>
+<div class="bg-error/10 border border-error/30 h-10 w-10 flex items-center justify-center rounded-sm">
+<span class="font-data-point text-[24px] text-error">C</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low text-primary-fixed-dim font-label-caps text-label-caps fixed bottom-0 w-full z-50 border-t border-outline-variant flex justify-around items-center h-20 px-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-variant active:translate-y-0.5 transition-all w-16 h-full">
+<span class="material-symbols-outlined mb-1" data-icon="query_stats">query_stats</span>
+<span>DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-variant active:translate-y-0.5 transition-all w-16 h-full">
+<span class="material-symbols-outlined mb-1" data-icon="local_shipping">local_shipping</span>
+<span>LOGISTICS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:bg-surface-variant active:translate-y-0.5 transition-all w-16 h-full">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+<span>FINANCE</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-sm px-density-comfortable py-1 border-b-2 border-on-primary-container hover:bg-surface-variant active:translate-y-0.5 transition-all w-auto h-14">
+<span class="material-symbols-outlined mb-1 fill-icon" data-icon="summarize">summarize</span>
+<span>REPORTS</span>
+</button>
+</nav>
+</body></html>

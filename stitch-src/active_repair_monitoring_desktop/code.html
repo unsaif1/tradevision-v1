@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Repair Monitoring - TECH-COMMAND V2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#d8e2ff",
+                    "neon-blue": "#3B82F6",
+                    "secondary-container": "#00b55d",
+                    "on-surface-variant": "#e4bdbf",
+                    "outline-variant": "#5c3f42",
+                    "on-primary-fixed-variant": "#91002e",
+                    "inverse-primary": "#be003e",
+                    "on-tertiary-container": "#fffcff",
+                    "primary-fixed-dim": "#ffb2b9",
+                    "on-secondary-fixed": "#00210c",
+                    "error-container": "#93000a",
+                    "surface-stroke": "#2D3748",
+                    "background": "#0d141c",
+                    "primary-container": "#e21e51",
+                    "surface-base": "#111820",
+                    "surface": "#0d141c",
+                    "surface-container-high": "#242b33",
+                    "outline": "#ab888a",
+                    "on-background": "#dce3ee",
+                    "on-tertiary-fixed": "#001a42",
+                    "neon-orange": "#F97316",
+                    "surface-elevated": "#1C2128",
+                    "neon-pink": "#E21E51",
+                    "surface-container": "#192028",
+                    "secondary-fixed": "#6dfe9c",
+                    "on-error-container": "#ffdad6",
+                    "text-muted": "#8896A8",
+                    "on-secondary": "#003919",
+                    "on-surface": "#dce3ee",
+                    "on-error": "#690005",
+                    "secondary": "#4de082",
+                    "inverse-on-surface": "#2a313a",
+                    "on-secondary-container": "#003e1c",
+                    "surface-tint": "#ffb2b9",
+                    "surface-container-highest": "#2e353e",
+                    "on-primary-container": "#fffcff",
+                    "tertiary": "#adc6ff",
+                    "surface-dim": "#0d141c",
+                    "on-primary-fixed": "#40000f",
+                    "surface-container-lowest": "#080f16",
+                    "on-tertiary": "#002e6a",
+                    "primary": "#ffb2b9",
+                    "surface-variant": "#2e353e",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed-variant": "#005227",
+                    "tertiary-container": "#2171e4",
+                    "neon-green": "#4ADE80",
+                    "secondary-fixed-dim": "#4de082",
+                    "inverse-surface": "#dce3ee",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "surface-container-low": "#151c24",
+                    "primary-fixed": "#ffdadb",
+                    "on-primary": "#67001e",
+                    "surface-bright": "#333a43"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "stack-gap": "12px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-xl": [
+                            "Barlow Condensed"
+                    ],
+                    "body-lg": [
+                            "Barlow"
+                    ],
+                    "headline-lg-mobile": [
+                            "Barlow Condensed"
+                    ],
+                    "headline-lg": [
+                            "Barlow Condensed"
+                    ],
+                    "stat-display": [
+                            "Barlow Condensed"
+                    ],
+                    "label-caps": [
+                            "Barlow Condensed"
+                    ],
+                    "caption": [
+                            "Barlow"
+                    ],
+                    "body-md": [
+                            "Barlow"
+                    ]
+            },
+            "fontSize": {
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "stat-display": [
+                            "40px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "14px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "caption": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Cyber Industrial Specific Styles */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(45, 55, 72, 0.2) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(45, 55, 72, 0.2) 1px, transparent 1px);
+        }
+        .hud-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: linear-gradient(rgba(17, 24, 32, 0) 50%, rgba(17, 24, 32, 0.1) 50%);
+            background-size: 100% 4px;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            position: absolute;
+            pointer-events: none;
+            background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(226,30,81,0.1) 50%, rgba(0,0,0,0) 100%);
+            opacity: 0.1;
+            animation: scanline 8s linear infinite;
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+        .blinking-dot {
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        /* Custom scrollbar for tech feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d141c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E21E51;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex cyber-grid">
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-surface-base dark:bg-surface-base border-r border-surface-stroke fixed left-0 top-0 h-full flex flex-col z-50 docked w-64">
+<!-- Header -->
+<div class="p-gutter border-b border-surface-stroke flex items-center gap-stack-gap">
+<div class="w-10 h-10 rounded bg-surface-elevated border border-surface-stroke flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Facility Command Logo" class="w-full h-full object-cover" data-alt="A highly detailed, macro shot of a rugged, industrial metallic logo plate with glowing neon accents. The setting is a dark, futuristic command center with low-light, moody atmosphere. The overall style is cyberpunk meets heavy industry, utilizing deep blacks, brushed steel textures, and vibrant neon pink highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWMluRGS8kfROuVUNkcjBZ19UpOUQyiLaHj2wLr8ZTsQeE8aZSlNCj-QQGaDSVulK_YKweqSHIXGfP24puQBBqdsOvKJQg7KHW3hMDbe8AclBYSuW4tGcSfumphJZ1AItfgf6lL2xdVgCXJnqqjR7eSbMrPFwzoETDIEgbOP-2GFHZR_UBfB1XZjfAPkN9uGiVysT0tE9f95UJGcI3q_-mcM15upu3kI73YGAdpp91Aw28Y-hwDkuuDTYdJH-uEQye8Grb6jJ9Ngk3"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight">MAIN_HUB</h1>
+<p class="font-caption text-caption text-text-muted">SECTOR_07</p>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="flex-1 py-stack-gap overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assignment_late</span>
+                        Dispatch Queue
+                    </a>
+</li>
+<li>
+<!-- ACTIVE STATE -->
+<a class="bg-primary-container text-on-primary-container border-r-4 border-neon-pink px-4 py-3 flex items-center gap-3 transition-all duration-150 ease-in-out font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+                        Active Repairs
+                    </a>
+</li>
+<li>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">fact_check</span>
+                        Verification Logs
+                    </a>
+</li>
+<li>
+<a class="text-text-muted px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+                        Inventory
+                    </a>
+</li>
+</ul>
+</div>
+<!-- CTA & Footer -->
+<div class="p-gutter border-t border-surface-stroke space-y-4">
+<button class="w-full bg-neon-pink text-white font-label-caps text-label-caps uppercase py-2 px-4 rounded hover:bg-inverse-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                NEW DISPATCH
+            </button>
+<ul>
+<li>
+<a class="text-text-muted px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high hover:text-on-surface transition-all duration-150 ease-in-out font-label-caps text-label-caps uppercase rounded" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+                        Logout
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-64 flex flex-col h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface dark:bg-surface docked full-width top-0 border-b border-surface-stroke flex justify-between items-center w-full px-margin-desktop h-16 shrink-0 z-40">
+<!-- Brand / Active Context -->
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-neon-pink tracking-tight uppercase">TECH-COMMAND V2</span>
+<div class="h-6 w-px bg-surface-stroke mx-2"></div>
+<div class="flex items-center gap-2 text-text-muted font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-neon-green blinking-dot"></span>
+                    MONITORING LIVE FEED
+                </div>
+</div>
+<!-- Search (Left side of right cluster) -->
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full bg-surface-elevated border border-surface-stroke rounded text-on-surface pl-10 pr-4 py-1.5 focus:outline-none focus:border-neon-pink transition-colors font-body-md text-body-md placeholder-text-muted" placeholder="Search systems..." type="text"/>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-neon-pink dark:text-primary hover:bg-surface-container-high transition-colors active:opacity-80 relative group">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-neon-pink border border-surface"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-neon-pink dark:text-primary hover:bg-surface-container-high transition-colors active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-neon-pink dark:text-primary hover:bg-surface-container-high transition-colors active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-6 w-px bg-surface-stroke mx-2"></div>
+<!-- Avatar -->
+<button class="w-8 h-8 rounded border border-surface-stroke overflow-hidden hover:border-neon-pink transition-colors ml-2">
+<img alt="Manager Avatar" class="w-full h-full object-cover" data-alt="A portrait of a male technician wearing industrial safety gear and a futuristic headset, set against a dark, tech-focused background. The lighting highlights rugged features and incorporates a subtle neon blue rim light, fitting the heavy industry, cyber-aesthetic command center vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3yHaah8JLC0F_Jqzng5ywf_0wgZoSnPJzCpWI1PbWhFMzESZGAeYgOSWnmUY7jg_eXskSosHe7lIGMPp5g_7es1T-jHAb0lVmFZcmj3N5iarDM46rywz5gYujJi0C5uC0SJaAkC5Mc1qFt1kwGQNGW0qS5PnS1Zl33n5PR0GaIqm7cvU6f17lt-6Gk7x2FvibFYDs1FQAOgI0mzidNe13r5NpFHc1TFOUouNYfUIPGE6spWaZBEeCWzbalVooE6-HBsd2Q3mpCW_0"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Layout -->
+<main class="flex-1 overflow-hidden p-gutter flex gap-gutter">
+<!-- Center Focus: Live Feed HUD -->
+<div class="flex-1 flex flex-col gap-gutter h-full">
+<!-- Primary Feed (Large) -->
+<div class="bg-surface-elevated border-t-2 border-neon-pink rounded flex-1 relative overflow-hidden flex flex-col shadow-[0_0_15px_rgba(226,30,81,0.05)]">
+<!-- Header -->
+<div class="flex justify-between items-center p-3 border-b border-surface-stroke bg-surface-container z-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neon-pink">videocam</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile uppercase text-on-surface">Main Intake Valve - Sector 4</h2>
+<span class="bg-primary-container/20 text-neon-pink font-label-caps text-[12px] px-2 py-0.5 rounded border border-neon-pink/30 uppercase tracking-wider">CRITICAL REPAIR</span>
+</div>
+<div class="flex items-center gap-4 text-text-muted font-caption text-caption">
+<span>CAM-01-A</span>
+<span>|</span>
+<span class="text-neon-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neon-green blinking-dot"></span> LIVE</span>
+</div>
+</div>
+<!-- Video Container -->
+<div class="relative flex-1 bg-black overflow-hidden">
+<img alt="Active field repair" class="w-full h-full object-cover opacity-80" data-alt="A gritty, high-contrast industrial scene showing a massive metallic valve or pipe being repaired. Sparks are flying from a welding torch operated by a worker in heavy protective gear. The lighting is low and dramatic, dominated by deep shadows, cool steel tones, and intense, bright neon orange and pink flashes from the welding arc, fitting a cyber-industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ50u5zFeJtTpbSDajv6745F7f8yhnQ6dJS5KQhQ0mLNr8sCnwbCYQanP8JqUesEp54s6xHqBdIUhI_z0641b2pXR6aChLvx5D_Tr6Q2RR8vO7H_ZSun1eWl4HWHhnuA5HxAlhp5INNSQGfAnz7j0pDYvBkLrjMkLcgse4oe_oIuNnJTkTY0DjtGSaaNCMklEr6cUDqK7UGztKL5GGMhqtET4s0bDdspgspXN2nZnUcLNm_IQXN8GJeExY6VMUb2ZutvoRV-a6kKCf"/>
+<!-- HUD Overlays -->
+<div class="hud-overlay"></div>
+<div class="scanline"></div>
+<!-- Crosshair & Target -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-neon-pink/30 rounded-full flex items-center justify-center pointer-events-none">
+<div class="w-full h-px bg-neon-pink/30 absolute"></div>
+<div class="w-px h-full bg-neon-pink/30 absolute"></div>
+<div class="w-16 h-16 border-2 border-neon-pink relative">
+<div class="absolute -top-1 -left-1 w-2 h-2 bg-neon-pink"></div>
+<div class="absolute -top-1 -right-1 w-2 h-2 bg-neon-pink"></div>
+<div class="absolute -bottom-1 -left-1 w-2 h-2 bg-neon-pink"></div>
+<div class="absolute -bottom-1 -right-1 w-2 h-2 bg-neon-pink"></div>
+</div>
+</div>
+<!-- Data Callouts on Feed -->
+<div class="absolute top-8 right-8 bg-surface-base/80 backdrop-blur border border-surface-stroke p-3 rounded pointer-events-none">
+<p class="font-label-caps text-text-muted mb-1">DEVIATION</p>
+<p class="font-stat-display text-neon-orange">14<span class="text-headline-lg">mm</span></p>
+<div class="w-full h-1 bg-surface-stroke mt-2 rounded overflow-hidden">
+<div class="h-full bg-neon-orange w-[85%]"></div>
+</div>
+<p class="font-caption text-caption text-text-muted mt-1 text-right">TOLERANCE: 15mm</p>
+</div>
+<div class="absolute bottom-8 left-8 bg-surface-base/80 backdrop-blur border border-surface-stroke p-3 rounded pointer-events-none">
+<p class="font-label-caps text-text-muted mb-1">TEMP SENSOR</p>
+<p class="font-stat-display text-neon-blue">840<span class="text-headline-lg">°C</span></p>
+<p class="font-caption text-caption text-text-muted mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-neon-blue">trending_up</span>
+                                RISING
+                            </p>
+</div>
+</div>
+</div>
+<!-- Secondary Feeds (Bottom Row) -->
+<div class="h-48 flex gap-gutter shrink-0">
+<!-- Feed 2 -->
+<div class="flex-1 bg-surface-elevated border border-surface-stroke rounded relative overflow-hidden group hover:border-neon-blue transition-colors cursor-pointer">
+<div class="absolute top-0 left-0 w-full p-2 bg-gradient-to-b from-surface-base/80 to-transparent z-10 flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface">CAM-02-B / STRUCTURAL</span>
+<span class="w-2 h-2 rounded-full bg-neon-green blinking-dot"></span>
+</div>
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A detailed, macro view of complex industrial machinery and gears, dimly lit with moody, low-key lighting. Cool blue and subtle pink neon accents reflect off the polished metallic surfaces, fitting the industrial, high-tech command center aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmicoHYaO-h4TLhxEWEgWPkxrlIPtZMV1nymZbFuqmFTB99jMf6i4pKEEd_4oGl57QMjEIFWV4i8bM6h75x8RBZbni0NlQcPB7xwtafUIrmDyM7ENLVQ7FVerKIbOjUV6_KGoc-6zafBR2ydHFbkYCUGNhPyb43hqHjUgV4ka0Na2RsWea41Dgw72lG8l3FrDPrnZAJlde-SrOfOOvjRlxa0odU5kr8YECG9oMJ2JlEWpZzeoIRws6YA1xAl-ET310bWWZy0Byo6aa"/>
+</div>
+<!-- Feed 3 -->
+<div class="flex-1 bg-surface-elevated border border-surface-stroke rounded relative overflow-hidden group hover:border-neon-blue transition-colors cursor-pointer">
+<div class="absolute top-0 left-0 w-full p-2 bg-gradient-to-b from-surface-base/80 to-transparent z-10 flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-on-surface">CAM-03-C / DRONE VIEW</span>
+<span class="w-2 h-2 rounded-full bg-neon-green blinking-dot"></span>
+</div>
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="An overhead drone shot of a massive industrial complex at night. The sprawling facility is illuminated by harsh, artificial lights, with striking neon pink and blue warning lights cutting through the darkness. The scene is dense with structures, pipes, and walkways, conveying a scale of heavy industry in a cyberpunk style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI8kpmow9zL-zN_t95Buic5bodmchGJ19jAW0z2PxpYb4EYtXiW38yJdvu7MzK-OC-chBfW4T_hsBHcm_ZMPiu14Nv7Cis3g8qTWcKM9g7IB8chPMAL2zFVZxFwbhAK4o6aYbicM4Ae88sHGBUp99dLk3w5jyZZIjXJDPJsF2uZVGxFEFUDpjXUBtqJ8H7htZhbTaI_N59TG-ltzhTMeFCHHVer-pXiV-_qs_cFat1XzGd0pny9RgbPRjoaS8LEmgWu8xJm3Xd0EjU"/>
+</div>
+</div>
+</div>
+<!-- Right Panel: Protocol & Telemetry -->
+<div class="w-80 flex flex-col gap-gutter shrink-0 h-full overflow-y-auto">
+<!-- Active Protocol Checklist -->
+<div class="bg-surface-elevated border-t-4 border-neon-blue rounded flex flex-col">
+<div class="p-3 border-b border-surface-stroke flex items-center justify-between">
+<h3 class="font-label-caps text-label-caps text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue text-[18px]">list_alt</span>
+                            REPAIR PROTOCOL
+                        </h3>
+<span class="text-neon-blue font-caption text-caption">STEP 3/7</span>
+</div>
+<div class="flex-1 p-2 space-y-1">
+<!-- Completed Step -->
+<div class="flex items-start gap-3 p-2 rounded hover:bg-surface-container-high transition-colors opacity-60">
+<span class="material-symbols-outlined text-neon-green text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<p class="font-body-md text-[14px] text-on-surface line-through">Isolate main power grid</p>
+<p class="font-caption text-[12px] text-text-muted">Completed by Tech-A at 08:42</p>
+</div>
+</div>
+<!-- Completed Step -->
+<div class="flex items-start gap-3 p-2 rounded hover:bg-surface-container-high transition-colors opacity-60">
+<span class="material-symbols-outlined text-neon-green text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<p class="font-body-md text-[14px] text-on-surface line-through">Depressurize intake valve</p>
+<p class="font-caption text-[12px] text-text-muted">Completed by Tech-A at 08:55</p>
+</div>
+</div>
+<!-- Active Step -->
+<div class="flex items-start gap-3 p-2 rounded bg-surface-container border border-neon-blue">
+<span class="material-symbols-outlined text-neon-blue text-[20px] shrink-0 mt-0.5 animate-pulse">radio_button_checked</span>
+<div>
+<p class="font-body-md text-[14px] text-on-surface font-bold">Apply thermal weld to seal crack</p>
+<p class="font-caption text-[12px] text-neon-blue">IN PROGRESS - ETA 12m</p>
+</div>
+</div>
+<!-- Pending Step -->
+<div class="flex items-start gap-3 p-2 rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-surface-stroke text-[20px] shrink-0 mt-0.5">radio_button_unchecked</span>
+<div>
+<p class="font-body-md text-[14px] text-text-muted">Run structural integrity scan</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Telemetry Data -->
+<div class="bg-surface-elevated border-t-4 border-neon-green rounded flex flex-col flex-1">
+<div class="p-3 border-b border-surface-stroke flex items-center justify-between">
+<h3 class="font-label-caps text-label-caps text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-green text-[18px]">query_stats</span>
+                            LIVE TELEMETRY
+                        </h3>
+</div>
+<div class="p-3 flex flex-col gap-4 overflow-y-auto">
+<!-- Metric 1 -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-caption text-caption text-text-muted uppercase">Stress Coefficient</span>
+<span class="font-body-md text-on-surface font-bold">0.84<span class="text-text-muted font-normal text-[12px] ml-1">μ</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-stroke rounded overflow-hidden">
+<div class="h-full bg-neon-green w-[84%]"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-caption text-caption text-text-muted uppercase">Structural Load</span>
+<span class="font-body-md text-neon-orange font-bold">92<span class="text-text-muted font-normal text-[12px] ml-1">%</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-stroke rounded overflow-hidden">
+<div class="h-full bg-neon-orange w-[92%]"></div>
+</div>
+<p class="font-caption text-[10px] text-neon-orange mt-1">WARNING: APPROACHING THRESHOLD</p>
+</div>
+<div class="h-px bg-surface-stroke w-full"></div>
+<!-- Crew Status -->
+<div>
+<h4 class="font-label-caps text-[12px] text-text-muted mb-3 uppercase">Crew On-Site</h4>
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container border border-surface-stroke flex items-center justify-center relative">
+<span class="material-symbols-outlined text-text-muted text-[16px]">person</span>
+<span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-neon-green border-2 border-surface-elevated"></span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-[14px] leading-tight">Tech-A (Lead)</p>
+<p class="font-caption text-[12px] text-text-muted leading-tight">Vitals: Normal</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container border border-surface-stroke flex items-center justify-center relative">
+<span class="material-symbols-outlined text-text-muted text-[16px]">person</span>
+<span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-neon-orange border-2 border-surface-elevated"></span>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-[14px] leading-tight">Tech-B (Support)</p>
+<p class="font-caption text-[12px] text-neon-orange leading-tight">Elevated HR</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Follow-Up Alerts | Apex Structural</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#dad9d9",
+                      "primary-container": "#00f0ff",
+                      "surface-container-high": "#282a2e",
+                      "surface-container": "#1e2024",
+                      "on-primary": "#00363a",
+                      "tertiary-fixed": "#e4e2e2",
+                      "on-tertiary-container": "#5e5f5f",
+                      "surface-tint": "#00dbe9",
+                      "primary": "#dbfcff",
+                      "inverse-on-surface": "#2f3035",
+                      "surface-bright": "#37393e",
+                      "on-error": "#690005",
+                      "inverse-primary": "#006970",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "on-secondary-fixed": "#271900",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "surface-variant": "#333539",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "surface-container-lowest": "#0c0e12",
+                      "outline-variant": "#3b494b",
+                      "surface-container-low": "#1a1c20",
+                      "primary-fixed-dim": "#00dbe9",
+                      "surface": "#111317",
+                      "primary-fixed": "#7df4ff",
+                      "tertiary": "#f7f5f5",
+                      "on-background": "#e2e2e8",
+                      "on-tertiary": "#303031",
+                      "outline": "#849495",
+                      "on-primary-container": "#006970",
+                      "on-error-container": "#ffdad6",
+                      "on-surface": "#e2e2e8",
+                      "on-primary-fixed-variant": "#004f54",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#6b4b00",
+                      "surface-container-highest": "#333539",
+                      "surface-dim": "#111317",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "error-container": "#93000a",
+                      "secondary": "#ffdb9d",
+                      "on-secondary": "#412d00",
+                      "secondary-container": "#feb700",
+                      "on-surface-variant": "#b9cacb",
+                      "background": "#111317",
+                      "on-primary-fixed": "#002022",
+                      "inverse-surface": "#e2e2e8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "unit": "4px",
+                      "density-comfortable": "24px",
+                      "margin-desktop": "32px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+<!-- TopAppBar (Web/Mobile) -->
+<header class="bg-surface dark:bg-surface w-full top-0 sticky border-b border-outline-variant flex justify-between items-center px-gutter h-16 z-50">
+<button aria-label="Menu" class="text-primary-fixed-dim dark:text-primary-fixed-dim hover:bg-surface-container-high transition-colors active:scale-95 duration-100 p-2 rounded-sm">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile uppercase tracking-tighter text-primary-fixed-dim">APEX ALERTS</h1>
+<button aria-label="Profile" class="text-primary-fixed-dim dark:text-primary-fixed-dim hover:bg-surface-container-high transition-colors active:scale-95 duration-100 p-2 rounded-sm">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col h-full py-8 gap-unit bg-surface-container dark:bg-surface-container w-80 fixed left-0 top-16 bottom-0 border-r border-outline-variant z-40">
+<div class="px-gutter mb-6 flex flex-col text-left">
+<div class="font-display-lg text-display-lg text-primary truncate">APEX_ADMIN_01</div>
+<div class="font-body-fixed text-body-fixed text-on-surface-variant">Lead Inspector</div>
+<div class="font-label-caps text-label-caps text-outline mt-1">V.2.4.0</div>
+</div>
+<ul class="flex flex-col gap-1 w-full px-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-150 ease-in-out font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+                        Task Queue
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-150 ease-in-out font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                        Adjustment Logs
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-150 ease-in-out font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+                        Material Specs
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-150 ease-in-out font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                        Crew Schedule
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-150 ease-in-out font-body-fixed text-body-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-80 overflow-y-auto p-gutter md:p-margin-desktop bg-background pb-24 md:pb-8">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-outline-variant pb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Follow-Up Command</h2>
+<p class="font-body-fixed text-body-fixed text-on-surface-variant mt-1">Telemetry active. 14 items require immediate attention.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container border border-outline-variant text-on-surface px-4 py-2 font-label-caps text-label-caps uppercase hover:bg-surface-container-high transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filter
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-unit">
+<!-- Overdue Summary Card -->
+<div class="md:col-span-4 bg-surface-container border border-outline-variant rounded-sm relative overflow-hidden flex flex-col p-4">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-label-caps text-error border border-error/30 bg-error/10 px-2 py-1 uppercase rounded-sm">Critical Queue</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface mb-1">04</div>
+<div class="font-body-fixed text-body-fixed text-on-surface-variant mb-4">Overdue Follow-ups (&gt;48hrs)</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Next Action</span>
+<span class="font-data-point text-data-point text-on-surface text-[14px]">PRJ-8821</span>
+</div>
+</div>
+<!-- Telemetry Stats -->
+<div class="md:col-span-8 grid grid-cols-2 gap-unit">
+<div class="bg-surface-container border border-outline-variant rounded-sm flex flex-col justify-center items-center p-6 relative group hover:border-primary-fixed-dim transition-colors cursor-default">
+<div class="font-data-point text-data-point text-primary-fixed-dim text-4xl mb-2">12</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase text-center">Unanswered Quotes</div>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[16px]" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-sm flex flex-col justify-center items-center p-6 relative group hover:border-secondary-fixed-dim transition-colors cursor-default">
+<div class="font-data-point text-data-point text-secondary-fixed-dim text-4xl mb-2">08</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase text-center">Left on Read</div>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[16px]" data-icon="visibility">visibility</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Data View -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-unit mt-6">
+<!-- Left On Read List -->
+<div class="lg:col-span-2 bg-surface-container border border-outline-variant rounded-sm flex flex-col min-h-[500px]">
+<div class="p-3 border-b border-outline-variant bg-surface-container-high flex justify-between items-center">
+<div class="font-label-caps text-label-caps text-on-surface uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="radar">radar</span>
+                                Detection Feed
+                            </div>
+<span class="font-data-point text-data-point text-outline text-[12px]">LIVE</span>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-1">
+<!-- List Item 1 - Active -->
+<div class="bg-surface border border-primary-fixed-dim rounded-sm p-3 flex flex-col md:flex-row gap-4 relative overflow-hidden cursor-pointer group" onclick="document.getElementById('composer-panel').classList.remove('hidden')">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-fixed-dim shadow-[0_0_8px_rgba(0,219,233,0.5)]"></div>
+<div class="flex-1 pl-2">
+<div class="flex justify-between items-start mb-1">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold">Sarah Jenkins - Roof Replacement</div>
+<div class="font-data-point text-data-point text-primary-fixed-dim text-[12px] bg-primary-container/10 px-2 py-0.5 rounded-sm border border-primary-container/20">-4.5 hrs</div>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Quote Sent: 10/24 • Value: $14,200</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-secondary-fixed-dim bg-secondary-container/10 w-fit px-2 py-1 rounded-sm border border-secondary-container/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="mark_email_read">mark_email_read</span>
+                                        Read at 09:14 AM
+                                    </div>
+</div>
+<div class="hidden md:flex flex-col justify-center items-end">
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps uppercase px-4 py-2 rounded-sm hover:bg-primary-fixed transition-colors">
+                                        Action
+                                     </button>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="bg-surface border border-outline-variant rounded-sm p-3 flex flex-col md:flex-row gap-4 relative overflow-hidden cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex-1 pl-2">
+<div class="flex justify-between items-start mb-1">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold">Michael Chang - Commercial TPO</div>
+<div class="font-data-point text-data-point text-error text-[12px] bg-error/10 px-2 py-0.5 rounded-sm border border-error/20">-28 hrs</div>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Quote Sent: 10/23 • Value: $42,500</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-outline bg-surface-container-highest w-fit px-2 py-1 rounded-sm border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="sms">sms</span>
+                                        Delivered (No Reply)
+                                    </div>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="bg-surface border border-outline-variant rounded-sm p-3 flex flex-col md:flex-row gap-4 relative overflow-hidden cursor-pointer hover:bg-surface-container-high transition-colors opacity-70">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex-1 pl-2">
+<div class="flex justify-between items-start mb-1">
+<div class="font-body-fixed text-body-fixed text-on-surface font-semibold">Davis Residence - Inspection</div>
+<div class="font-data-point text-data-point text-outline text-[12px] bg-surface-container-highest px-2 py-0.5 rounded-sm border border-outline-variant">-72 hrs</div>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Report Sent: 10/21</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-secondary-fixed-dim bg-secondary-container/10 w-fit px-2 py-1 rounded-sm border border-secondary-container/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="mark_email_read">mark_email_read</span>
+                                        Read at 14:30 PM
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Context Composer (Hidden by default, simulated visible for demo) -->
+<div class="lg:col-span-1 bg-surface-container border border-primary-fixed-dim rounded-sm flex flex-col relative shadow-[0_0_15px_rgba(0,219,233,0.1)]" id="composer-panel">
+<div class="p-3 border-b border-primary-fixed-dim/30 bg-surface-container-high flex justify-between items-center">
+<div class="font-label-caps text-label-caps text-primary-fixed-dim uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit_square">edit_square</span>
+                                Response Uplink
+                            </div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('composer-panel').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+<div class="p-4 flex-1 flex flex-col gap-4">
+<!-- Target Info -->
+<div class="bg-surface border border-outline-variant p-2 rounded-sm text-sm">
+<div class="font-data-point text-data-point text-outline text-[10px] mb-1">TARGET</div>
+<div class="font-body-fixed text-body-fixed text-on-surface">Sarah Jenkins</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Via: SMS &amp; Email</div>
+</div>
+<!-- Tone Selector -->
+<div>
+<div class="font-data-point text-data-point text-outline text-[10px] mb-2">MODULATION_TONE</div>
+<div class="grid grid-cols-3 gap-1">
+<button class="bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps uppercase py-2 text-center rounded-sm border border-primary-fixed-dim">Prof</button>
+<button class="bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-label-caps uppercase py-2 text-center rounded-sm hover:border-outline">Frnd</button>
+<button class="bg-surface border border-outline-variant text-on-surface-variant font-label-caps text-label-caps uppercase py-2 text-center rounded-sm hover:border-outline">Urgnt</button>
+</div>
+</div>
+<!-- Text Area -->
+<div class="flex-1 flex flex-col">
+<div class="font-data-point text-data-point text-outline text-[10px] mb-2">PAYLOAD</div>
+<textarea class="w-full flex-1 bg-surface border border-outline-variant rounded-sm p-3 text-on-surface font-body-fixed focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim resize-none outline-none" placeholder="Enter message...">Hi Sarah, just checking in to see if you had any questions regarding the roof replacement quote sent over yesterday morning. Let me know if you need any clarification on the materials!</textarea>
+</div>
+<!-- Action -->
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps uppercase py-3 rounded-sm hover:bg-primary-fixed transition-colors flex justify-center items-center gap-2 border-b-2 border-on-primary-fixed/50">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+                                Transmit
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="flex md:hidden justify-around items-center h-16 px-2 pb-safe w-full bg-surface-container-lowest fixed bottom-0 z-50 border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-sm px-4 py-1 border border-primary hover:text-primary transition-all active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" data-icon="notification_important">notification_important</span>
+<span class="font-label-caps text-label-caps mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+<span class="font-label-caps text-label-caps mt-1">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ContractorOS - Analytics</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-bright": "#37393e",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container": "#1e2024",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary": "#303031",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "inverse-primary": "#006970",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-background": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-container-low": "#1a1c20",
+                        "surface": "#111317",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-primary": "#00363a",
+                        "outline": "#849495",
+                        "secondary": "#ffdb9d",
+                        "primary": "#dbfcff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#271900",
+                        "surface-tint": "#00dbe9",
+                        "on-primary-container": "#006970",
+                        "tertiary-container": "#dad9d9",
+                        "surface-variant": "#333539",
+                        "surface-container-high": "#282a2e",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#333539",
+                        "primary-fixed": "#7df4ff",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "primary-container": "#00f0ff",
+                        "tertiary": "#f7f5f5",
+                        "primary-fixed-dim": "#00dbe9",
+                        "background": "#111317",
+                        "surface-dim": "#111317",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "secondary-fixed": "#ffdea8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    fontSize: {
+                        "display-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "data-point": ["20px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-fixed": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", fontWeight: "500" }],
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Cyber-Industrial specific utilities */
+        .tech-bg-grid {
+            background-image: 
+                linear-gradient(to right, #333539 1px, transparent 1px),
+                linear-gradient(to bottom, #333539 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: center center;
+        }
+        
+        .card-tech-tab {
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            border-bottom-right-radius: 4px;
+            border-bottom: 1px solid #3b494b; /* outline-variant */
+            border-right: 1px solid #3b494b;
+        }
+
+        .status-strip-ready { border-left: 4px solid #00f0ff; } /* primary-container */
+        .status-strip-progress { border-left: 4px solid #feb700; } /* secondary-container */
+        .status-strip-critical { border-left: 4px solid #ffb4ab; } /* error */
+
+        /* Override arbitrary scrollbar for tech feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #3b494b; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #849495; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-fixed text-body-fixed overflow-hidden flex h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- JSON Component: SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen py-6 bg-surface-container-low border-r border-outline-variant docked left-0 h-full w-64 z-20 shrink-0">
+<!-- Header -->
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 20px;">precision_manufacturing</span>
+</div>
+<h1 class="text-headline-sm font-headline-sm text-on-surface font-semibold tracking-tight">Industrial Field Ops</h1>
+</div>
+<p class="text-label-caps font-label-caps text-on-surface-variant opacity-80 uppercase tracking-widest">Active Session: 8h 12m</p>
+</div>
+<!-- CTA -->
+<div class="px-6 mb-6">
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps text-label-caps uppercase tracking-wider py-3 px-4 font-bold rounded-sm border-b-2 border-[#006970] hover:bg-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                New Job Order
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-1 px-3 overflow-y-auto">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">dashboard</span>
+                Dashboard
+            </a>
+<!-- Jobs -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">work</span>
+                Jobs
+            </a>
+<!-- Evidence -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">photo_library</span>
+                Evidence
+            </a>
+<!-- Inventory -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">inventory_2</span>
+                Inventory
+            </a>
+<!-- Team -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">groups</span>
+                Team
+            </a>
+<!-- Analytics (ACTIVE) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-primary-container font-bold border-l-4 border-primary-container bg-surface-variant/50 transition-all duration-150 translate-x-1 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">analytics</span>
+                Analytics
+            </a>
+</div>
+<!-- Footer Links -->
+<div class="px-3 mt-auto pt-4 border-t border-outline-variant mx-3">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 transition-all duration-150 font-label-caps text-label-caps uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">logout</span>
+                Log Out
+            </a>
+</div>
+</nav>
+<!-- Main Workspace Area -->
+<div class="flex-1 flex flex-col h-screen relative bg-surface tech-bg-grid overflow-hidden">
+<!-- JSON Component: TopNavBar -->
+<header class="bg-surface-container flex justify-between items-center w-full px-margin-desktop h-16 border-b border-outline-variant z-10 shrink-0">
+<!-- Brand & Search -->
+<div class="flex items-center gap-8">
+<div class="text-headline-md font-headline-md font-bold text-primary-container tracking-tight">ContractorOS</div>
+<div class="relative hidden lg:block w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 20px;">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-sm py-1.5 pl-10 pr-4 text-label-caps font-label-caps text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container placeholder:text-outline-variant font-mono" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+</div>
+<!-- Actions & Status -->
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-2 text-label-caps font-label-caps uppercase tracking-widest text-primary-container bg-primary-container/10 px-3 py-1 border border-primary-container/30 rounded-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                    System Status: Optimal
+                </div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:text-primary-container transition-colors duration-200 hover:bg-surface-variant p-1.5 rounded-sm">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-primary-container transition-colors duration-200 hover:bg-surface-variant p-1.5 rounded-sm">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="hover:text-primary-container transition-colors duration-200 hover:bg-surface-variant p-1.5 rounded-sm">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-sm bg-surface-variant border border-outline-variant overflow-hidden ml-2">
+<img alt="Contractor Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARoltV7sMOCgvhAQt3-LdS9j-AhN_GOzOzbgXEL-cbTqceEvSDdExF3Qnqioe-3gemIdi82dQXEK8jub4uB_a8GxiwJZlnMDNugZHn_yTngdJvxOOJ4p9rQJaHX6beKLOvFMXcGDd9aU6qPB4GJGhIDjEF_F4VKPsz_TuGrxUMUA3ygY0__rKbFOyjP3LYE-aXBo8fwEI7IidtVePo3nTFeur7MV3BSiXYzjCY_2iRmXyFAyte8iopiPEsivbZuxvxVyg689C_rtBw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<main class="flex-1 overflow-y-auto p-margin-desktop space-y-gutter">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-density-comfortable">
+<div>
+<h2 class="text-display-lg font-display-lg text-on-surface tracking-tight uppercase">Performance Analytics</h2>
+<p class="text-body-fixed font-body-fixed text-on-surface-variant mt-1">Real-time crew efficiency and safety compliance metrics.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-variant border border-outline-variant text-on-surface font-label-caps text-label-caps px-4 py-2 uppercase tracking-wider hover:bg-surface-container-high transition-colors">Export CSV</button>
+<button class="bg-surface-variant border border-outline-variant text-on-surface font-label-caps text-label-caps px-4 py-2 uppercase tracking-wider flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">filter_list</span> Filter
+                    </button>
+</div>
+</div>
+<!-- Top Stats Row (Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container border border-outline-variant p-6 relative">
+<div class="card-tech-tab bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-0.5 uppercase">Global Efficiency</div>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<div class="text-on-surface-variant font-label-caps text-label-caps mb-1 uppercase tracking-widest">Avg. Install Rate</div>
+<div class="text-display-lg-mobile font-display-lg-mobile text-primary-container font-mono">92.4<span class="text-data-point font-data-point text-outline ml-1">SQ/HR</span></div>
+</div>
+<div class="flex flex-col items-end">
+<span class="material-symbols-outlined text-primary-container mb-1">trending_up</span>
+<span class="font-label-caps text-label-caps text-primary-container">+4.2% MoM</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container border border-outline-variant p-6 relative">
+<div class="card-tech-tab bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-0.5 uppercase">Compliance Index</div>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<div class="text-on-surface-variant font-label-caps text-label-caps mb-1 uppercase tracking-widest">Flawless Inspections</div>
+<div class="text-display-lg-mobile font-display-lg-mobile text-on-surface font-mono">1,402<span class="text-data-point font-data-point text-outline ml-1">YTD</span></div>
+</div>
+<div class="flex flex-col items-end">
+<span class="material-symbols-outlined text-secondary-container mb-1">verified_user</span>
+<span class="font-label-caps text-label-caps text-secondary-container">98.1% Pass Rate</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container border border-error/50 p-6 relative">
+<div class="card-tech-tab bg-error/20 text-error font-label-caps text-label-caps px-2 py-0.5 uppercase border-b border-r border-error/50">Safety Alerts</div>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<div class="text-error font-label-caps text-label-caps mb-1 uppercase tracking-widest">Active Incidents</div>
+<div class="text-display-lg-mobile font-display-lg-mobile text-error font-mono">03<span class="text-data-point font-data-point text-error/50 ml-1">LVL-1</span></div>
+</div>
+<div class="flex flex-col items-end">
+<span class="material-symbols-outlined text-error mb-1">warning</span>
+<span class="font-label-caps text-label-caps text-error">Require Review</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Split -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter h-[500px]">
+<!-- Leaderboard Panel (Spans 2 cols) -->
+<div class="lg:col-span-2 bg-surface-container border border-outline-variant flex flex-col relative">
+<div class="card-tech-tab bg-surface-variant text-on-surface font-label-caps text-label-caps px-3 py-1 uppercase">Crew Leaderboard</div>
+<div class="p-6 pt-10 flex-1 flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 pb-2 border-b border-outline-variant text-label-caps font-label-caps text-on-surface-variant uppercase tracking-widest mb-2">
+<div class="col-span-1">Rnk</div>
+<div class="col-span-4">Crew Designation</div>
+<div class="col-span-3 text-right">Efficiency</div>
+<div class="col-span-3 text-right">Safety Score</div>
+<div class="col-span-1 text-center">Trend</div>
+</div>
+<!-- Status List Rows -->
+<div class="flex-1 overflow-y-auto space-y-1 pr-2">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface hover:bg-surface-variant/50 border border-outline-variant/50 status-strip-ready transition-colors">
+<div class="col-span-1 font-data-point text-data-point text-primary-container">01</div>
+<div class="col-span-4 font-label-caps text-label-caps text-on-surface">Alpha Strike Squad</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-on-surface">96.8%</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-primary-container">100.0</div>
+<div class="col-span-1 text-center text-primary-container"><span class="material-symbols-outlined" style="font-size: 18px;">keyboard_arrow_up</span></div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface hover:bg-surface-variant/50 border border-outline-variant/50 status-strip-ready transition-colors">
+<div class="col-span-1 font-data-point text-data-point text-on-surface-variant">02</div>
+<div class="col-span-4 font-label-caps text-label-caps text-on-surface">Bravo Vanguard</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-on-surface">94.2%</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-primary-container">99.5</div>
+<div class="col-span-1 text-center text-primary-container"><span class="material-symbols-outlined" style="font-size: 18px;">keyboard_arrow_up</span></div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface hover:bg-surface-variant/50 border border-outline-variant/50 status-strip-progress transition-colors">
+<div class="col-span-1 font-data-point text-data-point text-on-surface-variant">03</div>
+<div class="col-span-4 font-label-caps text-label-caps text-on-surface">Delta Force Roofers</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-on-surface">88.5%</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-secondary-container">92.0</div>
+<div class="col-span-1 text-center text-outline-variant"><span class="material-symbols-outlined" style="font-size: 18px;">horizontal_rule</span></div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 items-center p-2 bg-surface hover:bg-surface-variant/50 border border-outline-variant/50 status-strip-critical transition-colors">
+<div class="col-span-1 font-data-point text-data-point text-on-surface-variant">04</div>
+<div class="col-span-4 font-label-caps text-label-caps text-on-surface">Echo Installation</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-on-surface">76.1%</div>
+<div class="col-span-3 text-right font-data-point text-data-point text-error">81.4</div>
+<div class="col-span-1 text-center text-error"><span class="material-symbols-outlined" style="font-size: 18px;">keyboard_arrow_down</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Visualizations Panel -->
+<div class="flex flex-col gap-gutter">
+<!-- Regional Trends Chart (CSS based) -->
+<div class="bg-surface-container border border-outline-variant flex-1 relative p-6 pt-10 flex flex-col">
+<div class="card-tech-tab bg-surface-variant text-on-surface font-label-caps text-label-caps px-3 py-1 uppercase">Regional output (SQ)</div>
+<div class="flex-1 flex items-end justify-between gap-2 mt-4 border-b border-outline-variant pb-2 relative">
+<!-- Y-Axis labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-label-caps font-label-caps text-outline-variant">
+<span>10k</span>
+<span>5k</span>
+<span>0</span>
+</div>
+<!-- Bars -->
+<div class="w-1/5 bg-primary-container/20 border border-primary-container/50 hover:bg-primary-container/40 transition-colors relative group" style="height: 60%; margin-left: 30px;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-data-point text-[12px] text-primary-container bg-surface px-1 border border-outline-variant">6.2k</div>
+</div>
+<div class="w-1/5 bg-primary-container/40 border border-primary-container relative group" style="height: 85%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-data-point text-[12px] text-primary-container bg-surface px-1 border border-outline-variant">8.5k</div>
+</div>
+<div class="w-1/5 bg-surface-variant border border-outline-variant relative group" style="height: 40%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-data-point text-[12px] text-on-surface bg-surface px-1 border border-outline-variant">4.0k</div>
+</div>
+<div class="w-1/5 bg-surface-variant border border-outline-variant relative group" style="height: 55%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-data-point text-[12px] text-on-surface bg-surface px-1 border border-outline-variant">5.5k</div>
+</div>
+</div>
+<div class="flex justify-between text-label-caps font-label-caps text-on-surface-variant uppercase mt-2 ml-[30px]">
+<span class="w-1/5 text-center">NRT</span>
+<span class="w-1/5 text-center">SOU</span>
+<span class="w-1/5 text-center">EST</span>
+<span class="w-1/5 text-center">WST</span>
+</div>
+</div>
+<!-- Material Usage / Mini Stat -->
+<div class="bg-surface-container border border-outline-variant h-32 relative p-4 flex items-center justify-between">
+<div class="card-tech-tab bg-surface-variant text-on-surface font-label-caps text-label-caps px-3 py-1 uppercase">Primary Material</div>
+<div class="flex items-center gap-4 mt-2">
+<!-- Material Chip -->
+<div class="w-16 h-16 bg-[#1a1c20] border-2 border-[#5e5f5f] flex items-center justify-center font-data-point text-data-point text-[#b9cacb]">TPO</div>
+<div>
+<div class="text-on-surface-variant font-label-caps text-label-caps uppercase tracking-widest">Usage Vol.</div>
+<div class="text-headline-md font-headline-md text-on-surface">45,200 <span class="text-label-caps font-label-caps text-outline-variant">SQ FT</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RoofCore AI Terminal - Risk Mitigation Planner</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS & Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "inverse-surface": "#e2e2e8",
+                        "error-container": "#93000a",
+                        "surface-container": "#1e2024",
+                        "on-secondary-fixed": "#271900",
+                        "primary-container": "#00f0ff",
+                        "background": "#111317",
+                        "on-tertiary": "#303031",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#006970",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-primary-container": "#006970",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e8",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary-fixed": "#e4e2e2",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary": "#f7f5f5",
+                        "surface-dim": "#111317",
+                        "error": "#ffb4ab",
+                        "secondary": "#ffdb9d",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "surface-container-high": "#282a2e",
+                        "outline-variant": "#3b494b",
+                        "on-surface": "#e2e2e8",
+                        "surface-bright": "#37393e",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333539",
+                        "surface-tint": "#00dbe9",
+                        "secondary-container": "#feb700",
+                        "primary": "#dbfcff",
+                        "on-secondary": "#412d00",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#dad9d9",
+                        "surface": "#111317",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary-fixed-variant": "#004f54"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "density-comfortable": "24px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk", "sans-serif"],
+                        "body-fixed": ["Inter", "sans-serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["Space Grotesk", "sans-serif"],
+                        "data-point": ["JetBrains Mono", "monospace"],
+                        "display-lg-mobile": ["Space Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface h-screen w-screen overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed bg-surface-dim dark:bg-surface-dim text-primary dark:text-primary-fixed-dim font-headline-md text-headline-md docked full-width top-0 border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full h-16 z-50">
+<div class="flex items-center gap-gutter">
+<span class="font-display-lg text-display-lg-mobile tracking-tighter text-primary dark:text-primary-fixed-dim">RoofCore AI Terminal</span>
+</div>
+<div class="flex items-center gap-density-compact">
+<button class="p-unit hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 rounded text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined block">settings_input_component</span>
+</button>
+<button class="p-unit hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 rounded text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined block">terminal</span>
+</button>
+<button class="p-unit hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 rounded text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined block">sync</span>
+</button>
+<img alt="Technician Profile" class="w-8 h-8 rounded-full border border-outline ml-unit" data-alt="A small, high-contrast, technical avatar placeholder image with a teal background and cyan geometric shapes representing a user profile icon in a dark mode UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7NAaqWEqXFu0RkrOOwDsMjCjD_AEYjLtXEtH-OlhZIGDdsRHPpphlLyjd7IXFxVsGXGKahc09Rfhr0tVjHedL5u-4fqUVxVUnWsKh-0AzSLvclHYomYYwKZkUyw47hgaH4flDMKy5XYRG1Mu_yulLSw5dNgYfpUbWEDuBetbm6csV2bukoHYRKya7lCA4vgm_yEAFVTbJVO-ja5Xy2FJDcibKdidak1jyWlvBrbY5tt3lcGGV7QB2WEwV28u64Fx3NSyz8GulZe8T"/>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary-fixed-dim font-label-caps text-label-caps docked left-0 h-full w-64 border-r border-outline-variant fixed left-0 top-0 h-full flex flex-col pt-16 z-40">
+<div class="p-gutter border-b border-outline-variant mb-unit">
+<div class="flex items-center gap-density-compact mb-2">
+<img alt="RoofCore Admin" class="w-10 h-10 border border-outline-variant rounded" data-alt="A square, brutalist technical avatar image for a system admin, featuring a dark grey background with sharp, monospaced cyan text." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOZvQGSrjHHb1meQZ74Bsz1xG3ndy0FG6gsqWxd0soRs71MsxHQOcrGzt7Jssc_x4wiorX5FNqwR3PC4t4wj_7_EXuwInRdZBYaziY8TjdlxgyevpkniJPEfOASE5acKhdiwqnlch8BXOODssVT9mlQY7PCVpSu96ExvpQmc7LYuCvIQzPjpkizv7_13fGwrGT2K3JLB-SXoJpZzJDc3_zAdGKJ6LO0Vg_L30qVn-yLS4MIST00apAyOq7u9pIx9KAdK1ur_RifLZ"/>
+<div>
+<div class="font-headline-md text-[14px] text-on-surface leading-tight">System Node 01</div>
+<div class="text-on-surface-variant opacity-70">Precision Roofing CRM</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest border border-outline-variant text-on-surface hover:bg-surface-container-high transition-all py-density-compact mt-unit uppercase tracking-widest text-center">
+                Deploy Model
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto py-unit">
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+                Provider Matrix
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                Telemetry
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact bg-primary-container text-on-primary-container border-l-4 border-primary hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                Diagnostics
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                Site Maps
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">developer_board</span>
+                System Logs
+            </a>
+</div>
+<div class="border-t border-outline-variant py-unit">
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">security</span>
+                Security
+            </a>
+<a class="flex items-center gap-density-compact px-gutter py-density-compact text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content Workspace -->
+<main class="ml-64 mt-16 h-[calc(100vh-64px)] w-[calc(100vw-256px)] p-gutter bg-surface grid grid-cols-12 gap-gutter">
+<!-- Column 1: Risk Queue -->
+<section class="col-span-3 bg-surface-container-lowest border border-outline-variant flex flex-col relative overflow-hidden">
+<!-- Blueprint Tab Detail -->
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface font-label-caps text-label-caps px-2 py-0.5 z-10">
+                SEC-01: QUEUE
+            </div>
+<div class="p-gutter border-b border-outline-variant bg-surface-container-high mt-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Active Threats</h2>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">PRIORITY SORT ACTIVE</div>
+</div>
+<div class="flex-1 overflow-y-auto flex flex-col gap-[1px] bg-outline-variant">
+<!-- Queue Item: Critical -->
+<div class="bg-surface-container hover:bg-surface-container-highest cursor-pointer p-density-compact border-l-[4px] border-error transition-colors flex flex-col gap-unit group">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-[10px] text-error tracking-widest uppercase">CRITICAL SEVERITY</span>
+<span class="font-data-point text-[14px] text-on-surface-variant group-hover:text-primary transition-colors">T-04:12</span>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface font-medium leading-tight">Structural Sheathing Compromise</div>
+<div class="flex gap-2 items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">location_on</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SECTOR 4B - RIDGE</span>
+</div>
+</div>
+<!-- Queue Item: Active/Selected -->
+<div class="bg-surface-container-highest cursor-pointer p-density-compact border-l-[4px] border-primary transition-colors flex flex-col gap-unit relative">
+<div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-primary-container/10 to-transparent pointer-events-none"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-[10px] text-primary tracking-widest uppercase">ELEVATED RISK</span>
+<span class="font-data-point text-[14px] text-primary">T-12:00</span>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface font-medium leading-tight">Membrane Adhesion Failure</div>
+<div class="flex gap-2 items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">thermostat</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">THERMAL ZONE 2</span>
+</div>
+</div>
+<!-- Queue Item: Warning -->
+<div class="bg-surface-container hover:bg-surface-container-highest cursor-pointer p-density-compact border-l-[4px] border-secondary-container transition-colors flex flex-col gap-unit group">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-[10px] text-secondary-container tracking-widest uppercase">WATCH LIST</span>
+<span class="font-data-point text-[14px] text-on-surface-variant group-hover:text-primary transition-colors">T-48:00</span>
+</div>
+<div class="font-body-fixed text-body-fixed text-on-surface font-medium leading-tight">Fastener Pull-Through Detected</div>
+<div class="flex gap-2 items-center mt-1">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">build</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PERIMETER EDGE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Column 2: Protocol Detail -->
+<section class="col-span-6 bg-surface-container border border-outline-variant flex flex-col relative">
+<div class="absolute top-0 left-0 bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps px-2 py-0.5 z-10">
+                SEC-02: ANALYSIS
+            </div>
+<div class="p-gutter border-b border-outline-variant mt-4 flex justify-between items-end">
+<div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Membrane Repair Protocol</h1>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1 flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        PROTOCOL ID: TPO-RM-004-X
+                    </div>
+</div>
+<div class="text-right">
+<div class="font-label-caps text-label-caps text-on-surface-variant">EST. RESOLUTION</div>
+<div class="font-data-point text-[32px] text-on-surface">2.4<span class="text-[16px] text-on-surface-variant">HRS</span></div>
+</div>
+</div>
+<div class="flex-1 p-gutter overflow-y-auto flex flex-col gap-gutter">
+<!-- Probability Gauge Area -->
+<div class="bg-surface-container-lowest border border-outline-variant p-gutter flex items-center justify-between">
+<div class="flex-1">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">MITIGATION SUCCESS PROBABILITY</div>
+<div class="flex items-end gap-2">
+<span class="font-display-lg text-display-lg text-primary leading-none">87.4</span>
+<span class="font-data-point text-data-point text-primary-fixed-dim leading-none mb-1">%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 mt-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary w-[87.4%]"></div>
+</div>
+</div>
+<!-- Decorative Radial Data Vis -->
+<div class="w-32 h-32 ml-gutter relative flex items-center justify-center shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#333539" stroke-width="10"></circle>
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="#00dbe9" stroke-dasharray="282.7" stroke-dashoffset="35.6" stroke-width="10"></circle>
+</svg>
+<div class="absolute font-data-point text-[16px] text-primary text-center">
+                            NOMINAL<br/>VAR: <span class="text-on-surface">±2%</span>
+</div>
+</div>
+</div>
+<!-- Specifications Grid -->
+<div class="grid grid-cols-2 gap-unit">
+<div class="bg-surface-container-lowest border border-outline-variant p-density-compact">
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Impact Area</div>
+<div class="font-data-point text-data-point text-on-surface flex justify-between">
+<span>450</span>
+<span class="text-on-surface-variant">SQ FT</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-density-compact">
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Slope Constraint</div>
+<div class="font-data-point text-data-point text-on-surface flex justify-between">
+<span>4/12</span>
+<span class="text-on-surface-variant">PITCH</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-density-compact">
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Wind Shear Limit</div>
+<div class="font-data-point text-data-point text-on-surface flex justify-between">
+<span>35</span>
+<span class="text-on-surface-variant">MPH MAX</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-density-compact">
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-1">Current Temp</div>
+<div class="font-data-point text-data-point text-on-surface flex justify-between">
+<span>72</span>
+<span class="text-on-surface-variant">°F</span>
+</div>
+</div>
+</div>
+<!-- Material Resources Allocation -->
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">REQUIRED FIELD RESOURCES</div>
+<div class="flex flex-wrap gap-unit">
+<!-- Material Chip -->
+<div class="border border-outline bg-surface-container-high px-2 py-1 font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+                            TPO-60MIL
+                        </div>
+<div class="border border-outline bg-surface-container-high px-2 py-1 font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<div class="w-2 h-2 bg-secondary rounded-full"></div>
+                            BOND-ADH-X
+                        </div>
+<div class="border border-outline bg-surface-container-high px-2 py-1 font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<div class="w-2 h-2 bg-tertiary-fixed-dim rounded-full"></div>
+                            SEAM-ROLL-HVY
+                        </div>
+<div class="border border-outline border-dashed bg-surface-container px-2 py-1 font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface cursor-pointer flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">add</span> REQ OVERRIDE
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Column 3: Deployment Uplink -->
+<section class="col-span-3 bg-surface-container-highest border border-outline-variant flex flex-col relative">
+<div class="absolute top-0 left-0 bg-outline-variant text-on-surface font-label-caps text-label-caps px-2 py-0.5 z-10">
+                SEC-03: COMMAND
+            </div>
+<div class="p-gutter border-b border-outline-variant mt-4">
+<h3 class="font-headline-md text-[18px] text-on-surface uppercase tracking-widest">Network Status</h3>
+<div class="font-label-caps text-label-caps text-primary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">wifi</span> UPLINK STABLE
+                </div>
+</div>
+<div class="flex-1 p-gutter flex flex-col justify-between">
+<!-- Field Team Status List -->
+<div class="flex flex-col gap-unit">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2 border-b border-outline-variant pb-1">ASSET DEPLOYMENT MATRIX</div>
+<div class="flex justify-between items-center bg-surface-container p-1 px-2 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface">UNIT ALPHA [ROOF]</span>
+<span class="font-label-caps text-[10px] text-primary bg-primary/10 px-1 border border-primary/30">ONLINE</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container p-1 px-2 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface">UNIT BRAVO [GND]</span>
+<span class="font-label-caps text-[10px] text-primary bg-primary/10 px-1 border border-primary/30">ONLINE</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest p-1 px-2 border border-outline-variant opacity-60">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUPPLY DRONE 04</span>
+<span class="font-label-caps text-[10px] text-error bg-error/10 px-1 border border-error/30">OFFLINE</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container p-1 px-2 border border-outline-variant mt-2">
+<span class="font-label-caps text-label-caps text-on-surface text-[10px]">COMM LINK LATENCY</span>
+<span class="font-data-point text-[14px] text-on-surface">14ms</span>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8">
+<div class="font-label-caps text-[10px] text-on-surface-variant text-center mb-2">VERIFY CLEARANCE BEFORE EXECUTION</div>
+<button class="w-full bg-primary text-on-primary py-density-comfortable font-data-point text-data-point border-b-[6px] border-on-primary-fixed hover:bg-primary-fixed transition-colors text-center relative overflow-hidden group shadow-[0_0_15px_rgba(0,219,233,0.15)] hover:shadow-[0_0_25px_rgba(0,219,233,0.3)]">
+<div class="absolute inset-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                        INITIATE PROTOCOL
+                    </button>
+<style>
+                        @keyframes shimmer {
+                            0% { background-position: 200% 0; }
+                            100% { background-position: -200% 0; }
+                        }
+                    </style>
+</div>
+</div>
+</section>
+</main>
+</body></html>

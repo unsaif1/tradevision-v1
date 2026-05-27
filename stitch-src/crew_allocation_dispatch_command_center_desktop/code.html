@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crew Allocation &amp; Resource Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#dad9d9",
+                        "primary-container": "#00f0ff",
+                        "surface-container-high": "#282a2e",
+                        "surface-container": "#1e2024",
+                        "on-primary": "#00363a",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-tint": "#00dbe9",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006970",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "surface-variant": "#333539",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#0c0e12",
+                        "outline-variant": "#3b494b",
+                        "surface-container-low": "#1a1c20",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface": "#111317",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary": "#f7f5f5",
+                        "on-background": "#e2e2e8",
+                        "on-tertiary": "#303031",
+                        "outline": "#849495",
+                        "on-primary-container": "#006970",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e2e2e8",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-container-highest": "#333539",
+                        "surface-dim": "#111317",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "error-container": "#93000a",
+                        "secondary": "#ffdb9d",
+                        "on-secondary": "#412d00",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "background": "#111317",
+                        "on-primary-fixed": "#002022",
+                        "inverse-surface": "#e2e2e8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "density-comfortable": "24px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-fixed": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "data-point": ["20px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", fontWeight: "500" }],
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-fixed": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #111317; color: #e2e2e8; font-family: 'Inter', sans-serif; }
+        .tech-grid {
+            background-image: linear-gradient(to right, #3b494b 1px, transparent 1px),
+                              linear-gradient(to bottom, #3b494b 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.1;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .data-card {
+            background-color: #1e2024;
+            border: 1px solid #3b494b;
+            position: relative;
+        }
+        .data-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, #00f0ff, transparent);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="flex bg-surface text-on-surface antialiased min-h-screen">
+<div class="tech-grid"></div>
+<!-- Navigation Drawer -->
+<nav class="fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant dark:border-outline-variant bg-surface dark:bg-surface flex flex-col py-margin-desktop z-20">
+<div class="px-gutter mb-8">
+<h1 class="font-display-lg text-headline-md text-primary dark:text-primary tracking-tight font-bold">TRADEVISION</h1>
+</div>
+<div class="flex flex-col gap-2 mt-4 flex-1">
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+                REPORTS
+            </a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="ml-[260px] flex-1 flex flex-col min-h-screen relative">
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-[260px] h-[64px] border-b border-outline-variant dark:border-outline-variant bg-surface-container-low dark:bg-surface-container-low flex justify-between items-center px-gutter w-[calc(100%-260px)] z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary tracking-wide">CREW ALLOCATION &amp; DISPATCH</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed headshot portrait of a professional system administrator in a high-tech control room environment. The lighting is moody and cinematic with cool cyan rim lights defining their silhouette against a dark industrial background. They convey authority and technical expertise. The image embodies a gritty, professional cyberpunk aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDanwGbA6vc1Gn4m6WgKmKFT8zT0snWNw7iQOkl4WntrgDfx8RrlepA4NFYle71sRG4VYV_t38Ty9JMLZOLDBnpIPeqmrALqIjLIQlA6B6HVncGtugVz5bVITPUEqw1dqvPYtYkf5abVxhHdyYVB9VA8UXYuTymmFKPIIQUQfFa_U7Uzf8IMPjkUHTqUNYKewlrKdiDO28O63YnN3skzqgRbXx8RND_4iDlkO6yKflqqjvQJ4YYpIjW9I3a9_3M9KZiMabnELjGh4vb"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="mt-[64px] p-margin-desktop flex-1 flex flex-col gap-6 w-full">
+<!-- KPI Strip -->
+<div class="grid grid-cols-4 gap-4 w-full">
+<div class="data-card p-4 flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL CREWS</span>
+<div class="flex items-end justify-between">
+<span class="font-data-point text-data-point text-primary text-4xl">12</span>
+<span class="material-symbols-outlined text-outline">groups</span>
+</div>
+</div>
+<div class="data-card p-4 flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">PERSONNEL DEPLOYED</span>
+<div class="flex items-end justify-between">
+<span class="font-data-point text-data-point text-primary text-4xl">48</span>
+<span class="material-symbols-outlined text-outline">engineering</span>
+</div>
+</div>
+<div class="data-card p-4 flex flex-col gap-2 border-l-2 border-l-secondary-container">
+<span class="font-label-caps text-label-caps text-secondary-container">ACTIVE ASSIGNMENTS</span>
+<div class="flex items-end justify-between">
+<span class="font-data-point text-data-point text-secondary-container text-4xl">09</span>
+<span class="material-symbols-outlined text-secondary-container">construction</span>
+</div>
+</div>
+<div class="data-card p-4 flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AVG. DISPATCH TIME</span>
+<div class="flex items-end justify-between">
+<span class="font-data-point text-data-point text-primary text-4xl">14<span class="text-sm ml-1 text-on-surface-variant">m</span></span>
+<span class="material-symbols-outlined text-outline">timer</span>
+</div>
+</div>
+</div>
+<div class="flex flex-1 gap-6 w-full">
+<!-- Data Grid / Board -->
+<div class="flex-[2] flex flex-col gap-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 inline-block">ACTIVE SQUADRONS</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container border border-outline-variant px-3 py-1 font-label-caps text-label-caps text-on-surface hover:bg-surface-variant transition-colors">FILTER</button>
+<button class="bg-primary text-on-primary px-3 py-1 font-label-caps text-label-caps font-bold hover:opacity-90 transition-opacity">DEPLOY NEW</button>
+</div>
+</div>
+<!-- Crew Rows -->
+<div class="flex flex-col gap-3">
+<!-- Crew Alpha -->
+<div class="data-card p-4 flex items-center justify-between border-l-[4px] border-l-primary-fixed">
+<div class="flex items-center gap-6 w-1/4">
+<div class="bg-surface-container-high border border-outline-variant p-2 rounded text-center min-w-[60px]">
+<span class="font-data-point text-data-point text-primary block">AL</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface font-bold">ALPHA SQUAD</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">FM: J. HOLDEN</span>
+</div>
+</div>
+<div class="w-1/6 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">STRENGTH</span>
+<span class="font-data-point text-data-point text-on-surface text-lg">5<span class="text-xs text-outline ml-1">/5</span></span>
+</div>
+<div class="w-1/5 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">STATUS</span>
+<span class="font-label-caps text-label-caps text-primary-fixed mt-1 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-fixed inline-block"></span> ON-SITE
+                                </span>
+</div>
+<div class="w-1/4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">ASSIGNMENT</span>
+<span class="font-label-caps text-label-caps text-on-surface mt-1 truncate">RIVERSIDE COMMONS, BLDG 4</span>
+</div>
+<div class="flex gap-2 w-auto justify-end">
+<button class="p-2 bg-surface-container border border-outline-variant hover:border-primary text-on-surface hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">swap_horiz</span>
+</button>
+<button class="p-2 bg-surface-container border border-outline-variant hover:border-primary text-on-surface hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">call</span>
+</button>
+<button class="p-2 bg-surface-container border border-outline-variant hover:border-primary text-on-surface hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">map</span>
+</button>
+</div>
+</div>
+<!-- Crew Bravo -->
+<div class="data-card p-4 flex items-center justify-between border-l-[4px] border-l-secondary-container">
+<div class="flex items-center gap-6 w-1/4">
+<div class="bg-surface-container-high border border-outline-variant p-2 rounded text-center min-w-[60px]">
+<span class="font-data-point text-data-point text-secondary-container block">BR</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface font-bold">BRAVO SQUAD</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">FM: N. NAGATA</span>
+</div>
+</div>
+<div class="w-1/6 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">STRENGTH</span>
+<span class="font-data-point text-data-point text-on-surface text-lg">4<span class="text-xs text-outline ml-1">/4</span></span>
+</div>
+<div class="w-1/5 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">STATUS</span>
+<span class="font-label-caps text-label-caps text-secondary-container mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span> EN-ROUTE
+                                </span>
+</div>
+<div class="w-1/4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">ASSIGNMENT</span>
+<span class="font-label-caps text-label-caps text-on-surface mt-1 truncate">742 EVERGREEN TER</span>
+</div>
+<div class="flex gap-2 w-auto justify-end">
+<button class="p-2 bg-surface-container border border-outline-variant hover:border-primary text-on-surface hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">swap_horiz</span>
+</button>
+<button class="p-2 bg-surface-container border border-outline-variant hover:border-primary text-on-surface hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">call</span>
+</button>
+<button class="p-2 bg-surface-container border border-outline-variant hover:border-primary text-on-surface hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">map</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Panel -->
+<div class="flex-1 flex flex-col gap-4">
+<div class="data-card h-full p-4 flex flex-col">
+<div class="flex justify-between items-center mb-4 border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface">DEPLOYMENT MATRIX</span>
+<span class="material-symbols-outlined text-outline text-sm">my_location</span>
+</div>
+<div class="flex-1 relative bg-surface-container-lowest border border-outline-variant overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&amp;q=80')] bg-cover bg-center opacity-20 grayscale sepia-[0.3] hue-rotate-[180deg]" data-alt="A highly stylized, dark-mode satellite map view of an urban grid. The map utilizes a deep, tech-noir color palette of blacks, dark grays, and vivid cyan highlights tracing major arterial roads. It looks like a complex tactical deployment interface or high-end architectural command center display."></div>
+<!-- Map Pins -->
+<div class="absolute top-[30%] left-[40%] flex flex-col items-center">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<span class="font-data-point text-[10px] text-primary mt-1 bg-surface-container-highest px-1 border border-primary">AL</span>
+</div>
+<div class="absolute top-[60%] left-[70%] flex flex-col items-center">
+<span class="relative flex h-3 w-3">
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary-container shadow-[0_0_8px_#feb700]"></span>
+</span>
+<span class="font-data-point text-[10px] text-secondary-container mt-1 bg-surface-container-highest px-1 border border-secondary-container">BR</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

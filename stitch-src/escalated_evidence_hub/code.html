@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escalated Issues</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#aeb6c3",
+                      "surface-bright": "#353a40",
+                      "background": "#0f141a",
+                      "tertiary-fixed": "#8ff7c7",
+                      "tertiary": "#72daad",
+                      "on-surface-variant": "#e4bdbf",
+                      "on-secondary-fixed-variant": "#3f4753",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#bfc7d5",
+                      "surface-variant": "#30353c",
+                      "primary-fixed-dim": "#ffb2b9",
+                      "on-primary-fixed-variant": "#91002e",
+                      "surface-tint": "#ffb2b9",
+                      "surface-container": "#1b2026",
+                      "on-background": "#dee3eb",
+                      "surface-container-highest": "#30353c",
+                      "on-tertiary-container": "#f5fff7",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#171c22",
+                      "on-primary": "#67001e",
+                      "outline-variant": "#5c3f42",
+                      "on-tertiary-fixed": "#002114",
+                      "on-error": "#690005",
+                      "surface-dim": "#0f141a",
+                      "secondary-container": "#3f4753",
+                      "surface-container-lowest": "#0a0f14",
+                      "surface": "#0f141a",
+                      "on-primary-container": "#fffcff",
+                      "outline": "#ab888a",
+                      "primary-container": "#e21e51",
+                      "on-secondary": "#29313c",
+                      "on-primary-fixed": "#40000f",
+                      "inverse-on-surface": "#2c3137",
+                      "surface-container-high": "#252a31",
+                      "secondary-fixed": "#dbe3f1",
+                      "on-tertiary": "#003826",
+                      "primary": "#ffb2b9",
+                      "error-container": "#93000a",
+                      "tertiary-fixed-dim": "#72daad",
+                      "inverse-surface": "#dee3eb",
+                      "on-surface": "#dee3eb",
+                      "on-secondary-fixed": "#141c26",
+                      "secondary-fixed-dim": "#bfc7d5",
+                      "primary-fixed": "#ffdadb",
+                      "tertiary-container": "#00855e",
+                      "inverse-primary": "#be003e",
+                      "on-tertiary-fixed-variant": "#005138"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid_columns": "12",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "sidebar_width": "260px",
+                      "unit": "4px",
+                      "header_height": "64px"
+              },
+              "fontFamily": {
+                      "display-md": [
+                              "Barlow Condensed"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "mono-data": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "Barlow Condensed"
+                      ],
+                      "headline-sm": [
+                              "Barlow Condensed"
+                      ],
+                      "display-lg": [
+                              "Barlow Condensed"
+                      ]
+              },
+              "fontSize": {
+                      "display-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.03em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "52px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0 flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-surface-variant flex justify-between items-center w-full px-gutter py-[16px] max-w-[1440px] mx-auto sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary-container tracking-tight">TradeVision C.A.R.E.</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow p-4 md:p-margin max-w-[1440px] mx-auto w-full flex flex-col gap-4">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-display-md text-display-md text-on-background">Escalated Issues</h2>
+<span class="bg-error/20 text-error px-2 py-1 rounded font-mono-data text-mono-data border border-error/30">12 FLAGGED</span>
+</div>
+<!-- Issue Card 1 -->
+<article class="bg-surface-container-low border border-outline-variant rounded-lg p-4 flex flex-col gap-4 shadow-sm relative overflow-hidden">
+<!-- Priority Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start pl-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined fill-icon text-error text-lg">warning</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background">PRJ-9942-A</h3>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant">SUB-2023-11-04-X9</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-surface-variant px-2 py-1 rounded uppercase tracking-wider">14m ago</span>
+</div>
+<div class="bg-surface border border-surface-variant rounded p-3">
+<p class="font-label-caps text-label-caps text-error mb-1 uppercase tracking-wider">Reason for Flagging</p>
+<p class="font-body-md text-body-md text-on-background font-medium">Inconsistent Metadata: EXIF GPS coordinates deviate &gt;500m from project site.</p>
+</div>
+<div class="flex gap-2 mt-2">
+<button class="flex-1 bg-surface-variant hover:bg-surface-bright text-on-background font-mono-data text-mono-data py-2 px-3 rounded border border-outline-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span> Analyst
+                </button>
+<button class="flex-1 bg-surface-variant hover:bg-surface-bright text-on-background font-mono-data text-mono-data py-2 px-3 rounded border border-outline-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">campaign</span> Notify
+                </button>
+<button class="w-10 h-10 bg-surface-variant hover:bg-error/20 text-on-surface-variant hover:text-error hover:border-error/50 rounded border border-outline-variant transition-colors flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</article>
+<!-- Issue Card 2 -->
+<article class="bg-surface-container-low border border-outline-variant rounded-lg p-4 flex flex-col gap-4 shadow-sm relative overflow-hidden">
+<!-- Priority Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex justify-between items-start pl-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined fill-icon text-tertiary text-lg">policy</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background">PRJ-8110-C</h3>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant">SUB-2023-11-04-M2</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-surface-variant px-2 py-1 rounded uppercase tracking-wider">1h ago</span>
+</div>
+<div class="bg-surface border border-surface-variant rounded p-3">
+<p class="font-label-caps text-label-caps text-tertiary mb-1 uppercase tracking-wider">Reason for Flagging</p>
+<p class="font-body-md text-body-md text-on-background font-medium">Visual Anomaly: AI detected structural framing mismatch against approved blueprints.</p>
+</div>
+<div class="flex gap-2 mt-2">
+<button class="flex-1 bg-surface-variant hover:bg-surface-bright text-on-background font-mono-data text-mono-data py-2 px-3 rounded border border-outline-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span> Analyst
+                </button>
+<button class="flex-1 bg-surface-variant hover:bg-surface-bright text-on-background font-mono-data text-mono-data py-2 px-3 rounded border border-outline-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">campaign</span> Notify
+                </button>
+<button class="w-10 h-10 bg-surface-variant hover:bg-error/20 text-on-surface-variant hover:text-error hover:border-error/50 rounded border border-outline-variant transition-colors flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</article>
+<!-- Issue Card 3 -->
+<article class="bg-surface-container-low border border-outline-variant rounded-lg p-4 flex flex-col gap-4 shadow-sm relative overflow-hidden">
+<!-- Priority Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex justify-between items-start pl-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined fill-icon text-primary-container text-lg">image_not_supported</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background">PRJ-7002-K</h3>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant">SUB-2023-11-03-Z1</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-surface-variant px-2 py-1 rounded uppercase tracking-wider">3h ago</span>
+</div>
+<div class="bg-surface border border-surface-variant rounded p-3">
+<p class="font-label-caps text-label-caps text-primary-container mb-1 uppercase tracking-wider">Reason for Flagging</p>
+<p class="font-body-md text-body-md text-on-background font-medium">Low-Quality Imagery: Blur index exceeds acceptable threshold for review.</p>
+</div>
+<div class="flex gap-2 mt-2">
+<button class="flex-1 bg-surface-variant hover:bg-surface-bright text-on-background font-mono-data text-mono-data py-2 px-3 rounded border border-outline-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span> Analyst
+                </button>
+<button class="flex-1 bg-surface-variant hover:bg-surface-bright text-on-background font-mono-data text-mono-data py-2 px-3 rounded border border-outline-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">campaign</span> Notify
+                </button>
+<button class="w-10 h-10 bg-surface-variant hover:bg-error/20 text-on-surface-variant hover:text-error hover:border-error/50 rounded border border-outline-variant transition-colors flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</article>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 flex justify-around items-center px-[24px] py-[8px] bg-surface-container-high z-50 border-t border-transparent shadow-lg" style="box-shadow: 0 -4px 12px rgba(0,0,0,0.2);">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">dashboard</span>
+<span class="font-label-caps text-label-caps">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">location_city</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">assignment_late</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center text-primary-container dark:text-primary-fixed-dim font-bold hover:text-primary-container transition-all transform translate-y-[-2px] duration-200" href="#">
+<span class="material-symbols-outlined text-2xl mb-1 fill-icon">notifications_active</span>
+<span class="font-label-caps text-label-caps">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-secondary-container hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">person</span>
+<span class="font-label-caps text-label-caps">Account</span>
+</a>
+</nav>
+</body></html>

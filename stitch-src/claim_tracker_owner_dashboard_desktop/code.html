@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#93000a",
+            "surface-container-lowest": "#0c0e12",
+            "on-secondary": "#412d00",
+            "outline": "#849495",
+            "on-error": "#690005",
+            "on-surface": "#e2e2e8",
+            "tertiary": "#f7f5f5",
+            "on-primary-container": "#006970",
+            "surface-dim": "#111317",
+            "surface-variant": "#333539",
+            "surface-container-low": "#1a1c20",
+            "primary-fixed": "#7df4ff",
+            "primary": "#dbfcff",
+            "secondary-container": "#feb700",
+            "on-primary": "#00363a",
+            "on-secondary-container": "#6b4b00",
+            "surface-container-high": "#282a2e",
+            "surface-container": "#1e2024",
+            "secondary": "#ffdb9d",
+            "surface-bright": "#37393e",
+            "on-tertiary": "#303031",
+            "primary-fixed-dim": "#00dbe9",
+            "on-primary-fixed": "#002022",
+            "inverse-surface": "#e2e2e8",
+            "error": "#ffb4ab",
+            "on-tertiary-container": "#5e5f5f",
+            "background": "#111317",
+            "surface": "#111317",
+            "inverse-primary": "#006970",
+            "inverse-on-surface": "#2f3035",
+            "outline-variant": "#3b494b",
+            "on-secondary-fixed-variant": "#5e4200",
+            "surface-tint": "#00dbe9",
+            "surface-container-highest": "#333539",
+            "secondary-fixed-dim": "#ffba20",
+            "on-primary-fixed-variant": "#004f54",
+            "on-surface-variant": "#b9cacb",
+            "tertiary-fixed": "#e4e2e2",
+            "on-tertiary-fixed-variant": "#464747",
+            "on-error-container": "#ffdad6",
+            "primary-container": "#00f0ff",
+            "on-secondary-fixed": "#271900",
+            "on-tertiary-fixed": "#1b1c1c",
+            "tertiary-container": "#dad9d9",
+            "secondary-fixed": "#ffdea8",
+            "tertiary-fixed-dim": "#c7c6c6",
+            "on-background": "#e2e2e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "margin-mobile": "16px",
+            "gutter": "16px",
+            "unit": "4px",
+            "density-compact": "8px",
+            "density-comfortable": "24px"
+          },
+          "fontFamily": {
+            "display-lg-mobile": ["Space Grotesk"],
+            "data-point": ["JetBrains Mono"],
+            "label-caps": ["JetBrains Mono"],
+            "body-fixed": ["Inter"],
+            "display-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+            "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+            "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #111317;
+      color: #e2e2e8;
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .pitch-gauge-svg {
+      transform: rotate(-90deg);
+    }
+    .cyan-glow {
+      box-shadow: 0 0 15px rgba(0, 219, 233, 0.15);
+    }
+    .industrial-border {
+      border: 1px solid #3b494b;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1c20;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b494b;
+      border-radius: 3px;
+    }
+    .clip-chamfer {
+      clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 5% 100%, 0 85%);
+    }
+    .tab-header {
+      position: absolute;
+      top: -12px;
+      left: 12px;
+      background: #1e2024;
+      padding: 2px 8px;
+      border: 1px solid #3b494b;
+      font-family: 'JetBrains Mono';
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-margin-desktop h-16 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary">APEX CLAIM PORTAL</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Vault</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Messages</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Documents</a>
+</nav>
+<div class="h-10 w-10 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged male roofing project manager in a dark grey tactical work shirt. He has a determined and experienced expression. The lighting is crisp and industrial, with cool blue ambient tones reflecting off a metallic background in a modern office or field station environment. High-contrast and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD--ZxClES9s77g7pNMQdlEy-5oYKCLrAgZHf7_ni5WeDHwv1oL_CODx-n8AdIM53LoxhGbGJv8WjD4PO42ByfW6ZgMYx2PY1kSYbipeLheE9aO5q6-BxXizdTOz4SNWbJ87aNARU0i0RcL076OB6ZDbpivUGE7m3yYiM85dwXDuFsQP1PiKGCLDREx--NjWo0waN4TlWUOkxSoRLPycLNhSBA2w_hrCpT8Yk0me8VevKTisPqGix-CcWO_771Z-IkOE2GGUY2xsKZQ"/>
+</div>
+</div>
+</header>
+<main class="flex-1 grid grid-cols-1 md:grid-cols-12 gap-gutter p-margin-desktop max-w-[1600px] mx-auto w-full">
+<!-- Hero Section: Status Timeline -->
+<section class="md:col-span-12 mb-4">
+<div class="relative bg-surface-container industrial-border p-density-comfortable pt-10">
+<div class="tab-header text-primary">CLAIM_STATUS_V2.0</div>
+<div class="flex justify-between items-center relative">
+<!-- Connector Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-0 w-1/2 h-[2px] bg-primary-fixed-dim -translate-y-1/2 z-0"></div>
+<!-- Timeline Nodes -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim text-on-primary flex items-center justify-center border-4 border-surface-container">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary">Intake</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim text-on-primary flex items-center justify-center border-4 border-surface-container">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary">Inspection</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center border-4 border-surface-container cyan-glow">
+<span class="material-symbols-outlined animate-pulse" data-icon="pending">pending</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary-container font-bold">Approval</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center border-4 border-surface-container">
+<span class="material-symbols-outlined text-sm" data-icon="construction">construction</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Repair</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center border-4 border-surface-container">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Completion</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Left Pane: Metrics & Health -->
+<aside class="md:col-span-3 flex flex-col gap-gutter">
+<!-- Health Gauge Card -->
+<div class="bg-surface-container industrial-border p-density-comfortable relative overflow-hidden">
+<div class="tab-header text-primary-fixed-dim">HEALTH_METRIC</div>
+<div class="flex flex-col items-center py-4">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<svg class="pitch-gauge-svg w-full h-full" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="45" stroke="#333539" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="transparent" r="45" stroke="#00dbe9" stroke-dasharray="283" stroke-dashoffset="70" stroke-linecap="butt" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-point text-display-lg text-primary">75</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">OPTIMAL</span>
+</div>
+</div>
+<p class="mt-4 font-body-fixed text-sm text-center text-on-surface-variant">Processing alignment within 4% of target threshold.</p>
+</div>
+</div>
+<!-- Metrics Card -->
+<div class="bg-surface-container industrial-border p-density-comfortable relative">
+<div class="tab-header text-on-surface-variant">SPECIFICATIONS</div>
+<div class="space-y-6 pt-4">
+<div>
+<label class="font-label-caps text-[10px] text-outline block mb-1">TOTAL CLAIM VALUE</label>
+<div class="font-data-point text-data-point text-primary">$42,850.00</div>
+</div>
+<div class="h-[1px] bg-outline-variant"></div>
+<div>
+<label class="font-label-caps text-[10px] text-outline block mb-1">TARGET ETA</label>
+<div class="font-data-point text-data-point text-secondary-container">OCT 14, 2024</div>
+</div>
+<div class="h-[1px] bg-outline-variant"></div>
+<div>
+<label class="font-label-caps text-[10px] text-outline block mb-1">CASE IDENTIFIER</label>
+<div class="font-data-point text-data-point text-on-surface">APX-99281-Z</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center Pane: Activity Log -->
+<section class="md:col-span-6 flex flex-col">
+<div class="flex-1 bg-surface-container industrial-border relative flex flex-col">
+<div class="tab-header text-primary">ACTIVITY_LOG_REALTIME</div>
+<div class="p-density-comfortable overflow-y-auto max-h-[600px] space-y-4 pt-8">
+<!-- Action Required Card -->
+<div class="bg-surface-container-high border-l-4 border-secondary-container p-4 flex gap-4 transition-all hover:bg-surface-container-highest">
+<div class="text-secondary-container">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-caps text-secondary-container font-bold">ACTION REQUIRED</h4>
+<span class="font-data-point text-[10px] text-outline">12:04 PM</span>
+</div>
+<p class="font-body-fixed text-sm">Please sign the 'Damage Supplement Authorization' document to proceed to full approval.</p>
+<button class="mt-3 px-4 py-2 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps rounded-sm hover:opacity-90 transition-opacity">
+                REVIEW &amp; SIGN
+              </button>
+</div>
+</div>
+<!-- Update Card -->
+<div class="bg-surface-container-low border-l-4 border-primary-fixed-dim p-4 flex gap-4">
+<div class="text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="update">update</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-caps text-primary-fixed-dim">STATUS UPDATE</h4>
+<span class="font-data-point text-[10px] text-outline">09:15 AM</span>
+</div>
+<p class="font-body-fixed text-sm text-on-surface-variant">Inspection report uploaded by Field Agent Marcus V. All 24 slope measurements verified.</p>
+</div>
+</div>
+<!-- System Card -->
+<div class="bg-surface-container-low border-l-4 border-outline-variant p-4 flex gap-4">
+<div class="text-outline">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-caps text-outline">SYSTEM MESSAGE</h4>
+<span class="font-data-point text-[10px] text-outline">YESTERDAY</span>
+</div>
+<p class="font-body-fixed text-sm text-on-surface-variant">Automated policy validation complete. Coverage limits verified for primary residence.</p>
+</div>
+</div>
+<!-- Update Card 2 -->
+<div class="bg-surface-container-low border-l-4 border-primary-fixed-dim p-4 flex gap-4">
+<div class="text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-caps text-primary-fixed-dim">PHOTO LOG SYNC</h4>
+<span class="font-data-point text-[10px] text-outline">OCT 02</span>
+</div>
+<p class="font-body-fixed text-sm text-on-surface-variant">14 high-resolution thermal images of North slope uploaded to the vault.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Action Hub -->
+<aside class="md:col-span-3 flex flex-col gap-gutter">
+<div class="bg-surface-container industrial-border p-density-comfortable relative h-full">
+<div class="tab-header text-primary">ACTION_HUB_ALPHA</div>
+<div class="flex flex-col gap-4 pt-6">
+<button class="w-full h-16 bg-surface-variant border border-outline-variant group hover:bg-primary-fixed-dim hover:text-on-primary transition-all flex items-center px-4 gap-4 clip-chamfer">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="forum">forum</span>
+<span class="font-label-caps text-label-caps tracking-widest text-left">MESSAGE ADJUSTER</span>
+</button>
+<button class="w-full h-16 bg-surface-variant border border-outline-variant group hover:bg-primary-fixed-dim hover:text-on-primary transition-all flex items-center px-4 gap-4 clip-chamfer">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="upload_file">upload_file</span>
+<span class="font-label-caps text-label-caps tracking-widest text-left">UPLOAD DOCUMENTS</span>
+</button>
+<button class="w-full h-16 bg-surface-variant border border-outline-variant group hover:bg-secondary-container hover:text-on-secondary transition-all flex items-center px-4 gap-4 clip-chamfer">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="support_agent">support_agent</span>
+<span class="font-label-caps text-label-caps tracking-widest text-left">REQUEST SUPPORT</span>
+</button>
+<div class="mt-8">
+<label class="font-label-caps text-[10px] text-outline block mb-4">RESOURCES</label>
+<div class="space-y-3">
+<a class="flex items-center justify-between p-3 bg-surface-container-low border border-outline-variant rounded hover:border-primary transition-colors" href="#">
+<span class="text-xs font-body-fixed">Policy Guide.pdf</span>
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface-container-low border border-outline-variant rounded hover:border-primary transition-colors" href="#">
+<span class="text-xs font-body-fixed">Glossary of Terms</span>
+<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Bottom Nav for Mobile Only -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 h-20 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-2 pb-safe">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-lg px-3 py-1 scale-95">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px]">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 duration-100">
+<span class="material-symbols-outlined" data-icon="photo_library">photo_library</span>
+<span class="font-label-caps text-[10px]">Vault</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 duration-100">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-caps text-[10px]">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 duration-100">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-[10px]">Documents</span>
+</div>
+</nav>
+<!-- Quick Action FAB (Suppressed on Dashboard as per logic, but shown for UI completeness if user needed it) -->
+<!-- <button class="fixed bottom-24 right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-lg flex items-center justify-center z-40 transition-transform active:scale-90">
+    <span class="material-symbols-outlined" data-icon="add">add</span>
+  </button> -->
+<script>
+    // Micro-interaction: Update health score number randomly for atmospheric effect
+    const scoreEl = document.querySelector('.text-display-lg');
+    setInterval(() => {
+      if (Math.random() > 0.8) {
+        const current = parseInt(scoreEl.innerText);
+        const diff = Math.random() > 0.5 ? 1 : -1;
+        scoreEl.innerText = Math.max(70, Math.min(80, current + diff));
+      }
+    }, 5000);
+  </script>
+</body></html>

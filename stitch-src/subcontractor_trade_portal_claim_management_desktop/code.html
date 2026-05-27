@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subcontractor Trade Portal - TradeVision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e2e2e8",
+                        "background": "#111317",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-bright": "#37393e",
+                        "on-tertiary": "#303031",
+                        "tertiary-container": "#dad9d9",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e2e8",
+                        "secondary": "#ffdb9d",
+                        "on-tertiary-container": "#5e5f5f",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary": "#412d00",
+                        "on-primary": "#00363a",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#333539",
+                        "surface": "#111317",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-container": "#feb700",
+                        "secondary-fixed": "#ffdea8",
+                        "outline": "#849495",
+                        "inverse-primary": "#006970",
+                        "tertiary-fixed": "#e4e2e2",
+                        "surface-container": "#1e2024",
+                        "surface-dim": "#111317",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-tint": "#00dbe9",
+                        "outline-variant": "#3b494b",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container-high": "#282a2e",
+                        "primary-container": "#00f0ff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-background": "#e2e2e8",
+                        "on-primary-container": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "secondary-fixed-dim": "#ffba20",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2f3035",
+                        "tertiary": "#f7f5f5",
+                        "surface-variant": "#333539",
+                        "primary": "#dbfcff",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "density-compact": "8px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "data-point": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined[data-weight="fill"] { font-variation-settings: 'FILL' 1; }
+        
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.surface-container'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.outline-variant'); border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline'); }
+    </style>
+</head>
+<body class="font-body-fixed text-body-fixed antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- NavigationDrawer (Shared Component) -->
+<nav class="bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant fixed left-0 top-0 h-full w-[260px] flex flex-col py-margin-desktop z-50">
+<div class="px-gutter mb-density-comfortable">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight font-bold">TRADEVISION</h1>
+</div>
+<div class="flex-1 overflow-y-auto mt-gutter">
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>DASHBOARD</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>AUDIT LOG</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>SYSTEM SETTINGS</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>USERS</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 font-label-caps text-label-caps hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span>REPORTS</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="px-gutter mt-auto pt-density-comfortable border-t border-outline-variant">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-DEFAULT bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary font-label-caps text-label-caps">
+                    SA
+                </div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">SYS ADMIN</span>
+<span class="text-[10px] font-data-point text-on-surface-variant">ID: 884-X9</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant fixed top-0 right-0 left-[260px] h-[64px] flex justify-between items-center px-gutter w-[calc(100%-260px)] z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h2 class="font-headline-sm text-headline-sm text-primary dark:text-primary">ADMINISTRATIVE SUITE</h2>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-primary flex items-center justify-center overflow-hidden cursor-pointer hover:ring-1 hover:ring-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr_XgRc-IDItxoDGh6FQofSeH93ccTnMsNHsIzzHDYflTTWGkWTPZJgUJ6mH45qmYTbHCo188GHEdcW1b3GH8_OuQVXJxnMkq86oKE-t5hrsx0QQsbzAPQDeKaVJZu4TYUuPbmJO0Oa1EHvijD4-sHPB0yh-egQwcjZnjDQuT85eCz6BsVINHQ0_zvCRObr_SczMfq9J6LLHX9yzdfHxoPf9CMuvBM771sNTmvPqbH7Bm9nXNES8q0C44U5t6nvWWQ7LrBczoSBGTa"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[260px] mt-[64px] h-[calc(100vh-64px)] p-gutter grid grid-cols-12 gap-gutter overflow-hidden bg-background">
+<!-- Left Column: Claim Info & Timeline -->
+<section class="col-span-3 flex flex-col gap-gutter overflow-y-auto pr-2 pb-margin-desktop">
+<!-- Claim Metadata Card -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT relative overflow-hidden group hover:border-outline transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container"></div>
+<div class="p-density-comfortable">
+<div class="flex justify-between items-start mb-4">
+<div class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded-sm border border-outline-variant">CLAIM REF</div>
+<div class="font-data-point text-data-point text-primary">#CR-882-9A</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Industrial Facility Roof Replacement</h3>
+<p class="text-sm text-on-surface-variant mb-6 font-data-point">LOC: SECTOR 4, NE QUADRANT</p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-outline-variant pt-4">
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">TOTAL SQ FT</span>
+<span class="font-data-point text-[16px] text-on-surface">14,500</span>
+</div>
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">PITCH</span>
+<span class="font-data-point text-[16px] text-on-surface">2/12</span>
+</div>
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">PRIORITY</span>
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-error bg-error-container/20 px-1 py-0.5 border border-error-container">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span> CRITICAL
+                            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Vertical Progression Timeline -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT flex-1 overflow-hidden flex flex-col">
+<div class="p-3 border-b border-outline-variant bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-on-surface">INSPECTION PROTOCOL</span>
+</div>
+<div class="p-density-comfortable overflow-y-auto flex-1">
+<div class="relative border-l border-outline-variant ml-3 space-y-8 pb-4">
+<!-- Step 1: Completed -->
+<div class="relative pl-6">
+<span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary border-2 border-surface-container shadow-[0_0_8px_rgba(0,240,255,0.4)]"></span>
+<h4 class="font-label-caps text-label-caps text-primary mb-1">INITIAL ASSESSMENT</h4>
+<p class="text-xs text-on-surface-variant font-data-point">COMPLETED: 10/24/23 0800</p>
+</div>
+<!-- Step 2: Completed -->
+<div class="relative pl-6">
+<span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary border-2 border-surface-container shadow-[0_0_8px_rgba(0,240,255,0.4)]"></span>
+<h4 class="font-label-caps text-label-caps text-primary mb-1">DRONE MAPPING</h4>
+<p class="text-xs text-on-surface-variant font-data-point">COMPLETED: 10/24/23 1430</p>
+</div>
+<!-- Step 3: Active -->
+<div class="relative pl-6">
+<span class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-surface-container border-2 border-primary flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</span>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-1">ESTIMATE GENERATION</h4>
+<p class="text-xs text-on-surface-variant font-data-point text-secondary-container">IN PROGRESS</p>
+<div class="mt-3 bg-surface-container-highest p-3 border border-outline-variant text-sm">
+                                Pending material selection approval for Sub-Zone C.
+                            </div>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative pl-6">
+<span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-outline-variant"></span>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-1">CLIENT REVIEW</h4>
+<p class="text-xs text-outline font-data-point">PENDING</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Column: Estimate Terminal -->
+<section class="col-span-6 flex flex-col gap-gutter overflow-hidden h-full pb-margin-desktop">
+<div class="bg-surface-container border border-primary/30 rounded-DEFAULT flex-1 flex flex-col overflow-hidden shadow-[inset_0_0_20px_rgba(0,240,255,0.05)]">
+<!-- Terminal Header -->
+<div class="p-3 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps text-on-surface">ESTIMATE_BUILDER.EXE</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest border border-outline-variant font-data-point text-[10px] text-on-surface-variant">AUTO-SAVE: ON</span>
+</div>
+</div>
+<!-- Material Tabs -->
+<div class="flex border-b border-outline-variant bg-surface-container-lowest overflow-x-auto">
+<button class="px-4 py-2 border-b-2 border-primary text-primary font-label-caps text-label-caps bg-surface-container-high focus:outline-none">TPO MEMBRANE</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-caps text-label-caps focus:outline-none transition-colors">ARCHITECTURAL SHINGLES</button>
+<button class="px-4 py-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-caps text-label-caps focus:outline-none transition-colors">LABOR &amp; EQUIPMENT</button>
+</div>
+<!-- Terminal Content (Table) -->
+<div class="flex-1 overflow-y-auto p-4 bg-background/50">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline-variant text-on-surface-variant">
+<th class="py-2 px-2 font-label-caps text-[10px] font-normal w-12">CODE</th>
+<th class="py-2 px-2 font-label-caps text-[10px] font-normal">DESCRIPTION</th>
+<th class="py-2 px-2 font-label-caps text-[10px] font-normal text-right w-24">QTY</th>
+<th class="py-2 px-2 font-label-caps text-[10px] font-normal text-right w-28">UNIT COST</th>
+<th class="py-2 px-2 font-label-caps text-[10px] font-normal text-right w-32">TOTAL</th>
+</tr>
+</thead>
+<tbody class="font-data-point text-[14px]">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-high group transition-colors">
+<td class="py-3 px-2 text-primary">T-01</td>
+<td class="py-3 px-2 text-on-surface font-body-fixed text-sm">60-mil TPO Single-Ply Membrane (White)</td>
+<td class="py-3 px-2 text-right">
+<input class="w-full bg-surface-container-highest border border-outline-variant text-right px-1 py-1 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary font-data-point text-[14px]" type="text" value="145.00"/>
+</td>
+<td class="py-3 px-2 text-right text-on-surface-variant">$85.50 / SQ</td>
+<td class="py-3 px-2 text-right text-on-surface">$12,397.50</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-high group transition-colors">
+<td class="py-3 px-2 text-primary">I-04</td>
+<td class="py-3 px-2 text-on-surface font-body-fixed text-sm">Polyiso Insulation Board 2.0"</td>
+<td class="py-3 px-2 text-right">
+<input class="w-full bg-surface-container-highest border border-outline-variant text-right px-1 py-1 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary font-data-point text-[14px]" type="text" value="290.00"/>
+</td>
+<td class="py-3 px-2 text-right text-on-surface-variant">$42.00 / SQ</td>
+<td class="py-3 px-2 text-right text-on-surface">$12,180.00</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-high group transition-colors bg-surface-container-high border-l-2 border-l-secondary-container">
+<td class="py-3 px-2 text-secondary-container">A-12</td>
+<td class="py-3 px-2 text-on-surface font-body-fixed text-sm">TPO Bonding Adhesive (5 gal)</td>
+<td class="py-3 px-2 text-right">
+<input class="w-full bg-surface-container-highest border border-secondary-container text-right px-1 py-1 text-on-surface focus:border-secondary-container focus:ring-1 focus:ring-secondary-container font-data-point text-[14px]" type="text" value="24.00"/>
+</td>
+<td class="py-3 px-2 text-right text-on-surface-variant">$115.00 / EA</td>
+<td class="py-3 px-2 text-right text-secondary-container">$2,760.00</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-high group transition-colors">
+<td class="py-3 px-2 text-primary">F-02</td>
+<td class="py-3 px-2 text-on-surface font-body-fixed text-sm">Heavy Duty Roof Fasteners (Box 1000)</td>
+<td class="py-3 px-2 text-right">
+<input class="w-full bg-surface-container-highest border border-outline-variant text-right px-1 py-1 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary font-data-point text-[14px]" type="text" value="8.00"/>
+</td>
+<td class="py-3 px-2 text-right text-on-surface-variant">$65.00 / BX</td>
+<td class="py-3 px-2 text-right text-on-surface">$520.00</td>
+</tr>
+</tbody>
+</table>
+<button class="mt-4 w-full py-2 border border-dashed border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span> ADD LINE ITEM
+                    </button>
+</div>
+<!-- Terminal Footer / Totals -->
+<div class="bg-surface-container-highest p-4 border-t border-outline-variant">
+<div class="flex justify-end gap-8 mb-4">
+<div class="text-right">
+<span class="block font-label-caps text-[10px] text-on-surface-variant mb-1">SUBTOTAL</span>
+<span class="font-data-point text-[16px] text-on-surface">$27,857.50</span>
+</div>
+<div class="text-right">
+<span class="block font-label-caps text-[10px] text-on-surface-variant mb-1">TAX (8.25%)</span>
+<span class="font-data-point text-[16px] text-on-surface">$2,298.24</span>
+</div>
+<div class="text-right border-l border-outline-variant pl-8">
+<span class="block font-label-caps text-[10px] text-primary mb-1">ESTIMATED TOTAL</span>
+<span class="font-data-point text-[24px] text-primary">$30,155.74</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-surface-container border border-outline-variant text-on-surface py-3 font-label-caps text-label-caps hover:bg-surface-container-high transition-colors">SAVE DRAFT</button>
+<button class="flex-[2] bg-primary text-on-primary py-3 font-label-caps text-label-caps hover:bg-primary-container transition-colors shadow-[0_4px_0_theme('colors.primary-fixed-dim')] active:translate-y-[4px] active:shadow-none font-bold">SUBMIT ESTIMATE FOR REVIEW</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Document Vault -->
+<section class="col-span-3 flex flex-col gap-gutter overflow-hidden h-full pb-margin-desktop">
+<!-- Vault Header & Drop Zone -->
+<div class="bg-surface-container border border-outline-variant rounded-DEFAULT flex flex-col overflow-hidden h-full">
+<div class="p-3 border-b border-outline-variant bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="folder_special">folder_special</span>
+<span class="font-label-caps text-label-caps text-on-surface">DOCUMENT VAULT</span>
+</div>
+<!-- Drop Zone -->
+<div class="p-4">
+<div class="border-2 border-dashed border-outline-variant bg-surface-container-highest/50 p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary hover:bg-surface-container-highest transition-colors group">
+<span class="material-symbols-outlined text-outline mb-2 group-hover:text-primary transition-colors text-3xl" data-icon="upload_file">upload_file</span>
+<span class="font-label-caps text-[10px] text-on-surface mb-1">DRAG &amp; DROP SECURE FILES</span>
+<span class="text-[10px] text-on-surface-variant font-data-point">PDF, DWG, JPG (MAX 50MB)</span>
+</div>
+</div>
+<!-- File List -->
+<div class="flex-1 overflow-y-auto p-2 space-y-2">
+<!-- File Item -->
+<div class="p-3 border border-outline-variant bg-surface-container-low flex items-center gap-3 hover:border-outline transition-colors group">
+<div class="w-8 h-8 bg-error-container/20 text-error flex items-center justify-center border border-error-container shrink-0">
+<span class="font-label-caps text-[10px]">PDF</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm text-on-surface truncate font-data-point text-[12px]">Roof_Plan_Elevations_v2.pdf</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5 font-data-point">4.2 MB • Oct 24, 10:15</p>
+</div>
+<button class="text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+</div>
+<!-- File Item -->
+<div class="p-3 border border-outline-variant bg-surface-container-low flex items-center gap-3 hover:border-outline transition-colors group">
+<div class="w-8 h-8 bg-primary-container/20 text-primary-container flex items-center justify-center border border-primary-container shrink-0">
+<span class="font-label-caps text-[10px]">DWG</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm text-on-surface truncate font-data-point text-[12px]">Sector4_Structural_Grid.dwg</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5 font-data-point">12.8 MB • Oct 23, 16:40</p>
+</div>
+<button class="text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+</div>
+<!-- Image File Item (Thumbnail) -->
+<div class="p-3 border border-outline-variant bg-surface-container-low flex items-start gap-3 hover:border-outline transition-colors group">
+<div class="w-12 h-12 bg-surface-container-highest border border-outline-variant shrink-0 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-tint/20 to-transparent z-10 pointer-events-none"></div>
+<!-- Placeholder for drone image -->
+<div class="w-full h-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="image">image</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 pt-1">
+<p class="text-sm text-on-surface truncate font-data-point text-[12px]">Drone_Survey_NW_Corner.jpg</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5 font-data-point">8.1 MB • Oct 24, 14:35</p>
+</div>
+</div>
+<!-- File Item Pending -->
+<div class="p-3 border border-outline-variant border-dashed bg-surface-container-lowest flex items-center gap-3 opacity-60">
+<div class="w-8 h-8 bg-surface-container text-outline flex items-center justify-center border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-[14px] animate-spin" data-icon="sync">sync</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm text-on-surface truncate font-data-point text-[12px]">Material_Specs_TPO.pdf</p>
+<div class="w-full bg-surface-container-highest h-1 mt-2">
+<div class="bg-primary h-1 w-[45%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Actions -->
+<div class="mt-auto pt-4 border-t border-outline-variant grid grid-cols-2 gap-2">
+<button class="bg-surface-container border border-outline-variant p-2 text-center text-on-surface hover:border-primary transition-colors font-label-caps text-[10px]">
+<span class="material-symbols-outlined block mb-1 mx-auto text-[18px]" data-icon="print">print</span>
+                    PRINT BATCH
+                </button>
+<button class="bg-surface-container border border-outline-variant p-2 text-center text-on-surface hover:border-primary transition-colors font-label-caps text-[10px]">
+<span class="material-symbols-outlined block mb-1 mx-auto text-[18px]" data-icon="share">share</span>
+                    SHARE SECURE LINK
+                </button>
+</div>
+</section>
+</main>
+<script>
+        // Simple script to handle tab switching in the estimate terminal (visual only for mockup)
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.overflow-x-auto button');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Reset all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('border-primary', 'text-primary', 'bg-surface-container-high');
+                        t.classList.add('border-transparent', 'text-on-surface-variant');
+                    });
+                    // Set active tab
+                    tab.classList.remove('border-transparent', 'text-on-surface-variant');
+                    tab.classList.add('border-primary', 'text-primary', 'bg-surface-container-high');
+                });
+            });
+        });
+    </script>
+</body></html>

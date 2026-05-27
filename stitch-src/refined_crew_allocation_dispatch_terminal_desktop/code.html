@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crew Allocation Terminal - TradeVision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffdb9d",
+                        "on-primary-container": "#006970",
+                        "error": "#ffb4ab",
+                        "background": "#111317",
+                        "on-background": "#e2e2e8",
+                        "surface-container-low": "#1a1c20",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "surface-variant": "#333539",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-secondary-container": "#6b4b00",
+                        "tertiary": "#f7f5f5",
+                        "inverse-on-surface": "#2f3035",
+                        "surface-container": "#1e2024",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary-container": "#dad9d9",
+                        "surface-dim": "#111317",
+                        "surface-container-highest": "#333539",
+                        "on-primary": "#00363a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-tint": "#00dbe9",
+                        "primary-container": "#00f0ff",
+                        "on-tertiary": "#303031",
+                        "on-surface": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "on-surface-variant": "#b9cacb",
+                        "on-tertiary-container": "#5e5f5f",
+                        "on-secondary": "#412d00",
+                        "outline": "#849495",
+                        "on-primary-fixed": "#002022",
+                        "secondary-container": "#feb700",
+                        "surface": "#111317",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "inverse-primary": "#006970",
+                        "primary-fixed": "#7df4ff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "outline-variant": "#3b494b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "density-compact": "8px",
+                        "density-comfortable": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        .cyber-border { border: 1px solid #2D2D2D; }
+        .cyber-border-primary { border: 1px solid theme('colors.primary'); }
+        .hud-scanline { background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1)); background-size: 100% 4px; pointer-events: none; }
+    </style>
+</head>
+<body class="font-body-fixed min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- NavigationDrawer (Left Sidebar) -->
+<nav class="hidden md:flex flex-col py-margin bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant fixed left-0 top-0 h-full w-[260px] z-50">
+<div class="px-gutter mb-density-comfortable">
+<h1 class="font-display-md text-display-md text-primary dark:text-primary tracking-tight font-bold">TRADEVISION</h1>
+</div>
+<div class="flex flex-col gap-1 flex-1 px-2">
+<!-- Active: DASHBOARD as generic mapping, user wants "Crew Allocation", maybe closest is DASHBOARD -->
+<a class="text-primary dark:text-primary border-l-[3px] border-primary bg-surface-container-high px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                DASHBOARD
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">history</span>
+                AUDIT LOG
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">settings</span>
+                SYSTEM SETTINGS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">group</span>
+                USERS
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-on-surface transition-all duration-200 active:scale-[0.98] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                REPORTS
+            </a>
+</div>
+<!-- System Status Footer in Nav -->
+<div class="mt-auto px-4 py-4 border-t border-outline-variant">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                 SYS_STATUS: ONLINE
+             </div>
+<div class="font-data-point text-xs text-outline">v2.0.4.88</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[260px] flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant fixed top-0 right-0 left-0 md:left-[260px] h-[64px] flex justify-between items-center px-gutter w-auto z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+<div>
+<h2 class="font-label-caps text-label-caps font-bold text-primary dark:text-primary">ADMINISTRATIVE SUITE</h2>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">CREW_ALLOCATION_TERMINAL_v2.0</h3>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden flex items-center justify-center">
+<img alt="System Administrator Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXbkrwRHO-Gsls3ydjsf-Peu0lVQO_XtmAoFi44YPjx8EIRKtxvQR52I-TWIfK7LJAZ0sXdZyyg0eTYKvWdPglUGA2zWy9PnusjXIt9hsDLIKZrjZsKSp15kvHFxStYUx4Ptv-5nN-6vfdAyHIOJsvvARuQHXVfGt6r0rhb1Rj-p1IKq6kILzhZHp7GIPVDy4LHOr9vS-TmGnM6ESrkufXHV1oX9lmbM8QBnrD9rDR2wM7BS5dNWq5XWkvVGEzceDTyuRQXlyk7yUv"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 mt-[64px] p-margin-desktop overflow-y-auto overflow-x-hidden hud-scanline relative">
+<!-- KPI Row -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-density-comfortable mb-margin-desktop">
+<!-- KPI 1 -->
+<div class="bg-surface-container p-4 cyber-border rounded-DEFAULT relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container group-hover:bg-primary transition-colors"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">TOTAL CREWS</p>
+<div class="flex items-baseline gap-2">
+<span class="font-data-point text-[32px] text-on-surface">24</span>
+<span class="font-label-caps text-xs text-outline">/ 24 ACTIVE</span>
+</div>
+<div class="mt-3 w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container p-4 cyber-border rounded-DEFAULT relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container group-hover:bg-secondary transition-colors"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">PERSONNEL DEPLOYED</p>
+<div class="flex items-baseline gap-2">
+<span class="font-data-point text-[32px] text-on-surface">118</span>
+<span class="font-label-caps text-xs text-outline">OPERS</span>
+</div>
+<div class="mt-3 flex gap-1">
+<div class="flex-1 h-1 bg-secondary"></div>
+<div class="flex-1 h-1 bg-secondary"></div>
+<div class="flex-1 h-1 bg-secondary"></div>
+<div class="flex-1 h-1 bg-surface-variant"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container p-4 cyber-border rounded-DEFAULT relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container group-hover:bg-primary transition-colors"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">ACTIVE ASSIGNMENTS</p>
+<div class="flex items-baseline gap-2">
+<span class="font-data-point text-[32px] text-on-surface">19</span>
+<span class="font-label-caps text-xs text-outline">SITES</span>
+</div>
+<!-- Mini sparkline mock -->
+<div class="mt-3 h-4 flex items-end gap-[2px]">
+<div class="w-2 bg-outline h-[30%]"></div>
+<div class="w-2 bg-outline h-[50%]"></div>
+<div class="w-2 bg-outline h-[40%]"></div>
+<div class="w-2 bg-primary h-[80%]"></div>
+<div class="w-2 bg-primary h-[100%]"></div>
+<div class="w-2 bg-primary h-[90%]"></div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container p-4 cyber-border rounded-DEFAULT relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline group-hover:bg-on-surface transition-colors"></div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">AVG. DISPATCH TIME</p>
+<div class="flex items-baseline gap-2">
+<span class="font-data-point text-[32px] text-on-surface">04:12</span>
+<span class="font-label-caps text-xs text-outline">MIN</span>
+</div>
+<div class="mt-3 flex items-center gap-2 font-label-caps text-xs text-primary">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+                        -12% VS YESTERDAY
+                    </div>
+</div>
+</section>
+<!-- Main Workspace Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-margin-desktop h-[calc(100vh-280px)] min-h-[500px]">
+<!-- Left Column: Active Squadrons Grid -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<!-- Controls -->
+<div class="flex justify-between items-center bg-surface-container-low p-2 cyber-border rounded-DEFAULT">
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-2 hover:bg-primary-container transition-colors rounded-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                                DEPLOY NEW
+                            </button>
+<button class="bg-surface-container text-on-surface font-label-caps text-label-caps px-4 py-2 hover:bg-surface-variant cyber-border transition-colors rounded-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                                FILTER
+                            </button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="bg-surface-container border border-outline-variant text-on-surface font-label-caps text-xs py-2 pl-9 pr-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none rounded-sm w-64 placeholder:text-outline" placeholder="SEARCH UNIT ID..." type="text"/>
+</div>
+</div>
+<!-- Data Grid Container -->
+<div class="flex-1 overflow-auto cyber-border bg-surface-container-lowest rounded-DEFAULT relative scrollbar-thin">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container z-10">
+<tr class="font-label-caps text-xs text-on-surface-variant border-b border-outline-variant">
+<th class="p-3 font-normal">UNIT_ID</th>
+<th class="p-3 font-normal">FOREMAN</th>
+<th class="p-3 font-normal">STR</th>
+<th class="p-3 font-normal">STATUS</th>
+<th class="p-3 font-normal">ASSIGNMENT</th>
+<th class="p-3 font-normal">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="font-body-fixed text-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-3 font-data-point text-[14px]">CRW-ALPHA</td>
+<td class="p-3">J. Miller</td>
+<td class="p-3 font-data-point text-[14px]">5/5</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_theme('colors.primary')]"></span>
+<span class="font-label-caps text-[10px] text-primary">ON-SITE</span>
+</div>
+</td>
+<td class="p-3 truncate max-w-[150px] font-label-caps text-[10px] text-on-surface-variant">SEC-7B ROOFING REPAIR</td>
+<td class="p-3">
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface-variant hover:bg-primary hover:text-on-primary rounded text-on-surface-variant" title="RE-DISPATCH"><span class="material-symbols-outlined text-[16px]">route</span></button>
+<button class="p-1 bg-surface-variant hover:bg-error hover:text-on-error rounded text-on-surface-variant" title="OVERRIDE"><span class="material-symbols-outlined text-[16px]">warning</span></button>
+<button class="p-1 bg-surface-variant hover:bg-secondary hover:text-on-secondary rounded text-on-surface-variant" title="COMMS"><span class="material-symbols-outlined text-[16px]">chat</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-3 font-data-point text-[14px]">CRW-BRAVO</td>
+<td class="p-3">T. Vance</td>
+<td class="p-3 font-data-point text-[14px]">4/4</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-[10px] text-secondary">EN-ROUTE</span>
+</div>
+</td>
+<td class="p-3 truncate max-w-[150px] font-label-caps text-[10px] text-on-surface-variant">SITE 44 INSPECTION</td>
+<td class="p-3">
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface-variant hover:bg-primary hover:text-on-primary rounded text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">route</span></button>
+<button class="p-1 bg-surface-variant hover:bg-error hover:text-on-error rounded text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">warning</span></button>
+<button class="p-1 bg-surface-variant hover:bg-secondary hover:text-on-secondary rounded text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">chat</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group opacity-75">
+<td class="p-3 font-data-point text-[14px]">CRW-CHARLIE</td>
+<td class="p-3">E. Stone</td>
+<td class="p-3 font-data-point text-[14px]">3/5</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-caps text-[10px] text-outline">STANDBY</span>
+</div>
+</td>
+<td class="p-3 truncate max-w-[150px] font-label-caps text-[10px] text-on-surface-variant">HQ_DEPOT</td>
+<td class="p-3">
+<div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface-variant hover:bg-primary hover:text-on-primary rounded text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">route</span></button>
+<button class="p-1 bg-surface-variant hover:bg-error hover:text-on-error rounded text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">warning</span></button>
+<button class="p-1 bg-surface-variant hover:bg-secondary hover:text-on-secondary rounded text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">chat</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column: Deployment Matrix Map -->
+<div class="lg:col-span-4 bg-surface-container cyber-border rounded-DEFAULT flex flex-col relative overflow-hidden">
+<div class="p-3 border-b border-outline-variant bg-surface-container-low flex justify-between items-center z-10">
+<span class="font-label-caps text-label-caps text-primary">DEPLOYMENT MATRIX</span>
+<span class="material-symbols-outlined text-outline text-[18px]">satellite_alt</span>
+</div>
+<!-- Map Canvas Area -->
+<div class="flex-1 relative bg-[#0c1015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWExYzIwIiBzdHJva2Utd2lkdGg9IjEiLz4KPC9zdmc+')] bg-repeat" data-location="Industrial District" style="">
+<!-- Simulated Map Vectors & Pips -->
+<!-- CRW-ALPHA -->
+<div class="absolute top-[40%] left-[30%] group cursor-crosshair z-20">
+<div class="w-3 h-3 bg-primary rounded-full animate-ping absolute opacity-50"></div>
+<div class="w-3 h-3 bg-primary rounded-full relative z-10 shadow-[0_0_10px_theme('colors.primary')] border border-[#000]"></div>
+<div class="absolute top-4 left-4 bg-surface-container-lowest border border-primary p-2 hidden group-hover:block w-40 pointer-events-none">
+<p class="font-data-point text-[12px] text-primary mb-1">CRW-ALPHA</p>
+<p class="font-label-caps text-[8px] text-outline">LOC: 40.7128,-74.0060</p>
+<p class="font-label-caps text-[8px] text-outline">SIG: STRONG (98%)</p>
+</div>
+</div>
+<!-- Route Vector to Alpha -->
+<svg class="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
+<path class="animate-[dash_2s_linear_infinite]" d="M 50 150 Q 100 100 120 160" fill="none" stroke="#004f54" stroke-dasharray="4 4" stroke-width="2"></path>
+</svg>
+<!-- CRW-BRAVO -->
+<div class="absolute top-[60%] left-[70%] group cursor-crosshair z-20">
+<div class="w-3 h-3 bg-secondary rounded-full relative z-10 shadow-[0_0_10px_theme('colors.secondary')] border border-[#000]"></div>
+<div class="absolute top-4 left-4 bg-surface-container-lowest border border-secondary p-2 hidden group-hover:block w-40 pointer-events-none">
+<p class="font-data-point text-[12px] text-secondary mb-1">CRW-BRAVO</p>
+<p class="font-label-caps text-[8px] text-outline">STATUS: EN-ROUTE</p>
+<p class="font-label-caps text-[8px] text-outline">ETA: 14 MINS</p>
+</div>
+</div>
+</div>
+<!-- Matrix Telemetry Overlay -->
+<div class="absolute bottom-0 left-0 right-0 bg-surface-container-high/90 backdrop-blur border-t border-outline-variant p-3">
+<div class="flex justify-between items-center">
+<div class="font-label-caps text-[10px] text-outline">
+<div>LAT: <span class="text-on-surface">34.0522 N</span></div>
+<div>LNG: <span class="text-on-surface">118.2437 W</span></div>
+</div>
+<div class="text-right font-label-caps text-[10px] text-outline">
+<div>GRID: <span class="text-on-surface font-data-point">SEC-9</span></div>
+<div>SYNC: <span class="text-primary animate-pulse">0ms</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<style>
+        @keyframes dash {
+            to { stroke-dashoffset: -16; }
+        }
+        /* Custom scrollbar for grid */
+        .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+        .scrollbar-thin::-webkit-scrollbar-track { background: theme('colors.surface-container-lowest'); }
+        .scrollbar-thin::-webkit-scrollbar-thumb { background: theme('colors.outline-variant'); border-radius: 3px; }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: theme('colors.outline'); }
+    </style>
+</body></html>

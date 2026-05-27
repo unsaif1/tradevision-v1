@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RoofCore AI Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#e2e2e8",
+                      "surface-container": "#1e2024",
+                      "on-tertiary-fixed-variant": "#464747",
+                      "surface-tint": "#00dbe9",
+                      "surface-bright": "#37393e",
+                      "primary-container": "#00f0ff",
+                      "on-background": "#e2e2e8",
+                      "surface-container-highest": "#333539",
+                      "secondary-fixed": "#ffdea8",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "outline": "#849495",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#271900",
+                      "surface-variant": "#333539",
+                      "surface-container-lowest": "#0c0e12",
+                      "surface-dim": "#111317",
+                      "inverse-primary": "#006970",
+                      "on-primary": "#00363a",
+                      "inverse-on-surface": "#2f3035",
+                      "tertiary": "#f7f5f5",
+                      "on-tertiary": "#303031",
+                      "surface-container-low": "#1a1c20",
+                      "primary-fixed": "#7df4ff",
+                      "outline-variant": "#3b494b",
+                      "on-tertiary-container": "#5e5f5f",
+                      "on-surface-variant": "#b9cacb",
+                      "background": "#111317",
+                      "on-secondary-fixed-variant": "#5e4200",
+                      "secondary-container": "#feb700",
+                      "on-error": "#690005",
+                      "surface-container-high": "#282a2e",
+                      "secondary": "#ffdb9d",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary": "#412d00",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-primary-container": "#006970",
+                      "on-primary-fixed": "#002022",
+                      "tertiary-fixed": "#e4e2e2",
+                      "primary": "#dbfcff",
+                      "tertiary-fixed-dim": "#c7c6c6",
+                      "surface": "#111317",
+                      "inverse-surface": "#e2e2e8",
+                      "secondary-fixed-dim": "#ffba20",
+                      "on-secondary-container": "#6b4b00",
+                      "tertiary-container": "#dad9d9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "density-compact": "8px",
+                      "gutter": "16px",
+                      "density-comfortable": "24px"
+              },
+              "fontFamily": {
+                      "body-fixed": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "display-lg": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-fixed": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-point": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Cyber-Industrial scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b494b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00dbe9; 
+        }
+        
+        .grid-bg {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(59, 73, 75, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 73, 75, 0.1) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed antialiased min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<nav class="fixed w-full top-0 z-30 bg-surface-dim dark:bg-surface-dim border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-display-lg-mobile tracking-tighter text-primary dark:text-primary-fixed-dim">RoofCore AI Terminal</span>
+</div>
+<div class="flex items-center gap-density-comfortable">
+<div class="hidden md:flex items-center bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="bg-transparent border-none text-label-caps font-label-caps text-on-surface focus:ring-0 p-0 w-48 placeholder:text-on-surface-variant" placeholder="Search operations..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">settings_input_component</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 p-2 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">sync</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-full border border-primary overflow-hidden ml-2 flex-shrink-0">
+<div class="w-full h-full bg-surface-container-high flex items-center justify-center text-primary font-label-caps text-xs">TA</div>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-64 pt-16 z-20 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant flex-col justify-between shadow-[4px_0_24px_rgba(0,0,0,0.2)]">
+<div class="flex flex-col flex-1 overflow-y-auto">
+<div class="p-margin-mobile border-b border-outline-variant mb-4">
+<div class="w-12 h-12 bg-surface-variant rounded-sm border border-outline mb-3 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<div class="font-display-lg text-lg text-primary tracking-tight mb-1">System Node 01</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant tracking-wider uppercase">Precision Roofing CRM</div>
+</div>
+<nav class="flex flex-col px-2 gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps bg-primary-container text-on-primary-container border-l-4 border-primary shadow-[inset_1px_0_0_rgba(0,0,0,0.1)] active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">hub</span>
+                    Provider Matrix
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                    Telemetry
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+                    Diagnostics
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">layers</span>
+                    Inventory
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">map</span>
+                    Site Maps
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg">developer_board</span>
+                    System Logs
+                </a>
+</nav>
+</div>
+<div class="p-margin-mobile border-t border-outline-variant bg-surface-dim bg-opacity-50">
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps text-label-caps py-3 px-4 rounded-sm mb-4 hover:bg-primary transition-colors flex justify-center items-center gap-2 border border-primary active:scale-95 duration-100 shadow-[0_0_12px_rgba(0,240,255,0.2)]">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+                Deploy Model
+            </button>
+<nav class="flex flex-col gap-1 px-1">
+<a class="flex items-center gap-3 px-2 py-1.5 font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">security</span>
+                    Security
+                </a>
+<a class="flex items-center gap-3 px-2 py-1.5 font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+                    Support
+                </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-16 flex-1 min-h-screen relative grid-bg p-margin-mobile md:p-margin-desktop">
+<div class="max-w-[1600px] mx-auto flex flex-col gap-margin-desktop">
+<!-- Top Section: Global Metrics -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="bg-surface-container border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-container opacity-5 rounded-bl-full transform translate-x-4 -translate-y-4 group-hover:scale-150 transition-transform duration-500"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-3 uppercase tracking-wider">Global API Uptime</span>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-[32px] text-primary-container leading-none">99.998</span>
+<span class="font-label-caps text-primary-container opacity-70 pb-1">%</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-secondary-container opacity-5 rounded-bl-full transform translate-x-4 -translate-y-4 group-hover:scale-150 transition-transform duration-500"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-3 uppercase tracking-wider">Cost / Hr</span>
+<div class="flex items-end gap-2">
+<span class="font-label-caps text-secondary-container opacity-70 pb-1">$</span>
+<span class="font-data-point text-[32px] text-secondary-container leading-none">14.02</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-tertiary-fixed opacity-5 rounded-bl-full transform translate-x-4 -translate-y-4 group-hover:scale-150 transition-transform duration-500"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-3 uppercase tracking-wider">Active Nodes</span>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-[32px] text-tertiary-fixed leading-none">08</span>
+<span class="font-label-caps text-tertiary-fixed opacity-70 pb-1">/12</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-density-comfortable relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error opacity-5 rounded-bl-full transform translate-x-4 -translate-y-4 group-hover:scale-150 transition-transform duration-500"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-3 uppercase tracking-wider">Err Rate (1h)</span>
+<div class="flex items-end gap-2">
+<span class="font-data-point text-[32px] text-on-surface leading-none">0.01</span>
+<span class="font-label-caps text-on-surface-variant opacity-70 pb-1">%</span>
+</div>
+</div>
+</section>
+<!-- Middle Section: Node Registry -->
+<section class="flex flex-col gap-density-comfortable">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">dns</span>
+                        Node Registry
+                    </h2>
+<span class="font-label-caps text-[10px] bg-surface-container-high px-2 py-1 rounded text-on-surface-variant border border-outline-variant">LIVE SYNC</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Card 1: Damage Vision -->
+<div class="bg-surface border border-outline-variant hover:border-primary-container transition-colors duration-200 relative overflow-hidden flex flex-col group shadow-[0_0_0_0_rgba(0,240,255,0)] hover:shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary-container"></div>
+<div class="p-density-comfortable flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body-fixed text-lg font-bold text-on-surface mb-1">Damage Vision <span class="text-primary-container font-label-caps text-xs">v4.2</span></h3>
+<span class="font-label-caps text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-sm border border-outline-variant">RoofAI Core</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low border border-outline-variant px-2 py-1 rounded-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></div>
+<span class="font-label-caps text-[10px] text-primary-container">ONLINE</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2 h-10">High-resolution topological mapping for hail and wind strike detection.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant pt-4 mt-auto">
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Latency</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-on-surface">42</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">ms</span>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Accuracy</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-on-surface">98.4</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Structural Analysis -->
+<div class="bg-surface border border-outline-variant hover:border-primary-container transition-colors duration-200 relative overflow-hidden flex flex-col group shadow-[0_0_0_0_rgba(0,240,255,0)] hover:shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary-container"></div>
+<div class="p-density-comfortable flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body-fixed text-lg font-bold text-on-surface mb-1">Structural Analysis <span class="text-primary-container font-label-caps text-xs">v2.1</span></h3>
+<span class="font-label-caps text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-sm border border-outline-variant">EngiNet API</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low border border-outline-variant px-2 py-1 rounded-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></div>
+<span class="font-label-caps text-[10px] text-primary-container">ONLINE</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2 h-10">Load-bearing calculation and truss sag detection from 3D meshes.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant pt-4 mt-auto">
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Latency</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-secondary-container">128</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">ms</span>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Accuracy</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-on-surface">94.1</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Material Estimation -->
+<div class="bg-surface border border-outline-variant hover:border-primary-container transition-colors duration-200 relative overflow-hidden flex flex-col group shadow-[0_0_0_0_rgba(0,240,255,0)] hover:shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary-container"></div>
+<div class="p-density-comfortable flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body-fixed text-lg font-bold text-on-surface mb-1">Material Estimation <span class="text-primary-container font-label-caps text-xs">v5.0</span></h3>
+<span class="font-label-caps text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-sm border border-outline-variant">RoofAI Core</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low border border-outline-variant px-2 py-1 rounded-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></div>
+<span class="font-label-caps text-[10px] text-primary-container">ONLINE</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2 h-10">Waste-factor optimization and auto-generation of EagleView analogs.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant pt-4 mt-auto">
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Latency</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-on-surface">85</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">ms</span>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Accuracy</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-on-surface">99.2</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: Geo-Mapping (Offline/Degraded state example) -->
+<div class="bg-surface border border-outline-variant hover:border-outline transition-colors duration-200 relative overflow-hidden flex flex-col group opacity-80">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-secondary-container"></div>
+<div class="p-density-comfortable flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body-fixed text-lg font-bold text-on-surface mb-1">Geo-Mapping <span class="text-on-surface-variant font-label-caps text-xs">v1.8</span></h3>
+<span class="font-label-caps text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-sm border border-outline-variant">MapBox Sync</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low border border-outline-variant px-2 py-1 rounded-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary-container"></div>
+<span class="font-label-caps text-[10px] text-secondary-container">DEGRADED</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2 h-10">Satellite imagery fetching and property boundary vectorization.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant pt-4 mt-auto">
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Latency</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-error">450</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">ms</span>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1 uppercase">Accuracy</span>
+<div class="flex items-end gap-1">
+<span class="font-data-point text-data-point text-on-surface-variant">--</span>
+<span class="font-label-caps text-xs text-on-surface-variant pb-0.5">%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Metrics Log Visualization -->
+<section class="flex flex-col gap-density-comfortable mt-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">ssid_chart</span>
+                        Metrics Log (24H Trend)
+                    </h2>
+<div class="flex gap-2">
+<button class="font-label-caps text-[10px] bg-primary-container text-on-primary-container px-3 py-1 rounded border border-primary">LATENCY</button>
+<button class="font-label-caps text-[10px] bg-surface-container-high text-on-surface-variant px-3 py-1 rounded border border-outline-variant hover:text-on-surface transition-colors">COST</button>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-density-comfortable rounded-sm relative">
+<!-- Faux Y-Axis Labels -->
+<div class="absolute left-4 top-4 bottom-8 flex flex-col justify-between font-label-caps text-[10px] text-on-surface-variant z-10">
+<span>150ms</span>
+<span>100ms</span>
+<span>50ms</span>
+<span>0ms</span>
+</div>
+<!-- Faux X-Axis Labels -->
+<div class="absolute bottom-2 left-12 right-4 flex justify-between font-label-caps text-[10px] text-on-surface-variant z-10">
+<span>00:00</span>
+<span>06:00</span>
+<span>12:00</span>
+<span>18:00</span>
+<span>NOW</span>
+</div>
+<!-- Chart Canvas -->
+<div class="ml-10 h-64 border-l border-b border-outline-variant relative flex items-end gap-1 sm:gap-2 px-2 pt-4">
+<!-- Background Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-b border-outline-variant opacity-30 w-full h-0"></div>
+<div class="border-b border-outline-variant opacity-30 w-full h-0"></div>
+<div class="border-b border-outline-variant opacity-30 w-full h-0"></div>
+<div class="border-b border-outline-variant opacity-30 w-full h-0"></div>
+</div>
+<!-- Data Bars (Procedurally generated heights for visual effect) -->
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 30%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 45%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 35%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 50%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 30%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 80%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 70%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 45%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 55%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 35%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 50%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 45%"></div>
+<div class="w-full bg-secondary-container opacity-60 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 85%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 50%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-primary-container opacity-40 hover:opacity-100 transition-opacity rounded-t-sm" style="height: 30%"></div>
+<div class="w-full bg-primary-container opacity-80 hover:opacity-100 transition-opacity rounded-t-sm border-t-2 border-primary shadow-[0_-5px_10px_rgba(0,240,255,0.2)]" style="height: 42%"></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

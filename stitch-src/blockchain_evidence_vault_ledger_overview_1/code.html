@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blockchain Evidence Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;family=Inter:wght@400&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-surface": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "on-secondary": "#412d00",
+                        "primary-fixed": "#7df4ff",
+                        "on-primary": "#00363a",
+                        "surface-bright": "#37393e",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1a1c20",
+                        "secondary": "#ffdb9d",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container": "#1e2024",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "tertiary-container": "#dad9d9",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea8",
+                        "on-tertiary": "#303031",
+                        "background": "#111317",
+                        "primary-container": "#00f0ff",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary-fixed": "#002022",
+                        "on-background": "#e2e2e8",
+                        "surface-variant": "#333539",
+                        "outline": "#849495",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "surface": "#111317",
+                        "surface-container-high": "#282a2e",
+                        "primary": "#dbfcff",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-highest": "#333539",
+                        "secondary-container": "#feb700",
+                        "on-surface-variant": "#b9cacb",
+                        "tertiary": "#f7f5f5",
+                        "on-primary-container": "#006970",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-secondary-container": "#6b4b00",
+                        "on-tertiary-container": "#5e5f5f",
+                        "surface-dim": "#111317",
+                        "on-primary-fixed-variant": "#004f54",
+                        "outline-variant": "#3b494b",
+                        "inverse-primary": "#006970",
+                        "neon-pink": "#ff007f",
+                        "neon-blue": "#00f0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "density-compact": "8px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "density-comfortable": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "data-point": ["JetBrains Mono"],
+                        "body-fixed": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "data-point": ["20px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-fixed": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .hud-scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0, 240, 255, 0.05) 50%, rgba(0, 240, 255, 0.05));
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        .glow-border {
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+        .status-glow {
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pt-16 pb-20 relative">
+<div class="fixed inset-0 hud-scanline z-0"></div>
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-neon-pink dark:text-neon-pink fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16 w-full">
+<button class="text-neon-pink hover:bg-surface-bright transition-colors active:scale-95 duration-100 p-density-compact rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-label-caps text-label-caps tracking-widest text-neon-pink">FIELD AUDIT TERMINAL</h1>
+<button class="text-neon-pink hover:bg-surface-bright transition-colors active:scale-95 duration-100 p-density-compact rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+</button>
+</header>
+<main class="flex-grow z-10 flex flex-col p-margin-mobile gap-density-comfortable w-full max-w-md mx-auto">
+<!-- Vault Overview -->
+<section class="bg-surface-container border border-outline-variant rounded-DEFAULT p-gutter glow-border relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex items-center gap-density-compact mb-gutter">
+<span class="material-symbols-outlined text-primary-container">security</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Vault Overview</h2>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Total Blocks Verified</span>
+<span class="font-data-point text-data-point text-primary-fixed">14,892</span>
+</div>
+<div class="flex flex-col gap-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Hash Integrity Rate</span>
+<span class="font-data-point text-data-point text-primary-fixed">99.99%</span>
+</div>
+</div>
+</section>
+<!-- Immutable Ledger -->
+<section class="flex flex-col gap-density-compact">
+<div class="flex justify-between items-end border-b border-outline-variant pb-unit">
+<h3 class="font-headline-md text-headline-md text-on-surface">Immutable Ledger</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant">LIVE SYNC</span>
+</div>
+<!-- Ledger Item 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-density-compact rounded-DEFAULT flex flex-col gap-density-compact relative hover:border-primary-container transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-container to-transparent opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-fixed text-body-fixed font-bold text-on-surface">Roof Deck Inspection</h4>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2023-10-27T14:32:01Z</span>
+</div>
+<div class="bg-surface-bright text-primary-container font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT border border-primary-container status-glow flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> VERIFIED
+                    </div>
+</div>
+<div class="bg-surface border border-outline-variant p-unit rounded-sm mt-unit overflow-x-auto">
+<code class="font-data-point text-[12px] text-tertiary-fixed-dim whitespace-nowrap">0x7F8B9C2A1D3E4F5A6B7C8D9E0F1A2B3C4D5E6F7A</code>
+</div>
+<div class="flex justify-end mt-unit">
+<button class="bg-transparent border border-primary-container text-primary-container hover:bg-primary-container hover:text-on-primary font-label-caps text-label-caps px-4 py-2 rounded-DEFAULT transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">fingerprint</span> Verify Entry
+                    </button>
+</div>
+</div>
+<!-- Ledger Item 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-density-compact rounded-DEFAULT flex flex-col gap-density-compact relative hover:border-primary-container transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-container to-transparent opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-fixed text-body-fixed font-bold text-on-surface">TPO Seam Verification</h4>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2023-10-27T11:15:44Z</span>
+</div>
+<div class="bg-surface-bright text-primary-container font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT border border-primary-container status-glow flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> VERIFIED
+                    </div>
+</div>
+<div class="bg-surface border border-outline-variant p-unit rounded-sm mt-unit overflow-x-auto">
+<code class="font-data-point text-[12px] text-tertiary-fixed-dim whitespace-nowrap">0x1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0B</code>
+</div>
+<div class="flex justify-end mt-unit">
+<button class="bg-transparent border border-primary-container text-primary-container hover:bg-primary-container hover:text-on-primary font-label-caps text-label-caps px-4 py-2 rounded-DEFAULT transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">fingerprint</span> Verify Entry
+                    </button>
+</div>
+</div>
+<!-- Ledger Item 3 -->
+<div class="bg-surface-container-low border border-outline-variant p-density-compact rounded-DEFAULT flex flex-col gap-density-compact relative hover:border-primary-container transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-fixed-dim to-transparent opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-fixed text-body-fixed font-bold text-on-surface">Flashing Detail Scan</h4>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2023-10-26T09:05:12Z</span>
+</div>
+<div class="bg-surface-bright text-secondary-fixed-dim font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT border border-secondary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pending</span> PENDING SYNC
+                    </div>
+</div>
+<div class="bg-surface border border-outline-variant p-unit rounded-sm mt-unit overflow-x-auto">
+<code class="font-data-point text-[12px] text-tertiary-fixed-dim whitespace-nowrap">0x9E8D7C6B5A4F3E2D1C0B9A8F7E6D5C4B3A210F9E</code>
+</div>
+<div class="flex justify-end mt-unit">
+<button class="bg-transparent border border-outline-variant text-on-surface-variant cursor-not-allowed font-label-caps text-label-caps px-4 py-2 rounded-DEFAULT flex items-center gap-2" disabled="">
+<span class="material-symbols-outlined text-[16px]">lock_clock</span> Processing
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container fixed bottom-0 w-full z-50 flex justify-around items-center h-20 w-full px-gutter md:hidden border-t-0 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<button class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-caps text-label-caps mt-1">IDENTIFY</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 hover:text-secondary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="font-label-caps text-label-caps mt-1">EVIDENCE</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-caps text-label-caps mt-1">VERIFY</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-muted hover:text-secondary active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-label-caps mt-1">STACK</span>
+</button>
+</nav>
+</body></html>
