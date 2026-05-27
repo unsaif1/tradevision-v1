@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, FormEvent } from "react";
-import { apiLogin, getUser } from "@/lib/api";
+import { loginWithCredentials as apiLogin, fetchUserMe as getUser } from "@/lib/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -16,21 +16,21 @@ export default function Login() {
 
     try {
       const data = await apiLogin(email, password);
-      if (!data.access_token) {
+      if (!data) {
         setError("No token received");
         setLoading(false);
         return;
       }
 
-      localStorage.setItem("tv_token", data.access_token);
+      localStorage.setItem("tv_token", data);
 
       // Determine portal from user info
       let portal = "/stitch/policyholder";
       try {
-        const user = await getUser(data.access_token);
-        const role = (user.role_code || user.role || "").toLowerCase();
-        const userEmail = (user.email || email).toLowerCase();
-        const name = (user.name || "").toLowerCase();
+        const user = await getUser(data);
+        const role = (user?.role_code || "").toLowerCase();
+        const userEmail = (user?.email || email).toLowerCase();
+        const name = (user?.full_name || "").toLowerCase();
 
         if (role === "manager" || role === "contractor" || role === "gc" || role === "sub" ||
             userEmail.includes("construct") || userEmail.includes("roof") || userEmail.includes("contractor") ||
