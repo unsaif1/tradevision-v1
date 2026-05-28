@@ -15,8 +15,3 @@ zone_id = "bb8b0eb180e5759d9a81f51e44e6bc6d"
 
 [vars]
 NODE_ENV = "production"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "trade-vision-crm"
-database_id = "00000000-0000-0000-0000-000000000001"
