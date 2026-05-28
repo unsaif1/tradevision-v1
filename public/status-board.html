@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Status Board</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0a0a1a;
+  color: #e2e8f0;
+  padding: 24px;
+  min-height: 100vh;
+}
+h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 32px;
+}
+.section { margin-bottom: 28px; }
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(148,163,184,0.15);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 16px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.card-title { font-size: 14px; font-weight: 600; color: #f1f5f9; line-height: 1.3; }
+.card-desc { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+.badge-live { background: #166534; color: #86efac; }
+.badge-building { background: #854d0e; color: #fde047; }
+.badge-pending { background: #374151; color: #9ca3af; }
+.badge-done { background: #1e3a5f; color: #93c5fd; }
+.badge-blocked { background: #7f1d1d; color: #fca5a5; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; padding: 8px 12px; color: #64748b; font-weight: 600; border-bottom: 1px solid rgba(148,163,184,0.15); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+td { padding: 8px 12px; border-bottom: 1px solid rgba(148,163,184,0.08); color: #cbd5e1; }
+.url { font-family: 'SF Mono', 'Courier New', monospace; color: #7dd3fc; }
+.port { color: #a5b4fc; }
+.legend { display: flex; gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(148,163,184,0.1); font-size: 11px; color: #64748b; }
+.legend-item { display: flex; align-items: center; gap: 5px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+</style>
+</head>
+<body>
+<h1>Project Status Board</h1>
+<p class="subtitle">VPS Infrastructure &amp; Applications — May 28, 2026</p>
+
+<div class="section">
+<div class="section-title">Infrastructure Routing</div>
+<table>
+<tr><th>URL</th><th>Backend</th><th>Port</th><th>Via</th><th>Status</th></tr>
+<tr><td class="url">trade-vision.io</td><td>Stitch Portal (Next.js 16)</td><td class="port">3002</td><td>Traefik (443)</td><td><span class="badge badge-live">Live</span></td></tr>
+<tr><td class="url">trade-vision.io/stitch/*</td><td>Stitch Portal (Next.js)</td><td class="port">3002</td><td>Traefik (443)</td><td><span class="badge badge-live">Live</span></td></tr>
+<tr><td class="url">trade-vision.io/api/*</td><td>FastAPI (Python)</td><td class="port">8001</td><td>Traefik (443)</td><td><span class="badge badge-live">Live</span></td></tr>
+<tr><td class="url">trade-vision.io/care/*</td><td>C.A.R.E. Stack (Vite)</td><td class="port">5173</td><td>Traefik (443)</td><td><span class="badge badge-live">Live</span></td></tr>
+<tr><td class="url">trade-vision.io/api/proxy/*</td><td>Stitch → FastAPI proxy</td><td class="port">3002→8001</td><td>Traefik (443)</td><td><span class="badge badge-live">Live</span></td></tr>
+<tr><td class="url">old.trade-vision.io</td><td>Cloudflare Worker</td><td class="port">—</td><td>Cloudflare CDN</td><td><span class="badge badge-live">Live</span></td></tr>
+<tr><td class="url">saifhaven.com</td><td>Cloudflare Worker</td><td class="port">—</td><td>Cloudflare CDN</td><td><span class="badge badge-live">Live</span></td></tr>
+</table>
+</div>
+
+<div class="section">
+<div class="section-title">Phase 3 Features</div>
+<div class="grid">
+  <div class="card"><div class="card-header"><div class="card-title">📁 Document Management</div><span class="badge badge-live">Live</span></div><div class="card-desc">Upload photos/contracts/estimates per claim. Pages for policyholder, contractor, adjuster. Backend: /api/v1/documents/* (CRUD, upload, share).</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📊 Estimates / Quotes</div><span class="badge badge-live">Live</span></div><div class="card-desc">Line-item estimates per claim. Pages: /contractor/estimates, /adjuster/review. Backend: /api/v1/estimates/*.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📈 Reporting Dashboard</div><span class="badge badge-live">Live</span></div><div class="card-desc">Pipeline analytics, conversion rates. Custom report builder with recharts. Backend: /api/v1/reports/*, /api/v1/stats/*.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔧 Trade Portal</div><span class="badge badge-live">Live</span></div><div class="card-desc">Subcontractors view/manage assigned leads. Pages: /subcontractors/*. Backend: /api/v1/trade_portal/*, /api/v1/assignments/*.</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">Stitch Portal Routes</div>
+<div class="grid">
+  <div class="card"><div class="card-header"><div class="card-title">🏠 Command Center</div><span class="badge badge-live">Live</span></div><div class="card-desc">/stitch — GC/Contractor dashboard: active projects, open claims, metrics grid.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔐 Login</div><span class="badge badge-live">Live</span></div><div class="card-desc">/stitch/login — OAuth2 password flow → FastAPI → JWT → role-based redirect.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📋 Claims</div><span class="badge badge-live">Live</span></div><div class="card-desc">/stitch/claims &amp; /stitch/claims/[id] — Claim detail with stages, documents, line items.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">👤 Policyholder</div><span class="badge badge-live">Live</span></div><div class="card-desc">/policyholder/* — Claims, documents, messages, profile. Pipeline stages, upload, messaging.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">👷 Contractor</div><span class="badge badge-live">Live</span></div><div class="card-desc">/contractor/* — Dashboard, estimates, crew, dispatch, materials, projects, schedule, analytics.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔍 Adjuster</div><span class="badge badge-live">Live</span></div><div class="card-desc">/adjuster/* — Claims, approvals, documents, messages, review, xactimate.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔩 Subcontractors</div><span class="badge badge-live">Live</span></div><div class="card-desc">/subcontractors/* — Assigned leads, claim detail, schedule.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📦 Evidence</div><span class="badge badge-pending">Partial</span></div><div class="card-desc">/evidence/* — Upload, field capture, review. Pages built, backend routes exist.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">⚖️ Legal/Disputes</div><span class="badge badge-pending">Stub</span></div><div class="card-desc">/disputes, /legal/closure — Page stubs, backend routes registered.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔔 Notifications</div><span class="badge badge-live">Live</span></div><div class="card-desc">Push, SMS, email. Backend: notifications + push + sms routes.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📡 Integrations (9)</div><span class="badge badge-done">All Live</span></div><div class="card-desc">Google Maps/OSRM, ABC Supply, QXO/Beacon, SPOTIO, HailTrace, NOAA/NWS, Google OAuth, Office 365, Xactimate.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🧭 Materials &amp; Logistics</div><span class="badge badge-pending">Stub</span></div><div class="card-desc">/materials/*, /logistics — Page stubs. Backend: trades, materials, suppliers routes.</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">FastAPI Backend (50+ endpoints)</div>
+<div class="grid">
+  <div class="card"><div class="card-header"><div class="card-title">👥 CRM Core</div></div><div class="card-desc">/api/v1/leads/*, /contacts/*, /users/*, /roles/*, /tenants/* + assignments, scoring, notes, messages</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📋 Claims Engine</div></div><div class="card-desc">/api/v1/claims/*, /claim_events/*, /inspections/*, /estimates/*, /documents/*, /ocr/*</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🤖 AI &amp; Agents</div></div><div class="card-desc">/api/v1/agents/* (8 AI agents), /ai_assistant/*, /glasses/* (AR routes)</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">⚙️ Automation</div></div><div class="card-desc">/api/v1/automation/* (React Flow workflows), /webhooks/*, /followup/*, /bulk/*, /campaigns/*</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📊 Reporting</div></div><div class="card-desc">/api/v1/reports/*, /stats/*, /analytics, /deal_scoring/*</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔌 External APIs</div></div><div class="card-desc">/api/v1/weather/*, /routing (OSRM), /trade_portal/*, /integrations/*, /calendar/*</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔔 Comms</div></div><div class="card-desc">/api/v1/sms/*, /emails/*, /notifications/*, /push/*, /appointments/*</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🔐 Admin</div></div><div class="card-desc">/api/v1/settings/*, /audit/*, /portal_admin/*, /api_keys/*, /accounting/*</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">C.A.R.E. Stack (FieldStack Rebrand)</div>
+<div class="grid">
+  <div class="card"><div class="card-header"><div class="card-title">🌐 Frontend</div><span class="badge badge-live">Live</span></div><div class="card-desc">Vite + React, port 5173. Routes: /care/, /care/storm-panel, /care/claims, /care/agents, /care/settings. C.A.R.E. branding (#E21E51, #040037).</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🤖 8 AI Agents</div><span class="badge badge-done">Tested</span></div><div class="card-desc">ARIA, AEGIS, FORGE, NEXUS, VAULT, SHIELD, PRISM, ATLAS. Real API calls to TradeVision backend.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📱 Pages</div><span class="badge badge-done">14</span></div><div class="card-desc">Dashboard, Claims Hub, Agent Panel, Storm Panel, Contacts, Settings, Analytics, Estimates, Photos, Scope, Punch List, Invoicing, Xactimate, File Vault, Support.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">⚙️ Settings</div><span class="badge badge-live">Live</span></div><div class="card-desc">AI model selector ↔ /api/v1/settings/ai-model. Per-user preference in DB. 6 models via OpenRouter.</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">Other Projects</div>
+<div class="grid">
+  <div class="card"><div class="card-header"><div class="card-title">🏠 SaifHaven Site</div><span class="badge badge-live">Live</span></div><div class="card-desc">saifhaven.com — Cloudflare Worker. Chatbot: gemma-4-31b-it:free via OpenRouter.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">💰 SafeCPA</div><span class="badge badge-live">Live</span></div><div class="card-desc">safecpa.com — Cloudflare Worker. CPA firm Orlando FL.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">📈 SwarmTrader</div><span class="badge badge-blocked">Stale</span></div><div class="card-desc">Monte Carlo ML stock trading. 8 Claude pipelines. Last ran 2026-05-18 — aborted at quant stage. Metrics API :8080.</div></div>
+  <div class="card"><div class="card-header"><div class="card-title">🛡️ ClosedSI</div><span class="badge badge-pending">Suspended</span></div><div class="card-desc">closedsi.com — DNS points to Cloudflare but Worker route not active.</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">Running Services (PM2)</div>
+<table>
+<tr><th>Service</th><th>Port</th><th>Uptime</th><th>Memory</th></tr>
+<tr><td>tradevision-api</td><td class="port">8001</td><td>2h</td><td>157 MB</td></tr>
+<tr><td>tradevision-frontend</td><td class="port">3001</td><td>91m</td><td>147 MB</td></tr>
+<tr><td>tradevision-stitch</td><td class="port">3002</td><td>74m</td><td>137 MB</td></tr>
+<tr><td>Traefik</td><td class="port">80, 443</td><td>restarting</td><td>52 MB</td></tr>
+<tr><td>C.A.R.E. Stack (Vite)</td><td class="port">5173</td><td>days</td><td>—</td></tr>
+</table>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#166534"></div> Live</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#854d0e"></div> Building</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#374151"></div> Partial/Stub</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1e3a5f"></div> Tested/Done</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#7f1d1d"></div> Blocked/Stale</div>
+</div>
+</body>
+</html>
