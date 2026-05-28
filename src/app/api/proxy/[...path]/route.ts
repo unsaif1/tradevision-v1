@@ -1,6 +1,6 @@
-// Proxies /api/proxy/* → http://localhost:8001/api/v1/*
-// Runs as Node.js (no 'runtime = edge') so it can reach localhost:8001.
+// Proxies /api/proxy/* → BACKEND_URL/api/v1/*
 // BACKEND_URL env var lets you override for staging/prod.
+export const runtime = 'edge';
 
 const BACKEND = (process.env.BACKEND_URL ?? 'http://localhost:8001').replace(/\/$/, '');
 
